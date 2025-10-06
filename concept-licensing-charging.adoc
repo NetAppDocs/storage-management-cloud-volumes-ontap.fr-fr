@@ -56,9 +56,9 @@ Votre licence est toujours facturée en premier, mais vous serez facturé au tar
 
 == Changement de forfait
 
-Après le déploiement, vous pouvez modifier le package pour un système Cloud Volumes ONTAP qui utilise des licences basées sur la capacité. Par exemple, si vous avez déployé un système Cloud Volumes ONTAP avec le package Essentials, vous pouvez le remplacer par le package Professional si les besoins de votre entreprise ont changé.
+Après le déploiement, vous pouvez modifier le package pour un système Cloud Volumes ONTAP qui utilise des licences basées sur la capacité.  Par exemple, si vous avez déployé un système Cloud Volumes ONTAP avec le package Essentials, vous pouvez le remplacer par le package Professional si les besoins de votre entreprise ont changé.
 
-link:task-manage-capacity-licenses.html["Apprenez à modifier les méthodes de charge"] .
+link:task-manage-capacity-licenses.html["Apprenez à changer de méthode de charge"] .
 
 Pour plus d'informations sur la conversion des licences basées sur les nœuds en licences basées sur la capacité, consultez
 
@@ -66,7 +66,7 @@ Pour plus d'informations sur la conversion des licences basées sur les nœuds e
 
 == Tarification et configurations prises en charge
 
-Pour plus de détails sur les prix, rendez-vous sur le https://bluexp.netapp.com/pricing/["Site Web de la console NetApp"^] .
+Pour plus de détails sur les prix, rendez-vous sur le https://bluexp.netapp.com/pricing/["Site Web de la NetApp Console"^] .
 
 Les packages de licences basés sur la capacité sont disponibles avec Cloud Volumes ONTAP 9.7 et versions ultérieures.
 
@@ -109,7 +109,7 @@ Pour plus d'informations sur les limites de capacité de chaque fournisseur de c
 
 == Nombre maximal de systèmes
 
-Avec les licences basées sur la capacité, le nombre maximal de systèmes Cloud Volumes ONTAP est limité à 24 par compte NetApp Console.  Un _système_ est une paire Cloud Volumes ONTAP HA, un système à nœud unique Cloud Volumes ONTAP ou toute machine virtuelle de stockage supplémentaire que vous créez.  La machine virtuelle de stockage par défaut n'est pas prise en compte dans la limite.  Cette limite s’applique à tous les modèles de licence.
+Avec les licences basées sur la capacité, le nombre maximal de systèmes Cloud Volumes ONTAP est limité à 24 par compte NetApp Console .  Un _système_ est une paire Cloud Volumes ONTAP HA, un système à nœud unique Cloud Volumes ONTAP ou toute machine virtuelle de stockage supplémentaire que vous créez.  La machine virtuelle de stockage par défaut n'est pas prise en compte dans la limite.  Cette limite s’applique à tous les modèles de licence.
 
 Par exemple, disons que vous avez trois systèmes :
 
@@ -186,7 +186,7 @@ Voici un exemple. Disons que vous disposez des licences suivantes pour le packag
 
 50 Tio supplémentaires sont provisionnés sur une paire HA avec des volumes secondaires.  Au lieu de facturer ces 50 Tio au PAYGO, la console facture le dépassement de 50 Tio sur la licence _Essentials Single Node_.  Cette licence est plus chère que _Essentials Secondary HA_, mais elle utilise une licence que vous avez déjà achetée et n'ajoutera pas de frais à votre facture mensuelle.
 
-Dans *Administration > Licences et abonnements*, vous pouvez voir 50 Tio facturés sur la licence _Essentials Single Node_.
+Dans *Administration > Licenses and subscriptions*, vous pouvez voir 50 Tio facturés sur la licence _Essentials Single Node_.
 
 Voici un autre exemple.  Disons que vous disposez des licences suivantes pour le package Essentials :
 

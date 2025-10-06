@@ -19,7 +19,7 @@ Le support de NetApp est inclus avec les systèmes Cloud Volumes ONTAP Pay-as-yo
 L'enregistrement d'un système PAYGO auprès de NetApp est requis pour mettre à niveau le logiciel ONTAP à l'aide de l'une des méthodeslink:task-updating-ontap-cloud.html["décrit sur cette page"] .
 
 
-TIP: Un système qui n'est pas enregistré pour le support recevra toujours les notifications de mise à jour logicielle qui s'affichent dans la console NetApp lorsqu'une nouvelle version est disponible.  Mais vous devrez enregistrer le système avant de pouvoir mettre à niveau le logiciel.
+TIP: Un système qui n'est pas enregistré pour le support recevra toujours les notifications de mise à jour logicielle qui s'affichent dans la NetApp Console lorsqu'une nouvelle version est disponible.  Mais vous devrez enregistrer le système avant de pouvoir mettre à niveau le logiciel.
 
 .Étapes
 . Si vous n'avez pas encore ajouté votre compte de site de support NetApp à la console, accédez à *Paramètres du compte* et ajoutez-le maintenant.

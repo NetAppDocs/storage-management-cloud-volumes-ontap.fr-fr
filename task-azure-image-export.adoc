@@ -69,7 +69,7 @@ Par exemple, tous les déploiements à nœud unique avec Cloud Volumes ONTAP 9.1
 | 9.17.1 et versions ultérieures | La place de marché Azure | ontap_cloud_direct_gen2 
 
 
-| 9.17.1 et versions ultérieures | La console NetApp | ontap_cloud_gen2 
+| 9.17.1 et versions ultérieures | La NetApp Console | ontap_cloud_gen2 
 
 
 | 9.16.1 | La place de marché Azure | ontap_cloud_direct 

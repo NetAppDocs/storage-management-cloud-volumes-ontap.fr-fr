@@ -14,7 +14,7 @@ summary: 'Réduisez vos coûts de stockage en activant la hiérarchisation autom
 
 
 [role="lead"]
-Réduisez vos coûts de stockage en activant la hiérarchisation automatisée des données inactives vers un stockage d'objets à faible coût.  Les données actives restent dans des SSD ou des disques durs hautes performances, tandis que les données inactives sont hiérarchisées vers un stockage d'objets à faible coût.  Cela vous permet de récupérer de l'espace sur votre stockage principal et de réduire le stockage secondaire.
+Réduisez vos coûts de stockage en activant la hiérarchisation automatisée des données inactives vers un stockage d'objets à faible coût.  Les données actives restent dans des disques SSD ou HDD hautes performances, tandis que les données inactives sont hiérarchisées vers un stockage d'objets à faible coût.  Cela vous permet de récupérer de l'espace sur votre stockage principal et de réduire le stockage secondaire.
 
 image:diagram_data_tiering.png["Il s'agit d'une image conceptuelle qui montre les données chaudes allant vers le stockage EBS et les données inactives allant vers le stockage S3."]
 
@@ -37,7 +37,7 @@ La hiérarchisation des données vers le stockage d'objets n'est pas recommandé
 Niveau de capacité:: Un système Cloud Volumes ONTAP hiérarchise les données inactives dans un seul compartiment S3.
 +
 --
-La console NetApp crée un seul compartiment S3 pour chaque système et le nomme fabric-pool-_cluster identifiant unique_.  Un compartiment S3 différent n'est pas créé pour chaque volume.
+La NetApp Console crée un seul compartiment S3 pour chaque système et le nomme fabric-pool-_cluster identifiant unique_.  Un compartiment S3 différent n'est pas créé pour chaque volume.
 
 Lorsque la console crée le bucket S3, elle utilise les paramètres par défaut suivants :
 
@@ -179,10 +179,10 @@ Instantané uniquement:: Une fois qu'un agrégat a atteint 50 % de sa capacité,
 Si les blocs de données froids sont lus au niveau de capacité, ils deviennent chauds et sont déplacés vers le niveau de performance.
 
 --
-Tous:: Toutes les données (à l’exception des métadonnées) sont immédiatement marquées comme froides et hiérarchisées vers le stockage d’objets dès que possible. Il n’est pas nécessaire d’attendre 48 heures pour que les nouveaux blocs d’un volume deviennent froids. Notez que les blocs situés dans le volume avant la définition de la politique All nécessitent 48 heures pour devenir froids.
+Tous:: Toutes les données (à l’exception des métadonnées) sont immédiatement marquées comme froides et hiérarchisées vers le stockage d’objets dès que possible.  Il n’est pas nécessaire d’attendre 48 heures pour que les nouveaux blocs d’un volume deviennent froids.  Notez que les blocs situés dans le volume avant la définition de la politique All nécessitent 48 heures pour devenir froids.
 +
 --
-Si les blocs de données froids sont lus sur le niveau cloud, ils restent froids et ne sont pas réécrits sur le niveau de performance. Cette politique est disponible à partir d' ONTAP 9.6.
+Si les blocs de données froids sont lus sur le niveau cloud, ils restent froids et ne sont pas réécrits sur le niveau de performance.  Cette politique est disponible à partir d' ONTAP 9.6.
 
 --
 Automatique:: Une fois qu'un agrégat a atteint 50 % de sa capacité, Cloud Volumes ONTAP hiérarchise les blocs de données froids d'un volume selon un niveau de capacité.  Les données froides incluent non seulement des copies instantanées, mais également des données utilisateur froides provenant du système de fichiers actif.  La période de refroidissement est d'environ 31 jours.
@@ -190,7 +190,7 @@ Automatique:: Une fois qu'un agrégat a atteint 50 % de sa capacité, Cloud Volu
 --
 Cette politique est prise en charge à partir de Cloud Volumes ONTAP 9.4.
 
-Si les données sont lues de manière aléatoire, les blocs de données froids du niveau de capacité deviennent chauds et passent au niveau de performance.  Si les données sont lues par des lectures séquentielles, telles que celles associées aux analyses d'index et d'antivirus, les blocs de données froids restent froids et ne passent pas au niveau de performance.
+Si les blocs de données froids du niveau de capacité sont lus de manière aléatoire, ils deviennent chauds et passent au niveau de performance.  Si les données sont lues par des lectures séquentielles, telles que celles associées aux analyses d'index et d'antivirus, les blocs de données froids restent froids et ne passent pas au niveau de performance.
 
 --
 Aucune:: Conserve les données d’un volume dans le niveau de performance, empêchant ainsi leur déplacement vers le niveau de capacité.

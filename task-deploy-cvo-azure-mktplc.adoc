@@ -16,10 +16,10 @@ summary:
 [role="lead"]
 Vous pouvez utiliser le déploiement direct de la place de marché Azure pour déployer rapidement et facilement Cloud Volumes ONTAP.  Depuis la place de marché Azure, vous pouvez déployer rapidement Cloud Volumes ONTAP en quelques clics et explorer ses principales fonctionnalités et capacités dans votre environnement.
 
-Pour plus d'informations sur cette offre, reportez-vous àlink:concept-azure-mktplace-direct.html["Découvrez les offres Cloud Volumes ONTAP dans la console NetApp et sur la place de marché"] .
+Pour plus d'informations sur cette offre, reportez-vous àlink:concept-azure-mktplace-direct.html["Découvrez les offres Cloud Volumes ONTAP dans la NetApp Console et sur la place de marché"] .
 
 .À propos de cette tâche
-Le système Cloud Volumes ONTAP déployé à l’aide du déploiement direct de la place de marché Azure possède ces propriétés.  Notez que les fonctionnalités d’une instance autonome déployée via la place de marché Azure changent lorsqu’elle est découverte dans la console NetApp .
+Le système Cloud Volumes ONTAP déployé à l’aide du déploiement direct de la place de marché Azure possède ces propriétés.  Notez que les fonctionnalités d’une instance autonome déployée via la place de marché Azure changent lorsqu’elle est découverte dans la NetApp Console.
 
 * La dernière version de Cloud Volumes ONTAP (9.16.1 ou ultérieure).
 * Une licence gratuite pour Cloud Volumes ONTAP limitée à 500 Gio de capacité provisionnée.  Cette licence n'inclut aucun support NetApp et n'a pas de date d'expiration.
@@ -40,7 +40,7 @@ Le système Cloud Volumes ONTAP déployé à l’aide du déploiement direct de 
 
 .Avant de commencer
 * Assurez-vous que vous disposez d’un abonnement à la place de marché Azure valide.
-* Assurez-vous de répondre aux exigences de mise en réseau pour unlink:concept-ha-azure.html#ha-single-availability-zone-configuration-with-shared-managed-disks["Déploiement HA dans une seule zone de disponibilité"] dans Azure. link:reference-networking-azure.html["Configurer le réseau Azure pour Cloud Volumes ONTAP"] .
+* Assurez-vous de répondre aux exigences de mise en réseau pour unlink:concept-ha-azure.html#ha-single-availability-zone-configuration-with-shared-managed-disks["Déploiement HA dans une seule zone de disponibilité"] dans Azure. link:reference-networking-azure.html["Configurer la mise en réseau Azure pour Cloud Volumes ONTAP"] .
 * L'un de ces rôles Azure doit vous être attribué pour déployer Cloud Volumes ONTAP:
 +
 ** Le `contributor` rôle avec les autorisations par défaut. Pour plus d'informations, reportez-vous à la https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles["Documentation Microsoft Azure : rôles intégrés Azure"^] .

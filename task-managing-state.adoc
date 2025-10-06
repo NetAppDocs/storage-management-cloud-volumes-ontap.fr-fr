@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: task-managing-state.html 
 keywords: schedule, schedules, scheduling, shutdowns, shut down, restart, stop, stopping, turn off, weekday, weekend 
-summary: Vous pouvez arrêter et démarrer Cloud Volumes ONTAP à partir de la console NetApp pour gérer vos coûts de calcul cloud. 
+summary: Vous pouvez arrêter et démarrer Cloud Volumes ONTAP à partir de la NetApp Console pour gérer vos coûts de calcul cloud. 
 ---
 = Démarrer et arrêter un système Cloud Volumes ONTAP
 :hardbreaks:
@@ -14,7 +14,7 @@ summary: Vous pouvez arrêter et démarrer Cloud Volumes ONTAP à partir de la c
 
 
 [role="lead"]
-Vous pouvez arrêter et démarrer Cloud Volumes ONTAP à partir de la console NetApp pour gérer vos coûts de calcul cloud.
+Vous pouvez arrêter et démarrer Cloud Volumes ONTAP à partir de la NetApp Console pour gérer vos coûts de calcul cloud.
 
 
 

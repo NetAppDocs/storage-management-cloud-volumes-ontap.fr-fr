@@ -14,7 +14,7 @@ summary: 'Si vous devez effectuer une gestion avancée de Cloud Volumes ONTAP, v
 
 
 [role="lead"]
-Les fonctionnalités avancées de gestion du stockage dans Cloud Volumes ONTAP sont disponibles via ONTAP System Manager, une interface de gestion fournie avec les systèmes ONTAP . Vous pouvez accéder au Gestionnaire système directement depuis la console NetApp .
+Les fonctionnalités avancées de gestion du stockage dans Cloud Volumes ONTAP sont disponibles via ONTAP System Manager, une interface de gestion fournie avec les systèmes ONTAP . Vous pouvez accéder au Gestionnaire système directement depuis la NetApp Console.
 
 
 
@@ -29,7 +29,7 @@ Vous pouvez exécuter diverses fonctions de gestion du stockage à l'aide d' ONT
 * Événements et tâches : affichez les journaux d’événements, les alertes système, les tâches et les journaux d’audit.
 * Protection avancée des données : protégez les machines virtuelles de stockage, les LUN et les groupes de cohérence.
 * Gestion des hôtes : configurez les groupes d’initiateurs SAN et les clients NFS.
-* Gestion du stockage d’objets S3 : les fonctionnalités de gestion du stockage S3 dans Cloud Volumes ONTAP sont disponibles uniquement dans System Manager, et non dans la console.
+* Gestion du stockage d’objets S3 : les fonctionnalités de gestion du stockage S3 dans Cloud Volumes ONTAP sont disponibles uniquement dans System Manager et non dans la console.
 
 
 
@@ -46,7 +46,7 @@ Vous pouvez exécuter diverses fonctions de gestion du stockage à l'aide d' ONT
 
 Certaines fonctionnalités qui apparaissent dans l'interface du Gestionnaire système ne sont pas prises en charge avec Cloud Volumes ONTAP:
 
-* NetApp Cloud Tiering : Cloud Volumes ONTAP ne prend pas en charge Cloud Tiering.  Vous devez configurer la hiérarchisation des données vers le stockage d'objets directement à partir de la vue standard lors de la création de volumes.
+* NetApp Cloud Tiering: Cloud Volumes ONTAP ne prend pas en charge Cloud Tiering.  Vous devez configurer la hiérarchisation des données vers le stockage d'objets directement à partir de la vue standard lors de la création de volumes.
 * Niveaux : la gestion des agrégats (y compris les niveaux locaux et cloud) n'est pas prise en charge par le Gestionnaire système. Vous devez gérer les agrégats directement à partir de la vue standard.
 * Mises à niveau du micrologiciel : Cloud Volumes ONTAP ne prend pas en charge les mises à jour automatiques du micrologiciel à partir de la page *Cluster > Paramètres* du Gestionnaire système.
 * Contrôle d'accès basé sur les rôles : le contrôle d'accès basé sur les rôles du Gestionnaire système n'est pas pris en charge.

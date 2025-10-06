@@ -19,14 +19,14 @@ Si vous souhaitez utiliser le chiffrement Amazon avec Cloud Volumes ONTAP, vous 
 .Étapes
 . Assurez-vous qu'une clé principale client (CMK) active existe.
 +
-La CMK peut être une CMK gérée par AWS ou une CMK gérée par le client.  Il peut se trouver dans le même compte AWS que la console NetApp et Cloud Volumes ONTAP ou dans un autre compte AWS.
+La CMK peut être une CMK gérée par AWS ou une CMK gérée par le client.  Il peut se trouver dans le même compte AWS que la NetApp Console et Cloud Volumes ONTAP ou dans un autre compte AWS.
 
 +
 https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys["Documentation AWS : Clés principales client (CMK)"^]
 
 . Modifiez la politique de clé pour chaque CMK en ajoutant le rôle IAM qui fournit des autorisations à la console en tant qu'utilisateur clé.
 +
-L'ajout du rôle Identity and Access Management (IAM) en tant qu'utilisateur clé donne à la console les autorisations d'utiliser la CMK avec Cloud Volumes ONTAP.
+L'ajout du rôle Identity and Access Management (IAM) en tant qu'utilisateur clé donne à la console les autorisations nécessaires pour utiliser la CMK avec Cloud Volumes ONTAP.
 
 +
 https://docs.aws.amazon.com/kms/latest/developerguide/editing-keys.html["Documentation AWS : Modification des clés"^]

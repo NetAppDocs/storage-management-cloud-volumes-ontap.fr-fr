@@ -16,7 +16,7 @@ summary: Une machine virtuelle de stockage est une machine virtuelle exécutée 
 [role="lead"]
 Une machine virtuelle de stockage est une machine virtuelle exécutée dans ONTAP qui fournit des services de stockage et de données à vos clients.  Vous connaissez peut-être cela sous le nom de _SVM_ ou _vserver_.  Cloud Volumes ONTAP est configuré avec une machine virtuelle de stockage par défaut, mais certaines configurations prennent en charge des machines virtuelles de stockage supplémentaires.
 
-Pour créer des machines virtuelles de stockage de service de données supplémentaires, vous devez allouer des adresses IP dans AWS, puis exécuter des commandes ONTAP en fonction de votre configuration Cloud Volumes ONTAP .
+Pour créer des machines virtuelles de stockage de données supplémentaires, vous devez allouer des adresses IP dans AWS, puis exécuter des commandes ONTAP en fonction de votre configuration Cloud Volumes ONTAP .
 
 
 
@@ -60,7 +60,7 @@ image:screenshot_aws_e0a.gif["Une capture d’écran de la console AWS qui montr
 . Développez la liste des adresses IP pour e0a.
 . Vérifiez les adresses IP :
 +
-.. Comptez le nombre d'adresses IP allouées pour confirmer que le port dispose de suffisamment d'espace pour des adresses IP supplémentaires.
+.. Comptez le nombre d'adresses IP allouées pour confirmer que le port dispose de place pour des IP supplémentaires.
 +
 Vous devriez avoir identifié le nombre maximal d’adresses IP prises en charge par interface dans la section précédente de cette page.
 

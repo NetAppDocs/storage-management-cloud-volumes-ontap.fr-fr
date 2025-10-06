@@ -76,7 +76,7 @@ Pour plus de détails, reportez-vous à la https://cloud.google.com/compute/docs
 
 
 --
-Taille du disque GCP:: Vous devez choisir une taille de disque initiale lorsque vous déployez un système Cloud Volumes ONTAP .  Après cela, vous pouvez laisser la console NetApp gérer la capacité d'un système pour vous, mais si vous souhaitez créer vous-même des agrégats, tenez compte des points suivants :
+Taille du disque GCP:: Vous devez choisir une taille de disque initiale lorsque vous déployez un système Cloud Volumes ONTAP .  Après cela, vous pouvez laisser la NetApp Console gérer la capacité d'un système pour vous, mais si vous souhaitez créer vous-même des agrégats, tenez compte des points suivants :
 +
 --
 * Tous les disques d’un agrégat doivent avoir la même taille.

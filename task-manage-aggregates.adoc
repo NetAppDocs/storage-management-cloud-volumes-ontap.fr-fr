@@ -17,7 +17,7 @@ summary: Gérez vous-même les agrégats en ajoutant des disques, en affichant d
 Gérez vous-même les agrégats en ajoutant des disques, en affichant des informations sur les agrégats et en les supprimant.
 
 
-CAUTION: Tous les disques et agrégats doivent être créés et supprimés directement à partir de la console NetApp . Vous ne devez pas effectuer ces actions à partir d’un autre outil de gestion. Cela peut avoir un impact sur la stabilité du système, entraver la possibilité d’ajouter des disques à l’avenir et potentiellement générer des frais de fournisseur de cloud redondants.
+CAUTION: Tous les disques et agrégats doivent être créés et supprimés directement à partir de la NetApp Console. Vous ne devez pas effectuer ces actions à partir d’un autre outil de gestion. Cela peut avoir un impact sur la stabilité du système, entraver la possibilité d’ajouter des disques à l’avenir et potentiellement générer des frais de fournisseur de cloud redondants.
 
 .Avant de commencer
 Si vous souhaitez supprimer un agrégat, vous devez d’abord avoir supprimé les volumes de l’agrégat.

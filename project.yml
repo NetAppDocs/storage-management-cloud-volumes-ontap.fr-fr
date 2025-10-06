@@ -79,7 +79,7 @@ sidebar:
       entries:
       - title: Découvrez les options de déploiement de Cloud Volumes ONTAP dans Azure
         url: "/concept-azure-mktplace-direct.html"
-      - title: Démarrer dans la console NetApp
+      - title: Démarrer dans la NetApp Console
         entries:
         - title: Démarrage rapide
           url: "/task-getting-started-azure.html"

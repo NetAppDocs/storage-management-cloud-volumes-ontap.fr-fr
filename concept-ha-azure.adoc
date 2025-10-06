@@ -26,9 +26,9 @@ Une paire haute disponibilité (HA) Cloud Volumes ONTAP offre une fiabilité d'e
 
 Une configuration d'objet blob de pages Cloud Volumes ONTAP HA dans Azure inclut les composants suivants :
 
-image:diagram_ha_azure.png["Une image conceptuelle qui montre un équilibreur de charge gérant le trafic entrant depuis la console NetApp et les clients, deux nœuds Cloud Volumes ONTAP dans un VMSS Flex, des disques SSD pour les données de démarrage et des blobs de pages pour les données client."]
+image:diagram_ha_azure.png["Une image conceptuelle qui montre un équilibreur de charge gérant le trafic entrant depuis la NetApp Console et les clients, deux nœuds Cloud Volumes ONTAP dans un VMSS Flex, des disques SSD pour les données de démarrage et des blobs de pages pour les données client."]
 
-Notez les points suivants concernant les composants Azure que la console NetApp déploie pour vous :
+Notez les points suivants concernant les composants Azure que la NetApp Console déploie pour vous :
 
 Équilibreur de charge standard Azure:: L'équilibreur de charge gère le trafic entrant vers la paire Cloud Volumes ONTAP HA.
 Machines virtuelles dans des zones de disponibilité uniques:: À partir de Cloud Volumes ONTAP 9.15.1, vous pouvez créer et gérer des machines virtuelles (VM) hétérogènes dans une seule zone de disponibilité (AZ).  Vous pouvez déployer des nœuds haute disponibilité (HA) dans des domaines de pannes distincts au sein de la même zone de disponibilité, garantissant ainsi une disponibilité optimale.  Pour en savoir plus sur le mode d'orchestration flexible qui permet cette fonctionnalité, reportez-vous à la https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/["Documentation Microsoft Azure : Ensembles de machines virtuelles identiques"^] .

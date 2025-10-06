@@ -14,7 +14,7 @@ summary: 'La prise en charge de la fonctionnalité Amazon EBS Elastic Volumes av
 
 
 [role="lead"]
-La prise en charge de la fonctionnalité Amazon EBS Elastic Volumes avec un agrégat Cloud Volumes ONTAP offre de meilleures performances et une capacité supplémentaire, tout en permettant à la console NetApp d'augmenter automatiquement la capacité du disque sous-jacent selon les besoins.
+La prise en charge de la fonctionnalité Amazon EBS Elastic Volumes avec un agrégat Cloud Volumes ONTAP offre de meilleures performances et une capacité supplémentaire, tout en permettant à la NetApp Console d'augmenter automatiquement la capacité du disque sous-jacent selon les besoins.
 
 
 
@@ -37,7 +37,7 @@ Notez que les limites de capacité totale du système restent les mêmes.
 
 
 
-https://aws.amazon.com/ebs/features/["Documentation AWS : En savoir plus sur Elastic Volumes d'AWS"^]
+https://aws.amazon.com/ebs/features/["Documentation AWS : En savoir plus sur Elastic Volumes depuis AWS"^]
 
 
 

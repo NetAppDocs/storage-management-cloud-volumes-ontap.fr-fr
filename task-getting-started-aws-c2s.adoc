@@ -14,7 +14,7 @@ summary: 'Semblable à une région AWS standard, vous pouvez déployer Cloud Vol
 
 
 [role="lead"]
-Similaire à une région AWS standard, vous pouvez utiliser la console NetApp danslink:https://aws.amazon.com/federal/secret-cloud/["Cloud secret AWS"^] et danslink:https://aws.amazon.com/federal/top-secret-cloud/["Cloud AWS Top Secret"^] pour déployer Cloud Volumes ONTAP, qui fournit des fonctionnalités de classe entreprise pour votre stockage cloud.  AWS Secret Cloud et Top Secret Cloud sont des régions fermées spécifiques à la communauté du renseignement américaine ; les instructions sur cette page s'appliquent uniquement aux utilisateurs des régions AWS Secret Cloud et Top Secret Cloud.
+Similaire à une région AWS standard, vous pouvez utiliser la NetApp Console danslink:https://aws.amazon.com/federal/secret-cloud/["Cloud secret AWS"^] et danslink:https://aws.amazon.com/federal/top-secret-cloud/["Cloud AWS Top Secret"^] pour déployer Cloud Volumes ONTAP, qui fournit des fonctionnalités de classe entreprise pour votre stockage cloud.  AWS Secret Cloud et Top Secret Cloud sont des régions fermées spécifiques à la communauté du renseignement américaine ; les instructions sur cette page s'appliquent uniquement aux utilisateurs des régions AWS Secret Cloud et Top Secret Cloud.
 
 .Avant de commencer
 Avant de commencer, consultez les versions prises en charge dans AWS Secret Cloud et Top Secret Cloud, et découvrez le mode privé dans la console.
@@ -583,7 +583,7 @@ docker restart <docker-id>
 Si vous avez acheté une licence auprès de NetApp, vous devez l'ajouter à la console afin de pouvoir sélectionner la licence lorsque vous créez un nouveau système Cloud Volumes ONTAP .  Ces licences restent non attribuées jusqu'à ce que vous les associiez à un nouveau système Cloud Volumes ONTAP .
 
 .Étapes
-. Dans le menu de navigation de gauche, sélectionnez *Licences et abonnements*.
+. Dans le menu de navigation de gauche, sélectionnez * Licenses and subscriptions*.
 . Dans le panneau * Cloud Volumes ONTAP*, sélectionnez *Afficher*.
 . Dans l'onglet * Cloud Volumes ONTAP*, sélectionnez *Licences > Licences basées sur les nœuds*.
 . Cliquez sur *Non attribué*.
@@ -600,7 +600,7 @@ Si vous avez acheté une licence auprès de NetApp, vous devez l'ajouter à la c
 
 
 .Résultat
-La console ajoute la licence comme non attribuée jusqu'à ce que vous l'associiez à un nouveau système Cloud Volumes ONTAP .  Vous pouvez voir la licence dans le menu de navigation de gauche sous *Licences et abonnements > Cloud Volumes ONTAP > Afficher > Licences*.
+La console ajoute la licence comme non attribuée jusqu'à ce que vous l'associiez à un nouveau système Cloud Volumes ONTAP .  Vous pouvez voir la licence dans le menu de navigation de gauche sous * Licenses and subscriptions > Cloud Volumes ONTAP > Afficher > Licences*.
 
 
 

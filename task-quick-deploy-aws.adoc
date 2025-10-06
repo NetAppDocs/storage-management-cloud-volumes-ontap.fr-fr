@@ -17,7 +17,7 @@ summary: Vous pouvez déployer rapidement des instances Cloud Volumes ONTAP dans
 Vous pouvez déployer Cloud Volumes ONTAP dans AWS à l'aide d'une méthode de déploiement rapide pour les configurations à nœud unique et à haute disponibilité (HA).  Ce processus simplifié réduit les étapes de déploiement par rapport à la méthode avancée.  Il offre également plus de clarté dans le flux de travail en définissant automatiquement des valeurs par défaut sur une seule page et en minimisant la navigation.
 
 .Avant de commencer
-Vous avez besoin des éléments suivants pour ajouter un système Cloud Volumes ONTAP dans AWS à partir de la console NetApp .
+Vous avez besoin des éléments suivants pour ajouter un système Cloud Volumes ONTAP dans AWS à partir de la NetApp Console.
 
 [[licensing]]
 * Un agent de console opérationnel.
@@ -41,7 +41,7 @@ Pour plus de détails, reportez-vous àlink:reference-networking-aws.html["Exige
 
 
 .À propos de cette tâche
-Immédiatement après avoir créé le système Cloud Volumes ONTAP , la console NetApp lance une instance de test dans le VPC spécifié pour vérifier la connectivité.  En cas de succès, la console termine immédiatement l’instance, puis commence à déployer le système.  Si la console ne peut pas vérifier la connectivité, la création du système échoue.  L'instance de test est soit une `t2.nano` (pour la location VPC par défaut) ou un `m3.medium` (pour la location VPC dédiée).
+Immédiatement après avoir créé le système Cloud Volumes ONTAP , la NetApp Console lance une instance de test dans le VPC spécifié pour vérifier la connectivité.  En cas de succès, la console termine immédiatement l’instance, puis commence à déployer le système.  Si la console ne peut pas vérifier la connectivité, la création du système échoue.  L'instance de test est soit une `t2.nano` (pour la location VPC par défaut) ou un `m3.medium` (pour la location VPC dédiée).
 
 .Étapes
 . Dans le menu de navigation de gauche, sélectionnez *Stockage > Gestion*.
@@ -52,7 +52,7 @@ Immédiatement après avoir créé le système Cloud Volumes ONTAP , la console 
 image:screenshot-aws-quick-create.png["largeur=800,alt=\"AWS Quick Create\""]
 
 .détails du système
-. *Compte fournisseur cloud* : les détails du compte sont automatiquement renseignés en fonction de l'agent de console que vous avez sélectionné.  Si vous avez plusieurs comptes, sélectionnez celui que vous souhaitez utiliser.  Si un agent de console n'est pas disponible, vous serez invité à https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-aws.html["créer un agent de console"^] .
+. *Compte fournisseur cloud* : les détails du compte sont automatiquement renseignés en fonction de l'agent de console sélectionné.  Si vous avez plusieurs comptes, sélectionnez celui que vous souhaitez utiliser.  Si un agent de console n'est pas disponible, vous serez invité à https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-aws.html["créer un agent de console"^] .
 . *Nom* : Le nom du système.  La console utilise le nom du système (cluster) pour nommer le système Cloud Volumes ONTAP et l'instance Amazon EC2.  Il utilise également le nom comme préfixe pour le groupe de sécurité prédéfini, si vous sélectionnez cette option.
 . * Informations d'identification ONTAP * Il s'agit des informations d'identification du compte administrateur du cluster Cloud Volumes ONTAP .  Vous pouvez utiliser ces informations d'identification pour vous connecter à Cloud Volumes ONTAP via ONTAP System Manager ou l'interface de ligne de commande ONTAP .  Vous pouvez conserver le nom d'utilisateur par défaut _admin_ ou le remplacer par un nom d'utilisateur personnalisé.
 . *Tags* Les balises AWS sont des métadonnées pour vos ressources AWS.  La console ajoute les balises à l’instance Cloud Volumes ONTAP et à chaque ressource AWS associée à l’instance.  Vous pouvez ajouter jusqu'à 15 balises à partir de l'interface utilisateur lors de la création d'un système Cloud Volumes ONTAP , puis vous pouvez en ajouter davantage après sa création.  Notez que l'API ne vous limite pas à quatre balises lors de la création d'un système.  Pour plus d'informations sur les balises, reportez-vous à https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html["Documentation AWS : Balisage de vos ressources Amazon EC2"^] .

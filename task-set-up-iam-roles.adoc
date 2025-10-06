@@ -14,7 +14,7 @@ summary: Les rôles IAM avec les autorisations requises doivent être attachés 
 
 
 [role="lead"]
-Les rôles AWS Identity and Access Management (IAM) avec les autorisations requises doivent être attachés à chaque nœud Cloud Volumes ONTAP . Il en va de même pour le médiateur HA.  Il est plus simple de laisser la console NetApp créer les rôles IAM pour vous, mais vous pouvez utiliser vos propres rôles.
+Les rôles AWS Identity and Access Management (IAM) avec les autorisations requises doivent être attachés à chaque nœud Cloud Volumes ONTAP . Il en va de même pour le médiateur HA.  Il est plus simple de laisser la NetApp Console créer les rôles IAM pour vous, mais vous pouvez utiliser vos propres rôles.
 
 Cette tâche est facultative.  Lorsque vous créez un système Cloud Volumes ONTAP , l’option par défaut consiste à laisser la console créer les rôles IAM pour vous.  Si les politiques de sécurité de votre entreprise exigent que vous créiez vous-même les rôles IAM, suivez les étapes ci-dessous.
 

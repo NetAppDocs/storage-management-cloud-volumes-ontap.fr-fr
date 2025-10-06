@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: task-connect-lun.html 
 keywords: lun, connect lun, iscsi lun, target iqn, iqn 
-summary: 'Lorsque vous créez un volume iSCSI, la console NetApp crée automatiquement un LUN pour vous.  Nous avons simplifié les choses en créant un seul LUN par volume, il n"y a donc aucune gestion impliquée.  Après avoir créé le volume, utilisez l’IQN pour vous connecter au LUN à partir de vos hôtes.' 
+summary: 'Lorsque vous créez un volume iSCSI, la NetApp Console crée automatiquement un LUN pour vous.  Nous avons simplifié les choses en créant un seul LUN par volume, il n"y a donc aucune gestion impliquée.  Après avoir créé le volume, utilisez l’IQN pour vous connecter au LUN à partir de vos hôtes.' 
 ---
 = Connectez-vous à un LUN sur Cloud Volumes ONTAP depuis votre système hôte
 :hardbreaks:
@@ -14,7 +14,7 @@ summary: 'Lorsque vous créez un volume iSCSI, la console NetApp crée automatiq
 
 
 [role="lead"]
-Lorsque vous créez un volume iSCSI, la console NetApp crée automatiquement un LUN pour vous.  Nous avons simplifié les choses en créant un seul LUN par volume, il n'y a donc aucune gestion impliquée.  Après avoir créé le volume, utilisez l’IQN pour vous connecter au LUN à partir de vos hôtes.
+Lorsque vous créez un volume iSCSI, la NetApp Console crée automatiquement un LUN pour vous.  Nous avons simplifié les choses en créant un seul LUN par volume, il n'y a donc aucune gestion impliquée.  Après avoir créé le volume, utilisez l’IQN pour vous connecter au LUN à partir de vos hôtes.
 
 Notez ce qui suit :
 

@@ -23,7 +23,7 @@ Une fois que vous avez décidé quelle option de licence vous souhaitez utiliser
 Sélectionnez l'offre Freemium pour utiliser Cloud Volumes ONTAP gratuitement avec jusqu'à 500 Gio de capacité provisionnée. link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-licensing.html#packages["En savoir plus sur l'offre Freemium"^] .
 
 .Étapes
-. Dans le menu de navigation de gauche de la console NetApp , sélectionnez *Stockage > Gestion*.
+. Dans le menu de navigation de gauche de la NetApp Console, sélectionnez *Stockage > Gestion*.
 . Sur la page *Systèmes*, cliquez sur *Ajouter un système* et suivez les étapes.
 +
 .. Sur la page *Détails et informations d’identification*, cliquez sur *Modifier les informations d’identification > Ajouter un abonnement*, puis suivez les invites pour vous abonner à l’offre de paiement à l’utilisation sur la Place de marché Azure.

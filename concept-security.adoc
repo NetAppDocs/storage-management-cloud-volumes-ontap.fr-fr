@@ -95,7 +95,7 @@ ifdef::aws[]
 
 === Service de gestion des clés AWS
 
-Lorsque vous lancez un système Cloud Volumes ONTAP dans AWS, vous pouvez activer le chiffrement des données à l'aide de l' http://docs.aws.amazon.com/kms/latest/developerguide/overview.html["Service de gestion des clés AWS (KMS)"^] .  La console NetApp demande des clés de données à l’aide d’une clé principale client (CMK).
+Lorsque vous lancez un système Cloud Volumes ONTAP dans AWS, vous pouvez activer le chiffrement des données à l'aide de l' http://docs.aws.amazon.com/kms/latest/developerguide/overview.html["Service de gestion des clés AWS (KMS)"^] .  La NetApp Console demande des clés de données à l’aide d’une clé principale client (CMK).
 
 
 TIP: Vous ne pouvez pas modifier la méthode de chiffrement des données AWS après avoir créé un système Cloud Volumes ONTAP .

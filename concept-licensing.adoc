@@ -22,7 +22,7 @@ Plusieurs options de licence sont disponibles pour Cloud Volumes ONTAP. Chaque o
 
 Les options de licence suivantes sont disponibles pour les nouveaux clients.
 
-Licences basées sur la capacité:: Payez plusieurs systèmes Cloud Volumes ONTAP dans votre compte NetApp par capacité provisionnée.  Inclut la possibilité d'acheter des services de données cloud complémentaires.  Pour plus d'informations sur les modèles de consommation dans les licences basées sur la capacité, reportez-vous àlink:concept-licensing-charging.html["En savoir plus sur les licences basées sur la capacité"] .
+Licences basées sur la capacité:: Payez plusieurs systèmes Cloud Volumes ONTAP dans votre compte NetApp par capacité provisionnée.  Inclut la possibilité d’acheter des services de données cloud complémentaires.  Pour plus d'informations sur les modèles de consommation dans les licences basées sur la capacité, reportez-vous àlink:concept-licensing-charging.html["En savoir plus sur les licences basées sur la capacité"] .
 Abonnement Keystone:: Un service par abonnement à paiement progressif qui offre une expérience de cloud hybride transparente pour les paires haute disponibilité (HA).
 
 
@@ -42,7 +42,7 @@ Par exemple, vous pouvez acheter une seule licence de 20 Tio, déployer quatre s
 Les licences basées sur la capacité sont disponibles sous la forme d'un _package_. Lorsque vous déployez un système Cloud Volumes ONTAP , vous pouvez choisir parmi plusieurs packages de licences en fonction des besoins de votre entreprise.
 
 
-NOTE: Bien que l'utilisation et la mesure réelles des produits et services gérés dans la console NetApp soient toujours calculées en Gio et Tio, les termes Go/Gio et To/Tio sont utilisés de manière interchangeable.  Cela se reflète dans les listes de la place de marché Cloud, les devis de prix, les descriptions des listes et dans d'autres documents justificatifs.
+NOTE: Bien que l'utilisation et la mesure réelles des produits et services gérés dans la NetApp Console soient toujours calculées en Gio et Tio, les termes Go/Gio et To/Tio sont utilisés de manière interchangeable.  Cela se reflète dans les listes de la place de marché Cloud, les devis de prix, les descriptions des listes et dans d'autres documents justificatifs.
 
 
 
@@ -256,7 +256,7 @@ Vous ne serez pas autorisé à déployer de nouveaux systèmes Cloud Volumes ONT
  a| 
 Licence valide basée sur les nœuds avec abonnement PAYGO
  a| 
-Vous cesserez de bénéficier du support NetApp après la date EOS, jusqu'à ce que vous passiez à une licence basée sur la capacité.
+Vous cesserez de bénéficier du support NetApp après la date de fin de service, jusqu'à ce que vous passiez à une licence basée sur la capacité.
 
 |===
 .Exclusions

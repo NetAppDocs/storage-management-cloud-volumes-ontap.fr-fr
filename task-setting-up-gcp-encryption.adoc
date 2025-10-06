@@ -40,7 +40,7 @@ Le nom du compte de service utilise le format suivant : « service-[numéro_de
 https://cloud.google.com/kms/docs/iam#granting_roles_on_a_resource["Documentation Google Cloud : Utilisation d'IAM avec Cloud KMS – Attribution de rôles sur une ressource"]
 
 . Obtenez l'« id » de la clé en appelant la commande get pour le `/gcp/vsa/metadata/gcp-encryption-keys` Appel d'API ou en choisissant « Copier le nom de la ressource » sur la clé dans la console GCP.
-. Si vous utilisez des clés de chiffrement gérées par le client et que vous hiérarchisez les données vers le stockage d'objets, la console NetApp tente d'utiliser les mêmes clés que celles utilisées pour chiffrer les disques persistants.  Mais vous devrez d’abord activer les buckets Google Cloud Storage pour utiliser les clés :
+. Si vous utilisez des clés de chiffrement gérées par le client et que vous hiérarchisez les données vers le stockage d'objets, la NetApp Console tente d'utiliser les mêmes clés que celles utilisées pour chiffrer les disques persistants.  Mais vous devrez d’abord activer les buckets Google Cloud Storage pour utiliser les clés :
 +
 .. Recherchez l'agent de service Google Cloud Storage en suivant les instructions https://cloud.google.com/storage/docs/getting-service-agent["Documentation Google Cloud : Obtenir l'agent de service Cloud Storage"^] .
 .. Accédez à la clé de chiffrement et attribuez à l’agent de service Google Cloud Storage les autorisations Cloud KMS Encrypter/Decrypter.
@@ -62,4 +62,4 @@ Pour plus d'informations, reportez-vous à https://cloud.google.com/storage/docs
 ----
 
 
-Reportez-vous à la https://docs.netapp.com/us-en/bluexp-automation/index.html["Documentation sur l'automatisation de la console NetApp"^] pour plus de détails sur l'utilisation du paramètre « GcpEncryption ».
+Reportez-vous à la https://docs.netapp.com/us-en/bluexp-automation/index.html["Documentation sur l'automatisation de la NetApp Console"^] pour plus de détails sur l'utilisation du paramètre « GcpEncryption ».

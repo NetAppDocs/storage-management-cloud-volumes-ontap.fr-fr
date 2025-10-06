@@ -30,7 +30,7 @@ Les stratégies de routage et de pare-feu doivent autoriser le trafic HTTPS vers
 * \ https://mysupport.netapp.com/asupprod/post/1.0/postAsup
 
 
-Si une connexion Internet sortante n'est pas disponible pour envoyer des messages AutoSupport , la console NetApp configure automatiquement vos systèmes Cloud Volumes ONTAP pour utiliser l'agent de la console comme serveur proxy.  La seule exigence est de s'assurer que le groupe de sécurité de l'agent de console autorise les connexions _entrantes_ sur le port 3128. Vous devrez ouvrir ce port après avoir déployé l’agent de console.
+Si une connexion Internet sortante n'est pas disponible pour envoyer des messages AutoSupport , la NetApp Console configure automatiquement vos systèmes Cloud Volumes ONTAP pour utiliser l'agent de la console comme serveur proxy.  La seule exigence est de s'assurer que le groupe de sécurité de l'agent de console autorise les connexions _entrantes_ sur le port 3128. Vous devrez ouvrir ce port après avoir déployé l’agent de console.
 
 Si vous avez défini des règles sortantes strictes pour Cloud Volumes ONTAP, vous devrez également vous assurer que le groupe de sécurité Cloud Volumes ONTAP autorise les connexions _sortantes_ sur le port 3128.
 

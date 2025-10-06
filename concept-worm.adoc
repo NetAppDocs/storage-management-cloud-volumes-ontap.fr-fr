@@ -40,7 +40,7 @@ La manière dont vous activez le stockage WORM dépend de la version de Cloud Vo
 
 Lorsque vous ajoutez un système Cloud Volumes ONTAP , vous êtes invité à activer ou désactiver le stockage WORM :
 
-* Si vous activez le stockage WORM lors de l'ajout d'un système, chaque volume que vous créez à partir de la console NetApp a WORM activé.  Mais vous pouvez utiliser ONTAP System Manager ou l' ONTAP CLI pour créer des volumes sur lesquels WORM est désactivé.
+* Si vous activez le stockage WORM lors de l'ajout d'un système, chaque volume que vous créez à partir de la NetApp Console a WORM activé.  Mais vous pouvez utiliser ONTAP System Manager ou l' ONTAP CLI pour créer des volumes sur lesquels WORM est désactivé.
 * Si vous désactivez le stockage WORM lors de l'ajout d'un système, chaque volume que vous créez à partir de la console, ONTAP System Manager ou de l' ONTAP CLI a WORM désactivé.
 
 

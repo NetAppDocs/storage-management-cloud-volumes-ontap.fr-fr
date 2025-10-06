@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: task-overriding-cifs-locks.html 
 keywords: CIFS locks, azure maintenance, maintenance events, cifs sessions, storage failover, storage giveback, giveback 
-summary: L’administrateur de l’organisation ou du compte peut activer un paramètre dans la console NetApp qui empêche les problèmes de restitution du stockage Cloud Volumes ONTAP lors des événements de maintenance Azure.  Lorsque vous activez ce paramètre, Cloud Volumes ONTAP oppose son veto aux verrous CIFS et réinitialise les sessions CIFS actives. 
+summary: L’administrateur de l’organisation ou du compte peut activer un paramètre dans la NetApp Console qui empêche les problèmes de restitution du stockage Cloud Volumes ONTAP lors des événements de maintenance Azure.  Lorsque vous activez ce paramètre, Cloud Volumes ONTAP oppose son veto aux verrous CIFS et réinitialise les sessions CIFS actives. 
 ---
 = Remplacer les verrous CIFS pour les paires Cloud Volumes ONTAP HA dans Azure
 :hardbreaks:
@@ -14,7 +14,7 @@ summary: L’administrateur de l’organisation ou du compte peut activer un par
 
 
 [role="lead"]
-L’administrateur de l’organisation ou du compte peut activer un paramètre dans la console NetApp qui empêche les problèmes de restitution du stockage Cloud Volumes ONTAP lors des événements de maintenance Azure.  Lorsque vous activez ce paramètre, Cloud Volumes ONTAP oppose son veto aux verrous CIFS et réinitialise les sessions CIFS actives.
+L’administrateur de l’organisation ou du compte peut activer un paramètre dans la NetApp Console qui empêche les problèmes de restitution du stockage Cloud Volumes ONTAP lors des événements de maintenance Azure.  Lorsque vous activez ce paramètre, Cloud Volumes ONTAP oppose son veto aux verrous CIFS et réinitialise les sessions CIFS actives.
 
 .À propos de cette tâche
 Microsoft Azure planifie des événements de maintenance périodiques sur ses machines virtuelles.  Lorsqu'un événement de maintenance se produit sur une paire Cloud Volumes ONTAP HA, la paire HA lance la prise de contrôle du stockage.  S'il existe des sessions CIFS actives pendant cet événement de maintenance, les verrous sur les fichiers CIFS peuvent empêcher la restitution du stockage.

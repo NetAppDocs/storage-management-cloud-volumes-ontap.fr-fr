@@ -72,7 +72,7 @@ Le dimensionnement de votre système Cloud Volumes ONTAP peut vous aider à rép
 Type d'instance::
 +
 --
-* Adaptez vos exigences de charge de travail au débit maximal et aux IOPS pour chaque type d’instance EC2.
+* Faites correspondre vos exigences de charge de travail au débit maximal et aux IOPS pour chaque type d’instance EC2.
 * Si plusieurs utilisateurs écrivent sur le système en même temps, choisissez un type d’instance disposant de suffisamment de processeurs pour gérer les requêtes.
 * Si vous avez une application qui est principalement destinée à la lecture, choisissez un système avec suffisamment de RAM.
 +
@@ -88,7 +88,7 @@ Type de disque EBS:: À un niveau élevé, les différences entre les types de d
 --
 * Les disques SSD à usage général (gp3) sont les SSD les moins chers qui équilibrent coût et performances pour une large gamme de charges de travail.  Les performances sont définies en termes d'IOPS et de débit. Les disques gp3 sont pris en charge avec Cloud Volumes ONTAP 9.7 et versions ultérieures.
 +
-Lorsque vous sélectionnez un disque gp3, la console NetApp renseigne les valeurs d'IOPS et de débit par défaut qui fournissent des performances équivalentes à celles d'un disque gp2 en fonction de la taille du disque sélectionné. Vous pouvez augmenter les valeurs pour obtenir de meilleures performances à un coût plus élevé, mais nous ne prenons pas en charge les valeurs inférieures car cela peut entraîner des performances inférieures. En bref, conservez les valeurs par défaut ou augmentez-les. Ne les baissez pas. https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html#gp3-ebs-volume-type["Documentation AWS : En savoir plus sur les disques gp3 et leurs performances"^] .
+Lorsque vous sélectionnez un disque gp3, la NetApp Console renseigne les valeurs d'IOPS et de débit par défaut qui fournissent des performances équivalentes à celles d'un disque gp2 en fonction de la taille du disque sélectionné. Vous pouvez augmenter les valeurs pour obtenir de meilleures performances à un coût plus élevé, mais nous ne prenons pas en charge les valeurs inférieures car cela peut entraîner des performances inférieures. En bref, conservez les valeurs par défaut ou augmentez-les. Ne les baissez pas. https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html#gp3-ebs-volume-type["Documentation AWS : En savoir plus sur les disques gp3 et leurs performances"^] .
 
 +
 Notez que Cloud Volumes ONTAP prend en charge la fonctionnalité Amazon EBS Elastic Volumes avec les disques gp3. link:concept-aws-elastic-volumes.html["En savoir plus sur la prise en charge d'Elastic Volumes"] .
@@ -98,7 +98,7 @@ Notez que Cloud Volumes ONTAP prend en charge la fonctionnalité Amazon EBS Elas
 +
 Notez que Cloud Volumes ONTAP prend en charge la fonctionnalité Amazon EBS Elastic Volumes avec les disques io1. link:concept-aws-elastic-volumes.html["En savoir plus sur la prise en charge d'Elastic Volumes"] .
 
-* Les disques durs _Throughput Optimized HDD (st1)_ sont destinés aux charges de travail fréquemment consultées qui nécessitent un débit rapide et constant à un prix inférieur.
+* Les disques durs à débit optimisé (st1) sont destinés aux charges de travail fréquemment consultées qui nécessitent un débit rapide et constant à un prix inférieur.
 +
 
 NOTE: La hiérarchisation des données vers AWS S3 n'est pas disponible dans les zones locales AWS en raison du manque de connectivité.
@@ -139,7 +139,7 @@ TIP: L'agent de console nécessite également un disque système. https://docs.n
 
 == Préparez-vous à déployer Cloud Volumes ONTAP dans un AWS Outpost
 
-Si vous disposez d'un AWS Outpost, vous pouvez déployer Cloud Volumes ONTAP dans cet Outpost en sélectionnant le VPC Outpost pendant le processus de déploiement. L'expérience est la même que pour tout autre VPC résidant dans AWS. Notez que vous devrez d’abord déployer un agent de console dans votre AWS Outpost.
+Si vous disposez d'un AWS Outpost, vous pouvez déployer Cloud Volumes ONTAP dans cet Outpost en sélectionnant le VPC Outpost pendant le processus de déploiement. L'expérience est la même que pour tout autre VPC résidant dans AWS.  Notez que vous devrez d’abord déployer un agent de console dans votre AWS Outpost.
 
 Il y a quelques limitations à souligner :
 
@@ -156,7 +156,7 @@ Lorsque vous lancez Cloud Volumes ONTAP dans AWS, vous devez spécifier les dét
 
 
 
-=== Nœud unique ou paire HA dans une seule AZ
+=== Nœud unique ou paire HA dans une seule zone de disponibilité
 
 [cols="30,70"]
 |===

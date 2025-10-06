@@ -14,7 +14,7 @@ summary: Découvrez les nouveautés de la gestion Cloud Volumes ONTAP dans BlueX
 
 
 [role="lead"]
-Découvrez les nouveautés de la gestion Cloud Volumes ONTAP dans la console NetApp .
+Découvrez les nouveautés de la gestion Cloud Volumes ONTAP dans la NetApp Console.
 
 Les améliorations décrites sur cette page sont spécifiques à la gestion de Cloud Volumes ONTAP via la console.  Pour découvrir les nouveautés du logiciel Cloud Volumes ONTAP lui-même, https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/index.html["Accédez aux notes de publication de Cloud Volumes ONTAP"^] .
 
@@ -26,9 +26,9 @@ Les améliorations décrites sur cette page sont spécifiques à la gestion de C
 
 === BlueXP est désormais NetApp Console
 
-La console NetApp , construite sur la base BlueXP améliorée et restructurée, fournit une gestion centralisée du stockage NetApp et des services de données NetApp dans les environnements sur site et cloud à l'échelle de l'entreprise, offrant des informations en temps réel, des flux de travail plus rapides et une administration simplifiée, hautement sécurisée et conforme.
+La NetApp Console, construite sur la base BlueXP améliorée et restructurée, fournit une gestion centralisée du stockage NetApp et des NetApp Data Services dans les environnements sur site et cloud à l'échelle de l'entreprise, offrant des informations en temps réel, des flux de travail plus rapides et une administration simplifiée, hautement sécurisée et conforme.
 
-Pour plus de détails sur ce qui a changé, consultez le https://docs.netapp.com/us-en/bluexp-relnotes/index.html["Notes de version de la console NetApp"^] .
+Pour plus de détails sur ce qui a changé, consultez le https://docs.netapp.com/us-en/bluexp-relnotes/index.html["Notes de version de la NetApp Console"^] .
 
 
 
@@ -273,7 +273,7 @@ link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-administer-ad
 
 Vous pouvez désormais bénéficier d'une gestion simplifiée des licences Cloud Volumes ONTAP en utilisant des points de navigation améliorés au sein du BlueXP digital wallet:
 
-* Accédez facilement aux informations de votre licence Cloud Volumes ONTAP via les onglets *Administration > Licences et abonnements > Présentation/Licences directes*.
+* Accédez facilement aux informations de votre licence Cloud Volumes ONTAP via les onglets *Administration > Licenses and subscriptions > Présentation/Licences directes*.
 * Cliquez sur *Afficher* dans le panneau Cloud Volume ONTAP dans l'onglet *Présentation* pour obtenir une compréhension complète de vos licences basées sur la capacité.  Cette vue avancée offre un aperçu détaillé de vos licences et abonnements.
 * Si vous préférez l'interface précédente, vous pouvez cliquer sur le bouton *Passer à la vue héritée* pour afficher les détails de la licence par type et modifier les méthodes de facturation de vos licences.
 
@@ -729,7 +729,7 @@ Le changement suivant a été introduit avec la version 3.9.33 du connecteur.
 
 === Prise en charge des machines virtuelles de la série Lsv3 dans Azure
 
-Les types d’instances L48s_v3 et L64s_v3 sont désormais pris en charge avec Cloud Volumes ONTAP dans Azure pour les déploiements à nœud unique et à paires haute disponibilité avec des disques gérés partagés dans des zones de disponibilité uniques et multiples, à partir de la version 9.13.1. Ces types d’instances prennent en charge Flash Cache.
+Les types d’instances L48s_v3 et L64s_v3 sont désormais pris en charge avec Cloud Volumes ONTAP dans Azure pour les déploiements à nœud unique et à paires haute disponibilité avec des disques gérés partagés dans des zones de disponibilité uniques et multiples, à partir de la version 9.13.1.  Ces types d’instances prennent en charge Flash Cache.
 
 https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-azure.html["Afficher les configurations prises en charge pour Cloud Volumes ONTAP dans Azure"^] https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-limits-azure.html["Afficher les limites de stockage pour Cloud Volumes ONTAP dans Azure"^]
 
@@ -743,7 +743,7 @@ Les modifications suivantes ont été introduites avec la version 3.9.32 du conn
 
 === Prise en charge du cache Flash et de la vitesse d'écriture élevée dans Google Cloud
 
-Le cache Flash et la vitesse d'écriture élevée peuvent être activés séparément dans Google Cloud pour Cloud Volumes ONTAP 9.13.1 et versions ultérieures. Une vitesse d'écriture élevée est disponible sur tous les types d'instances pris en charge. Flash Cache est pris en charge sur les types d’instances suivants :
+Le cache Flash et la vitesse d'écriture élevée peuvent être activés séparément dans Google Cloud pour Cloud Volumes ONTAP 9.13.1 et versions ultérieures.  Une vitesse d'écriture élevée est disponible sur tous les types d'instances pris en charge.  Flash Cache est pris en charge sur les types d’instances suivants :
 
 * n2-standard-16
 * n2-standard-32
@@ -759,7 +759,7 @@ https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-deploying-gcp.html
 
 === Améliorations des rapports d'utilisation
 
-Diverses améliorations des informations affichées dans les rapports d’utilisation sont désormais disponibles. Voici les améliorations apportées aux rapports d’utilisation :
+Diverses améliorations des informations affichées dans les rapports d’utilisation sont désormais disponibles.  Voici les améliorations apportées aux rapports d’utilisation :
 
 * L'unité TiB est désormais incluse dans le nom des colonnes.
 * Un nouveau champ « nœud(s) » pour les numéros de série est désormais inclus.
@@ -863,7 +863,7 @@ La région Australie Est dans Azure prend désormais en charge les déploiements
 
 === Répartition de l'utilisation de la charge
 
-Vous pouvez désormais savoir ce qui vous est facturé lorsque vous êtes abonné à des licences basées sur la capacité. Les types de rapports d'utilisation suivants sont disponibles en téléchargement à partir du portefeuille numérique dans BlueXP. Les rapports d'utilisation fournissent des détails sur la capacité de vos abonnements et vous indiquent comment vous êtes facturé pour les ressources de vos abonnements Cloud Volumes ONTAP . Les rapports téléchargeables peuvent être facilement partagés avec d’autres.
+Vous pouvez désormais savoir ce qui vous est facturé lorsque vous êtes abonné à des licences basées sur la capacité.  Les types de rapports d'utilisation suivants sont disponibles en téléchargement à partir du portefeuille numérique dans BlueXP.  Les rapports d'utilisation fournissent des détails sur la capacité de vos abonnements et vous indiquent comment vous êtes facturé pour les ressources de vos abonnements Cloud Volumes ONTAP .  Les rapports téléchargeables peuvent être facilement partagés avec d’autres.
 
 * Utilisation du package Cloud Volumes ONTAP
 * Utilisation de haut niveau
@@ -1165,7 +1165,7 @@ https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-manage-capacity-li
 
 * Vous pouvez désormais passer d'une méthode de charge à la méthode de charge optimisée.
 +
-https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-manage-capacity-licenses.html["Apprenez à modifier les méthodes de charge"] .
+https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-manage-capacity-licenses.html["Apprenez à changer de méthode de charge"] .
 
 
 
@@ -1215,9 +1215,9 @@ La seule exigence est de s'assurer que le groupe de sécurité du connecteur aut
 
 === Changer la méthode de charge
 
-Vous pouvez désormais modifier la méthode de facturation d'un système Cloud Volumes ONTAP qui utilise des licences basées sur la capacité. Par exemple, si vous avez déployé un système Cloud Volumes ONTAP avec le package Essentials, vous pouvez le remplacer par le package Professional si les besoins de votre entreprise ont changé. Cette fonctionnalité est disponible à partir du portefeuille numérique.
+Vous pouvez désormais modifier la méthode de facturation d'un système Cloud Volumes ONTAP qui utilise des licences basées sur la capacité.  Par exemple, si vous avez déployé un système Cloud Volumes ONTAP avec le package Essentials, vous pouvez le remplacer par le package Professional si les besoins de votre entreprise ont changé.  Cette fonctionnalité est disponible à partir du portefeuille numérique.
 
-https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-manage-capacity-licenses.html["Apprenez à modifier les méthodes de charge"] .
+https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-manage-capacity-licenses.html["Apprenez à changer de méthode de charge"] .
 
 
 
@@ -1253,9 +1253,9 @@ Les modifications suivantes ont été introduites avec la version 3.9.20 du conn
 
 === Portefeuille numérique
 
-Le portefeuille numérique vous indique désormais la capacité totale consommée sur votre compte et la capacité consommée par package de licence. Cela peut vous aider à comprendre comment vous êtes facturé et si vous devez acheter une capacité supplémentaire.
+Le portefeuille numérique vous indique désormais la capacité totale consommée sur votre compte et la capacité consommée par package de licence.  Cela peut vous aider à comprendre comment vous êtes facturé et si vous devez acheter une capacité supplémentaire.
 
-image:https://raw.githubusercontent.com/NetAppDocs/bluexp-cloud-volumes-ontap/main/media/screenshot-digital-wallet-summary.png["Une capture d’écran qui montre la page du portefeuille numérique pour les licences basées sur la capacité. La page fournit un aperçu de la capacité consommée dans votre compte, puis décompose la capacité consommée par package de licence."]
+image:https://raw.githubusercontent.com/NetAppDocs/bluexp-cloud-volumes-ontap/main/media/screenshot-digital-wallet-summary.png["Une capture d’écran qui montre la page du portefeuille numérique pour les licences basées sur la capacité.  La page fournit un aperçu de la capacité consommée dans votre compte, puis décompose la capacité consommée par package de licence."]
 
 
 
@@ -1428,7 +1428,7 @@ Assurez-vous de fournir ces autorisations à chaque ensemble d'informations d'id
 
 
 
-=== Nouvelle prise en charge de la région Google Cloud
+=== Nouvelle prise en charge régionale de Google Cloud
 
 Cloud Volumes ONTAP est désormais pris en charge dans les régions Google Cloud suivantes à partir de la version 9.10.1 :
 
@@ -1747,13 +1747,13 @@ Les autorisations suivantes permettent à BlueXP de supprimer les ressources Clo
 "Microsoft.Network/privateEndpoints/delete",
 "Microsoft.Compute/availabilitySets/delete",
 ----
-Assurez-vous de fournir ces autorisations à chaque ensemble d’informations d’identification Azure que vous avez ajoutées à BlueXP. https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-azure.html["Consultez la dernière politique de connecteur pour Azure"^] .
+Assurez-vous de fournir ces autorisations à chaque ensemble d’informations d’identification Azure que vous avez ajouté à BlueXP. https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-azure.html["Consultez la dernière politique de connecteur pour Azure"^] .
 
 
 
 === L'accès public aux blobs est désormais désactivé dans Azure
 
-En tant qu'amélioration de sécurité, BlueXP désactive désormais *l'accès public Blob* lors de la création d'un compte de stockage pour Cloud Volumes ONTAP.
+En tant qu'amélioration de sécurité, BlueXP désactive désormais l'*accès public Blob* lors de la création d'un compte de stockage pour Cloud Volumes ONTAP.
 
 
 
@@ -1859,7 +1859,7 @@ Les modifications suivantes ont été introduites avec la version 3.9.5 du conne
 
 BlueXP permet désormais de générer des rapports d’espace logique sur la machine virtuelle de stockage initiale qu’il crée pour Cloud Volumes ONTAP.
 
-Lorsque l'espace est signalé de manière logique, ONTAP signale l'espace du volume de telle sorte que tout l'espace physique économisé par les fonctionnalités d'efficacité du stockage soit également signalé comme utilisé.
+Lorsque l'espace est signalé de manière logique, ONTAP signale l'espace du volume de telle sorte que tout l'espace physique économisé par les fonctionnalités d'efficacité de stockage soit également signalé comme utilisé.
 
 
 
@@ -1937,7 +1937,7 @@ https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/reference-networking-gc
 
 
 
-== 4 janv. 2021
+== 4 janvier 2021
 
 Les modifications suivantes ont été introduites avec la version 3.9.2 du connecteur.
 

@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: task-updating-ontap-cloud.html 
 keywords: update, updating, upgrading, upgrade, software, downgrade, downgrading, FTP, HTTP, mediator, local image, revert, reverting, downgrading, cloud backup 
-summary: Mettez à niveau Cloud Volumes ONTAP à partir de la console NetApp pour accéder aux dernières nouvelles fonctionnalités et améliorations.  Vous devez préparer les systèmes Cloud Volumes ONTAP avant de mettre à niveau le logiciel. 
+summary: Mettez à niveau Cloud Volumes ONTAP à partir de la NetApp Console pour accéder aux dernières nouvelles fonctionnalités et améliorations.  Vous devez préparer les systèmes Cloud Volumes ONTAP avant de mettre à niveau le logiciel. 
 ---
 = Mettre à niveau le logiciel Cloud Volumes ONTAP
 :hardbreaks:
@@ -14,7 +14,7 @@ summary: Mettez à niveau Cloud Volumes ONTAP à partir de la console NetApp pou
 
 
 [role="lead"]
-Mettez à niveau Cloud Volumes ONTAP à partir de la console NetApp pour accéder aux dernières nouvelles fonctionnalités et améliorations.  Vous devez préparer les systèmes Cloud Volumes ONTAP avant de mettre à niveau le logiciel.
+Mettez à niveau Cloud Volumes ONTAP à partir de la NetApp Console pour accéder aux dernières nouvelles fonctionnalités et améliorations.  Vous devez préparer les systèmes Cloud Volumes ONTAP avant de mettre à niveau le logiciel.
 
 
 
@@ -193,13 +193,13 @@ La console met également à jour l'instance du médiateur selon les besoins pen
 
 === Mises à niveau dans AWS avec les types d'instances EC2 c4, m4 et r4
 
-Cloud Volumes ONTAP ne prend plus en charge les types d’instances EC2 c4, m4 et r4.  Vous pouvez mettre à niveau les déploiements existants vers les versions Cloud Volumes ONTAP 9.8 à 9.12.1 avec ces types d'instances.  Avant de procéder à la mise à niveau, nous vous recommandons de<<Modifier le type d'instance,changer le type d'instance>> .  Si vous ne pouvez pas modifier le type d'instance, vous devez<<Activer la mise en réseau améliorée,activer la mise en réseau améliorée>> avant de procéder à la mise à niveau.  Lisez les sections suivantes pour en savoir plus sur la modification du type d’instance et l’activation de la mise en réseau améliorée.
+Cloud Volumes ONTAP ne prend plus en charge les types d’instances EC2 c4, m4 et r4.  Vous pouvez mettre à niveau les déploiements existants vers les versions Cloud Volumes ONTAP 9.8 à 9.12.1 avec ces types d'instances.  Avant de procéder à la mise à niveau, nous vous recommandons de<<Changer le type d'instance,changer le type d'instance>> .  Si vous ne pouvez pas modifier le type d'instance, vous devez<<Activer la mise en réseau améliorée,activer la mise en réseau améliorée>> avant de procéder à la mise à niveau.  Lisez les sections suivantes pour en savoir plus sur la modification du type d’instance et l’activation de la mise en réseau améliorée.
 
-Dans Cloud Volumes ONTAP exécutant les versions 9.13.0 et supérieures, vous ne pouvez pas effectuer de mise à niveau avec les types d'instances EC2 c4, m4 et r4.  Dans ce cas, vous devez réduire le nombre de disques, puis<<Modifier le type d'instance,changer le type d'instance>> ou déployez une nouvelle configuration de paire HA avec les types d'instances EC2 c5, m5 et r5 et migrez les données.
+Dans Cloud Volumes ONTAP exécutant les versions 9.13.0 et supérieures, vous ne pouvez pas effectuer de mise à niveau avec les types d'instances EC2 c4, m4 et r4.  Dans ce cas, vous devez réduire le nombre de disques, puis<<Changer le type d'instance,changer le type d'instance>> ou déployez une nouvelle configuration de paire HA avec les types d'instances EC2 c5, m5 et r5 et migrez les données.
 
 
 
-==== Modifier le type d'instance
+==== Changer le type d'instance
 
 Les types d'instances EC2 c4, m4 et r4 autorisent plus de disques par nœud que les types d'instances EC2 c5, m5 et r5.  Si le nombre de disques par nœud pour l'instance EC2 c4, m4 ou r4 que vous exécutez est inférieur à l'allocation de disque maximale par nœud pour les instances c5, m5 et r5, vous pouvez modifier le type d'instance EC2 en c5, m5 ou r5.
 
@@ -326,14 +326,14 @@ Les opérations telles que la création de volumes ou d’agrégats ne doivent p
 . Dans le menu de navigation de gauche, sélectionnez *Stockage > Gestion*.
 . Sélectionnez un système Cloud Volumes ONTAP .
 +
-Une notification apparaît dans l’onglet Aperçu si une nouvelle version est disponible :
+Une notification apparaît dans l'onglet Aperçu si une nouvelle version est disponible :
 
 +
 image:screenshot_overview_upgrade.png["Une capture d'écran qui montre le lien « Mettre à niveau maintenant ! » sous l'onglet Présentation."]
 
 . Si vous souhaitez mettre à niveau la version installée de Cloud Volumes ONTAP, cliquez sur *Mettre à niveau maintenant !*  Par défaut, vous voyez la dernière version compatible pour la mise à niveau.
 +
-image:screenshot_upgrade_select_versions.png["Une capture d'écran de la page de version de mise à niveau de Cloud Volumes ONTAP ."]
+image:screenshot_upgrade_select_versions.png["Une capture d'écran de la page de mise à niveau de la version Cloud Volumes ONTAP ."]
 
 +
 Si vous souhaitez passer à une autre version, cliquez sur *Sélectionner d'autres versions*.  Vous voyez les dernières versions de Cloud Volumes ONTAP répertoriées qui sont également compatibles avec la version installée sur votre système.  Par exemple, la version installée sur votre système est 9.12.1P3 et les versions compatibles suivantes sont disponibles :
@@ -436,6 +436,6 @@ La valeur de _maxDownloadSessions_ peut être 1 ou tout entier supérieur à 1. 
 
 Notez que 32 est une valeur d’exemple. La valeur que vous devez utiliser dépend de votre configuration NAT et du nombre de sessions que vous pouvez avoir simultanément.
 
-https://docs.netapp.com/us-en/bluexp-automation/cm/api_ref_resources.html#occmconfig["En savoir plus sur l'appel d'API /occm/config"^] .
+https://docs.netapp.com/us-en/bluexp-automation/cm/api_ref_resources.html#occmconfig["En savoir plus sur l'appel API /occm/config"^] .
 
 endif::gcp[]

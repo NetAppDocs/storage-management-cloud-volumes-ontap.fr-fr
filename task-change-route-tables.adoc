@@ -23,4 +23,4 @@ Vous pouvez modifier les tables de routage AWS qui incluent des routes vers les 
 
 
 .Résultat
-La console NetApp envoie une requête AWS pour modifier les tables de routage.
+La NetApp Console envoie une requête AWS pour modifier les tables de routage.

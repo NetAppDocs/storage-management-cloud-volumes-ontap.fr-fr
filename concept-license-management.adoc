@@ -14,7 +14,7 @@ summary: 'Chaque système Cloud Volumes ONTAP doté d"un BYOL basé sur des nœu
 
 
 [role="lead"]
-Chaque système Cloud Volumes ONTAP doté d'une licence BYOL (Apportez votre propre licence) basée sur un nœud doit disposer d'une licence système installée avec un abonnement actif.  La console NetApp simplifie le processus en gérant les licences pour vous et en affichant un avertissement avant leur expiration.
+Chaque système Cloud Volumes ONTAP doté d'une licence BYOL (Apportez votre propre licence) basée sur un nœud doit disposer d'une licence système installée avec un abonnement actif.  La NetApp Console simplifie le processus en gérant les licences pour vous et en affichant un avertissement avant leur expiration.
 
 
 NOTE: Une licence basée sur les nœuds est la licence de génération précédente pour Cloud Volumes ONTAP. Une licence basée sur les nœuds peut être obtenue auprès de NetApp (BYOL) et est disponible pour le renouvellement de licence, uniquement dans des cas spécifiques.

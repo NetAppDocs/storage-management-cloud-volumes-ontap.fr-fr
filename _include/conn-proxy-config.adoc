@@ -1,10 +1,10 @@
-= Configuration du proxy réseau de l'agent de la console NetApp
+= Configuration du proxy réseau de l'agent de la NetApp Console
 :allow-uri-read: 
 
 
 
 
-=== Configuration du proxy réseau de l'agent de la console NetApp
+=== Configuration du proxy réseau de l'agent de la NetApp Console
 
 Vous pouvez utiliser la configuration des serveurs proxy de l'agent NetApp Console pour activer l'accès Internet sortant à partir de Cloud Volumes ONTAP.  La console prend en charge deux types de proxys :
 

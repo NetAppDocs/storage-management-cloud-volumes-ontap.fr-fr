@@ -9,12 +9,12 @@ summary: Cloud Volumes ONTAP utilise un lien privé Azure pour les connexions à
 
 
 [role="lead"]
-Les déploiements haute disponibilité (HA) de Cloud Volumes ONTAP dans la zone de disponibilité unique (AZ) AWS peuvent échouer et revenir en arrière si la création du groupe de placement échoue.  La création du groupe de placement échoue également et le déploiement est annulé si le nœud Cloud Volumes ONTAP et l'instance du médiateur ne sont pas disponibles.  Pour éviter cela, vous pouvez modifier la configuration pour permettre au déploiement de se terminer même si la création du groupe de placement échoue.
+Les déploiements haute disponibilité (HA) Cloud Volumes ONTAP dans la zone de disponibilité unique (AZ) AWS peuvent échouer et revenir en arrière si la création du groupe de placement échoue.  La création du groupe de placement échoue également et le déploiement est annulé si le nœud Cloud Volumes ONTAP et l'instance du médiateur ne sont pas disponibles.  Pour éviter cela, vous pouvez modifier la configuration pour permettre au déploiement de se terminer même si la création du groupe de placement échoue.
 
 En contournant le processus de restauration, le processus de déploiement de Cloud Volumes ONTAP se termine avec succès et vous avertit que la création du groupe de placement est incomplète.
 
 .Étapes
-. Utilisez SSH pour vous connecter à l’hôte de l’agent de la console NetApp et vous connecter.
+. Utilisez SSH pour vous connecter à l’hôte de l’agent de la NetApp Console et vous connecter.
 . Accéder à `/opt/application/netapp/cloudmanager/docker_occm/data` .
 . Modifier `app.conf` en changeant la valeur de la `rollback-on-placement-group-failure` paramètre à `false` .  La valeur par défaut de ce paramètre est `true` .
 +

@@ -28,7 +28,7 @@ Il existe deux formes d'inscription pour activer le droit au support :
 
 * Enregistrement du numéro de série de votre compte BlueXP (votre numéro de série à 20 chiffres 960xxxxxxxxx situé sur la page Ressources d'assistance dans BlueXP).
 +
-Il s'agit de votre identifiant d'abonnement d'assistance unique pour tout service au sein de BlueXP. Chaque abonnement de support au niveau du compte BlueXP doit être enregistré.
+Il s'agit de votre identifiant d'abonnement d'assistance unique pour tout service au sein de BlueXP.  Chaque abonnement d'assistance au niveau du compte BlueXP doit être enregistré.
 
 * Enregistrement des numéros de série Cloud Volumes ONTAP associés à un abonnement sur la place de marché de votre fournisseur de cloud (il s'agit de numéros de série 909201xxxxxxxx à 20 chiffres).
 +
@@ -62,7 +62,7 @@ La page *Ressources* devrait indiquer que votre organisation BlueXP est enregist
 image:https://raw.githubusercontent.com/NetAppDocs/bluexp-family/main/media/screenshot-support-registration.png["Une capture d'écran qui montre un numéro de série de compte, une case à cocher verte et le texte Enregistré pour l'assistance."]
 
 +
-Notez que les autres utilisateurs BlueXP ne verront pas ce même statut d’enregistrement de support s’ils n’ont pas associé un compte de site de support NetApp à leur connexion BlueXP . Cependant, cela ne signifie pas que votre organisation BlueXP n'est pas enregistrée pour bénéficier du support. Tant qu'un utilisateur de l'organisation a suivi ces étapes, votre organisation a été enregistrée.
+Notez que les autres utilisateurs BlueXP ne verront pas ce même statut d’enregistrement de support s’ils n’ont pas associé un compte de site de support NetApp à leur connexion BlueXP .  Cependant, cela ne signifie pas que votre organisation BlueXP n'est pas enregistrée pour bénéficier du support.  Tant qu'un utilisateur de l'organisation a suivi ces étapes, votre organisation a été enregistrée.
 
 
 
@@ -140,7 +140,7 @@ Il est nécessaire de fournir votre compte NSS pour que BlueXP puisse téléchar
 
 L'association des informations d'identification NSS à votre organisation BlueXP est différente du compte NSS associé à une connexion utilisateur BlueXP .
 
-Ces informations d’identification NSS sont associées à votre ID d’organisation BlueXP spécifique. Les utilisateurs appartenant à l'organisation BlueXP peuvent accéder à ces informations d'identification depuis *Support > Gestion NSS*.
+Ces informations d’identification NSS sont associées à votre ID d’organisation BlueXP spécifique.  Les utilisateurs appartenant à l'organisation BlueXP peuvent accéder à ces informations d'identification depuis *Support > Gestion NSS*.
 
 * Si vous disposez d’un compte client, vous pouvez ajouter un ou plusieurs comptes NSS.
 * Si vous disposez d'un compte partenaire ou revendeur, vous pouvez ajouter un ou plusieurs comptes NSS, mais ils ne peuvent pas être ajoutés aux côtés des comptes de niveau client.

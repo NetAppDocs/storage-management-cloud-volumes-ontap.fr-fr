@@ -80,7 +80,7 @@ Type de disque Azure avec paires HA:: Les systèmes HA utilisent des disques gé
 Taille du disque Azure::
 +
 --
-Lorsque vous lancez des instances Cloud Volumes ONTAP , vous devez choisir la taille de disque par défaut pour les agrégats.  La console NetApp utilise cette taille de disque pour l’agrégat initial et pour tous les agrégats supplémentaires qu’elle crée lorsque vous utilisez l’option de provisionnement simple.  Vous pouvez créer des agrégats qui utilisent une taille de disque différente de la taille par défaut enlink:task-create-aggregates.html["en utilisant l'option d'allocation avancée"] .
+Lorsque vous lancez des instances Cloud Volumes ONTAP , vous devez choisir la taille de disque par défaut pour les agrégats.  La NetApp Console utilise cette taille de disque pour l’agrégat initial et pour tous les agrégats supplémentaires qu’elle crée lorsque vous utilisez l’option de provisionnement simple.  Vous pouvez créer des agrégats qui utilisent une taille de disque différente de la taille par défaut enlink:task-create-aggregates.html["en utilisant l'option d'allocation avancée"] .
 
 
 TIP: Tous les disques d’un agrégat doivent avoir la même taille.

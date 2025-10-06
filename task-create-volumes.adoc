@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: task-create-volumes.html 
 keywords: storage, provisioning, iscsi, nfs, cifs, volumes, create a volume, add a volume, create volumes, add volumes, creating a volume, adding a volume, provision volume, provision a volume, provisioning volumes, add volume to second node, add volume to node 2, cloud backup 
-summary: Si vous avez besoin de plus de stockage après le lancement de votre système Cloud Volumes ONTAP initial, vous pouvez créer de nouveaux volumes FlexVol pour NFS, CIFS ou iSCSI à partir de la console NetApp . 
+summary: Si vous avez besoin de plus de stockage après le lancement de votre système Cloud Volumes ONTAP initial, vous pouvez créer de nouveaux volumes FlexVol pour NFS, CIFS ou iSCSI à partir de la NetApp Console. 
 ---
 = Créer un FlexVol volume sur un système Cloud Volumes ONTAP
 :hardbreaks:
@@ -14,7 +14,7 @@ summary: Si vous avez besoin de plus de stockage après le lancement de votre sy
 
 
 [role="lead"]
-Si vous avez besoin de plus de stockage après le lancement de votre système Cloud Volumes ONTAP initial, vous pouvez créer de nouveaux volumes FlexVol pour NFS, CIFS ou iSCSI à partir de la console NetApp .
+Si vous avez besoin de plus de stockage après le lancement de votre système Cloud Volumes ONTAP initial, vous pouvez créer de nouveaux volumes FlexVol pour NFS, CIFS ou iSCSI à partir de la NetApp Console.
 
 Vous disposez de plusieurs manières pour créer un nouveau volume :
 
@@ -27,7 +27,7 @@ Vous disposez de plusieurs manières pour créer un nouveau volume :
 
 == Avant de commencer
 
-Quelques notes sur le provisionnement des volumes :
+Quelques remarques sur le provisionnement des volumes :
 
 * Lorsque vous créez un volume iSCSI, la console crée automatiquement un LUN pour vous.  Nous avons simplifié les choses en créant un seul LUN par volume, il n'y a donc aucune gestion impliquée.  Après avoir créé le volume,link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-connect-lun.html["utilisez l'IQN pour vous connecter au LUN depuis vos hôtes"^] .
 * Vous pouvez créer des LUN supplémentaires à partir d' ONTAP System Manager ou de l' ONTAP CLI.
@@ -64,7 +64,7 @@ Sélectionnez l’onglet Volumes et cliquez sur *Ajouter un volume*.image:screen
 .Agrégat spécifique
 --
 .. Dans l'onglet *Agrégats*, accédez à l'agrégat requis et cliquez sur le boutonimage:icon-action.png[""] icône.
-.. Sélectionnez *Ajouter un volume*.image:screenshot_add_volume_button_agg.png["Une capture d’écran du bouton Ajouter un volume sous l’onglet Agrégats."]
+.. Sélectionnez *Ajouter du volume*.image:screenshot_add_volume_button_agg.png["Une capture d’écran du bouton Ajouter un volume sous l’onglet Agrégats."]
 
 
 --
@@ -155,7 +155,7 @@ ifdef::gcp[]
 endif::gcp[]
 
 Domaine DNS:: Le domaine DNS de la machine virtuelle de stockage Cloud Volumes ONTAP (SVM).  Dans la plupart des cas, le domaine est le même que le domaine AD.
-Serveur NTP:: Sélectionnez *Utiliser le domaine Active Directory* pour configurer un serveur NTP à l’aide du DNS Active Directory.  Si vous devez configurer un serveur NTP à l’aide d’une adresse différente, vous devez utiliser l’API.  Pour plus d'informations, reportez-vous à la https://docs.netapp.com/us-en/bluexp-automation/index.html["Documentation sur l'automatisation de la console NetApp"^] .
+Serveur NTP:: Sélectionnez *Utiliser le domaine Active Directory* pour configurer un serveur NTP à l’aide du DNS Active Directory.  Si vous devez configurer un serveur NTP à l’aide d’une adresse différente, vous devez utiliser l’API.  Pour plus d'informations, reportez-vous à la https://docs.netapp.com/us-en/bluexp-automation/index.html["Documentation sur l'automatisation de la NetApp Console"^] .
 +
 --
 Notez que vous ne pouvez configurer un serveur NTP que lors de la création d'un serveur CIFS.  Il n'est pas configurable après avoir créé le serveur CIFS.

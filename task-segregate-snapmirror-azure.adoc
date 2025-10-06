@@ -20,7 +20,7 @@ Avec Cloud Volumes ONTAP dans Azure, vous pouvez séparer le trafic de réplicat
 
 == À propos de la séparation du trafic SnapMirror dans Azure
 
-Par défaut, la console NetApp configure toutes les cartes réseau et LIF dans un déploiement Cloud Volumes ONTAP sur le même sous-réseau.  Dans de telles configurations, le trafic de réplication SnapMirror et le trafic de données et de gestion utilisent le même sous-réseau.  La séparation du trafic SnapMirror exploite un sous-réseau supplémentaire qui n'est pas routable vers le sous-réseau existant utilisé pour le trafic de données et de gestion.
+Par défaut, la NetApp Console configure toutes les cartes réseau et LIF dans un déploiement Cloud Volumes ONTAP sur le même sous-réseau.  Dans de telles configurations, le trafic de réplication SnapMirror et le trafic de données et de gestion utilisent le même sous-réseau.  La séparation du trafic SnapMirror exploite un sous-réseau supplémentaire qui n'est pas routable vers le sous-réseau existant utilisé pour le trafic de données et de gestion.
 
 .Figure 1
 Les diagrammes suivants montrent la séparation du trafic de réplication SnapMirror avec une carte réseau supplémentaire, un LIF intercluster associé et un sous-réseau non routable dans un déploiement à nœud unique.  Le déploiement d’une paire HA diffère légèrement.

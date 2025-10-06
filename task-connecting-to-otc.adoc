@@ -27,7 +27,7 @@ NOTE: Lorsqu'elles sont déployées dans plusieurs zones de disponibilité, les 
 endif::aws[]
 
 .Étapes
-. Dans la console NetApp , identifiez l’adresse IP de l’interface de gestion du cluster :
+. Dans la NetApp Console, identifiez l’adresse IP de l’interface de gestion du cluster :
 +
 .. Dans le menu de navigation de gauche, sélectionnez *Stockage > Gestion*.
 .. Sur la page *Systèmes*, sélectionnez le système Cloud Volumes ONTAP .

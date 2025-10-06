@@ -47,7 +47,7 @@ Pour plus de détails, reportez-vous àlink:reference-networking-aws.html["Exige
 
 == Lancer un système Cloud Volumes ONTAP à nœud unique dans AWS
 
-Si vous souhaitez lancer Cloud Volumes ONTAP dans AWS, vous devez créer un nouveau système dans la console NetApp .
+Si vous souhaitez lancer Cloud Volumes ONTAP dans AWS, vous devez créer un nouveau système dans la NetApp Console.
 
 .À propos de cette tâche
 Immédiatement après la création du système, la console lance une instance de test dans le VPC spécifié pour vérifier la connectivité.  En cas de réussite, la console met immédiatement fin à l’instance, puis commence à déployer le système Cloud Volumes ONTAP .  Si la connectivité ne peut pas être vérifiée, la création du système échoue.  L'instance de test est soit une `t2.nano` (pour la location VPC par défaut) ou `m3.medium` (pour la location VPC dédiée).
@@ -71,13 +71,13 @@ Certains champs de cette page sont explicites.  Le tableau suivant décrit les d
 | Nom du système | La console utilise le nom du système pour nommer à la fois le système Cloud Volumes ONTAP et l'instance Amazon EC2.  Il utilise également le nom comme préfixe pour le groupe de sécurité prédéfini, si vous sélectionnez cette option. 
 
 
-| Ajouter des balises | Les balises AWS sont des métadonnées pour vos ressources AWS.  La console ajoute les balises à l’instance Cloud Volumes ONTAP et à chaque ressource AWS associée à l’instance.  Vous pouvez ajouter jusqu'à quatre balises à partir de l'interface utilisateur lors de la création d'un système, puis vous pouvez en ajouter davantage après sa création.  Notez que l'API ne vous limite pas à quatre balises lors de la création d'un système.  Pour plus d'informations sur les balises, reportez-vous à https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html["Documentation AWS : Balisage de vos ressources Amazon EC2"^] . 
+| Ajouter des balises | Les balises AWS sont des métadonnées pour vos ressources AWS.  La console ajoute les balises à l’instance Cloud Volumes ONTAP et à chaque ressource AWS associée à l’instance.  Vous pouvez ajouter jusqu'à quatre balises à partir de l'interface utilisateur lors de la création d'un système, puis vous pouvez en ajouter d'autres après sa création.  Notez que l'API ne vous limite pas à quatre balises lors de la création d'un système.  Pour plus d'informations sur les balises, reportez-vous à https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html["Documentation AWS : Balisage de vos ressources Amazon EC2"^] . 
 
 
 | Nom d'utilisateur et mot de passe | Il s’agit des informations d’identification du compte administrateur du cluster Cloud Volumes ONTAP .  Vous pouvez utiliser ces informations d'identification pour vous connecter à Cloud Volumes ONTAP via ONTAP System Manager ou l'interface de ligne de commande ONTAP .  Conservez le nom d’utilisateur par défaut _admin_ ou remplacez-le par un nom d’utilisateur personnalisé. 
 
 
-| Modifier les informations d'identification | Choisissez les informations d’identification AWS associées au compte sur lequel vous souhaitez déployer ce système.  Vous pouvez également associer l'abonnement AWS Marketplace à utiliser avec ce système Cloud Volumes ONTAP . Cliquez sur *Ajouter un abonnement* pour associer les identifiants sélectionnés à un nouvel abonnement Marketplace AWS. L'abonnement peut être annuel ou payant pour Cloud Volumes ONTAP à un tarif horaire. https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-aws-accounts.html["Découvrez comment ajouter des informations d'identification AWS supplémentaires à la console NetApp"^] . 
+| Modifier les informations d'identification | Choisissez les informations d’identification AWS associées au compte sur lequel vous souhaitez déployer ce système.  Vous pouvez également associer l'abonnement AWS Marketplace à utiliser avec ce système Cloud Volumes ONTAP . Cliquez sur *Ajouter un abonnement* pour associer les identifiants sélectionnés à un nouvel abonnement Marketplace AWS. L'abonnement peut être annuel ou payant pour Cloud Volumes ONTAP à un tarif horaire. https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-aws-accounts.html["Découvrez comment ajouter des informations d'identification AWS supplémentaires à la NetApp Console"^] . 
 |===
 +
 
@@ -85,7 +85,7 @@ TIP: Si plusieurs utilisateurs IAM travaillent sur le même compte AWS, chaque u
 
 . *Services* : conservez les services activés ou désactivez les services individuels que vous ne souhaitez pas utiliser avec Cloud Volumes ONTAP.
 +
-** https://docs.netapp.com/us-en/bluexp-classification/concept-cloud-compliance.html["En savoir plus sur la classification des données NetApp"^]
+** https://docs.netapp.com/us-en/bluexp-classification/concept-cloud-compliance.html["En savoir plus sur la NetApp Data Classification"^]
 ** https://docs.netapp.com/us-en/bluexp-backup-recovery/concept-backup-to-cloud.html["En savoir plus sur NetApp Backup and Recovery"^]
 +
 
@@ -246,7 +246,7 @@ image:screenshot_cot_vol.gif["Capture d'écran : affiche la page Volume remplie
 | Domaine DNS | Le domaine DNS de la machine virtuelle de stockage Cloud Volumes ONTAP (SVM).  Dans la plupart des cas, le domaine est le même que le domaine AD. 
 
 
-| Serveur NTP | Sélectionnez *Utiliser le domaine Active Directory* pour configurer un serveur NTP à l’aide du DNS Active Directory.  Si vous devez configurer un serveur NTP à l’aide d’une adresse différente, vous devez utiliser l’API. Se référer à la https://docs.netapp.com/us-en/bluexp-automation/index.html["Documentation sur l'automatisation de la console NetApp"^] pour plus de détails.  Notez que vous ne pouvez configurer un serveur NTP que lors de la création d'un serveur CIFS.  Il n'est pas configurable après avoir créé le serveur CIFS. 
+| Serveur NTP | Sélectionnez *Utiliser le domaine Active Directory* pour configurer un serveur NTP à l’aide du DNS Active Directory.  Si vous devez configurer un serveur NTP à l’aide d’une adresse différente, vous devez utiliser l’API. Se référer à la https://docs.netapp.com/us-en/bluexp-automation/index.html["Documentation sur l'automatisation de la NetApp Console"^] pour plus de détails.  Notez que vous ne pouvez configurer un serveur NTP que lors de la création d'un serveur CIFS.  Il n'est pas configurable après avoir créé le serveur CIFS. 
 |===
 . *Profil d'utilisation, type de disque et politique de hiérarchisation* : choisissez si vous souhaitez activer les fonctionnalités d'efficacité du stockage et modifier la politique de hiérarchisation des volumes, si nécessaire.
 +
@@ -315,7 +315,7 @@ Certains champs de cette page sont explicites.  Le tableau suivant décrit les d
 | Nom du système | La console utilise le nom du système pour nommer à la fois le système Cloud Volumes ONTAP et l'instance Amazon EC2.  Il utilise également le nom comme préfixe pour le groupe de sécurité prédéfini, si vous sélectionnez cette option. 
 
 
-| Ajouter des balises | Les balises AWS sont des métadonnées pour vos ressources AWS.  La console ajoute les balises à l’instance Cloud Volumes ONTAP et à chaque ressource AWS associée à l’instance.  Vous pouvez ajouter jusqu'à quatre balises à partir de l'interface utilisateur lors de la création d'un système, puis vous pouvez en ajouter davantage après sa création.  Notez que l'API ne vous limite pas à quatre balises lors de la création d'un système.  Pour plus d'informations sur les balises, reportez-vous à https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html["Documentation AWS : Balisage de vos ressources Amazon EC2"^] . 
+| Ajouter des balises | Les balises AWS sont des métadonnées pour vos ressources AWS.  La console ajoute les balises à l’instance Cloud Volumes ONTAP et à chaque ressource AWS associée à l’instance.  Vous pouvez ajouter jusqu'à quatre balises à partir de l'interface utilisateur lors de la création d'un système, puis vous pouvez en ajouter d'autres après sa création.  Notez que l'API ne vous limite pas à quatre balises lors de la création d'un système.  Pour plus d'informations sur les balises, reportez-vous à https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html["Documentation AWS : Balisage de vos ressources Amazon EC2"^] . 
 
 
 | Nom d'utilisateur et mot de passe | Il s’agit des informations d’identification du compte administrateur du cluster Cloud Volumes ONTAP .  Vous pouvez utiliser ces informations d'identification pour vous connecter à Cloud Volumes ONTAP via ONTAP System Manager ou l'interface de ligne de commande ONTAP .  Conservez le nom d’utilisateur par défaut _admin_ ou remplacez-le par un nom d’utilisateur personnalisé. 
@@ -329,7 +329,7 @@ TIP: Si plusieurs utilisateurs IAM travaillent sur le même compte AWS, chaque u
 
 . *Services* : conservez les services activés ou désactivez les services individuels que vous ne souhaitez pas utiliser avec ce système Cloud Volumes ONTAP .
 +
-** https://docs.netapp.com/us-en/bluexp-classification/concept-cloud-compliance.html["En savoir plus sur la classification des données NetApp"^]
+** https://docs.netapp.com/us-en/bluexp-classification/concept-cloud-compliance.html["En savoir plus sur la NetApp Data Classification"^]
 ** https://docs.netapp.com/us-en/bluexp-backup-recovery/task-backup-to-s3.html["En savoir plus sur la sauvegarde et la récupération"^]
 +
 
@@ -367,7 +367,7 @@ Si vous laissez la console générer le groupe de sécurité pour vous, vous dev
 +
 Les adresses IP doivent être en dehors du bloc CIDR pour tous les VPC de la région.  Pour plus de détails, reportez-vous àlink:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/reference-networking-aws.html#requirements-for-ha-pairs-in-multiple-azs["Exigences réseau AWS pour Cloud Volumes ONTAP HA dans plusieurs zones de disponibilité"^] .
 
-. *Tables de routage* : si vous avez choisi plusieurs AZ, sélectionnez les tables de routage qui doivent inclure les routes vers les adresses IP flottantes.
+. *Tables de routage* : si vous avez choisi plusieurs AZ, sélectionnez les tables de routage qui doivent inclure les routes vers les adresses IP flottantes.
 +
 Si vous disposez de plusieurs tables de routage, il est très important de sélectionner les tables de routage correctes.  Dans le cas contraire, certains clients risquent de ne pas avoir accès à la paire Cloud Volumes ONTAP HA.  Pour plus d'informations sur les tables de routage, reportez-vous à la http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html["Documentation AWS : Tables de routage"^] .
 
@@ -500,7 +500,7 @@ image:screenshot_cot_vol.gif["Capture d'écran : affiche la page Volume remplie
 | Domaine DNS | Le domaine DNS de la machine virtuelle de stockage Cloud Volumes ONTAP (SVM).  Dans la plupart des cas, le domaine est le même que le domaine AD. 
 
 
-| Serveur NTP | Sélectionnez *Utiliser le domaine Active Directory* pour configurer un serveur NTP à l’aide du DNS Active Directory.  Si vous devez configurer un serveur NTP à l’aide d’une adresse différente, vous devez utiliser l’API. Se référer à la https://docs.netapp.com/us-en/bluexp-automation/index.html["Documentation sur l'automatisation de la console NetApp"^] pour plus de détails.  Notez que vous ne pouvez configurer un serveur NTP que lors de la création d'un serveur CIFS.  Il n'est pas configurable après avoir créé le serveur CIFS. 
+| Serveur NTP | Sélectionnez *Utiliser le domaine Active Directory* pour configurer un serveur NTP à l’aide du DNS Active Directory.  Si vous devez configurer un serveur NTP à l’aide d’une adresse différente, vous devez utiliser l’API. Se référer à la https://docs.netapp.com/us-en/bluexp-automation/index.html["Documentation sur l'automatisation de la NetApp Console"^] pour plus de détails.  Notez que vous ne pouvez configurer un serveur NTP que lors de la création d'un serveur CIFS.  Il n'est pas configurable après avoir créé le serveur CIFS. 
 |===
 . *Profil d'utilisation, type de disque et politique de hiérarchisation* : choisissez si vous souhaitez activer les fonctionnalités d'efficacité du stockage et modifier la politique de hiérarchisation des volumes, si nécessaire.
 +

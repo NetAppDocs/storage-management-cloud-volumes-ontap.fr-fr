@@ -4,7 +4,7 @@ permalink: task-tiering.html
 keywords: tier, tiering, cold data, hot data, storage tiering, data tiering, fabricpool, fabric pool, s3 endpoint, endpoint, connection, performance tier, capacity tier, object store, blob tiering, container, inactive, tiering requirements, remove S3 bucket, delete S3 CVO bucket, tenant, multi-tenant tiering 
 summary: 'Vous pouvez réduire les coûts de stockage pour Cloud Volumes ONTAP en combinant un niveau de performance SSD ou HDD pour les données chaudes avec un niveau de capacité de stockage d"objets pour les données inactives.  La hiérarchisation des données est alimentée par la technologie FabricPool .' 
 ---
-= Hiérarchisez les données Cloud Volumes ONTAP inactives vers un stockage d'objets à faible coût
+= Transférez les données Cloud Volumes ONTAP inactives vers un stockage d'objets à faible coût
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -33,7 +33,7 @@ endif::aws[]
 
 ifdef::azure[]
 
-* Pour Azure, vous n’aurez rien à faire tant que la console NetApp dispose des autorisations requises. <<Conditions requises pour hiérarchiser les données froides vers le stockage Azure Blob,Apprendre encore plus>> .
+* Pour Azure, vous n’aurez rien à faire tant que la NetApp Console dispose des autorisations requises. <<Conditions requises pour hiérarchiser les données froides vers le stockage Azure Blob,Apprendre encore plus>> .
 
 
 endif::azure[]
@@ -51,7 +51,7 @@ La hiérarchisation des données doit être activée sur un agrégat pour pouvoi
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["Quatre"]Choisissez une politique de hiérarchisation lors de la création, de la modification ou de la réplication d'un volume
 [role="quick-margin-para"]
-La console NetApp vous invite à choisir une stratégie de hiérarchisation lorsque vous créez, modifiez ou répliquez un volume.
+La NetApp Console vous invite à choisir une stratégie de hiérarchisation lorsque vous créez, modifiez ou répliquez un volume.
 
 [role="quick-margin-list"]
 * link:task-tiering.html#tier-data-from-read-write-volumes["Données hiérarchisées à partir de volumes en lecture-écriture"]

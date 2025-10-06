@@ -17,7 +17,7 @@ summary: 'Lorsqu"un nœud d"une paire HA n"est pas disponible, l"autre nœud fou
 Lorsqu'un nœud d'une paire HA n'est pas disponible, l'autre nœud fournit des données à son partenaire pour fournir un service de données continu.  C'est ce qu'on appelle la _prise de contrôle du stockage_.  Plusieurs actions ne sont pas disponibles tant que la restitution en stockage n'est pas terminée.
 
 
-TIP: Lorsqu'un nœud d'une paire HA n'est pas disponible, l'état du système dans la console NetApp est _Dégradé_.
+TIP: Lorsqu'un nœud d'une paire HA n'est pas disponible, l'état du système dans la NetApp Console est _Dégradé_.
 
 Les actions suivantes ne sont pas disponibles à partir de la prise de contrôle du stockage :
 

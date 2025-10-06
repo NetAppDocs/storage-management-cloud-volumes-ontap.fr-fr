@@ -16,7 +16,7 @@ summary: 'Les limitations connues identifient les plates-formes, les appareils o
 [role="lead"]
 Les limitations connues identifient les plates-formes, les appareils ou les fonctions qui ne sont pas pris en charge par cette version du produit ou qui n'interagissent pas correctement avec elle. Examinez attentivement ces limitations.
 
-Ces limitations sont spécifiques à la gestion de Cloud Volumes ONTAP dans la console NetApp .  Pour afficher les limitations du logiciel Cloud Volumes ONTAP lui-même, https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-limitations.html["Accédez aux notes de publication de Cloud Volumes ONTAP"^] .
+Ces limitations sont spécifiques à la gestion de Cloud Volumes ONTAP dans la NetApp Console.  Pour afficher les limitations du logiciel Cloud Volumes ONTAP lui-même, https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-limitations.html["Accédez aux notes de publication de Cloud Volumes ONTAP"^] .
 
 
 
@@ -39,6 +39,6 @@ link:concept-client-protocols.html["En savoir plus sur la prise en charge de Clo
 
 == La console ne prend pas en charge la reprise après sinistre pour les machines virtuelles de stockage
 
-La console ne fournit aucune configuration ni support d'orchestration pour la reprise après sinistre de la machine virtuelle de stockage (SVM).  Vous devez utiliser ONTAP System Manager ou l'interface de ligne de commande ONTAP .
+La console ne fournit aucune configuration ni support d'orchestration pour la reprise après sinistre de la machine virtuelle de stockage (SVM).  Vous devez utiliser ONTAP System Manager ou ONTAP CLI.
 
 link:task-manage-svm-dr.html["En savoir plus sur la reprise après sinistre SVM"] .

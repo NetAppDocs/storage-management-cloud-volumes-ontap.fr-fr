@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: task-manage-volumes.html 
 keywords: volumes, managing, cloning, editing, CIFS server, edit, flexclone, snapshot copy, restore, mount, delete, cifs setup, DNS, active directory, AD, domain, NetBIOS, identify, move, capacity, action required, clone, snapshot copies, restoring, vol move, volume move, move a volume, volume move slow, volume move performance 
-summary: La console NetApp vous permet de gérer les volumes et les serveurs CIFS.  Il vous invite également à déplacer des volumes pour éviter les problèmes de capacité. 
+summary: La NetApp Console vous permet de gérer les volumes et les serveurs CIFS.  Il vous invite également à déplacer des volumes pour éviter les problèmes de capacité. 
 ---
 = Gérer les volumes sur les systèmes Cloud Volumes ONTAP
 :hardbreaks:
@@ -14,9 +14,9 @@ summary: La console NetApp vous permet de gérer les volumes et les serveurs CIF
 
 
 [role="lead"]
-Vous pouvez gérer les volumes et les serveurs CIFS dans la console NetApp .  Vous pouvez également déplacer des volumes pour éviter les problèmes de capacité.
+Vous pouvez gérer les volumes et les serveurs CIFS dans la NetApp Console.  Vous pouvez également déplacer des volumes pour éviter les problèmes de capacité.
 
-Vous pouvez gérer les volumes dans la vue standard de la console NetApp ou via ONTAP System Manager inclus dans la console pour une gestion avancée des volumes.  La vue standard fournit un ensemble limité d'options pour modifier vos volumes.  System Manager offre un niveau de gestion avancé, tel que le clonage, le redimensionnement, la modification des paramètres anti-ransomware, l'analyse, la protection et le suivi des activités, ainsi que le déplacement de volumes entre les niveaux.  Pour plus d'informations, reportez-vous àlink:task-administer-advanced-view.html["Administrer Cloud Volumes ONTAP à l'aide de System Manager"] .
+Vous pouvez gérer les volumes dans la vue standard de la NetApp Console ou via ONTAP System Manager inclus dans la console pour une gestion avancée des volumes.  La vue standard fournit un ensemble limité d'options pour modifier vos volumes.  System Manager offre un niveau de gestion avancé, tel que le clonage, le redimensionnement, la modification des paramètres anti-ransomware, l'analyse, la protection et le suivi des activités, ainsi que le déplacement de volumes entre les niveaux.  Pour plus d'informations, reportez-vous àlink:task-administer-advanced-view.html["Administrer Cloud Volumes ONTAP à l'aide de System Manager"] .
 
 
 
@@ -107,7 +107,7 @@ NOTE: La console déplace le volume vers un agrégat existant qui utilise le typ
 
 
 
-NOTE: La console déplace le volume vers un agrégat existant qui utilise le type de disque sélectionné avec hiérarchisation, ou elle crée un nouvel agrégat pour le volume.
+NOTE: La console déplace le volume vers un agrégat existant qui utilise le type de disque sélectionné avec hiérarchisation, ou crée un nouvel agrégat pour le volume.
 
 
 

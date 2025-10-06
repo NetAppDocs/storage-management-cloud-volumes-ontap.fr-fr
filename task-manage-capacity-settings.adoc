@@ -19,7 +19,7 @@ Chaque agent de console dispose de paramètres qui déterminent la manière dont
 Ces paramètres affectent tous les systèmes Cloud Volumes ONTAP gérés par un agent de console.  Si vous disposez d’un autre agent de console, il peut être configuré différemment.
 
 .Autorisations requises
-Vous avez besoin des privilèges d’administrateur d’organisation ou de compte de la console NetApp pour modifier les paramètres Cloud Volumes ONTAP .
+Vous avez besoin des privilèges d’administrateur d’organisation ou de compte de la NetApp Console pour modifier les paramètres Cloud Volumes ONTAP .
 
 .Étapes
 . Dans le volet de navigation de gauche, accédez à *Administration > Agents*.

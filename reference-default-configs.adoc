@@ -20,7 +20,7 @@ Comprendre comment Cloud Volumes ONTAP est configuré par défaut peut vous aide
 
 == Configuration par défaut
 
-* La console NetApp crée une machine virtuelle de stockage de service de données lorsqu'elle déploie Cloud Volumes ONTAP.  Certaines configurations prennent en charge des machines virtuelles de stockage supplémentaires. link:task-managing-svms.html["En savoir plus sur la gestion des machines virtuelles de stockage"] .
+* La NetApp Console crée une machine virtuelle de stockage de service de données lorsqu'elle déploie Cloud Volumes ONTAP.  Certaines configurations prennent en charge des machines virtuelles de stockage supplémentaires. link:task-managing-svms.html["En savoir plus sur la gestion des machines virtuelles de stockage"] .
 +
 À partir de la version 3.9.5, les rapports d’espace logique sont activés sur la machine virtuelle de stockage initiale.  Lorsque l'espace est signalé de manière logique, ONTAP signale l'espace du volume de telle sorte que tout l'espace physique économisé par les fonctionnalités d'efficacité du stockage soit également signalé comme utilisé.  Pour plus d'informations sur les fonctionnalités d'efficacité du stockage en ligne, reportez-vous à l'article de la base de connaissances https://kb.netapp.com/Cloud/Cloud_Volumes_ONTAP/What_Inline_Storage_Efficiency_features_are_supported_with_CVO#["KB : Quelles fonctionnalités d’efficacité du stockage en ligne sont prises en charge avec CVO ?"^]
 

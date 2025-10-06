@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: task-manage-svm-dr.html 
 keywords: storage virtual machine, vserver, svm, storage vm, svm dr, disaster recovery, svm disaster recovery, storage vm dr 
-summary: 'La console NetApp ne fournit aucune configuration ni support d"orchestration pour la reprise après sinistre des machines virtuelles de stockage.  Vous devez utiliser le Gestionnaire système ou l"interface de ligne de commande.' 
+summary: 'La NetApp Console ne fournit aucune configuration ni support d"orchestration pour la reprise après sinistre des machines virtuelles de stockage.  Vous devez utiliser le Gestionnaire système ou l"interface de ligne de commande.' 
 ---
 = Configurer la reprise après sinistre des machines virtuelles de stockage pour Cloud Volumes ONTAP
 :hardbreaks:
@@ -14,12 +14,12 @@ summary: 'La console NetApp ne fournit aucune configuration ni support d"orchest
 
 
 [role="lead"]
-La console NetApp n'offre pas de prise en charge de la configuration ou de l'orchestration pour la reprise après sinistre des machines virtuelles de stockage (SVM).  Pour effectuer ces tâches, utilisez ONTAP System Manager ou l'interface de ligne de commande ONTAP .
+La NetApp Console n'offre pas de prise en charge de la configuration ou de l'orchestration pour la reprise après sinistre des machines virtuelles de stockage (SVM).  Pour effectuer ces tâches, utilisez ONTAP System Manager ou l'interface de ligne de commande ONTAP .
 
 Si vous configurez la réplication SnapMirror SVM entre deux systèmes Cloud Volumes ONTAP , la réplication doit être effectuée entre deux systèmes à paires HA ou deux systèmes à nœud unique.  Vous ne pouvez pas configurer la réplication SnapMirror SVM entre une paire HA et un système à nœud unique.
 
 Reportez-vous aux documents suivants pour obtenir les instructions de l'interface de ligne de commande ONTAP .
 
 * https://library.netapp.com/ecm/ecm_get_file/ECMLP2839856["Guide de préparation express à la reprise après sinistre SVM"^]
-* https://library.netapp.com/ecm/ecm_get_file/ECMLP2839857["Guide de récupération express après sinistre SVM"^]
+* https://library.netapp.com/ecm/ecm_get_file/ECMLP2839857["Guide de reprise après sinistre SVM Express"^]
 

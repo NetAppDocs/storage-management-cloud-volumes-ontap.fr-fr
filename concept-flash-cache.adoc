@@ -36,7 +36,7 @@ ifdef::aws[]
 
 * Lors de la configuration de Flash Cache pour Cloud Volumes ONTAP 9.12.0 ou version antérieure dans AWS, la compression doit être désactivée sur tous les volumes pour profiter des améliorations des performances de Flash Cache.  Lorsque vous déployez ou effectuez une mise à niveau vers Cloud Volumes ONTAP 9.12.1 ou une version ultérieure, vous n'avez pas besoin de désactiver la compression.
 +
-Ignorez la sélection des paramètres d'efficacité de stockage lors de la création d'un volume à partir de la console NetApp , ou créez un volume, puis http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-vsmg/GUID-8508A4CB-DB43-4D0D-97EB-859F58B29054.html["désactiver la compression des données à l'aide de la CLI"^] .
+Ignorez la sélection des paramètres d'efficacité de stockage lors de la création d'un volume à partir de la NetApp Console, ou créez un volume, puis http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-vsmg/GUID-8508A4CB-DB43-4D0D-97EB-859F58B29054.html["désactiver la compression des données à l'aide de la CLI"^] .
 
 
 

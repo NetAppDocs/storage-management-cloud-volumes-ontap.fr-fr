@@ -40,7 +40,7 @@ Les étapes suivantes illustrent comment configurer une configuration similaire.
 
 . Créez des itinéraires dans la table de routage de la passerelle de transit en spécifiant les adresses IP flottantes de la paire HA.
 +
-Vous pouvez trouver les adresses IP flottantes sur la page d’informations système de la console NetApp . Voici un exemple :
+Vous pouvez trouver les adresses IP flottantes sur la page d’informations système dans la NetApp Console. Voici un exemple :
 
 +
 image:screenshot_floating_ips.gif["Une capture d'écran qui montre les adresses IP flottantes pour l'interface de gestion du cluster, deux interfaces de données NFS et CIFS et l'interface de gestion SVM."]

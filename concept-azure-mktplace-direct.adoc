@@ -14,7 +14,7 @@ summary:
 
 
 [role="lead"]
-NetApp propose deux options pour déployer Cloud Volumes ONTAP sur Azure.  Cloud Volumes ONTAP s'appuie traditionnellement sur la console NetApp pour le déploiement et l'orchestration.  À partir de Cloud Volumes ONTAP 9.16.1, vous pouvez profiter du déploiement direct de la place de marché Azure, un processus simplifié qui donne accès à un ensemble limité, mais toujours puissant, de fonctionnalités et d’options Cloud Volumes ONTAP .
+NetApp propose deux options pour déployer Cloud Volumes ONTAP sur Azure.  Cloud Volumes ONTAP s'appuie traditionnellement sur la NetApp Console pour le déploiement et l'orchestration.  À partir de Cloud Volumes ONTAP 9.16.1, vous pouvez profiter du déploiement direct de la place de marché Azure, un processus simplifié qui donne accès à un ensemble limité, mais toujours puissant, de fonctionnalités et d’options Cloud Volumes ONTAP .
 
 Lorsque vous déployez Cloud Volumes ONTAP directement à partir de la place de marché Azure, vous n’êtes pas obligé de configurer l’agent de la console ni de respecter d’autres critères de sécurité et d’intégration requis pour le déploiement de Cloud Volumes ONTAP via la console.  Depuis la place de marché Azure, vous pouvez déployer rapidement Cloud Volumes ONTAP en quelques clics et explorer ses principales fonctionnalités et capacités dans votre environnement.
 
@@ -24,7 +24,7 @@ Voici la comparaison des fonctionnalités entre les deux options.  Notez que les
 
 [cols="3*"]
 |===
-|  | Place de marché Azure | Console NetApp 
+|  | Place de marché Azure | NetApp Console 
 
 
 | *Intégration* | Plus court et plus simple, préparation minimale requise pour un déploiement direct | Processus d'intégration plus long, y compris l'installation de l'agent de la console 
@@ -53,7 +53,7 @@ Types d'instances Eds_v5 et Ls_v3
 | *Vitesse d'écriture (mode d'écriture rapide)* | Non pris en charge | Pris en charge, en fonction de votre configuration. link:concept-write-speed.html["En savoir plus sur les vitesses d'écriture dans Cloud Volumes ONTAP"] . 
 
 
-| *Capacités d'orchestration* | Non disponible | Disponible via la console NetApp , en fonction du type de licence 
+| *Capacités d'orchestration* | Non disponible | Disponible via la NetApp Console, en fonction du type de licence 
 
 
 | *Nombre de machines virtuelles de stockage prises en charge* | Un par déploiement | Plusieurs machines virtuelles de stockage, en fonction de votre configuration.link:task-managing-svms-azure.html#supported-number-of-storage-vms["Nombre de machines virtuelles de stockage prises en charge"] 
@@ -67,5 +67,5 @@ Types d'instances Eds_v5 et Ls_v3
 .Liens connexes
 * Déploiement direct sur la place de marché Azure :link:task-deploy-cvo-azure-mktplc.html["Déployer Cloud Volumes ONTAP depuis la place de marché Azure"]
 * Déploiement via la console :link:task-getting-started-azure.html["Démarrage rapide de Cloud Volumes ONTAP dans Azure"]
-* https://docs.netapp.com/us-en/bluexp-family/index.html["Documentation de la console NetApp"^]
+* https://docs.netapp.com/us-en/bluexp-family/index.html["Documentation de la NetApp Console"^]
 

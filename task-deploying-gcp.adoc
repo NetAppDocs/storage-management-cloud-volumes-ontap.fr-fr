@@ -53,7 +53,7 @@ link:task-set-up-licensing-google.html["Apprenez à configurer les licences"] .
 
 == Lancer un système à nœud unique dans Google Cloud
 
-Créez un système dans la console NetApp pour lancer Cloud Volumes ONTAP dans Google Cloud.
+Créez un système dans la NetApp Console pour lancer Cloud Volumes ONTAP dans Google Cloud.
 
 .Étapes
 . Dans le menu de navigation de gauche, sélectionnez *Stockage > Gestion*.
@@ -73,7 +73,7 @@ Le tableau suivant décrit les domaines pour lesquels vous pourriez avoir besoin
 | Nom du système | La console utilise le nom du système pour nommer à la fois le système Cloud Volumes ONTAP et l'instance de machine virtuelle Google Cloud.  Il utilise également le nom comme préfixe pour le groupe de sécurité prédéfini, si vous sélectionnez cette option. 
 
 
-| Nom du compte de service | Si vous prévoyez d'utiliserlink:concept-data-tiering.html["hiérarchisation des données"] ou https://docs.netapp.com/us-en/bluexp-backup-recovery/concept-backup-to-cloud.html["Sauvegarde et récupération NetApp"^] avec Cloud Volumes ONTAP, vous devez activer *Compte de service* et sélectionner un compte de service doté du rôle d'administrateur de stockage prédéfini. link:task-creating-gcp-service-account.html["Apprenez à créer un compte de service"^] . 
+| Nom du compte de service | Si vous prévoyez d'utiliserlink:concept-data-tiering.html["hiérarchisation des données"] ou https://docs.netapp.com/us-en/bluexp-backup-recovery/concept-backup-to-cloud.html["NetApp Backup and Recovery"^] avec Cloud Volumes ONTAP, vous devez activer *Compte de service* et sélectionner un compte de service doté du rôle d'administrateur de stockage prédéfini. link:task-creating-gcp-service-account.html["Apprenez à créer un compte de service"^] . 
 
 
 | Ajouter des étiquettes | Les étiquettes sont des métadonnées pour vos ressources Google Cloud.  La console ajoute les étiquettes au système Cloud Volumes ONTAP et aux ressources Google Cloud associées au système.  Vous pouvez ajouter jusqu'à quatre étiquettes à partir de l'interface utilisateur lors de la création d'un système, puis vous pouvez en ajouter d'autres après sa création.  Notez que l'API ne vous limite pas à quatre étiquettes lors de la création d'un système.  Pour plus d'informations sur les étiquettes, reportez-vous à la https://cloud.google.com/compute/docs/labeling-resources["Documentation Google Cloud : Étiquetage des ressources"^] . 
@@ -249,7 +249,7 @@ image:screenshot_cot_vol.gif["Capture d'écran : affiche la page Volume remplie
 | Domaine DNS | Le domaine DNS de la machine virtuelle de stockage Cloud Volumes ONTAP (SVM).  Dans la plupart des cas, le domaine est le même que le domaine AD. 
 
 
-| Serveur NTP | Sélectionnez *Utiliser le domaine Active Directory* pour configurer un serveur NTP à l’aide du DNS Active Directory.  Si vous devez configurer un serveur NTP à l’aide d’une adresse différente, vous devez utiliser l’API.  Pour plus d'informations, reportez-vous à la https://docs.netapp.com/us-en/bluexp-automation/index.html["Documentation sur l'automatisation de la console NetApp"^] pour plus de détails.  Notez que vous ne pouvez configurer un serveur NTP que lors de la création d'un serveur CIFS.  Il n'est pas configurable après avoir créé le serveur CIFS. 
+| Serveur NTP | Sélectionnez *Utiliser le domaine Active Directory* pour configurer un serveur NTP à l’aide du DNS Active Directory.  Si vous devez configurer un serveur NTP à l’aide d’une adresse différente, vous devez utiliser l’API.  Pour plus d'informations, reportez-vous à la https://docs.netapp.com/us-en/bluexp-automation/index.html["Documentation sur l'automatisation de la NetApp Console"^] pour plus de détails.  Notez que vous ne pouvez configurer un serveur NTP que lors de la création d'un serveur CIFS.  Il n'est pas configurable après avoir créé le serveur CIFS. 
 |===
 . *Profil d'utilisation, type de disque et politique de hiérarchisation* : choisissez si vous souhaitez activer les fonctionnalités d'efficacité du stockage et modifier la politique de hiérarchisation des volumes, si nécessaire.
 +
@@ -303,7 +303,7 @@ Le tableau suivant décrit les domaines pour lesquels vous pourriez avoir besoin
 | Nom du système | La console utilise le nom du système pour nommer à la fois le système Cloud Volumes ONTAP et l'instance de machine virtuelle Google Cloud.  Il utilise également le nom comme préfixe pour le groupe de sécurité prédéfini, si vous sélectionnez cette option. 
 
 
-| Nom du compte de service | Si vous prévoyez d'utiliser lelink:concept-data-tiering.html["Hiérarchisation du cloud NetApp"] ou https://docs.netapp.com/us-en/bluexp-backup-recovery/concept-backup-to-cloud.html["Sauvegarde et récupération"^] services, vous devez activer le commutateur *Compte de service*, puis sélectionner le compte de service qui possède le rôle d'administrateur de stockage prédéfini. 
+| Nom du compte de service | Si vous prévoyez d'utiliser lelink:concept-data-tiering.html["NetApp Cloud Tiering"] ou https://docs.netapp.com/us-en/bluexp-backup-recovery/concept-backup-to-cloud.html["Sauvegarde et récupération"^] services, vous devez activer le commutateur *Compte de service*, puis sélectionner le compte de service qui possède le rôle d'administrateur de stockage prédéfini. 
 
 
 | Ajouter des étiquettes | Les étiquettes sont des métadonnées pour vos ressources Google Cloud.  La console ajoute les étiquettes au système Cloud Volumes ONTAP et aux ressources Google Cloud associées au système.  Vous pouvez ajouter jusqu'à quatre étiquettes à partir de l'interface utilisateur lors de la création d'un système, puis vous pouvez en ajouter d'autres après sa création.  Notez que l'API ne vous limite pas à quatre étiquettes lors de la création d'un système.  Pour plus d'informations sur les étiquettes, reportez-vous à https://cloud.google.com/compute/docs/labeling-resources["Documentation Google Cloud : Étiquetage des ressources"^] . 
@@ -325,7 +325,7 @@ Cliquez sur *Ajouter un abonnement* pour associer les informations d’identific
 Pour créer un système Cloud Volumes ONTAP à la carte, vous devez sélectionner un projet Google Cloud associé à un abonnement à Cloud Volumes ONTAP sur Google Cloud Marketplace. Se référer à https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-gcp-accounts.html["Associer un abonnement Marketplace aux identifiants Google Cloud"^] .
 
 |===
-. *Services* : Sélectionnez les services que vous souhaitez utiliser sur ce système.  Pour sélectionner Sauvegarde et récupération ou pour utiliser NetApp Cloud Tiering, vous devez avoir spécifié le compte de service à l’étape 3.
+. *Services* : Sélectionnez les services que vous souhaitez utiliser sur ce système.  Pour sélectionner Sauvegarde et récupération ou pour utiliser NetApp Cloud Tiering, vous devez avoir spécifié le compte de service à l'étape 3.
 +
 
 TIP: Si vous souhaitez utiliser WORM et la hiérarchisation des données, vous devez désactiver la sauvegarde et la récupération et déployer un système Cloud Volumes ONTAP avec la version 9.8 ou supérieure.
@@ -482,7 +482,7 @@ image:screenshot_cot_vol.gif["Capture d'écran : affiche la page Volume remplie
 | Domaine DNS | Le domaine DNS de la machine virtuelle de stockage Cloud Volumes ONTAP (SVM).  Dans la plupart des cas, le domaine est le même que le domaine AD. 
 
 
-| Serveur NTP | Sélectionnez *Utiliser le domaine Active Directory* pour configurer un serveur NTP à l’aide du DNS Active Directory.  Si vous devez configurer un serveur NTP à l’aide d’une adresse différente, vous devez utiliser l’API. Se référer à la https://docs.netapp.com/us-en/bluexp-automation/index.html["Documentation sur l'automatisation de la console NetApp"^] pour plus de détails.  Notez que vous ne pouvez configurer un serveur NTP que lors de la création d'un serveur CIFS.  Il n'est pas configurable après avoir créé le serveur CIFS. 
+| Serveur NTP | Sélectionnez *Utiliser le domaine Active Directory* pour configurer un serveur NTP à l’aide du DNS Active Directory.  Si vous devez configurer un serveur NTP à l’aide d’une adresse différente, vous devez utiliser l’API. Se référer à la https://docs.netapp.com/us-en/bluexp-automation/index.html["Documentation sur l'automatisation de la NetApp Console"^] pour plus de détails.  Notez que vous ne pouvez configurer un serveur NTP que lors de la création d'un serveur CIFS.  Il n'est pas configurable après avoir créé le serveur CIFS. 
 |===
 . *Profil d'utilisation, type de disque et politique de hiérarchisation* : choisissez si vous souhaitez activer les fonctionnalités d'efficacité du stockage et modifier la politique de hiérarchisation des volumes, si nécessaire.
 +

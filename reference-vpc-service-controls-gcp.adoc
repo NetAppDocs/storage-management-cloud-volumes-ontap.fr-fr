@@ -24,7 +24,7 @@ Les contrôles de service VPC vous permettent de contrôler l'accès aux service
 
 La console communique directement avec les API Google Cloud.  Cela est déclenché soit à partir d'une adresse IP externe en dehors de Google Cloud (par exemple, à partir de api.services.cloud.netapp.com), soit dans Google Cloud à partir d'une adresse interne attribuée à l'agent de la console.
 
-Selon le style de déploiement de l’agent de console, certaines exceptions peuvent devoir être effectuées pour votre périmètre de service.
+Selon le style de déploiement de l’agent de console, certaines exceptions peuvent devoir être prévues pour votre périmètre de service.
 
 
 

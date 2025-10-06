@@ -24,7 +24,7 @@ Lorsque vous utilisez Cloud KMS, sachez que par défaut, le LIF d'un SVM de donn
 * Vous devez être un administrateur de cluster ou de SVM
 * La licence Volume Encryption (VE) doit être installée sur le SVM
 * À partir de Cloud Volumes ONTAP 9.12.1 GA, la licence multi-locataire Encryption Key Management (MTEKM) doit également être installée
-* Un abonnement actif à Google Cloud Platform est requis
+* Un abonnement Google Cloud Platform actif est requis
 
 
 

@@ -47,7 +47,7 @@ link:https://www.netapp.com/company/legal/privacy-policy/["https://www.netapp.co
 
 Les fichiers d'avis fournissent des informations sur les droits d'auteur et les licences tiers utilisés dans les logiciels NetApp .
 
-* https://docs.netapp.com/us-en/bluexp-setup-admin/media/notice.pdf["Avis concernant la console NetApp"^]
+* https://docs.netapp.com/us-en/bluexp-setup-admin/media/notice.pdf["Avis concernant la NetApp Console"^]
 * https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/legal-notices.html#open-source["Avis concernant Cloud Volumes ONTAP"^]
 * https://docs.netapp.com/us-en/ontap/reference_legal_notices.html#open-source["Avis pour ONTAP"^]
 

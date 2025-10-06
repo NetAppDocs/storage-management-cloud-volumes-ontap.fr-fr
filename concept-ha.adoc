@@ -41,7 +41,7 @@ Système opérateur:: Debian 11
 NOTE: Pour Cloud Volumes ONTAP 9.10.0 et versions antérieures, Debian 10 a été installé sur le médiateur.
 
 --
-Mises à niveau:: Lorsque vous mettez à niveau Cloud Volumes ONTAP, la console NetApp met également à jour l'instance du médiateur selon les besoins.
+Mises à niveau:: Lorsque vous mettez à niveau Cloud Volumes ONTAP, la NetApp Console met également à jour l'instance du médiateur selon les besoins.
 Accès à l'instance:: Lorsque vous créez une paire Cloud Volumes ONTAP HA à partir de la console, vous êtes invité à fournir une paire de clés pour l'instance de médiateur.  Vous pouvez utiliser cette paire de clés pour l'accès SSH en utilisant le `admin` utilisateur.
 Agents tiers:: Les agents tiers ou les extensions de machine virtuelle ne sont pas pris en charge sur l’instance du médiateur.
 

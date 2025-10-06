@@ -24,7 +24,7 @@ Sélectionnez l'offre Freemium pour utiliser Cloud Volumes ONTAP gratuitement av
 
 .Étapes
 . Dans le menu de navigation de gauche, sélectionnez *Stockage > Gestion*.
-. Sur la page *Systèmes*, cliquez sur *Ajouter un système* et suivez les étapes de la console NetApp .
+. Sur la page *Systèmes*, cliquez sur *Ajouter un système* et suivez les étapes de la NetApp Console.
 +
 .. Sur la page *Détails et informations d'identification*, cliquez sur *Modifier les informations d'identification > Ajouter un abonnement*, puis suivez les instructions pour vous abonner à l'offre de paiement à l'utilisation sur Google Cloud Marketplace.
 +
@@ -68,7 +68,7 @@ NOTE: NetApp a restreint l'achat, la prolongation et le renouvellement des licen
 
 .Étapes
 . https://bluexp.netapp.com/contact-cds["Contactez le service commercial NetApp pour obtenir une licence"^]
-. https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-nss-accounts.html#add-an-nss-account["Ajoutez votre compte de site de support NetApp à la console NetApp"^]
+. https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-nss-accounts.html#add-an-nss-account["Ajoutez votre compte de site de support NetApp à la NetApp Console"^]
 +
 La console interroge automatiquement le service de licences de NetApp pour obtenir des détails sur les licences associées à votre compte de site de support NetApp .  S'il n'y a pas d'erreur, la console ajoute les licences.
 

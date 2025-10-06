@@ -4,7 +4,7 @@ permalink: task-manage-keystone.html
 keywords: license, licensing, install, keystone, request capacity, link subscription, add keystone subscription, keystone subscription, digital wallet, keystone flex 
 summary: Gérez vos abonnements Keystone en activant les abonnements à utiliser avec Cloud Volumes ONTAP et en demandant des modifications de la capacité engagée pour les niveaux de service de votre abonnement.  La demande de capacité supplémentaire pour un niveau de service fournit davantage de stockage pour les clusters ONTAP sur site ou pour les systèmes Cloud Volumes ONTAP . 
 ---
-= Gérer les abonnements Keystone pour Cloud Volumes ONTAP via la console NetApp
+= Gérer les abonnements Keystone pour Cloud Volumes ONTAP via la NetApp Console
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -43,7 +43,7 @@ image:screenshot-keystone-overview.png["Une capture d'écran qui montre une list
 
 == Lier un abonnement
 
-Une fois que NetApp a autorisé votre compte, vous pouvez lier les abonnements Keystone à utiliser avec Cloud Volumes ONTAP. Cette action permet aux utilisateurs de sélectionner l'abonnement comme méthode de facturation pour les nouveaux systèmes Cloud Volumes ONTAP .
+Une fois que NetApp a autorisé votre compte, vous pouvez lier les abonnements Keystone à utiliser avec Cloud Volumes ONTAP.  Cette action permet aux utilisateurs de sélectionner l'abonnement comme méthode de facturation pour les nouveaux systèmes Cloud Volumes ONTAP .
 
 .Étapes
 . Dans le menu de navigation BlueXP , sélectionnez *Gouvernance > Portefeuille numérique*.
@@ -89,7 +89,7 @@ https://docs.netapp.com/us-en/keystone-staas/integrations/aiq-keystone-details.h
 
 == Dissocier un abonnement
 
-Si vous ne souhaitez plus utiliser un abonnement Keystone avec BlueXP, vous pouvez dissocier l'abonnement. Notez que vous ne pouvez dissocier qu'un abonnement qui n'est pas associé à un abonnement Cloud Volumes ONTAP existant.
+Si vous ne souhaitez plus utiliser un abonnement Keystone avec BlueXP, vous pouvez dissocier l'abonnement.  Notez que vous ne pouvez dissocier qu'un abonnement qui n'est pas associé à un abonnement Cloud Volumes ONTAP existant.
 
 .Étapes
 . Dans le menu de navigation BlueXP , sélectionnez *Gouvernance > Portefeuille numérique*.

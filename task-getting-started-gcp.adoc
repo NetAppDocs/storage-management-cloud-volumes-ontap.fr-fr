@@ -21,7 +21,7 @@ Démarrez avec Cloud Volumes ONTAP dans Google Cloud en quelques étapes.
 Si vous n'avez pas de https://docs.netapp.com/us-en/bluexp-setup-admin/concept-connectors.html["Agent de console"^] mais il faut en créer un. https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-google.html["Découvrez comment créer un agent de console dans Google Cloud"^]
 
 [role="quick-margin-para"]
-Notez que si vous souhaitez déployer Cloud Volumes ONTAP dans un sous-réseau où aucun accès Internet n'est disponible, vous devez installer manuellement l'agent de console et accéder à la console NetApp qui s'exécute sur cet agent de console. https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-private-mode.html["Découvrez comment installer manuellement l'agent de console dans un emplacement sans accès Internet"^]
+Notez que si vous souhaitez déployer Cloud Volumes ONTAP dans un sous-réseau où aucun accès Internet n'est disponible, vous devez installer manuellement l'agent de console et accéder à la NetApp Console qui s'exécute sur cet agent de console. https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-private-mode.html["Découvrez comment installer manuellement l'agent de console dans un emplacement sans accès Internet"^]
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Deux"]Planifiez votre configuration
 [role="quick-margin-para"]
@@ -35,7 +35,7 @@ link:task-planning-your-config-gcp.html["En savoir plus sur la planification de 
 . Assurez-vous que votre VPC et vos sous-réseaux prendront en charge la connectivité entre l’agent de console et Cloud Volumes ONTAP.
 . Si vous prévoyez d'activer la hiérarchisation des données, https://cloud.google.com/vpc/docs/configure-private-google-access["configurer le sous-réseau Cloud Volumes ONTAP pour l'accès privé à Google"^] .
 . Si vous déployez une paire HA, assurez-vous de disposer de quatre VPC, chacun avec son propre sous-réseau.
-. Si vous utilisez un VPC partagé, attribuez le rôle _Utilisateur du réseau de calcul_ au compte de service de l’agent de la console.
+. Si vous utilisez un VPC partagé, attribuez le rôle _Compute Network User_ au compte de service de l’agent de la console.
 . Activez l'accès Internet sortant à partir du VPC cible pour NetApp AutoSupport.
 +
 Cette étape n'est pas requise si vous déployez Cloud Volumes ONTAP dans un emplacement où aucun accès Internet n'est disponible.
@@ -47,7 +47,7 @@ link:reference-networking-gcp.html["En savoir plus sur les exigences de mise en 
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["Quatre"]Configurer un compte de service
 [role="quick-margin-para"]
-Cloud Volumes ONTAP nécessite un compte de service Google Cloud à deux fins.  La première est lorsque vous activezlink:concept-data-tiering.html["hiérarchisation des données"] pour hiérarchiser les données froides vers un stockage d'objets à faible coût dans Google Cloud.  La deuxième est lorsque vous activez le https://docs.netapp.com/us-en/bluexp-backup-recovery/concept-backup-to-cloud.html["Sauvegarde et récupération NetApp"^] pour sauvegarder des volumes sur un stockage d'objets à faible coût.
+Cloud Volumes ONTAP nécessite un compte de service Google Cloud à deux fins.  La première est lorsque vous activezlink:concept-data-tiering.html["hiérarchisation des données"] pour hiérarchiser les données froides vers un stockage d'objets à faible coût dans Google Cloud.  La deuxième est lorsque vous activez le https://docs.netapp.com/us-en/bluexp-backup-recovery/concept-backup-to-cloud.html["NetApp Backup and Recovery"^] pour sauvegarder des volumes sur un stockage d'objets à faible coût.
 
 [role="quick-margin-para"]
 Vous pouvez configurer un compte de service et l’utiliser à ces deux fins.  Le compte de service doit avoir le rôle *Administrateur de stockage*.

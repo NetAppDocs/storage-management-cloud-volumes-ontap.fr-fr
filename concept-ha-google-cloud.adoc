@@ -56,7 +56,7 @@ Système opérateur:: Debian 11
 NOTE: Pour Cloud Volumes ONTAP 9.10.0 et versions antérieures, Debian 10 a été installé sur le médiateur.
 
 --
-Mises à niveau:: Lorsque vous mettez à niveau Cloud Volumes ONTAP, la console NetApp met également à jour l'instance du médiateur selon les besoins.
+Mises à niveau:: Lorsque vous mettez à niveau Cloud Volumes ONTAP, la NetApp Console met également à jour l'instance du médiateur selon les besoins.
 Accès à l'instance:: Pour Debian, l'utilisateur cloud par défaut est `admin` .  Google Cloud crée et ajoute des certificats pour le `admin` utilisateur lorsque l'accès SSH est demandé via la console Google Cloud ou la ligne de commande gcloud.  Vous pouvez spécifier `sudo` pour obtenir les privilèges root.
 Agents tiers:: Les agents tiers ou les extensions de machine virtuelle ne sont pas pris en charge sur l’instance du médiateur.
 

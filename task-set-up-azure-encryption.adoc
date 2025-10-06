@@ -25,7 +25,7 @@ Les données Cloud Volumes ONTAP sont automatiquement chiffrées dans Azure à l
 Si vous souhaitez utiliser une clé gérée par le client avec Cloud Volumes ONTAP, vous devez suivre les étapes suivantes :
 
 . Depuis Azure, créez un coffre de clés, puis générez une clé dans ce coffre.
-. Depuis la console NetApp , utilisez l’API pour créer un système Cloud Volumes ONTAP qui utilise la clé.
+. Depuis la NetApp Console, utilisez l’API pour créer un système Cloud Volumes ONTAP qui utilise la clé.
 
 
 
@@ -105,7 +105,7 @@ Lorsque vous configurez vos clés de chiffrement, vous devez utiliser le portail
 Pour plus d’informations sur la configuration de vos clés et la configuration de la rotation des clés, reportez-vous aux rubriques de documentation Microsoft Azure suivantes :
 
 * https://learn.microsoft.com/en-us/azure/key-vault/keys/how-to-configure-key-rotation["Configurer la rotation automatique des clés cryptographiques dans Azure Key Vault"^]
-* https://learn.microsoft.com/en-us/azure/virtual-machines/windows/disks-enable-customer-managed-keys-powershell#set-up-an-azure-key-vault-and-diskencryptionset-with-automatic-key-rotation-preview["Azure PowerShell - Activer les clés gérées par le client"^]
+* https://learn.microsoft.com/en-us/azure/virtual-machines/windows/disks-enable-customer-managed-keys-powershell#set-up-an-azure-key-vault-and-diskencryptionset-with-automatic-key-rotation-preview["Azure PowerShell – Activer les clés gérées par le client"^]
 
 
 
@@ -223,7 +223,7 @@ https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-azure.htm
 Pour une paire HA : `GET /azure/ha/metadata/vaults`
 
 +
-Pour un nœud unique : `GET /azure/vsa/metadata/vaults`
+Pour un seul nœud : `GET /azure/vsa/metadata/vaults`
 
 +
 Prenez note du *nom* et du *resourceGroup*.  Vous devrez spécifier ces valeurs à l’étape suivante.
@@ -236,7 +236,7 @@ https://docs.netapp.com/us-en/bluexp-automation/cm/api_ref_resources.html#azure-
 Pour une paire HA : `GET /azure/ha/metadata/keys-vault`
 
 +
-Pour un seul nœud : `GET /azure/vsa/metadata/keys-vault`
+Pour un nœud unique : `GET /azure/vsa/metadata/keys-vault`
 
 +
 Prenez note du *keyName*.  Vous devrez spécifier cette valeur (ainsi que le nom du coffre-fort) à l’étape suivante.

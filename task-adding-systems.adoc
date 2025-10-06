@@ -4,7 +4,7 @@ permalink: task-adding-systems.html
 keywords: discover, discovering, add, adding, existing 
 summary: Vous pouvez découvrir et ajouter des systèmes Cloud Volumes ONTAP existants à la console.  Vous pouvez le faire si vous déployez un nouveau système. 
 ---
-= Ajouter un système Cloud Volumes ONTAP existant à la console NetApp
+= Ajouter un système Cloud Volumes ONTAP existant à la NetApp Console
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,7 +14,7 @@ summary: Vous pouvez découvrir et ajouter des systèmes Cloud Volumes ONTAP exi
 
 
 [role="lead"]
-Vous pouvez découvrir et ajouter des systèmes Cloud Volumes ONTAP existants à la console NetApp .  Vous pouvez le faire si vous déployez un nouveau système.
+Vous pouvez découvrir et ajouter des systèmes Cloud Volumes ONTAP existants à la NetApp Console.  Vous pouvez le faire si vous déployez un nouveau système.
 
 .Avant de commencer
 Vous devez connaître le mot de passe du compte utilisateur administrateur Cloud Volumes ONTAP .

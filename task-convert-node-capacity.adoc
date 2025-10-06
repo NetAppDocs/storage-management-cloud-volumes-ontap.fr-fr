@@ -14,15 +14,15 @@ summary: 'Après la fin de la disponibilité (EOA) de vos licences basées sur l
 
 
 [role="lead"]
-Après la fin de la disponibilité (EOA) de vos licences basées sur les nœuds, vous devez passer à des licences basées sur la capacité à l'aide de l'outil de conversion de licence dans la console NetApp .
+Après la fin de la disponibilité (EOA) de vos licences basées sur les nœuds, vous devez passer à des licences basées sur la capacité à l'aide de l'outil de conversion de licence dans la NetApp Console.
 
-Pour les engagements annuels ou à plus long terme, NetApp vous recommande de contacter votre représentant NetApp avant la date EOA (11 novembre 2024) ou la date d'expiration de la licence pour vous assurer que les conditions préalables à la transition sont en place.  Si vous ne disposez pas d'un contrat à long terme pour un nœud Cloud Volumes ONTAP et que vous exécutez votre système avec un abonnement à la demande (PAYGO), il est important de planifier votre conversion avant la fin du support (EOS) le 31 décembre 2024.  Dans les deux cas, vous devez vous assurer que votre système répond aux exigences avant d'utiliser l'outil de conversion de licence dans la console NetApp pour une transition transparente.
+Pour les engagements annuels ou à plus long terme, NetApp vous recommande de contacter votre représentant NetApp avant la date EOA (11 novembre 2024) ou la date d'expiration de la licence pour vous assurer que les conditions préalables à la transition sont en place.  Si vous ne disposez pas d'un contrat à long terme pour un nœud Cloud Volumes ONTAP et que vous exécutez votre système avec un abonnement à la demande (PAYGO), il est important de planifier votre conversion avant la fin du support (EOS) le 31 décembre 2024.  Dans les deux cas, vous devez vous assurer que votre système répond aux exigences avant d'utiliser l'outil de conversion de licence dans la NetApp Console pour une transition transparente.
 
 Pour plus d'informations sur l'EOA et l'EOS, reportez-vous àlink:concept-licensing.html#end-of-availability-of-node-based-licenses["Fin de disponibilité des licences basées sur des nœuds"] .
 
 .À propos de cette tâche
 * Lorsque vous utilisez l'outil de conversion de licence, la transition du modèle de licence basé sur les nœuds au modèle de licence basé sur la capacité s'effectue sur place et en ligne, ce qui élimine le besoin de migration de données ou de provisionnement de ressources cloud supplémentaires.
-* Il s’agit d’une opération non perturbatrice, et aucune interruption de service ni aucun temps d’arrêt d’application ne se produit.
+* Il s’agit d’une opération non perturbatrice, et aucune interruption de service ni interruption d’application ne se produit.
 * Les données de compte et d’application de votre système Cloud Volumes ONTAP restent intactes.
 * Les ressources cloud sous-jacentes restent inchangées après la conversion.
 * L'outil de conversion de licence prend en charge tous les types de déploiement, tels que le nœud unique, la haute disponibilité (HA) dans une zone de disponibilité unique (AZ), la haute disponibilité dans plusieurs AZ, apportez votre propre licence (BYOL) et PAYGO.
@@ -37,7 +37,7 @@ Pour plus d'informations sur l'EOA et l'EOS, reportez-vous àlink:concept-licens
 * Votre compte NSS doit être enregistré avec les informations d’identification utilisateur que vous avez utilisées pour accéder à la console.
 * Le système Cloud Volumes ONTAP doit être lié au compte NSS avec un accès client ou un accès administrateur.
 * Vous devez disposer d'une licence valide basée sur la capacité, soit une licence BYOL, soit un abonnement au marché.
-* Une licence basée sur la capacité devrait être disponible sur votre compte.  Cette licence peut être un abonnement marketplace ou un package BYOL/offre privée disponible sous *Licences et abonnements* dans la Console.
+* Une licence basée sur la capacité devrait être disponible sur votre compte.  Cette licence peut être un abonnement marketplace ou un package BYOL/offre privée disponible sous * Licenses and subscriptions* dans la Console.
 * Comprendre les critères suivants avant de sélectionner un forfait de destination :
 +
 ** Si le compte dispose d'une licence BYOL basée sur la capacité, le package de destination sélectionné doit correspondre aux licences BYOL basées sur la capacité du compte :
@@ -78,13 +78,13 @@ TIP: L'icône est désactivée si votre système Cloud Volumes ONTAP est déjà 
 
 
 .Après avoir terminé
-Affichez le nouveau numéro de série de la licence et vérifiez les modifications dans le menu *Licences et abonnements* de la console.
+Affichez le nouveau numéro de série de la licence et vérifiez les modifications dans le menu * Licenses and subscriptions* de la console.
 
 
 
 == Tarification dans différents hyperscalaires
 
-Pour plus de détails sur les prix, rendez-vous sur le https://bluexp.netapp.com/pricing/["Site Web de la console NetApp"^] .
+Pour plus de détails sur les prix, rendez-vous sur le https://bluexp.netapp.com/pricing/["Site Web de la NetApp Console"^] .
 
 Pour plus d'informations sur les offres privées dans des hyperscalaires spécifiques, écrivez à :
 

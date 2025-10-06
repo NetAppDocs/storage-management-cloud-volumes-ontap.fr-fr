@@ -26,7 +26,7 @@ Plusieurs machines virtuelles de stockage sont prises en charge avec certaines c
 
 == Travailler avec plusieurs machines virtuelles de stockage
 
-La console NetApp prend en charge toutes les machines virtuelles de stockage supplémentaires que vous créez à partir d' ONTAP System Manager ou de l'interface de ligne de commande ONTAP .
+La NetApp Console prend en charge toutes les machines virtuelles de stockage supplémentaires que vous créez à partir d' ONTAP System Manager ou de l'interface de ligne de commande ONTAP .
 
 Par exemple, l’image suivante montre comment vous pouvez choisir une machine virtuelle de stockage lorsque vous créez un volume.
 

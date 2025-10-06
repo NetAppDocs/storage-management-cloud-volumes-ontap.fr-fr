@@ -30,7 +30,7 @@ image:diagram-aws-vpc-sharing.png["Une image conceptuelle d’un déploiement Cl
 
 Comme décrit dans les étapes ci-dessous, vous devrez partager les sous-réseaux avec le compte participant, puis créer le rôle IAM et le groupe de sécurité dans le compte propriétaire du VPC.
 
-Lorsque vous créez le système Cloud Volumes ONTAP , la console NetApp crée et attache automatiquement un rôle IAM au médiateur.  Ce rôle assume le rôle IAM que vous avez créé dans le compte propriétaire du VPC afin d’apporter des modifications aux tables de routage associées à la paire HA.
+Lorsque vous créez le système Cloud Volumes ONTAP , la NetApp Console crée et attache automatiquement un rôle IAM au médiateur.  Ce rôle assume le rôle IAM que vous avez créé dans le compte propriétaire du VPC afin d’apporter des modifications aux tables de routage associées à la paire HA.
 
 .Étapes
 . Partagez les sous-réseaux du compte propriétaire du VPC avec le compte participant.

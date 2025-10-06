@@ -16,7 +16,7 @@ summary: Une machine virtuelle de stockage est une machine virtuelle exécutée 
 [role="lead"]
 Une machine virtuelle de stockage est une machine virtuelle exécutée dans ONTAP qui fournit des services de stockage et de données à vos clients.  Vous connaissez peut-être cela sous le nom de _SVM_ ou _vserver_.  Cloud Volumes ONTAP est configuré avec une machine virtuelle de stockage par défaut, mais certaines configurations prennent en charge des machines virtuelles de stockage supplémentaires.
 
-Pour créer et gérer des machines virtuelles de stockage de données supplémentaires dans Google Cloud, vous devez utiliser les API.  Cela est dû au fait que les API automatisent le processus de création des machines virtuelles de stockage et de configuration des interfaces réseau requises.  Lors de la création des machines virtuelles de stockage, la console NetApp configure les services LIF requis, ainsi qu'un LIF iSCSI requis pour les communications SMB/CIFS sortantes à partir de la machine virtuelle de stockage.
+Pour créer et gérer des machines virtuelles de stockage de données supplémentaires dans Google Cloud, vous devez utiliser les API.  Cela est dû au fait que les API automatisent le processus de création des machines virtuelles de stockage et de configuration des interfaces réseau requises.  Lors de la création des machines virtuelles de stockage, la NetApp Console configure les services LIF requis, ainsi qu'un LIF iSCSI requis pour les communications SMB/CIFS sortantes à partir de la machine virtuelle de stockage.
 
 Pour plus d'informations sur l'exécution des appels d'API Cloud Volumes ONTAP , reportez-vous à https://docs.netapp.com/us-en/bluexp-automation/cm/your_api_call.html#step-1-select-the-identifie["Votre premier appel d'API"^] .
 
@@ -148,5 +148,5 @@ Dans une configuration à nœud unique ou HA, vous pouvez supprimer une machine 
 * https://docs.netapp.com/us-en/bluexp-automation/cm/prepare.html["Préparez-vous à utiliser l'API"^]
 * https://docs.netapp.com/us-en/bluexp-automation/cm/workflow_processes.html#organization-of-cloud-volumes-ontap-workflows["Flux de travail Cloud Volumes ONTAP"^]
 * https://docs.netapp.com/us-en/bluexp-automation/platform/get_identifiers.html#get-the-connector-identifier["Obtenir les identifiants requis"^]
-* https://docs.netapp.com/us-en/bluexp-automation/platform/use_rest_apis.html["Utiliser les API REST pour la console NetApp"^]
+* https://docs.netapp.com/us-en/bluexp-automation/platform/use_rest_apis.html["Utiliser les API REST pour la NetApp Console"^]
 

@@ -20,7 +20,7 @@ Cloud Volumes ONTAP utilise un lien privé Azure pour les connexions à ses comp
 
 == Aperçu
 
-Par défaut, la console NetApp active une liaison privée Azure pour les connexions entre Cloud Volumes ONTAP et ses comptes de stockage associés.  Un lien privé Azure sécurise les connexions entre les points de terminaison dans Azure et offre des avantages en termes de performances.
+Par défaut, la NetApp Console active une liaison privée Azure pour les connexions entre Cloud Volumes ONTAP et ses comptes de stockage associés.  Un lien privé Azure sécurise les connexions entre les points de terminaison dans Azure et offre des avantages en termes de performances.
 
 Si nécessaire, vous pouvez configurer Cloud Volumes ONTAP pour utiliser des points de terminaison de service au lieu d’un lien privé Azure.
 
@@ -28,7 +28,7 @@ Quelle que soit la configuration, la console limite toujours l'accès au réseau
 
 
 
-== Désactiver les liens privés Azure et utiliser des points de terminaison de service à la place
+== Désactiver les liens privés Azure et utiliser les points de terminaison de service à la place
 
 Si votre entreprise l’exige, vous pouvez modifier un paramètre dans la console afin qu’il configure Cloud Volumes ONTAP pour utiliser des points de terminaison de service au lieu d’un lien privé Azure.  La modification de ce paramètre s'applique aux nouveaux systèmes Cloud Volumes ONTAP que vous créez.  Les points de terminaison de service ne sont pris en charge que danslink:https://docs.microsoft.com/en-us/azure/availability-zones/cross-region-replication-azure#azure-cross-region-replication-pairings-for-all-geographies["Paires de régions Azure"^] entre l'agent de console et les réseaux virtuels Cloud Volumes ONTAP .
 
@@ -42,7 +42,7 @@ L'agent de console doit être déployé dans la même région Azure que les syst
 image::screenshot-settings-cloud-volumes-ontap.png[Une capture d’écran de l’option Paramètres Cloud Volumes ONTAP sous l’icône Paramètres.]
 
 . Sous *Azure*, cliquez sur *Utiliser Azure Private Link*.
-. Désélectionnez *Connexion par lien privé entre Cloud Volumes ONTAP et les comptes de stockage*.
+. Désélectionnez *Connexion Private Link entre Cloud Volumes ONTAP et les comptes de stockage*.
 . Cliquez sur *Enregistrer*.
 
 
@@ -87,7 +87,7 @@ Si vous utilisez https://docs.microsoft.com/en-us/azure/dns/private-dns-overview
 Notez que le nom DNS doit correspondre aux exigences de dénomination DNS Azure https://docs.microsoft.com/en-us/azure/storage/common/storage-private-endpoints#dns-changes-for-private-endpoints["comme indiqué dans la documentation Azure"^] .
 
 .Étapes
-. Connectez-vous en SSH à l'hôte de l'agent de la console et connectez-vous.
+. Connectez-vous en SSH à l'hôte de l'agent de console et connectez-vous.
 . Accédez au  `/opt/application/netapp/cloudmanager/docker_occm/data` annuaire.
 . Modifier  `app.conf` en ajoutant le  `user-private-dns-zone-settings` paramètre avec les paires mot-clé-valeur suivantes :
 +

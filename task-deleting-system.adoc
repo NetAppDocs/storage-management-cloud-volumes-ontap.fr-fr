@@ -4,7 +4,7 @@ permalink: task-deleting-system.html
 keywords: terminate, delete, system, remove, terminate system, terminate instance, delete cloud volumes ontap, delete instance, delete system, delete backups, cloud backup, cloud data sense 
 summary: Vous devez toujours supprimer les systèmes Cloud Volumes ONTAP , plutôt que depuis la console de votre fournisseur de cloud.  Par exemple, si vous résiliez une instance Cloud Volumes ONTAP sous licence auprès de votre fournisseur de cloud, vous ne pouvez pas utiliser la clé de licence pour une autre instance.  Vous devez supprimer le système pour libérer la licence. 
 ---
-= Supprimer un système Cloud Volumes ONTAP de la console NetApp
+= Supprimer un système Cloud Volumes ONTAP de la NetApp Console
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,12 +14,12 @@ summary: Vous devez toujours supprimer les systèmes Cloud Volumes ONTAP , plut�
 
 
 [role="lead"]
-Vous devez toujours supprimer les systèmes Cloud Volumes ONTAP de la console NetApp , plutôt que de l'application de votre fournisseur de cloud.  Par exemple, si vous résiliez une instance Cloud Volumes ONTAP sous licence auprès de votre fournisseur de cloud, vous ne pouvez pas utiliser la clé de licence pour une autre instance.  Vous devez supprimer le système Cloud Volumes ONTAP de la console pour libérer la licence.
+Vous devez toujours supprimer les systèmes Cloud Volumes ONTAP de la NetApp Console, plutôt que de l'application de votre fournisseur de cloud.  Par exemple, si vous résiliez une instance Cloud Volumes ONTAP sous licence auprès de votre fournisseur de cloud, vous ne pouvez pas utiliser la clé de licence pour une autre instance.  Vous devez supprimer le système Cloud Volumes ONTAP de la console pour libérer la licence.
 
 Lorsque vous supprimez un système, la console met fin aux instances Cloud Volumes ONTAP et supprime les disques et les snapshots.
 
 
-NOTE: D'autres ressources, telles que les sauvegardes gérées par NetApp Backup and Recovery et les instances de NetApp Data Classification, ne sont pas supprimées lorsque vous supprimez un système. Vous devrez les supprimer manuellement. Si vous ne le faites pas, vous continuerez à payer des frais pour ces ressources.
+NOTE: D'autres ressources, telles que les sauvegardes gérées par NetApp Backup and Recovery et les instances pour NetApp Data Classification, ne sont pas supprimées lorsque vous supprimez un système. Vous devrez les supprimer manuellement. Si vous ne le faites pas, vous continuerez à payer des frais pour ces ressources.
 
 Lorsque la console déploie Cloud Volumes ONTAP chez votre fournisseur de cloud, elle active la protection contre la résiliation sur les instances.  Cette option permet d'éviter toute interruption accidentelle.
 

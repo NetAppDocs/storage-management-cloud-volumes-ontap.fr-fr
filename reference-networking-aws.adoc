@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: reference-networking-aws.html 
 keywords: networking, network, requirements, connection, connections, vpc, security group, security groups, subnets, vpn, internet, nat, s3, dns, ad, active directory, az, availability zone, floating IP, floating, SVM, management LIF, route, route tables, proxy, HTTP, private, tier, s3 endpoint, proxy server, nat device, vpn, snapmanager, snapcenter, iscsi, nfs, cifs, nas, san, outbound, inbound, connections, autosupport, ha, ha pair, high availability 
-summary: 'La console NetApp gère la configuration des composants réseau pour Cloud Volumes ONTAP, tels que les adresses IP, les masques de réseau et les itinéraires.  Vous devez vous assurer que l"accès Internet sortant est disponible, que suffisamment d"adresses IP privées sont disponibles, que les bonnes connexions sont en place, etc.' 
+summary: 'La NetApp Console gère la configuration des composants réseau pour Cloud Volumes ONTAP, tels que les adresses IP, les masques de réseau et les itinéraires.  Vous devez vous assurer que l"accès Internet sortant est disponible, que suffisamment d"adresses IP privées sont disponibles, que les bonnes connexions sont en place, etc.' 
 ---
 = Configurer la mise en réseau AWS pour Cloud Volumes ONTAP
 :hardbreaks:
@@ -14,7 +14,7 @@ summary: 'La console NetApp gère la configuration des composants réseau pour C
 
 
 [role="lead"]
-La console NetApp gère la configuration des composants réseau pour Cloud Volumes ONTAP, tels que les adresses IP, les masques de réseau et les itinéraires.  Vous devez vous assurer que l'accès Internet sortant est disponible, que suffisamment d'adresses IP privées sont disponibles, que les bonnes connexions sont en place, etc.
+La NetApp Console gère la configuration des composants réseau pour Cloud Volumes ONTAP, tels que les adresses IP, les masques de réseau et les itinéraires.  Vous devez vous assurer que l'accès Internet sortant est disponible, que suffisamment d'adresses IP privées sont disponibles, que les bonnes connexions sont en place, etc.
 
 
 
@@ -59,7 +59,7 @@ L'authentification de l'utilisateur échoue et les services suivants restent ind
 | \ https://mysupport.netapp.com/aods/asupmessage \ https://mysupport.netapp.com/asupprod/post/1.0/postAsup | AutoSupport | Utilisé pour envoyer des données de télémétrie AutoSupport au support NetApp . | Modes standard et restreint. | Les informations AutoSupport ne sont toujours pas livrées. 
 
 
-| Le point de terminaison commercial exact pour le service AWS (suffixé avec `amazonaws.com` ) dépend de la région AWS que vous utilisez. Reportez-vous à la https://docs.aws.amazon.com/general/latest/gr/rande.html["Documentation AWS pour plus de détails"^] .  a| 
+| Le point de terminaison commercial exact pour le service AWS (suffixé avec `amazonaws.com` ) dépend de la région AWS que vous utilisez.  Reportez-vous à la https://docs.aws.amazon.com/general/latest/gr/rande.html["Documentation AWS pour plus de détails"^] .  a| 
 * CloudFormation
 * Cloud de calcul élastique (EC2)
 * Gestion des identités et des accès (IAM)
@@ -84,13 +84,13 @@ L'authentification de l'utilisateur échoue et les services suivants restent ind
 
 === Accès Internet sortant pour le médiateur HA
 
-L'instance de médiateur HA doit disposer d'une connexion sortante au service AWS EC2 afin de pouvoir faciliter le basculement du stockage.  Pour fournir la connexion, vous pouvez ajouter une adresse IP publique, spécifier un serveur proxy ou utiliser une option manuelle.
+L'instance de médiateur HA doit disposer d'une connexion sortante au service AWS EC2 afin de pouvoir faciliter le basculement du stockage.  Pour établir la connexion, vous pouvez ajouter une adresse IP publique, spécifier un serveur proxy ou utiliser une option manuelle.
 
 L'option manuelle peut être une passerelle NAT ou un point de terminaison VPC d'interface du sous-réseau cible vers le service AWS EC2.  Pour plus de détails sur les points de terminaison VPC, reportez-vous à la http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpce-interface.html["Documentation AWS : Points de terminaison d'interface VPC (AWS PrivateLink)"^] .
 
 
 
-=== Configuration du proxy réseau de l'agent de la console NetApp
+=== Configuration du proxy réseau de l'agent de la NetApp Console
 
 Vous pouvez utiliser la configuration des serveurs proxy de l'agent NetApp Console pour activer l'accès Internet sortant à partir de Cloud Volumes ONTAP.  La console prend en charge deux types de proxys :
 
@@ -266,7 +266,7 @@ Zones de disponibilité:: Ce modèle de déploiement HA utilise plusieurs AZ pou
 Un sous-réseau doit être disponible dans chaque zone de disponibilité.
 
 [[floatingips]]
-Adresses IP flottantes pour les données NAS et la gestion des clusters/SVM:: Les configurations HA dans plusieurs AZ utilisent des adresses IP flottantes qui migrent entre les nœuds en cas de panne.  Ils ne sont pas accessibles nativement depuis l'extérieur du VPC, sauf si vouslink:task-setting-up-transit-gateway.html["configurer une passerelle de transit AWS"] .
+Adresses IP flottantes pour la gestion des données NAS et des clusters/SVM:: Les configurations HA dans plusieurs AZ utilisent des adresses IP flottantes qui migrent entre les nœuds en cas de panne.  Ils ne sont pas accessibles nativement depuis l'extérieur du VPC, sauf si vouslink:task-setting-up-transit-gateway.html["configurer une passerelle de transit AWS"] .
 +
 --
 Une adresse IP flottante est destinée à la gestion du cluster, une autre aux données NFS/CIFS sur le nœud 1 et une autre aux données NFS/CIFS sur le nœud 2.  Une quatrième adresse IP flottante pour la gestion SVM est facultative.
