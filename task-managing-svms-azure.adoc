@@ -1,0 +1,152 @@
+---
+sidebar: sidebar 
+permalink: task-managing-svms-azure.html 
+keywords: storage virtual machine, vserver, svm, storage vm, supported number, number supported 
+summary: Une machine virtuelle de stockage est une machine virtuelle exécutée dans ONTAP qui fournit des services de stockage et de données à vos clients.  Vous connaissez peut-être cela sous le nom de SVM ou de vserver.  Cloud Volumes ONTAP est configuré avec une machine virtuelle de stockage par défaut, mais certaines configurations prennent en charge des machines virtuelles de stockage supplémentaires. 
+---
+= Gérer les machines virtuelles de stockage de données pour Cloud Volumes ONTAP dans Azure
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Une machine virtuelle de stockage est une machine virtuelle exécutée dans ONTAP qui fournit des services de stockage et de données à vos clients.  Vous connaissez peut-être cela sous le nom de _SVM_ ou _vserver_.  Cloud Volumes ONTAP est configuré avec une machine virtuelle de stockage par défaut, mais vous pouvez créer des machines virtuelles de stockage supplémentaires lors de l’exécution de Cloud Volumes ONTAP dans Azure.
+
+Pour créer et gérer des machines virtuelles de stockage de données supplémentaires dans Azure, vous devez utiliser les API.  Cela est dû au fait que les API automatisent le processus de création des machines virtuelles de stockage et de configuration des interfaces réseau requises.  Lors de la création des machines virtuelles de stockage, la console NetApp configure les services LIF requis, ainsi qu'un LIF iSCSI requis pour les communications SMB/CIFS sortantes à partir de la machine virtuelle de stockage.
+
+Pour plus d'informations sur l'exécution des appels d'API Cloud Volumes ONTAP , reportez-vous à https://docs.netapp.com/us-en/bluexp-automation/cm/your_api_call.html#step-1-select-the-identifie["Votre premier appel d'API"^] .
+
+
+
+== Nombre de machines virtuelles de stockage prises en charge
+
+À partir de Cloud Volumes ONTAP 9.9.0, en fonction de votre licence, plusieurs machines virtuelles de stockage sont prises en charge avec des configurations spécifiques.  Reportez-vous à la https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-limits-azure.html["Notes de version de Cloud Volumes ONTAP"^] pour vérifier le nombre de machines virtuelles de stockage prises en charge pour votre version de Cloud Volumes ONTAP.
+
+Toutes les versions de Cloud Volumes ONTAP antérieures à la version 9.9.0 prennent en charge une machine virtuelle de stockage de service de données et une machine virtuelle de stockage de destination utilisée pour la reprise après sinistre.  Vous pouvez activer la machine virtuelle de stockage de destination pour l'accès aux données en cas de panne sur la machine virtuelle de stockage source.
+
+
+
+== Créer une machine virtuelle de stockage
+
+En fonction de votre configuration et de votre type de licence, vous pouvez créer plusieurs machines virtuelles de stockage sur un système à nœud unique ou dans une configuration haute disponibilité (HA) à l'aide des API de la console NetApp .
+
+.À propos de cette tâche
+Lorsque vous créez des machines virtuelles de stockage à l'aide des API, en plus de configurer les interfaces réseau requises, la console modifie également les `default-data-files` politiques sur les machines virtuelles de stockage de données en supprimant les services suivants du LIF de données NAS et en les ajoutant au LIF de données iSCSI utilisé pour les connexions de gestion sortantes :
+
+* `data-fpolicy-client`
+* `management-ad-client`
+* `management-dns-client`
+* `management-ldap-client`
+* `management-nis-client`
+
+
+.Avant de commencer
+L'agent de console nécessite des autorisations spécifiques pour créer des machines virtuelles de stockage pour Cloud Volumes ONTAP.  Les autorisations requises sont incluses dans https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-azure.html["les politiques fournies par NetApp"^] .
+
+
+
+=== Système à nœud unique
+
+Utilisez l’appel d’API suivant pour créer une machine virtuelle de stockage sur un système à nœud unique.
+
+`POST /azure/vsa/working-environments/{workingEnvironmentId}/svm`
+
+Incluez les paramètres suivants dans le corps de la requête :
+
+[source, json]
+----
+{ "svmName": "myNewSvm1"
+   "svmPassword": "optional, the API takes the cluster password if not provided"
+   "mgmtLif": "optional, to create an additional management LIF, if you want to use the storage VM for management purposes"}
+----
+
+
+=== paire HA
+
+Utilisez l’appel d’API suivant pour créer une machine virtuelle de stockage sur une paire HA :
+
+`POST /azure/ha/working-environments/{workingEnvironmentId}/svm`
+
+Incluez les paramètres suivants dans le corps de la requête :
+
+[source, json]
+----
+{ "svmName": "NewSvmName"
+   "svmPassword": "optional value, the API takes the cluster password if not provided"
+   "mgmtLif": "optional value, to create an additional management LIF, if you want to use the storage VM for management purposes"}
+----
+
+
+== Gérer les machines virtuelles de stockage sur des systèmes à nœud unique et des paires HA
+
+À l’aide des API, vous pouvez renommer et supprimer des machines virtuelles de stockage dans les configurations à nœud unique et HA.
+
+.Avant de commencer
+L'agent de console nécessite des autorisations spécifiques pour gérer les machines virtuelles de stockage pour Cloud Volumes ONTAP.  Les autorisations requises sont incluses dans https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-azure.html["les politiques fournies par NetApp"^] .
+
+
+
+=== Renommer une machine virtuelle de stockage
+
+Pour renommer une machine virtuelle de stockage, vous devez fournir les noms de la machine virtuelle de stockage existante et de la nouvelle machine virtuelle de stockage comme paramètres.
+
+.Étapes
+* Utilisez l’appel d’API suivant pour renommer une machine virtuelle de stockage sur un système à nœud unique :
++
+`PUT /azure/vsa/working-environments/{workingEnvironmentId}/svm`
+
++
+Incluez les paramètres suivants dans le corps de la requête :
+
++
+[source, json]
+----
+{
+  "svmNewName": "NewSvmName",
+  "svmName": "OldSvmName"
+}
+----
+* Utilisez l’appel d’API suivant pour renommer une machine virtuelle de stockage sur une paire HA :
++
+`PUT /azure/ha/working-environments/{workingEnvironmentId}/svm`
+
++
+Incluez les paramètres suivants dans le corps de la requête :
+
++
+[source, json]
+----
+{
+  "svmNewName": "NewSvmName",
+  "svmName": "OldSvmName"
+}
+----
+
+
+
+
+=== Supprimer une machine virtuelle de stockage
+
+Dans une configuration à nœud unique ou HA, vous pouvez supprimer une machine virtuelle de stockage si elle ne possède aucun volume actif.
+
+.Étapes
+* Utilisez l’appel d’API suivant pour supprimer une machine virtuelle de stockage sur un système à nœud unique :
++
+`DELETE /azure/vsa/working-environments/{workingEnvironmentId}/svm/{svmName}`
+
+* Utilisez l’appel d’API suivant pour supprimer une machine virtuelle de stockage sur une paire HA :
++
+`DELETE /azure/ha/working-environments/{workingEnvironmentId}/svm/{svmName}`
+
+
+
+.Informations connexes
+* https://docs.netapp.com/us-en/bluexp-automation/cm/prepare.html["Préparez-vous à utiliser l'API"^]
+* https://docs.netapp.com/us-en/bluexp-automation/cm/workflow_processes.html#organization-of-cloud-volumes-ontap-workflows["Flux de travail Cloud Volumes ONTAP"^]
+* https://docs.netapp.com/us-en/bluexp-automation/platform/get_identifiers.html#get-the-connector-identifier["Obtenir les identifiants requis"^]
+* https://docs.netapp.com/us-en/bluexp-automation/platform/use_rest_apis.html["Utiliser les API REST pour la console NetApp"^]
+

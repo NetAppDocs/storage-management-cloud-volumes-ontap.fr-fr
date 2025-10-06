@@ -1,0 +1,39 @@
+---
+sidebar: sidebar 
+permalink: task-overriding-cifs-locks.html 
+keywords: CIFS locks, azure maintenance, maintenance events, cifs sessions, storage failover, storage giveback, giveback 
+summary: L’administrateur de l’organisation ou du compte peut activer un paramètre dans la console NetApp qui empêche les problèmes de restitution du stockage Cloud Volumes ONTAP lors des événements de maintenance Azure.  Lorsque vous activez ce paramètre, Cloud Volumes ONTAP oppose son veto aux verrous CIFS et réinitialise les sessions CIFS actives. 
+---
+= Remplacer les verrous CIFS pour les paires Cloud Volumes ONTAP HA dans Azure
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+L’administrateur de l’organisation ou du compte peut activer un paramètre dans la console NetApp qui empêche les problèmes de restitution du stockage Cloud Volumes ONTAP lors des événements de maintenance Azure.  Lorsque vous activez ce paramètre, Cloud Volumes ONTAP oppose son veto aux verrous CIFS et réinitialise les sessions CIFS actives.
+
+.À propos de cette tâche
+Microsoft Azure planifie des événements de maintenance périodiques sur ses machines virtuelles.  Lorsqu'un événement de maintenance se produit sur une paire Cloud Volumes ONTAP HA, la paire HA lance la prise de contrôle du stockage.  S'il existe des sessions CIFS actives pendant cet événement de maintenance, les verrous sur les fichiers CIFS peuvent empêcher la restitution du stockage.
+
+Si vous activez ce paramètre, Cloud Volumes ONTAP opposera son veto aux verrous et réinitialisera les sessions CIFS actives.  Par conséquent, la paire HA peut effectuer la restitution du stockage pendant ces événements de maintenance.
+
+
+CAUTION: Ce processus peut être perturbateur pour les clients CIFS.  Les données qui ne sont pas validées par les clients CIFS peuvent être perdues.
+
+.Avant de commencer
+Vous devez créer un agent de console avant de pouvoir modifier les paramètres de la console. https://docs.netapp.com/us-en/bluexp-setup-admin/concept-connectors.html#how-to-create-a-connector["Apprenez comment"^] .
+
+.Étapes
+. Dans le volet de navigation de gauche, accédez à *Administration > Agents*.
+. Cliquez sur leimage:icon-action.png[""] icône pour l'agent de console qui gère votre système Cloud Volumes ONTAP .
+. Sélectionnez * Paramètres Cloud Volumes ONTAP *.
++
+image::screenshot-settings-cloud-volumes-ontap.png[Une capture d’écran de l’option Paramètres Cloud Volumes ONTAP sous l’icône Paramètres.]
+
+. Sous *Azure*, cliquez sur *Verrous Azure CIFS pour les systèmes Azure HA*.
+. Cliquez sur la case à cocher pour activer la fonctionnalité, puis cliquez sur *Enregistrer*.
+

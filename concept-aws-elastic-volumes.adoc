@@ -1,0 +1,191 @@
+---
+sidebar: sidebar 
+permalink: concept-aws-elastic-volumes.html 
+keywords: elastic volumes, ev, ebs elastic volumes, ebs, amazon ebs, disk growth 
+summary: 'La prise en charge de la fonctionnalité Amazon EBS Elastic Volumes avec un agrégat Cloud Volumes ONTAP offre de meilleures performances et une capacité supplémentaire, tout en vous permettant d"augmenter automatiquement la capacité du disque sous-jacent selon vos besoins.' 
+---
+= En savoir plus sur la prise en charge d'AWS Elastic Volumes avec Cloud Volumes ONTAP
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+La prise en charge de la fonctionnalité Amazon EBS Elastic Volumes avec un agrégat Cloud Volumes ONTAP offre de meilleures performances et une capacité supplémentaire, tout en permettant à la console NetApp d'augmenter automatiquement la capacité du disque sous-jacent selon les besoins.
+
+
+
+== Avantages
+
+* Croissance dynamique du disque
++
+La console peut augmenter dynamiquement la taille des disques pendant que Cloud Volumes ONTAP est en cours d'exécution et que les disques sont toujours connectés.
+
+* Meilleures performances
++
+Les agrégats activés avec Elastic Volumes peuvent avoir jusqu'à huit disques qui sont utilisés de manière égale dans deux groupes RAID.  Cette configuration offre un débit plus élevé et des performances constantes.
+
+* Agrégats plus gros
++
+La prise en charge de huit disques offre une capacité globale maximale de 128 Tio.  Ces limites sont supérieures à la limite de six disques et à la limite de 96 Tio pour les agrégats qui ne sont pas activés avec la fonctionnalité Elastic Volumes.
+
++
+Notez que les limites de capacité totale du système restent les mêmes.
+
+
+
+https://aws.amazon.com/ebs/features/["Documentation AWS : En savoir plus sur Elastic Volumes d'AWS"^]
+
+
+
+== Configurations prises en charge
+
+La fonctionnalité Amazon EBS Elastic Volumes est prise en charge avec des versions spécifiques de Cloud Volumes ONTAP et des types de disques EBS spécifiques.
+
+
+
+=== Version Cloud Volumes ONTAP
+
+La fonctionnalité Elastic Volumes est prise en charge avec les nouveaux systèmes Cloud Volumes ONTAP créés à partir de la version 9.11.0 ou ultérieure.  La fonctionnalité n'est pas prise en charge avec les systèmes Cloud Volumes ONTAP existants qui ont été déployés avant la version 9.11.0.
+
+Par exemple, la fonctionnalité Elastic Volumes n'est pas prise en charge si vous avez créé un système Cloud Volumes ONTAP 9.9.0, puis mis à niveau ce système vers la version 9.11.0.  Il doit s'agir d'un nouveau système déployé à l'aide de la version 9.11.0 ou ultérieure.
+
+
+
+=== Types de disques EBS
+
+La fonctionnalité Volumes élastiques est automatiquement activée au niveau agrégé lors de l'utilisation de SSD à usage général (gp3) ou de SSD IOPS provisionnés (io1).  La fonctionnalité Volumes élastiques n’est pas prise en charge avec les agrégats qui utilisent un autre type de disque.
+
+
+
+== Autorisations AWS requises
+
+À partir de la version 3.9.19, l'agent de console nécessite les autorisations suivantes pour activer et gérer la fonctionnalité Elastic Volumes sur un agrégat Cloud Volumes ONTAP :
+
+* ec2 : Décrire les modifications des volumes
+* ec2:ModifierVolume
+
+
+Ces autorisations sont incluses dans https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-aws.html["les politiques fournies par NetApp"^]
+
+
+
+== Fonctionnement de la prise en charge des volumes élastiques
+
+Un agrégat sur lequel la fonctionnalité Volumes élastiques est activée est composé d'un ou deux groupes RAID.  Chaque groupe RAID dispose de quatre disques identiques ayant la même capacité.  Voici un exemple d'un agrégat de 10 Tio qui comporte quatre disques de 2,5 Tio chacun :
+
+image:diagram-aws-elastic-volumes-one-raid-group.png["Une image conceptuelle qui montre un agrégat et un groupe RAID composé de quatre disques de taille égale."]
+
+Lorsque la console crée un agrégat, elle démarre avec un groupe RAID.  Si une capacité supplémentaire est nécessaire, l'agrégat augmente en augmentant la capacité de tous les disques du groupe RAID du même montant.  L'augmentation de capacité est soit d'au moins 256 Gio, soit de 10 % de la taille de l'agrégat.
+
+Par exemple, si vous avez un agrégat de 1 Tio, chaque disque représente 250 Gio.  10 % de la capacité de l'agrégat représente 100 Gio.  C'est inférieur à 256 Gio, donc la taille de l'agrégat est augmentée du minimum de 256 Gio (ou 64 Gio pour chaque disque).
+
+La console augmente la taille des disques pendant que le système Cloud Volumes ONTAP est en cours d'exécution et que les disques sont toujours connectés.  Le changement n’est pas perturbateur.
+
+Si un agrégat atteint 64 Tio (ou 16 Tio sur chaque disque), la console crée un deuxième groupe RAID pour une capacité supplémentaire.  Ce deuxième groupe RAID fonctionne exactement comme le premier : il dispose de quatre disques qui ont exactement la même capacité et il peut atteindre 64 Tio.  Cela signifie qu'un agrégat peut avoir une capacité maximale de 128 Tio.
+
+Voici un exemple d'agrégat avec deux groupes RAID.  La limite de capacité a été atteinte sur le premier groupe RAID, tandis que les disques du deuxième groupe RAID disposent de beaucoup d'espace libre.
+
+image:diagram-aws-elastic-volumes-two-raid-groups.png["Une image conceptuelle qui montre un agrégat et deux groupes RAID qui sont tous deux composés de quatre disques de taille égale."]
+
+
+
+=== Que se passe-t-il lorsque vous créez un volume
+
+Si vous créez un volume qui utilise des disques gp3 ou io1, la console crée le volume sur un agrégat comme suit :
+
+* S'il existe un agrégat gp3 ou io1 sur lequel les volumes élastiques sont activés, la console crée le volume sur cet agrégat.
+* S'il existe plusieurs agrégats gp3 ou io1 sur lesquels les volumes élastiques sont activés, la console crée le volume sur l'agrégat qui nécessite le moins de ressources.
+* Si le système ne dispose que d’agrégats gp3 ou io1 qui ne sont pas activés pour les volumes élastiques, le volume est créé sur cet agrégat.
++
+[NOTE]
+====
+Bien que ce scénario soit peu probable, il est possible dans deux cas :
+
+** Vous avez explicitement désactivé la fonctionnalité Elastic Volumes lors de la création d’un agrégat à partir de l’API.
+** Vous avez créé un nouveau système Cloud Volumes ONTAP à partir de l'interface utilisateur, auquel cas la fonctionnalité Elastic Volumes est désactivée sur l'agrégat initial.  Revoir<<Limites>> ci-dessous pour en savoir plus.
+
+
+====
+* Si aucun agrégat existant n’a suffisamment de capacité, la console crée l’agrégat avec les volumes élastiques activés, puis crée le volume sur ce nouvel agrégat.
++
+La taille de l'agrégat est basée sur le volume demandé plus une capacité supplémentaire de 10 %.
+
+
+
+
+
+=== Mode de gestion de la capacité
+
+Le mode de gestion de la capacité pour un agent de console fonctionne avec les volumes élastiques de la même manière qu'il fonctionne avec d'autres types d'agrégats :
+
+* Lorsque le mode automatique est activé (il s'agit du paramètre par défaut), la console augmente automatiquement la taille des agrégats si une capacité supplémentaire est nécessaire.
+* Si vous modifiez le mode de gestion de la capacité sur Manuel, la console demande votre approbation pour acheter une capacité supplémentaire.
+
+
+link:concept-storage-management.html#capacity-management["En savoir plus sur le mode de gestion de la capacité"] .
+
+
+
+== Limites
+
+L’augmentation de la taille d’un agrégat peut prendre jusqu’à 6 heures.  Pendant ce temps, la console ne peut demander aucune capacité supplémentaire pour cet agrégat.
+
+
+
+== Comment travailler avec les volumes élastiques
+
+Vous pouvez effectuer ces tâches avec Elastic Volumes :
+
+* Créez un nouveau système avec les volumes élastiques activés sur l'agrégat initial lors de l'utilisation de disques gp3 ou io1
++
+link:task-deploying-otc-aws.html["Découvrez comment créer un système Cloud Volumes ONTAP"]
+
+* Créer un nouveau volume sur un agrégat sur lequel les volumes élastiques sont activés
++
+Si vous créez un volume qui utilise des disques gp3 ou io1, la console crée automatiquement le volume sur un agrégat sur lequel les volumes élastiques sont activés. Pour plus de détails, reportez-vous à<<Que se passe-t-il lorsque vous créez un volume>> .
+
++
+link:task-create-volumes.html["Apprenez à créer des volumes"] .
+
+* Créer un nouvel agrégat avec les volumes élastiques activés
++
+Elastic Volumes est automatiquement activé sur les nouveaux agrégats qui utilisent des disques gp3 ou io1, à condition que le système Cloud Volumes ONTAP ait été créé à partir de la version 9.11.0 ou ultérieure.
+
++
+Lorsque vous créez l'agrégat, la console vous demande la taille de la capacité de l'agrégat.  Ceci est différent des autres configurations où vous choisissez une taille de disque et un nombre de disques.
+
++
+La capture d’écran suivante montre un exemple d’un nouvel agrégat composé de disques gp3.
+
++
+image:screenshot-aggregate-size-ev.png["Une capture d'écran de l'écran Disques agrégés pour un disque gp3 où vous entrez la taille agrégée en Tio."]
+
++
+link:task-create-aggregates.html["Apprenez à créer des agrégats"] .
+
+* Identifier les agrégats pour lesquels les volumes élastiques sont activés
++
+Lorsque vous accédez à la page Allocation avancée, vous pouvez identifier si la fonctionnalité Volumes élastiques est activée sur un agrégat.  Dans l'exemple suivant, aggr1 a Elastic Volumes activé.
+
++
+image:screenshot_elastic_volume_enabled.png["Capture d'écran qui montre deux agrégats dont l'un comporte un champ avec le texte Elastic Volumes Enabled."]
+
+* Ajouter de la capacité à un agrégat
++
+Alors que la console ajoute automatiquement de la capacité aux agrégats selon les besoins, vous pouvez augmenter manuellement la capacité vous-même.
+
++
+link:task-manage-aggregates.html["Apprenez à augmenter la capacité globale"] .
+
+* Répliquer les données vers un agrégat sur lequel les volumes élastiques sont activés
++
+Si le système Cloud Volumes ONTAP de destination prend en charge les volumes élastiques, un volume de destination sera placé sur un agrégat sur lequel les volumes élastiques sont activés (à condition que vous choisissiez un disque gp3 ou io1).
+
++
+https://docs.netapp.com/us-en/bluexp-replication/task-replicating-data.html["Apprenez à configurer la réplication des données"^]
+
+

@@ -1,0 +1,38 @@
+---
+sidebar: sidebar 
+permalink: concept-azure-file-sig-verify.html 
+keywords: Azure, image, VHD, file signature verification, encryption, sha256, ONTAP, Cloud Volumes, CLI, 
+summary: Comprendre comment vérifier la signature d’un fichier VHD exporté via l’outil de fichier de résumé d’image Cloud Volumes ONTAP . 
+---
+= Vérification de la signature d'image de la place de marché Azure pour Cloud Volumes ONTAP
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Le processus de vérification d’image Azure génère un fichier de résumé à partir du fichier VHD en supprimant 1 Mo au début et 512 octets à la fin, puis en appliquant une fonction de hachage.  Pour correspondre à la procédure de signature, _sha256_ est utilisé pour le hachage.
+
+
+
+== Résumé du flux de travail de vérification de la signature du fichier
+
+Voici un aperçu du processus de vérification de la signature du fichier.
+
+image::graphic_azure_check_signature.png[signature de contrôle graphique Azure]
+
+* Téléchargement de l'image Azure à partir du https://mysupport.netapp.com/site/["Site de support NetApp"^] et extraire le fichier digest (.sig), le fichier de certificat de clé publique (.pem) et le fichier de certificat de chaîne (.pem). Consultez link:task-azure-download-digest-file.html["Téléchargez le fichier de résumé de l'image Azure"] pour plus d'informations.
+* Vérification de la chaîne de confiance.
+* Extraction de la clé publique (.pub) du certificat de clé publique (.pem).
+* Décryptage du fichier digest en utilisant la clé publique extraite.
+* Comparaison du résultat avec un condensé nouvellement généré d'un fichier temporaire créé à partir du fichier image après avoir supprimé 1 Mo au début et 512 octets à la fin.  Cette étape est réalisée à l’aide de l’outil de ligne de commande OpenSSL.  L'outil OpenSSL CLI affiche un message approprié en cas de réussite ou d'échec de la correspondance des fichiers.
++
+[source, cli]
+----
+openssl dgst -verify <public_key> -keyform <form> <hash_function>
+-signature <digest_file> -binary <temporary_file>
+----
+

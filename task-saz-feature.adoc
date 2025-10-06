@@ -1,0 +1,41 @@
+---
+sidebar: sidebar 
+permalink: task-saz-feature.html 
+keywords: Microsoft Azure feature, HA in SAZ, single availability zone, Azure feature, Virtual Machine Scale Sets in Flexible mode, VMOrchestratorZonalMultiFD, VM Orchestrator, Zonal, MultiFD, Microsoft.Compute/VMOrchestratorZonalMultiFD feature 
+summary: Activez cette fonctionnalité Microsoft Azure pour déployer HA dans SAZ. 
+---
+= Activer VMOrchestratorZonalMultiFD pour Cloud Volumes ONTAP dans Azure
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Pour déployer des instances de machine virtuelle dans des zones de disponibilité unique (AZ) de stockage localement redondant (LRS), vous devez activer Microsoft `Microsoft.Compute/VMOrchestratorZonalMultiFD` fonctionnalité pour vos abonnements.  En mode haute disponibilité (HA), cette fonctionnalité facilite le déploiement de nœuds dans des domaines de pannes distincts dans la même zone de disponibilité.
+
+À moins que vous n'activiez cette fonctionnalité, le déploiement zonal ne se produit pas et le déploiement non zonal LRS précédent devient effectif.
+
+Pour plus d'informations sur le déploiement de machines virtuelles dans une zone de disponibilité unique, reportez-vous àlink:concept-ha-azure.html["Paires à haute disponibilité dans Azure"] .
+
+Effectuez ces étapes en tant qu'utilisateur avec des privilèges « Propriétaire » :
+
+.Étapes
+. Accédez à Azure Cloud Shell depuis le portail Azure.  Pour plus d'informations, reportez-vous à la https://learn.microsoft.com/en-us/azure/cloud-shell/get-started/["Documentation Microsoft Azure : Prise en main d'Azure Cloud Shell"^] .
+. Inscrivez-vous au `Microsoft.Compute/VMOrchestratorZonalMultiFD` fonctionnalité en exécutant cette commande :
++
+[]
+====
+az account set -s _<nom_ou_ID_d'abonnement_Azure>_ az feature register --name VMOrchestratorZonalMultiFD --namespace Microsoft.Compute
+
+====
+. Vérifiez l'état d'enregistrement et l'échantillon de sortie :
++
+[]
+====
+az feature show -n VMOrchestratorZonalMultiFD --namespace Microsoft.Compute { "id": "/subscriptions/_<ID>_/providers/Microsoft.Features/providers/Microsoft.Compute/features/VMOrchestratorZonalMultiFD", "name": "Microsoft.Compute/VMOrchestratorZonalMultiFD", "properties": { "state": "Registered" }, "type": "Microsoft.Features/providers/features" }
+
+====
+

@@ -1,0 +1,294 @@
+---
+sidebar: sidebar 
+permalink: reference-default-configs.html 
+keywords: svm, LIF, LIFs, configuration backups, attributes, autosize, security style, space guarantee, unix permissions, NTFS, UNIX, boot, root, disks, aggr0, aggr1, svm, svms, storage virtual machine, LIF failover, failover, attributes, volume attributes, boot disk, root disk, licenses, feature licenses, default licenses, ontap licenses, ontap features 
+summary: Comprendre comment Cloud Volumes ONTAP est configuré par défaut peut vous aider à configurer et à administrer vos systèmes, en particulier si vous connaissez ONTAP , car la configuration par défaut de Cloud Volumes ONTAP est différente de celle ONTAP. 
+---
+= Configurations par défaut prises en charge pour Cloud Volumes ONTAP
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Comprendre comment Cloud Volumes ONTAP est configuré par défaut peut vous aider à configurer et à administrer vos systèmes, en particulier si vous connaissez ONTAP , car la configuration par défaut de Cloud Volumes ONTAP est différente de celle ONTAP.
+
+
+
+== Configuration par défaut
+
+* La console NetApp crée une machine virtuelle de stockage de service de données lorsqu'elle déploie Cloud Volumes ONTAP.  Certaines configurations prennent en charge des machines virtuelles de stockage supplémentaires. link:task-managing-svms.html["En savoir plus sur la gestion des machines virtuelles de stockage"] .
++
+À partir de la version 3.9.5, les rapports d’espace logique sont activés sur la machine virtuelle de stockage initiale.  Lorsque l'espace est signalé de manière logique, ONTAP signale l'espace du volume de telle sorte que tout l'espace physique économisé par les fonctionnalités d'efficacité du stockage soit également signalé comme utilisé.  Pour plus d'informations sur les fonctionnalités d'efficacité du stockage en ligne, reportez-vous à l'article de la base de connaissances https://kb.netapp.com/Cloud/Cloud_Volumes_ONTAP/What_Inline_Storage_Efficiency_features_are_supported_with_CVO#["KB : Quelles fonctionnalités d’efficacité du stockage en ligne sont prises en charge avec CVO ?"^]
+
+* La console installe automatiquement les licences de fonctionnalités ONTAP suivantes sur Cloud Volumes ONTAP:
++
+** CIFS
+** FlexCache
+** FlexClone
+** iSCSI
+** Gestion des clés de chiffrement multi-locataires (MTEKM), à partir de Cloud Volumes ONTAP 9.12.1 GA
+** Chiffrement de volume NetApp (uniquement pour les systèmes BYOL (apportez votre propre licence) ou PAYGO (pay-as-you-go) enregistrés)
+** NFS ifdef::aws[] endif::aws[] ifdef::azure[] endif::azure[]
+** SnapMirror
+** SnapRestore
+** SnapVault
+
+
+* Plusieurs interfaces réseau sont créées par défaut :
++
+** Un LIF de gestion de cluster
+** Un LIF intercluster
+
+
+
+
+ifdef::azure[]
+
+* Un LIF de gestion SVM sur les systèmes HA dans Azure
+
+
+endif::azure[]
+
+ifdef::gcp[]
+
+* Un LIF de gestion SVM sur les systèmes HA dans Google Cloud
+
+
+endif::gcp[]
+
+ifdef::aws[]
+
+* Un LIF de gestion SVM sur des systèmes à nœud unique dans AWS
+
+
+endif::aws[]
+
+* Un LIF de gestion de nœuds
+
+
+ifdef::gcp[]
+
++ Dans Google Cloud, ce LIF est combiné avec le LIF intercluster.
+
+endif::gcp[]
+
+* Un LIF de données iSCSI
+* Un LIF de données CIFS et NFS
++
+
+NOTE: Le basculement LIF est désactivé par défaut pour Cloud Volumes ONTAP en raison des exigences du fournisseur de cloud.  La migration d'un LIF vers un port différent interrompt le mappage externe entre les adresses IP et les interfaces réseau sur l'instance, rendant le LIF inaccessible.
+
++
+** Cloud Volumes ONTAP envoie des sauvegardes de configuration à l'agent de console via HTTP.
++
+Les sauvegardes sont accessibles depuis \http://ipaddress/occm/offboxconfig/ où _ipaddress_ est l'adresse IP de l'hôte de l'agent de la console.
+
++
+Vous pouvez utiliser les sauvegardes pour reconfigurer votre système Cloud Volumes ONTAP .  Pour plus d'informations sur les sauvegardes de configuration, reportez-vous à la https://docs.netapp.com/us-en/ontap/system-admin/config-backup-file-concept.html["Documentation ONTAP"^] .
+
+** La console définit quelques attributs de volume différemment des autres outils de gestion (ONTAP System Manager ou ONTAP CLI, par exemple).
++
+Le tableau suivant répertorie les attributs de volume définis différemment des valeurs par défaut :
+
++
+[cols="15,85"]
+|===
+| Attribut | Valeur que la console configure 
+
+
+| Mode de taille automatique | grandir 
+
+
+| Taille automatique maximale  a| 
+1 000 pour cent
+
+
+NOTE: L'organisation ou l'administrateur du compte peut modifier cette valeur à partir de la page Paramètres.
+
+
+
+| Style de sécurité | NTFS pour les volumes CIFS UNIX pour les volumes NFS 
+
+
+| Style de garantie d'espace | aucun 
+
+
+| Autorisations UNIX (NFS uniquement) | 777 
+|===
++
+Pour plus d'informations sur ces attributs, reportez-vous àlink:https://docs.netapp.com/us-en/ontap-cli-9121/volume-create.html["Page de manuel ONTAP _volume create_"] .
+
+
+
+
+
+
+
+== Disques internes pour les données système
+
+En plus du stockage des données utilisateur, la console achète également du stockage cloud pour les données système.
+
+ifdef::aws[]
+
+
+
+=== AWS
+
+* Trois disques par nœud pour les données de démarrage, racine et principales :
++
+** Disque io1 de 47 Gio pour les données de démarrage
+** Disque gp3 de 140 Gio pour les données racine
+** Disque gp2 de 540 Gio pour les données de base
+
+
+* Pour les paires HA :
++
+** Deux volumes EBS st1 pour l'instance du médiateur, l'un d'environ 8 Gio comme disque racine et l'autre de 4 Gio comme disque de données
+** Un disque gp3 de 140 Gio dans chaque nœud pour contenir une copie des données racine de l'autre nœud
++
+
+NOTE: Dans certaines zones, le type de disque EBS disponible ne peut être que gp2.
+
+
+
+* Un instantané EBS pour chaque disque de démarrage et disque racine
++
+
+NOTE: Les instantanés sont créés automatiquement au redémarrage.
+
+* Lorsque vous activez le chiffrement des données dans AWS à l'aide du service de gestion des clés (KMS), les disques de démarrage et racine de Cloud Volumes ONTAP sont également chiffrés.  Cela inclut le disque de démarrage de l’instance de médiateur dans une paire HA.  Les disques sont chiffrés à l’aide de la CMK que vous sélectionnez lorsque vous ajoutez un système Cloud Volumes ONTAP .
+
+
+
+TIP: Dans AWS, la NVRAM se trouve sur le disque de démarrage.
+
+endif::aws[]
+
+ifdef::azure[]
+
+
+
+=== Azure (nœud unique)
+
+* Trois disques SSD Premium :
++
+** Un disque de 10 Gio pour les données de démarrage
+** Un disque de 140 Gio pour les données racine
+** Un disque de 512 Gio pour la NVRAM
++
+Si la machine virtuelle que vous avez choisie pour Cloud Volumes ONTAP prend en charge les SSD Ultra, le système utilise un SSD Ultra de 32 Gio pour la NVRAM, plutôt qu'un SSD Premium.
+
+
+
+* Un disque dur standard de 1 024 Gio pour la sauvegarde des cœurs
+* Un instantané Azure pour chaque disque de démarrage et disque racine
+* Par défaut, chaque disque dans Azure est chiffré au repos.
++
+Si la machine virtuelle que vous avez choisie pour Cloud Volumes ONTAP prend en charge les disques gérés Premium SSD v2 comme disques de données, le système utilise un disque géré Premium SSD v2 de 32 Gio pour la NVRAM et un autre comme disque racine.
+
+
+
+
+
+=== Azure (paire HA)
+
+.HA s'associe à un blob de pages
+* Deux disques SSD Premium de 10 Gio pour le volume de démarrage (un par nœud)
+* Deux blobs de pages de stockage Premium de 140 Gio pour le volume racine (un par nœud)
+* Deux disques durs standard de 1 024 Gio pour la sauvegarde des cœurs (un par nœud)
+* Deux disques SSD Premium de 512 Gio pour la NVRAM (un par nœud)
+* Un instantané Azure pour chaque disque de démarrage et disque racine
++
+
+NOTE: Les instantanés sont créés automatiquement au redémarrage.
+
+* Par défaut, chaque disque dans Azure est chiffré au repos.
+
+
+.Paires HA avec disques gérés partagés dans plusieurs zones de disponibilité
+* Deux disques SSD Premium de 10 Gio pour le volume de démarrage (un par nœud)
+* Deux disques SSD Premium de 512 Gio pour le volume racine (un par nœud)
+* Deux disques durs standard de 1 024 Gio pour la sauvegarde des cœurs (un par nœud)
+* Deux disques SSD Premium de 512 Gio pour la NVRAM (un par nœud)
+* Un instantané Azure pour chaque disque de démarrage et disque racine
++
+
+NOTE: Les instantanés sont créés automatiquement au redémarrage.
+
+* Par défaut, chaque disque dans Azure est chiffré au repos.
+
+
+.Paires HA avec disques gérés partagés dans des zones de disponibilité uniques
+* Deux disques SSD Premium de 10 Gio pour le volume de démarrage (un par nœud)
+* Deux disques SSD Premium partagés gérés de 512 Gio pour le volume racine (un par nœud)
+* Deux disques durs standard de 1 024 Gio pour la sauvegarde des cœurs (un par nœud)
+* Deux disques SSD Premium gérés de 512 Gio pour NVRAM (un par nœud)
+
+
+Si votre machine virtuelle prend en charge les disques gérés Premium SSD v2 comme disques de données, elle utilise 32 Gio de disques gérés Premium SSD v2 pour la NVRAM et 512 Gio de disques gérés partagés Premium SSD v2 pour le volume racine.
+
+Vous pouvez déployer des paires HA dans une seule zone de disponibilité et utiliser des disques gérés Premium SSD v2 lorsque les conditions suivantes sont remplies :
+
+* La version de Cloud Volumes ONTAP est 9.15.1 ou ultérieure.
+* La région et la zone sélectionnées prennent en charge les disques gérés Premium SSD v2.  Pour plus d'informations sur les régions prises en charge, reportez-vous à https://azure.microsoft.com/en-us/explore/global-infrastructure/products-by-region/["Site Web Microsoft Azure : produits disponibles par région"^] .
+* L'abonnement est enregistré auprès de Microsoftlink:task-saz-feature.html["Fonctionnalité Microsoft.Compute/VMOrchestratorZonalMultiFD"] .
+
+
+endif::azure[]
+
+ifdef::gcp[]
+
+
+
+=== Google Cloud (nœud unique)
+
+* Un disque persistant SSD de 10 Gio pour les données de démarrage
+* Un disque persistant SSD de 64 Gio pour les données racine
+* Un disque persistant SSD de 500 Gio pour la NVRAM
+* Un disque persistant standard de 315 Gio pour la sauvegarde des cœurs
+* Instantanés des données de démarrage et de racine
++
+
+NOTE: Les instantanés sont créés automatiquement au redémarrage.
+
+* Les disques de démarrage et racine sont chiffrés par défaut.
+
+
+
+
+=== Google Cloud (paire HA)
+
+* Deux disques persistants SSD de 10 Gio pour les données de démarrage
+* Quatre disques persistants SSD de 64 Gio pour les données racine
+* Deux disques persistants SSD de 500 Gio pour NVRAM
+* Deux disques persistants standard de 315 Gio pour la sauvegarde des cœurs
+* Un disque persistant standard de 10 Gio pour les données du médiateur
+* Un disque persistant standard de 10 Gio pour les données de démarrage du médiateur
+* Instantanés des données de démarrage et de racine
++
+
+NOTE: Les instantanés sont créés automatiquement au redémarrage.
+
+* Les disques de démarrage et racine sont chiffrés par défaut.
+
+
+endif::gcp[]
+
+
+
+=== Où résident les disques
+
+Disposition du stockage :
+
+* Les données de démarrage résident sur un disque attaché à l’instance ou à la machine virtuelle.
++
+Ce disque, qui contient l'image de démarrage, n'est pas disponible pour Cloud Volumes ONTAP.
+
+* Les données racine, qui contiennent la configuration du système et les journaux, résident dans aggr0.
+* Le volume racine de la machine virtuelle de stockage (SVM) réside dans aggr1.
+* Les volumes de données résident également dans aggr1.
+

@@ -1,0 +1,94 @@
+---
+sidebar: sidebar 
+permalink: task-convert-node-capacity.html 
+keywords: license conversion, convert node-based to capacity based, by-node to by-capacity, license conversion for node based, BlueXP, Console 
+summary: 'Après la fin de la disponibilité (EOA) de vos licences basées sur les nœuds, vous devez passer à des licences basées sur la capacité à l"aide de l"outil de conversion de licence.' 
+---
+= Convertir une licence basée sur un nœud Cloud Volumes ONTAP en une licence basée sur la capacité
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Après la fin de la disponibilité (EOA) de vos licences basées sur les nœuds, vous devez passer à des licences basées sur la capacité à l'aide de l'outil de conversion de licence dans la console NetApp .
+
+Pour les engagements annuels ou à plus long terme, NetApp vous recommande de contacter votre représentant NetApp avant la date EOA (11 novembre 2024) ou la date d'expiration de la licence pour vous assurer que les conditions préalables à la transition sont en place.  Si vous ne disposez pas d'un contrat à long terme pour un nœud Cloud Volumes ONTAP et que vous exécutez votre système avec un abonnement à la demande (PAYGO), il est important de planifier votre conversion avant la fin du support (EOS) le 31 décembre 2024.  Dans les deux cas, vous devez vous assurer que votre système répond aux exigences avant d'utiliser l'outil de conversion de licence dans la console NetApp pour une transition transparente.
+
+Pour plus d'informations sur l'EOA et l'EOS, reportez-vous àlink:concept-licensing.html#end-of-availability-of-node-based-licenses["Fin de disponibilité des licences basées sur des nœuds"] .
+
+.À propos de cette tâche
+* Lorsque vous utilisez l'outil de conversion de licence, la transition du modèle de licence basé sur les nœuds au modèle de licence basé sur la capacité s'effectue sur place et en ligne, ce qui élimine le besoin de migration de données ou de provisionnement de ressources cloud supplémentaires.
+* Il s’agit d’une opération non perturbatrice, et aucune interruption de service ni aucun temps d’arrêt d’application ne se produit.
+* Les données de compte et d’application de votre système Cloud Volumes ONTAP restent intactes.
+* Les ressources cloud sous-jacentes restent inchangées après la conversion.
+* L'outil de conversion de licence prend en charge tous les types de déploiement, tels que le nœud unique, la haute disponibilité (HA) dans une zone de disponibilité unique (AZ), la haute disponibilité dans plusieurs AZ, apportez votre propre licence (BYOL) et PAYGO.
+* L'outil prend en charge toutes les licences basées sur les nœuds comme source et toutes les licences basées sur la capacité comme destination. Par exemple, si vous possédez une licence PAYGO Standard basée sur les nœuds, vous pouvez la convertir en n'importe quelle licence basée sur la capacité achetée sur la place de marché. NetApp a restreint l'achat, la prolongation et le renouvellement des licences BYOL. Pour plus d'informations, consultez  https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/whats-new.html#restricted-availability-of-byol-licensing-for-cloud-volumes-ontap["Disponibilité restreinte des licences BYOL pour Cloud Volumes ONTAP"^] .
+* La conversion est prise en charge pour tous les fournisseurs de cloud, AWS, Azure et Google Cloud.
+* Après la conversion, le numéro de série de la licence basée sur les nœuds sera remplacé par un format basé sur la capacité.  Cela s'effectue dans le cadre de la conversion et est reflété sur votre compte NetApp Support Site (NSS).
+* Lorsque vous passez au modèle basé sur la capacité, vos données continuent d'être conservées au même emplacement que la licence basée sur les nœuds.  Cette approche garantit l’absence de perturbation dans le placement des données et respecte les principes de souveraineté des données tout au long de la transition.
+
+
+.Avant de commencer
+* Vous devez disposer d'un compte NSS avec accès client ou accès administrateur.
+* Votre compte NSS doit être enregistré avec les informations d’identification utilisateur que vous avez utilisées pour accéder à la console.
+* Le système Cloud Volumes ONTAP doit être lié au compte NSS avec un accès client ou un accès administrateur.
+* Vous devez disposer d'une licence valide basée sur la capacité, soit une licence BYOL, soit un abonnement au marché.
+* Une licence basée sur la capacité devrait être disponible sur votre compte.  Cette licence peut être un abonnement marketplace ou un package BYOL/offre privée disponible sous *Licences et abonnements* dans la Console.
+* Comprendre les critères suivants avant de sélectionner un forfait de destination :
++
+** Si le compte dispose d'une licence BYOL basée sur la capacité, le package de destination sélectionné doit correspondre aux licences BYOL basées sur la capacité du compte :
++
+*** Quand `Professional` est sélectionné comme package de destination, le compte doit avoir une licence BYOL avec un package Professionnel :
+*** Quand `Essentials` est sélectionné comme package de destination, le compte doit avoir une licence BYOL avec le package Essentials.
+
+
+** Si le package de destination ne correspond pas à la disponibilité de la licence BYOL du compte, cela implique que la licence basée sur la capacité peut ne pas inclure le package sélectionné.  Dans ce cas, vous serez facturé via votre abonnement marketplace.
+** S'il n'existe pas de licence BYOL basée sur la capacité mais uniquement un abonnement au marché, vous devez vous assurer que le package sélectionné est inclus dans votre abonnement au marché basé sur la capacité.
+** S'il n'y a pas suffisamment de capacité dans votre licence basée sur la capacité existante et si vous disposez d'un abonnement Marketplace pour facturer l'utilisation de la capacité supplémentaire, la capacité supplémentaire vous sera facturée via votre abonnement Marketplace.
+** S'il n'y a pas suffisamment de capacité dans votre licence basée sur la capacité existante et que vous ne disposez pas d'un abonnement Marketplace pour facturer l'utilisation de la capacité supplémentaire, la conversion ne peut pas avoir lieu.  Vous devez ajouter un abonnement au marché pour facturer la capacité supplémentaire ou étendre la capacité disponible à votre licence actuelle.
+** Si le package de destination ne correspond pas à la disponibilité de la licence BYOL du compte et s'il n'y a pas suffisamment de capacité dans votre licence basée sur la capacité existante, vous serez facturé via votre abonnement au marché.
+
+
+
+
+
+NOTE: Si l’une de ces exigences n’est pas remplie, la conversion de licence n’a pas lieu.  Dans des cas spécifiques, la licence peut être convertie, mais ne peut pas être utilisée.  Cliquez sur l’icône d’information pour identifier les problèmes et prendre des mesures correctives.
+
+.Étapes
+. Sur la page *Systèmes*, double-cliquez sur le nom du système pour lequel vous souhaitez modifier le type de licence.
+. Dans l’onglet Présentation, cliquez sur le panneau Fonctionnalités.
+. Vérifiez l’icône en forme de crayon à côté de *Méthode de chargement*.  Si la méthode de charge de votre système est `Node Based` , vous pouvez le convertir en charge par capacité.
++
+
+TIP: L'icône est désactivée si votre système Cloud Volumes ONTAP est déjà chargé par capacité ou si l'une des exigences n'est pas remplie.
+
+. Sur l'écran *Convertir les licences basées sur les nœuds en licences basées sur la capacité*, vérifiez le nom du système et les détails de la licence source.
+. Sélectionnez le package de destination pour convertir la licence existante :
++
+** Essentiel.  La valeur par défaut est `Essentials` .
+** Professionnel
+
+
+. Si vous disposez d'une licence BYOL, vous pouvez cocher la case pour supprimer la licence basée sur les nœuds de la console une fois la conversion terminée.  Si la conversion est toujours en cours, la sélection de cette case à cocher ne supprimera pas la licence de la console.  Cette option n'est pas disponible pour les abonnements à la place de marché.
+. Cochez la case pour confirmer que vous comprenez les implications du changement, puis cliquez sur *Continuer*.
+
+
+.Après avoir terminé
+Affichez le nouveau numéro de série de la licence et vérifiez les modifications dans le menu *Licences et abonnements* de la console.
+
+
+
+== Tarification dans différents hyperscalaires
+
+Pour plus de détails sur les prix, rendez-vous sur le https://bluexp.netapp.com/pricing/["Site Web de la console NetApp"^] .
+
+Pour plus d'informations sur les offres privées dans des hyperscalaires spécifiques, écrivez à :
+
+* AWS - awspo@netapp.com
+* Azure - azurepo@netapp.com
+* Google Cloud - gcppo@netapp.com
+

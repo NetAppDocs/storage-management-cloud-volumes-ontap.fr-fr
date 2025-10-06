@@ -1,0 +1,147 @@
+---
+sidebar: sidebar 
+permalink: task-enabling-private-link.html 
+keywords: azure private link, private link connection, private link to storage, service endpoints, enable service endpoint, disable private link 
+summary: Cloud Volumes ONTAP utilise un lien privé Azure pour les connexions à ses comptes de stockage associés.  Si nécessaire, vous pouvez désactiver Azure Private Links et utiliser des points de terminaison de service à la place. 
+---
+= Utiliser un lien privé Azure ou des points de terminaison de service pour les systèmes Cloud Volumes ONTAP
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Volumes ONTAP utilise un lien privé Azure pour les connexions à ses comptes de stockage associés.  Si nécessaire, vous pouvez désactiver Azure Private Links et utiliser des points de terminaison de service à la place.
+
+
+
+== Aperçu
+
+Par défaut, la console NetApp active une liaison privée Azure pour les connexions entre Cloud Volumes ONTAP et ses comptes de stockage associés.  Un lien privé Azure sécurise les connexions entre les points de terminaison dans Azure et offre des avantages en termes de performances.
+
+Si nécessaire, vous pouvez configurer Cloud Volumes ONTAP pour utiliser des points de terminaison de service au lieu d’un lien privé Azure.
+
+Quelle que soit la configuration, la console limite toujours l'accès au réseau pour les connexions entre Cloud Volumes ONTAP et les comptes de stockage.  L'accès au réseau est limité au réseau virtuel sur lequel Cloud Volumes ONTAP est déployé et au réseau virtuel sur lequel l'agent de console est déployé.
+
+
+
+== Désactiver les liens privés Azure et utiliser des points de terminaison de service à la place
+
+Si votre entreprise l’exige, vous pouvez modifier un paramètre dans la console afin qu’il configure Cloud Volumes ONTAP pour utiliser des points de terminaison de service au lieu d’un lien privé Azure.  La modification de ce paramètre s'applique aux nouveaux systèmes Cloud Volumes ONTAP que vous créez.  Les points de terminaison de service ne sont pris en charge que danslink:https://docs.microsoft.com/en-us/azure/availability-zones/cross-region-replication-azure#azure-cross-region-replication-pairings-for-all-geographies["Paires de régions Azure"^] entre l'agent de console et les réseaux virtuels Cloud Volumes ONTAP .
+
+L'agent de console doit être déployé dans la même région Azure que les systèmes Cloud Volumes ONTAP qu'il gère, ou dans la https://docs.microsoft.com/en-us/azure/availability-zones/cross-region-replication-azure#azure-cross-region-replication-pairings-for-all-geographies["Paire de régions Azure"^] pour les systèmes Cloud Volumes ONTAP .
+
+.Étapes
+. Dans le volet de navigation de gauche, accédez à *Administration > Agents*.
+. Cliquez sur leimage:icon-action.png[""] icône pour l'agent de console qui gère votre système Cloud Volumes ONTAP .
+. Sélectionnez * Paramètres Cloud Volumes ONTAP *.
++
+image::screenshot-settings-cloud-volumes-ontap.png[Une capture d’écran de l’option Paramètres Cloud Volumes ONTAP sous l’icône Paramètres.]
+
+. Sous *Azure*, cliquez sur *Utiliser Azure Private Link*.
+. Désélectionnez *Connexion par lien privé entre Cloud Volumes ONTAP et les comptes de stockage*.
+. Cliquez sur *Enregistrer*.
+
+
+.Après avoir terminé
+Si vous avez désactivé Azure Private Links et que l’agent de la console utilise un serveur proxy, vous devez activer le trafic API direct.
+
+https://docs.netapp.com/us-en/bluexp-setup-admin/task-configuring-proxy.html#enable-a-proxy-on-a-connector["Découvrez comment activer le trafic API direct sur l'agent de la console"^]
+
+
+
+== Travailler avec Azure Private Links
+
+Dans la plupart des cas, vous n’avez rien à faire pour configurer des liaisons privées Azure avec Cloud Volumes ONTAP.  La console gère les liens privés Azure pour vous.  Mais si vous utilisez une zone DNS privée Azure existante, vous devrez modifier un fichier de configuration.
+
+
+
+=== Exigence pour un DNS personnalisé
+
+En option, si vous travaillez avec un DNS personnalisé, vous devez créer un redirecteur conditionnel vers la zone DNS privée Azure à partir de vos serveurs DNS personnalisés. Pour en savoir plus, consultezlink:https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-dns#on-premises-workloads-using-a-dns-forwarder["Documentation d'Azure sur l'utilisation d'un redirecteur DNS"^] .
+
+
+
+=== Comment fonctionnent les connexions Private Link
+
+Lorsque la console déploie Cloud Volumes ONTAP dans Azure, elle crée un point de terminaison privé dans le groupe de ressources.  Le point de terminaison privé est associé aux comptes de stockage pour Cloud Volumes ONTAP.  Par conséquent, l’accès au stockage Cloud Volumes ONTAP transite par le réseau principal de Microsoft.
+
+L'accès client passe par la liaison privée lorsque les clients se trouvent dans le même réseau virtuel que Cloud Volumes ONTAP, dans des réseaux virtuels homologues ou dans votre réseau local lorsque vous utilisez une connexion VPN privée ou ExpressRoute au réseau virtuel.
+
+Voici un exemple qui montre l’accès client via une liaison privée à partir du même réseau virtuel et à partir d’un réseau local doté d’une connexion VPN privée ou ExpressRoute.
+
+image:diagram_azure_private_link.png["Une image conceptuelle qui montre l'accès aux données vers Cloud Volumes ONTAP et via un point de terminaison privé et un lien privé vers le compte de stockage."]
+
+
+NOTE: Si l'agent de console et les systèmes Cloud Volumes ONTAP sont déployés dans des réseaux virtuels différents, vous devez configurer l'appairage de réseaux virtuels entre le réseau virtuel sur lequel l'agent de console est déployé et le réseau virtuel sur lequel les systèmes Cloud Volumes ONTAP sont déployés.
+
+
+
+=== Fournissez des détails sur votre DNS privé Azure
+
+Si vous utilisez https://docs.microsoft.com/en-us/azure/dns/private-dns-overview["DNS privé Azure"^] , vous devez alors modifier un fichier de configuration sur chaque agent de console.  Sinon, la console ne peut pas définir la connexion Azure Private Link entre Cloud Volumes ONTAP et ses comptes de stockage associés.
+
+Notez que le nom DNS doit correspondre aux exigences de dénomination DNS Azure https://docs.microsoft.com/en-us/azure/storage/common/storage-private-endpoints#dns-changes-for-private-endpoints["comme indiqué dans la documentation Azure"^] .
+
+.Étapes
+. Connectez-vous en SSH à l'hôte de l'agent de la console et connectez-vous.
+. Accédez au  `/opt/application/netapp/cloudmanager/docker_occm/data` annuaire.
+. Modifier  `app.conf` en ajoutant le  `user-private-dns-zone-settings` paramètre avec les paires mot-clé-valeur suivantes :
++
+[source, cli]
+----
+ "user-private-dns-zone-settings" : {
+    "resource-group" : "<resource group name of the DNS zone>",
+    "subscription" : "<subscription ID>",
+    "use-existing" : true,
+    "create-private-dns-zone-link" : true
+ }
+----
++
+Le `subscription` Le mot clé n'est requis que si la zone DNS privée se trouve dans un abonnement différent de celui de l'agent de la console.
+
+. Enregistrez le fichier et déconnectez-vous de l’agent de la console.
++
+Un redémarrage n'est pas nécessaire.
+
+
+
+
+
+=== Activer la restauration en cas d'échec
+
+Si la console ne parvient pas à créer un lien privé Azure dans le cadre d’actions spécifiques, elle termine l’action sans la connexion au lien privé Azure.  Cela peut se produire lors de la création d'un nouveau système (nœud unique ou paire HA), ou lorsque les actions suivantes se produisent sur une paire HA : création d'un nouvel agrégat, ajout de disques à un agrégat existant ou création d'un nouveau compte de stockage lorsque l'on dépasse 32 Tio.
+
+Vous pouvez modifier ce comportement par défaut en activant la restauration si la console ne parvient pas à créer le lien privé Azure.  Cela peut vous aider à garantir que vous êtes entièrement conforme aux réglementations de sécurité de votre entreprise.
+
+Si vous activez la restauration, la console arrête l'action et restaure toutes les ressources créées dans le cadre de l'action.
+
+Vous pouvez activer la restauration via l'API ou en mettant à jour le fichier app.conf.
+
+*Activer la restauration via l'API*
+
+.Étape
+. Utilisez le `PUT /occm/config` Appel d'API avec le corps de requête suivant :
++
+[source, json]
+----
+{ "rollbackOnAzurePrivateLinkFailure": true }
+----
+
+
+*Activer la restauration en mettant à jour app.conf*
+
+.Étapes
+. Connectez-vous en SSH à l'hôte de l'agent de la console et connectez-vous.
+. Accédez au répertoire suivant : /opt/application/netapp/cloudmanager/docker_occm/data
+. Modifiez app.conf en ajoutant le paramètre et la valeur suivants :
++
+ "rollback-on-private-link-failure": true
+. Enregistrez le fichier et déconnectez-vous de l’agent de la console.
++
+Un redémarrage n'est pas nécessaire.
+
+

@@ -1,0 +1,158 @@
+---
+sidebar: sidebar 
+permalink: concept-security.html 
+keywords: security, encryption, antivirus, concepts, key managers, safenet, kms, keys, vscan, encrypt, key management service, cmk, customer master key, data at rest, data-at-rest, netapp storage encryption, certificate signing request, csr, certificate, ca certificate, virus, scan, virus scan, certificate authority, netapp volume encryption, nve, volume encryption, key management server, ransomware, fpolicy, snapshots 
+summary: Cloud Volumes ONTAP prend en charge le cryptage des données et offre une protection contre les virus et les ransomwares. 
+---
+= En savoir plus sur le cryptage des données et la protection contre les ransomwares de Cloud Volumes ONTAP
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Volumes ONTAP prend en charge le cryptage des données et offre une protection contre les virus et les ransomwares.
+
+
+
+== Chiffrement des données au repos
+
+Cloud Volumes ONTAP prend en charge les technologies de chiffrement suivantes :
+
+* Solutions de chiffrement NetApp (NVE et NAE)
+
+
+ifdef::aws[]
+
+* Service de gestion des clés AWS
+
+
+endif::aws[]
+
+ifdef::azure[]
+
+* Chiffrement du service de stockage Azure
+
+
+endif::azure[]
+
+ifdef::gcp[]
+
+* Cryptage par défaut de Google Cloud Platform
+
+
+endif::gcp[]
+
+Vous pouvez utiliser les solutions de chiffrement NetApp avec le chiffrement natif de votre fournisseur de cloud, qui chiffre les données au niveau de l'hyperviseur.  Cela permettrait d’obtenir un double cryptage, ce qui pourrait être souhaitable pour les données très sensibles.  Lorsque les données chiffrées sont accessibles, elles sont déchiffrées deux fois : une fois au niveau de l'hyperviseur (à l'aide de clés du fournisseur de cloud), puis à nouveau à l'aide de solutions de chiffrement NetApp (à l'aide de clés d'un gestionnaire de clés externe).
+
+
+
+=== Solutions de chiffrement NetApp (NVE et NAE)
+
+Cloud Volumes ONTAP prend en charge https://www.netapp.com/pdf.html?item=/media/17070-ds-3899.pdf["Chiffrement de volume NetApp (NVE) et chiffrement agrégé NetApp (NAE)"^] .  NVE et NAE sont des solutions logicielles qui permettent le chiffrement des données au repos des volumes conforme à la norme (FIPS) 140-2.  NVE et NAE utilisent tous deux le cryptage AES 256 bits.
+
+* NVE crypte les données au repos un volume à la fois.  Chaque volume de données possède sa propre clé de cryptage unique.
+* NAE est une extension de NVE : il crypte les données de chaque volume et les volumes partagent une clé sur l'ensemble.  NAE permet également de dédupliquer les blocs communs à tous les volumes de l'agrégat.
+
+
+Cloud Volumes ONTAP prend en charge NVE et NAE avec des services de gestion de clés externes (EKM) fournis par AWS, Azure et Google Cloud, y compris des solutions tierces, telles que Fortanix.  Contrairement à ONTAP, pour Cloud Volumes ONTAP, les clés de chiffrement sont générées côté fournisseur de cloud, et non dans ONTAP.
+
+Cloud Volumes ONTAP utilise les services standard KMIP (Key Management Interoperability Protocol) utilisés par ONTAP .  Pour plus d'informations sur les services pris en charge, reportez-vous à la https://imt.netapp.com/imt/#welcome["Outil de matrice d'interopérabilité"^] .
+
+Si vous utilisez NVE, vous avez la possibilité d'utiliser le coffre-fort de clés de votre fournisseur de cloud pour protéger les clés de chiffrement ONTAP :
+
+ifdef::aws[]
+
+* Service de gestion des clés AWS (KMS)
+
+
+endif::aws[]
+
+ifdef::azure[]
+
+* Coffre de clés Azure (AKV)
+
+
+endif::azure[]
+
+ifdef::gcp[]
+
+* Service de gestion des clés Google Cloud
+
+
+endif::gcp[]
+
+Les nouveaux agrégats ont le chiffrement d'agrégats NetApp (NAE) activé par défaut après la configuration d'un gestionnaire de clés externe.  Les nouveaux volumes qui ne font pas partie d'un agrégat NAE ont NVE activé par défaut (par exemple, si vous avez des agrégats existants qui ont été créés avant la configuration d'un gestionnaire de clés externe).
+
+La configuration d’un gestionnaire de clés pris en charge est la seule étape requise.  Pour les instructions d'installation, reportez-vous àlink:task-encrypting-volumes.html["Chiffrer les volumes avec les solutions de chiffrement NetApp"] .
+
+ifdef::aws[]
+
+
+
+=== Service de gestion des clés AWS
+
+Lorsque vous lancez un système Cloud Volumes ONTAP dans AWS, vous pouvez activer le chiffrement des données à l'aide de l' http://docs.aws.amazon.com/kms/latest/developerguide/overview.html["Service de gestion des clés AWS (KMS)"^] .  La console NetApp demande des clés de données à l’aide d’une clé principale client (CMK).
+
+
+TIP: Vous ne pouvez pas modifier la méthode de chiffrement des données AWS après avoir créé un système Cloud Volumes ONTAP .
+
+Si vous souhaitez utiliser cette option de chiffrement, vous devez vous assurer que AWS KMS est configuré de manière appropriée.  Pour plus d'informations, reportez-vous àlink:task-setting-up-kms.html["Configuration d'AWS KMS"] .
+
+endif::aws[]
+
+ifdef::azure[]
+
+
+
+=== Chiffrement du service de stockage Azure
+
+Les données sont automatiquement chiffrées sur Cloud Volumes ONTAP dans Azure à l'aide de https://learn.microsoft.com/en-us/azure/security/fundamentals/encryption-overview["Chiffrement du service de stockage Azure"^] avec une clé gérée par Microsoft.
+
+Vous pouvez utiliser vos propres clés de cryptage si vous préférez. link:task-set-up-azure-encryption.html["Découvrez comment configurer Cloud Volumes ONTAP pour utiliser une clé gérée par le client dans Azure"] .
+
+endif::azure[]
+
+ifdef::gcp[]
+
+
+
+=== Cryptage par défaut de Google Cloud Platform
+
+https://cloud.google.com/security/encryption-at-rest/["Chiffrement des données au repos de Google Cloud Platform"^]est activé par défaut pour Cloud Volumes ONTAP.  Aucune configuration n'est requise.
+
+Bien que Google Cloud Storage chiffre toujours vos données avant qu'elles ne soient écrites sur le disque, vous pouvez utiliser les API de la console pour créer un système Cloud Volumes ONTAP qui utilise des _clés de chiffrement gérées par le client_.  Il s’agit de clés que vous générez et gérez dans GCP à l’aide du service Cloud Key Management. link:task-setting-up-gcp-encryption.html["Apprendre encore plus"] .
+
+endif::gcp[]
+
+
+
+== Analyse antivirus ONTAP
+
+Vous pouvez utiliser la fonctionnalité antivirus intégrée sur les systèmes ONTAP pour protéger les données contre toute compromission par des virus ou d'autres codes malveillants.
+
+L'analyse antivirus ONTAP , appelée _Vscan_, combine le meilleur logiciel antivirus tiers de sa catégorie avec les fonctionnalités ONTAP qui vous offrent la flexibilité dont vous avez besoin pour contrôler quels fichiers sont analysés et quand.
+
+Pour plus d'informations sur les fournisseurs, les logiciels et les versions pris en charge par Vscan, reportez-vous au http://mysupport.netapp.com/matrix["Matrice d'interopérabilité NetApp"^] .
+
+Pour plus d'informations sur la configuration et la gestion de la fonctionnalité antivirus sur les systèmes ONTAP , reportez-vous au http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-acg/home.html["Guide de configuration de l'antivirus ONTAP 9"^] .
+
+
+
+== Protection contre les ransomwares
+
+Les attaques de ransomware peuvent coûter du temps, des ressources et de la réputation à une entreprise.  La console vous permet de mettre en œuvre la solution NetApp pour les ransomwares, qui fournit des outils efficaces de visibilité, de détection et de correction.
+
+* La console identifie les volumes qui ne sont pas protégés par une stratégie de snapshot et vous permet d'activer la stratégie de snapshot par défaut sur ces volumes.
++
+Les copies instantanées sont en lecture seule, ce qui empêche la corruption par ransomware.  Ils peuvent également fournir la granularité nécessaire pour créer des images d'une copie de fichier unique ou une solution complète de reprise après sinistre.
+
+* La console vous permet également de bloquer les extensions de fichiers de ransomware courantes en activant la solution FPolicy d'ONTAP.
+
+
+image:screenshot_ransomware_protection.gif["Une capture d’écran qui montre la page de protection contre les ransomwares disponible à partir d’un système.  L'écran affiche le nombre de volumes sans politique de capture instantanée et la possibilité de bloquer les extensions de fichiers de ransomware."]
+
+link:task-protecting-ransomware.html["Découvrez comment mettre en œuvre la solution NetApp contre les ransomwares"] .

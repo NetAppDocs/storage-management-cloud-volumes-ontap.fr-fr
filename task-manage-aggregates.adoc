@@ -1,0 +1,52 @@
+---
+sidebar: sidebar 
+permalink: task-manage-aggregates.html 
+keywords: aggregates, delete aggregates, add disks, view aggregates 
+summary: Gérez vous-même les agrégats en ajoutant des disques, en affichant des informations sur les agrégats et en les supprimant. 
+---
+= Gérer les agrégats pour les clusters Cloud Volumes ONTAP
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Gérez vous-même les agrégats en ajoutant des disques, en affichant des informations sur les agrégats et en les supprimant.
+
+
+CAUTION: Tous les disques et agrégats doivent être créés et supprimés directement à partir de la console NetApp . Vous ne devez pas effectuer ces actions à partir d’un autre outil de gestion. Cela peut avoir un impact sur la stabilité du système, entraver la possibilité d’ajouter des disques à l’avenir et potentiellement générer des frais de fournisseur de cloud redondants.
+
+.Avant de commencer
+Si vous souhaitez supprimer un agrégat, vous devez d’abord avoir supprimé les volumes de l’agrégat.
+
+.À propos de cette tâche
+Si un agrégat manque d'espace, vous pouvez déplacer des volumes vers un autre agrégat à l'aide d' ONTAP System Manager.
+
+.Étapes
+. Dans le menu de navigation de gauche, sélectionnez *Stockage > Gestion*.
+. Sur la page *Systèmes*, double-cliquez sur le système Cloud Volumes ONTAP sur lequel vous souhaitez gérer les agrégats.
+. Dans les détails du système, cliquez sur l’onglet *Agrégats*.
+. Pour l'agrégat requis, cliquez sur leimage:icon-action.png[""] icône pour les actions de gestion.
++
+image:screenshot_aggr_menu_options.png["Une capture d’écran des options du menu Agrégats."]
+
+. Gérez vos agrégats à partir des options disponibles dans leimage:icon-action.png[""] menu.
+
+
+
+NOTE: Pour ajouter des disques à un agrégat, tous les disques de l'agrégat doivent être de la même taille.
+
+ifdef::aws[]
+
+Pour AWS, vous pouvez augmenter la capacité d’un agrégat prenant en charge Amazon EBS Elastic Volumes.
+
+. Sous leimage:icon-action.png[""] menu, cliquez sur *Augmenter la capacité*.
+. Saisissez la capacité supplémentaire que vous souhaitez ajouter, puis cliquez sur *Augmenter*.
+
+
+Notez que vous devez augmenter la capacité de l'agrégat d'au moins 256 Gio ou 10 % de la taille de l'agrégat.  Par exemple, si vous avez un agrégat de 1,77 Tio, 10 % correspondent à 181 Gio.  C'est inférieur à 256 Gio, donc la taille de l'agrégat doit être augmentée du minimum de 256 Gio.
+
+endif::aws[]

@@ -1,0 +1,53 @@
+---
+sidebar: sidebar 
+permalink: concept-client-protocols.html 
+keywords: client protocols, client version, smb version, nfs version, protocol versions, s3, smb, nfs, iscsi, cifs 
+summary: Cloud Volumes ONTAP prend en charge les protocoles clients iSCSI, NFS, SMB, NVMe-TCP et S3. 
+---
+= Protocoles clients pris en charge pour Cloud Volumes ONTAP
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Volumes ONTAP prend en charge les protocoles clients iSCSI, NFS, SMB, NVMe-TCP et S3.
+
+
+
+== iSCSI
+
+iSCSI est un protocole de bloc qui peut fonctionner sur des réseaux Ethernet standard.  La plupart des systèmes d’exploitation clients proposent un initiateur logiciel qui s’exécute sur un port Ethernet standard.
+
+
+
+== NFS
+
+NFS est le protocole d'accès aux fichiers traditionnel pour les systèmes UNIX et LINUX.  Les clients peuvent accéder aux fichiers des volumes ONTAP à l’aide des protocoles NFSv3, NFSv4 et NFSv4.1.  Vous pouvez contrôler l’accès aux fichiers à l’aide d’autorisations de style UNIX, d’autorisations de style NTFS ou d’une combinaison des deux.
+
+Les clients peuvent accéder aux mêmes fichiers en utilisant les protocoles NFS et SMB.
+
+
+
+== PME
+
+SMB est le protocole d'accès aux fichiers traditionnel pour les systèmes Windows.  Les clients peuvent accéder aux fichiers des volumes ONTAP à l’aide des protocoles SMB 2.0, SMB 2.1, SMB 3.0 et SMB 3.1.1.  Tout comme avec NFS, un mélange de styles d’autorisation est pris en charge.
+
+
+
+== S3
+
+Cloud Volumes ONTAP prend en charge S3 comme option de stockage évolutif.  La prise en charge du protocole S3 vous permet de configurer l'accès client S3 aux objets contenus dans un bucket dans une machine virtuelle de stockage (SVM).
+
+link:https://docs.netapp.com/us-en/ontap/s3-multiprotocol/index.html#how-s3-multiprotocol-works["Documentation ONTAP : découvrez comment fonctionne le multiprotocole S3"^] . link:https://docs.netapp.com/us-en/ontap/object-storage-management/index.html["Documentation ONTAP : découvrez comment configurer et gérer les services de stockage d'objets S3 dans ONTAP"^] .
+
+
+
+== NVMe-TCP
+
+À partir de la version 9.12.1 ONTAP , NVMe-TCP est pris en charge pour les fournisseurs de cloud.  La console NetApp ne fournit aucune fonctionnalité de gestion pour NVMe-TCP.
+
+Pour plus d'informations sur la configuration de NVMe via ONTAP, reportez-vous au https://docs.netapp.com/us-en/ontap/san-admin/configure-svm-nvme-task.html["Documentation ONTAP : Configurer une machine virtuelle de stockage pour NVMe"^] .

@@ -1,0 +1,220 @@
+---
+sidebar: sidebar 
+permalink: concept-data-tiering.html 
+keywords: storage tiering, tier, tiering, data tiering, s3, s3 tiering, capacity, performance, s3 endpoint, fabric pool, fabricpool, s3 bucket, requirement, vpc endpoint, policy, policies, tiering policies, auto, snapshot only, backup, none, cooling period, volume tiering policies, blob, standard, infrequent access, hot, cool, tiering level, storage tier, storage class 
+summary: 'Réduisez vos coûts de stockage en activant la hiérarchisation automatisée des données froides vers un stockage d"objets à faible coût.' 
+---
+= En savoir plus sur la hiérarchisation des données avec Cloud Volumes ONTAP dans AWS, Azure ou Google Cloud
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Réduisez vos coûts de stockage en activant la hiérarchisation automatisée des données inactives vers un stockage d'objets à faible coût.  Les données actives restent dans des SSD ou des disques durs hautes performances, tandis que les données inactives sont hiérarchisées vers un stockage d'objets à faible coût.  Cela vous permet de récupérer de l'espace sur votre stockage principal et de réduire le stockage secondaire.
+
+image:diagram_data_tiering.png["Il s'agit d'une image conceptuelle qui montre les données chaudes allant vers le stockage EBS et les données inactives allant vers le stockage S3."]
+
+La hiérarchisation des données est alimentée par la technologie FabricPool .  Cloud Volumes ONTAP fournit une hiérarchisation des données pour tous les clusters Cloud Volumes ONTAP sans licence supplémentaire.  Lorsque vous activez la hiérarchisation des données, les données hiérarchisées vers le stockage d'objets entraînent des frais.  Consultez la documentation de votre fournisseur de cloud pour plus de détails sur les coûts de stockage d'objets.
+
+ifdef::aws[]
+
+
+
+== Hiérarchisation des données dans AWS
+
+Lorsque vous activez la hiérarchisation des données dans AWS, Cloud Volumes ONTAP utilise EBS comme niveau de performances pour les données chaudes et AWS S3 comme niveau de capacité pour les données inactives.
+
+Niveau de performance:: Le niveau de performance peut être des SSD à usage général (gp3 ou gp2) ou des SSD IOPS provisionnés (io1).
++
+--
+La hiérarchisation des données vers le stockage d'objets n'est pas recommandée lors de l'utilisation de disques durs à débit optimisé (st1).
+
+--
+Niveau de capacité:: Un système Cloud Volumes ONTAP hiérarchise les données inactives dans un seul compartiment S3.
++
+--
+La console NetApp crée un seul compartiment S3 pour chaque système et le nomme fabric-pool-_cluster identifiant unique_.  Un compartiment S3 différent n'est pas créé pour chaque volume.
+
+Lorsque la console crée le bucket S3, elle utilise les paramètres par défaut suivants :
+
+* Classe de stockage : Standard
+* Cryptage par défaut : désactivé
+* Bloquer l'accès public : Bloquer tous les accès publics
+* Propriété de l'objet : ACL activées
+* Gestion des versions du bucket : désactivée
+* Verrouillage d'objet : désactivé
+
+
+--
+Classes de stockage:: La classe de stockage par défaut pour les données hiérarchisées dans AWS est _Standard_.  La norme est idéale pour les données fréquemment consultées stockées dans plusieurs zones de disponibilité.
++
+--
+Si vous ne prévoyez pas d'accéder aux données inactives, vous pouvez réduire vos coûts de stockage en modifiant la classe de stockage sur l'une des suivantes : _Intelligent Tiering_, _One-Zone Infrequent Access_, _Standard Infrequent Access_ ou _S3 Glacier Instant Retrieval_.  Lorsque vous modifiez la classe de stockage, les données inactives démarrent dans la classe de stockage Standard et passent à la classe de stockage que vous avez sélectionnée, si les données ne sont pas consultées après 30 jours.
+
+Les coûts d'accès sont plus élevés si vous accédez aux données, alors tenez-en compte avant de changer la classe de stockage. https://aws.amazon.com/s3/storage-classes["Documentation Amazon S3 : En savoir plus sur les classes de stockage Amazon S3"^] .
+
+Vous pouvez sélectionner une classe de stockage lorsque vous créez le système et vous pouvez la modifier à tout moment par la suite.  Pour obtenir des instructions sur la modification de la classe de stockage, reportez-vous àlink:task-tiering.html["Hiérarchiser les données inactives vers un stockage d'objets à faible coût"] .
+
+La classe de stockage pour la hiérarchisation des données s'applique à l'ensemble du système, et non par volume.
+
+--
+
+
+endif::aws[]
+
+ifdef::azure[]
+
+
+
+== Hiérarchisation des données dans Azure
+
+Lorsque vous activez la hiérarchisation des données dans Azure, Cloud Volumes ONTAP utilise les disques gérés Azure comme niveau de performances pour les données chaudes et le stockage Azure Blob comme niveau de capacité pour les données inactives.
+
+Niveau de performance:: Le niveau de performance peut être soit des SSD, soit des disques durs.
+Niveau de capacité:: Un système Cloud Volumes ONTAP hiérarchise les données inactives dans un seul conteneur Blob.
++
+--
+La console crée un nouveau compte de stockage avec un conteneur pour chaque système Cloud Volumes ONTAP .  Le nom du compte de stockage est aléatoire.  Un conteneur différent n'est pas créé pour chaque volume.
+
+La console crée le compte de stockage avec les paramètres suivants :
+
+* Niveau d'accès : Chaud
+* Performances : Standard
+* Redondance : conformément au déploiement de Cloud Volume ONTAP
++
+** Zone de disponibilité unique : stockage localement redondant (LRS)
+** Zone de disponibilité multiple : stockage redondant dans une zone (ZRS)
+
+
+* Compte : StorageV2 (usage général v2)
+* Exiger un transfert sécurisé pour les opérations de l'API REST : Activé
+* Accès à la clé du compte de stockage : Activé
+* Version TLS minimale : Version 1.2
+* Cryptage de l'infrastructure : désactivé
+
+
+--
+Niveaux d'accès au stockage:: Le niveau d’accès au stockage par défaut pour les données hiérarchisées dans Azure est le niveau _hot_.  Le niveau chaud est idéal pour les données fréquemment consultées dans le niveau de capacité.
++
+--
+Si vous ne prévoyez pas d'accéder aux données inactives dans le niveau de capacité, vous pouvez choisir le niveau de stockage _cool_, où les données inactives sont conservées pendant au moins 30 jours.  Vous pouvez également opter pour le niveau _froid_, où les données inactives sont stockées pendant au moins 90 jours.  En fonction de vos besoins de stockage et de vos considérations de coût, vous pouvez sélectionner le niveau qui correspond le mieux à vos besoins.  Lorsque vous modifiez le niveau de stockage sur _cool_ ou _cold_, les données du niveau de capacité inactif sont déplacées directement vers le niveau de stockage froid ou froid.  Les niveaux froid et froid offrent des coûts de stockage inférieurs par rapport au niveau chaud, mais ils entraînent des coûts d'accès plus élevés, alors tenez-en compte avant de changer de niveau de stockage. Se référer à https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-storage-tiers["Documentation Microsoft Azure : En savoir plus sur les niveaux d'accès au stockage Azure Blob"^] .
+
+Vous pouvez sélectionner un niveau de stockage lorsque vous ajoutez un système Cloud Volumes ONTAP et vous pouvez le modifier à tout moment par la suite.  Pour plus de détails sur la modification du niveau de stockage, reportez-vous àlink:task-tiering.html["Hiérarchiser les données inactives vers un stockage d'objets à faible coût"] .
+
+Le niveau d'accès au stockage pour la hiérarchisation des données s'applique à l'ensemble du système et non par volume.
+
+--
+
+
+endif::azure[]
+
+ifdef::gcp[]
+
+
+
+== Hiérarchisation des données dans Google Cloud
+
+Lorsque vous activez la hiérarchisation des données dans Google Cloud, Cloud Volumes ONTAP utilise des disques persistants comme niveau de performances pour les données chaudes et un bucket Google Cloud Storage comme niveau de capacité pour les données inactives.
+
+Niveau de performance:: Le niveau de performance peut être constitué de disques persistants SSD, de disques persistants équilibrés ou de disques persistants standard.
+Niveau de capacité:: Un système Cloud Volumes ONTAP hiérarchise les données inactives dans un seul bucket Google Cloud Storage.
++
+--
+La console crée un bucket pour chaque système et le nomme fabric-pool-_cluster identifiant unique_.  Un bucket différent n'est pas créé pour chaque volume.
+
+Lorsque la console crée le bucket, elle utilise les paramètres par défaut suivants :
+
+* Type de lieu : Région
+* Classe de stockage : Standard
+* Accès public : soumis aux listes de contrôle d'accès des objets
+* Contrôle d'accès : à granularité fine
+* Protection : Aucune
+* Cryptage des données : clé gérée par Google
+
+
+--
+Classes de stockage:: La classe de stockage par défaut pour les données hiérarchisées est la classe _Standard Storage_.  Si les données sont rarement consultées, vous pouvez réduire vos coûts de stockage en optant pour _Nearline Storage_ ou _Coldline Storage_.  Lorsque vous modifiez la classe de stockage, les données inactives suivantes sont déplacées directement vers la classe que vous avez sélectionnée.
++
+--
+
+NOTE: Toutes les données inactives existantes conserveront la classe de stockage par défaut lorsque vous modifiez la classe de stockage.  Pour modifier la classe de stockage des données inactives existantes, vous devez effectuer la désignation manuellement.
+
+Les coûts d’accès sont plus élevés si vous accédez aux données, alors tenez-en compte avant de changer la classe de stockage.  Pour en savoir plus, reportez-vous à la https://cloud.google.com/storage/docs/storage-classes["Documentation Google Cloud : classes de stockage"^] .
+
+Vous pouvez sélectionner un niveau de stockage lors de la création du système et vous pouvez le modifier à tout moment par la suite.  Pour plus de détails sur la modification de la classe de stockage, reportez-vous àlink:task-tiering.html["Hiérarchiser les données inactives vers un stockage d'objets à faible coût"] .
+
+La classe de stockage pour la hiérarchisation des données s'applique à l'ensemble du système, et non par volume.
+
+--
+
+
+endif::gcp[]
+
+
+
+== Hiérarchisation des données et limites de capacité
+
+Si vous activez la hiérarchisation des données, la limite de capacité d'un système reste la même.  La limite est répartie entre le niveau de performance et le niveau de capacité.
+
+
+
+== Politiques de hiérarchisation des volumes
+
+Pour activer la hiérarchisation des données, vous devez sélectionner une stratégie de hiérarchisation des volumes lorsque vous créez, modifiez ou répliquez un volume.  Vous pouvez sélectionner une politique différente pour chaque volume.
+
+Certaines stratégies de hiérarchisation ont une période de refroidissement minimale associée, qui définit la durée pendant laquelle les données utilisateur d'un volume doivent rester inactives pour que les données soient considérées comme « froides » et déplacées vers le niveau de capacité.  La période de refroidissement commence lorsque les données sont écrites dans l'agrégat.
+
+
+TIP: Vous pouvez modifier la période de refroidissement minimale et le seuil global par défaut de 50 % (plus d'informations à ce sujet ci-dessous). http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-mgng-stor-tier-fp/GUID-AD522711-01F9-4413-A254-929EAE871EBF.html["Apprenez à modifier la période de refroidissement"^] et http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-mgng-stor-tier-fp/GUID-8FC4BFD5-F258-4AA6-9FCB-663D42D92CAA.html["apprenez à modifier le seuil"^] .
+
+La console vous permet de choisir parmi les stratégies de hiérarchisation des volumes suivantes lorsque vous créez ou modifiez un volume :
+
+Instantané uniquement:: Une fois qu'un agrégat a atteint 50 % de sa capacité, Cloud Volumes ONTAP hiérarchise les données utilisateur froides des copies Snapshot qui ne sont pas associées au système de fichiers actif vers le niveau de capacité.  La période de refroidissement est d'environ 2 jours.
++
+--
+Si les blocs de données froids sont lus au niveau de capacité, ils deviennent chauds et sont déplacés vers le niveau de performance.
+
+--
+Tous:: Toutes les données (à l’exception des métadonnées) sont immédiatement marquées comme froides et hiérarchisées vers le stockage d’objets dès que possible. Il n’est pas nécessaire d’attendre 48 heures pour que les nouveaux blocs d’un volume deviennent froids. Notez que les blocs situés dans le volume avant la définition de la politique All nécessitent 48 heures pour devenir froids.
++
+--
+Si les blocs de données froids sont lus sur le niveau cloud, ils restent froids et ne sont pas réécrits sur le niveau de performance. Cette politique est disponible à partir d' ONTAP 9.6.
+
+--
+Automatique:: Une fois qu'un agrégat a atteint 50 % de sa capacité, Cloud Volumes ONTAP hiérarchise les blocs de données froids d'un volume selon un niveau de capacité.  Les données froides incluent non seulement des copies instantanées, mais également des données utilisateur froides provenant du système de fichiers actif.  La période de refroidissement est d'environ 31 jours.
++
+--
+Cette politique est prise en charge à partir de Cloud Volumes ONTAP 9.4.
+
+Si les données sont lues de manière aléatoire, les blocs de données froids du niveau de capacité deviennent chauds et passent au niveau de performance.  Si les données sont lues par des lectures séquentielles, telles que celles associées aux analyses d'index et d'antivirus, les blocs de données froids restent froids et ne passent pas au niveau de performance.
+
+--
+Aucune:: Conserve les données d’un volume dans le niveau de performance, empêchant ainsi leur déplacement vers le niveau de capacité.
+
+
+Lorsque vous répliquez un volume, vous pouvez choisir de hiérarchiser les données vers le stockage d'objets.  Si vous le faites, la console applique la politique *Sauvegarde* au volume de protection des données.  À partir de Cloud Volumes ONTAP 9.6, la politique de hiérarchisation *Tout* remplace la politique de sauvegarde.
+
+
+
+=== La désactivation de Cloud Volumes ONTAP affecte la période de refroidissement
+
+Les blocs de données sont refroidis par des analyses de refroidissement.  Au cours de ce processus, la température des blocs qui n'ont pas été utilisés est déplacée (refroidie) vers la valeur inférieure suivante.  Le temps de refroidissement par défaut dépend de la politique de hiérarchisation des volumes :
+
+* Auto : 31 jours
+* Instantané uniquement : 2 jours
+
+
+Cloud Volumes ONTAP doit être en cours d'exécution pour que l'analyse de refroidissement fonctionne.  Si Cloud Volumes ONTAP est désactivé, le refroidissement s'arrêtera également.  Vous bénéficiez ainsi de temps de refroidissement plus longs.
+
+
+TIP: Lorsque Cloud Volumes ONTAP est désactivé, la température de chaque bloc est conservée jusqu'au redémarrage du système.  Par exemple, si la température d'un bloc est de 5 lorsque vous éteignez le système, la température est toujours de 5 lorsque vous rallumez le système.
+
+
+
+== Configuration de la hiérarchisation des données
+
+Pour obtenir des instructions et une liste des configurations prises en charge, reportez-vous àlink:task-tiering.html["Hiérarchiser les données inactives vers un stockage d'objets à faible coût"] .

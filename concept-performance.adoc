@@ -1,0 +1,59 @@
+---
+sidebar: sidebar 
+permalink: concept-performance.html 
+keywords: performance, technical report, TR, workload, cpu 
+summary: Vous pouvez consulter les résultats de performances pour vous aider à décider quelles charges de travail sont appropriées pour Cloud Volumes ONTAP. 
+---
+= En savoir plus sur la surveillance des performances des charges de travail Cloud Volumes ONTAP
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Vous pouvez consulter les résultats de performances pour vous aider à décider quelles charges de travail sont appropriées pour Cloud Volumes ONTAP.
+
+
+
+== Rapports techniques de performance
+
+ifdef::aws[]
+
+* Cloud Volumes ONTAP pour AWS
++
+link:https://www.netapp.com/pdf.html?item=/media/9088-tr4383pdf.pdf["Rapport technique NetApp 4383 : Caractérisation des performances des Cloud Volumes ONTAP dans Amazon Web Services avec charges de travail applicatives"^]
+
+
+
+endif::aws[]
+
+ifdef::azure[]
+
+* Cloud Volumes ONTAP pour Microsoft Azure
++
+link:https://www.netapp.com/pdf.html?item=/media/9089-tr-4671pdf.pdf["Rapport technique NetApp 4671 : Caractérisation des performances des Cloud Volumes ONTAP dans Azure avec charges de travail applicatives"^]
+
+
+
+endif::azure[]
+
+ifdef::gcp[]
+
+* Cloud Volumes ONTAP pour Google Cloud
++
+link:https://www.netapp.com/pdf.html?item=/media/9090-tr4816pdf.pdf["Rapport technique NetApp 4816 : Caractérisation des performances de Cloud Volumes ONTAP pour Google Cloud"^]
+
+
+
+endif::gcp[]
+
+
+
+== performances du processeur
+
+Les nœuds Cloud Volumes ONTAP s'affichent comme étant très utilisés (plus de 90 %) selon les outils de surveillance de votre fournisseur de cloud.  Cela est dû au fait ONTAP réserve tous les vCPU présentés à la machine virtuelle afin qu’ils soient disponibles en cas de besoin.
+
+Pour plus d'informations, reportez-vous à la https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/Monitoring_CPU_utilization_before_an_ONTAP_upgrade["Article de la base de connaissances NetApp sur la surveillance de l'utilisation du processeur ONTAP à l'aide de l'interface de ligne de commande"^]

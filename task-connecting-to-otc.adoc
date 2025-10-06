@@ -1,0 +1,56 @@
+---
+sidebar: sidebar 
+permalink: task-connecting-to-otc.html 
+keywords: connecting, cli, command, command line, connect, shell, interface 
+summary: 'L"interface de ligne de commande Cloud Volumes ONTAP vous permet d"exécuter toutes les commandes d"administration et constitue un bon choix pour les tâches avancées ou si vous êtes plus à l"aise avec l"interface de ligne de commande.  Vous pouvez vous connecter à la CLI en utilisant SSH.' 
+---
+= Administrer Cloud Volumes ONTAP depuis la CLI
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+L'interface de ligne de commande Cloud Volumes ONTAP vous permet d'exécuter toutes les commandes d'administration et constitue un bon choix pour les tâches avancées ou si vous êtes plus à l'aise avec l'interface de ligne de commande.  Vous pouvez vous connecter à la CLI à l'aide de Secure Shell (SSH).
+
+.Avant de commencer
+L'hôte à partir duquel vous utilisez SSH pour vous connecter à Cloud Volumes ONTAP doit disposer d'une connexion réseau à Cloud Volumes ONTAP.  Par exemple, vous devrez peut-être vous connecter en SSH à partir d'un hôte de saut qui se trouve dans le réseau de votre fournisseur de cloud.
+
+ifdef::aws[]
+
+
+NOTE: Lorsqu'elles sont déployées dans plusieurs zones de disponibilité, les configurations Cloud Volumes ONTAP HA utilisent une adresse IP flottante pour l'interface de gestion du cluster, ce qui signifie que le routage externe n'est pas disponible.  Vous devez vous connecter à partir d’un hôte faisant partie du même domaine de routage.
+
+endif::aws[]
+
+.Étapes
+. Dans la console NetApp , identifiez l’adresse IP de l’interface de gestion du cluster :
++
+.. Dans le menu de navigation de gauche, sélectionnez *Stockage > Gestion*.
+.. Sur la page *Systèmes*, sélectionnez le système Cloud Volumes ONTAP .
+.. Copiez l’adresse IP de gestion du cluster qui apparaît dans le volet de droite.
+
+
+. Utilisez SSH pour vous connecter à l’adresse IP de l’interface de gestion du cluster à l’aide du compte administrateur.
++
+*Exemple*
+
++
+L'image suivante montre un exemple utilisant PuTTY :
+
++
+image:screenshot_cli2.gif["Capture d'écran : affiche la destination admin@192.168.11.5 sur le port 22."]
+
+. À l’invite de connexion, entrez le mot de passe du compte administrateur.
++
+*Exemple*
+
++
+....
+Password: ********
+COT2::>
+....
+

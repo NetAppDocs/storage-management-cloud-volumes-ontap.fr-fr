@@ -1,0 +1,52 @@
+---
+sidebar: sidebar 
+permalink: task-change-gcp-machine.html 
+keywords: change machine type, google cloud machine type, gcp machine type, modify machine type 
+summary: Vous pouvez choisir parmi plusieurs types de machines lorsque vous lancez Cloud Volumes ONTAP dans Google Cloud.  Vous pouvez modifier le type d’instance ou de machine à tout moment si vous déterminez qu’il est sous-dimensionné ou surdimensionné par rapport à vos besoins. 
+---
+= Modifier le type de machine Google Cloud pour Cloud Volumes ONTAP
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Vous pouvez choisir parmi plusieurs types de machines lorsque vous lancez Cloud Volumes ONTAP dans Google Cloud.  Vous pouvez modifier le type d’instance ou de machine à tout moment si vous déterminez qu’il est sous-dimensionné ou surdimensionné par rapport à vos besoins.
+
+.À propos de cette tâche
+* La restitution automatique doit être activée sur une paire Cloud Volumes ONTAP HA (il s'agit du paramètre par défaut).  Si ce n’est pas le cas, l’opération échouera.
++
+http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-hacg/GUID-3F50DE15-0D01-49A5-BEFD-D529713EC1FA.html["Documentation ONTAP 9 : Commandes de configuration du retour automatique"^]
+
+* La modification du type de machine peut affecter les frais de service Google Cloud.
+* L'opération redémarre Cloud Volumes ONTAP.
++
+Pour les systèmes à nœud unique, les E/S sont interrompues.
+
++
+Pour les paires HA, le changement n’est pas perturbateur.  Les paires HA continuent de fournir des données.
+
++
+
+TIP: La console NetApp modifie un nœud à la fois en lançant la prise de contrôle et en attendant le retour.  L'équipe d'assurance qualité de NetApp a testé l'écriture et la lecture des fichiers au cours de ce processus et n'a constaté aucun problème côté client.  À mesure que les connexions changeaient, certaines nouvelles tentatives ont été observées au niveau des E/S, mais la couche application a surmonté le recâblage des connexions NFS/CIFS.
+
+
+
+.Étapes
+. Sur la page *Systèmes*, sélectionnez le système.
+. Dans l’onglet Présentation, cliquez sur le panneau Fonctionnalités, puis cliquez sur l’icône en forme de crayon à côté de *Type de machine*.
++
+image:screenshot_features_machine_type.png["Une capture d'écran qui montre le paramètre Type de machine sous le panneau Fonctionnalités disponible en haut à droite de la page Présentation lors de l'affichage d'un système."]
+
+
+
+Si vous utilisez une licence PAYGO (pay-as-you-go) basée sur des nœuds, vous pouvez éventuellement choisir une licence et un type de machine différents en cliquant sur l'icône en forme de crayon à côté de *Type de licence*.
+
+. Choisissez un type de machine, cochez la case pour confirmer que vous comprenez les implications du changement, puis cliquez sur *Modifier*.
+
+
+.Résultat
+Cloud Volumes ONTAP redémarre avec la nouvelle configuration.

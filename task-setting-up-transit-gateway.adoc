@@ -1,0 +1,104 @@
+---
+sidebar: sidebar 
+permalink: task-setting-up-transit-gateway.html 
+keywords: transit gateway, aws, amazon web services, transit gateway, floating ip, client access, nas, outside, vpc, virtual private cloud, route table 
+summary: 'Configurez une passerelle de transit AWS pour permettre l"accès du client NAS aux adresses IP flottantes depuis l"extérieur du VPC où réside Cloud Volumes ONTAP .  Cela est bénéfique car les adresses IP flottantes migrent automatiquement entre les nœuds lorsque des pannes se produisent.' 
+---
+= Configurer une passerelle de transit AWS pour les paires Cloud Volumes ONTAP HA
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Configurer une passerelle de transit AWS pour permettre l'accès à une paire HAlink:reference-networking-aws.html#requirements-for-ha-pairs-in-multiple-azs["adresses IP flottantes"] depuis l'extérieur du VPC où réside la paire HA.
+
+Lorsqu'une configuration Cloud Volumes ONTAP HA est répartie sur plusieurs zones de disponibilité AWS, des adresses IP flottantes sont requises pour l'accès aux données NAS à partir du VPC.  Ces adresses IP flottantes peuvent migrer entre les nœuds en cas de panne, mais elles ne sont pas accessibles nativement depuis l'extérieur du VPC.  Des adresses IP privées distinctes permettent un accès aux données depuis l'extérieur du VPC, mais elles ne fournissent pas de basculement automatique.
+
+Des adresses IP flottantes sont également requises pour l'interface de gestion de cluster et le LIF de gestion SVM en option.
+
+Si vous configurez une passerelle de transit AWS, vous activez l'accès aux adresses IP flottantes depuis l'extérieur du VPC où réside la paire HA.  Cela signifie que les clients NAS et les outils de gestion NetApp en dehors du VPC peuvent accéder aux adresses IP flottantes.
+
+Voici un exemple qui montre deux VPC connectés par une passerelle de transit.  Un système HA réside dans un VPC, tandis qu’un client réside dans l’autre.  Vous pouvez ensuite monter un volume NAS sur le client en utilisant l’adresse IP flottante.
+
+image:diagram_transit_gateway.png["Un diagramme qui montre une configuration HA dans un VPC, avec des IP flottantes acheminées vers des ENI, un client dans un autre VPC, avec des IP flottantes acheminées vers la passerelle de transit, et une passerelle de transit, avec des IP flottantes acheminées vers la table de routage VPC1."]
+
+Les étapes suivantes illustrent comment configurer une configuration similaire.
+
+.Étapes
+. https://docs.aws.amazon.com/vpc/latest/tgw/tgw-getting-started.html["Créez une passerelle de transit et attachez les VPC à la passerelle"^] .
+. Associez les VPC à la table de routage de la passerelle de transit.
++
+.. Dans le service *VPC*, cliquez sur *Tables de routage de passerelle de transit*.
+.. Sélectionnez la table de routage.
+.. Cliquez sur *Associations* puis sélectionnez *Créer une association*.
+.. Choisissez les pièces jointes (les VPC) à associer puis cliquez sur *Créer une association*.
+
+
+. Créez des itinéraires dans la table de routage de la passerelle de transit en spécifiant les adresses IP flottantes de la paire HA.
++
+Vous pouvez trouver les adresses IP flottantes sur la page d’informations système de la console NetApp . Voici un exemple :
+
++
+image:screenshot_floating_ips.gif["Une capture d'écran qui montre les adresses IP flottantes pour l'interface de gestion du cluster, deux interfaces de données NFS et CIFS et l'interface de gestion SVM."]
+
++
+L'exemple d'image suivant montre la table de routage de la passerelle de transit.  Il comprend des itinéraires vers les blocs CIDR des deux VPC et quatre adresses IP flottantes utilisées par Cloud Volumes ONTAP.
+
++
+image:screenshot_transit_gateway1.png["Une capture d’écran de la console AWS qui affiche la table de routage de la passerelle de transit.  Il comprend des itinéraires vers les blocs CIDR des deux VPC et quatre adresses IP flottantes utilisées par Cloud Volumes ONTAP."]
+
+. Modifiez la table de routage des VPC qui doivent accéder aux adresses IP flottantes.
++
+.. Ajoutez des entrées d’itinéraire aux adresses IP flottantes.
+.. Ajoutez une entrée de route au bloc CIDR du VPC où réside la paire HA.
++
+L'exemple d'image suivant montre la table de routage pour VPC 2, qui inclut les routes vers VPC 1 et les adresses IP flottantes.
+
++
+image:screenshot_transit_gateway2.png["Une capture d'écran de la console AWS qui affiche la table de routage pour VPC 2, qui inclut les routes vers VPC 1 et les adresses IP flottantes."]
+
+
+
+. Modifiez la table de routage du VPC de la paire HA en ajoutant une route au VPC qui a besoin d'accéder aux adresses IP flottantes.
++
+Cette étape est importante car elle termine le routage entre les VPC.
+
++
+L’exemple d’image suivant montre la table de routage pour VPC 1.  Il comprend un itinéraire vers les adresses IP flottantes et vers le VPC 2, où réside un client.  La console a automatiquement ajouté les adresses IP flottantes à la table de routage lors du déploiement de la paire HA.
+
++
+image:screenshot_transit_gateway3.png["Une capture d’écran de la console AWS qui affiche la table de routage pour VPC 1.  Il comprend un itinéraire vers les adresses IP flottantes et vers le VPC 2, où réside un client."]
+
+. Mettez à jour les paramètres des groupes de sécurité sur Tout le trafic pour le VPC.
++
+.. Sous Cloud privé virtuel, cliquez sur *Sous-réseaux*.
+.. Cliquez sur l’onglet *Table de routage*, sélectionnez l’environnement souhaité pour l’une des adresses IP flottantes pour une paire HA.
+.. Cliquez sur *Groupes de sécurité*.
+.. Sélectionnez *Modifier les règles entrantes*.
+.. Cliquez sur *Ajouter une règle*.
+.. Sous Type, sélectionnez *Tout le trafic*, puis sélectionnez l’adresse IP du VPC.
+.. Cliquez sur *Enregistrer les règles* pour appliquer les modifications.
+
+
+. Montez les volumes sur les clients à l’aide de l’adresse IP flottante.
++
+Vous pouvez trouver l’adresse IP correcte dans la console via l’option *Commande de montage* sous le panneau Gérer les volumes dans la console.
+
++
+image::screenshot_mount_option.png[400]
+
+. Si vous montez un volume NFS, configurez la stratégie d’exportation pour qu’elle corresponde au sous-réseau du VPC client.
++
+link:task-manage-volumes.html["Apprenez à modifier un volume"] .
+
+
+
+*Liens connexes*
+
+* link:concept-ha.html["Paires à haute disponibilité dans AWS"]
+* link:reference-networking-aws.html["Exigences réseau pour Cloud Volumes ONTAP dans AWS"]
+

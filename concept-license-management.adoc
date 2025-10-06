@@ -1,0 +1,79 @@
+---
+sidebar: sidebar 
+permalink: concept-license-management.html 
+keywords: byol, bring your own license, expiration, warning, node-based byol, node license, capacity 
+summary: 'Chaque système Cloud Volumes ONTAP doté d"un BYOL basé sur des nœuds doit disposer d"une licence système installée avec un abonnement actif.  La console simplifie le processus en gérant les licences pour vous et en affichant un avertissement avant leur expiration.' 
+---
+= Gestion des licences pour BYOL basé sur les nœuds
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Chaque système Cloud Volumes ONTAP doté d'une licence BYOL (Apportez votre propre licence) basée sur un nœud doit disposer d'une licence système installée avec un abonnement actif.  La console NetApp simplifie le processus en gérant les licences pour vous et en affichant un avertissement avant leur expiration.
+
+
+NOTE: Une licence basée sur les nœuds est la licence de génération précédente pour Cloud Volumes ONTAP. Une licence basée sur les nœuds peut être obtenue auprès de NetApp (BYOL) et est disponible pour le renouvellement de licence, uniquement dans des cas spécifiques.
+
+link:concept-licensing.html["En savoir plus sur les options de licence Cloud Volumes ONTAP"] .
+
+link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-manage-node-licenses.html["En savoir plus sur la gestion des licences basées sur les nœuds"^] .
+
+
+
+== Licences système BYOL
+
+Les licences basées sur les nœuds peuvent être obtenues auprès de NetApp. Le nombre de licences disponibles pour un système à nœud unique ou une paire HA est illimité.
+
+
+NOTE: NetApp a restreint l'achat, la prolongation et le renouvellement des licences BYOL. Pour plus d'informations, consultez  https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/whats-new.html#restricted-availability-of-byol-licensing-for-cloud-volumes-ontap["Disponibilité restreinte des licences BYOL pour Cloud Volumes ONTAPP"^] .
+
+Une licence basée sur un nœud offre jusqu'à 368 Tio de capacité pour un nœud ou une paire HA. Vous avez peut-être acheté plusieurs licences pour un système Cloud Volumes ONTAP BYOL afin d'allouer plus de 368 Tio de capacité. Par exemple, vous pouvez disposer de deux licences pour allouer jusqu'à 736 Tio de capacité à Cloud Volumes ONTAP. Vous pouvez également disposer de quatre licences pour atteindre jusqu'à 1,4 Tio.
+
+Sachez que les limites de disque peuvent vous empêcher d’atteindre la limite de capacité en utilisant uniquement les disques. Vous pouvez dépasser la limite du disque enlink:concept-data-tiering.html["hiérarchisation des données inactives vers le stockage d'objets"] .  Pour plus d'informations sur les limites du disque, reportez-vous à https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/["limites de stockage dans les notes de publication de Cloud Volumes ONTAP"^] .
+
+
+
+== Gestion des licences pour un nouveau système
+
+Lorsque vous créez un système BYOL basé sur des nœuds, la console vous demande le numéro de série de votre licence et votre compte de site de support NetApp .  La console utilise le compte pour télécharger le fichier de licence depuis NetApp et l'installer sur le système Cloud Volumes ONTAP .
+
+https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-nss-accounts.html["Découvrez comment ajouter des comptes de site de support NetApp à la console"^] .
+
+Si la console ne peut pas accéder au fichier de licence via la connexion Internet sécurisée, vous pouvezlink:task-manage-node-licenses.html["obtenez le fichier vous-même, puis téléchargez-le manuellement sur la console"] .
+
+
+
+== Expiration de la licence
+
+La console affiche un avertissement 30 jours avant l'expiration d'une licence basée sur un nœud et à nouveau lorsque la licence expire.  L'image suivante montre un avertissement d'expiration de 30 jours qui apparaît dans l'interface utilisateur :
+
+image:screenshot_warning.gif["Capture d'écran : affiche un système Cloud Volumes ONTAP qui inclut une icône d'avertissement.  L'icône indique qu'une action est requise."]
+
+Vous pouvez sélectionner le système pour examiner le message.
+
+La console inclut un avertissement d'expiration de licence dans le rapport Cloud Volumes ONTAP qui vous est envoyé par e-mail, si vous êtes un administrateur d'organisation ou de compte et que vous avez activé l'option.  Le rapport envoyé par courrier électronique inclut l'avertissement d'expiration de la licence toutes les 2 semaines.
+
+Si vous ne renouvelez pas la licence à temps, le système Cloud Volumes ONTAP s'arrête.  Si vous le redémarrez, il s'éteint à nouveau.
+
+
+
+== Renouvellement de licence
+
+Si vous renouvelez un abonnement BYOL basé sur un nœud en contactant un représentant NetApp , la console obtient automatiquement la nouvelle licence auprès de NetApp et l'installe sur le système Cloud Volumes ONTAP .
+
+Si la console ne peut pas accéder au fichier de licence via la connexion Internet sécurisée, vous pouvezlink:task-manage-node-licenses.html["obtenez le fichier vous-même, puis téléchargez-le manuellement sur la console"] .
+
+
+
+== Transfert de licence vers un nouveau système
+
+Une licence BYOL basée sur un nœud est transférable entre les systèmes Cloud Volumes ONTAP lorsque vous supprimez un système existant, puis en créez un nouveau en utilisant la même licence.
+
+Par exemple, vous souhaiterez peut-être supprimer un système sous licence existant, puis utiliser la licence avec un nouveau système BYOL dans un autre fournisseur VPC/VNet ou cloud.  Notez que seuls les numéros de série _indépendants du cloud_ fonctionnent chez n'importe quel fournisseur de cloud.  Les numéros de série indépendants du cloud commencent par le préfixe _908xxxx_.
+
+Il est important de noter que votre licence BYOL est liée à votre entreprise et à un ensemble spécifique d'informations d'identification du site de support NetApp .

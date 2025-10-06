@@ -1,0 +1,204 @@
+---
+sidebar: sidebar 
+permalink: concept-licensing-charging.html 
+keywords: capacity-based license charging, consumption for licenses, pricing for licenses, CVO licensing, CVO charging 
+summary: Familiarisez-vous avec la facturation, le modèle de consommation, la tarification et les configurations des licences basées sur la capacité. 
+---
+= En savoir plus sur les licences basées sur la capacité pour Cloud Volumes ONTAP
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Vous devez être familiarisé avec la facturation et l'utilisation de la capacité pour les licences basées sur la capacité
+
+
+
+== Modèles de consommation
+
+Des packages de licences basés sur la capacité sont disponibles avec les modèles de consommation suivants :
+
+* *BYOL* : Apportez votre propre permis de conduire (BYOL).  Une licence achetée auprès de NetApp qui peut être utilisée pour déployer Cloud Volumes ONTAP chez n’importe quel fournisseur de cloud.
++
+
+NOTE: NetApp a restreint l'achat, la prolongation et le renouvellement des licences BYOL. Pour plus d'informations, consultez  https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/whats-new.html#restricted-availability-of-byol-licensing-for-cloud-volumes-ontap["Disponibilité restreinte des licences BYOL pour Cloud Volumes ONTAP"^] .
+
+
+
+ifdef::azure[]
+
+endif::azure[]
+
+* *PAYGO* : Un abonnement à la carte (PAYGO) est un abonnement horaire proposé par la place de marché de votre fournisseur de cloud.
+* *Annuel* : Un contrat annuel de la place de marché de votre fournisseur de cloud.
+
+
+Notez ce qui suit :
+
+* Si vous achetez une licence auprès de NetApp (BYOL), vous devez également souscrire à l'offre PAYGO sur la marketplace de votre fournisseur cloud. NetApp a restreint les licences BYOL. À l'expiration de vos licences BYOL, vous devez les remplacer par des abonnements à la marketplace cloud.
++
+Votre licence est toujours facturée en premier, mais vous serez facturé au tarif horaire du marché dans ces cas :
+
++
+** Si vous dépassez votre capacité autorisée
+** Si la durée de votre licence expire
+
+
+* Si vous disposez d'un contrat annuel auprès d'une place de marché, _tous_ les systèmes Cloud Volumes ONTAP que vous déployez sont facturés sur ce contrat.  Vous ne pouvez pas combiner un contrat de marché annuel avec BYOL.
+* Seuls les systèmes à nœud unique avec BYOL sont pris en charge en Chine. Les déploiements en Chine sont exemptés des restrictions de licence BYOL.
+
+
+
+
+== Changement de forfait
+
+Après le déploiement, vous pouvez modifier le package pour un système Cloud Volumes ONTAP qui utilise des licences basées sur la capacité. Par exemple, si vous avez déployé un système Cloud Volumes ONTAP avec le package Essentials, vous pouvez le remplacer par le package Professional si les besoins de votre entreprise ont changé.
+
+link:task-manage-capacity-licenses.html["Apprenez à modifier les méthodes de charge"] .
+
+Pour plus d'informations sur la conversion des licences basées sur les nœuds en licences basées sur la capacité, consultez
+
+
+
+== Tarification et configurations prises en charge
+
+Pour plus de détails sur les prix, rendez-vous sur le https://bluexp.netapp.com/pricing/["Site Web de la console NetApp"^] .
+
+Les packages de licences basés sur la capacité sont disponibles avec Cloud Volumes ONTAP 9.7 et versions ultérieures.
+
+
+
+=== Machines virtuelles de stockage
+
+* Il n'y a pas de frais de licence supplémentaires pour les machines virtuelles de stockage de données supplémentaires (SVM), mais il y a des frais de capacité minimum de 4 Tio par SVM de stockage de données.
+* Les SVM de reprise après sinistre sont facturés en fonction de la capacité provisionnée.
+
+
+
+
+=== paires HA
+
+Pour les paires HA, vous n'êtes facturé que pour la capacité provisionnée sur un nœud.  Vous n'êtes pas facturé pour les données mises en miroir de manière synchrone sur le nœud partenaire.
+
+
+
+=== Volumes FlexClone et FlexCache
+
+* Vous ne serez pas facturé pour la capacité utilisée par les volumes FlexClone .
+* Les volumes FlexCache source et de destination sont considérés comme des données principales et facturés en fonction de l'espace provisionné.
+
+
+
+
+== Limite de capacité
+
+Dans le modèle de licence basé sur la capacité, chaque système Cloud Volumes ONTAP prend en charge la hiérarchisation du stockage d'objets, et la capacité hiérarchisée totale peut évoluer jusqu'à la limite de compartiment du fournisseur de cloud. Bien que la licence n'impose pas de restrictions de capacité, suivez les https://www.netapp.com/pdf.html?item=/media/17239-tr-4598.pdf["Bonnes pratiques de FabricPool"^] pour garantir des performances, une fiabilité et une rentabilité optimales lors de la configuration et de la gestion de la hiérarchisation.
+
+Pour plus d'informations sur les limites de capacité de chaque fournisseur de cloud, reportez-vous à leur documentation :
+
+* https://docs.aws.amazon.com/AmazonS3/latest/userguide/BucketRestrictions.html["Documentation AWS"^]
+* https://learn.microsoft.com/en-us/azure/storage/common/scalability-targets-standard-account["Documentation Azure pour les disques gérés"^]et https://learn.microsoft.com/en-us/azure/storage/blobs/scalability-targets["Documentation Azure pour le stockage d'objets blob"^]
+* https://cloud.google.com/storage/docs/buckets["Documentation Google Cloud"^]
+
+
+
+
+== Nombre maximal de systèmes
+
+Avec les licences basées sur la capacité, le nombre maximal de systèmes Cloud Volumes ONTAP est limité à 24 par compte NetApp Console.  Un _système_ est une paire Cloud Volumes ONTAP HA, un système à nœud unique Cloud Volumes ONTAP ou toute machine virtuelle de stockage supplémentaire que vous créez.  La machine virtuelle de stockage par défaut n'est pas prise en compte dans la limite.  Cette limite s’applique à tous les modèles de licence.
+
+Par exemple, disons que vous avez trois systèmes :
+
+* Un système Cloud Volumes ONTAP à nœud unique avec une machine virtuelle de stockage (il s'agit de la machine virtuelle de stockage par défaut créée lorsque vous déployez Cloud Volumes ONTAP)
++
+Ce système compte comme un seul système.
+
+* Un système Cloud Volumes ONTAP à nœud unique avec deux machines virtuelles de stockage (la machine virtuelle de stockage par défaut, plus une machine virtuelle de stockage supplémentaire que vous avez créée)
++
+Ce système compte comme deux systèmes : un pour le système à nœud unique et un pour la machine virtuelle de stockage supplémentaire.
+
+* Une paire Cloud Volumes ONTAP HA avec trois machines virtuelles de stockage (la machine virtuelle de stockage par défaut, plus deux machines virtuelles de stockage supplémentaires que vous avez créées)
++
+Ce système compte trois systèmes : un pour la paire HA et deux pour les machines virtuelles de stockage supplémentaires.
+
+
+
+Cela représente six systèmes au total.  Vous auriez alors de la place pour 14 systèmes supplémentaires sur votre compte.
+
+Si vous avez un déploiement important qui nécessite plus de 24 systèmes, contactez votre représentant de compte ou votre équipe commerciale.
+
+https://docs.netapp.com/us-en/bluexp-setup-admin/concept-netapp-accounts.html["En savoir plus sur les comptes de console"^] .
+
+https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/index.html["En savoir plus sur les limites de stockage pour AWS, Azure et Google Cloud"^] .
+
+
+
+== Remarques sur la charge
+
+Les détails suivants peuvent vous aider à comprendre comment fonctionne la facturation avec les licences basées sur la capacité.
+
+
+
+=== Frais minimum
+
+Des frais minimum de 4 Tio sont appliqués pour chaque machine virtuelle de stockage de données possédant au moins un volume principal (lecture-écriture).  Si la somme des volumes principaux est inférieure à 4 Tio, la console applique les frais minimum de 4 Tio à cette machine virtuelle de stockage.
+
+Si vous n'avez pas encore provisionné de volumes, les frais minimum ne s'appliquent pas.
+
+Pour le package Essentials, les frais de capacité minimale de 4 Tio ne s'appliquent pas aux machines virtuelles de stockage qui contiennent uniquement des volumes secondaires (protection des données). Par exemple, si vous disposez d'une machine virtuelle de stockage avec 1 Tio de données secondaires, vous êtes facturé uniquement pour ces 1 Tio de données. Avec le type de forfait Professionnel, la facturation de capacité minimale de 4 Tio s'applique quel que soit le type de volume.
+
+
+
+=== Dépassements
+
+Si vous dépassez votre capacité BYOL, les dépassements vous seront facturés au tarif horaire de votre abonnement à la place de marché. Les dépassements sont facturés au tarif de la place de marché, la capacité disponible des autres licences étant privilégiée. Si votre licence BYOL expire, vous devrez passer à un modèle de licence basé sur la capacité via les places de marché cloud.
+
+
+
+=== Forfait Essentiel
+
+Avec le forfait Essentials, vous êtes facturé en fonction du type de déploiement (HA ou nœud unique) et du type de volume (principal ou secondaire).  La tarification du plus élevé au plus bas est présentée dans l'ordre suivant : _Essentials Primary HA_, _Essentials Primary Single Node_, _Essentials Secondary HA_ et _Essentials Secondary Single Node_.  Alternativement, lorsque vous achetez un contrat de marché ou acceptez une offre privée, les frais de capacité sont les mêmes pour tout type de déploiement ou de volume.
+
+L'octroi de licences est entièrement basé sur le type de volume créé dans les systèmes Cloud Volumes ONTAP :
+
+* Essentials Single Node : volumes en lecture/écriture créés sur un système Cloud Volumes ONTAP à l'aide d'un seul nœud ONTAP .
+* Essentials HA : volumes de lecture/écriture à l'aide de deux nœuds ONTAP pouvant basculer l'un vers l'autre pour un accès aux données sans interruption.
+* Essentials Secondary Single Node : volumes de type Data Protection (DP) (généralement des volumes de destination SnapMirror ou SnapVault en lecture seule) créés sur un système Cloud Volumes ONTAP à l'aide d'un seul nœud ONTAP .
++
+
+NOTE: Si un volume en lecture seule/DP devient un volume principal, la console le considère comme des données principales et les coûts de facturation sont calculés en fonction du temps pendant lequel le volume était en mode lecture/écriture.  Lorsque le volume est à nouveau rendu en lecture seule/DP, il considère à nouveau le volume comme des données secondaires et facture en conséquence en utilisant la licence la plus correspondante dans la console.
+
+* Essentials Secondary HA : volumes de type Data Protection (DP) (généralement des volumes de destination SnapMirror ou SnapVault en lecture seule) créés sur un système Cloud Volumes ONTAP à l'aide de deux nœuds ONTAP qui peuvent basculer l'un vers l'autre pour un accès aux données sans interruption.
+
+
+.Apportez votre propre vin
+Si vous avez acheté une licence Essentials auprès de NetApp (BYOL) et que vous dépassez la capacité sous licence pour ce déploiement et ce type de volume, la console facture les dépassements sur une licence Essentials à prix plus élevé (si vous en avez une et qu'il y a de la capacité disponible).  Cela se produit parce que nous utilisons d'abord la capacité disponible que vous avez déjà achetée en tant que capacité prépayée avant de la facturer sur le marché.  S'il n'y a pas de capacité disponible avec votre licence BYOL, la capacité dépassée sera facturée aux tarifs horaires à la demande du marché (PAYGO) et ajoutera des coûts à votre facture mensuelle.
+
+Voici un exemple. Disons que vous disposez des licences suivantes pour le package Essentials :
+
+* Une licence _Essentials Secondary HA_ de 500 Tio avec 500 Tio de capacité engagée
+* Une licence _Essentials Single Node_ de 500 Tio qui ne dispose que de 100 Tio de capacité engagée
+
+
+50 Tio supplémentaires sont provisionnés sur une paire HA avec des volumes secondaires.  Au lieu de facturer ces 50 Tio au PAYGO, la console facture le dépassement de 50 Tio sur la licence _Essentials Single Node_.  Cette licence est plus chère que _Essentials Secondary HA_, mais elle utilise une licence que vous avez déjà achetée et n'ajoutera pas de frais à votre facture mensuelle.
+
+Dans *Administration > Licences et abonnements*, vous pouvez voir 50 Tio facturés sur la licence _Essentials Single Node_.
+
+Voici un autre exemple.  Disons que vous disposez des licences suivantes pour le package Essentials :
+
+* Une licence _Essentials Secondary HA_ de 500 Tio avec 500 Tio de capacité engagée
+* Une licence _Essentials Single Node_ de 500 Tio qui ne dispose que de 100 Tio de capacité engagée
+
+
+100 Tio supplémentaires sont provisionnés sur une paire HA avec des volumes primaires.  La licence que vous avez achetée ne dispose pas de capacité engagée _Essentials Primary HA_.  La licence _Essentials Primary HA_ est proposée à un prix plus élevé que les licences _Essentials Primary Single Node_ et _Essentials Secondary HA_.
+
+Dans cet exemple, la console facture les dépassements au tarif du marché pour les 100 Tio supplémentaires.  Les frais de dépassement apparaîtront sur votre facture mensuelle.
+
+.Contrats de marché ou offres privées
+Si vous avez acheté une licence Essentials dans le cadre d'un contrat de place de marché ou d'une offre privée, la logique BYOL ne s'applique pas et vous devez disposer du type de licence exact pour l'utilisation.  Le type de licence inclut le type de volume (principal ou secondaire) et le type de déploiement (HA ou nœud unique).
+
+Par exemple, supposons que vous déployez une instance Cloud Volumes ONTAP avec la licence Essentials.  Vous provisionnez ensuite des volumes en lecture-écriture (nœud unique principal) et des volumes en lecture seule (nœud unique secondaire).  Votre contrat de place de marché ou votre offre privée doit inclure la capacité pour _Essentials Single Node_ et _Essentials Secondary Single Node_ pour couvrir la capacité provisionnée.  Toute capacité provisionnée qui ne fait pas partie de votre contrat de place de marché ou de votre offre privée sera facturée aux tarifs horaires à la demande (PAYGO) et ajoutera des coûts à votre facture mensuelle.

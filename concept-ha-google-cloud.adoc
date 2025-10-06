@@ -1,0 +1,154 @@
+---
+sidebar: sidebar 
+permalink: concept-ha-google-cloud.html 
+keywords: high-availability, HA, mediator, concepts, understanding, overview, takeover, giveback, rpo, rto, nondisruptive, ha pairs, node, nodes, synchronous, resync, recovery point objective, recovery time objective, failover, mount, remount, failure, data access, access, ip address, performance, gcp, gcp ha, google cloud ha, ha in google cloud 
+summary: Une configuration haute disponibilité Cloud Volumes ONTAP offre des opérations sans interruption et une tolérance aux pannes.  Dans Google Cloud, les données sont mises en miroir de manière synchrone entre les deux nœuds. 
+---
+= En savoir plus sur les paires Cloud Volumes ONTAP HA dans Google Cloud
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Une configuration haute disponibilité (HA) Cloud Volumes ONTAP offre des opérations sans interruption et une tolérance aux pannes.  Dans Google Cloud, les données sont mises en miroir de manière synchrone entre les deux nœuds.
+
+
+
+== Composants HA
+
+Les configurations Cloud Volumes ONTAP HA dans Google Cloud incluent les composants suivants :
+
+* Deux nœuds Cloud Volumes ONTAP dont les données sont mises en miroir de manière synchrone entre eux.
+* Une instance de médiateur qui fournit un canal de communication entre les nœuds pour aider aux processus de prise de contrôle et de restitution du stockage.
+* Une zone ou trois zones (recommandé).
++
+Si vous choisissez trois zones, les deux nœuds et le médiateur se trouvent dans des zones Google Cloud distinctes.
+
+* Quatre clouds privés virtuels (VPC).
++
+La configuration utilise quatre VPC car GCP exige que chaque interface réseau réside dans un réseau VPC distinct.
+
+* Quatre équilibreurs de charge internes Google Cloud (TCP/UDP) qui gèrent le trafic entrant vers la paire Cloud Volumes ONTAP HA.
+
+
+link:reference-networking-gcp.html["En savoir plus sur les exigences de mise en réseau"], y compris plus de détails sur les équilibreurs de charge, les VPC, les adresses IP internes, les sous-réseaux, etc.
+
+L'image conceptuelle suivante montre une paire Cloud Volumes ONTAP HA et ses composants :
+
+image:diagram_gcp_ha.png["Une image conceptuelle d'une paire Cloud Volumes ONTAP HA et de ses composants."]
+
+
+
+=== Médiateur
+
+Voici quelques détails clés sur l’instance de médiateur dans Google Cloud :
+
+Type d'instance:: e2-micro (une instance f1-micro a été utilisée précédemment)
+Disques:: Deux disques persistants standard de 10 Gio chacun
+Système opérateur:: Debian 11
++
+--
+
+NOTE: Pour Cloud Volumes ONTAP 9.10.0 et versions antérieures, Debian 10 a été installé sur le médiateur.
+
+--
+Mises à niveau:: Lorsque vous mettez à niveau Cloud Volumes ONTAP, la console NetApp met également à jour l'instance du médiateur selon les besoins.
+Accès à l'instance:: Pour Debian, l'utilisateur cloud par défaut est `admin` .  Google Cloud crée et ajoute des certificats pour le `admin` utilisateur lorsque l'accès SSH est demandé via la console Google Cloud ou la ligne de commande gcloud.  Vous pouvez spécifier `sudo` pour obtenir les privilèges root.
+Agents tiers:: Les agents tiers ou les extensions de machine virtuelle ne sont pas pris en charge sur l’instance du médiateur.
+
+
+
+
+== Reprise et restitution du stockage
+
+Si un nœud tombe en panne, l’autre nœud peut fournir des données à son partenaire afin de fournir un service de données continu.  Les clients peuvent accéder aux mêmes données à partir du nœud partenaire, car les données ont été mises en miroir de manière synchrone sur le partenaire.
+
+Après le redémarrage du nœud, le partenaire doit resynchroniser les données avant de pouvoir renvoyer le stockage.  Le temps nécessaire à la resynchronisation des données dépend de la quantité de données modifiées pendant que le nœud était en panne.
+
+La prise de contrôle du stockage, la resynchronisation et la restitution sont toutes automatiques par défaut. Aucune action de l'utilisateur n'est requise.
+
+
+
+== RPO et RTO
+
+Une configuration HA maintient une haute disponibilité de vos données comme suit :
+
+* L'objectif de point de récupération (RPO) est de 0 seconde.
++
+Vos données sont cohérentes sur le plan transactionnel, sans aucune perte de données.
+
+* L'objectif de temps de récupération (RTO) est de 120 secondes.
++
+En cas de panne, les données devraient être disponibles en 120 secondes ou moins.
+
+
+
+
+
+== Modèles de déploiement HA
+
+Vous pouvez garantir la haute disponibilité de vos données en déployant une configuration HA dans plusieurs zones ou dans une seule zone.
+
+Zones multiples (recommandé):: Le déploiement d’une configuration HA sur trois zones garantit une disponibilité continue des données en cas de panne dans une zone.  Notez que les performances d'écriture sont légèrement inférieures à celles de l'utilisation d'une seule zone, mais elles sont minimes.
+Zone unique:: Lorsqu'elle est déployée dans une zone unique, une configuration Cloud Volumes ONTAP HA utilise une stratégie de placement répartie.  Cette politique garantit qu'une configuration HA est protégée contre un point de défaillance unique au sein de la zone, sans avoir à utiliser des zones distinctes pour obtenir l'isolement des pannes.
++
+--
+Ce modèle de déploiement réduit vos coûts car il n’y a pas de frais de sortie de données entre les zones.
+
+--
+
+
+
+
+== Comment fonctionne le stockage dans une paire HA
+
+Contrairement à un cluster ONTAP , le stockage dans une paire Cloud Volumes ONTAP HA dans GCP n'est pas partagé entre les nœuds.  Au lieu de cela, les données sont mises en miroir de manière synchrone entre les nœuds afin que les données soient disponibles en cas de panne.
+
+
+
+=== Allocation de stockage
+
+Lorsque vous créez un nouveau volume et que des disques supplémentaires sont requis, la console alloue le même nombre de disques aux deux nœuds, crée un agrégat en miroir, puis crée le nouveau volume.  Par exemple, si deux disques sont requis pour le volume, la console alloue deux disques par nœud pour un total de quatre disques.
+
+
+
+=== Configurations de stockage
+
+Vous pouvez utiliser une paire HA comme configuration active-active, dans laquelle les deux nœuds fournissent des données aux clients, ou comme configuration active-passive, dans laquelle le nœud passif répond aux demandes de données uniquement s'il a pris en charge le stockage du nœud actif.
+
+
+
+=== Attentes de performances pour une configuration HA
+
+Une configuration Cloud Volumes ONTAP HA réplique de manière synchrone les données entre les nœuds, ce qui consomme de la bande passante réseau.  Par conséquent, vous pouvez vous attendre aux performances suivantes par rapport à une configuration Cloud Volumes ONTAP à nœud unique :
+
+* Pour les configurations HA qui diffusent des données à partir d'un seul nœud, les performances de lecture sont comparables aux performances de lecture d'une configuration à nœud unique, tandis que les performances d'écriture sont inférieures.
+* Pour les configurations HA qui diffusent des données à partir des deux nœuds, les performances de lecture sont supérieures à celles d'une configuration à nœud unique, et les performances d'écriture sont identiques ou supérieures.
+
+
+Pour plus de détails sur les performances de Cloud Volumes ONTAP , reportez-vous àlink:concept-performance.html["Performances"] .
+
+
+
+=== Accès client au stockage
+
+Les clients doivent accéder aux volumes NFS et CIFS en utilisant l’adresse IP de données du nœud sur lequel réside le volume.  Si les clients NAS accèdent à un volume en utilisant l’adresse IP du nœud partenaire, le trafic circule entre les deux nœuds, ce qui réduit les performances.
+
+
+TIP: Si vous déplacez un volume entre des nœuds d’une paire HA, vous devez remonter le volume en utilisant l’adresse IP de l’autre nœud.  Dans le cas contraire, vous risquez de constater une diminution des performances.  Si les clients prennent en charge les références NFSv4 ou la redirection de dossiers pour CIFS, vous pouvez activer ces fonctionnalités sur les systèmes Cloud Volumes ONTAP pour éviter de remonter le volume.  Pour plus de détails, reportez-vous à la documentation ONTAP .
+
+Vous pouvez localiser l'adresse IP correcte à partir de la console en sélectionnant le volume et en cliquant sur *Commande de montage*.
+
+image::screenshot_mount_option.png[400]
+
+
+
+=== Liens connexes
+
+* link:reference-networking-gcp.html["En savoir plus sur les exigences de mise en réseau"]
+* link:task-getting-started-gcp.html["Découvrez comment démarrer avec GCP"]
+

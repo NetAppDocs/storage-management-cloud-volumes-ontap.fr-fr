@@ -1,0 +1,61 @@
+---
+sidebar: sidebar 
+permalink: task-manage-capacity-settings.html 
+keywords: aggregates, delete aggregates, add disks, view aggregates 
+summary: Gérez vous-même les agrégats en ajoutant des disques, en affichant des informations sur les agrégats et en les supprimant. 
+---
+= Gérer la capacité globale de Cloud Volumes ONTAP sur un agent de console
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Chaque agent de console dispose de paramètres qui déterminent la manière dont il gère la capacité globale de Cloud Volumes ONTAP.
+
+Ces paramètres affectent tous les systèmes Cloud Volumes ONTAP gérés par un agent de console.  Si vous disposez d’un autre agent de console, il peut être configuré différemment.
+
+.Autorisations requises
+Vous avez besoin des privilèges d’administrateur d’organisation ou de compte de la console NetApp pour modifier les paramètres Cloud Volumes ONTAP .
+
+.Étapes
+. Dans le volet de navigation de gauche, accédez à *Administration > Agents*.
+. Cliquez sur leimage:icon-action.png[""] icône pour l'agent de console qui gère votre système Cloud Volumes ONTAP .
+. Sélectionnez * Paramètres Cloud Volumes ONTAP *.
++
+image::screenshot-settings-cloud-volumes-ontap.png[Une capture d’écran de l’option Paramètres Cloud Volumes ONTAP sous l’icône Paramètres.]
+
+. Sous *Capacité*, modifiez l’un des paramètres suivants :
++
+image:screenshot-cvo-settings-page.png["Un aperçu des paramètres de capacité de Cloud Volumes ONTAP."]
+
++
+Mode de gestion de la capacité:: Choisissez si la console doit vous informer des décisions en matière de capacité de stockage ou si elle doit gérer automatiquement les besoins en capacité pour vous.
++
+--
+link:concept-storage-management.html#capacity-management["Découvrez comment fonctionne le mode de gestion de la capacité"] .
+
+--
+Seuil de capacité globale - Rapport espace libre:: Ce ratio est un paramètre clé dans les décisions de gestion de la capacité, et il est essentiel de comprendre son impact, que vous soyez en mode automatique ou manuel de gestion de la capacité.  Il est recommandé de définir ce seuil en tenant compte de vos besoins de stockage spécifiques et de la croissance prévue afin de maintenir un équilibre entre l'utilisation des ressources et les coûts.
++
+--
+En mode manuel, si le ratio d'espace libre sur un agrégat tombe en dessous du seuil spécifié, il déclenche une notification, vous avertissant que vous devez prendre des mesures pour remédier au faible ratio d'espace libre.  Il est important de surveiller ces notifications et de gérer manuellement la capacité globale pour éviter toute interruption de service et garantir des performances optimales.
+
+Le ratio d'espace libre est calculé comme suit : (capacité globale - capacité totale utilisée sur l'agrégat) / capacité globale
+
+Se référer àlink:concept-storage-management.html#automatic-capacity-management["Gestion automatique des capacités"] pour en savoir plus, la capacité est désormais gérée automatiquement dans Cloud Volumes ONTAP.
+
+--
+Seuils de capacité globale - Ratio d'espace libre pour la hiérarchisation des données:: Définit la quantité d'espace libre requise sur le niveau de performance (disques) lors de la hiérarchisation des données vers un niveau de capacité (stockage d'objets).
++
+--
+Le ratio est important pour les scénarios de reprise après sinistre.  À mesure que les données sont lues à partir du niveau de capacité, Cloud Volumes ONTAP déplace les données vers le niveau de performance pour offrir de meilleures performances.  S'il n'y a pas suffisamment d'espace, Cloud Volumes ONTAP ne peut pas déplacer les données.
+
+--
+
+
+. Cliquez sur *Enregistrer*.
+

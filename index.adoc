@@ -1,0 +1,15 @@
+---
+layout: landing-page 
+sidebar: sidebar 
+permalink: index.html 
+summary: 'Cloud Volumes ONTAP vous permet d"optimiser vos coûts et vos performances de stockage cloud tout en améliorant la protection, la sécurité et la conformité des données.' 
+---
+= Documentation de Cloud Volumes ONTAP
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+

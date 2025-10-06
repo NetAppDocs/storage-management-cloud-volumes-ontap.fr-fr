@@ -1,0 +1,248 @@
+---
+sidebar: sidebar 
+permalink: concept-ha.html 
+keywords: high availability, HA, mediator, concepts, understanding, overview, availability zones, AZs, takeover, giveback, rpo, rto, floating ip, nondisruptive, ha pairs, node, nodes, synchronous, resync, recovery point objective, recovery time objective, nas, nfs, cifs, floating ip address, route tables, iscsi, mpio, alua, failover, mount, remount, failure, data access, access, ip address, performance 
+summary: 'Une configuration haute disponibilité (HA) Cloud Volumes ONTAP offre des opérations sans interruption et une tolérance aux pannes.  Dans AWS, les données sont mises en miroir de manière synchrone entre les deux nœuds.' 
+---
+= En savoir plus sur les paires Cloud Volumes ONTAP HA dans AWS
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Une configuration haute disponibilité (HA) Cloud Volumes ONTAP offre des opérations sans interruption et une tolérance aux pannes.  Dans AWS, les données sont mises en miroir de manière synchrone entre les deux nœuds.
+
+
+
+== Composants HA
+
+Dans AWS, les configurations Cloud Volumes ONTAP HA incluent les composants suivants :
+
+* Deux nœuds Cloud Volumes ONTAP dont les données sont mises en miroir de manière synchrone entre eux.
+* Une instance de médiateur qui fournit un canal de communication entre les nœuds pour aider aux processus de prise de contrôle et de restitution du stockage.
+
+
+
+
+=== Médiateur
+
+Voici quelques détails clés sur l’instance de médiateur dans AWS :
+
+Type d'instance:: t3-micro
+Disques:: Deux disques st1 de 8 Gio et 4 Gio
+Système opérateur:: Debian 11
++
+--
+
+NOTE: Pour Cloud Volumes ONTAP 9.10.0 et versions antérieures, Debian 10 a été installé sur le médiateur.
+
+--
+Mises à niveau:: Lorsque vous mettez à niveau Cloud Volumes ONTAP, la console NetApp met également à jour l'instance du médiateur selon les besoins.
+Accès à l'instance:: Lorsque vous créez une paire Cloud Volumes ONTAP HA à partir de la console, vous êtes invité à fournir une paire de clés pour l'instance de médiateur.  Vous pouvez utiliser cette paire de clés pour l'accès SSH en utilisant le `admin` utilisateur.
+Agents tiers:: Les agents tiers ou les extensions de machine virtuelle ne sont pas pris en charge sur l’instance du médiateur.
+
+
+
+
+== Reprise et restitution du stockage
+
+Si un nœud tombe en panne, l’autre nœud peut fournir des données à son partenaire afin de fournir un service de données continu.  Les clients peuvent accéder aux mêmes données à partir du nœud partenaire, car les données ont été mises en miroir de manière synchrone sur le partenaire.
+
+Après le redémarrage du nœud, le partenaire doit resynchroniser les données avant de pouvoir renvoyer le stockage.  Le temps nécessaire à la resynchronisation des données dépend de la quantité de données modifiées pendant que le nœud était en panne.
+
+La prise de contrôle du stockage, la resynchronisation et la restitution sont toutes automatiques par défaut. Aucune action de l'utilisateur n'est requise.
+
+
+
+== RPO et RTO
+
+Une configuration HA maintient la haute disponibilité de vos données comme suit :
+
+* L'objectif de point de récupération (RPO) est de 0 seconde.  Vos données sont cohérentes sur le plan transactionnel, sans aucune perte de données.
+* L'objectif de temps de récupération (RTO) est de 120 secondes.  En cas de panne, les données devraient être disponibles en 120 secondes ou moins.
+
+
+
+
+== Modèles de déploiement HA
+
+Vous pouvez garantir la haute disponibilité de vos données en déployant une configuration HA sur plusieurs zones de disponibilité (AZ) ou dans une seule zone de disponibilité (AZ).  Vous devriez examiner plus en détail chaque configuration pour choisir celle qui correspond le mieux à vos besoins.
+
+
+
+=== Plusieurs zones de disponibilité
+
+Le déploiement d'une configuration HA dans plusieurs zones de disponibilité (AZ) garantit une haute disponibilité de vos données en cas de panne d'une AZ ou d'une instance qui exécute un nœud Cloud Volumes ONTAP .  Vous devez comprendre comment les adresses IP NAS impactent l’accès aux données et le basculement du stockage.
+
+
+
+==== Accès aux données NFS et CIFS
+
+Lorsqu'une configuration HA est répartie sur plusieurs zones de disponibilité, les _adresses IP flottantes_ permettent l'accès du client NAS.  Les adresses IP flottantes, qui doivent être en dehors des blocs CIDR pour tous les VPC de la région, peuvent migrer entre les nœuds en cas de panne.  Ils ne sont pas accessibles nativement aux clients qui se trouvent en dehors du VPC, sauf si vouslink:task-setting-up-transit-gateway.html["configurer une passerelle de transit AWS"] .
+
+Si vous ne pouvez pas configurer une passerelle de transit, des adresses IP privées sont disponibles pour les clients NAS qui se trouvent en dehors du VPC.  Cependant, ces adresses IP sont statiques : elles ne peuvent pas basculer entre les nœuds.
+
+Vous devez examiner les exigences relatives aux adresses IP flottantes et aux tables de routage avant de déployer une configuration HA sur plusieurs zones de disponibilité.  Vous devez spécifier les adresses IP flottantes lorsque vous déployez la configuration.  Les adresses IP privées sont créées automatiquement.
+
+Pour plus d'informations, reportez-vous à link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/reference-networking-aws.html#requirements-for-ha-pairs-in-multiple-azs["Exigences réseau AWS pour Cloud Volumes ONTAP HA dans plusieurs zones de disponibilité"^] .
+
+
+
+==== Accès aux données iSCSI
+
+La communication de données entre VPC n’est pas un problème puisque iSCSI n’utilise pas d’adresses IP flottantes.
+
+
+
+==== Reprise et restitution pour iSCSI
+
+Pour iSCSI, Cloud Volumes ONTAP utilise les E/S multi-chemins (MPIO) et l'accès aux unités logiques asymétriques (ALUA) pour gérer le basculement de chemin entre les chemins optimisés actifs et non optimisés.
+
+
+NOTE: Pour plus d'informations sur les configurations d'hôte spécifiques qui prennent en charge ALUA, reportez-vous à la http://mysupport.netapp.com/matrix["Outil de matrice d'interopérabilité NetApp"^] et le https://docs.netapp.com/us-en/ontap-sanhost/["Guide des hôtes SAN et des clients cloud"] pour votre système d'exploitation hôte.
+
+
+
+==== Reprise et restitution pour NAS
+
+Lorsqu'une prise de contrôle se produit dans une configuration NAS utilisant des adresses IP flottantes, l'adresse IP flottante du nœud que les clients utilisent pour accéder aux données se déplace vers l'autre nœud.  L'image suivante illustre la prise de contrôle du stockage dans une configuration NAS utilisant des adresses IP flottantes.  Si le nœud 2 tombe en panne, l’adresse IP flottante du nœud 2 est déplacée vers le nœud 1.
+
+image:diagram_takeover_giveback.png["Image conceptuelle montrant la prise de contrôle du stockage dans une paire Cloud Volumes ONTAP HA : les adresses IP flottantes du nœud 1 se déplacent vers le nœud 2."]
+
+Les adresses IP de données NAS utilisées pour l’accès VPC externe ne peuvent pas migrer entre les nœuds en cas de panne.  Si un nœud est hors ligne, vous devez remonter manuellement les volumes sur les clients extérieurs au VPC en utilisant l'adresse IP de l'autre nœud.
+
+Une fois le nœud défaillant remis en ligne, remontez les clients sur les volumes en utilisant l'adresse IP d'origine.  Cette étape est nécessaire pour éviter de transférer des données inutiles entre deux nœuds HA, ce qui peut entraîner un impact significatif sur les performances et la stabilité.
+
+Vous pouvez localiser l'adresse IP correcte à partir de la console en sélectionnant le volume et en cliquant sur *Commande de montage*.
+
+
+
+=== Zone de disponibilité unique
+
+Le déploiement d'une configuration HA dans une seule zone de disponibilité (AZ) peut garantir une haute disponibilité de vos données si une instance qui exécute un nœud Cloud Volumes ONTAP échoue.  Toutes les données sont nativement accessibles depuis l’extérieur du VPC.
+
+
+NOTE: La console crée un https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html["Documentation AWS : Groupe de placement de spread AWS"^] et lance les deux nœuds HA dans ce groupe de placement. Le groupe de placement réduit le risque de pannes simultanées en répartissant les instances sur des matériels sous-jacents distincts. Cette fonctionnalité améliore la redondance du point de vue du calcul et non du point de vue des pannes de disque.
+
+
+
+==== Accès aux données
+
+Étant donné que cette configuration se trouve dans une seule zone de disponibilité, elle ne nécessite pas d’adresses IP flottantes.  Vous pouvez utiliser la même adresse IP pour l’accès aux données depuis l’intérieur du VPC et depuis l’extérieur du VPC.
+
+L'image suivante montre une configuration HA dans une seule AZ.  Les données sont accessibles depuis l’intérieur du VPC et depuis l’extérieur du VPC.
+
+image:diagram_single_az.png["Image conceptuelle qui montre une configuration ONTAP HA dans une seule zone de disponibilité qui permet l'accès aux données depuis l'extérieur du VPC."]
+
+
+
+==== Prise de contrôle et restitution
+
+Pour iSCSI, Cloud Volumes ONTAP utilise les E/S multi-chemins (MPIO) et l'accès aux unités logiques asymétriques (ALUA) pour gérer le basculement de chemin entre les chemins optimisés actifs et non optimisés.
+
+
+NOTE: Pour plus d'informations sur les configurations d'hôte spécifiques qui prennent en charge ALUA, reportez-vous à la http://mysupport.netapp.com/matrix["Outil de matrice d'interopérabilité NetApp"^] et le https://docs.netapp.com/us-en/ontap-sanhost/["Guide des hôtes SAN et des clients cloud"] pour votre système d'exploitation hôte.
+
+Pour les configurations NAS, les adresses IP de données peuvent migrer entre les nœuds HA en cas de panne.  Cela garantit l’accès du client au stockage.
+
+
+
+=== Zones locales AWS
+
+Les zones locales AWS sont un déploiement d'infrastructure où le stockage, le calcul, la base de données et d'autres services AWS sélectionnés sont situés à proximité de grandes villes et de zones industrielles.  Avec AWS Local Zones, vous pouvez rapprocher les services AWS de vous, ce qui améliore la latence de vos charges de travail et maintient les bases de données localement.  Sur Cloud Volumes ONTAP,
+
+Vous pouvez déployer une configuration AZ unique ou multiple dans les zones locales AWS.
+
+
+NOTE: Les zones locales AWS sont prises en charge lors de l'utilisation de la console en modes standard et privé.  À l’heure actuelle, les zones locales AWS ne sont pas prises en charge en mode restreint.
+
+
+
+==== Exemples de configurations de zone locale AWS
+
+Cloud Volumes ONTAP dans AWS prend en charge uniquement le mode haute disponibilité (HA) dans une seule zone de disponibilité.  Les déploiements à nœud unique ne sont pas pris en charge.
+
+Cloud Volumes ONTAP ne prend pas en charge la hiérarchisation des données, la hiérarchisation du cloud et les instances non qualifiées dans les zones locales AWS.
+
+Voici quelques exemples de configurations :
+
+* Zone de disponibilité unique : les deux nœuds du cluster et le médiateur se trouvent dans la même zone locale.
+* Zones de disponibilité multiples Dans les configurations à zones de disponibilité multiples, il existe trois instances, deux nœuds et un médiateur.  Une instance sur trois doit se trouver dans une zone distincte.  Vous pouvez choisir comment vous souhaitez configurer cela.
++
+Voici trois exemples de configurations :
+
++
+** Chaque nœud de cluster se trouve dans une zone locale différente et le médiateur dans une zone de disponibilité publique.
+** Un nœud de cluster dans une zone locale, le médiateur dans une zone locale et le deuxième nœud de cluster se trouve dans une zone de disponibilité.
+** Chaque nœud de cluster et le médiateur se trouvent dans des zones locales distinctes.
+
+
+
+
+
+
+==== Types de disques et d'instances pris en charge
+
+Le seul type de disque pris en charge est GP2.  Les familles de types d'instances EC2 suivantes avec des tailles xlarge à 4xlarge sont actuellement prises en charge :
+
+* M5
+* C5
+* C5d
+* R5
+* R5d
+
+
+
+NOTE: Cloud Volumes ONTAP prend en charge uniquement ces configurations.  La sélection de types de disques non pris en charge ou d'instances non qualifiées dans la configuration de la zone locale AWS peut entraîner l'échec du déploiement.  La hiérarchisation des données vers AWS S3 n'est pas disponible dans les zones locales AWS en raison du manque de connectivité.
+
+link:https://aws.amazon.com/about-aws/global-infrastructure/localzones/features/?nc=sn&loc=2["Documentation AWS : types d'instances EC2 dans les zones locales"^] .
+
+
+
+== Comment fonctionne le stockage dans une paire HA
+
+Contrairement à un cluster ONTAP , le stockage dans une paire Cloud Volumes ONTAP HA n'est pas partagé entre les nœuds.  Au lieu de cela, les données sont mises en miroir de manière synchrone entre les nœuds afin que les données soient disponibles en cas de panne.
+
+
+
+=== Allocation de stockage
+
+Lorsque vous créez un nouveau volume et que des disques supplémentaires sont requis, la console alloue le même nombre de disques aux deux nœuds, crée un agrégat en miroir, puis crée le nouveau volume.  Par exemple, si deux disques sont requis pour le volume, la console alloue deux disques par nœud pour un total de quatre disques.
+
+
+
+=== Configurations de stockage
+
+Vous pouvez utiliser une paire HA comme configuration active-active, dans laquelle les deux nœuds fournissent des données aux clients, ou comme configuration active-passive, dans laquelle le nœud passif répond aux demandes de données uniquement s'il a pris en charge le stockage du nœud actif.
+
+
+NOTE: Vous pouvez configurer une configuration active-active uniquement lorsque vous utilisez la console dans la vue Système de stockage.
+
+
+
+=== Attentes de performance
+
+Une configuration Cloud Volumes ONTAP HA réplique de manière synchrone les données entre les nœuds, ce qui consomme de la bande passante réseau.  Par conséquent, vous pouvez vous attendre aux performances suivantes par rapport à une configuration Cloud Volumes ONTAP à nœud unique :
+
+* Pour les configurations HA qui diffusent des données à partir d'un seul nœud, les performances de lecture sont comparables aux performances de lecture d'une configuration à nœud unique, tandis que les performances d'écriture sont inférieures.
+* Pour les configurations HA qui diffusent des données à partir des deux nœuds, les performances de lecture sont supérieures à celles d'une configuration à nœud unique, et les performances d'écriture sont identiques ou supérieures.
+
+
+Pour plus de détails sur les performances de Cloud Volumes ONTAP , reportez-vous àlink:concept-performance.html["Performances"] .
+
+
+
+=== Accès client au stockage
+
+Les clients doivent accéder aux volumes NFS et CIFS en utilisant l’adresse IP de données du nœud sur lequel réside le volume.  Si les clients NAS accèdent à un volume en utilisant l’adresse IP du nœud partenaire, le trafic circule entre les deux nœuds, ce qui réduit les performances.
+
+
+TIP: Si vous déplacez un volume entre des nœuds d’une paire HA, vous devez remonter le volume en utilisant l’adresse IP de l’autre nœud.  Dans le cas contraire, vous risquez de constater une diminution des performances.  Si les clients prennent en charge les références NFSv4 ou la redirection de dossiers pour CIFS, vous pouvez activer ces fonctionnalités sur les systèmes Cloud Volumes ONTAP pour éviter de remonter le volume.  Pour plus de détails, reportez-vous à la documentation ONTAP .
+
+Vous pouvez facilement identifier l'adresse IP correcte grâce à l'option _Mount Command_ sous le panneau de gestion des volumes.
+
+image::screenshot_mount_option.png[400]

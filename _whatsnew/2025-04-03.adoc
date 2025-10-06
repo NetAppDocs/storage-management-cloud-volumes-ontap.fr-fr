@@ -1,0 +1,11 @@
+= Prise en charge des régions chinoises pour Cloud Volumes ONTAP 9.13.1 dans AWS
+:allow-uri-read: 
+
+
+
+
+=== Prise en charge des régions chinoises pour Cloud Volumes ONTAP 9.13.1 dans AWS
+
+Vous pouvez désormais déployer Cloud Volumes ONTAP 9.13.1 dans AWS dans les régions chinoises. Cela inclut la prise en charge des déploiements à nœud unique et à haute disponibilité (HA). Seules les licences achetées directement auprès de NetApp sont prises en charge.
+
+Pour connaître la disponibilité régionale, reportez-vous à la https://bluexp.netapp.com/cloud-volumes-global-regions["Cartes des régions mondiales pour Cloud Volumes ONTAP"^] .

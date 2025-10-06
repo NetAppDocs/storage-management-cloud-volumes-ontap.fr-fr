@@ -1,0 +1,494 @@
+---
+sidebar: sidebar 
+permalink: reference-networking-azure.html 
+keywords: networking, network, requirements, connection, connections, vnet, security group, security groups, subnet, vpn, internet, proxy, HTTP, private, proxy server, routing, firewall, autosupport, connection, jump host, outbound, ports, blob, service endpoint 
+summary: Configurez votre réseau Azure afin que les systèmes Cloud Volumes ONTAP puissent fonctionner correctement. 
+---
+= Configurer le réseau Azure pour Cloud Volumes ONTAP
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+La console NetApp gère la configuration des composants réseau pour Cloud Volumes ONTAP, tels que les adresses IP, les masques de réseau et les itinéraires.  Vous devez vous assurer que l'accès Internet sortant est disponible, que suffisamment d'adresses IP privées sont disponibles, que les bonnes connexions sont en place, etc.
+
+
+
+== Exigences pour Cloud Volumes ONTAP
+
+Les exigences réseau suivantes doivent être respectées dans Azure.
+
+
+
+=== Accès Internet sortant
+
+Les systèmes Cloud Volumes ONTAP nécessitent un accès Internet sortant pour accéder aux points de terminaison externes pour diverses fonctions.  Cloud Volumes ONTAP ne peut pas fonctionner correctement si ces points de terminaison sont bloqués dans des environnements avec des exigences de sécurité strictes.
+
+L'agent de console contacte également plusieurs points de terminaison pour les opérations quotidiennes.  Pour plus d'informations sur les points de terminaison, reportez-vous à https://docs.netapp.com/us-en/bluexp-setup-admin/task-install-connector-on-prem.html#step-3-set-up-networking["Afficher les points de terminaison contactés depuis l'agent de la console"^] et https://docs.netapp.com/us-en/bluexp-setup-admin/reference-networking-saas-console.html["Préparer le réseau pour l'utilisation de la console"^] .
+
+
+
+==== Points de terminaison Cloud Volumes ONTAP
+
+Cloud Volumes ONTAP utilise ces points de terminaison pour communiquer avec divers services.
+
+[cols="5*"]
+|===
+| Points de terminaison | Applicable pour | But | Modes de déploiement | Impact en cas d'indisponibilité 
+
+
+| \ https://netapp-cloud-account.auth0.com | Authentification  a| 
+Utilisé pour l'authentification dans la console.
+| Modes standard et restreint.  a| 
+L'authentification de l'utilisateur échoue et les services suivants restent indisponibles :
+
+* Services Cloud Volumes ONTAP
+* Services ONTAP
+* Protocoles et services proxy
+
+
+
+
+| https://vault.azure.net[] | Coffre-fort à clés | Utilisé pour récupérer les clés secrètes du client à partir d’Azure Key Vault lors de l’utilisation de clés gérées par le client (CMK). | Modes standard, restreint et privé. | Les services Cloud Volumes ONTAP ne sont pas disponibles. 
+
+
+| \ https://api.bluexp.netapp.com/tenancy | Location | Utilisé pour récupérer les ressources Cloud Volumes ONTAP depuis la console pour autoriser les ressources et les utilisateurs. | Modes standard et restreint. | Les ressources Cloud Volumes ONTAP et les utilisateurs ne sont pas autorisés. 
+
+
+| \ https://mysupport.netapp.com/aods/asupmessage \ https://mysupport.netapp.com/asupprod/post/1.0/postAsup | AutoSupport | Utilisé pour envoyer des données de télémétrie AutoSupport au support NetApp . | Modes standard et restreint. | Les informations AutoSupport ne sont toujours pas livrées. 
+
+
+| \ https://management.azure.com \ https://login.microsoftonline.com \ https://bluexpinfraprod.eastus2.data.azurecr.io \ https://core.windows.net | Les régions publiques | Communication avec les services Azure. | Modes standard, restreint et privé. | Cloud Volumes ONTAP ne peut pas communiquer avec le service Azure pour effectuer des opérations spécifiques pour la console dans Azure. 
+
+
+| \ https://management.chinacloudapi.cn \ https://login.chinacloudapi.cn \ https://blob.core.chinacloudapi.cn \ https://core.chinacloudapi.cn | Région de Chine | Communication avec les services Azure. | Modes standard, restreint et privé. | Cloud Volumes ONTAP ne peut pas communiquer avec le service Azure pour effectuer des opérations spécifiques pour la console dans Azure. 
+
+
+| \ https://management.microsoftazure.de \ https://login.microsoftonline.de \ https://blob.core.cloudapi.de \ https://core.cloudapi.de | Région Allemagne | Communication avec les services Azure. | Modes standard, restreint et privé. | Cloud Volumes ONTAP ne peut pas communiquer avec le service Azure pour effectuer des opérations spécifiques pour la console dans Azure. 
+
+
+| \ https://management.usgovcloudapi.net \ https://login.microsoftonline.us \ https://blob.core.usgovcloudapi.net \ https://core.usgovcloudapi.net | régions gouvernementales | Communication avec les services Azure. | Modes standard, restreint et privé. | Cloud Volumes ONTAP ne peut pas communiquer avec le service Azure pour effectuer des opérations spécifiques pour la console dans Azure. 
+
+
+| \ https://management.azure.microsoft.scloud \ https://login.microsoftonline.microsoft.scloud \ https://blob.core.microsoft.scloud \ https://core.microsoft.scloud | Régions du gouvernement du DoD | Communication avec les services Azure. | Modes standard, restreint et privé. | Cloud Volumes ONTAP ne peut pas communiquer avec le service Azure pour effectuer des opérations spécifiques pour la console dans Azure. 
+|===
+
+
+=== Configuration du proxy réseau de l'agent de la console NetApp
+
+Vous pouvez utiliser la configuration des serveurs proxy de l'agent NetApp Console pour activer l'accès Internet sortant à partir de Cloud Volumes ONTAP.  La console prend en charge deux types de proxys :
+
+* *Proxy explicite* : le trafic sortant de Cloud Volumes ONTAP utilise l'adresse HTTP du serveur proxy spécifié lors de la configuration du proxy de l'agent de la console.  L'administrateur peut également avoir configuré des informations d'identification utilisateur et des certificats d'autorité de certification racine pour une authentification supplémentaire.  Si un certificat d'autorité de certification racine est disponible pour le proxy explicite, assurez-vous d'obtenir et de télécharger le même certificat sur votre système Cloud Volumes ONTAP à l'aide de l' https://docs.netapp.com/us-en/ontap-cli/security-certificate-install.html["ONTAP CLI : installation du certificat de sécurité"^] commande.
+* *Proxy transparent* : le réseau est configuré pour acheminer automatiquement le trafic sortant de Cloud Volumes ONTAP via le proxy de l'agent de la console.  Lors de la configuration d'un proxy transparent, l'administrateur doit fournir uniquement un certificat d'autorité de certification racine pour la connectivité à partir de Cloud Volumes ONTAP, et non l'adresse HTTP du serveur proxy.  Assurez-vous d'obtenir et de télécharger le même certificat d'autorité de certification racine sur votre système Cloud Volumes ONTAP à l'aide de https://docs.netapp.com/us-en/ontap-cli/security-certificate-install.html["ONTAP CLI : installation du certificat de sécurité"^] commande.
+
+
+Pour plus d'informations sur la configuration des serveurs proxy, reportez-vous à la https://docs.netapp.com/us-en/bluexp-setup-admin/task-configuring-proxy.html["Configurer l'agent de console pour utiliser un serveur proxy"^] .
+
+
+
+=== adresses IP
+
+La console alloue automatiquement le nombre requis d’adresses IP privées à Cloud Volumes ONTAP dans Azure.  Vous devez vous assurer que votre réseau dispose de suffisamment d’adresses IP privées disponibles.
+
+Le nombre de LIF alloués à Cloud Volumes ONTAP dépend du fait que vous déployez un système à nœud unique ou une paire HA.  Un LIF est une adresse IP associée à un port physique.  Un LIF de gestion SVM est requis pour les outils de gestion tels que SnapCenter.
+
+
+NOTE: Un LIF iSCSI fournit un accès client via le protocole iSCSI et est utilisé par le système pour d'autres flux de travail réseau importants.  Ces LIF sont obligatoires et ne doivent pas être supprimés.
+
+
+
+==== Adresses IP pour un système à nœud unique
+
+La console alloue 5 ou 6 adresses IP à un seul système de nœud :
+
+* Gestion de cluster IP
+* IP de gestion des nœuds
+* IP intercluster pour SnapMirror
+* IP NFS/CIFS
+* IP iSCSI
++
+
+NOTE: L'IP iSCSI fournit un accès client via le protocole iSCSI.  Il est également utilisé par le système pour d’autres flux de travail réseau importants.  Ce LIF est obligatoire et ne doit pas être supprimé.
+
+* Gestion SVM (facultatif - non configuré par défaut)
+
+
+
+
+==== Adresses IP pour les paires HA
+
+La console alloue des adresses IP à 4 cartes réseau (par nœud) pendant le déploiement.
+
+Notez que la console crée un LIF de gestion SVM sur les paires HA, mais pas sur les systèmes à nœud unique dans Azure.
+
+*NIC0*
+
+* IP de gestion des nœuds
+* IP intercluster
+* IP iSCSI
++
+
+NOTE: L'IP iSCSI fournit un accès client via le protocole iSCSI.  Il est également utilisé par le système pour d’autres flux de travail réseau importants.  Ce LIF est obligatoire et ne doit pas être supprimé.
+
+
+
+*NIC1*
+
+* IP du réseau de cluster
+
+
+*NIC2*
+
+* IP d'interconnexion de cluster (HA IC)
+
+
+*NIC3*
+
+* Pageblob NIC IP (accès disque)
+
+
+
+NOTE: NIC3 s'applique uniquement aux déploiements HA qui utilisent le stockage d'objets blob de pages.
+
+Les adresses IP ci-dessus ne migrent pas lors d'événements de basculement.
+
+De plus, 4 adresses IP frontales (FIP) sont configurées pour migrer lors d'événements de basculement.  Ces adresses IP frontales résident dans l’équilibreur de charge.
+
+* Gestion de cluster IP
+* IP de données NodeA (NFS/CIFS)
+* IP de données NodeB (NFS/CIFS)
+* IP de gestion SVM
+
+
+
+
+=== Connexions sécurisées aux services Azure
+
+Par défaut, la console active une liaison privée Azure pour les connexions entre Cloud Volumes ONTAP et les comptes de stockage d’objets blob de pages Azure.
+
+Dans la plupart des cas, vous n’avez rien à faire : la console gère Azure Private Link pour vous.  Mais si vous utilisez Azure Private DNS, vous devrez modifier un fichier de configuration.  Vous devez également être conscient d’une exigence relative à l’emplacement de l’agent de console dans Azure.
+
+Vous pouvez également désactiver la connexion Private Link, si les besoins de votre entreprise l'exigent.  Si vous désactivez le lien, la console configure Cloud Volumes ONTAP pour utiliser un point de terminaison de service à la place.
+
+link:task-enabling-private-link.html["En savoir plus sur l'utilisation des liens privés Azure ou des points de terminaison de service avec Cloud Volumes ONTAP"] .
+
+
+
+=== Connexions à d'autres systèmes ONTAP
+
+Pour répliquer des données entre un système Cloud Volumes ONTAP dans Azure et des systèmes ONTAP dans d’autres réseaux, vous devez disposer d’une connexion VPN entre le réseau virtuel Azure et l’autre réseau, par exemple, votre réseau d’entreprise.
+
+Pour les instructions, reportez-vous à la https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal["Documentation Microsoft Azure : Créer une connexion site à site dans le portail Azure"^] .
+
+
+
+=== Port pour l'interconnexion HA
+
+Une paire Cloud Volumes ONTAP HA inclut une interconnexion HA, qui permet à chaque nœud de vérifier en permanence si son partenaire fonctionne et de mettre en miroir les données du journal pour la mémoire non volatile de l'autre.  L'interconnexion HA utilise le port TCP 10006 pour la communication.
+
+Par défaut, la communication entre les LIF d'interconnexion HA est ouverte et il n'existe aucune règle de groupe de sécurité pour ce port.  Mais si vous créez un pare-feu entre les LIF d'interconnexion HA, vous devez vous assurer que le trafic TCP est ouvert pour le port 10006 afin que la paire HA puisse fonctionner correctement.
+
+
+
+=== Une seule paire HA dans un groupe de ressources Azure
+
+Vous devez utiliser un groupe de ressources _dédié_ pour chaque paire Cloud Volumes ONTAP HA que vous déployez dans Azure.  Une seule paire HA est prise en charge dans un groupe de ressources.
+
+La console rencontre des problèmes de connexion si vous essayez de déployer une deuxième paire Cloud Volumes ONTAP HA dans un groupe de ressources Azure.
+
+
+
+=== Règles du groupe de sécurité
+
+La console crée des groupes de sécurité Azure qui incluent les règles entrantes et sortantes pour que Cloud Volumes ONTAP fonctionne correctement. https://docs.netapp.com/us-en/bluexp-setup-admin/reference-ports-azure.html["Afficher les règles du groupe de sécurité pour l'agent de la console"^] .
+
+Les groupes de sécurité Azure pour Cloud Volumes ONTAP nécessitent que les ports appropriés soient ouverts pour la communication interne entre les nœuds. https://docs.netapp.com/us-en/ontap/networking/ontap_internal_ports.html["En savoir plus sur les ports internes ONTAP"^] .
+
+Nous ne recommandons pas de modifier les groupes de sécurité prédéfinis ni d'utiliser des groupes de sécurité personnalisés.  Toutefois, si vous devez le faire, notez que le processus de déploiement nécessite que le système Cloud Volumes ONTAP dispose d'un accès complet au sein de son propre sous-réseau.  Une fois le déploiement terminé, si vous décidez de modifier le groupe de sécurité réseau, assurez-vous de garder les ports du cluster et les ports réseau HA ouverts.  Cela garantit une communication transparente au sein du cluster Cloud Volumes ONTAP (communication de bout en bout entre les nœuds).
+
+
+
+==== Règles entrantes pour les systèmes à nœud unique
+
+Lorsque vous ajoutez un système Cloud Volumes ONTAP et choisissez un groupe de sécurité prédéfini, vous pouvez choisir d'autoriser le trafic dans l'un des éléments suivants :
+
+* *VNet sélectionné uniquement* : la source du trafic entrant est la plage de sous-réseaux du VNet pour le système Cloud Volumes ONTAP et la plage de sous-réseaux du VNet sur lequel réside l'agent de la console.  C'est l'option recommandée.
+* *Tous les réseaux virtuels* : la source du trafic entrant est la plage IP 0.0.0.0/0.
+* *Désactivé* : cette option restreint l'accès au réseau public à votre compte de stockage et désactive la hiérarchisation des données pour les systèmes Cloud Volumes ONTAP .  Il s'agit d'une option recommandée si vos adresses IP privées ne doivent pas être exposées même au sein du même réseau virtuel en raison des réglementations et des politiques de sécurité.
+
+
+[cols="4*"]
+|===
+| Priorité et nom | Port et protocole | Source et destination | Description 
+
+
+| 1000 entrants_ssh | 22 TCP | N'importe lequel à n'importe lequel | Accès SSH à l'adresse IP du LIF de gestion de cluster ou d'un LIF de gestion de nœud 
+
+
+| 1001 entrant_http | 80 TCP | N'importe lequel à n'importe lequel | Accès HTTP à la console Web ONTAP System Manager à l'aide de l'adresse IP du LIF de gestion du cluster 
+
+
+| 1002 entrant_111_tcp | 111 TCP | N'importe lequel à n'importe lequel | Appel de procédure à distance pour NFS 
+
+
+| 1003 entrant_111_udp | 111 UDP | N'importe lequel à n'importe lequel | Appel de procédure à distance pour NFS 
+
+
+| 1004 entrant_139 | 139 TCP | N'importe lequel à n'importe lequel | Session de service NetBIOS pour CIFS 
+
+
+| 1005 entrant_161-162 _tcp | 161-162 TCP | N'importe lequel à n'importe lequel | Protocole simple de gestion de réseau 
+
+
+| 1006 entrant_161-162 _udp | 161-162 UDP | N'importe lequel à n'importe lequel | Protocole simple de gestion de réseau 
+
+
+| 1007 entrant_443 | 443 TCP | N'importe lequel à n'importe lequel | Connectivité avec l'agent de console et accès HTTPS à la console Web ONTAP System Manager à l'aide de l'adresse IP du LIF de gestion du cluster 
+
+
+| 1008 entrant_445 | 445 TCP | N'importe lequel à n'importe lequel | Microsoft SMB/CIFS sur TCP avec trame NetBIOS 
+
+
+| 1009 entrant_635_tcp | 635 TCP | N'importe lequel à n'importe lequel | Montage NFS 
+
+
+| 1010 entrant_635_udp | 635 UDP | N'importe lequel à n'importe lequel | Montage NFS 
+
+
+| 1011 entrant_749 | 749 TCP | N'importe lequel à n'importe lequel | Kerberos 
+
+
+| 1012 entrant_2049_tcp | 2049 TCP | N'importe lequel à n'importe lequel | Démon du serveur NFS 
+
+
+| 1013 entrant_2049_udp | 2049 UDP | N'importe lequel à n'importe lequel | Démon du serveur NFS 
+
+
+| 1014 entrant_3260 | 3260 TCP | N'importe lequel à n'importe lequel | Accès iSCSI via le LIF de données iSCSI 
+
+
+| 1015 entrant_4045-4046_tcp | 4045-4046 TCP | N'importe lequel à n'importe lequel | Démon de verrouillage NFS et moniteur d'état du réseau 
+
+
+| 1016 entrant_4045-4046_udp | 4045-4046 UDP | N'importe lequel à n'importe lequel | Démon de verrouillage NFS et moniteur d'état du réseau 
+
+
+| 1017 entrant_10000 | 10000 TCP | N'importe lequel à n'importe lequel | Sauvegarde à l'aide de NDMP 
+
+
+| 1018 entrant_11104-11105 | 11104-11105 TCP | N'importe lequel à n'importe lequel | Transfert de données SnapMirror 
+
+
+| 3000 inbound_deny _all_tcp | N'importe quel port TCP | N'importe lequel à n'importe lequel | Bloquer tout autre trafic TCP entrant 
+
+
+| 3001 inbound_deny _all_udp | N'importe quel port UDP | N'importe lequel à n'importe lequel | Bloquer tout autre trafic UDP entrant 
+
+
+| 65000 AutoriserVnetInBound | N'importe quel port N'importe quel protocole | Réseau virtuel vers réseau virtuel | Trafic entrant depuis le VNet 
+
+
+| 65001 Autoriser AzureLoad BalancerInBound | N'importe quel port N'importe quel protocole | AzureLoadBalancer vers n'importe quel | Trafic de données provenant de l'équilibreur de charge standard Azure 
+
+
+| 65500 RefuserToutEnLiaison | N'importe quel port N'importe quel protocole | N'importe lequel à n'importe lequel | Bloquer tout autre trafic entrant 
+|===
+
+
+==== Règles entrantes pour les systèmes HA
+
+Lorsque vous ajoutez un système Cloud Volumes ONTAP et choisissez un groupe de sécurité prédéfini, vous pouvez choisir d'autoriser le trafic dans l'un des éléments suivants :
+
+* *VNet sélectionné uniquement* : la source du trafic entrant est la plage de sous-réseaux du VNet pour le système Cloud Volumes ONTAP et la plage de sous-réseaux du VNet sur lequel réside l'agent de la console.  C'est l'option recommandée.
+* *Tous les réseaux virtuels* : la source du trafic entrant est la plage IP 0.0.0.0/0.
+
+
+
+NOTE: Les systèmes HA ont moins de règles entrantes que les systèmes à nœud unique, car le trafic de données entrant passe par Azure Standard Load Balancer.  Pour cette raison, le trafic provenant de l’équilibreur de charge doit être ouvert, comme indiqué dans la règle « AllowAzureLoadBalancerInBound ».
+
+* *Désactivé* : cette option restreint l'accès au réseau public à votre compte de stockage et désactive la hiérarchisation des données pour les systèmes Cloud Volumes ONTAP .  Il s'agit d'une option recommandée si vos adresses IP privées ne doivent pas être exposées même au sein du même réseau virtuel en raison des réglementations et des politiques de sécurité.
+
+
+[cols="4*"]
+|===
+| Priorité et nom | Port et protocole | Source et destination | Description 
+
+
+| 100 entrants_443 | 443 Tout protocole | N'importe lequel à n'importe lequel | Connectivité avec l'agent de console et accès HTTPS à la console Web ONTAP System Manager à l'aide de l'adresse IP du LIF de gestion du cluster 
+
+
+| 101 entrant_111_tcp | 111 Tout protocole | N'importe lequel à n'importe lequel | Appel de procédure à distance pour NFS 
+
+
+| 102 entrant_2049_tcp | 2049 Tout protocole | N'importe lequel à n'importe lequel | Démon du serveur NFS 
+
+
+| 111 entrant_ssh | 22 Tout protocole | N'importe lequel à n'importe lequel | Accès SSH à l'adresse IP du LIF de gestion de cluster ou d'un LIF de gestion de nœud 
+
+
+| 121 entrant_53 | 53 Tout protocole | N'importe lequel à n'importe lequel | DNS et CIFS 
+
+
+| 65000 AutoriserVnetInBound | N'importe quel port N'importe quel protocole | Réseau virtuel vers réseau virtuel | Trafic entrant depuis le VNet 
+
+
+| 65001 Autoriser AzureLoad BalancerInBound | N'importe quel port N'importe quel protocole | AzureLoadBalancer vers n'importe quel | Trafic de données provenant de l'équilibreur de charge standard Azure 
+
+
+| 65500 RefuserToutEnLiaison | N'importe quel port N'importe quel protocole | N'importe lequel à n'importe lequel | Bloquer tout autre trafic entrant 
+|===
+
+
+==== Règles de sortie
+
+Le groupe de sécurité prédéfini pour Cloud Volumes ONTAP ouvre tout le trafic sortant. Si cela est acceptable, suivez les règles de sortie de base. Si vous avez besoin de règles plus rigides, utilisez les règles sortantes avancées.
+
+
+
+===== Règles de base pour les voyages sortants
+
+Le groupe de sécurité prédéfini pour Cloud Volumes ONTAP inclut les règles sortantes suivantes.
+
+[cols="3*"]
+|===
+| Port | Protocole | But 
+
+
+| Tous | Tout TCP | Tout le trafic sortant 
+
+
+| Tous | Tout UDP | Tout le trafic sortant 
+|===
+
+
+===== Règles sortantes avancées
+
+Si vous avez besoin de règles rigides pour le trafic sortant, vous pouvez utiliser les informations suivantes pour ouvrir uniquement les ports requis pour la communication sortante par Cloud Volumes ONTAP.
+
+
+NOTE: La source est l'interface (adresse IP) sur le système Cloud Volumes ONTAP .
+
+[cols="10,10,6,20,20,34"]
+|===
+| Service | Port | Protocole | Source | Destination | But 
+
+
+.18+| Active Directory | 88 | TCP | Gestion des nœuds LIF | Forêt Active Directory | Authentification Kerberos V 
+
+
+| 137 | UDP | Gestion des nœuds LIF | Forêt Active Directory | Service de noms NetBIOS 
+
+
+| 138 | UDP | Gestion des nœuds LIF | Forêt Active Directory | Service de datagramme NetBIOS 
+
+
+| 139 | TCP | Gestion des nœuds LIF | Forêt Active Directory | Session de service NetBIOS 
+
+
+| 389 | TCP et UDP | Gestion des nœuds LIF | Forêt Active Directory | LDAP 
+
+
+| 445 | TCP | Gestion des nœuds LIF | Forêt Active Directory | Microsoft SMB/CIFS sur TCP avec trame NetBIOS 
+
+
+| 464 | TCP | Gestion des nœuds LIF | Forêt Active Directory | Kerberos V changer et définir le mot de passe (SET_CHANGE) 
+
+
+| 464 | UDP | Gestion des nœuds LIF | Forêt Active Directory | Administration des clés Kerberos 
+
+
+| 749 | TCP | Gestion des nœuds LIF | Forêt Active Directory | Kerberos V changer et définir le mot de passe (RPCSEC_GSS) 
+
+
+| 88 | TCP | Données LIF (NFS, CIFS, iSCSI) | Forêt Active Directory | Authentification Kerberos V 
+
+
+| 137 | UDP | Données LIF (NFS, CIFS) | Forêt Active Directory | Service de noms NetBIOS 
+
+
+| 138 | UDP | Données LIF (NFS, CIFS) | Forêt Active Directory | Service de datagramme NetBIOS 
+
+
+| 139 | TCP | Données LIF (NFS, CIFS) | Forêt Active Directory | Session de service NetBIOS 
+
+
+| 389 | TCP et UDP | Données LIF (NFS, CIFS) | Forêt Active Directory | LDAP 
+
+
+| 445 | TCP | Données LIF (NFS, CIFS) | Forêt Active Directory | Microsoft SMB/CIFS sur TCP avec trame NetBIOS 
+
+
+| 464 | TCP | Données LIF (NFS, CIFS) | Forêt Active Directory | Kerberos V changer et définir le mot de passe (SET_CHANGE) 
+
+
+| 464 | UDP | Données LIF (NFS, CIFS) | Forêt Active Directory | Administration des clés Kerberos 
+
+
+| 749 | TCP | Données LIF (NFS, CIFS) | Forêt Active Directory | Kerberos V changer et définir le mot de passe (RPCSEC_GSS) 
+
+
+.3+| AutoSupport | HTTPS | 443 | Gestion des nœuds LIF | monsupport.netapp.com | AutoSupport (HTTPS est la valeur par défaut) 
+
+
+| HTTP | 80 | Gestion des nœuds LIF | monsupport.netapp.com | AutoSupport (uniquement si le protocole de transport est modifié de HTTPS à HTTP) 
+
+
+| TCP | 3128 | Gestion des nœuds LIF | Agent de console | Envoi de messages AutoSupport via un serveur proxy sur l'agent de la console, si une connexion Internet sortante n'est pas disponible 
+
+
+| Sauvegardes de configuration | HTTP | 80 | Gestion des nœuds LIF | \http://<adresse IP de l'agent de la console>/occm/offboxconfig | Envoyer des sauvegardes de configuration à l’agent de la console. link:https://docs.netapp.com/us-en/ontap/system-admin/node-cluster-config-backed-up-automatically-concept.html["Documentation ONTAP"^] . 
+
+
+| DHCP | 68 | UDP | Gestion des nœuds LIF | DHCP | Client DHCP pour la première configuration 
+
+
+| DHCPS | 67 | UDP | Gestion des nœuds LIF | DHCP | serveur DHCP 
+
+
+| DNS | 53 | UDP | Gestion des nœuds LIF et LIF de données (NFS, CIFS) | DNS | DNS 
+
+
+| NDMP | 18600–18699 | TCP | Gestion des nœuds LIF | Serveurs de destination | Copie NDMP 
+
+
+| SMTP | 25 | TCP | Gestion des nœuds LIF | Serveur de messagerie | Alertes SMTP, peuvent être utilisées pour AutoSupport 
+
+
+.4+| SNMP | 161 | TCP | Gestion des nœuds LIF | Serveur de surveillance | Surveillance par traps SNMP 
+
+
+| 161 | UDP | Gestion des nœuds LIF | Serveur de surveillance | Surveillance par traps SNMP 
+
+
+| 162 | TCP | Gestion des nœuds LIF | Serveur de surveillance | Surveillance par traps SNMP 
+
+
+| 162 | UDP | Gestion des nœuds LIF | Serveur de surveillance | Surveillance par traps SNMP 
+
+
+.2+| SnapMirror | 11104 | TCP | LIF intercluster | LIF intercluster ONTAP | Gestion des sessions de communication intercluster pour SnapMirror 
+
+
+| 11105 | TCP | LIF intercluster | LIF intercluster ONTAP | Transfert de données SnapMirror 
+
+
+| Syslog | 514 | UDP | Gestion des nœuds LIF | Serveur Syslog | Messages de transfert Syslog 
+|===
+
+
+== Exigences pour l'agent de console
+
+Si vous n’avez pas encore créé d’agent de console, vous devez également vérifier les exigences réseau pour l’agent de console.
+
+* https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-azure.html["Afficher les exigences réseau pour l'agent de console"^]
+* https://docs.netapp.com/us-en/bluexp-setup-admin/reference-ports-azure.html["Règles de groupe de sécurité dans Azure"^]
+
+
+.Sujets connexes
+* link:task-verify-autosupport.html["Vérifier la configuration AutoSupport pour Cloud Volumes ONTAP"]
+* https://docs.netapp.com/us-en/ontap/networking/ontap_internal_ports.html["En savoir plus sur les ports internes ONTAP"^] .
+

@@ -1,0 +1,46 @@
+---
+sidebar: sidebar 
+permalink: concept-flash-cache.html 
+keywords: cloud volumes ontap, flash cache, read-intensive, read, random, databases, email, file services, compression, performance, nvme 
+summary: Certaines configurations Cloud Volumes ONTAP incluent un stockage NVMe local, que Cloud Volumes ONTAP utilise comme cache Flash pour de meilleures performances. 
+---
+= Cache Flash
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Certaines configurations Cloud Volumes ONTAP incluent un stockage NVMe local, que Cloud Volumes ONTAP utilise comme _Cache Flash_ pour de meilleures performances.
+
+
+
+== Qu'est-ce que Flash Cache ?
+
+Flash Cache accélère l'accès aux données grâce à la mise en cache intelligente en temps réel des données utilisateur récemment lues et des métadonnées NetApp . Il est efficace pour les charges de travail à lecture intensive aléatoire, y compris les bases de données, la messagerie électronique et les services de fichiers.
+
+
+
+== Configurations prises en charge
+
+Flash Cache est pris en charge avec des configurations Cloud Volumes ONTAP spécifiques.  Afficher les configurations prises en charge dans le https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/index.html["Notes de version de Cloud Volumes ONTAP"^]
+
+
+
+== Limites
+
+ifdef::aws[]
+
+* Lors de la configuration de Flash Cache pour Cloud Volumes ONTAP 9.12.0 ou version antérieure dans AWS, la compression doit être désactivée sur tous les volumes pour profiter des améliorations des performances de Flash Cache.  Lorsque vous déployez ou effectuez une mise à niveau vers Cloud Volumes ONTAP 9.12.1 ou une version ultérieure, vous n'avez pas besoin de désactiver la compression.
++
+Ignorez la sélection des paramètres d'efficacité de stockage lors de la création d'un volume à partir de la console NetApp , ou créez un volume, puis http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-vsmg/GUID-8508A4CB-DB43-4D0D-97EB-859F58B29054.html["désactiver la compression des données à l'aide de la CLI"^] .
+
+
+
+endif::aws[]
+
+* Le réchauffement du cache après un redémarrage n'est pas pris en charge avec Cloud Volumes ONTAP.
+

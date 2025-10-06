@@ -1,0 +1,11 @@
+= Liste des machines virtuelles prises en charge mise à jour pour Azure afin de s'aligner sur les meilleures pratiques
+:allow-uri-read: 
+
+
+
+
+=== Liste des machines virtuelles prises en charge mise à jour pour Azure afin de s'aligner sur les meilleures pratiques
+
+Les familles de machines DS_v2 et Es_v3 ne sont plus disponibles pour la sélection sur BlueXP lors du déploiement de nouvelles instances de Cloud Volumes ONTAP dans Azure. Ces familles seront conservées et soutenues uniquement dans les systèmes plus anciens et existants. Les nouveaux déploiements de Cloud Volumes ONTAP sont pris en charge dans Azure uniquement à partir de la version 9.12.1. Nous vous recommandons de passer à Es_v4 ou à toute autre série compatible avec Cloud Volumes ONTAP 9.12.1 et versions ultérieures. Les machines des séries DS_v2 et Es_v3 seront toutefois disponibles pour les nouveaux déploiements effectués via l'API.
+
+https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-azure.html["Configurations prises en charge dans Azure"^]

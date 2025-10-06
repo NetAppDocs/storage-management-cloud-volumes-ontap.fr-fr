@@ -1,0 +1,15 @@
+= Nouvelles régions prises en charge pour les déploiements de zones de disponibilité multiples dans Azure
+:allow-uri-read: 
+
+
+
+
+=== Nouvelles régions prises en charge pour les déploiements de zones de disponibilité multiples dans Azure
+
+Les régions suivantes prennent désormais en charge les déploiements de zones de disponibilité multiples HA dans Azure pour Cloud Volumes ONTAP 9.12.1 GA et versions ultérieures :
+
+* Centre des États-Unis
+* Gouverneur des États-Unis de Virginie (Région gouvernementale des États-Unis - Virginie)
+
+
+Pour une liste de toutes les régions, reportez-vous à la https://bluexp.netapp.com/cloud-volumes-global-regions["Carte des régions mondiales sous Azure"^] .

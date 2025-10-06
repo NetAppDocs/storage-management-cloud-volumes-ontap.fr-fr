@@ -1,0 +1,298 @@
+---
+sidebar: sidebar 
+permalink: task-set-up-azure-encryption.html 
+keywords: customer-managed key, customer key, azure storage service encryption, azure encryption, encryption key, azure encryption key 
+summary: Les données sont automatiquement chiffrées sur Cloud Volumes ONTAP dans Azure à l’aide du chiffrement du service de stockage Azure avec une clé gérée par Microsoft.  Mais vous pouvez utiliser votre propre clé de cryptage en suivant les étapes sur cette page. 
+---
+= Configurer Cloud Volumes ONTAP pour utiliser une clé gérée par le client dans Azure
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Les données sont automatiquement chiffrées sur Cloud Volumes ONTAP dans Azure à l’aide du chiffrement du service de stockage Azure avec une clé gérée par Microsoft.  Mais vous pouvez utiliser votre propre clé de cryptage en suivant les étapes sur cette page.
+
+
+
+== Présentation du cryptage des données
+
+Les données Cloud Volumes ONTAP sont automatiquement chiffrées dans Azure à l'aide de https://learn.microsoft.com/en-us/azure/security/fundamentals/encryption-overview["Chiffrement du service de stockage Azure"^] .  L'implémentation par défaut utilise une clé gérée par Microsoft.  Aucune configuration n'est requise.
+
+Si vous souhaitez utiliser une clé gérée par le client avec Cloud Volumes ONTAP, vous devez suivre les étapes suivantes :
+
+. Depuis Azure, créez un coffre de clés, puis générez une clé dans ce coffre.
+. Depuis la console NetApp , utilisez l’API pour créer un système Cloud Volumes ONTAP qui utilise la clé.
+
+
+
+
+=== Comment les données sont cryptées
+
+La console utilise un ensemble de chiffrement de disque, qui permet la gestion des clés de chiffrement avec des disques gérés et non des blobs de pages.  Tous les nouveaux disques de données utilisent également le même ensemble de chiffrement de disque.  Les versions inférieures utiliseront la clé gérée par Microsoft, au lieu de la clé gérée par le client.
+
+Une fois que vous avez créé un système Cloud Volumes ONTAP configuré pour utiliser une clé gérée par le client, les données Cloud Volumes ONTAP sont chiffrées comme suit.
+
+[cols="2a,2a,2a"]
+|===
+| Configuration de Cloud Volumes ONTAP | Disques système utilisés pour le chiffrement des clés | Disques de données utilisés pour le cryptage des clés 
+
+
+ a| 
+Nœud unique
+ a| 
+* Botte
+* Cœur
+* NVRAM
+
+ a| 
+* Racine
+* Données
+
+
+
+
+ a| 
+Zone de disponibilité unique Azure HA avec objets blob de pages
+ a| 
+* Botte
+* Cœur
+* NVRAM
+
+ a| 
+Aucune
+
+
+
+ a| 
+Zone de disponibilité unique Azure HA avec disques gérés partagés
+ a| 
+* Botte
+* Cœur
+* NVRAM
+
+ a| 
+* Racine
+* Données
+
+
+
+
+ a| 
+Zones de disponibilité multiples Azure HA avec disques gérés partagés
+ a| 
+* Botte
+* Cœur
+* NVRAM
+
+ a| 
+* Racine
+* Données
+
+
+|===
+Tous les comptes de stockage Azure pour Cloud Volumes ONTAP sont chiffrés à l’aide d’une clé gérée par le client.  Si vous souhaitez crypter vos comptes de stockage lors de leur création, vous devez créer et fournir l'ID de la ressource dans la demande de création de Cloud Volumes ONTAP .  Ceci s’applique à tous les types de déploiements.  Si vous ne le fournissez pas, les comptes de stockage seront toujours chiffrés, mais la console crée d’abord les comptes de stockage avec le chiffrement à clé géré par Microsoft, puis met à jour les comptes de stockage pour utiliser la clé gérée par le client.
+
+
+
+== Rotation des clés dans Cloud Volumes ONTAP
+
+Lorsque vous configurez vos clés de chiffrement, vous devez utiliser le portail Azure pour configurer et activer la rotation automatique des clés.  La création et l'activation d'une nouvelle version de clés de chiffrement garantissent que Cloud Volumes ONTAP peut détecter et utiliser automatiquement la dernière version de clé pour le chiffrement, garantissant ainsi que vos données restent sécurisées sans intervention manuelle.
+
+Pour plus d’informations sur la configuration de vos clés et la configuration de la rotation des clés, reportez-vous aux rubriques de documentation Microsoft Azure suivantes :
+
+* https://learn.microsoft.com/en-us/azure/key-vault/keys/how-to-configure-key-rotation["Configurer la rotation automatique des clés cryptographiques dans Azure Key Vault"^]
+* https://learn.microsoft.com/en-us/azure/virtual-machines/windows/disks-enable-customer-managed-keys-powershell#set-up-an-azure-key-vault-and-diskencryptionset-with-automatic-key-rotation-preview["Azure PowerShell - Activer les clés gérées par le client"^]
+
+
+
+NOTE: Après avoir configuré les touches, assurez-vous d'avoir sélectionné https://learn.microsoft.com/en-us/azure/key-vault/keys/how-to-configure-key-rotation#key-rotation-policy["_Activer la rotation automatique_"^] , afin que Cloud Volumes ONTAP puisse utiliser les nouvelles clés lorsque les clés précédentes expirent.  Si vous n’activez pas cette option sur le portail Azure, Cloud Volumes ONTAP ne peut pas détecter automatiquement les nouvelles clés, ce qui peut entraîner des problèmes avec le provisionnement du stockage.
+
+
+
+== Créer une identité gérée attribuée par l'utilisateur
+
+Vous avez la possibilité de créer une ressource appelée identité gérée attribuée par l’utilisateur.  Cela vous permet de crypter vos comptes de stockage lorsque vous créez un système Cloud Volumes ONTAP .  Nous vous recommandons de créer cette ressource avant de créer un coffre de clés et de générer une clé.
+
+La ressource a l'ID suivant : `userassignedidentity` .
+
+.Étapes
+. Dans Azure, accédez aux services Azure et sélectionnez *Identités gérées*.
+. Cliquez sur *Créer*.
+. Fournissez les détails suivants :
++
+** *Abonnement* : Choisissez un abonnement.  Nous vous recommandons de choisir le même abonnement que l'abonnement de l'agent Console.
+** *Groupe de ressources* : utilisez un groupe de ressources existant ou créez-en un nouveau.
+** *Région* : sélectionnez éventuellement la même région que l’agent de la console.
+** *Nom*: Saisissez un nom pour la ressource.
+
+
+. Ajoutez éventuellement des balises.
+. Cliquez sur *Créer*.
+
+
+
+
+== Créer un coffre de clés et générer une clé
+
+Le coffre de clés doit résider dans le même abonnement Azure et la même région dans lesquels vous prévoyez de créer le système Cloud Volumes ONTAP .
+
+Si tu<<Créer une identité gérée attribuée par l'utilisateur,créé une identité gérée attribuée par l'utilisateur>> , lors de la création du coffre de clés, vous devez également créer une politique d'accès pour le coffre de clés.
+
+.Étapes
+. https://docs.microsoft.com/en-us/azure/key-vault/general/quick-create-portal["Créez un coffre de clés dans votre abonnement Azure"^] .
++
+Notez les exigences suivantes pour le coffre-fort de clés :
+
++
+** Le coffre de clés doit résider dans la même région que le système Cloud Volumes ONTAP .
+** Les options suivantes doivent être activées :
++
+*** *Suppression logicielle* (cette option est activée par défaut, mais ne doit _pas_ être désactivée)
+*** *Protection contre la purge*
+*** *Azure Disk Encryption pour le chiffrement des volumes* (pour les systèmes à nœud unique, les paires HA dans plusieurs zones et les déploiements HA mono-AZ)
++
+
+NOTE: L’utilisation des clés de chiffrement gérées par le client Azure dépend de l’activation du chiffrement de disque Azure pour le coffre de clés.
+
+
+
+** L'option suivante doit être activée si vous avez créé une identité gérée attribuée par l'utilisateur :
++
+*** *Politique d'accès au coffre-fort*
+
+
+
+
+. Si vous avez sélectionné la stratégie d’accès au coffre-fort, cliquez sur Créer pour créer une stratégie d’accès pour le coffre-fort de clés.  Sinon, passez à l’étape 3.
++
+.. Sélectionnez les autorisations suivantes :
++
+*** obtenir
+*** liste
+*** décrypter
+*** crypter
+*** clé de déballage
+*** clé d'enveloppement
+*** vérifier
+*** signe
+
+
+.. Sélectionnez l’identité gérée attribuée par l’utilisateur (ressource) comme principal.
+.. Réviser et créer la politique d’accès.
+
+
+. https://docs.microsoft.com/en-us/azure/key-vault/keys/quick-create-portal#add-a-key-to-key-vault["Générer une clé dans le coffre de clés"^] .
++
+Notez les exigences suivantes pour la clé :
+
++
+** Le type de clé doit être *RSA*.
+** La taille de clé RSA recommandée est *2048*, mais d'autres tailles sont prises en charge.
+
+
+
+
+
+
+== Créer un système qui utilise la clé de chiffrement
+
+Après avoir créé le coffre de clés et généré une clé de chiffrement, vous pouvez créer un nouveau système Cloud Volumes ONTAP configuré pour utiliser la clé.  Ces étapes sont prises en charge à l’aide de l’API.
+
+.Autorisations requises
+Si vous souhaitez utiliser une clé gérée par le client avec un système Cloud Volumes ONTAP à nœud unique, assurez-vous que l'agent de la console dispose des autorisations suivantes :
+
+[source, json]
+----
+"Microsoft.Compute/diskEncryptionSets/read",
+"Microsoft.Compute/diskEncryptionSets/write",
+"Microsoft.Compute/diskEncryptionSets/delete"
+"Microsoft.KeyVault/vaults/deploy/action",
+"Microsoft.KeyVault/vaults/read",
+"Microsoft.KeyVault/vaults/accessPolicies/write",
+"Microsoft.ManagedIdentity/userAssignedIdentities/assign/action"
+----
+https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-azure.html["Afficher la dernière liste des autorisations"^]
+
+.Étapes
+. Obtenez la liste des coffres de clés de votre abonnement Azure à l’aide de l’appel d’API suivant.
++
+Pour une paire HA : `GET /azure/ha/metadata/vaults`
+
++
+Pour un nœud unique : `GET /azure/vsa/metadata/vaults`
+
++
+Prenez note du *nom* et du *resourceGroup*.  Vous devrez spécifier ces valeurs à l’étape suivante.
+
++
+https://docs.netapp.com/us-en/bluexp-automation/cm/api_ref_resources.html#azure-hametadata["En savoir plus sur cet appel d'API"^] .
+
+. Obtenez la liste des clés dans le coffre-fort en utilisant l’appel API suivant.
++
+Pour une paire HA : `GET /azure/ha/metadata/keys-vault`
+
++
+Pour un seul nœud : `GET /azure/vsa/metadata/keys-vault`
+
++
+Prenez note du *keyName*.  Vous devrez spécifier cette valeur (ainsi que le nom du coffre-fort) à l’étape suivante.
+
++
+https://docs.netapp.com/us-en/bluexp-automation/cm/api_ref_resources.html#azure-hametadata["En savoir plus sur cet appel d'API"^] .
+
+. Créez un système Cloud Volumes ONTAP à l’aide de l’appel API suivant.
++
+.. Pour une paire HA :
++
+`POST /azure/ha/working-environments`
+
++
+Le corps de la requête doit inclure les champs suivants :
+
++
+[source, json]
+----
+"azureEncryptionParameters": {
+              "key": "keyName",
+              "vaultName": "vaultName"
+}
+----
++
+
+NOTE: Inclure le `"userAssignedIdentity": " userAssignedIdentityId"` champ si vous avez créé cette ressource pour être utilisée pour le chiffrement du compte de stockage.
+
++
+https://docs.netapp.com/us-en/bluexp-automation/cm/api_ref_resources.html#azure-haworking-environments["En savoir plus sur cet appel d'API"^] .
+
+.. Pour un système à nœud unique :
++
+`POST /azure/vsa/working-environments`
+
++
+Le corps de la requête doit inclure les champs suivants :
+
++
+[source, json]
+----
+"azureEncryptionParameters": {
+              "key": "keyName",
+              "vaultName": "vaultName"
+}
+----
++
+
+NOTE: Inclure le `"userAssignedIdentity": " userAssignedIdentityId"` champ si vous avez créé cette ressource pour être utilisée pour le chiffrement du compte de stockage.
+
++
+https://docs.netapp.com/us-en/bluexp-automation/cm/api_ref_resources.html#azure-vsaworking-environments["En savoir plus sur cet appel d'API"^] .
+
+
+
+
+
+.Résultat
+Vous disposez d’un nouveau système Cloud Volumes ONTAP configuré pour utiliser votre clé gérée par le client pour le chiffrement des données.

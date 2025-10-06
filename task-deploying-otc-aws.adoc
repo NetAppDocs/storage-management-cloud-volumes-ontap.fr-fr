@@ -1,0 +1,537 @@
+---
+sidebar: sidebar 
+permalink: task-deploying-otc-aws.html 
+keywords: Cloud Volumes ONTAP, deploying, launching, creating, deploy, launch, create, aws, serial number, license key, byol, test instance, aws tags, tags, location, vpc, encryption, security group, aws-managed encryption, disk size, disk type, write speed, licensing, IAM role, preconfigured package, access control, volume protection, usage profile, register, CIFS share, quota, qtree, HA, high-availability, subscription, cloud data sense, cloud backup 
+summary: Vous pouvez lancer des instances Cloud Volumes ONTAP dans une configuration à système unique ou en tant que paire HA dans AWS. 
+---
+= Lancer Cloud Volumes ONTAP dans AWS
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Vous pouvez lancer Cloud Volumes ONTAP dans une configuration à système unique ou en tant que paire HA dans AWS.  Cette méthode offre une expérience de déploiement avancée qui offre plus d’options de configuration et de flexibilité que la méthode de déploiement rapide.
+
+
+
+== Avant de commencer
+
+Vous avez besoin des éléments suivants avant de commencer.
+
+[[licensing]]
+* Un agent de console opérationnel.
++
+** Vous devriez avoir un https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-aws.html["Agent de console associé à votre système"^] .
+** https://docs.netapp.com/us-en/bluexp-setup-admin/concept-connectors.html["Vous devez être prêt à laisser l'agent de la console en cours d'exécution à tout moment."^] .
+
+
+* Une compréhension de la configuration que vous souhaitez utiliser.
++
+Vous devez vous préparer en choisissant une configuration et en obtenant des informations sur le réseau AWS auprès de votre administrateur. Pour plus de détails, reportez-vous àlink:task-planning-your-config.html["Planification de votre configuration Cloud Volumes ONTAP"^] .
+
+* Une compréhension de ce qui est nécessaire pour configurer les licences pour Cloud Volumes ONTAP.
++
+link:task-set-up-licensing-aws.html["Apprenez à configurer les licences"^] .
+
+* DNS et Active Directory pour les configurations CIFS.
++
+Pour plus de détails, reportez-vous àlink:reference-networking-aws.html["Exigences réseau pour Cloud Volumes ONTAP dans AWS"^] .
+
+
+
+
+
+== Lancer un système Cloud Volumes ONTAP à nœud unique dans AWS
+
+Si vous souhaitez lancer Cloud Volumes ONTAP dans AWS, vous devez créer un nouveau système dans la console NetApp .
+
+.À propos de cette tâche
+Immédiatement après la création du système, la console lance une instance de test dans le VPC spécifié pour vérifier la connectivité.  En cas de réussite, la console met immédiatement fin à l’instance, puis commence à déployer le système Cloud Volumes ONTAP .  Si la connectivité ne peut pas être vérifiée, la création du système échoue.  L'instance de test est soit une `t2.nano` (pour la location VPC par défaut) ou `m3.medium` (pour la location VPC dédiée).
+
+.Étapes
+. Dans le menu de navigation de gauche, sélectionnez *Stockage > Gestion*.
+. [[subscribe]]Sur la page *Systèmes*, cliquez sur *Ajouter un système* et suivez les instructions.
+. Sélectionnez *Amazon Web Services* et * Cloud Volumes ONTAP Single Node*.
+. Sélectionnez *Création avancée*.  Étant donné que le mode *Création rapide* est sélectionné par défaut, vous pouvez voir un message concernant les valeurs par défaut. Cliquez sur *Continuer*.
+. Si vous y êtes invité, https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-aws.html["créer un agent de console"^] .
+. *Détails et informations d'identification* : Modifiez éventuellement les informations d'identification et l'abonnement AWS, saisissez un nom de système, ajoutez des balises si nécessaire, puis saisissez un mot de passe.
++
+Certains champs de cette page sont explicites.  Le tableau suivant décrit les domaines pour lesquels vous pourriez avoir besoin de conseils :
+
++
+[cols="25,75"]
+|===
+| Champ | Description 
+
+
+| Nom du système | La console utilise le nom du système pour nommer à la fois le système Cloud Volumes ONTAP et l'instance Amazon EC2.  Il utilise également le nom comme préfixe pour le groupe de sécurité prédéfini, si vous sélectionnez cette option. 
+
+
+| Ajouter des balises | Les balises AWS sont des métadonnées pour vos ressources AWS.  La console ajoute les balises à l’instance Cloud Volumes ONTAP et à chaque ressource AWS associée à l’instance.  Vous pouvez ajouter jusqu'à quatre balises à partir de l'interface utilisateur lors de la création d'un système, puis vous pouvez en ajouter davantage après sa création.  Notez que l'API ne vous limite pas à quatre balises lors de la création d'un système.  Pour plus d'informations sur les balises, reportez-vous à https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html["Documentation AWS : Balisage de vos ressources Amazon EC2"^] . 
+
+
+| Nom d'utilisateur et mot de passe | Il s’agit des informations d’identification du compte administrateur du cluster Cloud Volumes ONTAP .  Vous pouvez utiliser ces informations d'identification pour vous connecter à Cloud Volumes ONTAP via ONTAP System Manager ou l'interface de ligne de commande ONTAP .  Conservez le nom d’utilisateur par défaut _admin_ ou remplacez-le par un nom d’utilisateur personnalisé. 
+
+
+| Modifier les informations d'identification | Choisissez les informations d’identification AWS associées au compte sur lequel vous souhaitez déployer ce système.  Vous pouvez également associer l'abonnement AWS Marketplace à utiliser avec ce système Cloud Volumes ONTAP . Cliquez sur *Ajouter un abonnement* pour associer les identifiants sélectionnés à un nouvel abonnement Marketplace AWS. L'abonnement peut être annuel ou payant pour Cloud Volumes ONTAP à un tarif horaire. https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-aws-accounts.html["Découvrez comment ajouter des informations d'identification AWS supplémentaires à la console NetApp"^] . 
+|===
++
+
+TIP: Si plusieurs utilisateurs IAM travaillent sur le même compte AWS, chaque utilisateur doit s'abonner.  Une fois que le premier utilisateur s'est abonné, la place de marché AWS informe les utilisateurs suivants qu'ils sont déjà abonnés, comme illustré dans l'image ci-dessous.  Lorsqu'un abonnement est en place pour le compte AWS, chaque utilisateur IAM doit s'associer à cet abonnement.  Si vous voyez le message ci-dessous, cliquez sur le lien *cliquez ici* pour accéder au site Web de la console et terminer le processus.image:screenshot_aws_marketplace.gif["Une capture d'écran qui montre la page d'abonnement de la console pour Cloud Volumes ONTAP lorsque le compte AWS dispose déjà d'un abonnement, mais qu'un utilisateur IAM particulier n'en a peut-être pas."]
+
+. *Services* : conservez les services activés ou désactivez les services individuels que vous ne souhaitez pas utiliser avec Cloud Volumes ONTAP.
++
+** https://docs.netapp.com/us-en/bluexp-classification/concept-cloud-compliance.html["En savoir plus sur la classification des données NetApp"^]
+** https://docs.netapp.com/us-en/bluexp-backup-recovery/concept-backup-to-cloud.html["En savoir plus sur NetApp Backup and Recovery"^]
++
+
+TIP: Si vous souhaitez utiliser WORM et la hiérarchisation des données, vous devez désactiver la sauvegarde et la récupération et déployer un système Cloud Volumes ONTAP avec la version 9.8 ou supérieure.
+
+
+
+. *Emplacement et connectivité* : saisissez les informations réseau que vous avez enregistrées dans le https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-planning-your-config.html#collect-networking-information["Feuille de travail AWS"^] .
++
+Le tableau suivant décrit les domaines pour lesquels vous pourriez avoir besoin de conseils :
+
++
+[cols="25,75"]
+|===
+| Champ | Description 
+
+
+| VPC | Si vous disposez d'un Outpost AWS, vous pouvez déployer un système Cloud Volumes ONTAP à nœud unique dans cet Outpost en sélectionnant le VPC Outpost. L'expérience est la même que pour tout autre VPC résidant dans AWS. 
+
+
+| Groupe de sécurité généré  a| 
+Si vous laissez la console générer le groupe de sécurité pour vous, vous devez choisir comment vous autoriserez le trafic :
+
+** Si vous choisissez *VPC sélectionné uniquement*, la source du trafic entrant est la plage de sous-réseaux du VPC sélectionné et la plage de sous-réseaux du VPC sur lequel réside l'agent de la console.  C'est l'option recommandée.
+** Si vous choisissez *Tous les VPC*, la source du trafic entrant est la plage IP 0.0.0.0/0.
+
+
+
+
+| Utiliser le groupe de sécurité existant | Si vous utilisez une stratégie de pare-feu existante, assurez-vous qu’elle inclut les règles requises. link:reference-security-groups.html["En savoir plus sur les règles de pare-feu pour Cloud Volumes ONTAP"^] . 
+|===
+. *Cryptage des données* : choisissez aucun cryptage de données ou un cryptage géré par AWS.
++
+Pour le chiffrement géré par AWS, vous pouvez choisir une clé principale client (CMK) différente de votre compte ou d'un autre compte AWS.
+
++
+
+TIP: Vous ne pouvez pas modifier la méthode de chiffrement des données AWS après avoir créé un système Cloud Volumes ONTAP .
+
++
+link:task-setting-up-kms.html["Découvrez comment configurer AWS KMS pour Cloud Volumes ONTAP"^] .
+
++
+link:concept-security.html#encryption-of-data-at-rest["En savoir plus sur les technologies de chiffrement prises en charge"^] .
+
+. * Méthodes de facturation et compte NSS * : spécifiez l'option de facturation que vous souhaitez utiliser avec ce système, puis spécifiez un compte de site de support NetApp .
++
+** link:concept-licensing.html["En savoir plus sur les options de licence pour Cloud Volumes ONTAP"^] .
+** link:task-set-up-licensing-aws.html["Apprenez à configurer les licences"^] .
+
+
+. * Configuration Cloud Volumes ONTAP * (contrat annuel de la place de marché AWS uniquement) : vérifiez la configuration par défaut et cliquez sur *Continuer* ou cliquez sur *Modifier la configuration* pour sélectionner votre propre configuration.
++
+Si vous conservez la configuration par défaut, il vous suffit de spécifier un volume, puis de vérifier et d’approuver la configuration.
+
+. *Packages préconfigurés* : sélectionnez l’un des packages pour lancer rapidement Cloud Volumes ONTAP ou cliquez sur *Modifier la configuration* pour sélectionner votre propre configuration.
++
+Si vous choisissez l’un des packages, il vous suffit de spécifier un volume, puis de vérifier et d’approuver la configuration.
+
+. *Rôle IAM* : il est préférable de conserver l'option par défaut pour laisser la console créer le rôle pour vous.
++
+Si vous préférez utiliser votre propre politique, elle doit répondrelink:task-set-up-iam-roles.html["exigences de politique pour les nœuds Cloud Volumes ONTAP"^] .
+
+. *Licence* : modifiez la version de Cloud Volumes ONTAP selon vos besoins et sélectionnez un type d’instance et la location de l’instance.
++
+
+NOTE: Si une version candidate à la publication, une version de disponibilité générale ou une version de correctif plus récente est disponible pour la version sélectionnée, la console met à jour le système vers cette version lors de la création du système.  Par exemple, la mise à jour se produit si vous sélectionnez Cloud Volumes ONTAP 9.13.1 et 9.13.1 P4 est disponible.  La mise à jour ne se produit pas d’une version à une autre, par exemple de la version 9.13 à la version 9.14.
+
+. *Ressources de stockage sous-jacentes* : choisissez un type de disque, configurez le stockage sous-jacent et choisissez si vous souhaitez conserver la hiérarchisation des données activée.
++
+Notez ce qui suit :
+
++
+** Le type de disque correspond au volume initial (et à l'agrégat).  Vous pouvez choisir un type de disque différent pour les volumes (et agrégats) suivants.
+** Si vous choisissez un disque gp3 ou io1, la console utilise la fonctionnalité Elastic Volumes dans AWS pour augmenter automatiquement la capacité du disque de stockage sous-jacent selon les besoins.  Vous pouvez choisir la capacité initiale en fonction de vos besoins de stockage et la réviser après le déploiement de Cloud Volumes ONTAP . link:concept-aws-elastic-volumes.html["En savoir plus sur la prise en charge des volumes élastiques dans AWS"^] .
+** Si vous choisissez un disque gp2 ou st1, vous pouvez sélectionner une taille de disque pour tous les disques de l'agrégat initial et pour tous les agrégats supplémentaires créés par la console lorsque vous utilisez l'option de provisionnement simple.  Vous pouvez créer des agrégats qui utilisent une taille de disque différente en utilisant l'option d'allocation avancée.
+** Vous pouvez choisir une stratégie de hiérarchisation de volume spécifique lorsque vous créez ou modifiez un volume.
+** Si vous désactivez la hiérarchisation des données, vous pouvez l'activer sur les agrégats suivants.
++
+link:concept-data-tiering.html["Découvrez comment fonctionne la hiérarchisation des données"^] .
+
+
+
+. *Vitesse d'écriture et WORM* :
++
+.. Choisissez une vitesse d'écriture *Normale* ou *Élevée*, si vous le souhaitez.
++
+link:concept-write-speed.html["En savoir plus sur la vitesse d'écriture"^] .
+
+.. Activez le stockage WORM (écriture unique, lecture multiple), si vous le souhaitez.
++
+WORM ne peut pas être activé si la hiérarchisation des données a été activée pour les versions 9.7 et inférieures de Cloud Volumes ONTAP .  Le retour ou la rétrogradation vers Cloud Volumes ONTAP 9.8 est bloqué après l'activation de WORM et de la hiérarchisation.
+
++
+link:concept-worm.html["En savoir plus sur le stockage WORM"^] .
+
+.. Si vous activez le stockage WORM, sélectionnez la période de conservation.
+
+
+. *Créer un volume* : saisissez les détails du nouveau volume ou cliquez sur *Ignorer*.
++
+link:concept-client-protocols.html["En savoir plus sur les protocoles et versions clients pris en charge"^] .
+
++
+Certains champs de cette page sont explicites.  Le tableau suivant décrit les domaines pour lesquels vous pourriez avoir besoin de conseils :
+
++
+[cols="25,75"]
+|===
+| Champ | Description 
+
+
+| Taille | La taille maximale que vous pouvez saisir dépend en grande partie de l'activation ou non du provisionnement dynamique, qui vous permet de créer un volume plus grand que le stockage physique actuellement disponible. 
+
+
+| Contrôle d'accès (pour NFS uniquement) | Une politique d’exportation définit les clients du sous-réseau qui peuvent accéder au volume. Par défaut, la console entre une valeur qui donne accès à toutes les instances du sous-réseau. 
+
+
+| Autorisations et utilisateurs/groupes (pour CIFS uniquement) | Ces champs vous permettent de contrôler le niveau d'accès à un partage pour les utilisateurs et les groupes (également appelés listes de contrôle d'accès ou ACL). Vous pouvez spécifier des utilisateurs ou des groupes Windows locaux ou de domaine, ou des utilisateurs ou des groupes UNIX. Si vous spécifiez un nom d’utilisateur Windows de domaine, vous devez inclure le domaine de l’utilisateur en utilisant le format domaine\nom d’utilisateur. 
+
+
+| Politique d'instantané | Une stratégie de copie Snapshot spécifie la fréquence et le nombre de copies Snapshot NetApp créées automatiquement. Une copie NetApp Snapshot est une image de système de fichiers à un instant T qui n'a aucun impact sur les performances et nécessite un stockage minimal. Vous pouvez choisir la politique par défaut ou aucune.  Vous pouvez choisir « aucun » pour les données transitoires : par exemple, tempdb pour Microsoft SQL Server. 
+
+
+| Options avancées (pour NFS uniquement) | Sélectionnez une version NFS pour le volume : NFSv3 ou NFSv4. 
+
+
+| Groupe initiateur et IQN (pour iSCSI uniquement) | Les cibles de stockage iSCSI sont appelées LUN (unités logiques) et sont présentées aux hôtes sous forme de périphériques de blocs standard.  Les groupes d'initiateurs sont des tables de noms de nœuds d'hôtes iSCSI et contrôlent quels initiateurs ont accès à quels LUN. Les cibles iSCSI se connectent au réseau via des adaptateurs réseau Ethernet standard (NIC), des cartes de moteur de déchargement TCP (TOE) avec des initiateurs logiciels, des adaptateurs réseau convergés (CNA) ou des adaptateurs de bus hôte dédiés (HBA) et sont identifiés par des noms qualifiés iSCSI (IQN).  Lorsque vous créez un volume iSCSI, la console crée automatiquement un LUN pour vous.  Nous avons simplifié les choses en créant un seul LUN par volume, il n'y a donc aucune gestion impliquée.  Après avoir créé le volume,link:task-connect-lun.html["utilisez l'IQN pour vous connecter au LUN depuis vos hôtes"] . 
+|===
++
+L'image suivante montre la première page de l'assistant de création de volume :
+
++
+image:screenshot_cot_vol.gif["Capture d'écran : affiche la page Volume remplie pour une instance Cloud Volumes ONTAP ."]
+
+. *Configuration CIFS* : Si vous avez choisi le protocole CIFS, configurez un serveur CIFS.
++
+[cols="25,75"]
+|===
+| Champ | Description 
+
+
+| Adresse IP primaire et secondaire DNS | Les adresses IP des serveurs DNS qui fournissent la résolution de noms pour le serveur CIFS.  Les serveurs DNS répertoriés doivent contenir les enregistrements d'emplacement de service (SRV) nécessaires pour localiser les serveurs LDAP Active Directory et les contrôleurs de domaine pour le domaine auquel le serveur CIFS rejoindra. 
+
+
+| Domaine Active Directory à rejoindre | Le nom de domaine complet du domaine Active Directory (AD) auquel vous souhaitez que le serveur CIFS se joigne. 
+
+
+| Informations d'identification autorisées pour rejoindre le domaine | Le nom et le mot de passe d’un compte Windows avec des privilèges suffisants pour ajouter des ordinateurs à l’unité d’organisation (UO) spécifiée dans le domaine AD. 
+
+
+| Nom NetBIOS du serveur CIFS | Un nom de serveur CIFS unique dans le domaine AD. 
+
+
+| Unité organisationnelle | L'unité organisationnelle au sein du domaine AD à associer au serveur CIFS.  La valeur par défaut est CN=Ordinateurs.  Si vous configurez AWS Managed Microsoft AD comme serveur AD pour Cloud Volumes ONTAP, vous devez saisir *OU=Computers,OU=corp* dans ce champ. 
+
+
+| Domaine DNS | Le domaine DNS de la machine virtuelle de stockage Cloud Volumes ONTAP (SVM).  Dans la plupart des cas, le domaine est le même que le domaine AD. 
+
+
+| Serveur NTP | Sélectionnez *Utiliser le domaine Active Directory* pour configurer un serveur NTP à l’aide du DNS Active Directory.  Si vous devez configurer un serveur NTP à l’aide d’une adresse différente, vous devez utiliser l’API. Se référer à la https://docs.netapp.com/us-en/bluexp-automation/index.html["Documentation sur l'automatisation de la console NetApp"^] pour plus de détails.  Notez que vous ne pouvez configurer un serveur NTP que lors de la création d'un serveur CIFS.  Il n'est pas configurable après avoir créé le serveur CIFS. 
+|===
+. *Profil d'utilisation, type de disque et politique de hiérarchisation* : choisissez si vous souhaitez activer les fonctionnalités d'efficacité du stockage et modifier la politique de hiérarchisation des volumes, si nécessaire.
++
+Pour plus d'informations, reportez-vous àlink:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-planning-your-config.html#choose-a-volume-usage-profile["Comprendre les profils d'utilisation du volume"^] ,link:concept-data-tiering.html["Présentation de la hiérarchisation des données"^] , et https://kb.netapp.com/Cloud/Cloud_Volumes_ONTAP/What_Inline_Storage_Efficiency_features_are_supported_with_CVO#["KB : Quelles fonctionnalités d’efficacité du stockage en ligne sont prises en charge avec CVO ?"^]
+
+. *Réviser et approuver* : Révisez et confirmez vos sélections.
++
+.. Consultez les détails de la configuration.
+.. Cliquez sur *Plus d'informations* pour consulter les détails sur l'assistance et les ressources AWS que la console achètera.
+.. Cochez les cases *Je comprends...*.
+.. Cliquez sur *Aller*.
+
+
+
+
+.Résultat
+La console lance l'instance Cloud Volumes ONTAP .  Vous pouvez suivre la progression sur la page *Audit*.
+
+Si vous rencontrez des problèmes lors du lancement de l’instance Cloud Volumes ONTAP , consultez le message d’échec.  Vous pouvez également sélectionner le système et cliquer sur *Recréer l'environnement*.
+
+Pour obtenir de l'aide supplémentaire, rendez-vous sur https://mysupport.netapp.com/site/products/all/details/cloud-volumes-ontap/guideme-tab["Prise en charge de NetApp Cloud Volumes ONTAP"^] .
+
+.Après avoir terminé
+* Si vous avez provisionné un partage CIFS, accordez aux utilisateurs ou aux groupes des autorisations sur les fichiers et les dossiers et vérifiez que ces utilisateurs peuvent accéder au partage et créer un fichier.
+* Si vous souhaitez appliquer des quotas aux volumes, utilisez ONTAP System Manager ou l'interface de ligne de commande ONTAP .
++
+Les quotas vous permettent de restreindre ou de suivre l'espace disque et le nombre de fichiers utilisés par un utilisateur, un groupe ou un qtree.
+
+
+
+
+
+== Lancer une paire Cloud Volumes ONTAP HA dans AWS
+
+Si vous souhaitez lancer une paire Cloud Volumes ONTAP HA dans AWS, vous devez créer un système HA dans la console.
+
+.Limitation
+À l’heure actuelle, les paires HA ne sont pas prises en charge avec AWS Outposts.
+
+.À propos de cette tâche
+Immédiatement après avoir créé le système Cloud Volumes ONTAP , la console lance une instance de test dans le VPC spécifié pour vérifier la connectivité.  En cas de réussite, la console met immédiatement fin à l’instance, puis commence à déployer le système Cloud Volumes ONTAP .  Si la connectivité ne peut pas être vérifiée, la création du système échoue.  L'instance de test est soit une `t2.nano` (pour la location VPC par défaut) ou `m3.medium` (pour la location VPC dédiée).
+
+.Étapes
+. Dans le menu de navigation de gauche, sélectionnez *Stockage > Gestion*.
+. Sur la page *Systèmes*, cliquez sur *Ajouter un système* et suivez les instructions.
+. Sélectionnez *Amazon Web Services* et * Cloud Volumes ONTAP HA*.
++
+Certaines zones locales AWS sont disponibles.
+
++
+Avant de pouvoir utiliser les zones locales AWS, vous devez activer les zones locales et créer un sous-réseau dans la zone locale de votre compte AWS.  Suivez les étapes *Inscription à une zone locale AWS* et *Étendez votre Amazon VPC à la zone locale* dans lelink:https://aws.amazon.com/tutorials/deploying-low-latency-applications-with-aws-local-zones/["Tutoriel AWS « Démarrer le déploiement d'applications à faible latence avec les zones locales AWS »"^] .
+
++
+Si vous exécutez l'agent de console 3.9.36 ou une version antérieure, vous devez ajouter le `DescribeAvailabilityZones` autorisation au rôle AWS dans la console AWS EC2.
+
+. *Détails et informations d'identification* : Modifiez éventuellement les informations d'identification et l'abonnement AWS, saisissez un nom de système, ajoutez des balises si nécessaire, puis saisissez un mot de passe.
++
+Certains champs de cette page sont explicites.  Le tableau suivant décrit les domaines pour lesquels vous pourriez avoir besoin de conseils :
+
++
+[cols="25,75"]
+|===
+| Champ | Description 
+
+
+| Nom du système | La console utilise le nom du système pour nommer à la fois le système Cloud Volumes ONTAP et l'instance Amazon EC2.  Il utilise également le nom comme préfixe pour le groupe de sécurité prédéfini, si vous sélectionnez cette option. 
+
+
+| Ajouter des balises | Les balises AWS sont des métadonnées pour vos ressources AWS.  La console ajoute les balises à l’instance Cloud Volumes ONTAP et à chaque ressource AWS associée à l’instance.  Vous pouvez ajouter jusqu'à quatre balises à partir de l'interface utilisateur lors de la création d'un système, puis vous pouvez en ajouter davantage après sa création.  Notez que l'API ne vous limite pas à quatre balises lors de la création d'un système.  Pour plus d'informations sur les balises, reportez-vous à https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html["Documentation AWS : Balisage de vos ressources Amazon EC2"^] . 
+
+
+| Nom d'utilisateur et mot de passe | Il s’agit des informations d’identification du compte administrateur du cluster Cloud Volumes ONTAP .  Vous pouvez utiliser ces informations d'identification pour vous connecter à Cloud Volumes ONTAP via ONTAP System Manager ou l'interface de ligne de commande ONTAP .  Conservez le nom d’utilisateur par défaut _admin_ ou remplacez-le par un nom d’utilisateur personnalisé. 
+
+
+| Modifier les informations d'identification | Choisissez les identifiants AWS et l'abonnement Marketplace à utiliser avec ce système Cloud Volumes ONTAP . Cliquez sur *Ajouter un abonnement* pour associer les identifiants sélectionnés à un nouvel abonnement Marketplace AWS. L'abonnement peut être annuel ou payant pour Cloud Volumes ONTAP à un tarif horaire. Si vous avez acheté une licence directement auprès de NetApp (BYOL), un abonnement AWS n'est pas requis. NetApp a restreint l'achat, la prolongation et le renouvellement des licences BYOL. Pour plus d'informations, consultez  https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/whats-new.html#restricted-availability-of-byol-licensing-for-cloud-volumes-ontap["Disponibilité restreinte des licences BYOL pour Cloud Volumes ONTAP"^] . https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-aws-accounts.html["Découvrez comment ajouter des informations d'identification AWS supplémentaires à la console"^] . 
+|===
++
+
+TIP: Si plusieurs utilisateurs IAM travaillent sur le même compte AWS, chaque utilisateur doit s'abonner.  Une fois que le premier utilisateur s'est abonné, la place de marché AWS informe les utilisateurs suivants qu'ils sont déjà abonnés, comme illustré dans l'image ci-dessous.  Lorsqu'un abonnement est en place pour le compte AWS, chaque utilisateur IAM doit s'associer à cet abonnement.  Si vous voyez le message ci-dessous, cliquez sur le lien *cliquez ici* pour accéder au site Web de la console et terminer le processus.image:screenshot_aws_marketplace.gif["Une capture d'écran qui montre la page d'abonnement de la console pour Cloud Volumes ONTAP lorsque le compte AWS dispose déjà d'un abonnement, mais qu'un utilisateur IAM particulier n'en a peut-être pas."]
+
+. *Services* : conservez les services activés ou désactivez les services individuels que vous ne souhaitez pas utiliser avec ce système Cloud Volumes ONTAP .
++
+** https://docs.netapp.com/us-en/bluexp-classification/concept-cloud-compliance.html["En savoir plus sur la classification des données NetApp"^]
+** https://docs.netapp.com/us-en/bluexp-backup-recovery/task-backup-to-s3.html["En savoir plus sur la sauvegarde et la récupération"^]
++
+
+TIP: Si vous souhaitez utiliser WORM et la hiérarchisation des données, vous devez désactiver la sauvegarde et la récupération et déployer un système Cloud Volumes ONTAP avec la version 9.8 ou supérieure.
+
+
+
+. *Modèles de déploiement HA* : choisissez une configuration HA.
++
+Pour un aperçu des modèles de déploiement, reportez-vous àlink:concept-ha.html["Cloud Volumes ONTAP HA pour AWS"^] .
+
+. *Emplacement et connectivité* (zone de disponibilité unique (AZ)) ou *Région et VPC* (plusieurs AZ) : saisissez les informations réseau que vous avez enregistrées dans la feuille de calcul AWS.
++
+Le tableau suivant décrit les domaines pour lesquels vous pourriez avoir besoin de conseils :
+
++
+[cols="25,75"]
+|===
+| Champ | Description 
+
+
+| Groupe de sécurité généré  a| 
+Si vous laissez la console générer le groupe de sécurité pour vous, vous devez choisir comment vous autoriserez le trafic :
+
+** Si vous choisissez *VPC sélectionné uniquement*, la source du trafic entrant est la plage de sous-réseaux du VPC sélectionné et la plage de sous-réseaux du VPC sur lequel réside l'agent de la console.  C'est l'option recommandée.
+** Si vous choisissez *Tous les VPC*, la source du trafic entrant est la plage IP 0.0.0.0/0.
+
+
+
+
+| Utiliser le groupe de sécurité existant | Si vous utilisez une stratégie de pare-feu existante, assurez-vous qu’elle inclut les règles requises. link:reference-security-groups.html["En savoir plus sur les règles de pare-feu pour Cloud Volumes ONTAP"^] . 
+|===
+. *Connectivité et authentification SSH* : Choisissez les méthodes de connexion pour la paire HA et le médiateur.
+. *IP flottantes* : si vous avez choisi plusieurs AZ, spécifiez les adresses IP flottantes.
++
+Les adresses IP doivent être en dehors du bloc CIDR pour tous les VPC de la région.  Pour plus de détails, reportez-vous àlink:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/reference-networking-aws.html#requirements-for-ha-pairs-in-multiple-azs["Exigences réseau AWS pour Cloud Volumes ONTAP HA dans plusieurs zones de disponibilité"^] .
+
+. *Tables de routage* : si vous avez choisi plusieurs AZ, sélectionnez les tables de routage qui doivent inclure les routes vers les adresses IP flottantes.
++
+Si vous disposez de plusieurs tables de routage, il est très important de sélectionner les tables de routage correctes.  Dans le cas contraire, certains clients risquent de ne pas avoir accès à la paire Cloud Volumes ONTAP HA.  Pour plus d'informations sur les tables de routage, reportez-vous à la http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html["Documentation AWS : Tables de routage"^] .
+
+. *Cryptage des données* : choisissez aucun cryptage de données ou un cryptage géré par AWS.
++
+Pour le chiffrement géré par AWS, vous pouvez choisir une clé principale client (CMK) différente de votre compte ou d'un autre compte AWS.
+
++
+
+TIP: Vous ne pouvez pas modifier la méthode de chiffrement des données AWS après avoir créé un système Cloud Volumes ONTAP .
+
++
+link:task-setting-up-kms.html["Découvrez comment configurer AWS KMS pour Cloud Volumes ONTAP"^] .
+
++
+link:concept-security.html#encryption-of-data-at-rest["En savoir plus sur les technologies de chiffrement prises en charge"^] .
+
+. * Méthodes de facturation et compte NSS * : spécifiez l'option de facturation que vous souhaitez utiliser avec ce système, puis spécifiez un compte de site de support NetApp .
++
+** link:concept-licensing.html["En savoir plus sur les options de licence pour Cloud Volumes ONTAP"^] .
+** link:task-set-up-licensing-aws.html["Apprenez à configurer les licences"^] .
+
+
+. * Configuration Cloud Volumes ONTAP * (contrat annuel AWS Marketplace uniquement) : vérifiez la configuration par défaut et cliquez sur *Continuer* ou cliquez sur *Modifier la configuration* pour sélectionner votre propre configuration.
++
+Si vous conservez la configuration par défaut, il vous suffit de spécifier un volume, puis de vérifier et d’approuver la configuration.
+
+. *Packages préconfigurés* (horaires ou BYOL uniquement) : sélectionnez l'un des packages pour lancer rapidement Cloud Volumes ONTAP, ou cliquez sur *Modifier la configuration* pour sélectionner votre propre configuration.
++
+Si vous choisissez l’un des packages, il vous suffit de spécifier un volume, puis de vérifier et d’approuver la configuration.
+
+. *Rôle IAM* : il est préférable de conserver l'option par défaut pour laisser la console créer le rôle pour vous.
++
+Si vous préférez utiliser votre propre politique, elle doit répondrelink:task-set-up-iam-roles.html["exigences de politique pour les nœuds Cloud Volumes ONTAP et le médiateur HA"^] .
+
+. *Licence* : modifiez la version de Cloud Volumes ONTAP selon vos besoins et sélectionnez un type d’instance et la location de l’instance.
++
+
+NOTE: Si une version candidate à la publication, une version de disponibilité générale ou une version de correctif plus récente est disponible pour la version sélectionnée, la console met à jour le système vers cette version lors de la création du système.  Par exemple, la mise à jour se produit si vous sélectionnez Cloud Volumes ONTAP 9.13.1 et 9.13.1 P4 est disponible.  La mise à jour ne se produit pas d’une version à une autre, par exemple de la version 9.13 à la version 9.14.
+
+. *Ressources de stockage sous-jacentes* : choisissez un type de disque, configurez le stockage sous-jacent et choisissez si vous souhaitez conserver la hiérarchisation des données activée.
++
+Notez ce qui suit :
+
++
+** Le type de disque correspond au volume initial (et à l'agrégat).  Vous pouvez choisir un type de disque différent pour les volumes (et agrégats) suivants.
+** Si vous choisissez un disque gp3 ou io1, la console utilise la fonctionnalité Elastic Volumes dans AWS pour augmenter automatiquement la capacité du disque de stockage sous-jacent selon les besoins.  Vous pouvez choisir la capacité initiale en fonction de vos besoins de stockage et la réviser après le déploiement de Cloud Volumes ONTAP . link:concept-aws-elastic-volumes.html["En savoir plus sur la prise en charge des volumes élastiques dans AWS"^] .
+** Si vous choisissez un disque gp2 ou st1, vous pouvez sélectionner une taille de disque pour tous les disques de l'agrégat initial et pour tous les agrégats supplémentaires créés par la console lorsque vous utilisez l'option de provisionnement simple.  Vous pouvez créer des agrégats qui utilisent une taille de disque différente en utilisant l'option d'allocation avancée.
+** Vous pouvez choisir une stratégie de hiérarchisation de volume spécifique lorsque vous créez ou modifiez un volume.
+** Si vous désactivez la hiérarchisation des données, vous pouvez l'activer sur les agrégats suivants.
++
+link:concept-data-tiering.html["Découvrez comment fonctionne la hiérarchisation des données"^] .
+
+
+
+. *Vitesse d'écriture et WORM* :
++
+.. Choisissez une vitesse d'écriture *Normale* ou *Élevée*, si vous le souhaitez.
++
+link:concept-write-speed.html["En savoir plus sur la vitesse d'écriture"^] .
+
+.. Activez le stockage WORM (écriture unique, lecture multiple), si vous le souhaitez.
++
+WORM ne peut pas être activé si la hiérarchisation des données a été activée pour les versions 9.7 et inférieures de Cloud Volumes ONTAP .  Le retour ou la rétrogradation vers Cloud Volumes ONTAP 9.8 est bloqué après l'activation de WORM et de la hiérarchisation.
+
++
+link:concept-worm.html["En savoir plus sur le stockage WORM"^] .
+
+.. Si vous activez le stockage WORM, sélectionnez la période de conservation.
+
+
+. *Créer un volume* : saisissez les détails du nouveau volume ou cliquez sur *Ignorer*.
++
+link:concept-client-protocols.html["En savoir plus sur les protocoles et versions clients pris en charge"^] .
+
++
+Certains champs de cette page sont explicites.  Le tableau suivant décrit les domaines pour lesquels vous pourriez avoir besoin de conseils :
+
++
+[cols="25,75"]
+|===
+| Champ | Description 
+
+
+| Taille | La taille maximale que vous pouvez saisir dépend en grande partie de l'activation ou non du provisionnement dynamique, qui vous permet de créer un volume plus grand que le stockage physique actuellement disponible. 
+
+
+| Contrôle d'accès (pour NFS uniquement) | Une politique d’exportation définit les clients du sous-réseau qui peuvent accéder au volume. Par défaut, la console entre une valeur qui donne accès à toutes les instances du sous-réseau. 
+
+
+| Autorisations et utilisateurs/groupes (pour CIFS uniquement) | Ces champs vous permettent de contrôler le niveau d'accès à un partage pour les utilisateurs et les groupes (également appelés listes de contrôle d'accès ou ACL). Vous pouvez spécifier des utilisateurs ou des groupes Windows locaux ou de domaine, ou des utilisateurs ou des groupes UNIX. Si vous spécifiez un nom d’utilisateur Windows de domaine, vous devez inclure le domaine de l’utilisateur en utilisant le format domaine\nom d’utilisateur. 
+
+
+| Politique d'instantané | Une stratégie de copie Snapshot spécifie la fréquence et le nombre de copies Snapshot NetApp créées automatiquement. Une copie NetApp Snapshot est une image de système de fichiers à un instant T qui n'a aucun impact sur les performances et nécessite un stockage minimal. Vous pouvez choisir la politique par défaut ou aucune.  Vous pouvez choisir « aucun » pour les données transitoires : par exemple, tempdb pour Microsoft SQL Server. 
+
+
+| Options avancées (pour NFS uniquement) | Sélectionnez une version NFS pour le volume : NFSv3 ou NFSv4. 
+
+
+| Groupe initiateur et IQN (pour iSCSI uniquement) | Les cibles de stockage iSCSI sont appelées LUN (unités logiques) et sont présentées aux hôtes sous forme de périphériques de blocs standard.  Les groupes d'initiateurs sont des tables de noms de nœuds d'hôtes iSCSI et contrôlent quels initiateurs ont accès à quels LUN. Les cibles iSCSI se connectent au réseau via des adaptateurs réseau Ethernet standard (NIC), des cartes de moteur de déchargement TCP (TOE) avec des initiateurs logiciels, des adaptateurs réseau convergés (CNA) ou des adaptateurs de bus hôte dédiés (HBA) et sont identifiés par des noms qualifiés iSCSI (IQN).  Lorsque vous créez un volume iSCSI, la console crée automatiquement un LUN pour vous.  Nous avons simplifié les choses en créant un seul LUN par volume, il n'y a donc aucune gestion impliquée.  Après avoir créé le volume,link:task-connect-lun.html["utilisez l'IQN pour vous connecter au LUN depuis vos hôtes"] . 
+|===
++
+L'image suivante montre la première page de l'assistant de création de volume :
+
++
+image:screenshot_cot_vol.gif["Capture d'écran : affiche la page Volume remplie pour une instance Cloud Volumes ONTAP ."]
+
+. *Configuration CIFS* : Si vous avez sélectionné le protocole CIFS, configurez un serveur CIFS.
++
+[cols="25,75"]
+|===
+| Champ | Description 
+
+
+| Adresse IP primaire et secondaire DNS | Les adresses IP des serveurs DNS qui fournissent la résolution de noms pour le serveur CIFS.  Les serveurs DNS répertoriés doivent contenir les enregistrements d'emplacement de service (SRV) nécessaires pour localiser les serveurs LDAP Active Directory et les contrôleurs de domaine pour le domaine auquel le serveur CIFS rejoindra. 
+
+
+| Domaine Active Directory à rejoindre | Le nom de domaine complet du domaine Active Directory (AD) auquel vous souhaitez que le serveur CIFS se joigne. 
+
+
+| Informations d'identification autorisées pour rejoindre le domaine | Le nom et le mot de passe d’un compte Windows avec des privilèges suffisants pour ajouter des ordinateurs à l’unité d’organisation (UO) spécifiée dans le domaine AD. 
+
+
+| Nom NetBIOS du serveur CIFS | Un nom de serveur CIFS unique dans le domaine AD. 
+
+
+| Unité organisationnelle | L'unité organisationnelle au sein du domaine AD à associer au serveur CIFS.  La valeur par défaut est CN=Ordinateurs.  Si vous configurez AWS Managed Microsoft AD comme serveur AD pour Cloud Volumes ONTAP, vous devez saisir *OU=Computers,OU=corp* dans ce champ. 
+
+
+| Domaine DNS | Le domaine DNS de la machine virtuelle de stockage Cloud Volumes ONTAP (SVM).  Dans la plupart des cas, le domaine est le même que le domaine AD. 
+
+
+| Serveur NTP | Sélectionnez *Utiliser le domaine Active Directory* pour configurer un serveur NTP à l’aide du DNS Active Directory.  Si vous devez configurer un serveur NTP à l’aide d’une adresse différente, vous devez utiliser l’API. Se référer à la https://docs.netapp.com/us-en/bluexp-automation/index.html["Documentation sur l'automatisation de la console NetApp"^] pour plus de détails.  Notez que vous ne pouvez configurer un serveur NTP que lors de la création d'un serveur CIFS.  Il n'est pas configurable après avoir créé le serveur CIFS. 
+|===
+. *Profil d'utilisation, type de disque et politique de hiérarchisation* : choisissez si vous souhaitez activer les fonctionnalités d'efficacité du stockage et modifier la politique de hiérarchisation des volumes, si nécessaire.
++
+Pour plus d'informations, reportez-vous àlink:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-planning-your-config.html#choose-a-volume-usage-profile["Choisissez un profil d'utilisation du volume"^] etlink:concept-data-tiering.html["Présentation de la hiérarchisation des données"^] .
+
+. *Réviser et approuver* : Révisez et confirmez vos sélections.
++
+.. Consultez les détails de la configuration.
+.. Cliquez sur *Plus d'informations* pour consulter les détails sur l'assistance et les ressources AWS que la console achètera.
+.. Cochez les cases *Je comprends...*.
+.. Cliquez sur *Aller*.
+
+
+
+
+.Résultat
+La console lance la paire Cloud Volumes ONTAP HA.  Vous pouvez suivre la progression sur la page *Audit*.
+
+Si vous rencontrez des problèmes lors du lancement de la paire HA, consultez le message d’échec.  Vous pouvez également sélectionner le système et cliquer sur Recréer l’environnement.
+
+Pour obtenir de l'aide supplémentaire, rendez-vous sur https://mysupport.netapp.com/site/products/all/details/cloud-volumes-ontap/guideme-tab["Prise en charge de NetApp Cloud Volumes ONTAP"^] .
+
+.Après avoir terminé
+* Si vous avez provisionné un partage CIFS, accordez aux utilisateurs ou aux groupes des autorisations sur les fichiers et les dossiers et vérifiez que ces utilisateurs peuvent accéder au partage et créer un fichier.
+* Si vous souhaitez appliquer des quotas aux volumes, utilisez ONTAP System Manager ou l'interface de ligne de commande ONTAP .
++
+Les quotas vous permettent de restreindre ou de suivre l'espace disque et le nombre de fichiers utilisés par un utilisateur, un groupe ou un qtree.
+
+
+
+.Liens connexes
+* link:task-planning-your-config.html["Planification de votre configuration Cloud Volumes ONTAP"]
+* link:task-quick-deploy-aws.html["Déployer Cloud Volumes ONTAP dans AWS à l'aide d'un déploiement rapide"]
+

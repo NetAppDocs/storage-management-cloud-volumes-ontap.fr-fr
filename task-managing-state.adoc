@@ -1,0 +1,90 @@
+---
+sidebar: sidebar 
+permalink: task-managing-state.html 
+keywords: schedule, schedules, scheduling, shutdowns, shut down, restart, stop, stopping, turn off, weekday, weekend 
+summary: Vous pouvez arrêter et démarrer Cloud Volumes ONTAP à partir de la console NetApp pour gérer vos coûts de calcul cloud. 
+---
+= Démarrer et arrêter un système Cloud Volumes ONTAP
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Vous pouvez arrêter et démarrer Cloud Volumes ONTAP à partir de la console NetApp pour gérer vos coûts de calcul cloud.
+
+
+
+== Planification des arrêts automatiques de Cloud Volumes ONTAP
+
+Vous souhaiterez peut-être arrêter Cloud Volumes ONTAP pendant des intervalles de temps spécifiques pour réduire vos coûts de calcul.  Plutôt que de le faire manuellement, vous pouvez configurer la console pour qu'elle arrête automatiquement puis redémarre les systèmes à des heures précises.
+
+.À propos de cette tâche
+* Lorsque vous planifiez un arrêt automatique de votre système Cloud Volumes ONTAP , la console reporte l'arrêt si un transfert de données actif est en cours.
++
+Il arrête le système une fois le transfert terminé.
+
+* Cette tâche planifie les arrêts automatiques des deux nœuds d’une paire HA.
+* Les instantanés des disques de démarrage et racine ne sont pas créés lors de la désactivation de Cloud Volumes ONTAP via des arrêts planifiés.
++
+Les instantanés sont créés automatiquement uniquement lors d'un arrêt manuel, comme décrit dans la section suivante.
+
+
+
+.Étapes
+. Sur la page *Systèmes*, double-cliquez sur le système Cloud Volumes ONTAP .
+. Dans l’onglet Présentation, cliquez sur le panneau Fonctionnalités, puis cliquez sur l’icône en forme de crayon à côté de *Temps d’arrêt planifié*.
++
+image::screenshot_schedule_downtime.png[400]
+
+. Spécifiez le calendrier d'arrêt :
++
+.. Choisissez si vous souhaitez arrêter le système tous les jours, tous les jours de la semaine, tous les week-ends ou toute combinaison des trois options.
+.. Indiquez quand vous souhaitez éteindre le système et pendant combien de temps vous souhaitez qu'il soit éteint.
++
+*Exemple*
+
++
+L'image suivante montre un calendrier qui demande à la console d'arrêter le système tous les samedis à 20h00 (20h00) pendant 12 heures.  La console redémarre le système tous les lundis à 00h00
+
++
+image:screenshot_schedule_downtime_window.png["Capture d'écran : affiche l'écran Planifier les temps d'arrêt."]
+
+
+
+. Cliquez sur *Enregistrer*.
+
+
+.Résultat
+Le planning est enregistré.  La ligne de temps d'arrêt planifié correspondante sous le panneau Fonctionnalités affiche « Activé ».
+
+
+
+== Arrêt de Cloud Volumes ONTAP
+
+L'arrêt de Cloud Volumes ONTAP vous évite d'accumuler des coûts de calcul et crée des instantanés des disques racine et de démarrage, ce qui peut être utile pour le dépannage.
+
+
+NOTE: Pour réduire les coûts, la console supprime périodiquement les anciens instantanés des disques racine et de démarrage.  Seuls les deux instantanés les plus récents sont conservés pour les disques racine et de démarrage.
+
+.À propos de cette tâche
+Lorsque vous arrêtez une paire HA, la console arrête les deux nœuds.
+
+.Étapes
+. Depuis le système, cliquez sur l’icône *Désactiver*.
++
+image:screenshot_turn_off_redesign.png["Capture d'écran : affiche l'icône permettant de désactiver un système Cloud Volumes ONTAP ."]
+
+. Gardez l’option de création d’instantanés activée, car les instantanés peuvent permettre la récupération du système.
+. Cliquez sur *Désactiver*.
++
+L’arrêt du système peut prendre jusqu’à quelques minutes.  Vous pouvez redémarrer les systèmes ultérieurement à partir de la page *Systèmes*.
+
++
+
+NOTE: Les instantanés sont créés automatiquement au redémarrage.
+
+

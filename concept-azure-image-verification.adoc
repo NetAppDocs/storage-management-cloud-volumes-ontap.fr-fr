@@ -1,0 +1,40 @@
+---
+sidebar: sidebar 
+permalink: concept-azure-image-verification.html 
+keywords: Azure, image, VHD, image signature file, 
+summary: Vérifiez les fichiers de signatures des fichiers image Azure VHD. 
+---
+= Vérification d'image de la place de marché Azure pour Cloud Volumes ONTAP
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+La vérification des images Azure est conforme aux exigences de sécurité renforcées de NetApp .  La vérification d’un fichier image est un processus simple.  Cependant, la vérification de la signature de l’image Azure nécessite des considérations spécifiques pour le fichier image Azure VHD, car il est modifié sur la place de marché Azure.
+
+
+NOTE: La vérification d’image Azure est prise en charge sur Cloud Volumes ONTAP 9.15.0 et versions ultérieures.
+
+
+
+== Modification des fichiers VHD publiés par Azure
+
+Les 1 Mo (1048576 octets) au début et les 512 octets à la fin du fichier VHD sont modifiés par Azure.  NetApp signe le fichier VHD restant.
+
+image:screenshot_azure_vhd_10gb.png["Une image qui montre l'alternance du fichier VHD de 10 Go d'Azure"]
+
+Dans l'exemple, le fichier VHD est de 10 Go.  La partie signée par NetApp est marquée en vert (10 Go - 1 Mo - 512 octets).
+
+.Liens connexes
+* https://pagefault.blog/2019/04/22/how-to-sign-and-verify-using-openssl/["Blog sur les erreurs de page : Comment signer et vérifier avec OpenSSL"^]
+* https://docs.microsoft.com/en-us/azure/databox-online/azure-stack-edge-gpu-create-virtual-machine-marketplace-image["Utiliser l'image Azure Marketplace pour créer une image de machine virtuelle pour votre GPU Azure Stack Edge Pro | Microsoft Learn"^]
+* https://docs.microsoft.com/en-us/azure/virtual-machines/scripts/copy-managed-disks-vhd-to-storage-account["Exporter/copier un disque géré vers un compte de stockage via Azure CLI | Microsoft Learn"^]
+* https://learn.microsoft.com/en-us/azure/cloud-shell/quickstart["Démarrage rapide d'Azure Cloud Shell - Bash | Microsoft Learn"^]
+* https://learn.microsoft.com/en-us/cli/azure/install-azure-cli["Comment installer Azure CLI | Microsoft Learn"^]
+* https://learn.microsoft.com/en-us/cli/azure/storage/blob/copy?view=azure-cli-latest#az-storage-blob-copy-start["Copie de blob de stockage AZ | Microsoft Learn"^]
+* https://learn.microsoft.com/en-us/cli/azure/authenticate-azure-cli["Sign in avec Azure CLI — Connexion et authentification | Microsoft Learn"^]
+

@@ -1,0 +1,138 @@
+---
+sidebar: sidebar 
+permalink: concept-storage-management.html 
+keywords: provisioning, capacity management, storage provisioning, manual, automatic, advanced allocation, aggregates, thin provisioning, free space, mode, BlueXP, NetApp Consolecloud manager 
+summary: La console offre une gestion simplifiée et avancée du stockage Cloud Volumes ONTAP . 
+---
+= Gestion du stockage Cloud Volumes ONTAP
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+La console NetApp offre une gestion simplifiée et avancée du stockage Cloud Volumes ONTAP .
+
+
+CAUTION: Vous devez créer et supprimer tous les disques et agrégats directement depuis la console. Vous ne devez pas effectuer ces actions à partir d’un autre outil de gestion. Cela peut avoir un impact sur la stabilité du système, entraver la possibilité d’ajouter des disques à l’avenir et potentiellement générer des frais de fournisseur de cloud redondants.
+
+
+
+== Provisionnement du stockage
+
+La console facilite le provisionnement du stockage pour Cloud Volumes ONTAP en achetant des disques et en gérant les agrégats pour vous.  Il vous suffit de créer des volumes.  Vous pouvez utiliser une option d'allocation avancée pour provisionner vous-même des agrégats, si vous le souhaitez.
+
+
+
+=== Provisionnement simplifié
+
+Les agrégats fournissent un stockage cloud aux volumes.  La console crée des agrégats pour vous lorsque vous lancez une instance et lorsque vous provisionnez des volumes supplémentaires.
+
+Lorsque vous créez un volume, la console effectue l’une des trois opérations suivantes :
+
+* Il place le volume sur un agrégat existant qui dispose de suffisamment d’espace libre.
+* Il place le volume sur un agrégat existant en achetant plus de disques pour cet agrégat.
+
+
+ifdef::aws[]
+
++ Dans le cas d’un agrégat dans AWS qui prend en charge les volumes élastiques, cela augmente également la taille des disques dans un groupe RAID. link:concept-aws-elastic-volumes.html["En savoir plus sur la prise en charge des volumes élastiques"] .
+
+endif::aws[]
+
+* Il achète des disques pour un nouvel agrégat et place le volume sur cet agrégat.
+
+
+La console détermine où placer un nouveau volume en examinant plusieurs facteurs : la taille maximale d'un agrégat, si le provisionnement léger est activé et les seuils d'espace libre pour les agrégats.
+
+ifdef::aws[]
+
+
+
+==== Sélection de la taille du disque pour les agrégats dans AWS
+
+Lorsque la console crée de nouveaux agrégats pour Cloud Volumes ONTAP dans AWS, elle augmente progressivement la taille des disques à mesure que les nombres d'agrégats augmentent pour maximiser la capacité du système avant d'atteindre les limites des disques de données AWS.
+
+Par exemple, la console peut choisir les tailles de disque suivantes :
+
+[cols="3*"]
+|===
+| Nombre total | Taille du disque | Capacité maximale globale 
+
+
+| 1 | 500 Gio | 3 Tio 
+
+
+| 4 | 1 Tio | 6 Tio 
+
+
+| 6 | 2 Tio | 12 Tio 
+|===
+
+NOTE: Ce comportement ne s'applique pas aux agrégats qui prennent en charge la fonctionnalité Amazon EBS Elastic Volumes.  Les agrégats sur lesquels les volumes élastiques sont activés sont constitués d'un ou deux groupes RAID.  Chaque groupe RAID dispose de quatre disques identiques ayant la même capacité. link:concept-aws-elastic-volumes.html["En savoir plus sur la prise en charge des volumes élastiques"] .
+
+Vous pouvez choisir vous-même la taille du disque en utilisant l'option d'allocation avancée.
+
+endif::aws[]
+
+
+
+=== Allocation avancée
+
+Vous pouvez également gérer les agrégats. link:task-create-aggregates.html["Depuis la page *Allocation avancée*"] , vous pouvez créer de nouveaux agrégats qui incluent un nombre spécifique de disques, ajouter des disques à un agrégat existant et créer des volumes dans des agrégats spécifiques.
+
+
+
+== Gestion des capacités
+
+L'administrateur de l'organisation ou du compte peut configurer la console pour vous informer des décisions en matière de capacité de stockage ou pour gérer automatiquement les besoins en capacité pour vous.
+
+Ce comportement est déterminé par le _Mode de gestion de la capacité_ sur un agent de console.  Le mode de gestion de la capacité affecte tous les systèmes Cloud Volumes ONTAP gérés par cet agent de console.  Si vous disposez d’un autre agent de console, il peut être configuré différemment.
+
+
+
+=== Gestion automatique des capacités
+
+Le mode de gestion de la capacité est défini sur automatique par défaut.  Dans ce mode, la console vérifie le ratio d'espace libre toutes les 15 minutes pour déterminer si le ratio d'espace libre tombe en dessous du seuil spécifié.  Si davantage de capacité est nécessaire, il lance l'achat de nouveaux disques, supprime les collections de disques inutilisées (agrégats), déplace les volumes entre les agrégats selon les besoins et tente d'empêcher une panne de disque.
+
+Les exemples suivants illustrent le fonctionnement de ce mode :
+
+* Si un agrégat atteint le seuil de capacité et qu'il dispose de suffisamment d'espace pour davantage de disques, la console achète automatiquement de nouveaux disques pour cet agrégat afin que les volumes puissent continuer à croître.
++
+ifdef::aws[]
+
+
+
+Dans le cas d’un agrégat dans AWS qui prend en charge les volumes élastiques, il augmente également la taille des disques dans un groupe RAID. link:concept-aws-elastic-volumes.html["En savoir plus sur la prise en charge des volumes élastiques"] .
+
+endif::aws[]
+
++ * Si un agrégat atteint le seuil de capacité et qu'il ne peut pas prendre en charge de disques supplémentaires, la console déplace automatiquement un volume de cet agrégat vers un agrégat avec une capacité disponible ou vers un nouvel agrégat.
+
++ Si la console crée un nouvel agrégat pour le volume, elle choisit une taille de disque adaptée à la taille de ce volume.
+
++ Notez que l'espace libre est désormais disponible sur l'agrégat d'origine.  Les volumes existants ou les nouveaux volumes peuvent utiliser cet espace.  L'espace ne peut pas être restitué au fournisseur de cloud dans ce scénario.
+
+* Si un agrégat ne contient aucun volume pendant plus de 12 heures, la console le supprime.
+
+
+
+
+==== Gestion des LUN avec gestion automatique de la capacité
+
+La gestion automatique de la capacité de la console ne s'applique pas aux LUN.  Lorsqu'il crée un LUN, il désactive la fonction de croissance automatique.
+
+
+
+=== Gestion manuelle des capacités
+
+Si l'organisation ou l'administrateur du compte définit le mode de gestion de la capacité sur manuel, la console vous informe de prendre les mesures appropriées pour les décisions de capacité.  Les mêmes exemples décrits dans le mode automatique s'appliquent au mode manuel, mais c'est à vous d'accepter les actions.
+
+
+
+=== Apprendre encore plus
+
+link:task-manage-capacity-settings.html["Apprenez à modifier le mode de gestion de la capacité"] .

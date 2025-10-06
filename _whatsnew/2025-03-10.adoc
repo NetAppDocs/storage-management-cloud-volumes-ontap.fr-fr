@@ -1,0 +1,11 @@
+= Création de machines virtuelles de stockage automatisée via les API dans Azure
+:allow-uri-read: 
+
+
+
+
+=== Création de machines virtuelles de stockage automatisée via les API dans Azure
+
+Vous pouvez désormais utiliser les API BlueXP pour créer, renommer et supprimer des machines virtuelles de stockage de données supplémentaires pour Cloud Volumes ONTAP dans Azure.  L'utilisation des API automatise le processus de création de machines virtuelles de stockage, y compris la configuration des interfaces réseau requises, des LIF et d'une LIF de gestion, si vous devez utiliser une machine virtuelle de stockage à des fins de gestion.
+
+https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-managing-svms-azure.html["Gérer les machines virtuelles de stockage de données pour Cloud Volumes ONTAP dans Azure"^]

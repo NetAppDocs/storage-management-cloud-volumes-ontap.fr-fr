@@ -1,0 +1,11 @@
+= Expérience utilisateur améliorée dans la sélection de la version pour la mise à niveau
+:allow-uri-read: 
+
+
+
+
+=== Expérience utilisateur améliorée dans la sélection de la version pour la mise à niveau
+
+À partir de cette version, lorsque vous essayez de mettre à niveau Cloud Volumes ONTAP à l'aide de la notification BlueXP , vous recevrez des conseils sur les versions par défaut, les plus récentes et compatibles à utiliser.  Vous pouvez également désormais sélectionner le dernier correctif ou la version majeure compatible avec votre instance Cloud Volumes ONTAP , ou saisir manuellement une version à mettre à niveau.
+
+https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-updating-ontap-cloud.html#upgrade-from-bluexp-notifications["Mettre à niveau le logiciel Cloud Volumes ONTAP"]
