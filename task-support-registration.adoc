@@ -11,13 +11,13 @@ summary: 'Avant de pouvoir ouvrir un dossier d"assistance auprès du support tec
 
 
 [role="lead"]
-L'enregistrement du support est requis pour recevoir un support technique spécifique à BlueXP et à ses solutions et services de stockage. L'enregistrement du support est également requis pour activer les flux de travail clés pour les systèmes Cloud Volumes ONTAP .
+L'enregistrement du support est requis pour bénéficier d'un support technique spécifique à la NetApp Console et à ses solutions de stockage et services de données. L'enregistrement du support est également requis pour activer les flux de travail clés pour les systèmes Cloud Volumes ONTAP .
 
-L'inscription au support n'active pas la prise en charge NetApp pour un service de fichiers de fournisseur cloud. Pour obtenir une assistance technique relative à un service de fichiers de fournisseur cloud, à son infrastructure ou à toute solution utilisant le service, reportez-vous à « Obtenir de l'aide » dans la documentation BlueXP de ce produit.
+L'inscription au support n'active pas la prise en charge NetApp pour un service de fichiers de fournisseur cloud. Pour obtenir une assistance technique relative à un service de fichiers de fournisseur cloud, à son infrastructure ou à toute solution utilisant le service, reportez-vous à « Obtenir de l'aide » dans la documentation de ce produit.
 
-* link:https://docs.netapp.com/us-en/bluexp-fsx-ontap/start/concept-fsx-aws.html#getting-help["Amazon FSx pour ONTAP"^]
-* link:https://docs.netapp.com/us-en/bluexp-azure-netapp-files/concept-azure-netapp-files.html#getting-help["Azure NetApp Files"^]
-* link:https://docs.netapp.com/us-en/bluexp-google-cloud-netapp-volumes/concept-gcnv.html#getting-help["Google Cloud NetApp Volumes"^]
+* link:https://docs.netapp.com/us-en/storage-management-fsx-ontap/start/concept-fsx-aws.html#getting-help["Amazon FSx pour ONTAP"^]
+* link:https://docs.netapp.com/us-en/storage-management-azure-netapp-files/concept-azure-netapp-files.html#getting-help["Azure NetApp Files"^]
+* link:https://docs.netapp.com/us-en/storage-management-google-cloud-netapp-volumes/concept-gcnv.html#getting-help["Google Cloud NetApp Volumes"^]
 
 
 
@@ -26,43 +26,40 @@ L'inscription au support n'active pas la prise en charge NetApp pour un service 
 
 Il existe deux formes d'inscription pour activer le droit au support :
 
-* Enregistrement du numéro de série de votre compte BlueXP (votre numéro de série à 20 chiffres 960xxxxxxxxx situé sur la page Ressources d'assistance dans BlueXP).
+* Enregistrement du numéro de série de votre compte NetApp Console (votre numéro de série 960xxxxxxxxx à 20 chiffres situé sur la page Ressources de support de la console).
 +
-Il s'agit de votre identifiant d'abonnement d'assistance unique pour tout service au sein de BlueXP.  Chaque abonnement d'assistance au niveau du compte BlueXP doit être enregistré.
+Il s'agit de votre identifiant d'abonnement d'assistance unique pour tout service au sein de la console. Chaque compte de console doit être enregistré.
 
 * Enregistrement des numéros de série Cloud Volumes ONTAP associés à un abonnement sur la place de marché de votre fournisseur de cloud (il s'agit de numéros de série 909201xxxxxxxx à 20 chiffres).
 +
-Ces numéros de série sont communément appelés _numéros de série PAYGO_ et sont générés par BlueXP au moment du déploiement de Cloud Volumes ONTAP .
+Ces numéros de série sont communément appelés _numéros de série PAYGO_ et sont générés par la NetApp Console au moment du déploiement de Cloud Volumes ONTAP .
 
 
 
-L'enregistrement des deux types de numéros de série permet des fonctionnalités telles que l'ouverture de tickets d'assistance et la génération automatique de dossiers. L'enregistrement est terminé en ajoutant des comptes NetApp Support Site (NSS) à BlueXP comme décrit ci-dessous.
+L'enregistrement des deux types de numéros de série permet des fonctionnalités telles que l'ouverture de tickets d'assistance et la génération automatique de dossiers. L'enregistrement est terminé en ajoutant des comptes NetApp Support Site (NSS) à la console comme décrit ci-dessous.
 
 
 
-== Enregistrez BlueXP pour le support NetApp
+== Enregistrez la NetApp Console pour le support NetApp
 
-Pour vous inscrire au support et activer le droit de support, un utilisateur de votre organisation (ou compte) BlueXP doit associer un compte de site de support NetApp à sa connexion BlueXP . La manière dont vous vous inscrivez au support NetApp dépend du fait que vous possédez déjà ou non un compte NetApp Support Site (NSS).
+Pour vous inscrire au support et activer le droit de support, un utilisateur de votre compte NetApp Console doit associer un compte de site de support NetApp à sa connexion à la console. La manière dont vous vous inscrivez au support NetApp dépend du fait que vous possédez déjà ou non un compte NetApp Support Site (NSS).
 
 
 
 === Client existant avec un compte NSS
 
-Si vous êtes un client NetApp avec un compte NSS, il vous suffit de vous inscrire pour bénéficier du support via BlueXP.
+Si vous êtes un client NetApp avec un compte NSS, il vous suffit de vous inscrire pour bénéficier de l'assistance via la console.
 
 .Étapes
-. En haut à droite de la console BlueXP , sélectionnez l’icône Paramètres, puis sélectionnez *Informations d’identification*.
+. Sélectionnez *Administration* > *Informations d'identification*.
 . Sélectionnez *Informations d'identification de l'utilisateur*.
 . Sélectionnez *Ajouter des informations d’identification NSS* et suivez l’invite d’authentification du site de support NetApp (NSS).
 . Pour confirmer que le processus d’inscription a réussi, sélectionnez l’icône Aide, puis sélectionnez *Assistance*.
 +
-La page *Ressources* devrait indiquer que votre organisation BlueXP est enregistrée pour bénéficier du support.
+La page *Ressources* devrait indiquer que votre compte Console est enregistré pour l'assistance.
 
 +
-image:https://raw.githubusercontent.com/NetAppDocs/bluexp-family/main/media/screenshot-support-registration.png["Une capture d'écran qui montre un numéro de série de compte, une case à cocher verte et le texte Enregistré pour l'assistance."]
-
-+
-Notez que les autres utilisateurs BlueXP ne verront pas ce même statut d’enregistrement de support s’ils n’ont pas associé un compte de site de support NetApp à leur connexion BlueXP .  Cependant, cela ne signifie pas que votre organisation BlueXP n'est pas enregistrée pour bénéficier du support.  Tant qu'un utilisateur de l'organisation a suivi ces étapes, votre organisation a été enregistrée.
+Notez que les autres utilisateurs de la console ne verront pas ce même statut d'enregistrement de support s'ils n'ont pas associé un compte de site de support NetApp à leur connexion. Cependant, cela ne signifie pas que votre compte n'est pas enregistré pour bénéficier de l'assistance. Tant qu'un utilisateur de l'organisation a suivi ces étapes, votre compte a été enregistré.
 
 
 
@@ -70,16 +67,16 @@ Notez que les autres utilisateurs BlueXP ne verront pas ce même statut d’enre
 
 === Client existant mais pas de compte NSS
 
-Si vous êtes un client NetApp existant avec des licences et des numéros de série existants mais pas de compte NSS, vous devez créer un compte NSS et l'associer à votre connexion BlueXP .
+Si vous êtes un client NetApp existant avec des licences et des numéros de série existants mais _pas_ de compte NSS, vous devez créer un compte NSS et l'associer à votre connexion à la console.
 
 .Étapes
 . Créez un compte sur le site de support NetApp en remplissant le https://mysupport.netapp.com/site/user/registration["Formulaire d'inscription des utilisateurs du site de support NetApp"^]
 +
 .. Assurez-vous de sélectionner le niveau d'utilisateur approprié, qui est généralement * Client/Utilisateur final NetApp *.
-.. Assurez-vous de copier le numéro de série du compte BlueXP (960xxxx) utilisé ci-dessus pour le champ du numéro de série. Cela accélérera le traitement du compte.
+.. Assurez-vous de copier le numéro de série du compte de console (960xxxx) utilisé ci-dessus pour le champ du numéro de série. Cela accélérera le traitement du compte.
 
 
-. Associez votre nouveau compte NSS à votre connexion BlueXP en suivant les étapes ci-dessous<<Client existant avec un compte NSS>> .
+. Associez votre nouveau compte NSS à votre connexion à la console en suivant les étapes ci-dessous<<Client existant avec un compte NSS>> .
 
 
 
@@ -89,10 +86,7 @@ Si vous êtes un client NetApp existant avec des licences et des numéros de sé
 Si vous êtes nouveau sur NetApp et que vous n’avez pas de compte NSS, suivez chaque étape ci-dessous.
 
 .Étapes
-. Dans le coin supérieur droit de la console BlueXP , sélectionnez l’icône Aide, puis sélectionnez *Support*.
-+
-image:https://raw.githubusercontent.com/NetAppDocs/bluexp-family/main/media/screenshot-help-support.png["Une capture d'écran du menu Aide où Support est la première option répertoriée"]
-
+. Dans le coin supérieur droit de la console, sélectionnez l’icône Aide, puis sélectionnez *Support*.
 . Recherchez le numéro de série de votre identifiant de compte sur la page d'inscription au support.
 +
 image:https://raw.githubusercontent.com/NetAppDocs/bluexp-family/main/media/screenshot-serial-number.png["Une capture d'écran du menu Aide où Support est la première option répertoriée"]
@@ -119,13 +113,13 @@ La confirmation soumet votre demande à NetApp et vous recommande de créer un c
 .Après avoir terminé
 NetApp devrait vous contacter au cours de ce processus. Il s’agit d’un exercice d’intégration unique pour les nouveaux utilisateurs.
 
-Une fois que vous avez votre compte de site de support NetApp , associez le compte à votre connexion BlueXP en suivant les étapes ci-dessous<<Client existant avec un compte NSS>> .
+Une fois que vous avez votre compte de site de support NetApp , associez le compte à votre connexion à la console en suivant les étapes ci-dessous<<Client existant avec un compte NSS>> .
 
 
 
 == Associer les informations d'identification NSS pour la prise en charge de Cloud Volumes ONTAP
 
-L'association des informations d'identification du site de support NetApp à votre organisation BlueXP est requise pour activer les workflows clés suivants pour Cloud Volumes ONTAP:
+L'association des informations d'identification du site de support NetApp à votre compte de console est requise pour activer les workflows clés suivants pour Cloud Volumes ONTAP:
 
 * Enregistrement des systèmes Cloud Volumes ONTAP prépayés pour le support
 +
@@ -133,21 +127,21 @@ Fournir votre compte NSS est nécessaire pour activer le support de votre systè
 
 * Déploiement de Cloud Volumes ONTAP lorsque vous apportez votre propre licence (BYOL)
 +
-Il est nécessaire de fournir votre compte NSS pour que BlueXP puisse télécharger votre clé de licence et activer l'abonnement pour la durée que vous avez achetée. Cela inclut les mises à jour automatiques pour les renouvellements de mandat.
+Il est nécessaire de fournir votre compte NSS pour que la console puisse télécharger votre clé de licence et activer l'abonnement pour la durée que vous avez achetée. Cela inclut les mises à jour automatiques pour les renouvellements de mandat.
 
 * Mise à niveau du logiciel Cloud Volumes ONTAP vers la dernière version
 
 
-L'association des informations d'identification NSS à votre organisation BlueXP est différente du compte NSS associé à une connexion utilisateur BlueXP .
+L’association des informations d’identification NSS à votre compte de NetApp Console est différente du compte NSS associé à une connexion utilisateur de console.
 
-Ces informations d’identification NSS sont associées à votre ID d’organisation BlueXP spécifique.  Les utilisateurs appartenant à l'organisation BlueXP peuvent accéder à ces informations d'identification depuis *Support > Gestion NSS*.
+Ces informations d’identification NSS sont associées à votre ID de compte de console spécifique. Les utilisateurs appartenant à l'organisation Console peuvent accéder à ces informations d'identification depuis *Support > Gestion NSS*.
 
 * Si vous disposez d’un compte client, vous pouvez ajouter un ou plusieurs comptes NSS.
 * Si vous disposez d'un compte partenaire ou revendeur, vous pouvez ajouter un ou plusieurs comptes NSS, mais ils ne peuvent pas être ajoutés aux côtés des comptes de niveau client.
 
 
 .Étapes
-. Dans le coin supérieur droit de la console BlueXP , sélectionnez l’icône Aide, puis sélectionnez *Support*.
+. Dans le coin supérieur droit de la console, sélectionnez l’icône Aide, puis sélectionnez *Support*.
 +
 image:https://raw.githubusercontent.com/NetAppDocs/bluexp-family/main/media/screenshot-help-support.png["Une capture d'écran du menu Aide où Support est la première option répertoriée"]
 
@@ -158,7 +152,7 @@ NetApp utilise Microsoft Entra ID comme fournisseur d’identité pour les servi
 
 . Sur la page de connexion, indiquez votre adresse e-mail et votre mot de passe enregistrés sur le site de support NetApp pour effectuer le processus d'authentification.
 +
-Ces actions permettent à BlueXP d'utiliser votre compte NSS pour des tâches telles que les téléchargements de licences, la vérification des mises à niveau de logiciels et les futures inscriptions au support.
+Ces actions permettent à la console d'utiliser votre compte NSS pour des tâches telles que les téléchargements de licences, la vérification des mises à niveau de logiciels et les futures inscriptions au support.
 
 +
 Notez ce qui suit :

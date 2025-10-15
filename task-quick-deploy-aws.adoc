@@ -110,6 +110,9 @@ TIP: Si vous souhaitez utiliser WORM et la hiérarchisation des données, vous d
 .Résumé
 Vérifiez ou modifiez les détails que vous avez saisis, puis cliquez sur *Créer*.
 
+
+CAUTION: Une fois le processus de déploiement terminé, ne modifiez pas les configurations Cloud Volumes ONTAP générées par le système dans le portail cloud AWS, en particulier les balises système. Toute modification apportée à ces configurations peut entraîner un comportement inattendu ou une perte de données.
+
 .Liens connexes
 * link:task-planning-your-config.html["Planification de votre configuration Cloud Volumes ONTAP"]
 * link:task-deploying-otc-aws.html["Déployer Cloud Volumes ONTAP dans AWS à l'aide d'un déploiement avancé"]

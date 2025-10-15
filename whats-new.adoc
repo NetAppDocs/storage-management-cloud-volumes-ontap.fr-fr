@@ -20,7 +20,7 @@ Les améliorations décrites sur cette page sont spécifiques à la gestion de C
 
 
 
-== 6 octobre 2025
+== 06 octobre 2025
 
 
 
@@ -159,7 +159,7 @@ https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-managing-svms-gcp.
 
 
 
-== 3 avril 2025
+== 03 avril 2025
 
 
 
@@ -211,7 +211,7 @@ https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-managing-svms-azur
 
 
 
-== 6 mars 2025
+== 06 mars 2025
 
 
 
@@ -282,7 +282,7 @@ link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-manage-capaci
 
 
 
-== 9 décembre 2024
+== 09 décembre 2024
 
 
 
@@ -371,7 +371,7 @@ Pour plus d'informations sur les zones locales AWS avec déploiements HA, report
 
 
 
-== 7 octobre 2024
+== 07 octobre 2024
 
 
 
@@ -383,7 +383,7 @@ https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-updating-ontap-clo
 
 
 
-== 9 septembre 2024
+== 09 septembre 2024
 
 
 
@@ -430,7 +430,7 @@ https://docs.netapp.com/us-en/cloud-volumes-ontap-9151-relnotes/["Découvrez les
 
 
 
-== 8 août 2024
+== 08 août 2024
 
 
 
@@ -515,7 +515,7 @@ Vous ne pouvez plus créer un volume à partir d'un modèle ni modifier les bali
 
 
 
-== 8 mars 2024
+== 08 mars 2024
 
 
 
@@ -527,7 +527,7 @@ Si vos politiques de sécurité l'exigent, vous pouvez configurer vos instances 
 
 
 
-== 5 mars 2024
+== 05 mars 2024
 
 
 
@@ -539,7 +539,7 @@ https://docs.netapp.com/us-en/cloud-volumes-ontap-9141-relnotes/["Découvrez les
 
 
 
-== 2 février 2024
+== 02 février 2024
 
 
 
@@ -571,7 +571,7 @@ https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-updating-ontap-clo
 
 
 
-== 8 janvier 2024
+== 08 janvier 2024
 
 
 
@@ -589,7 +589,7 @@ https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-azu
 
 
 
-== 6 décembre 2023
+== 06 décembre 2023
 
 
 
@@ -612,7 +612,7 @@ Vous pouvez désormais créer un FlexVol volume jusqu'à la taille maximale de 3
 
 
 
-== 5 décembre 2023
+== 05 décembre 2023
 
 Les changements suivants ont été introduits.
 
@@ -655,7 +655,7 @@ Pour une liste de toutes les régions, reportez-vous à la https://bluexp.netapp
 
 
 
-== 8 novembre 2023
+== 08 novembre 2023
 
 Le changement suivant a été introduit avec la version 3.9.35 du connecteur.
 
@@ -669,7 +669,7 @@ Pour une liste de toutes les régions, reportez-vous à la https://bluexp.netapp
 
 
 
-== 1er novembre 2023
+== 01 novembre 2023
 
 Le changement suivant a été introduit avec la version 3.9.34 du connecteur.
 
@@ -707,7 +707,7 @@ Pour obtenir la liste de toutes les régions prenant en charge plusieurs zones d
 
 
 
-== 6 octobre 2023
+== 06 octobre 2023
 
 Le changement suivant a été introduit avec la version 3.9.34 du connecteur.
 
@@ -787,7 +787,7 @@ https://docs.netapp.com/us-en/cloud-volumes-ontap-9131-relnotes/["Découvrez les
 
 
 
-== 2 juillet 2023
+== 02 juillet 2023
 
 Les modifications suivantes ont été introduites avec la version 3.9.31 du connecteur.
 
@@ -837,7 +837,7 @@ Pour en savoir plus sur la mise à niveau de Cloud Volumes ONTAP via BlueXP, rep
 
 
 
-== 7 mai 2023
+== 07 mai 2023
 
 Les modifications suivantes ont été introduites avec la version 3.9.29 du connecteur.
 
@@ -959,7 +959,7 @@ Pour connaître la disponibilité régionale, reportez-vous à la https://bluexp
 
 
 
-== 5 mars 2023
+== 05 mars 2023
 
 Les modifications suivantes ont été introduites avec la version 3.9.27 du connecteur.
 
@@ -1010,7 +1010,7 @@ En savoir plus sur https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/re
 
 
 
-== 5 février 2023
+== 05 février 2023
 
 Les modifications suivantes ont été introduites avec la version 3.9.26 du connecteur.
 
@@ -1074,7 +1074,7 @@ https://docs.netapp.com/us-en/cloud-volumes-ontap-9120-relnotes["Découvrez les 
 
 
 
-== 8 décembre 2022
+== 08 décembre 2022
 
 
 
@@ -1118,7 +1118,7 @@ https://docs.netapp.com/us-en/ontap/object-storage-management/index.html["Docume
 
 
 
-== 6 novembre 2022
+== 06 novembre 2022
 
 Les modifications suivantes ont été introduites avec la version 3.9.23 du connecteur.
 
@@ -1291,7 +1291,7 @@ https://docs.netapp.com/us-en/ontap/object-storage-management/index.html["Docume
 
 
 
-== 7 juin 2022
+== 07 juin 2022
 
 Les modifications suivantes ont été introduites avec la version 3.9.19 du connecteur.
 
@@ -1369,7 +1369,7 @@ Notez que vous devez utiliser l'interface de ligne de commande ONTAP ou le gesti
 
 
 
-== 2 mai 2022
+== 02 mai 2022
 
 Les modifications suivantes ont été introduites avec la version 3.9.18 du connecteur.
 
@@ -1503,7 +1503,7 @@ https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-create-volumes.htm
 
 
 
-== 9 février 2022
+== 09 février 2022
 
 
 
@@ -1529,7 +1529,7 @@ https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-licensing.html[
 
 
 
-== 6 février 2022
+== 06 février 2022
 
 
 
@@ -1561,7 +1561,7 @@ Nous avons mis à jour le *Portefeuille numérique* en consolidant les licences 
 
 
 
-== 2 janvier 2022
+== 02 janvier 2022
 
 Les modifications suivantes ont été introduites avec la version 3.9.14 du connecteur.
 
@@ -1677,7 +1677,7 @@ Nous avons réduit le temps nécessaire au déploiement d’un environnement de 
 
 
 
-== 2 septembre 2021
+== 02 septembre 2021
 
 Les modifications suivantes ont été introduites avec la version 3.9.10 du connecteur.
 
@@ -1695,7 +1695,7 @@ https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-set-up-azure-encry
 
 
 
-== 7 juillet 2021
+== 07 juillet 2021
 
 Les modifications suivantes ont été introduites avec la version 3.9.8 du connecteur.
 
@@ -1883,7 +1883,7 @@ Lorsque BlueXP crée des comptes de stockage dans Azure pour Cloud Volumes ONTAP
 
 
 
-== 8 mars 2021
+== 08 mars 2021
 
 Les modifications suivantes ont été introduites avec la version 3.9.4 du connecteur.
 
@@ -1937,7 +1937,7 @@ https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/reference-networking-gc
 
 
 
-== 4 janvier 2021
+== 04 janvier 2021
 
 Les modifications suivantes ont été introduites avec la version 3.9.2 du connecteur.
 
@@ -1994,7 +1994,7 @@ Cloud Volumes ONTAP prend désormais en charge les types de machines suivants :
 
 
 
-== 3 novembre 2020
+== 03 novembre 2020
 
 Les modifications suivantes ont été introduites avec la version 3.9.0 du connecteur.
 
