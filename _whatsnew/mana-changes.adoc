@@ -1,0 +1,15 @@
+= Cloud Volumes ONTAP dans Azure est désormais limité aux dernières versions prises en charge
+:allow-uri-read: 
+
+
+
+
+=== Cloud Volumes ONTAP dans Azure est désormais limité aux dernières versions prises en charge
+
+Les déploiements et mises à niveau de Cloud Volumes ONTAP dans Azure via la NetApp Console sont désormais limités aux dernières versions prises en charge.  Ce changement garantit que vos systèmes exécutent des versions entièrement prises en charge avec les fonctionnalités les plus récentes et les améliorations de sécurité.  La console vous invitera à effectuer une mise à niveau uniquement vers les versions prises en charge.
+
+Pour plus de détails, reportez-vous à :
+
+* Déploiement: https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/reference-versions.html["Versions ONTAP prises en charge pour les déploiements Cloud Volumes ONTAP"^]
+* Mise à niveau: https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-updating-ontap-cloud.html#upgrade-overview["Mettre à niveau le logiciel Cloud Volumes ONTAP"^]
+

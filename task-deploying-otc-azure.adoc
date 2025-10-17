@@ -92,7 +92,7 @@ TIP: Si vous souhaitez utiliser WORM et la hiérarchisation des données, vous d
 . *Emplacement* : sélectionnez une région, une zone de disponibilité, un réseau virtuel et un sous-réseau, puis cochez la case pour confirmer la connectivité réseau entre l'agent de la console et l'emplacement cible.
 +
 
-NOTE: Pour les régions de Chine, les déploiements à nœud unique sont pris en charge uniquement dans Cloud Volumes ONTAP 9.12.1 GA et 9.13.0 GA.  Vous pouvez mettre à niveau ces versions vers des correctifs et des versions ultérieurs de Cloud Volumes ONTAP.  Si vous souhaitez déployer des versions ultérieures de Cloud Volumes ONTAP dans les régions chinoises, contactez le support NetApp .  Seules les licences achetées directement auprès de NetApp sont prises en charge dans les régions chinoises ; les abonnements au marché ne sont pas disponibles.
+NOTE: Pour les régions de Chine, les déploiements à nœud unique sont pris en charge uniquement dans Cloud Volumes ONTAP 9.12.1 GA et 9.13.0 GA. Vous pouvez mettre à niveau ces versions vers des correctifs et des versions ultérieurs de Cloud Volumes ONTAP commelink:task-updating-ontap-cloud.html["pris en charge dans Azure"] . Si vous souhaitez déployer des versions ultérieures de Cloud Volumes ONTAP dans les régions chinoises, contactez le support NetApp . Seules les licences achetées directement auprès de NetApp sont prises en charge dans les régions chinoises ; les abonnements au marché ne sont pas disponibles.
 
 . *Connectivité* : Choisissez un groupe de ressources nouveau ou existant, puis choisissez d'utiliser le groupe de sécurité prédéfini ou le vôtre.
 +
@@ -136,7 +136,7 @@ Si vous choisissez l’un des packages, il vous suffit de spécifier un volume, 
 . *Licence* : modifiez la version de Cloud Volumes ONTAP si nécessaire et sélectionnez un type de machine virtuelle.
 +
 
-NOTE: Si une version candidate à la publication, une version de disponibilité générale ou une version de correctif plus récente est disponible pour la version sélectionnée, la console met à jour le système vers cette version lors de sa création.  Par exemple, la mise à jour se produit si vous sélectionnez Cloud Volumes ONTAP 9.13.1 et 9.13.1 P4 est disponible.  La mise à jour ne se produit pas d’une version à une autre, par exemple de la version 9.13 à la version 9.14.
+NOTE: Si une version candidate à la publication, une version de disponibilité générale ou une version de correctif plus récente est disponible pour la version sélectionnée, BlueXP met à jour le système vers cette version lors de la création de l'environnement de travail.  Par exemple, la mise à jour se produit si vous sélectionnez Cloud Volumes ONTAP 9.16.1 P3 et 9.16.1 P4 est disponible.  La mise à jour ne se produit pas d’une version à une autre, par exemple de la version 9.15 à la version 9.16.
 
 . *S'abonner depuis la Place de marché Azure* : cette page s'affiche si la console n'a pas pu activer les déploiements programmatiques de Cloud Volumes ONTAP.  Suivez les étapes indiquées à l'écran. se référer à https://learn.microsoft.com/en-us/marketplace/programmatic-deploy-of-marketplace-products["Déploiement programmatique des produits Marketplace"^] pour plus d'informations.
 . *Ressources de stockage sous-jacentes* : choisissez les paramètres de l'agrégat initial : un type de disque, une taille pour chaque disque et si la hiérarchisation des données vers le stockage Blob doit être activée.

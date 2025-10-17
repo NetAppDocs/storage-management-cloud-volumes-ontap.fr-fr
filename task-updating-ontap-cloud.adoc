@@ -44,6 +44,137 @@ La console propose deux manières de mettre à niveau Cloud Volumes ONTAP:
 
 La version de Cloud Volumes ONTAP vers laquelle vous pouvez effectuer une mise à niveau dépend de la version de Cloud Volumes ONTAP que vous exécutez actuellement.
 
+ifdef::aws[]
+
+[cols="2*"]
+|===
+| Version actuelle | Versions vers lesquelles vous pouvez directement mettre à niveau 
+
+
+| 9.15.0 | 9.15.1 
+
+
+.2+| 9.14.1 | 9.15.1 
+
+
+| 9.15.0 
+
+
+| 9.14.0 | 9.14.1 
+
+
+.2+| 9.13.1 | 9.14.1 
+
+
+| 9.14.0 
+
+
+| 9.13.0 | 9.13.1 
+
+
+.2+| 9.12.1 | 9.13.1 
+
+
+| 9.13.0 
+
+
+| 9.12.0 | 9.12.1 
+
+
+.2+| 9.11.1 | 9.12.1 
+
+
+| 9.12.0 
+
+
+| 9.11.0 | 9.11.1 
+
+
+.2+| 9.10.1 | 9.11.1 
+
+
+| 9.11.0 
+
+
+| 9.10.0 | 9.10.1 
+
+
+.2+| 9.9.1 | 9.10.1 
+
+
+| 9.10.0 
+
+
+| 9.9.0 | 9.9.1 
+
+
+| 9,8 | 9.9.1 
+
+
+| 9,7 | 9,8 
+
+
+| 9,6 | 9,7 
+
+
+| 9,5 | 9,6 
+
+
+| 9,4 | 9,5 
+
+
+| 9,3 | 9,4 
+
+
+| 9,2 | 9,3 
+
+
+| 9,1 | 9,2 
+
+
+| 9,0 | 9,1 
+
+
+| 8,3 | 9,0 
+|===
+endif::aws[]
+
+ifdef::azure[]
+
+[cols="2*"]
+|===
+| Version actuelle | Versions vers lesquelles vous pouvez directement mettre à niveau 
+
+
+| 9.16.1 P3 | 9.17.1 RC1 
+
+
+| 9.15.1 P10 | 9.16.1 P3 
+
+
+| 9.14.1 P13 | 9.15.1 P10 
+
+
+| 9.13.1 P16 | 9.14.1 P13 
+
+
+| 9.12.1 P18 | 9.13.1 P16 
+
+
+| 9.11.1 P20 | 9.12.1 P18 
+|===
+Si vous disposez d’une version inférieure de Cloud Volumes ONTAP dans Azure, vous devez d’abord effectuer une mise à niveau vers la version suivante et suivre les chemins de mise à niveau pris en charge pour atteindre votre version cible.  Par exemple, si vous disposez de Cloud Volumes ONTAP 9.7 P7, suivez ce chemin de mise à niveau :
+
+* 9.7 P7 -> 9.8 P18
+* 9.8 P18 -> 9.9.1 P15
+* 9.9.1 P15 -> 9.10.1 P12
+* 9.10.1 P12 -> 9.11.1 P20
+
+
+endif::azure[]
+
+ifdef::gcp[]
+
 [cols="2*"]
 |===
 | Version actuelle | Versions vers lesquelles vous pouvez directement mettre à niveau 
@@ -141,6 +272,8 @@ La version de Cloud Volumes ONTAP vers laquelle vous pouvez effectuer une mise �
 
 | 8,3 | 9,0 
 |===
+endif::gcp[]
+
 Notez ce qui suit :
 
 * Les chemins de mise à niveau pris en charge pour Cloud Volumes ONTAP sont différents de ceux d’un cluster ONTAP sur site.
@@ -158,14 +291,16 @@ Par exemple, si vous utilisez la version 9.8 et que vous souhaitez effectuer une
 
 À partir de janvier 2024, les mises à niveau de correctifs ne sont disponibles que s'il existe une version de correctif pour les trois dernières versions de Cloud Volumes ONTAP.  Des versions de correctifs sont parfois disponibles pour le déploiement, lorsque la version RC ou GA n'est pas disponible pour le déploiement.
 
-Nous utilisons la dernière version GA pour déterminer les trois dernières versions à afficher dans la console.  Par exemple, si la version GA actuelle est 9.13.1, les correctifs pour 9.11.1-9.13.1 apparaissent dans la console.  Si vous souhaitez effectuer une mise à niveau vers une version de correctif pour les versions 9.11.1 ou inférieures, vous devrez utiliser la procédure de mise à niveau manuelle en<<Mise à niveau à partir d'une image disponible à une URL,téléchargement de l'image ONTAP>> .
+Nous utilisons la dernière version GA pour déterminer les trois dernières versions à afficher dans la console. Par exemple, si la version GA actuelle est 9.13.1, les correctifs pour 9.11.1-9.13.1 apparaissent dans la console.
 
-En règle générale, pour les versions de correctifs (P), vous pouvez effectuer une mise à niveau d'une version vers n'importe quelle version P de la version actuelle que vous exécutez ou de la version suivante.
+Pour les versions de correctifs 9.11.1 ou inférieures, vous devrez utiliser une procédure de mise à niveau manuelle en<<Mise à niveau à partir d'une image disponible à une URL,téléchargement de l'image ONTAP>> .
+
+En règle générale, pour les versions de correctifs, vous pouvez effectuer une mise à niveau d'une version de correctif inférieure vers n'importe quelle version de correctif supérieure dans la même version ou dans la version suivante de Cloud Volumes ONTAP .
 
 Voici quelques exemples :
 
-* 9.13.0 > 9.13.1P15
-* 9.12.1 > 9.13.1P2
+* 9.13.0 -> 9.13.1 P15
+* 9.12.1 -> 9.13.1 P2
 
 
 
