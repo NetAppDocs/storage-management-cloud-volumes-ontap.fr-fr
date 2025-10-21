@@ -58,7 +58,7 @@ Cloud Volumes ONTAP prend en charge https://www.netapp.com/pdf.html?item=/media/
 * NAE est une extension de NVE : il crypte les données de chaque volume et les volumes partagent une clé sur l'ensemble.  NAE permet également de dédupliquer les blocs communs à tous les volumes de l'agrégat.
 
 
-Cloud Volumes ONTAP prend en charge NVE et NAE avec des services de gestion de clés externes (EKM) fournis par AWS, Azure et Google Cloud, y compris des solutions tierces, telles que Fortanix.  Contrairement à ONTAP, pour Cloud Volumes ONTAP, les clés de chiffrement sont générées côté fournisseur de cloud, et non dans ONTAP.
+Cloud Volumes ONTAP prend en charge NVE et NAE avec des services de gestion de clés externes (EKM) fournis par AWS, Azure et Google Cloud, y compris des solutions tierces, telles que Fortanix. Contrairement à ONTAP, pour Cloud Volumes ONTAP, les clés de chiffrement sont générées côté fournisseur de cloud, et non dans ONTAP. Cloud Volumes ONTAP ne prend pas en charge https://docs.netapp.com/us-en/ontap/encryption-at-rest/enable-onboard-key-management-96-later-nve-task.html["Gestionnaire de clés embarqué"^].
 
 Cloud Volumes ONTAP utilise les services standard KMIP (Key Management Interoperability Protocol) utilisés par ONTAP .  Pour plus d'informations sur les services pris en charge, reportez-vous à la https://imt.netapp.com/imt/#welcome["Outil de matrice d'interopérabilité"^] .
 
