@@ -5989,10 +5989,7 @@
   <block id="47c670fdbd357ec4b6b3895f473eae3c" category="section-title">04 janvier 2021</block>
   <block id="6337732b75aa62e45d9707965f327458" category="section-title">03 novembre 2020</block>
   <block id="7b6830c2d647bfeae537b084a1bc4c97" category="doc">Cloud Volumes ONTAP dans Azure est désormais limité aux dernières versions prises en charge</block>
-  <block id="3dd7b623eed29152e13ab227af7f1473" category="paragraph">Les déploiements et mises à niveau de Cloud Volumes ONTAP dans Azure via la NetApp Console sont désormais limités aux dernières versions prises en charge.  Ce changement garantit que vos systèmes exécutent des versions entièrement prises en charge avec les fonctionnalités les plus récentes et les améliorations de sécurité.  La console vous invitera à effectuer une mise à niveau uniquement vers les versions prises en charge.</block>
   <block id="9ca9f40464321b098a9b31a750f1e5ce" category="paragraph">Pour plus de détails, reportez-vous à :</block>
-  <block id="c17919ed5cc121684523f6b5d0e3c307" category="list-text">Déploiement:<block ref="b80b2163c394b4ea1470a648426a0279" category="inline-link-rx"></block></block>
-  <block id="f5463bd04e048650140d7f8d20c78c07" category="list-text">Mise à niveau:<block ref="005f568bce2936777e72fec03fb4642d" category="inline-link-rx"></block></block>
   <block id="cde3a9d223695dc89e87d7de8e6788ea" category="list-text">9.16.1 P3</block>
   <block id="0ef0eaca71746d202f974fc1a455472d" category="list-text">9.15.1 P10</block>
   <block id="5d8dbd1afe3d89f326c0884aff9fb268" category="list-text">9.14.1 P13</block>
@@ -6014,4 +6011,9 @@
   <block id="143e9e868bde298af3781d33560b0714" category="list-text">9.12.1 -&gt; 9.13.1 P2</block>
   <block id="a32dd2ca79d8d8a0056821cb37fed7f4" category="inline-link">Gestionnaire de clés embarqué</block>
   <block id="e9de5ac62057662306f1f8a15d6e95b6" category="paragraph">Cloud Volumes ONTAP prend en charge NVE et NAE avec des services de gestion de clés externes (EKM) fournis par AWS, Azure et Google Cloud, y compris des solutions tierces, telles que Fortanix. Contrairement à ONTAP, pour Cloud Volumes ONTAP, les clés de chiffrement sont générées côté fournisseur de cloud, et non dans ONTAP. Cloud Volumes ONTAP ne prend pas en charge<block ref="1c285d24d1bbc96912aa67bf9ee64f22" category="inline-link-rx"></block>.</block>
+  <block id="0e627d1b98c5809f132bf109fa4041d3" category="paragraph">Les déploiements et mises à niveau de Cloud Volumes ONTAP dans Azure via la NetApp Console sont désormais limités aux dernières versions prises en charge. Cela garantit la compatibilité avec le matériel de dernière génération pris en charge par Microsoft et fournit les fonctionnalités et améliorations de sécurité les plus récentes. La console vous invitera à effectuer une mise à niveau vers les versions prises en charge.</block>
+  <block id="8a79801dc6892f83b39904d935baeea6" category="list-text">Déploiement:<block ref="defc681ae2012fb7f8f998224eac55e5" category="inline-link-rx"></block></block>
+  <block id="b2f564ccc8dab8d25ce5727e3ac0f553" category="inline-link">Chemins de mise à niveau pris en charge pour Azure</block>
+  <block id="cd28d8af5b4308747357925ae313e125" category="list-text">Mise à niveau:<block ref="9fd9abde9fac7cd4edc5e352cd251056" category="inline-link-rx"></block></block>
+  <block id="810ddecf604478d8ee317e1ac69d7971" category="section-title">17 octobre 2025</block>
 </blocks>
