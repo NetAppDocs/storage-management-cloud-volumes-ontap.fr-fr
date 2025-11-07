@@ -68,7 +68,7 @@ indexpage:
     - title: Configurations prises en charge
       url: https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/index.html
     - title: Régions cloud prises en charge
-      url: https://www.netapp.com/console/cloud-volumes-global-regions
+      url: https://bluexp.netapp.com/cloud-volumes-global-regions
     - title: Calculatrices
       url: https://www.netapp.com/console/calculator-hub
   - title: Blogs et communauté
