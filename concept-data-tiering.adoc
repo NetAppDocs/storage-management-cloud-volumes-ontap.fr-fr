@@ -196,7 +196,8 @@ Si les blocs de données froids du niveau de capacité sont lus de manière alé
 Aucune:: Conserve les données d’un volume dans le niveau de performance, empêchant ainsi leur déplacement vers le niveau de capacité.
 
 
-Lorsque vous répliquez un volume, vous pouvez choisir de hiérarchiser les données vers le stockage d'objets.  Si vous le faites, la console applique la politique *Sauvegarde* au volume de protection des données.  À partir de Cloud Volumes ONTAP 9.6, la politique de hiérarchisation *Tout* remplace la politique de sauvegarde.
+.Réplication
+Lorsque vous répliquez un volume, vous pouvez choisir de hiérarchiser les données vers le stockage d'objets. Si vous le faites, la console applique la politique *Sauvegarde* au volume de protection des données. À partir de Cloud Volumes ONTAP 9.6, la politique de hiérarchisation *Tout* remplace la politique de sauvegarde. Lorsqu'une relation de réplication est supprimée, le volume de destination conserve la politique de hiérarchisation qui était en vigueur pendant la réplication.
 
 
 

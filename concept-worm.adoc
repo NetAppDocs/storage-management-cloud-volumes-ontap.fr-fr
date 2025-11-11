@@ -116,4 +116,5 @@ Vous devez comprendre les points suivants concernant l’activation de la hiéra
 
 .Lien connexe
 * link:reference-worm-snaplock.html["Créer des copies instantanées inviolables pour le stockage WORM"]
+* link:concept-licensing-charging.html["Gestion des licences et facturation dans Cloud Volumes ONTAP"]
 

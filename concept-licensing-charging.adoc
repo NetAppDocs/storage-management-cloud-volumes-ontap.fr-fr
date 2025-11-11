@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: concept-licensing-charging.html 
-keywords: capacity-based license charging, consumption for licenses, pricing for licenses, CVO licensing, CVO charging 
+keywords: capacity-based license charging, consumption for licenses, pricing for licenses, CVO licensing, CVO charging, SnapLock charging, CIFS charging, audit volumes, primary volumes, volume-based charging 
 summary: Familiarisez-vous avec la facturation, le modèle de consommation, la tarification et les configurations des licences basées sur la capacité. 
 ---
 = En savoir plus sur les licences basées sur la capacité pour Cloud Volumes ONTAP
@@ -64,11 +64,11 @@ Pour plus d'informations sur la conversion des licences basées sur les nœuds e
 
 
 
-== Tarification et configurations prises en charge
+== Facturation et configurations prises en charge dans les licences basées sur la capacité
+
+La facturation dans Cloud Volumes ONTAP est basée sur un certain nombre de facteurs, tels que les forfaits et les types de volumes. Les packages de licences basés sur la capacité sont disponibles avec Cloud Volumes ONTAP 9.7 et versions ultérieures.
 
 Pour plus de détails sur les prix, rendez-vous sur le https://bluexp.netapp.com/pricing/["Site Web de la NetApp Console"^] .
-
-Les packages de licences basés sur la capacité sont disponibles avec Cloud Volumes ONTAP 9.7 et versions ultérieures.
 
 
 
@@ -109,7 +109,7 @@ Pour plus d'informations sur les limites de capacité de chaque fournisseur de c
 
 == Nombre maximal de systèmes
 
-Avec les licences basées sur la capacité, le nombre maximal de systèmes Cloud Volumes ONTAP est limité à 24 par compte NetApp Console .  Un _système_ est une paire Cloud Volumes ONTAP HA, un système à nœud unique Cloud Volumes ONTAP ou toute machine virtuelle de stockage supplémentaire que vous créez.  La machine virtuelle de stockage par défaut n'est pas prise en compte dans la limite.  Cette limite s’applique à tous les modèles de licence.
+Avec la licence basée sur la capacité, le nombre maximal de systèmes Cloud Volumes ONTAP est limité à 24 par organisation NetApp Console . Un _système_ est une paire Cloud Volumes ONTAP HA, un système à nœud unique Cloud Volumes ONTAP ou toute machine virtuelle de stockage supplémentaire que vous créez. La machine virtuelle de stockage par défaut n'est pas prise en compte dans la limite. Cette limite s’applique à tous les modèles de licence.
 
 Par exemple, disons que vous avez trois systèmes :
 
@@ -127,13 +127,17 @@ Ce système compte trois systèmes : un pour la paire HA et deux pour les machi
 
 
 
-Cela représente six systèmes au total.  Vous auriez alors de la place pour 14 systèmes supplémentaires sur votre compte.
+Cela représente six systèmes au total. Vous auriez alors de la place pour 14 systèmes supplémentaires dans votre organisation.
 
-Si vous avez un déploiement important qui nécessite plus de 24 systèmes, contactez votre représentant de compte ou votre équipe commerciale.
-
-https://docs.netapp.com/us-en/bluexp-setup-admin/concept-netapp-accounts.html["En savoir plus sur les comptes de console"^] .
+Si vous avez un déploiement important nécessitant plus de 24 systèmes, contactez votre représentant commercial ou votre équipe de vente.
 
 https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/index.html["En savoir plus sur les limites de stockage pour AWS, Azure et Google Cloud"^] .
+
+
+
+== Facturation des volumes de lecture/écriture
+
+Si vous créez ou utilisez un volume inscriptible (lecture/écriture), il est considéré comme un volume principal et est facturé pour la capacité provisionnée sur la base du coût minimum par machine virtuelle de stockage (SVM).  On peut citer comme exemples les volumes de lecture/écriture FlexVol , les volumes d'audit SnapLock et les volumes d'audit CIFS/NFS.  Tous les volumes de données créés par l'utilisateur sont facturés conformément à votre abonnement et à votre type de forfait.  Les volumes internes ONTAP créés automatiquement et ne pouvant pas stocker de données, tels que les volumes racine SVM, ne sont pas facturés.
 
 
 

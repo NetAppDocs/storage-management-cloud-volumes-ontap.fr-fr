@@ -29,3 +29,8 @@ Les copies Snapshot héritent des propriétés WORM du volume, ce qui les rend i
 
 
 NOTE: Même si une copie Snapshot est protégée pendant une période de conservation spécifique, le volume source peut être supprimé par un administrateur de cluster, car le stockage WORM dans Cloud Volumes ONTAP fonctionne sous un modèle « administrateur de stockage approuvé ».  De plus, un administrateur cloud de confiance peut supprimer les données WORM en agissant sur les ressources de stockage cloud.
+
+.Liens connexes
+* Pour plus d'informations sur WORM, consultezlink:concept-worm.html["En savoir plus sur le stockage WORM sur Cloud Volumes ONTAP"] .
+* Pour plus d'informations sur la facturation des volumes SnapLock , veuillez consulterlink:concept-licensing-charging.html["Gestion des licences et facturation dans Cloud Volumes ONTAP"] .
+

@@ -1,0 +1,13 @@
+= Prise en charge NVMe-TCP améliorée
+:allow-uri-read: 
+
+
+
+
+=== Prise en charge NVMe-TCP améliorée
+
+Auparavant, lors du déploiement d'instances Cloud Volumes ONTAP sur NVMe-TCP, il était nécessaire d'obtenir et d'appliquer manuellement les licences NVMe avant le déploiement.  Grâce à cette mise à jour, Cloud Volumes ONTAP installe désormais automatiquement les licences NVMe requises lors du déploiement, simplifiant ainsi le processus d'installation.
+
+Pour les déploiements NVMe-TCP existants dépourvus de licences, Cloud Volumes ONTAP applique automatiquement les licences.  Vous devez redémarrer le système pour que les licences soient prises en compte.
+
+Pour plus d'informations, consultez https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-client-protocols.html#nvme-tcp["Protocoles clients pris en charge pour Cloud Volumes ONTAP: NVMe-TCP"^] .
