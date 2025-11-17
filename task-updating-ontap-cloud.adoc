@@ -51,6 +51,12 @@ ifdef::aws[]
 | Version actuelle | Versions vers lesquelles vous pouvez directement mettre à niveau 
 
 
+| 9.16.1 | 9.17.1 P1 
+
+
+| 9.15.1 | 9.16.1 
+
+
 | 9.15.0 | 9.15.1 
 
 
