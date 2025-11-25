@@ -18,7 +18,7 @@ Démarrez avec Cloud Volumes ONTAP dans Google Cloud en quelques étapes.
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["Un"]Créer un agent de console
 [role="quick-margin-para"]
-Si vous n'avez pas de https://docs.netapp.com/us-en/bluexp-setup-admin/concept-connectors.html["Agent de console"^] mais il faut en créer un. https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-google.html["Découvrez comment créer un agent de console dans Google Cloud"^]
+Si vous n'avez pas de https://docs.netapp.com/us-en/bluexp-setup-admin/concept-connectors.html["Agent de console"^] Pourtant, vous devez en créer un. https://docs.netapp.com/us-en/console-setup-admin/task-install-agent-google-gcloud.html["Découvrez comment créer un agent de console dans Google Cloud"^]
 
 [role="quick-margin-para"]
 Notez que si vous souhaitez déployer Cloud Volumes ONTAP dans un sous-réseau où aucun accès Internet n'est disponible, vous devez installer manuellement l'agent de console et accéder à la NetApp Console qui s'exécute sur cet agent de console. https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-private-mode.html["Découvrez comment installer manuellement l'agent de console dans un emplacement sans accès Internet"^]
@@ -74,5 +74,5 @@ Cliquez sur *Ajouter un système*, sélectionnez le type de système que vous so
 .Liens connexes
 * https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-google.html["Création d'un agent de console"^]
 * https://docs.netapp.com/us-en/bluexp-setup-admin/task-install-connector-on-prem.html["Installation du logiciel agent de console sur un hôte Linux"^]
-* https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-gcp.html["Ce que fait la console avec les autorisations Google Cloud"^]
+* https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-gcp.html["Autorisations Google Cloud pour l'agent de la console"^]
 

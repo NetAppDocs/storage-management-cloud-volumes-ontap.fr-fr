@@ -129,7 +129,7 @@ La gestion automatique de la capacité de la console ne s'applique pas aux LUN. 
 
 === Gestion manuelle des capacités
 
-Si l'organisation ou l'administrateur du compte définit le mode de gestion de la capacité sur manuel, la console vous informe de prendre les mesures appropriées pour les décisions de capacité.  Les mêmes exemples décrits dans le mode automatique s'appliquent au mode manuel, mais c'est à vous d'accepter les actions.
+Si l'administrateur de l'organisation ou du compte définit le *mode de gestion des capacités* sur manuel, la console vous informe de prendre les mesures appropriées pour les décisions relatives aux capacités. Les mêmes exemples décrits dans le mode automatique s'appliquent au mode manuel, mais c'est à vous d'accepter les actions.
 
 
 

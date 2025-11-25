@@ -19,7 +19,7 @@ Bien que Google Cloud Storage chiffre toujours vos données avant qu'elles ne so
 .Étapes
 . Assurez-vous que le compte de service de l’agent de console dispose des autorisations appropriées au niveau du projet, dans le projet où la clé est stockée.
 +
-Les autorisations sont fournies dans le https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-gcp.html["les autorisations du compte de service par défaut"^] , mais peut ne pas être appliqué si vous utilisez un autre projet pour le service Cloud Key Management.
+Les autorisations sont fournies dans le https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-gcp.html["les autorisations du compte de service par défaut"^] , mais peut ne pas s'appliquer si vous utilisez un autre projet pour le service de gestion des clés cloud.
 
 +
 Les autorisations sont les suivantes :

@@ -45,7 +45,7 @@ Lorsque vous créez des machines virtuelles de stockage à l'aide des API, en pl
 
 
 .Avant de commencer
-L'agent de console nécessite des autorisations spécifiques pour créer des machines virtuelles de stockage pour les paires Cloud Volumes ONTAP HA.  Les autorisations requises sont incluses dans https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-gcp.html["les politiques fournies par NetApp"^] .
+L'agent de console nécessite des autorisations spécifiques pour créer des machines virtuelles de stockage pour les paires Cloud Volumes ONTAP HA. Les autorisations requises sont incluses dans https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-gcp.html["les politiques fournies par NetApp"^] .
 
 
 
@@ -86,7 +86,7 @@ Incluez les paramètres suivants dans le corps de la requête :
 À l’aide des API, vous pouvez renommer et supprimer des machines virtuelles de stockage dans les configurations à nœud unique et HA.
 
 .Avant de commencer
-L'agent de console nécessite des autorisations spécifiques pour gérer les machines virtuelles de stockage pour les paires Cloud Volumes ONTAP HA.  Les autorisations requises sont incluses dans https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-gcp.html["les politiques fournies par NetApp"^] .
+L'agent de console nécessite des autorisations spécifiques pour gérer les machines virtuelles de stockage pour les paires Cloud Volumes ONTAP HA. Les autorisations requises sont incluses dans https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-gcp.html["les politiques fournies par NetApp"^] .
 
 
 

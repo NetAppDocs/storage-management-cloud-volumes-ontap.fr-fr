@@ -24,7 +24,7 @@ NOTE: D'autres ressources, telles que les sauvegardes gérées par NetApp Backup
 Lorsque la console déploie Cloud Volumes ONTAP chez votre fournisseur de cloud, elle active la protection contre la résiliation sur les instances.  Cette option permet d'éviter toute interruption accidentelle.
 
 .Étapes
-. Si vous avez activé la sauvegarde et la récupération sur le système, déterminez si les données sauvegardées sont toujours nécessaires, puis https://docs.netapp.com/us-en/bluexp-backup-recovery/task-manage-backups-ontap.html#deleting-backups["supprimer les sauvegardes, si nécessaire"^] .
+. Si vous avez activé la sauvegarde et la restauration sur le système, déterminez si les données sauvegardées sont toujours nécessaires, puis… https://docs.netapp.com/us-en/data-services-backup-recovery/prev-ontap-backup-manage.html#delete-backups["supprimer les sauvegardes, si nécessaire"^] .
 +
 La sauvegarde et la récupération sont indépendantes de Cloud Volumes ONTAP par conception.  Backup and Recovery ne supprime pas automatiquement les sauvegardes lorsque vous supprimez un système Cloud Volumes ONTAP , et il n'existe actuellement aucune prise en charge dans l'interface utilisateur pour supprimer les sauvegardes une fois le système supprimé.
 
