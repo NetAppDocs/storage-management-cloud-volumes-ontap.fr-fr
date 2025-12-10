@@ -74,6 +74,11 @@ Le déploiement zonal utilise des disques gérés Premium SSD v2 lorsque les con
 
 
 --
+
+
+
+NOTE: Si vous choisissez des disques SSD gérés Premium pour un environnement qui remplit les critères ci-dessus, la console déploie automatiquement des disques SSD gérés Premium v2. Vous ne pouvez pas passer aux disques gérés Premium SSD v1.
+
 Disques:: Les données client résident sur des disques gérés par stockage localement redondant (LRS).  Chaque nœud a accès au stockage de l’autre nœud.  Un stockage supplémentaire est également nécessaire pourlink:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/reference-default-configs.html#azure-ha-pair["données de démarrage, racine, racine partenaire, cœur et NVRAM"^] .
 Comptes de stockage:: Les comptes de stockage sont utilisés pour les déploiements basés sur des disques gérés afin de gérer les journaux de diagnostic et la hiérarchisation du stockage blob.
 

@@ -46,7 +46,7 @@ link:task-deploying-gcp.html["Consultez les instructions étape par étape pour 
 
 Les licences basées sur la capacité vous permettent de payer Cloud Volumes ONTAP par Tio de capacité. Les licences basées sur la capacité sont disponibles sous la forme d'un _package_ : le package Essentials ou Professional.
 
-Les forfaits Essentiels et Professionnel sont disponibles avec les modèles de consommation suivants :
+Les formules Essentiel et Professionnel sont disponibles avec les modèles de consommation ou options d'achat suivants :
 
 * Une licence (apportez votre propre licence (BYOL)) achetée auprès de NetApp
 * Un abonnement horaire à la carte (PAYGO) de Google Cloud Marketplace
@@ -161,8 +161,20 @@ Un abonnement Keystone est un service d'abonnement à paiement progressif. link:
 +
 image:screenshot-keystone.png["Capture d'écran de l'option d'abonnement Keystone lors de la création d'un système Cloud Volumes ONTAP ."]
 
-
-
-
-
++
 link:task-deploying-gcp.html["Consultez les instructions étape par étape pour lancer Cloud Volumes ONTAP dans Google Cloud"] .
+
+
+
+
+
+
+
+== Licence basée sur les nœuds
+
+Une licence basée sur les nœuds est la licence de génération précédente pour Cloud Volumes ONTAP. Une licence basée sur les nœuds peut être obtenue auprès de NetApp (BYOL) et est disponible pour le renouvellement de licence, uniquement dans des cas spécifiques. Pour plus d'informations, consultez :
+
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/whats-new.html#end-of-availability-for-node-based-licenses["Fin de disponibilité des licences basées sur des nœuds"^]
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing.html#end-of-availability-of-node-based-licenses["Fin de disponibilité des licences basées sur des nœuds"^]
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-convert-node-capacity.html["Convertir une licence basée sur les nœuds en une licence basée sur la capacité"^]
+

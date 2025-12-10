@@ -1,0 +1,74 @@
+---
+sidebar: sidebar 
+permalink: task-manage-perf-params-azure.html 
+keywords: azure, premium ssd v2, Premium SSDv2, performance parameters, cloud volumes ontap 
+summary: Configurez les paramètres de performance des disques SSD Premium v2 dans Azure. 
+---
+= Gérer les performances des disques SSD Premium v2 pour Cloud Volumes ONTAP dans Azure
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Vous pouvez optimiser les performances de Cloud Volumes ONTAP dans Azure en configurant les paramètres IOPS et de débit pour les disques SSD Premium v2.  Cette fonctionnalité est disponible uniquement lorsque Cloud Volumes ONTAP est déjà déployé avec le type de disque Azure Premium SSD v2, et non lors du déploiement initial.  En améliorant les performances, vous pouvez tirer pleinement parti de la flexibilité et des capacités hautes performances des disques SSD Azure Premium v2.
+
+Les disques SSD v2 haut de gamme prennent en charge les charges de travail nécessitant des performances rapides et fiables avec une faible latence, un nombre élevé d'IOPS et un débit élevé.  En ajustant les paramètres IOPS et de débit, vous pouvez personnaliser les performances des agrégats de votre déploiement.  Pour plus d'informations sur les disques SSD Premium v2, veuillez consulter la documentation. https://learn.microsoft.com/en-us/azure/virtual-machines/disks-deploy-premium-v2?tabs=azure-cli["Déployer un disque SSD Premium v2"] .
+
+Utilisez les API pour automatiser le processus de modification des paramètres des disques SSD Premium v2.  Pour plus d'informations sur l'exécution des appels d'API Cloud Volumes ONTAP , consultez la documentation. https://docs.netapp.com/us-en/bluexp-automation/cm/your_api_call.html#step-1-select-the-identifie["Votre premier appel d'API"^] .
+
+.À propos de cette tâche
+* Cette fonctionnalité s'applique aux déploiements Cloud Volumes ONTAP dans les zones de disponibilité uniques Azure.
+* Modifier les paramètres du disque modifie uniformément les performances du groupe RAID ou de l'agrégat.  Les performances de tous les disques du groupe sont ajustées au même niveau afin de garantir des performances homogènes sur l'ensemble du groupe.
+* Ces modifications affectent un seul agrégat et non les autres agrégats du groupe.
+* Les disques SSD v2 Premium provisionnés automatiquement lors du déploiement de Cloud Volumes ONTAP ou de l'optimisation de capacité dans la NetApp Console, ou ajoutés via les API, sont tous éligibles à la modification.
+* Le redimensionnement du disque (modification de sa capacité) n'est pas pris en charge.
+
+
+.Avant de commencer
+Veuillez prendre en compte les points suivants avant de configurer les paramètres IOPS et de débit des disques SSD Premium v2 :
+
+* Assurez-vous d'avoir sélectionné uniquement des disques de données SSD Premium v2.  Les disques SSD Premium v1 ou les disques racine et de démarrage ne sont pas concernés par cette modification.
+* Utilisez les paramètres de base préconfigurés établis par Cloud Volumes ONTAP lors du déploiement comme valeurs minimales d'IOPS et de débit pour la taille de disque respective.  Ces paramètres de base correspondent aux caractéristiques de performance du SSD Premium v1.
+* Définissez les valeurs d'IOPS et de débit à un niveau égal ou supérieur à la valeur minimale de référence pour la taille de votre disque.  Par exemple, pour un disque d'une capacité de 1 To, définissez la valeur minimale d'IOPS à 5 000 et la valeur minimale de débit à 200 Mo/s.  Vous pouvez configurer des valeurs supérieures à ces minimums, mais pas inférieures.
+* Configurez les valeurs dans les plages prises en charge par le SSD Premium v2 : IOPS entre 3 000 et 80 000 et débit entre 125 et 1 200 Mo/s.
+* Assurez-vous que la taille de votre disque SSD Premium v2 se situe dans la plage prise en charge de 500 Go à 32 To pour Cloud Volumes ONTAP dans Azure.  Notez que ces limites de taille diffèrent des valeurs minimales et maximales proposées par Azure pour les disques SSD Premium v2.
+
+
+.Étapes
+* Utilisez l'appel API suivant pour modifier les valeurs des attributs IOPS et débit :
++
+
+NOTE: Vous pouvez appeler cette API quatre fois au maximum sur une période de 24 heures.
+
++
+`PUT /azure/vsa/aggregates/{workingEnvironmentId}/{aggregateName}`
+
++
+Incluez les paramètres suivants dans le corps de la requête :
+
++
+[source, json]
+----
+{
+  "aggregateName": "aggr_name",
+  "iops": "modified_iops_value",
+  "throughput": "modified_throughput_value",
+  "workingEnvironmentId": "we_id"
+}
+----
+
+
+.Après avoir terminé
+Une fois que l'API a renvoyé une réponse indiquant que l'opération a réussi, vérifiez les paramètres modifiés en consultant les détails du disque dans le portail Azure pour votre système Cloud Volumes ONTAP .
+
+.Informations connexes
+* https://docs.netapp.com/us-en/bluexp-automation/cm/prepare.html["Préparez-vous à utiliser l'API"^]
+* https://docs.netapp.com/us-en/bluexp-automation/cm/workflow_processes.html#organization-of-cloud-volumes-ontap-workflows["Flux de travail Cloud Volumes ONTAP"^]
+* https://docs.netapp.com/us-en/bluexp-automation/platform/get_identifiers.html#get-the-connector-identifier["Obtenir les identifiants requis"^]
+* https://docs.netapp.com/us-en/bluexp-automation/platform/use_rest_apis.html["Utilisez les API REST pour Cloud Volumes ONTAP"^]
+* https://learn.microsoft.com/en-us/azure/virtual-machines/use-premium-ssd-v2-with-availability-set?tabs=CLI["Utilisez le SSD Premium v2 avec les machines virtuelles dans un groupe à haute disponibilité."^]
+

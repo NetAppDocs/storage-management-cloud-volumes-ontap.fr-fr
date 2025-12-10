@@ -14,13 +14,13 @@ summary: Familiarisez-vous avec la facturation, le modèle de consommation, la t
 
 
 [role="lead"]
-Vous devez être familiarisé avec la facturation et l'utilisation de la capacité pour les licences basées sur la capacité
+Vous devez vous familiariser avec la facturation et l'utilisation de la capacité pour les licences basées sur la capacité.
 
 
 
-== Modèles de consommation
+== Modèles de consommation ou options d'achat de licences
 
-Des packages de licences basés sur la capacité sont disponibles avec les modèles de consommation suivants :
+Des formules de licences basées sur la capacité sont disponibles avec les modèles de consommation ou options d'achat suivants :
 
 * *BYOL* : Apportez votre propre permis de conduire (BYOL).  Une licence achetée auprès de NetApp qui peut être utilisée pour déployer Cloud Volumes ONTAP chez n’importe quel fournisseur de cloud.
 +
@@ -54,7 +54,7 @@ Votre licence est toujours facturée en premier, mais vous serez facturé au tar
 
 
 
-== Changement de forfait
+== Modification des packs de licences
 
 Après le déploiement, vous pouvez modifier le package pour un système Cloud Volumes ONTAP qui utilise des licences basées sur la capacité.  Par exemple, si vous avez déployé un système Cloud Volumes ONTAP avec le package Essentials, vous pouvez le remplacer par le package Professional si les besoins de votre entreprise ont changé.
 
@@ -64,7 +64,7 @@ Pour plus d'informations sur la conversion des licences basées sur les nœuds e
 
 
 
-== Facturation et configurations prises en charge dans les licences basées sur la capacité
+== Comment sont facturés les types et forfaits de stockage pris en charge
 
 La facturation dans Cloud Volumes ONTAP est basée sur un certain nombre de facteurs, tels que les forfaits et les types de volumes. Les packages de licences basés sur la capacité sont disponibles avec Cloud Volumes ONTAP 9.7 et versions ultérieures.
 
@@ -90,6 +90,30 @@ Pour les paires HA, vous n'êtes facturé que pour la capacité provisionnée su
 
 * Vous ne serez pas facturé pour la capacité utilisée par les volumes FlexClone .
 * Les volumes FlexCache source et de destination sont considérés comme des données principales et facturés en fonction de l'espace provisionné.
+
+
+
+
+=== Volumes de lecture/écriture
+
+Si vous créez ou utilisez un volume inscriptible (lecture/écriture), il est considéré comme un volume principal et est facturé pour la capacité provisionnée sur la base du coût minimum par machine virtuelle de stockage (SVM).  On peut citer comme exemples les volumes de lecture/écriture FlexVol , les volumes d'audit SnapLock et les volumes d'audit CIFS/NFS.  Tous les volumes de données créés par l'utilisateur sont facturés conformément à votre abonnement et à votre type de forfait.  Les volumes internes ONTAP créés automatiquement et ne pouvant pas stocker de données, tels que les volumes racine SVM, ne sont pas facturés.
+
+
+
+=== forfaits essentiels
+
+Avec le forfait Essentials, vous êtes facturé en fonction du type de déploiement (HA ou nœud unique) et du type de volume (principal ou secondaire).  La tarification du plus élevé au plus bas est présentée dans l'ordre suivant : _Essentials Primary HA_, _Essentials Primary Single Node_, _Essentials Secondary HA_ et _Essentials Secondary Single Node_.  Alternativement, lorsque vous achetez un contrat de marché ou acceptez une offre privée, les frais de capacité sont les mêmes pour tout type de déploiement ou de volume.
+
+L'octroi de licences est entièrement basé sur le type de volume créé dans les systèmes Cloud Volumes ONTAP :
+
+* Essentials Single Node : volumes en lecture/écriture créés sur un système Cloud Volumes ONTAP à l'aide d'un seul nœud ONTAP .
+* Essentials HA : volumes de lecture/écriture à l'aide de deux nœuds ONTAP pouvant basculer l'un vers l'autre pour un accès aux données sans interruption.
+* Essentials Secondary Single Node : volumes de type Data Protection (DP) (généralement des volumes de destination SnapMirror ou SnapVault en lecture seule) créés sur un système Cloud Volumes ONTAP à l'aide d'un seul nœud ONTAP .
++
+
+NOTE: Si un volume en lecture seule/DP devient un volume principal, la console le considère comme des données principales et les coûts de facturation sont calculés en fonction du temps pendant lequel le volume était en mode lecture/écriture.  Lorsque le volume est à nouveau rendu en lecture seule/DP, il considère à nouveau le volume comme des données secondaires et facture en conséquence en utilisant la licence la plus correspondante dans la console.
+
+* Essentials Secondary HA : volumes de type Data Protection (DP) (généralement des volumes de destination SnapMirror ou SnapVault en lecture seule) créés sur un système Cloud Volumes ONTAP à l'aide de deux nœuds ONTAP qui peuvent basculer l'un vers l'autre pour un accès aux données sans interruption.
 
 
 
@@ -135,19 +159,7 @@ https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/index.html["En savoir
 
 
 
-== Facturation des volumes de lecture/écriture
-
-Si vous créez ou utilisez un volume inscriptible (lecture/écriture), il est considéré comme un volume principal et est facturé pour la capacité provisionnée sur la base du coût minimum par machine virtuelle de stockage (SVM).  On peut citer comme exemples les volumes de lecture/écriture FlexVol , les volumes d'audit SnapLock et les volumes d'audit CIFS/NFS.  Tous les volumes de données créés par l'utilisateur sont facturés conformément à votre abonnement et à votre type de forfait.  Les volumes internes ONTAP créés automatiquement et ne pouvant pas stocker de données, tels que les volumes racine SVM, ne sont pas facturés.
-
-
-
-== Remarques sur la charge
-
-Les détails suivants peuvent vous aider à comprendre comment fonctionne la facturation avec les licences basées sur la capacité.
-
-
-
-=== Frais minimum
+== Frais minimum
 
 Des frais minimum de 4 Tio sont appliqués pour chaque machine virtuelle de stockage de données possédant au moins un volume principal (lecture-écriture).  Si la somme des volumes principaux est inférieure à 4 Tio, la console applique les frais minimum de 4 Tio à cette machine virtuelle de stockage.
 
@@ -157,30 +169,19 @@ Pour le package Essentials, les frais de capacité minimale de 4 Tio ne s'appliq
 
 
 
-=== Dépassements
+== Comment les dépassements sont facturés
 
-Si vous dépassez votre capacité BYOL, les dépassements vous seront facturés au tarif horaire de votre abonnement à la place de marché. Les dépassements sont facturés au tarif de la place de marché, la capacité disponible des autres licences étant privilégiée. Si votre licence BYOL expire, vous devrez passer à un modèle de licence basé sur la capacité via les places de marché cloud.
-
-
-
-=== Forfait Essentiel
-
-Avec le forfait Essentials, vous êtes facturé en fonction du type de déploiement (HA ou nœud unique) et du type de volume (principal ou secondaire).  La tarification du plus élevé au plus bas est présentée dans l'ordre suivant : _Essentials Primary HA_, _Essentials Primary Single Node_, _Essentials Secondary HA_ et _Essentials Secondary Single Node_.  Alternativement, lorsque vous achetez un contrat de marché ou acceptez une offre privée, les frais de capacité sont les mêmes pour tout type de déploiement ou de volume.
-
-L'octroi de licences est entièrement basé sur le type de volume créé dans les systèmes Cloud Volumes ONTAP :
-
-* Essentials Single Node : volumes en lecture/écriture créés sur un système Cloud Volumes ONTAP à l'aide d'un seul nœud ONTAP .
-* Essentials HA : volumes de lecture/écriture à l'aide de deux nœuds ONTAP pouvant basculer l'un vers l'autre pour un accès aux données sans interruption.
-* Essentials Secondary Single Node : volumes de type Data Protection (DP) (généralement des volumes de destination SnapMirror ou SnapVault en lecture seule) créés sur un système Cloud Volumes ONTAP à l'aide d'un seul nœud ONTAP .
-+
-
-NOTE: Si un volume en lecture seule/DP devient un volume principal, la console le considère comme des données principales et les coûts de facturation sont calculés en fonction du temps pendant lequel le volume était en mode lecture/écriture.  Lorsque le volume est à nouveau rendu en lecture seule/DP, il considère à nouveau le volume comme des données secondaires et facture en conséquence en utilisant la licence la plus correspondante dans la console.
-
-* Essentials Secondary HA : volumes de type Data Protection (DP) (généralement des volumes de destination SnapMirror ou SnapVault en lecture seule) créés sur un système Cloud Volumes ONTAP à l'aide de deux nœuds ONTAP qui peuvent basculer l'un vers l'autre pour un accès aux données sans interruption.
+Si vous dépassez votre capacité BYOL, les dépassements vous seront facturés au tarif horaire de votre abonnement à la place de marché. Les dépassements sont facturés au tarif de la place de marché, la capacité disponible des autres licences étant privilégiée. Si votre licence BYOL expire, vous devrez passer à un modèle de licence basé sur la capacité via les places de marché cloud. Pour plus d'informations, veuillez consulterlink:task-convert-node-capacity.html["Convertir une licence basée sur un nœud Cloud Volumes ONTAP en une licence basée sur la capacité"] .
 
 
-.Apportez votre propre vin
-Si vous avez acheté une licence Essentials auprès de NetApp (BYOL) et que vous dépassez la capacité sous licence pour ce déploiement et ce type de volume, la console facture les dépassements sur une licence Essentials à prix plus élevé (si vous en avez une et qu'il y a de la capacité disponible).  Cela se produit parce que nous utilisons d'abord la capacité disponible que vous avez déjà achetée en tant que capacité prépayée avant de la facturer sur le marché.  S'il n'y a pas de capacité disponible avec votre licence BYOL, la capacité dépassée sera facturée aux tarifs horaires à la demande du marché (PAYGO) et ajoutera des coûts à votre facture mensuelle.
+
+=== Comment les dépassements sont facturés pour les licences Essentials
+
+Si vous achetez une licence Essentials auprès de NetApp (BYOL) et que vous dépassez la capacité sous licence pour un package Essentials spécifique, la console facture les dépassements sur une licence Essentials plus chère (si vous en avez une avec une capacité disponible).  La console utilise d'abord la capacité disponible pour laquelle vous avez payé avant de facturer le marché.  S'il n'y a pas de capacité disponible avec votre licence BYOL, la capacité excédentaire est facturée aux tarifs horaires à la demande du marché (PAYGO) et ajoutée à votre facture mensuelle.
+
+De même, si vous disposez d'un contrat annuel sur le marché ou d'une offre privée comprenant plusieurs forfaits Essentials, et que votre utilisation dépasse la capacité prévue pour un type de déploiement et de volume d'un forfait spécifique, la console facture les dépassements sur un forfait Essentials plus cher en fonction de sa capacité disponible.  Une fois cette capacité épuisée, le surplus restant est facturé aux tarifs horaires à la demande du marché (PAYGO) et ajouté à votre facture mensuelle.
+
+Pour plus d'informations sur la facturation des licences Essentials, veuillez consulterlink:concept-licensing-charging.html#essentialscharging["forfaits essentiels"] .
 
 Voici un exemple. Disons que vous disposez des licences suivantes pour le package Essentials :
 
@@ -201,8 +202,3 @@ Voici un autre exemple.  Disons que vous disposez des licences suivantes pour le
 100 Tio supplémentaires sont provisionnés sur une paire HA avec des volumes primaires.  La licence que vous avez achetée ne dispose pas de capacité engagée _Essentials Primary HA_.  La licence _Essentials Primary HA_ est proposée à un prix plus élevé que les licences _Essentials Primary Single Node_ et _Essentials Secondary HA_.
 
 Dans cet exemple, la console facture les dépassements au tarif du marché pour les 100 Tio supplémentaires.  Les frais de dépassement apparaîtront sur votre facture mensuelle.
-
-.Contrats de marché ou offres privées
-Si vous avez acheté une licence Essentials dans le cadre d'un contrat de place de marché ou d'une offre privée, la logique BYOL ne s'applique pas et vous devez disposer du type de licence exact pour l'utilisation.  Le type de licence inclut le type de volume (principal ou secondaire) et le type de déploiement (HA ou nœud unique).
-
-Par exemple, supposons que vous déployez une instance Cloud Volumes ONTAP avec la licence Essentials.  Vous provisionnez ensuite des volumes en lecture-écriture (nœud unique principal) et des volumes en lecture seule (nœud unique secondaire).  Votre contrat de place de marché ou votre offre privée doit inclure la capacité pour _Essentials Single Node_ et _Essentials Secondary Single Node_ pour couvrir la capacité provisionnée.  Toute capacité provisionnée qui ne fait pas partie de votre contrat de place de marché ou de votre offre privée sera facturée aux tarifs horaires à la demande (PAYGO) et ajoutera des coûts à votre facture mensuelle.
