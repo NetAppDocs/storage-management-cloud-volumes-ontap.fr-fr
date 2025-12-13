@@ -1,0 +1,66 @@
+---
+sidebar: sidebar 
+permalink: task-upgrade-disk-perf-azure.html 
+keywords: azure, premium ssd v2, Premium SSDv2, performance parameters, cloud volumes ontap 
+summary: Configurez les paramètres de performance des disques SSD Premium v2 dans Azure. 
+---
+= Modifier le niveau de performance des disques SSD Premium dans Cloud Volumes ONTAP dans Azure
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Vous pouvez mettre à niveau le niveau de performance des disques SSD Premium gérés dans Cloud Volumes ONTAP sur Azure via le portail Azure. Il s'agit d'un processus manuel qui consiste à modifier le niveau de performance de chaque disque SSD Premium pour le passer à un niveau supérieur. Modifier le niveau de performance de votre disque NVRAM peut contribuer à atténuer les goulots d'étranglement et à améliorer l'efficacité de votre système Cloud Volumes ONTAP en fournissant des capacités d'IOPS et de débit plus élevées.
+
+.À propos de cette tâche
+* Par défaut, Cloud Volumes ONTAP dans Azure déploie des disques SSD Premium pour la NVRAM au niveau P20. Le niveau P20 offre des performances équilibrées, adaptées à la plupart des charges de travail. Toutefois, si votre charge de travail exige des performances plus élevées, vous pouvez mettre à niveau le disque NVRAM vers un niveau supérieur tel que P30.
++
+
+TIP: Actuellement, la mise à niveau d'un disque NVRAM du niveau P20 au niveau P30 est possible uniquement via le portail Azure.
+
+* Vous ne modifiez pas la taille du disque. Sa taille reste inchangée à 512 Go. Cette procédure modifie uniquement le niveau de performance du disque.
+
+
+.Avant de commencer
+* Votre version de Cloud Volumes ONTAP doit être la 9.11.1 ou ultérieure. Pour les versions antérieures, vous pouvez effectuer une mise à niveau vers la version 9.11.1 ou ultérieure, ou soumettre une demande de modification de la politique de fonctionnalités (FPVR) auprès du support NetApp .
+* Assurez-vous de collaborer avec le support NetApp pour déterminer si le goulot d'étranglement que vous rencontrez dans votre environnement est dû au disque NVRAM , et si la mise à niveau du niveau résout le problème.
++
+
+NOTE: La mise à niveau du disque NVRAM vers un niveau de performance supérieur engendre des coûts supplémentaires ; il est donc important d'évaluer soigneusement la nécessité de ce changement.
+
+
+
+.Étapes
+Ce scénario suppose l'existence de deux nœuds. `node01` et `node02` dans le déploiement haute disponibilité (HA) de Cloud Volumes ONTAP . Utilisez le portail Azure pour mettre à niveau le niveau.
+
+. Exécutez cette commande pour créer `node1` le nœud actif. Basculement manuel `node02`.
++
+`storage failover takeover -ofnode <Node02>`
+
+. Sign in au portail Azure.
+. Une fois la prise de contrôle terminée, accédez à l'instance de machine virtuelle pour `node02`, puis cliquez sur le bouton *Arrêter* pour l'éteindre.
+. Accédez au groupe de ressources pour `node02` et dans la liste des disques, sélectionnez le disque NVRAM pour modifier le niveau.
+. Sélectionnez *Taille + Performance*.
+. Dans le menu déroulant *Niveau de performance*, sélectionnez `P30 - 5000 IOPS, 200MB/s`.
+. Sélectionnez *Redimensionner*.
+. Allumez le `node02` exemple.
+. Vérifiez la console série Azure jusqu'à ce que le message s'affiche : `waiting for giveback`.
+. Exécutez cette commande pour renvoyer `node02`:
++
+`storage failover giveback -ofnode <Node02>`
+
+. Répétez ces étapes sur `node01` faire `node02` reprendre `node01`, afin que vous puissiez mettre à niveau le niveau de disque NVRAM pour `node01`.
+
+
+.Après avoir terminé
+Une fois les deux nœuds activés, vérifiez les paramètres modifiés en consultant les détails du disque dans le portail Azure pour votre système Cloud Volumes ONTAP .
+
+.Informations connexes
+* Documentation Azure : https://learn.microsoft.com/en-us/azure/virtual-machines/disks-performance-tiers?tabs=portal["Changez votre niveau de performance sans interruption de service."^]
+* Base de connaissances pour l'équipe de support : https://kb.netapp.com/Cloud/Azure_NetApp_Files/How_to_upgrade_performance_tier_of_NVRAM_disk_in_Azure_CVO["Comment mettre à niveau le niveau de performance d'un disque NVRAM dans Azure CVO"^]
+* link:task-updating-ontap-cloud.html["Mise à niveau des versions logicielles de Cloud Volumes ONTAP"]
+

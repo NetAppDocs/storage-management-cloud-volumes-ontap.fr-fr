@@ -951,6 +951,16 @@ Une notification s'affiche désormais chaque fois que vous accédez à Cloud Vol
 
 
 
+=== De nouvelles autorisations ont été ajoutées à la politique AWS IAM pour les médiateurs HA.
+
+Ces nouvelles autorisations AWS ont été ajoutées à la politique IAM pour les médiateurs HA dans les environnements à haute disponibilité (HA) de Cloud Volumes ONTAP :
+
+* sts:Assumer le rôle
+* ec2 : Décrire les sous-réseaux
+
+
+
+
 == 4 avril 2023
 
 
