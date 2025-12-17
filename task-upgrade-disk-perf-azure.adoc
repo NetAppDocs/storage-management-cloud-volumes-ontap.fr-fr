@@ -16,6 +16,9 @@ summary: Configurez les paramètres de performance des disques SSD Premium v2 da
 [role="lead"]
 Vous pouvez mettre à niveau le niveau de performance des disques SSD Premium gérés dans Cloud Volumes ONTAP sur Azure via le portail Azure. Il s'agit d'un processus manuel qui consiste à modifier le niveau de performance de chaque disque SSD Premium pour le passer à un niveau supérieur. Modifier le niveau de performance de votre disque NVRAM peut contribuer à atténuer les goulots d'étranglement et à améliorer l'efficacité de votre système Cloud Volumes ONTAP en fournissant des capacités d'IOPS et de débit plus élevées.
 
+
+NOTE: Assurez-vous de collaborer avec le support NetApp pour déterminer si le goulot d'étranglement que vous rencontrez dans votre environnement est dû au disque NVRAM , et si la mise à niveau du niveau résout le problème.
+
 .À propos de cette tâche
 * Par défaut, Cloud Volumes ONTAP dans Azure déploie des disques SSD Premium pour la NVRAM au niveau P20. Le niveau P20 offre des performances équilibrées, adaptées à la plupart des charges de travail. Toutefois, si votre charge de travail exige des performances plus élevées, vous pouvez mettre à niveau le disque NVRAM vers un niveau supérieur tel que P30.
 +
@@ -26,12 +29,8 @@ TIP: Actuellement, la mise à niveau d'un disque NVRAM du niveau P20 au niveau P
 
 
 .Avant de commencer
+* Évaluez soigneusement la nécessité de ce changement, car la mise à niveau du disque NVRAM vers un niveau de performance supérieur engendre des coûts supplémentaires.
 * Votre version de Cloud Volumes ONTAP doit être la 9.11.1 ou ultérieure. Pour les versions antérieures, vous pouvez effectuer une mise à niveau vers la version 9.11.1 ou ultérieure, ou soumettre une demande de modification de la politique de fonctionnalités (FPVR) auprès du support NetApp .
-* Assurez-vous de collaborer avec le support NetApp pour déterminer si le goulot d'étranglement que vous rencontrez dans votre environnement est dû au disque NVRAM , et si la mise à niveau du niveau résout le problème.
-+
-
-NOTE: La mise à niveau du disque NVRAM vers un niveau de performance supérieur engendre des coûts supplémentaires ; il est donc important d'évaluer soigneusement la nécessité de ce changement.
-
 
 
 .Étapes
