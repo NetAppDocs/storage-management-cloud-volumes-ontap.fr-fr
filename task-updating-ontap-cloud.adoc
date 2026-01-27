@@ -46,6 +46,10 @@ La version de Cloud Volumes ONTAP vers laquelle vous pouvez effectuer une mise �
 
 ifdef::aws[]
 
+
+
+==== Chemins de mise à niveau pris en charge pour AWS
+
 [cols="2*"]
 |===
 | Version actuelle | Versions vers lesquelles vous pouvez directement mettre à niveau 
@@ -147,6 +151,10 @@ endif::aws[]
 
 ifdef::azure[]
 
+
+
+==== Chemins de mise à niveau pris en charge pour Azure
+
 [cols="2*"]
 |===
 | Version actuelle | Versions vers lesquelles vous pouvez directement mettre à niveau 
@@ -180,6 +188,10 @@ Si vous disposez d’une version inférieure de Cloud Volumes ONTAP dans Azure, 
 endif::azure[]
 
 ifdef::gcp[]
+
+
+
+==== Chemins de mise à niveau pris en charge pour Google Cloud
 
 [cols="2*"]
 |===
