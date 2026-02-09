@@ -38,7 +38,7 @@ Cloud Volumes ONTAP est pris en charge dans la plupart des régions Google Cloud
 
 Cloud Volumes ONTAP prend en charge plusieurs types de machines, selon le type de licence que vous choisissez.
 
-https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-gcp.html["Configurations prises en charge pour Cloud Volumes ONTAP dans GCP"^]
+https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-gcp.html["Configurations prises en charge pour Cloud Volumes ONTAP dans Google Cloud"^]
 
 
 
@@ -46,11 +46,11 @@ https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-gcp
 
 La limite de capacité brute d’un système Cloud Volumes ONTAP est liée à la licence.  Des limites supplémentaires ont un impact sur la taille des agrégats et des volumes.  Vous devez être conscient de ces limites lorsque vous planifiez votre configuration.
 
-https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-limits-gcp.html["Limites de stockage pour Cloud Volumes ONTAP dans GCP"^]
+https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-limits-gcp.html["Limites de stockage pour Cloud Volumes ONTAP dans Google Cloud"^]
 
 
 
-== Dimensionnez votre système dans GCP
+== Dimensionnez votre système dans Google Cloud
 
 Le dimensionnement de votre système Cloud Volumes ONTAP peut vous aider à répondre aux exigences de performances et de capacité.  Vous devez tenir compte de quelques points clés lors du choix d’un type de machine, d’un type de disque et d’une taille de disque :
 
@@ -64,7 +64,7 @@ Pour plus de détails, reportez-vous aux éléments suivants :
 
 
 --
-Type de disque GCP:: Lorsque vous créez des volumes pour Cloud Volumes ONTAP, vous devez choisir le stockage cloud sous-jacent que Cloud Volumes ONTAP utilise pour un disque.  Le type de disque peut être l’un des suivants :
+Types de disques:: Lorsque vous créez des volumes pour Cloud Volumes ONTAP, vous devez choisir le stockage cloud sous-jacent que Cloud Volumes ONTAP utilise pour un disque.  Le type de disque peut être l’un des suivants :
 +
 --
 * _Disques persistants SSD zonaux_ : les disques persistants SSD sont idéaux pour les charges de travail qui nécessitent des taux élevés d'IOPS aléatoires.
@@ -76,7 +76,7 @@ Pour plus de détails, reportez-vous à la https://cloud.google.com/compute/docs
 
 
 --
-Taille du disque GCP:: Vous devez choisir une taille de disque initiale lorsque vous déployez un système Cloud Volumes ONTAP .  Après cela, vous pouvez laisser la NetApp Console gérer la capacité d'un système pour vous, mais si vous souhaitez créer vous-même des agrégats, tenez compte des points suivants :
+Taille du disque:: Vous devez choisir une taille de disque initiale lorsque vous déployez un système Cloud Volumes ONTAP .  Après cela, vous pouvez laisser la NetApp Console gérer la capacité d'un système pour vous, mais si vous souhaitez créer vous-même des agrégats, tenez compte des points suivants :
 +
 --
 * Tous les disques d’un agrégat doivent avoir la même taille.
@@ -115,13 +115,13 @@ TIP: L'agent de console nécessite également un disque système. https://docs.n
 
 == Recueillir des informations sur le réseau
 
-Lorsque vous déployez Cloud Volumes ONTAP dans GCP, vous devez spécifier les détails de votre réseau virtuel.  Vous pouvez utiliser une feuille de travail pour recueillir les informations auprès de votre administrateur.
+Lorsque vous déployez Cloud Volumes ONTAP dans Google Cloud, vous devez spécifier les détails de votre réseau virtuel. Vous pouvez utiliser une feuille de calcul pour recueillir les informations auprès de votre administrateur.
 
 *Informations réseau pour un système à nœud unique*
 
 [cols="30,70"]
 |===
-| Informations sur les GCP | Votre valeur 
+| Informations Google Cloud | Votre valeur 
 
 
 | Région |  
@@ -142,7 +142,7 @@ Lorsque vous déployez Cloud Volumes ONTAP dans GCP, vous devez spécifier les d
 
 [cols="30,70"]
 |===
-| Informations sur les GCP | Votre valeur 
+| Informations Google Cloud | Votre valeur 
 
 
 | Région |  
@@ -175,7 +175,7 @@ Lorsque vous déployez Cloud Volumes ONTAP dans GCP, vous devez spécifier les d
 
 [cols="30,70"]
 |===
-| Informations sur les GCP | Votre valeur 
+| Informations Google Cloud | Votre valeur 
 
 
 | Région |  

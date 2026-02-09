@@ -29,7 +29,7 @@ Vous pouvez exécuter diverses fonctions de gestion du stockage à l'aide d' ONT
 * Événements et tâches : affichez les journaux d’événements, les alertes système, les tâches et les journaux d’audit.
 * Protection avancée des données : protégez les machines virtuelles de stockage, les LUN et les groupes de cohérence.
 * Gestion des hôtes : configurez les groupes d’initiateurs SAN et les clients NFS.
-* Gestion du stockage d’objets S3 : les fonctionnalités de gestion du stockage S3 dans Cloud Volumes ONTAP sont disponibles uniquement dans System Manager et non dans la console.
+* Gestion du stockage d'objets ONTAP S3 : les fonctionnalités de gestion du stockage ONTAP S3 dans Cloud Volumes ONTAP sont disponibles uniquement dans System Manager, et non dans la NetApp Console.
 
 
 

@@ -101,7 +101,7 @@ Notez que Cloud Volumes ONTAP prend en charge la fonctionnalité Amazon EBS Elas
 * Les disques durs à débit optimisé (st1) sont destinés aux charges de travail fréquemment consultées qui nécessitent un débit rapide et constant à un prix inférieur.
 +
 
-NOTE: La hiérarchisation des données vers AWS S3 n'est pas disponible dans les zones locales AWS en raison du manque de connectivité.
+NOTE: La hiérarchisation des données vers Amazon Simple Storage Service (Amazon S3) n'est pas prise en charge si votre système Cloud Volumes ONTAP se trouve dans une zone locale AWS, car l'accès aux compartiments Amazon S3 en dehors de la zone locale implique une latence plus élevée et impacte les activités de Cloud Volumes ONTAP.
 
 
 

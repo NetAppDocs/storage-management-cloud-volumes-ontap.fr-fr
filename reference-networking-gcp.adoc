@@ -236,7 +236,7 @@ L'authentification de l'utilisateur échoue et les services suivants restent ind
 | \ https://mysupport.netapp.com/aods/asupmessage \ https://mysupport.netapp.com/asupprod/post/1.0/postAsup | AutoSupport | Utilisé pour envoyer des données de télémétrie AutoSupport au support NetApp . | Modes standard et restreint. | Les informations AutoSupport ne sont toujours pas livrées. 
 
 
-| \ https://www.googleapis.com/compute/v1/projects/ \ https://cloudresourcemanager.googleapis.com/v1/projects \ https://www.googleapis.com/compute/beta \ https://storage.googleapis.com/storage/v1 \ https://www.googleapis.com/storage/v1 \ https://iam.googleapis.com/v1 \ https://cloudkms.googleapis.com/v1 \ https://www.googleapis.com/deploymentmanager/v2/projects \ https://compute.googleapis.com/compute/v1 | Google Cloud (utilisation commerciale). | Communication avec les services Google Cloud. | Modes standard, restreint et privé. | Cloud Volumes ONTAP ne peut pas communiquer avec le service Google Cloud pour effectuer des opérations spécifiques pour la console dans Google Cloud. 
+| https://cloudbuild.googleapis.com/v1 (pour les déploiements en mode privé uniquement) https://cloudkms.googleapis.com/v1 https://cloudresourcemanager.googleapis.com/v1/projects https://compute.googleapis.com/compute/v1 https://www.googleapis.com/compute/beta https://www.googleapis.com/compute/v1/projects/ https://www.googleapis.com/deploymentmanager/v2/projects https://www.googleapis.com/storage/v1 https://www.googleapis.com/upload/storage/v1 https://config.googleapis.com/v1 https://iam.googleapis.com/v1 https://storage.googleapis.com/storage/v1 | Google Cloud (utilisation commerciale). | Communication avec les services Google Cloud. | Modes standard, restreint et privé. | Cloud Volumes ONTAP ne peut pas communiquer avec le service Google Cloud pour effectuer des opérations spécifiques pour la console dans Google Cloud. 
 |===
 
 
@@ -526,7 +526,7 @@ Pour plus d'informations sur la configuration des serveurs proxy pour l'agent de
 .Configurer les balises réseau pour Cloud Volumes ONTAP dans Google Cloud
 Lors de la configuration du proxy transparent de l'agent de la console, l'administrateur ajoute une balise réseau pour Google Cloud.  Vous devez obtenir et ajouter manuellement la même balise réseau pour votre configuration Cloud Volumes ONTAP .  Cette balise est nécessaire au bon fonctionnement du serveur proxy.
 
-. Dans la console Google Cloud, recherchez votre système Cloud Volumes ONTAP .
+. Dans la console Google Cloud, localisez votre système Cloud Volumes ONTAP.
 . Accédez à *Détails > Réseau > Balises réseau*.
 . Ajoutez la balise utilisée pour l’agent de console et enregistrez la configuration.
 

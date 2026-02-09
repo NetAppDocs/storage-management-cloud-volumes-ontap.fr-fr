@@ -23,7 +23,7 @@ Vous pouvez lancer Cloud Volumes ONTAP dans une configuration à nœud unique ou
 Vous avez besoin des éléments suivants avant de commencer.
 
 [[licensing]]
-* Un agent de console opérationnel.
+* Un agent NetApp Console en cours d'exécution.
 +
 ** Vous devriez avoir un https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-google.html["Agent de console associé à votre système"^] .
 ** https://docs.netapp.com/us-en/bluexp-setup-admin/concept-connectors.html["Vous devez être prêt à laisser l'agent de la console en cours d'exécution à tout moment."^] .
@@ -85,7 +85,7 @@ Le tableau suivant décrit les domaines pour lesquels vous pourriez avoir besoin
 | Modifier le projet  a| 
 Sélectionnez le projet dans lequel vous souhaitez que Cloud Volumes ONTAP réside.  Le projet par défaut est le projet où se trouve la Console.
 
-Si vous ne voyez aucun projet supplémentaire dans la liste déroulante, cela signifie que vous n'avez pas encore associé le compte de service à d'autres projets. Accédez à la console Google Cloud, ouvrez le service IAM et sélectionnez le projet.  Ajoutez le compte de service avec le rôle que vous utilisez pour la console à ce projet. Vous devrez répéter cette étape pour chaque projet.
+Si aucun projet supplémentaire n'apparaît dans la liste déroulante, cela signifie que vous n'avez pas encore associé le compte de service à d'autres projets. Accédez à la Google Cloud Console, ouvrez le service IAM et sélectionnez le projet. Ajoutez le compte de service avec le rôle que vous utilisez pour la Console à ce projet. Vous devrez répéter cette étape pour chaque projet.
 
 
 NOTE: Il s’agit du compte de service que vous avez configuré pour la console,link:https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-google.html["comme décrit sur cette page"^] .
@@ -100,7 +100,7 @@ Pour créer un système Cloud Volumes ONTAP à la carte, vous devez sélectionne
 
 TIP: Si vous souhaitez utiliser WORM et la hiérarchisation des données, vous devez désactiver la sauvegarde et la récupération et déployer un système Cloud Volumes ONTAP avec la version 9.8 ou supérieure.
 
-. *Emplacement et connectivité* : sélectionnez un emplacement, choisissez une politique de pare-feu et confirmez la connectivité réseau au stockage Google Cloud pour la hiérarchisation des données.
+. *Emplacement et connectivité* : Sélectionnez la région et la zone Google Cloud pour votre système, choisissez une politique de pare-feu et confirmez la connectivité réseau au stockage Google Cloud pour la hiérarchisation des données.
 +
 Le tableau suivant décrit les domaines pour lesquels vous pourriez avoir besoin de conseils :
 
@@ -182,7 +182,7 @@ Notez ce qui suit :
 ** La console définit le compte de service sur l’instance Cloud Volumes ONTAP . Ce compte de service fournit des autorisations pour la hiérarchisation des données vers un bucket Google Cloud Storage.  Assurez-vous d’ajouter le compte de service de l’agent de la console en tant qu’utilisateur du compte de service de hiérarchisation, sinon vous ne pourrez pas le sélectionner à partir de la console.
 ** Pour obtenir de l'aide sur l'ajout d'un compte Google Cloud, reportez-vous à https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-gcp-accounts.html["Configuration et ajout de comptes Google Cloud pour la hiérarchisation des données avec 9.6"^] .
 ** Vous pouvez choisir une stratégie de hiérarchisation de volume spécifique lorsque vous créez ou modifiez un volume.
-** Si vous désactivez la hiérarchisation des données, vous pouvez l'activer sur les agrégats suivants, mais vous devrez désactiver le système et ajouter un compte de service à partir de la console Google Cloud.
+** Si vous désactivez la hiérarchisation des données, vous pouvez l'activer sur les agrégats suivants, mais vous devrez éteindre le système et ajouter un compte de service depuis le Google Cloud Console.
 +
 link:concept-data-tiering.html["En savoir plus sur la hiérarchisation des données"^] .
 
@@ -272,9 +272,6 @@ Si vous rencontrez des problèmes lors du déploiement du système Cloud Volumes
 
 Pour obtenir de l'aide supplémentaire, rendez-vous sur https://mysupport.netapp.com/site/products/all/details/cloud-volumes-ontap/guideme-tab["Prise en charge de NetApp Cloud Volumes ONTAP"^] .
 
-
-CAUTION: Une fois le processus de déploiement terminé, ne modifiez pas les configurations Cloud Volumes ONTAP générées par le système dans le portail Google Cloud, en particulier les balises système. Toute modification apportée à ces configurations peut entraîner un comportement inattendu ou une perte de données.
-
 .Après avoir terminé
 * Si vous avez provisionné un partage CIFS, accordez aux utilisateurs ou aux groupes des autorisations sur les fichiers et les dossiers et vérifiez que ces utilisateurs peuvent accéder au partage et créer un fichier.
 * Si vous souhaitez appliquer des quotas aux volumes, utilisez ONTAP System Manager ou l'interface de ligne de commande ONTAP .
@@ -282,6 +279,9 @@ CAUTION: Une fois le processus de déploiement terminé, ne modifiez pas les con
 Les quotas vous permettent de restreindre ou de suivre l'espace disque et le nombre de fichiers utilisés par un utilisateur, un groupe ou un qtree.
 
 
+
+
+CAUTION: Après la fin du processus de déploiement, ne modifiez pas les configurations Cloud Volumes ONTAP générées par le système dans le portail Google Cloud, telles que les balises système et les étiquettes définies dans les ressources Google Cloud. Toute modification apportée à ces configurations peut entraîner un comportement inattendu ou une perte de données.
 
 
 
@@ -318,7 +318,7 @@ Le tableau suivant décrit les domaines pour lesquels vous pourriez avoir besoin
 | Modifier le projet  a| 
 Sélectionnez le projet dans lequel vous souhaitez que Cloud Volumes ONTAP réside.  Le projet par défaut est le projet de la Console.
 
-Si vous ne voyez aucun projet supplémentaire dans la liste déroulante, cela signifie que vous n'avez pas encore associé le compte de service à d'autres projets. Accédez à la console Google Cloud, ouvrez le service IAM et sélectionnez le projet.  Ajoutez le compte de service avec le rôle que vous utilisez pour la console à ce projet. Vous devrez répéter cette étape pour chaque projet.
+Si aucun projet supplémentaire n'apparaît dans la liste déroulante, cela signifie que vous n'avez pas encore associé le compte de service à d'autres projets. Accédez à la Google Cloud Console, ouvrez le service IAM et sélectionnez le projet. Ajoutez le compte de service avec le rôle que vous utilisez pour la Console à ce projet. Vous devrez répéter cette étape pour chaque projet.
 
 
 NOTE: Il s’agit du compte de service que vous avez configuré pour la console,link:https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-google.html["comme décrit sur cette page"^] .
@@ -333,7 +333,7 @@ Pour créer un système Cloud Volumes ONTAP à la carte, vous devez sélectionne
 
 TIP: Si vous souhaitez utiliser WORM et la hiérarchisation des données, vous devez désactiver la sauvegarde et la récupération et déployer un système Cloud Volumes ONTAP avec la version 9.8 ou supérieure.
 
-. *Modèles de déploiement HA* : choisissez plusieurs zones (recommandé) ou une seule zone pour la configuration HA.  Sélectionnez ensuite une région et des zones.
+. *Modèles de déploiement HA* : Choisissez plusieurs zones (recommandé) ou une seule zone pour la configuration HA. Sélectionnez ensuite une région et une zone.
 +
 link:concept-ha-google-cloud.html["En savoir plus sur les modèles de déploiement HA"^] .
 
@@ -418,7 +418,7 @@ Notez ce qui suit :
 +
 ** La console définit le compte de service sur l’instance Cloud Volumes ONTAP . Ce compte de service fournit des autorisations pour la hiérarchisation des données vers un bucket Google Cloud Storage.  Assurez-vous d’ajouter le compte de service de l’agent de la console en tant qu’utilisateur du compte de service de hiérarchisation, sinon vous ne pourrez pas le sélectionner à partir de la console.
 ** Vous pouvez choisir une stratégie de hiérarchisation de volume spécifique lorsque vous créez ou modifiez un volume.
-** Si vous désactivez la hiérarchisation des données, vous pouvez l'activer sur les agrégats suivants, mais vous devrez désactiver le système et ajouter un compte de service à partir de la console Google Cloud.
+** Si vous désactivez la hiérarchisation des données, vous pouvez l'activer sur les agrégats suivants, mais vous devrez éteindre le système et ajouter un compte de service depuis le Google Cloud Console.
 +
 link:concept-data-tiering.html["En savoir plus sur la hiérarchisation des données"^] .
 
@@ -517,7 +517,7 @@ Les quotas vous permettent de restreindre ou de suivre l'espace disque et le nom
 
 
 
-CAUTION: Une fois le processus de déploiement terminé, ne modifiez pas les configurations Cloud Volumes ONTAP générées par le système dans le portail Google Cloud, en particulier les balises système. Toute modification apportée à ces configurations peut entraîner un comportement inattendu ou une perte de données.
+CAUTION: Après la fin du processus de déploiement, ne modifiez pas les configurations Cloud Volumes ONTAP générées par le système dans le portail Google Cloud, telles que les balises système et les étiquettes définies dans les ressources Google Cloud. Toute modification apportée à ces configurations peut entraîner un comportement inattendu ou une perte de données.
 
 .Liens connexes
 * link:task-planning-your-config-gcp.html["Planification de votre configuration Cloud Volumes ONTAP dans Google Cloud"]

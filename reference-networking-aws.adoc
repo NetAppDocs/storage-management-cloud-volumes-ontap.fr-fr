@@ -65,7 +65,7 @@ L'authentification de l'utilisateur échoue et les services suivants restent ind
 * Gestion des identités et des accès (IAM)
 * Service de gestion des clés (KMS)
 * Service de jetons de sécurité (STS)
-* Service de stockage simple (S3)
+* Amazon Simple Storage Service (S3)
 
 | Communication avec les services AWS. | Modes standard et privé. | Cloud Volumes ONTAP ne peut pas communiquer avec le service AWS pour effectuer des opérations spécifiques dans AWS. 
 
@@ -222,7 +222,7 @@ TIP: Vous recherchez des informations sur l’agent Console ? https://docs.neta
 
 === Connexion pour la hiérarchisation des données
 
-Si vous souhaitez utiliser EBS comme niveau de performance et AWS S3 comme niveau de capacité, vous devez vous assurer que Cloud Volumes ONTAP dispose d'une connexion à S3.  La meilleure façon de fournir cette connexion est de créer un point de terminaison VPC pour le service S3.  Pour les instructions, reportez-vous à la https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpce-gateway.html#create-gateway-endpoint["Documentation AWS : Création d'un point de terminaison de passerelle"^] .
+Si vous souhaitez utiliser EBS comme niveau de performance et Amazon S3 comme niveau de capacité, vous devez vous assurer que Cloud Volumes ONTAP dispose d'une connexion à S3. La meilleure façon de fournir cette connexion est de créer un point de terminaison VPC vers le service S3. Pour obtenir des instructions, consultez le https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpce-gateway.html#create-gateway-endpoint["Documentation AWS : Création d'un point de terminaison de passerelle"^].
 
 Lorsque vous créez le point de terminaison VPC, assurez-vous de sélectionner la région, le VPC et la table de routage qui correspondent à l'instance Cloud Volumes ONTAP .  Vous devez également modifier le groupe de sécurité pour ajouter une règle HTTPS sortante qui autorise le trafic vers le point de terminaison S3.  Sinon, Cloud Volumes ONTAP ne peut pas se connecter au service S3.
 

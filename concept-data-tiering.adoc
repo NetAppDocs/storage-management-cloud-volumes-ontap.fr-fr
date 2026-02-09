@@ -26,7 +26,7 @@ ifdef::aws[]
 
 == Hiérarchisation des données dans AWS
 
-Lorsque vous activez la hiérarchisation des données dans AWS, Cloud Volumes ONTAP utilise EBS comme niveau de performances pour les données chaudes et AWS S3 comme niveau de capacité pour les données inactives.
+Lorsque vous activez la hiérarchisation des données dans AWS, Cloud Volumes ONTAP utilise EBS comme niveau de performance pour les données actives et Amazon Simple Storage Service (Amazon S3) comme niveau de capacité pour les données inactives.
 
 Niveau de performance:: Le niveau de performance peut être des SSD à usage général (gp3 ou gp2) ou des SSD IOPS provisionnés (io1).
 +

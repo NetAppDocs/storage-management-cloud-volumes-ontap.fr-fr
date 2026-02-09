@@ -45,7 +45,7 @@ Stockage de l'EBS:: Dans AWS, un agrégat peut contenir jusqu'à 6 disques qui o
 --
 La taille maximale du disque est de 16 Tio.
 
-Le type de disque EBS sous-jacent peut être un SSD à usage général (gp3 ou gp2), un SSD IOPS provisionné (io1) ou un disque dur à débit optimisé (st1).  Vous pouvez associer un disque EBS à Amazon S3 pourlink:concept-data-tiering.html["stockage d'objets à faible coût"] .
+Le type de disque EBS sous-jacent peut être un SSD à usage général (gp3 ou gp2), un SSD à IOPS provisionnées (io1) ou un disque dur optimisé pour le débit (st1). Vous pouvez associer un disque EBS à Amazon Simple Storage Service (Amazon S3) pour link:concept-data-tiering.html["stockage d'objets à faible coût"].
 
 
 NOTE: La hiérarchisation des données vers le stockage d'objets n'est pas recommandée lors de l'utilisation de disques durs à débit optimisé (st1).

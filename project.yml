@@ -269,6 +269,8 @@ sidebar:
         entries:
         - title: Changer le type de machine
           url: "/task-change-gcp-machine.html"
+        - title: Convertissez les déploiements existants en Infrastructure Manager
+          url: "/task-gcp-dm-im-conv.html"
       - title: Administration depuis le gestionnaire système
         url: "/task-administer-advanced-view.html"
       - title: Administration depuis la CLI

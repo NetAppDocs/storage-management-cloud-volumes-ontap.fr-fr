@@ -31,9 +31,9 @@ NOTE: La possibilité de créer des volumes FlexGroup dans la console est prévu
 
 == La console ne prend pas en charge S3 avec Cloud Volumes ONTAP
 
-Bien que Cloud Volumes ONTAP prenne en charge S3 comme option de stockage évolutif, la console ne fournit aucune capacité de gestion pour cette fonctionnalité.  L’utilisation de l’interface de ligne de commande est la meilleure pratique pour configurer l’accès client S3 à partir de Cloud Volumes ONTAP.  Pour plus de détails, reportez-vous à la http://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-s3-cg/home.html["Guide d'alimentation de configuration S3"^] .
+Bien que Cloud Volumes ONTAP prenne en charge S3 comme option de stockage à extension horizontale, la Console ne propose aucune fonctionnalité de gestion pour cette fonctionnalité. L'utilisation de la ligne de commandes est la bonne pratique pour configurer l'accès client S3 depuis Cloud Volumes ONTAP. Pour plus de détails, consultez la http://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-s3-cg/home.html["Guide de configuration ONTAP S3"^].
 
-link:concept-client-protocols.html["En savoir plus sur la prise en charge de Cloud Volumes ONTAP pour S3 et d'autres protocoles clients"] .
+link:concept-client-protocols.html["En savoir plus sur la prise en charge de ONTAP S3 et d'autres protocoles clients par Cloud Volumes ONTAP"].
 
 
 

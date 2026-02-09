@@ -197,7 +197,7 @@ Le seul type de disque pris en charge est GP2.  Les familles de types d'instance
 
 
 
-NOTE: Cloud Volumes ONTAP prend en charge uniquement ces configurations.  La sélection de types de disques non pris en charge ou d'instances non qualifiées dans la configuration de la zone locale AWS peut entraîner l'échec du déploiement.  La hiérarchisation des données vers AWS S3 n'est pas disponible dans les zones locales AWS en raison du manque de connectivité.
+NOTE: Cloud Volumes ONTAP ne prend en charge que ces configurations. La sélection de types de disques non pris en charge ou d'instances non qualifiées dans la configuration AWS Local Zone peut entraîner un échec de déploiement. La hiérarchisation des données vers Amazon Simple Storage Service (Amazon S3) n'est pas prise en charge si votre système Cloud Volumes ONTAP se trouve dans une AWS Local Zone, car l'accès aux compartiments Amazon S3 en dehors de la Local Zone engendre une latence plus élevée et impacte les activités Cloud Volumes ONTAP.
 
 link:https://aws.amazon.com/about-aws/global-infrastructure/localzones/features/?nc=sn&loc=2["Documentation AWS : types d'instances EC2 dans les zones locales"^] .
 

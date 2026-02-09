@@ -34,7 +34,7 @@ La console propose des packages préconfigurés qui correspondent à vos exigenc
 +
 Cette étape n'est pas requise si vous déployez Cloud Volumes ONTAP dans un emplacement où aucun accès Internet n'est disponible.
 
-. Configurez un point de terminaison VPC sur le service S3.
+. Configurez un point de terminaison VPC vers le service Amazon Simple Storage Service (Amazon S3).
 +
 Un point de terminaison VPC est requis si vous souhaitez hiérarchiser les données froides de Cloud Volumes ONTAP vers un stockage d'objets à faible coût.
 

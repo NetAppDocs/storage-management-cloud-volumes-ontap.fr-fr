@@ -102,7 +102,7 @@ Pour plus de détails sur ce processus, reportez-vous à la https://docs.aws.ama
 
 . Si vous utilisez une CMK gérée par le client, modifiez la stratégie de clé de la CMK en ajoutant le rôle IAM Cloud Volumes ONTAP en tant qu'utilisateur clé.
 +
-Cette étape est requise si vous avez activé la hiérarchisation des données sur Cloud Volumes ONTAP et souhaitez crypter les données stockées dans le bucket S3.
+Cette étape est nécessaire si vous avez activé la hiérarchisation des données sur Cloud Volumes ONTAP et que vous souhaitez chiffrer les données stockées dans le compartiment Amazon Simple Storage Service (Amazon S3).
 
 
 
