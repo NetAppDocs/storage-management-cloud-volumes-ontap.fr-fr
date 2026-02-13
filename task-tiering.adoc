@@ -101,7 +101,7 @@ ifdef::azure[]
 
 * La hiérarchisation des données est prise en charge dans Azure comme suit :
 +
-** Version 9.4 avec systèmes à nœud unique
+** Version 9.4 avec les systèmes à nœud unique
 ** Version 9.6 avec paires HA
 
 

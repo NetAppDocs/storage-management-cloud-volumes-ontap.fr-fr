@@ -70,9 +70,9 @@ ifdef::azure[]
 
 == Stockage Azure
 
-Dans Azure, un agrégat peut contenir jusqu’à 12 disques de même taille.  Le type de disque et la taille maximale du disque dépendent du fait que vous utilisez un système à nœud unique ou une paire HA :
+Dans Azure, un agrégat peut contenir jusqu'à 12 disques de même taille. Le type de disque et la taille maximale du disque dépendent du fait que vous utilisez un système à nœud unique ou une paire haute disponibilité :
 
-Systèmes à nœud unique:: Les systèmes à nœud unique peuvent utiliser ces types de disques gérés Azure :
+Systèmes à nœud unique:: Les systèmes à nœud unique peuvent utiliser ces types de disques Azure Managed Disks :
 +
 --
 * Les _disques gérés SSD Premium_ offrent des performances élevées pour les charges de travail gourmandes en E/S à un coût plus élevé.

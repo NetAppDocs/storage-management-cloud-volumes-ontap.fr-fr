@@ -131,7 +131,7 @@ dest::> network ipspace create -ipspace <new_ipspace>
 ----
 dest::> network port show
 ----
-. Pour les systèmes à nœud unique, le port nouvellement ajouté est _e0b_.  Pour les déploiements de paires HA avec des disques gérés, le port nouvellement ajouté est _e0d_.  Pour les déploiements de paires HA avec des blobs de pages, le port nouvellement ajouté est _e0e_.  Utilisez le nom du nœud et non le nom de la machine virtuelle.  Recherchez le nom du nœud en exécutant `node show` .
+. Pour les systèmes à nœud unique, le port nouvellement ajouté est _e0b_. Pour les déploiements de paire haute disponibilité avec disques managés, le port nouvellement ajouté est _e0d_. Pour les déploiements de paire haute disponibilité avec blobs de pages, le port nouvellement ajouté est _e0e_. Utilisez le nom du nœud, pas le nom de la machine virtuelle. Trouvez le nom du nœud en exécutant `node show`.
 +
 [source, cli]
 ----

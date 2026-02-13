@@ -106,13 +106,13 @@ Pour plus d'informations sur la configuration des serveurs proxy, reportez-vous 
 
 La console alloue automatiquement le nombre requis d'adresses IP privées à Cloud Volumes ONTAP.  Vous devez vous assurer que votre réseau dispose de suffisamment d’adresses IP privées disponibles.
 
-Le nombre de LIF que la console alloue à Cloud Volumes ONTAP dépend du fait que vous déployez un système à nœud unique ou une paire HA.  Un LIF est une adresse IP associée à un port physique.
+Le nombre d'interfaces logiques (LIF) que la NetApp Console alloue pour Cloud Volumes ONTAP dépend du fait que vous déployiez un système à nœud unique ou une paire haute disponibilité. Une LIF est une adresse IP associée à un port physique.
 
 
 
 ==== Adresses IP pour un système à nœud unique
 
-La console alloue 6 adresses IP à un seul système de nœud.
+La NetApp Console alloue 6 adresses IP à un système à nœud unique.
 
 Le tableau suivant fournit des détails sur les LIF associés à chaque adresse IP privée.
 
@@ -142,7 +142,7 @@ Le tableau suivant fournit des détails sur les LIF associés à chaque adresse 
 
 ==== Adresses IP pour les paires HA
 
-Les paires HA nécessitent plus d'adresses IP qu'un système à nœud unique.  Ces adresses IP sont réparties sur différentes interfaces Ethernet, comme illustré dans l'image suivante :
+Les paires haute disponibilité nécessitent plus d'adresses IP qu'un système à nœud unique. Ces adresses IP sont réparties sur différentes interfaces ethernet, comme illustré dans l'image suivante :
 
 image:diagram_cvo_aws_networking_ha.png["Un diagramme qui montre eth0, eth1, eth2 sur une configuration Cloud Volumes ONTAP HA dans AWS."]
 

@@ -1,0 +1,17 @@
+= Prise en charge des machines virtuelles Ebdsv5 et E104ids_v5 dans Azure
+:allow-uri-read: 
+
+
+
+
+== Prise en charge des machines virtuelles Ebdsv5 et E104ids_v5 dans Azure
+
+À partir de Cloud Volumes ONTAP 9.18.1, vous pouvez déployer des machines virtuelles Ebdsv5 et E104ids_v5 pour des déploiements et des mises à niveau à nœud unique et en paire haute disponibilité (HA).
+
+Les machines virtuelles Ebdsv5 de la famille Eb d'Azure sont optimisées pour des performances de stockage distant supérieures. Vous pouvez utiliser ces machines virtuelles pour des charges de travail d'entreprise gourmandes en mémoire et en E/S, telles que les bases de données relationnelles, l'analyse en mémoire et d'autres applications critiques exigeantes.
+
+E104ids_v5 est une instance de machine virtuelle isolée qui vous aide à mieux gérer les fenêtres de maintenance planifiées. Comparée à E80ids_v4, elle offre un débit disque et des IOPS nettement supérieurs, ainsi que de meilleures performances réseau globales.
+
+https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-azure.html["Configurations prises en charge pour Cloud Volumes ONTAP dans Azure"^]
+
+https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/memory-optimized/edsv5-series?tabs=sizebasic["Documentation Azure : série de tailles Edsv5"^]

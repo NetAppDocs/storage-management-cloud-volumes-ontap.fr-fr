@@ -14,7 +14,7 @@ summary: Vous pouvez lancer un seul système Cloud Volumes ONTAP dans Azure en c
 
 
 [role="lead"]
-Vous pouvez lancer un système à nœud unique ou une paire HA dans Azure en créant un système Cloud Volumes ONTAP dans la NetApp Console.
+Vous pouvez lancer un système à nœud unique ou une paire haute disponibilité dans Azure en créant un système Cloud Volumes ONTAP dans NetApp Console.
 
 .Avant de commencer
 Vous avez besoin des éléments suivants avant de commencer.
@@ -51,7 +51,7 @@ Le déploiement de Cloud Volumes ONTAP dans un groupe de ressources partagé exi
 
 == Lancer un système Cloud Volumes ONTAP à nœud unique dans Azure
 
-Si vous souhaitez lancer un système Cloud Volumes ONTAP à nœud unique dans Azure, vous devez créer un système à nœud unique dans la console.
+Si vous souhaitez lancer un système Cloud Volumes ONTAP à nœud unique dans Azure, vous devez créer un système à nœud unique dans la Console.
 
 .Étapes
 . Dans le menu de navigation de gauche, sélectionnez *Stockage > Gestion*.

@@ -20,6 +20,24 @@ Les améliorations décrites sur cette page sont spécifiques à la gestion de C
 
 
 
+== 12 février 2026
+
+
+
+== Prise en charge des machines virtuelles Ebdsv5 et E104ids_v5 dans Azure
+
+À partir de Cloud Volumes ONTAP 9.18.1, vous pouvez déployer des machines virtuelles Ebdsv5 et E104ids_v5 pour des déploiements et des mises à niveau à nœud unique et en paire haute disponibilité (HA).
+
+Les machines virtuelles Ebdsv5 de la famille Eb d'Azure sont optimisées pour des performances de stockage distant supérieures. Vous pouvez utiliser ces machines virtuelles pour des charges de travail d'entreprise gourmandes en mémoire et en E/S, telles que les bases de données relationnelles, l'analyse en mémoire et d'autres applications critiques exigeantes.
+
+E104ids_v5 est une instance de machine virtuelle isolée qui vous aide à mieux gérer les fenêtres de maintenance planifiées. Comparée à E80ids_v4, elle offre un débit disque et des IOPS nettement supérieurs, ainsi que de meilleures performances réseau globales.
+
+https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-azure.html["Configurations prises en charge pour Cloud Volumes ONTAP dans Azure"^]
+
+https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/memory-optimized/edsv5-series?tabs=sizebasic["Documentation Azure : série de tailles Edsv5"^]
+
+
+
 == 10 février 2026
 
 
@@ -1477,7 +1495,7 @@ La prise en charge de la création de machines virtuelles de stockage nécessite
 - compute.instanceGroups.get
 - compute.addresses.get
 ----
-Notez que vous devez utiliser l'interface de ligne de commande ONTAP ou le gestionnaire de système pour créer une machine virtuelle de stockage sur un système à nœud unique.
+Notez que vous devez utiliser l'interface de ligne de commande ONTAP ou System Manager pour créer une machine virtuelle de stockage sur un système à nœud unique.
 
 * https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-limits-gcp.html#storage-vm-limits["En savoir plus sur les limites des machines virtuelles de stockage dans Google Cloud"^]
 * https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-managing-svms-gcp.html["Découvrez comment créer des machines virtuelles de stockage de données pour Cloud Volumes ONTAP dans Google Cloud"]
@@ -1572,7 +1590,7 @@ https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-gcp
 +
 Auparavant, BlueXP n’affichait aucune stratégie dans VPC-1, VPC-2 ou VPC-3 qui n’avait pas de balise cible.
 
-* Lorsque vous créez un système à nœud unique Cloud Volumes ONTAP dans Google Cloud, vous pouvez désormais choisir si vous souhaitez que la stratégie de pare-feu prédéfinie autorise le trafic au sein du VPC sélectionné uniquement (recommandé) ou de tous les VPC.
+* Lorsque vous créez un système Cloud Volumes ONTAP à nœud unique dans Google Cloud, vous pouvez désormais choisir si vous souhaitez que la politique de pare-feu prédéfinie autorise le trafic uniquement au sein du VPC sélectionné (recommandé) ou dans tous les VPC.
 
 
 
@@ -1767,7 +1785,7 @@ Cloud Volumes ONTAP est désormais pris en charge dans la région AWS Asie-Pacif
 
 === Réduction du port
 
-Les ports 8023 et 49000 ne sont plus ouverts sur les systèmes Cloud Volumes ONTAP dans Azure pour les systèmes à nœud unique et les paires HA.
+Les ports 8023 et 49000 ne sont plus ouverts sur les systèmes Cloud Volumes ONTAP dans Azure, que ce soit pour les systèmes à nœud unique ou les paires haute disponibilité.
 
 Cette modification s’applique aux _nouveaux_ systèmes Cloud Volumes ONTAP à partir de la version 3.9.13 du connecteur.
 
@@ -2076,7 +2094,7 @@ Il y a quelques limitations à souligner :
 
 === Ultra SSD VNVRAM dans les régions Azure prises en charge
 
-Cloud Volumes ONTAP peut désormais utiliser un SSD Ultra comme VNVRAM lorsque vous utilisez le type de machine virtuelle E32s_v3 avec un système à nœud unique https://docs.microsoft.com/en-us/azure/virtual-machines/disks-enable-ultra-ssd["dans n'importe quelle région Azure prise en charge"^] .
+Cloud Volumes ONTAP peut désormais utiliser un SSD Ultra comme VNVRAM lorsque vous utilisez le type de VM E32s_v3 avec un système à nœud unique https://docs.microsoft.com/en-us/azure/virtual-machines/disks-enable-ultra-ssd["dans n'importe quelle région Azure prise en charge"^].
 
 La VNVRAM offre de meilleures performances d'écriture.
 

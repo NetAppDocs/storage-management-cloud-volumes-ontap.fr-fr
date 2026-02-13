@@ -32,7 +32,7 @@ Toutes les versions de Cloud Volumes ONTAP antérieures à la version 9.11.1 pre
 
 == Créer une machine virtuelle de stockage
 
-En fonction de votre configuration et de votre type de licence, vous pouvez créer plusieurs machines virtuelles de stockage sur un système à nœud unique ou dans une configuration haute disponibilité (HA) à l'aide des API.
+En fonction de votre configuration et de votre type de licence, vous pouvez créer plusieurs machines virtuelles de stockage sur un système à nœud unique ou dans une configuration de paire haute disponibilité (HA) en utilisant les API.
 
 .À propos de cette tâche
 Lorsque vous créez des machines virtuelles de stockage à l'aide des API, en plus de configurer les interfaces réseau requises, la console modifie également les `default-data-files` politiques sur les machines virtuelles de stockage de données en supprimant les services suivants du LIF de données NAS et en les ajoutant au LIF de données iSCSI utilisé pour les connexions de gestion sortantes :
@@ -49,9 +49,9 @@ L'agent de console nécessite des autorisations spécifiques pour créer des mac
 
 
 
-=== Système à nœud unique
+=== système à nœud unique
 
-Utilisez l’appel d’API suivant pour créer une machine virtuelle de stockage sur un système à nœud unique.
+Utilisez l'appel API suivant pour créer une machine virtuelle de stockage sur un système à nœud unique.
 
 `POST /gcp/vsa/working-environments/{workingEnvironmentId}/svm`
 
@@ -95,7 +95,7 @@ L'agent de console nécessite des autorisations spécifiques pour gérer les mac
 Pour renommer une machine virtuelle de stockage, vous devez fournir les noms de la machine virtuelle de stockage existante et de la nouvelle machine virtuelle de stockage comme paramètres.
 
 .Étapes
-* Utilisez l’appel d’API suivant pour renommer une machine virtuelle de stockage sur un système à nœud unique :
+* Utilisez l'appel API suivant pour renommer une machine virtuelle de stockage sur un système à nœud unique :
 +
 `PUT /gcp/vsa/working-environments/{workingEnvironmentId}/svm`
 
@@ -134,7 +134,7 @@ Incluez les paramètres suivants dans le corps de la requête :
 Dans une configuration à nœud unique ou HA, vous pouvez supprimer une machine virtuelle de stockage si elle ne possède aucun volume actif.
 
 .Étapes
-* Utilisez l’appel d’API suivant pour supprimer une machine virtuelle de stockage sur un système à nœud unique :
+* Utilisez l'appel API suivant pour supprimer une machine virtuelle de stockage sur un système à nœud unique :
 +
 `DELETE /gcp/vsa/working-environments/{workingEnvironmentId}/svm/{svmName}`
 

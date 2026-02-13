@@ -94,7 +94,7 @@ Pour plus d'informations sur la configuration des serveurs proxy, reportez-vous 
 
 La console alloue automatiquement le nombre requis d’adresses IP privées à Cloud Volumes ONTAP dans Azure.  Vous devez vous assurer que votre réseau dispose de suffisamment d’adresses IP privées disponibles.
 
-Le nombre de LIF alloués à Cloud Volumes ONTAP dépend du fait que vous déployez un système à nœud unique ou une paire HA.  Un LIF est une adresse IP associée à un port physique.  Un LIF de gestion SVM est requis pour les outils de gestion tels que SnapCenter.
+Le nombre d'interfaces logiques (LIF) allouées à Cloud Volumes ONTAP dépend du type de système déployé : mono-nœud ou paire haute disponibilité. Une LIF est une adresse IP associée à un port physique. Une LIF de gestion SVM est requise pour les outils de gestion tels que SnapCenter.
 
 
 NOTE: Un LIF iSCSI fournit un accès client via le protocole iSCSI et est utilisé par le système pour d'autres flux de travail réseau importants.  Ces LIF sont obligatoires et ne doivent pas être supprimés.
@@ -103,7 +103,7 @@ NOTE: Un LIF iSCSI fournit un accès client via le protocole iSCSI et est utilis
 
 ==== Adresses IP pour un système à nœud unique
 
-La console alloue 5 ou 6 adresses IP à un seul système de nœud :
+La NetApp Console alloue 5 ou 6 adresses IP à un système à nœud unique :
 
 * Gestion de cluster IP
 * IP de gestion des nœuds
@@ -123,7 +123,7 @@ NOTE: L'IP iSCSI fournit un accès client via le protocole iSCSI.  Il est égale
 
 La console alloue des adresses IP à 4 cartes réseau (par nœud) pendant le déploiement.
 
-Notez que la console crée un LIF de gestion SVM sur les paires HA, mais pas sur les systèmes à nœud unique dans Azure.
+Notez que la NetApp Console crée une interface logique de gestion SVM sur les paires haute disponibilité, mais pas sur les systèmes à nœud unique dans Azure.
 
 *NIC0*
 
@@ -308,7 +308,7 @@ Lorsque vous ajoutez un système Cloud Volumes ONTAP et choisissez un groupe de 
 
 
 
-NOTE: Les systèmes HA ont moins de règles entrantes que les systèmes à nœud unique, car le trafic de données entrant passe par Azure Standard Load Balancer.  Pour cette raison, le trafic provenant de l’équilibreur de charge doit être ouvert, comme indiqué dans la règle « AllowAzureLoadBalancerInBound ».
+NOTE: Les systèmes à haute disponibilité (HA) comportent moins de règles entrantes que les systèmes à nœud unique, car le trafic de données entrant transite par l'équilibreur de charge standard Azure. Pour cette raison, le trafic provenant de l'équilibreur de charge doit être autorisé, comme indiqué dans la règle « AllowAzureLoadBalancerInBound ».
 
 * *Désactivé* : cette option restreint l'accès au réseau public à votre compte de stockage et désactive la hiérarchisation des données pour les systèmes Cloud Volumes ONTAP .  Il s’agit d’une option recommandée si vos adresses IP privées ne doivent pas être exposées même au sein du même réseau virtuel en raison des réglementations et des politiques de sécurité.
 

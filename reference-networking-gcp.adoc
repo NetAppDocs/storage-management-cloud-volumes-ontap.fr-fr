@@ -28,19 +28,19 @@ Les exigences suivantes doivent être respectées dans Google Cloud.
 
 === Exigences spécifiques aux systèmes à nœud unique
 
-Si vous souhaitez déployer un système à nœud unique, assurez-vous que votre réseau répond aux exigences suivantes.
+Si vous souhaitez déployer un système à nœud unique, assurez-vous que votre réseau réponde aux exigences suivantes.
 
 
 
 ==== Un VPC
 
-Un cloud privé virtuel (VPC) est requis pour un système à nœud unique.
+Un cloud privé virtuel (VPC) est nécessaire pour un système à nœud unique.
 
 
 
 ==== Adresses IP privées
 
-Pour un système à nœud unique dans Google Cloud, la console alloue des adresses IP privées aux éléments suivants :
+Pour un système à nœud unique dans Google Cloud, la NetApp Console attribue des adresses IP privées aux éléments suivants :
 
 * Nœud
 * Cluster
@@ -111,9 +111,9 @@ Les sous-réseaux de ces VPC doivent avoir des plages CIDR distinctes.  Ils ne p
 
 La console alloue automatiquement le nombre requis d'adresses IP privées à Cloud Volumes ONTAP dans Google Cloud.  Vous devez vous assurer que votre réseau dispose de suffisamment d’adresses privées disponibles.
 
-Le nombre de LIF alloués à Cloud Volumes ONTAP dépend du fait que vous déployez un système à nœud unique ou une paire HA.  Un LIF est une adresse IP associée à un port physique.  Un LIF de gestion SVM est requis pour les outils de gestion tels que SnapCenter.
+Le nombre d'interfaces logiques (LIF) allouées à Cloud Volumes ONTAP dépend du type de système déployé : mono-nœud ou paire haute disponibilité. Une LIF est une adresse IP associée à un port physique. Une LIF de gestion SVM est requise pour les outils de gestion tels que SnapCenter.
 
-* *Nœud unique* La console alloue 4 adresses IP à un système à nœud unique :
+* *Nœud unique* NetApp Console alloue 4 adresses IP à un système à nœud unique :
 +
 ** Gestion des nœuds LIF
 ** Gestion des clusters LIF

@@ -172,7 +172,7 @@ link:https://docs.netapp.com/us-en/keystone-staas/index.html["En savoir plus sur
 
 === Configurations prises en charge
 
-Les abonnements Keystone sont pris en charge avec les paires HA.  Cette option de licence n'est pas prise en charge avec les systèmes à nœud unique pour le moment.
+Les abonnements Keystone sont compatibles avec les paires haute disponibilité. Cette option de licence n'est pas prise en charge pour les systèmes à nœud unique actuellement.
 
 
 

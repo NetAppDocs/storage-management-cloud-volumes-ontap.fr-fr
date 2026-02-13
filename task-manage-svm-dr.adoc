@@ -16,7 +16,7 @@ summary: 'La NetApp Console ne fournit aucune configuration ni support d"orchest
 [role="lead"]
 La NetApp Console n'offre pas de prise en charge de la configuration ou de l'orchestration pour la reprise après sinistre des machines virtuelles de stockage (SVM).  Pour effectuer ces tâches, utilisez ONTAP System Manager ou l'interface de ligne de commande ONTAP .
 
-Si vous configurez la réplication SnapMirror SVM entre deux systèmes Cloud Volumes ONTAP , la réplication doit être effectuée entre deux systèmes à paires HA ou deux systèmes à nœud unique.  Vous ne pouvez pas configurer la réplication SnapMirror SVM entre une paire HA et un système à nœud unique.
+Si vous configurez la réplication SVM SnapMirror entre deux systèmes Cloud Volumes ONTAP, la réplication doit s’effectuer entre deux systèmes en paire haute disponibilité ou deux systèmes à nœud unique. Vous ne pouvez pas configurer la réplication SVM SnapMirror entre une paire haute disponibilité et un système à nœud unique.
 
 Reportez-vous aux documents suivants pour obtenir les instructions de l'interface de ligne de commande ONTAP .
 

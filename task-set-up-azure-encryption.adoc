@@ -153,7 +153,7 @@ Notez les exigences suivantes pour le coffre-fort de clés :
 +
 *** *Suppression logicielle* (cette option est activée par défaut, mais ne doit _pas_ être désactivée)
 *** *Protection contre la purge*
-*** *Azure Disk Encryption pour le chiffrement des volumes* (pour les systèmes à nœud unique, les paires HA dans plusieurs zones et les déploiements HA mono-AZ)
+*** *Azure Disk Encryption for volume encryption* (pour les systèmes à nœud unique, les paires haute disponibilité dans plusieurs zones et les déploiements haute disponibilité dans une seule zone de disponibilité)
 +
 
 NOTE: L’utilisation des clés de chiffrement gérées par le client Azure dépend de l’activation du chiffrement de disque Azure pour le coffre de clés.

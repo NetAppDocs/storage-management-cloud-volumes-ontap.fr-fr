@@ -44,7 +44,7 @@ Chaque instance EC2 prend en charge un nombre maximal d'adresses IPv4 privées p
 
 Les adresses IPv4 privées doivent être attribuées au port e0a dans AWS avant de créer des LIF pour la nouvelle machine virtuelle de stockage.
 
-Notez qu'un LIF de gestion facultatif pour une machine virtuelle de stockage nécessite une adresse IP privée sur un système à nœud unique et sur une paire HA dans une seule zone de disponibilité.  Ce LIF de gestion fournit une connexion à des outils de gestion comme SnapCenter.
+Notez qu'une interface logique de gestion (LIF) optionnelle pour une machine virtuelle de stockage nécessite une adresse IP privée sur un système à nœud unique et sur une paire haute disponibilité dans une seule zone de disponibilité. Cette LIF de gestion permet une connexion à des outils de gestion comme SnapCenter.
 
 .Étapes
 . Connectez-vous à AWS et ouvrez le service EC2.
@@ -72,7 +72,7 @@ Si une adresse IP n'est pas utilisée, vous pouvez l'utiliser avec la nouvelle m
 
 . De retour dans la console AWS, cliquez sur *Attribuer une nouvelle adresse IP* pour attribuer des adresses IP supplémentaires en fonction de la quantité dont vous avez besoin pour la nouvelle machine virtuelle de stockage.
 +
-** Système à nœud unique : une adresse IP privée secondaire inutilisée est requise.
+** Système à nœud unique : une adresse IP privée secondaire inutilisée est requise.
 +
 Une adresse IP privée secondaire facultative est requise si vous souhaitez créer un LIF de gestion sur la machine virtuelle de stockage.
 
@@ -92,7 +92,7 @@ Une adresse IP privée secondaire facultative est requise si vous souhaitez cré
 
 == Créer une machine virtuelle de stockage sur un système à nœud unique
 
-Ces étapes créent une nouvelle machine virtuelle de stockage sur un système à nœud unique.  Une adresse IP privée est requise pour créer un NAS LIF et une autre adresse IP privée facultative est nécessaire si vous souhaitez créer un LIF de gestion.
+Ces étapes permettent de créer une nouvelle machine virtuelle de stockage sur un système à nœud unique. Une adresse IP privée est requise pour créer une LIF NAS et une autre adresse IP privée facultative est nécessaire si vous souhaitez créer une LIF de gestion.
 
 .Étapes
 . Créez la machine virtuelle de stockage et un itinéraire vers la machine virtuelle de stockage.

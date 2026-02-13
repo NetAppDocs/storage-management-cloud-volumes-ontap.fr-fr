@@ -27,7 +27,7 @@ link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-manage-node-l
 
 == Licences système BYOL
 
-Les licences basées sur les nœuds peuvent être obtenues auprès de NetApp. Le nombre de licences disponibles pour un système à nœud unique ou une paire HA est illimité.
+Les licences par nœud peuvent être obtenues auprès de NetApp. Le nombre de licences que vous pouvez acheter pour un système à nœud unique ou une paire haute disponibilité est illimité.
 
 
 NOTE: NetApp a restreint l'achat, la prolongation et le renouvellement des licences BYOL. Pour plus d'informations, consultez  https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/whats-new.html#restricted-availability-of-byol-licensing-for-cloud-volumes-ontap["Disponibilité restreinte des licences BYOL pour Cloud Volumes ONTAPP"^] .

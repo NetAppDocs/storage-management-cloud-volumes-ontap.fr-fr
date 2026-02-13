@@ -65,7 +65,7 @@ Type de machine virtuelle:: Consultez les types de machines virtuelles pris en c
 Type de disque Azure avec systèmes à nœud unique:: Lorsque vous créez des volumes pour Cloud Volumes ONTAP, vous devez choisir le stockage cloud sous-jacent que Cloud Volumes ONTAP utilise comme disque.
 +
 --
-Les systèmes à nœud unique peuvent utiliser ces types de disques gérés Azure :
+Les systèmes à nœud unique peuvent utiliser ces types de disques Azure Managed Disks :
 
 * Les _disques gérés SSD Premium_ offrent des performances élevées pour les charges de travail gourmandes en E/S à un coût plus élevé.
 * Les _disques gérés SSD Premium v2_ offrent des performances supérieures avec une latence plus faible à un coût inférieur, par rapport aux disques gérés SSD Premium.

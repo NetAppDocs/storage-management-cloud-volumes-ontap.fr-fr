@@ -156,7 +156,7 @@ La console met à jour la licence sur le système Cloud Volumes ONTAP .
 
 Vous pouvez acheter des licences de capacité supplémentaires pour un système Cloud Volumes ONTAP BYOL afin d'allouer plus que les 368 Tio de capacité fournis avec une licence système BYOL.  Par exemple, vous pouvez acheter une capacité de licence supplémentaire pour allouer jusqu'à 736 Tio de capacité à Cloud Volumes ONTAP.  Ou vous pouvez acheter trois licences de capacité supplémentaires pour obtenir jusqu'à 1,4 PiB.
 
-Le nombre de licences disponibles pour un système à nœud unique ou une paire HA est illimité.
+Le nombre de licences que vous pouvez acheter pour un système à nœud unique ou une paire haute disponibilité est illimité.
 
 
 

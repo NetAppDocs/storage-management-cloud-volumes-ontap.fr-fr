@@ -82,7 +82,7 @@ ifdef::azure[]
 
 ==== Azuré
 
-Si vous utilisez un système à nœud unique, Cloud Volumes ONTAP prend en charge une vitesse d'écriture élevée avec tous les types de machines virtuelles.
+Si vous utilisez un système à nœud unique, Cloud Volumes ONTAP prend en charge une vitesse d'écriture élevée avec tous les types de VM.
 
 Si vous utilisez une paire HA, Cloud Volumes ONTAP prend en charge une vitesse d'écriture élevée avec plusieurs types de machines virtuelles, à partir de la version 9.8.  Aller à la https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-azure.html["Notes de version de Cloud Volumes ONTAP"^] pour afficher les types de machines virtuelles qui prennent en charge une vitesse d'écriture élevée.
 
