@@ -130,7 +130,7 @@ Si vous laissez la console générer la politique de pare-feu pour vous, vous de
 ** link:task-set-up-licensing-google.html["Apprenez à configurer les licences"^]
 
 
-. *Packages préconfigurés* : sélectionnez l’un des packages pour déployer rapidement un système Cloud Volumes ONTAP ou cliquez sur *Créer ma propre configuration*.
+. *Packages préconfigurés* : Sélectionnez l’un des packages pour déployer rapidement un système Cloud Volumes ONTAP, ou cliquez sur *Créer ma propre configuration*. Les packages préconfigurés varient selon la version Cloud Volumes ONTAP sélectionnée. Par exemple, pour Cloud Volumes ONTAP 9.18.1 et versions ultérieures, la Console affiche des packages avec des machines virtuelles C3, y compris des disques Hyperdisk Balanced. Vous pouvez modifier les configurations, telles que les paramètres d’IOPS et de débit, en fonction des besoins de votre charge de travail.
 +
 Si vous choisissez l’un des packages, il vous suffit de spécifier un volume, puis de vérifier et d’approuver la configuration.
 
@@ -151,14 +151,9 @@ Pour obtenir de l'aide sur le choix d'un type et d'une taille de disque, reporte
 
 . *Cache Flash, vitesse d'écriture et WORM* :
 +
-.. Activez *Flash Cache*, si vous le souhaitez.
+.. Activez *Flash Cache* ou choisissez *Normal* ou *High* comme vitesse d'écriture si vous en avez besoin.
 +
-
-NOTE: À partir de Cloud Volumes ONTAP 9.13.1, _Flash Cache_ est pris en charge sur les types d'instances n2-standard-16, n2-standard-32, n2-standard-48 et n2-standard-64.  Vous ne pouvez pas désactiver Flash Cache après le déploiement.
-
-.. Choisissez une vitesse d'écriture *Normale* ou *Élevée*, si vous le souhaitez.
-+
-link:concept-write-speed.html["En savoir plus sur la vitesse d'écriture"] .
+Apprenez-en davantage sur  https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-gcp.html#flash-cache-support["Cache Flash"^] et link:concept-write-speed.html["vitesse d'écriture"].
 
 +
 
@@ -388,14 +383,9 @@ Pour obtenir de l'aide sur le choix d'un type et d'une taille de disque, reporte
 
 . *Cache Flash, vitesse d'écriture et WORM* :
 +
-.. Activez *Flash Cache*, si vous le souhaitez.
+.. Activez *Flash Cache* ou choisissez *Normal* ou *High* comme vitesse d'écriture si vous en avez besoin.
 +
-
-NOTE: À partir de Cloud Volumes ONTAP 9.13.1, _Flash Cache_ est pris en charge sur les types d'instances n2-standard-16, n2-standard-32, n2-standard-48 et n2-standard-64.  Vous ne pouvez pas désactiver Flash Cache après le déploiement.
-
-.. Choisissez une vitesse d'écriture *Normale* ou *Élevée*, si vous le souhaitez.
-+
-link:concept-write-speed.html["En savoir plus sur la vitesse d'écriture"^] .
+Apprenez-en davantage sur  https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-gcp.html#flash-cache-support["Cache Flash"^] et link:concept-write-speed.html["vitesse d'écriture"].
 
 +
 

@@ -178,6 +178,16 @@ link:task-enabling-private-link.html["En savoir plus sur l'utilisation des liens
 
 
 
+=== Mise en réseau pour le chiffrement Azure VNet
+
+Cloud Volumes ONTAP prend en charge  https://learn.microsoft.com/en-us/azure/virtual-network/virtual-network-encryption-overview["chiffrement Azure Virtual Network (VNet)"^] le chiffrement du trafic entre machines virtuelles au sein d'un VNet ou entre VNets appariés. Cette fonctionnalité est configurée au niveau du VNet Azure et est indépendante de la topologie Cloud Volumes ONTAP (nœud unique ou HA).
+
+Il vous suffit de vérifier que la mise en réseau accélérée est activée sur les cartes réseau de la machine virtuelle et de consulter les exigences et limitations du chiffrement des réseaux virtuels Azure avant d'activer cette fonctionnalité. Vous ne devez pas modifier les objets d'équilibrage de charge gérés NetApp.
+
+https://learn.microsoft.com/en-us/azure/virtual-network/accelerated-networking-overview?tabs=NetworkManager["Documentation Azure : chiffrement VNet et mise en réseau accélérée"^].
+
+
+
 === Connexions à d'autres systèmes ONTAP
 
 Pour répliquer des données entre un système Cloud Volumes ONTAP dans Azure et des systèmes ONTAP dans d’autres réseaux, vous devez disposer d’une connexion VPN entre le réseau virtuel Azure et l’autre réseau, par exemple, votre réseau d’entreprise.
