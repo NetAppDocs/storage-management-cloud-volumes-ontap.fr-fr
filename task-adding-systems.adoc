@@ -14,10 +14,12 @@ summary: Vous pouvez découvrir et ajouter des systèmes Cloud Volumes ONTAP exi
 
 
 [role="lead"]
-Vous pouvez découvrir et ajouter des systèmes Cloud Volumes ONTAP existants à la NetApp Console. Vous pouvez le faire si vous déployez un nouveau système.
+Vous pouvez découvrir et ajouter des systèmes Cloud Volumes ONTAP existants à la NetApp Console pour une gestion centralisée. Lorsque vous intégrez un système à un compte, le système est enregistré avec ce compte. Dans les environnements comportant plusieurs comptes ou organisations, vous ne pouvez découvrir et gérer que les systèmes enregistrés avec votre compte de connexion à la Console.
+
+Lors de la gestion des enregistrements système, veillez à ce que toutes les actions soient effectuées au sein de la même organisation et du même compte où les systèmes ont été initialement intégrés. Par exemple, vous pouvez déplacer un Cloud Volumes ONTAP vers un nouvel agent Console si la migration reste au sein de la même organisation.
 
 
-NOTE: Vous ne pouvez ajouter que les systèmes enregistrés avec le compte que vous avez utilisé pour vous connecter à la console.  Si vous possédez plusieurs comptes ou organisations, assurez-vous d'être connecté au bon compte avant d'ajouter des systèmes.  Vous ne pouvez pas découvrir, consulter ni gérer les systèmes enregistrés auprès d'un autre compte ou d'une autre organisation.
+CAUTION: Vous ne pouvez pas découvrir, consulter ou gérer les systèmes enregistrés auprès d'un autre compte ou d'une autre organisation.
 
 .Avant de commencer
 Vous devez connaître le mot de passe du compte utilisateur administrateur Cloud Volumes ONTAP .
