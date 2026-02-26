@@ -311,7 +311,7 @@ Le tableau suivant décrit les domaines pour lesquels vous pourriez avoir besoin
 
 
 | Modifier le projet  a| 
-Sélectionnez le projet dans lequel vous souhaitez que Cloud Volumes ONTAP réside.  Le projet par défaut est le projet de la Console.
+Sélectionnez le projet dans lequel vous souhaitez que Cloud Volumes ONTAP réside.
 
 Si aucun projet supplémentaire n'apparaît dans la liste déroulante, cela signifie que vous n'avez pas encore associé le compte de service à d'autres projets. Accédez à la Google Cloud Console, ouvrez le service IAM et sélectionnez le projet. Ajoutez le compte de service avec le rôle que vous utilisez pour la Console à ce projet. Vous devrez répéter cette étape pour chaque projet.
 

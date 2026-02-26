@@ -4,7 +4,7 @@
 
 
 
-== Prise en charge des machines virtuelles Ebdsv5 et E104ids_v5 dans Azure
+=== Prise en charge des machines virtuelles Ebdsv5 et E104ids_v5 dans Azure
 
 À partir de Cloud Volumes ONTAP 9.18.1, vous pouvez déployer des machines virtuelles Ebdsv5 et E104ids_v5 pour des déploiements et des mises à niveau à nœud unique et en paire haute disponibilité (HA).
 
