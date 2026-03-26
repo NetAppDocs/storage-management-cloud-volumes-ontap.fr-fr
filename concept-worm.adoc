@@ -54,7 +54,7 @@ Vous pouvez activer le stockage WORM sur un système Cloud Volumes ONTAP lorsque
 
 == Validation des fichiers dans WORM
 
-Vous pouvez utiliser une application pour valider des fichiers sur WORM via NFS ou CIFS, ou utiliser l'interface de ligne de commande ONTAP pour valider automatiquement des fichiers sur WORM.  Vous pouvez également utiliser un fichier WORM pouvant être ajouté pour conserver les données écrites de manière incrémentielle, comme les informations de journal.
+Vous pouvez utiliser une application pour valider des fichiers sur WORM via NFS ou CIFS, ou utiliser l'interface de ligne de commande ONTAP pour valider automatiquement des fichiers sur WORM. Vous pouvez également utiliser un fichier WORM ajoutable pour conserver des données écrites de manière incrémentielle, comme des informations de journal. Pour plus d'informations, consultez https://docs.netapp.com/us-en/ontap/snaplock/commit-files-worm-state-manual-task.html#commit-files-to-worm-manually["Transférer des fichiers vers WORM à l'aide de ONTAP SnapLock"^].
 
 Après avoir activé le stockage WORM sur un système Cloud Volumes ONTAP , vous devez utiliser l'interface de ligne de commande ONTAP pour toute la gestion du stockage WORM.  Pour les instructions, reportez-vous à la http://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-arch-con/home.html["Documentation ONTAP sur SnapLock"^] .
 
