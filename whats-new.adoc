@@ -20,6 +20,32 @@ Les améliorations décrites sur cette page sont spécifiques à la gestion de C
 
 
 
+== 13 avril 2026
+
+
+
+=== Prise en charge améliorée de Cloud Volumes ONTAP avec les machines virtuelles Google Cloud C3
+
+Cloud Volumes ONTAP prend désormais en charge de manière améliorée les machines virtuelles de la série Google Cloud C3, ce qui permet d'activer les fonctionnalités supplémentaires suivantes :
+
+* Dans vos déploiements Cloud Volumes ONTAP, vous pouvez basculer entre différents types d'instances au sein de la famille C3.
+* Lors du changement de type d'instance, si vous sélectionnez c3-standard-44 ou c3-standard-88 et leurs variantes LSSD comme machine virtuelle cible, le service réseau Google applique automatiquement le niveau de réseau de sortie Tier-1. Si vous choisissez une autre variante C3, le niveau de réseau de sortie est défini sur Standard.
++
+
+NOTE: Le passage au niveau 1 du réseau de sortie engendre des coûts supplémentaires. Prévoyez le déploiement et la mise à niveau en conséquence.
+
+* Si vous sélectionnez les variantes SSD locales (LSSD) de C3, le cache Flash est activé par défaut. Vous ne pouvez pas changer de variante LSSD de C3 dans votre déploiement Cloud Volumes ONTAP, même si la variante cible prend en charge le cache Flash.
+* Sur vos machines virtuelles C3, vous pouvez désormais ajouter des volumes aux agrégats nouveaux et existants.
+* Vous pouvez modifier les paramètres IOPS et de débit lors de l’ajout de volumes via la NetApp Console ou en utilisant l’ `PUT /gcp/vsa/aggregates/{workingEnvironmentId}/{aggregateName}` API.
+
+
+.Liens connexes
+* https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-gcp.html["Configurations prises en charge pour Cloud Volumes ONTAP dans Google Cloud"^]
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/whats-new.html#cloud-volumes-ontap-support-for-next-generation-google-cloud-vms["Prise en charge de Cloud Volumes ONTAP pour les machines virtuelles Google Cloud de nouvelle génération"^]
+
+
+
+
 == 10 mars 2026
 
 

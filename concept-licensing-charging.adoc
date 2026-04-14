@@ -48,7 +48,7 @@ Votre licence est toujours facturée en premier, mais vous serez facturé au tar
 ** Si la durée de votre licence expire
 
 
-* Si vous disposez d'un contrat annuel auprès d'une place de marché, _tous_ les systèmes Cloud Volumes ONTAP que vous déployez sont facturés sur ce contrat.  Vous ne pouvez pas combiner un contrat de marché annuel avec BYOL.
+* Si vous possédez une licence BYOL et un contrat annuel auprès d'une marketplace, votre consommation et vos dépassements sont facturés selon la préférence de facturation que vous avez définie. Pour comprendre comment vous êtes facturé, consultez link:concept-licensing-charging.html#concept-licensing-charging.html#billing-preferences-and-overages["Préférences de facturation et dépassements"].
 * Seuls les systèmes à nœud unique avec BYOL sont pris en charge dans les régions de Chine. Les déploiements dans les régions de Chine sont exemptés des restrictions de licence BYOL.
 
 

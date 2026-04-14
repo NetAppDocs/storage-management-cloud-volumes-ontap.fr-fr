@@ -129,3 +129,9 @@ La prise de contrôle du stockage, la resynchronisation et la restitution sont t
 == Configurations de stockage
 
 Vous pouvez utiliser une paire HA comme configuration active-active, dans laquelle les deux nœuds fournissent des données aux clients, ou comme configuration active-passive, dans laquelle le nœud passif répond aux demandes de données uniquement s'il a repris le stockage du nœud actif.
+
+
+NOTE: Cloud Volumes ONTAP utilise des équilibreurs de charge en mode actif-passif pour les sondes. Dans Azure, seul le nœud actif répond à une sonde. Le nœud passif peut apparaître comme inactif avec une croix. Il s'agit d'un comportement attendu et il n'y a pas lieu de s'inquiéter.
+
+.Lien connexe
+link:task-azure-high-availability-mode.html["Activer le mode haute disponibilité pour Cloud Volumes ONTAP dans Azure"^]
