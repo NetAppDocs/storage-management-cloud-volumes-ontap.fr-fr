@@ -45,7 +45,7 @@ Une fois que NetApp a autorisé votre compte, vous pouvez lier les abonnements K
 .Étapes
 . Dans le menu de la NetApp Console , sélectionnez *Administration > Licenses and subscriptions*.
 . Sélectionnez * Abonnements Keystone *.
-. Pour l'abonnement que vous souhaitez lier, cliquez surimage:icon-action.png["Une icône composée de trois points côte à côte"] et sélectionnez *Lien*.
+. Pour l'abonnement que vous souhaitez lier, sélectionnez image:icon-action.png["Une icône composée de trois points côte à côte"] et sélectionnez *Lier*.
 
 
 .Résultat
@@ -60,9 +60,9 @@ Si vous souhaitez modifier la capacité engagée pour les niveaux de service de 
 .Étapes
 . Dans le menu de la NetApp Console , sélectionnez *Administration > Licenses and subscriptions*.
 . Sélectionnez * Abonnements Keystone *.
-. Pour l'abonnement dont vous souhaitez ajuster la capacité, cliquez sur image:icon-action.png["Une icône composée de trois points côte à côte"] et sélectionnez *Afficher les détails et modifier*.
+. Pour l'abonnement dont vous souhaitez ajuster la capacité, sélectionnez image:icon-action.png["Une icône composée de trois points côte à côte"] et sélectionnez *Afficher les détails et modifier*.
 . Saisissez la capacité engagée demandée pour un ou plusieurs abonnements.
-. Faites défiler vers le bas, saisissez tous les détails supplémentaires pour la demande, puis cliquez sur *Soumettre*.
+. Faites défiler vers le bas, saisissez les détails supplémentaires relatifs à la demande, puis sélectionnez *Soumettre*.
 
 
 .Résultat
@@ -85,7 +85,7 @@ Si vous ne souhaitez plus utiliser un abonnement Keystone avec la console, vous 
 .Étapes
 . Dans le menu de la NetApp Console , sélectionnez *Administration > Licenses and subscriptions*.
 . Sélectionnez * Keystone*.
-. Pour l'abonnement que vous souhaitez dissocier, cliquez surimage:icon-action.png["Une icône composée de trois points côte à côte"] et sélectionnez *Dissocier*.
+. Pour l'abonnement que vous souhaitez dissocier, sélectionnez image:icon-action.png["Une icône composée de trois points côte à côte"] et sélectionnez *Dissocier*.
 
 
 .Résultat

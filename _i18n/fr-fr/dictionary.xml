@@ -3518,17 +3518,14 @@
   <block id="06f358c39bc3b4633cefd78beb67e671" category="section-title">Lier un abonnement</block>
   <block id="8afaab6946e4a914b70539d7502e26ac" category="paragraph">Une fois que NetApp a autorisé votre compte, vous pouvez lier les abonnements Keystone à utiliser avec Cloud Volumes ONTAP.  Cette action permet aux utilisateurs de sélectionner l'abonnement comme méthode de facturation pour les nouveaux systèmes Cloud Volumes ONTAP .</block>
   <block id="b0afff19aa3343a6f86619d833dbd316" category="inline-image-macro">Une icône composée de trois points côte à côte</block>
-  <block id="fc6ada65ff8f08c80e7d6167f68c89c2" category="list-text">Pour l'abonnement que vous souhaitez lier, cliquez sur<block ref="c9c50c6d591d91ccce1ee232fa490fb4" category="inline-image-macro-rx" type="image"></block> et sélectionnez *Lien*.</block>
   <block id="1b02ed65c5ea56c85fffa6b88378d762" category="section-title">Demander une capacité plus ou moins engagée</block>
   <block id="56ecf988dec174f4d23028e78eeed82c" category="list-text">Saisissez la capacité engagée demandée pour un ou plusieurs abonnements.</block>
-  <block id="dbae9df22f08344d5508b91cb73c6d15" category="list-text">Faites défiler vers le bas, saisissez tous les détails supplémentaires pour la demande, puis cliquez sur *Soumettre*.</block>
   <block id="8f140d9c4d508c36e3d4c57102f117eb" category="paragraph">Votre demande crée un ticket dans le système NetApp pour traitement.</block>
   <block id="ec6e0d1bd46f010ced65478c609b1636" category="section-title">Surveiller l'utilisation</block>
   <block id="20ea4c62f4c9e4254314fe7fbbef0319" category="inline-link">En savoir plus sur la surveillance de l'utilisation des abonnements</block>
   <block id="d7105dd212dc96a8b292b6b48f84916f" category="paragraph"><block ref="d7105dd212dc96a8b292b6b48f84916f" category="inline-link-rx"></block></block>
   <block id="0c0401d1e9169d6dd38462b1e0d04126" category="section-title">Dissocier un abonnement</block>
   <block id="492847bcbc9ec0bd3075b612aa43e4a7" category="list-text">Sélectionnez * Keystone*.</block>
-  <block id="a666a430e484ea214384aefaa30da852" category="list-text">Pour l'abonnement que vous souhaitez dissocier, cliquez sur<block ref="c9c50c6d591d91ccce1ee232fa490fb4" category="inline-image-macro-rx" type="image"></block> et sélectionnez *Dissocier*.</block>
   <block id="6e1a9790b199742bec95dea2070e2f3f" category="summary">Gérez vos licences basées sur des nœuds dans la NetApp Console pour vous assurer que chaque système Cloud Volumes ONTAP dispose d'une licence valide avec la capacité requise.</block>
   <block id="160221c1e99e53b72af8a65c2440852b" category="doc">Gérer les licences basées sur les nœuds pour Cloud Volumes ONTAP</block>
   <block id="63e5ea33dc9b9a10458ac73abae91075" category="paragraph">Gérez les licences basées sur les nœuds dans la NetApp Console pour garantir que chaque système Cloud Volumes ONTAP dispose d'une licence valide avec la capacité requise.</block>
@@ -3600,7 +3597,6 @@
   <block id="f979ec1d84a4416797fae20cc61f839b" category="inline-link">Découvrez comment supprimer un système Cloud Volumes ONTAP</block>
   <block id="0d0947c9b1ebe3ee650df057f8192855" category="paragraph"><block ref="87175a08736eca79154ad91c69792fcd" category="inline-link-rx"></block> .</block>
   <block id="342dcce6bda294bb4b60fc9333bcafbe" category="inline-link-macro">Convertir les licences basées sur les nœuds en licences basées sur la capacité</block>
-  <block id="cb90b48918ed9cd8ea355c04c171177b" category="paragraph">lien:<block ref="7f9a8649ca2d86db235ba56502d14f92" category="inline-link-macro-rx"></block> <block ref="431f655d5a9ac309b561fc62a4c619ea" category="inline-link-macro-rx"></block></block>
   <block id="bd0ed9183db9306d8ce58c50abb4a96b" category="summary">La NetApp Console ne fournit aucune configuration ni support d'orchestration pour la reprise après sinistre des machines virtuelles de stockage.  Vous devez utiliser le Gestionnaire système ou l'interface de ligne de commande.</block>
   <block id="76872305ddb703eedd7fbe3e66263d83" category="doc">Configurer la reprise après sinistre des machines virtuelles de stockage pour Cloud Volumes ONTAP</block>
   <block id="d25bf5fb042a0cc652d82492e5410fb6" category="paragraph">La NetApp Console n'offre pas de prise en charge de la configuration ou de l'orchestration pour la reprise après sinistre des machines virtuelles de stockage (SVM).  Pour effectuer ces tâches, utilisez ONTAP System Manager ou l'interface de ligne de commande ONTAP .</block>
@@ -5731,7 +5727,6 @@
   <block id="a53c428d90f592127da49a8d5a558130" category="paragraph">Un représentant NetApp traitera votre demande en autorisant votre compte à accéder aux abonnements.</block>
   <block id="9c2f6d6e4376237ad065b1baa0ad822d" category="paragraph">L'abonnement est désormais lié à votre organisation ou à votre compte Console et peut être sélectionné lors de la création d'un environnement de travail Cloud Volumes ONTAP .</block>
   <block id="10d2905ee5dfcb309d64e3633fb774c1" category="paragraph">Si vous souhaitez modifier la capacité engagée pour les niveaux de service de votre abonnement, vous pouvez envoyer une demande à NetApp directement depuis la console. La demande de capacité supplémentaire pour un niveau de service fournit davantage de stockage pour les systèmes Cloud Volumes ONTAP .</block>
-  <block id="e45b542fbde799582edd5059bc1991a9" category="list-text">Pour l'abonnement dont vous souhaitez ajuster la capacité, cliquez sur <block ref="c9c50c6d591d91ccce1ee232fa490fb4" category="inline-image-macro-rx" type="image"></block> et sélectionnez *Afficher les détails et modifier*.</block>
   <block id="a3a13a09504a7f25eb72dede89db4f24" category="paragraph">Le tableau de bord Digital Advisor vous permet de surveiller l'utilisation de l'abonnement Keystone et de générer des rapports.</block>
   <block id="e29343f0ee1c0051a367e02b49c1c5ff" category="paragraph">Si vous ne souhaitez plus utiliser un abonnement Keystone avec la console, vous pouvez dissocier l'abonnement. Notez que vous ne pouvez dissocier qu'un abonnement qui n'est pas associé à un abonnement Cloud Volumes ONTAP existant.</block>
   <block id="0e1096776546966fb22c4752766d55a9" category="paragraph">L'abonnement est dissocié de votre organisation ou de votre compte Console et n'est plus disponible à la sélection lors de la création d'un environnement de travail Cloud Volumes ONTAP .</block>
@@ -6438,4 +6433,9 @@
   <block id="fe4b627e339ef56fd051464a11d7b4aa" category="paragraph"><block ref="fe4b627e339ef56fd051464a11d7b4aa" category="inline-link-macro-rx"></block></block>
   <block id="9472db468c3c681023f3ca03b59df38b" category="list-text">Si vous possédez une licence BYOL et un contrat annuel auprès d'une marketplace, votre consommation et vos dépassements sont facturés selon la préférence de facturation que vous avez définie. Pour comprendre comment vous êtes facturé, consultez <block ref="0b707007d6575618559747cfb2737b16" category="inline-link-macro-rx"></block>.</block>
   <block id="403f4a170e2d1c03d329e0f0dd8d1b84" category="section-title">13 avril 2026</block>
+  <block id="b3590df4b69c4ddf7017e6977baebe49" category="list-text">Pour l'abonnement que vous souhaitez lier, sélectionnez <block ref="c9c50c6d591d91ccce1ee232fa490fb4" category="inline-image-macro-rx" type="image"></block> et sélectionnez *Lier*.</block>
+  <block id="665103db45058514d7e3b032c990783d" category="list-text">Pour l'abonnement dont vous souhaitez ajuster la capacité, sélectionnez <block ref="c9c50c6d591d91ccce1ee232fa490fb4" category="inline-image-macro-rx" type="image"></block> et sélectionnez *Afficher les détails et modifier*.</block>
+  <block id="f638b98047aa1e2c9642d2de1bcdd0d0" category="list-text">Faites défiler vers le bas, saisissez les détails supplémentaires relatifs à la demande, puis sélectionnez *Soumettre*.</block>
+  <block id="dc96e19fba7ac18b79e69398a4792825" category="list-text">Pour l'abonnement que vous souhaitez dissocier, sélectionnez <block ref="c9c50c6d591d91ccce1ee232fa490fb4" category="inline-image-macro-rx" type="image"></block> et sélectionnez *Dissocier*.</block>
+  <block id="5e5b6fbbd6a3b4edf3913541e4fecf17" category="list-text"><block ref="5e5b6fbbd6a3b4edf3913541e4fecf17" category="inline-link-rx"></block></block>
 </blocks>
