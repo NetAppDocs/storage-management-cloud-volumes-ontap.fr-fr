@@ -1,0 +1,47 @@
+= Facturation flexible pour Cloud Volumes ONTAP et les services de données dans AWS
+:allow-uri-read: 
+
+
+
+
+=== Facturation flexible pour Cloud Volumes ONTAP et les services de données dans AWS
+
+NetApp propose des options de facturation améliorées pour vos abonnements Cloud Volumes ONTAP dans AWS, vous offrant un meilleur contrôle sur la façon dont vous payez la capacité Cloud Volumes ONTAP et les services de données NetApp, tels que BlueXP backup and recovery. Auparavant, toute l’utilisation de Cloud Volumes ONTAP et des services de données était facturée ensemble via l’offre NetApp Intelligent Services (NIS) sur la place de marché AWS.
+
+Suite aux modifications apportées au programme de remises pour entreprises AWS (EDP), NetApp a introduit un abonnement Cloud Volumes ONTAP autonome sur la place de marché AWS qui vous permet de dissocier la facturation de la capacité Cloud Volumes ONTAP de celle des services de données. Cette dissociation vous offre une plus grande flexibilité dans la gestion de vos crédits et coûts EDP. NetApp recommande d'utiliser l'abonnement autonome pour une meilleure gestion des coûts liés à votre utilisation de Cloud Volumes ONTAP, tout en continuant d'utiliser l'abonnement NIS pour la facturation des services de données après le 31 juillet 2026, lorsque les exigences EDP entreront en vigueur.
+
+L'abonnement Cloud Volumes ONTAP autonome sur AWS prend uniquement en charge les packages de licence Essentials ou Freemium valides, basés sur la capacité. Le package Professional n'est pas pris en charge. Vous pouvez choisir le mode de facturation qui correspond le mieux à vos besoins :
+
+* *Abonnement Cloud Volumes ONTAP autonome (recommandé)* : payez votre utilisation de Cloud Volumes ONTAP via l’abonnement autonome sur la place de marché AWS, tout en continuant à facturer les services de données via l’abonnement NIS. C’est l’option recommandée pour la plupart des clients qui disposent à la fois d’un abonnement autonome et d’un abonnement NIS associés à leur compte AWS dans la NetApp Console.
+* *Abonnement NIS combiné* : payez à la fois Cloud Volumes ONTAP et les services de données ensemble via l'inscription NIS existante. La formule combinée sera valable pour les clients existants qui ont uniquement des abonnements NIS associés à leur compte AWS dans la NetApp Console. Cependant, NetApp recommande de définir vos préférences de facturation pour votre utilisation de Cloud Volumes ONTAP et de passer à l'abonnement autonome pour une meilleure gestion des coûts.
+
+
+Selon votre type d'abonnement, vous bénéficiez des scénarios suivants :
+
+.Abonnement autonome uniquement (nouveaux clients)
+Si vous ne disposez que d'un abonnement AWS autonome associé à votre compte AWS dans la NetApp Console et d'aucun abonnement NIS, vous ne pouvez sélectionner que le pack de licences Essentials lors du déploiement. L'option de service de données *Backup and Recovery* ne vous est pas disponible.
+
+.Abonnements autonomes et NIS (clients existants)
+Si votre compte AWS comprend à la fois un abonnement NIS et un abonnement autonome, et que vous n'avez pas défini de préférence de facturation dans l'onglet *Préférences de facturation* de la NetApp Console, l'utilisation de Cloud Volumes ONTAP continue d'être facturée par défaut via NIS. Ceci est également le comportement par défaut pour toute instance Cloud Volumes ONTAP exécutant le package Professional, car l'offre autonome ne prend pas en charge Professional. Vous pouvez définir une préférence de facturation et choisir le mode de facturation de chaque service :
+
+* Configurez l'abonnement autonome comme compte de facturation préféré pour Cloud Volumes ONTAP (avec le package Essentials). Si vous ne possédez que le package Professional, vous pouvez le convertir en package Essentials et facturer votre utilisation de Cloud Volumes ONTAP en définissant la préférence de facturation. Nous recommandons cette méthode car elle vous permet de gérer vos crédits EDP Cloud Volumes ONTAP plus efficacement.
+* Utilisez l'abonnement NIS pour la facturation des services de données ou l'utilisation de Cloud Volumes ONTAP via le pack Professionnel. Lors du déploiement, activez le service de données *Backup and Recovery* et sélectionnez le pack de licences Professionnel pour facturer les services de données via l'abonnement NIS.
+
+
+.Abonnement NIS uniquement (clients existants)
+Ceci s'applique si vous êtes déjà client et disposez d'abonnements NIS associés à votre compte AWS. Vous pouvez continuer à facturer Cloud Volumes ONTAP et les services de données ensemble comme actuellement. Cependant, NetApp recommande de passer à l'approche d'abonnement autonome pour une meilleure gestion des coûts de votre utilisation de Cloud Volumes ONTAP :
+
+* Abonnez-vous à une nouvelle fiche produit autonome sur le portail AWS.
+* Associez l'abonnement autonome à votre compte AWS.
+* Définissez votre préférence de facturation sur l’abonnement autonome pour l’utilisation de Cloud Volumes ONTAP avec le forfait Essentials.
+* (Le cas échéant) Convertissez votre forfait Professional en forfait Essentials et définissez votre préférence de facturation.
+* Continuez à facturer les services de données via votre abonnement NIS.
+
+
+
+NOTE: Aucun comptage en double ne se produit lorsque vous utilisez plusieurs types d'abonnement ou que vous migrez entre des annonces.
+
+.Lien connexe
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-set-up-licensing-aws.html["Configurer les licences pour Cloud Volumes ONTAP dans AWS"^]
+* https://docs.netapp.com/us-en/console-licenses-subscriptions/task-manage-capacity-licenses.html#change-charging-methods["Modifier les méthodes de facturation des licences de capacité"^]
+
