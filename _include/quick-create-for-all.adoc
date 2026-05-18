@@ -1,16 +1,5 @@
----
-sidebar: sidebar 
-permalink: task-quick-deploy-aws.html 
-keywords: aws quick deploy, quick deploy, aws, single screen deployment AWS, SAZ, MAZ, single node, HA pair 
-summary: Vous pouvez déployer rapidement des instances Cloud Volumes ONTAP dans une configuration à système unique ou sous forme de paire HA dans AWS. 
----
-= Déployez Cloud Volumes ONTAP avec Quick create
-:hardbreaks:
+= 
 :allow-uri-read: 
-:nofooter: 
-:icons: font
-:linkattrs: 
-:imagesdir: ./media/
 
 
 [role="lead"]
@@ -176,6 +165,18 @@ TIP: Si vous souhaitez utiliser WORM et la hiérarchisation des données, vous d
 . Vérifiez ou modifiez les détails que vous avez saisis, puis cliquez sur *Créer*.
 
 
+ifdef::azure[]
+
+Dans _Azure_, la section *Vue d'ensemble* affiche les ressources qui seront allouées une fois le processus de déploiement terminé.
+
+endif::azure[]
+
+ifdef::aws[]
+
+Dans _AWS_, immédiatement après avoir créé le système Cloud Volumes ONTAP, la NetApp Console lance une instance de test dans le VPC spécifié pour vérifier la connectivité. En cas de succès, la Console termine immédiatement l'instance puis commence le déploiement du système. Si la Console ne peut pas vérifier la connectivité, la création du système échoue. L'instance de test est soit une `t2.nano` (pour la location VPC par défaut) soit une `m3.medium` (pour la location VPC dédiée).
+
+endif::aws[]
+
 .Après avoir terminé
 La console déploie le système Cloud Volumes ONTAP .  Vous pouvez suivre la progression sur la page Audit.
 
@@ -183,8 +184,3 @@ En cas de problème lors du déploiement du système Cloud Volumes ONTAP, veuill
 
 
 CAUTION: Une fois le processus de déploiement terminé, ne modifiez pas les configurations Cloud Volumes ONTAP générées par le système dans le portail cloud AWS ou Azure, en particulier les balises système. Toute modification apportée à ces configurations peut entraîner un comportement inattendu ou une perte de données.
-
-.Liens connexes
-* link:task-planning-your-config.html["Planification de votre configuration Cloud Volumes ONTAP"] *
-* link:task-deploying-otc-aws.html["Déployer Cloud Volumes ONTAP dans AWS à l'aide d'un déploiement avancé"]
-

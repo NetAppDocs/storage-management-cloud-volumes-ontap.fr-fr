@@ -41,8 +41,9 @@ Le tableau suivant récapitule les activités restreintes par onglet.
 
 
 | Volumes  a| 
-Aucune mise à jour de volume n'est autorisée dans cet onglet, et vous ne pouvez pas ajouter de volumes.
+Vous ne pouvez pas effectuer les opérations de volume suivantes :
 
+* Ajouter un volume
 * Cloner un volume
 * Modifier les paramètres de volume
 * Supprimer un volume
@@ -93,7 +94,7 @@ Aucune mise à jour de volume n'est autorisée dans cet onglet, et vous ne pouve
 
 
 | Sans rôles  a| 
-Lorsqu'aucun rôle n'est attribué, toutes les actions sont désactivées.
+Lorsqu'aucun rôle n'est attribué, vous ne pouvez effectuer aucune action, notamment :
 
 * Accédez à l'environnement de travail
 * Réplication d'accès

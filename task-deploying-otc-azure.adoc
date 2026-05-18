@@ -4,7 +4,7 @@ permalink: task-deploying-otc-azure.html
 keywords: Cloud Volumes ONTAP, deploying, launching, creating, deploy, launch, create, azure, license key, serial number, tags, azure tags, location, license, preconfigured packages, programmatic deployments, disk size, write speed, access control, volume protection, usage profile, register, CIFS share, quota, qtree, HA, HA pair, associate subscription, azure marketplace, marketplace subscription, cloud data sense, cloud backup 
 summary: Vous pouvez lancer un seul système Cloud Volumes ONTAP dans Azure en créant un système Cloud Volumes ONTAP dans la NetApp Console. 
 ---
-= Lancer Cloud Volumes ONTAP dans Azure
+= Déployez Cloud Volumes ONTAP à l'aide des options avancées dans Azure
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -507,8 +507,6 @@ Pour plus d'informations, reportez-vous àlink:https://docs.netapp.com/us-en/blu
 La console déploie le système Cloud Volumes ONTAP .  Vous pouvez suivre la progression sur la page Audit.
 
 Si vous rencontrez des problèmes lors du déploiement du système Cloud Volumes ONTAP , consultez le message d’échec.  Vous pouvez également sélectionner le système et cliquer sur *Recréer l'environnement*.
-
-Pour obtenir de l'aide supplémentaire, rendez-vous sur https://mysupport.netapp.com/site/products/all/details/cloud-volumes-ontap/guideme-tab["Prise en charge de NetApp Cloud Volumes ONTAP"^] .
 
 .Après avoir terminé
 * Si vous avez provisionné un partage CIFS, accordez aux utilisateurs ou aux groupes des autorisations sur les fichiers et les dossiers et vérifiez que ces utilisateurs peuvent accéder au partage et créer un fichier.
