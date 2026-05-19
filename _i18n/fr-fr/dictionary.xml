@@ -3833,7 +3833,6 @@
   <block id="f2feb7d422d422c2517d2196d66d00bc" category="list-text"><block ref="7746ebc5fdfe5251edf41796732ea010" prefix="" category="inline-code"></block>indique que les IP peuvent migrer vers le nœud partenaire.</block>
   <block id="05bdf9757241650a006a0bd9021d3169" category="list-text">Créez un LIF iSCSI sur le nœud 1.</block>
   <block id="849dd632a2c28933451bca01b48c3973" category="list-text">Ce LIF iSCSI est requis pour prendre en charge la migration LIF des IP flottantes dans la machine virtuelle de stockage.  Il n’est pas nécessaire qu’il s’agisse d’un LIF iSCSI, mais il ne peut pas être configuré pour migrer entre les nœuds.</block>
-  <block id="d68a88edd93f0fd2099f8bff543a11a3" category="list-text"><block ref="0e101bbae12005006f38a776a7e27d49" prefix="" category="inline-code"></block>indique qu'une adresse IP ne migre pas entre les nœuds.</block>
   <block id="111daac7647573990b5b56876902380e" category="list-text">_private_ip_ est une adresse IP privée secondaire inutilisée sur eth0 (e0a) de cvo_node1.</block>
   <block id="5414bcb74ffdbf70d2afb028e1eb0d0b" category="list-text">Créez un LIF iSCSI sur le nœud 2.</block>
   <block id="0a2292629d42074cb011142b9cd8f433" category="list-text">_private_ip_ est une adresse IP privée secondaire inutilisée sur eth0 (e0a) de cvo_node2.</block>
@@ -6526,4 +6525,5 @@
   <block id="75903a04d1a65d3e18c839c67b54316d" category="sidebar">Déployez Cloud Volumes ONTAP avec des options avancées dans Azure</block>
   <block id="8af1ad3469dad38ef46da37595e3b758" category="inline-link-macro">Découvrez les rôles Licenses and subscriptions pour la NetApp Console</block>
   <block id="1ccb85040042290f711464fbb5e06609" category="paragraph">*Rôle Console requis* Pour effectuer cette tâche, vous devez disposer du rôle d'administrateur Licenses and subscriptions.<block ref="f7bfd1d1e66654a9d76ee2fffeede42a" category="inline-link-macro-rx"></block></block>
+  <block id="1c568211164221a5a183fa65ce0d8ad7" category="list-text"><block ref="f5fb311c04d189ade108ad02dc187c52" prefix="" category="inline-code"></block>indique qu'une adresse IP ne migre pas entre les nœuds.</block>
 </blocks>
