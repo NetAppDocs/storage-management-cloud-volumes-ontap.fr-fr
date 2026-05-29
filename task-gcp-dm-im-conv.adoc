@@ -17,7 +17,7 @@ summary: Pour vos déploiements existants dans Google Cloud, vous devez mettre �
 À compter du 9 février 2026, les nouveaux déploiements Cloud Volumes ONTAP sur Google Cloud pourront utiliser Google Cloud Infrastructure Manager. Google est sur le point de déprécier Google Cloud Deployment Manager au profit d'Infrastructure Manager. Par conséquent, vous devez exécuter manuellement un outil de transition pour convertir vos déploiements Cloud Volumes ONTAP existants de Deployment Manager vers Infrastructure Manager. Il s'agit d'un processus unique, après quoi vos systèmes commenceront automatiquement à utiliser Infrastructure Manager.
 
 .À propos de cette tâche
-L'outil de transition est disponible dans le https://mysupport.netapp.com/site/products/all/details/cloud-volumes-ontap/downloads-tab["Site de support NetApp"^], et crée les artefacts suivants :
+L'outil de transition est disponible sur le site d'assistance NetApp et crée les artefacts suivants :
 
 * Artefacts Terraform, enregistrés dans `conversion_output/deployment_name`.
 * Résumé de la conversion, enregistré dans `conversion_output/batch_summary_<deployment_name>_<timestamp>.json.`

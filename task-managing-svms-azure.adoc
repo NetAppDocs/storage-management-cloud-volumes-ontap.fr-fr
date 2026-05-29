@@ -49,7 +49,7 @@ L'agent de console nécessite des autorisations spécifiques pour créer des mac
 
 
 
-=== système à nœud unique
+=== Système à nœud unique
 
 Utilisez l'appel API suivant pour créer une machine virtuelle de stockage sur un système à nœud unique.
 
