@@ -53,7 +53,7 @@ L'authentification de l'utilisateur échoue et les services suivants restent ind
 
 
 
-| https://vault.azure.net[] | Coffre-fort à clés | Utilisé pour récupérer les clés secrètes du client à partir d’Azure Key Vault lors de l’utilisation de clés gérées par le client (CMK). | Modes standard, restreint et privé. | Les services Cloud Volumes ONTAP ne sont pas disponibles. 
+| \https://vault.azure.net | Coffre-fort à clés | Utilisé pour récupérer les clés secrètes du client à partir d’Azure Key Vault lors de l’utilisation de clés gérées par le client (CMK). | Modes standard, restreint et privé. | Les services Cloud Volumes ONTAP ne sont pas disponibles. 
 
 
 | \ https://api.bluexp.netapp.com/tenancy | Location | Utilisé pour récupérer les ressources Cloud Volumes ONTAP à partir de la console pour autoriser les ressources et les utilisateurs. | Modes standard et restreint. | Les ressources Cloud Volumes ONTAP et les utilisateurs ne sont pas autorisés. 

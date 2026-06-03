@@ -524,7 +524,7 @@ Le pool de travailleurs doit avoir la configuration suivante :
 ** Taille du disque : 100 Go
 ** Attribuer une adresse IP externe : False
 ** Réseau : Par défaut ou privé.
-** Le sous-réseau configuré pour accéder http://googleapis.com/["API Google"]. Procédez comme suit pour garantir que le sous-réseau peut accéder aux API Google :
+** Le sous-réseau configuré pour accéder https://cloud.google.com/apis["API Google Cloud"^]. Procédez comme suit pour garantir que le sous-réseau peut accéder aux API Google :
 +
 ... Assurez-vous que « Private Google Access » est activé pour le sous-réseau.
 ... Accédez à *Niveau VPC Network > Onglet Private Service Access > Allocated IP ranges for services*.

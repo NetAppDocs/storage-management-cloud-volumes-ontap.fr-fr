@@ -85,7 +85,7 @@ az network vnet subnet show -g <src_vnet-rg> -n <src_subnet> --vnet-name <vnet> 
 ----
 az network nic create -g <dest_node-rg> -n <dest_node-vm-nic-new> --subnet <id_from_prev_command> --accelerated-networking true
 ----
-.. Enregistrez l'adresse IP privée.  Cette adresse IP, <new_added_nic_primary_addr>, est utilisée pour créer un LIF intercluster dans<<Step 2: Create a new IPspace,domaine de diffusion, LIF intercluster pour la nouvelle carte réseau>> .
+.. Enregistrez l'adresse IP privée. Cette adresse IP, <new_added_nic_primary_addr>, est utilisée pour créer une LIF intercluster dans <<step-second,domaine de diffusion et LIF intercluster pour la nouvelle carte réseau>>.
 
 
 . Connectez la nouvelle carte réseau à la machine virtuelle.
@@ -112,7 +112,7 @@ Pour les déploiements par paire HA, répétez les étapes pour le nœud partena
 
 
 
-== Étape 2 : créer un nouvel espace IP, un domaine de diffusion et un LIF intercluster pour la nouvelle carte réseau
+== [[step-second]]Étape 2 : Créez un nouvel IPspace, un domaine de diffusion et une LIF intercluster pour la nouvelle NIC
 
 Un espace IP distinct pour les LIF interclusters fournit une séparation logique entre les fonctionnalités réseau pour la réplication entre les clusters.
 
