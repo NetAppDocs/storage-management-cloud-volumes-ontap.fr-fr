@@ -1,10 +1,10 @@
-= Nouvelles instances EC2 prises en charge pour Cloud Volumes ONTAP dans AWS
+= Prise en charge des nouvelles instances EC2 pour Cloud Volumes ONTAP dans AWS
 :allow-uri-read: 
 
 
 
 
-=== Nouvelles instances EC2 prises en charge pour Cloud Volumes ONTAP dans AWS
+=== Prise en charge des nouvelles instances EC2 pour Cloud Volumes ONTAP dans AWS
 
 Cloud Volumes ONTAP 9.16.1 et versions ultérieures prennent en charge les familles d'instances EC2 M6id et M6idn pour les déploiements à nœud unique et à haute disponibilité (HA) sur AWS, qu'ils soient nouveaux ou existants. Ces instances de 6e génération offrent une puissance de traitement plus rapide, des capacités réseau renforcées et des performances supérieures aux systèmes à usage général de 5e génération.
 
