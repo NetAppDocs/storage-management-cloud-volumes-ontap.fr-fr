@@ -6532,4 +6532,7 @@
   <block id="2723587cecc87d757adc3d7f42677613" category="paragraph">Pour plus d'informations, consultez <block ref="5facb34de99943f35a6951018b8a6bef" category="inline-link-rx"></block>.</block>
   <block id="3e323562bd488e4cbd90a025b9424181" category="section-title">08 juin 2026</block>
   <block id="ee679c5a83450dd8f0c139cea8a1cc40" category="doc">Prise en charge des nouvelles instances EC2 pour Cloud Volumes ONTAP dans AWS</block>
+  <block id="f1e8426ee8789bca46b26081b788d901" category="doc">Prise en charge d'une nouvelle région Azure dans Cloud Volumes ONTAP</block>
+  <block id="58c64fbe360d29edfbfa0f1e30f23980" category="paragraph">Vous pouvez désormais déployer Cloud Volumes ONTAP 9.12.1 GA et versions ultérieures dans une ou plusieurs zones de disponibilité dans Azure dans la région Malaysia West (malaysiawest). Cela inclut la prise en charge des déploiements à nœud unique et à haute disponibilité (HA).</block>
+  <block id="13a1b8a317b4b6dbe05a3757a911ea12" category="section-title">11 juin 2026</block>
 </blocks>
