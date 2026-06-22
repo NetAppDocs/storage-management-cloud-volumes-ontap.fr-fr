@@ -118,7 +118,7 @@ ifdef::gcp[]
 
 == Hiérarchisation des données dans Google Cloud
 
-Lorsque vous activez la hiérarchisation des données dans Google Cloud, Cloud Volumes ONTAP utilise des disques persistants comme niveau de performances pour les données chaudes et un bucket Google Cloud Storage comme niveau de capacité pour les données inactives.
+Lorsque vous activez la hiérarchisation des données dans Google Cloud, Cloud Volumes ONTAP utilise des disques persistants comme niveau de performance pour les données fréquemment utilisées et un bucket Google Cloud Storage comme niveau de capacité pour les données inactives. Vous pouvez sélectionner un niveau de stockage lors de la création d’un système et le modifier à tout moment par la suite. Pour des informations sur la modification de la classe de stockage, consultez link:task-tiering.html["Hiérarchiser les données inactives vers un stockage d'objets à faible coût"].
 
 Niveau de performance:: Le niveau de performance peut être constitué de disques persistants SSD, de disques persistants équilibrés ou de disques persistants standard.
 Niveau de capacité:: Un système Cloud Volumes ONTAP hiérarchise les données inactives dans un seul bucket Google Cloud Storage.
@@ -137,16 +137,9 @@ Lorsque la console crée le bucket, elle utilise les paramètres par défaut sui
 
 
 --
-Classes de stockage:: La classe de stockage par défaut pour les données hiérarchisées est la classe _Standard Storage_.  Si les données sont rarement consultées, vous pouvez réduire vos coûts de stockage en optant pour _Nearline Storage_ ou _Coldline Storage_.  Lorsque vous modifiez la classe de stockage, les données inactives suivantes sont déplacées directement vers la classe que vous avez sélectionnée.
+Classes de stockage:: Google Cloud utilise  https://cloud.google.com/storage/docs/storage-classes["classes de stockage"^] pour gérer les coûts et la disponibilité des données. Nous vous recommandons de sélectionner une classe de stockage en fonction de la fréquence d'accès aux données prévue, car l'accès aux données engendre des coûts plus élevés. La classe de stockage par défaut pour les données hiérarchisées est _Standard Storage_. Sauf modification manuelle, toutes les données inactives conservent la classe de stockage par défaut. Pour modifier la classe de stockage des données inactives, consultez  https://docs.cloud.google.com/storage/docs/managing-lifecycles["Documentation Google Cloud : gestion du cycle de vie des objets"^].
 +
 --
-
-NOTE: Toutes les données inactives existantes conserveront la classe de stockage par défaut lorsque vous modifiez la classe de stockage.  Pour modifier la classe de stockage des données inactives existantes, vous devez effectuer la désignation manuellement.
-
-Les coûts d’accès sont plus élevés si vous accédez aux données, alors tenez-en compte avant de changer la classe de stockage.  Pour en savoir plus, reportez-vous à la https://cloud.google.com/storage/docs/storage-classes["Documentation Google Cloud : classes de stockage"^] .
-
-Vous pouvez sélectionner un niveau de stockage lors de la création du système et vous pouvez le modifier à tout moment par la suite.  Pour plus de détails sur la modification de la classe de stockage, reportez-vous àlink:task-tiering.html["Hiérarchiser les données inactives vers un stockage d'objets à faible coût"] .
-
 La classe de stockage pour la hiérarchisation des données s'applique à l'ensemble du système, et non par volume.
 
 --
