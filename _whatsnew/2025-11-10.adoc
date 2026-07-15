@@ -4,6 +4,7 @@
 
 
 
+[[enhanced-nvme-tcp-support]]
 === Prise en charge NVMe-TCP améliorée
 
 Auparavant, lors du déploiement d'instances Cloud Volumes ONTAP sur NVMe-TCP, il était nécessaire d'obtenir et d'appliquer manuellement les licences NVMe avant le déploiement.  Grâce à cette mise à jour, Cloud Volumes ONTAP installe désormais automatiquement les licences NVMe requises lors du déploiement, simplifiant ainsi le processus d'installation.

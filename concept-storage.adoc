@@ -21,6 +21,7 @@ CAUTION: Vous devez créer et supprimer tous les disques et agrégats de la NetA
 
 
 
+[[overview]]
 == Aperçu
 
 Cloud Volumes ONTAP utilise le stockage du fournisseur cloud sous forme de disques et les regroupe en un ou plusieurs agrégats.  Les agrégats fournissent un stockage à un ou plusieurs volumes.
@@ -36,6 +37,7 @@ ifdef::aws[]
 
 
 
+[[aws-storage]]
 == Stockage de l'AWS
 
 Dans AWS, Cloud Volumes ONTAP utilise le stockage EBS pour les données utilisateur et le stockage NVMe local comme cache Flash sur certains types d'instances EC2.
@@ -68,6 +70,7 @@ ifdef::azure[]
 
 
 
+[[azure-storage]]
 == Stockage Azure
 
 Dans Azure, un agrégat peut contenir jusqu'à 12 disques de même taille. Le type de disque et la taille maximale du disque dépendent du fait que vous utilisez un système à nœud unique ou une paire haute disponibilité :
@@ -113,11 +116,14 @@ ifdef::gcp[]
 
 
 
+[[google-cloud-storage]]
 == Stockage Google Cloud
 
 Dans Google Cloud, un agrégat peut contenir jusqu'à 6 disques de même taille.  La taille maximale du disque est de 64 Tio.
 
 Le type de disque peut être _Disques persistants SSD zonaux_, _Disques persistants équilibrés zonaux_ ou _Disques persistants standard zonaux_.  Vous pouvez associer des disques persistants à un bucket de stockage Google pourlink:concept-data-tiering.html["stockage d'objets à faible coût"] .
+
+Cloud Volumes ONTAP prend en charge les disques Hyperdisk Balanced pour les déploiements à nœud unique à partir de la version 9.18.1, et pour les configurations à haute disponibilité (paire haute disponibilité) dans les zones de disponibilité uniques (AZ) à partir de la version 9.19.1 et suivantes.
 
 *Liens connexes*
 
@@ -129,12 +135,14 @@ endif::gcp[]
 
 
 
+[[raid-type]]
 == Type de RAID
 
 Le type RAID pour chaque agrégat Cloud Volumes ONTAP est RAID0 (striping).  Cloud Volumes ONTAP s'appuie sur le fournisseur de cloud pour la disponibilité et la durabilité du disque.  Aucun autre type de RAID n'est pris en charge.
 
 
 
+[[hot-spares]]
 === Disques de secours à chaud
 
 RAID0 ne prend pas en charge l'utilisation de disques de secours à chaud pour la redondance.

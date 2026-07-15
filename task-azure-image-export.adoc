@@ -91,6 +91,7 @@ Par exemple, tous les déploiements à nœud unique avec Cloud Volumes ONTAP 9.1
 
 
 
+[[export-vhd-file-using-the-azure-cloud-shell-on-linux]]
 == Exporter un fichier VHD à l'aide d'Azure Cloud Shell sous Linux
 
 À partir d’Azure Cloud Shell, exportez l’image de la place de marché vers le fichier VHD (par exemple, _9150.01000024.05090105.vhd_) et téléchargez-la sur votre système Linux local.  Effectuez ces étapes pour obtenir l’image VHD à partir de la place de marché Azure.
@@ -155,6 +156,7 @@ PS /home/user1> Remove-AzDisk -ResourceGroupName $diskRG -DiskName $diskName
 
 
 
+[[export-vhd-file-using-the-azure-cli-on-linux]]
 == Exporter un fichier VHD à l'aide d'Azure CLI sous Linux
 
 Exportez l’image de la place de marché vers un fichier VHD à l’aide de l’interface de ligne de commande Azure à partir d’un système Linux local.

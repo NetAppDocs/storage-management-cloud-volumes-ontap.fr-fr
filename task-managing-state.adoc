@@ -18,6 +18,7 @@ Vous pouvez arrêter et démarrer Cloud Volumes ONTAP à partir de la NetApp Con
 
 
 
+[[scheduling-automatic-shutdowns-of-cloud-volumes-ontap]]
 == Planification des arrêts automatiques de Cloud Volumes ONTAP
 
 Vous souhaiterez peut-être arrêter Cloud Volumes ONTAP pendant des intervalles de temps spécifiques pour réduire vos coûts de calcul.  Plutôt que de le faire manuellement, vous pouvez configurer la console pour qu'elle arrête automatiquement puis redémarre les systèmes à des heures précises.
@@ -63,6 +64,7 @@ Le planning est enregistré.  La ligne de temps d'arrêt planifié correspondant
 
 
 
+[[stopping-cloud-volumes-ontap]]
 == Arrêt de Cloud Volumes ONTAP
 
 L'arrêt de Cloud Volumes ONTAP vous évite d'accumuler des coûts de calcul et crée des instantanés des disques racine et de démarrage, ce qui peut être utile pour le dépannage.

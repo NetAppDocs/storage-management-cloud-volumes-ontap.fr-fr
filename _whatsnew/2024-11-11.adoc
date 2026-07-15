@@ -4,6 +4,7 @@
 
 
 
+[[end-of-availability-for-node-based-licenses]]
 === Fin de disponibilité des licences basées sur des nœuds
 
 NetApp a planifié la fin de la disponibilité (EOA) et la fin du support (EOS) des licences basées sur les nœuds Cloud Volumes ONTAP .  À compter du 11 novembre 2024, la disponibilité limitée des licences basées sur des nœuds a pris fin. Le support des licences basées sur les nœuds prend fin le 31 décembre 2024.  Après l'EOA de vos licences basées sur les nœuds, vous devez passer à des licences basées sur la capacité en utilisant l'outil de conversion de licence BlueXP .
@@ -14,6 +15,7 @@ https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-licensing.html#
 
 
 
+[[removal-of-node-based-deployments-from-bluexp]]
 === Suppression des déploiements basés sur des nœuds de BlueXP
 
 L'option permettant de déployer des systèmes Cloud Volumes ONTAP à l'aide de licences basées sur des nœuds est obsolète sur BlueXP.  À l’exception de quelques cas particuliers, vous ne pouvez pas utiliser de licences basées sur des nœuds pour les déploiements Cloud Volumes ONTAP pour n’importe quel fournisseur de cloud.
@@ -30,6 +32,7 @@ https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-licensing.html#
 
 
 
+[[addition-of-a-cold-tier-for-cloud-volumes-ontap-data-on-azure-blob-storage]]
 === Ajout d'un niveau froid pour les données Cloud Volumes ONTAP sur le stockage Azure Blob
 
 BlueXP vous permet désormais de sélectionner un niveau froid pour stocker les données de niveau de capacité inactives sur le stockage Azure Blob.  L'ajout du niveau froid aux niveaux chaud et froid existants vous offre une option de stockage plus abordable et une meilleure rentabilité.
@@ -38,6 +41,7 @@ https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-data-tiering.ht
 
 
 
+[[option-to-restrict-public-access-to-storage-account-for-azure]]
 === Option permettant de restreindre l'accès public au compte de stockage pour Azure
 
 Vous avez désormais la possibilité de restreindre l’accès public à votre compte de stockage pour les systèmes Cloud Volumes ONTAP dans Azure.  En désactivant l'accès, vous pouvez sécuriser votre adresse IP privée contre toute exposition même au sein du même réseau virtuel, s'il est nécessaire de se conformer aux politiques de sécurité de votre organisation.  Cette option désactive également la hiérarchisation des données pour vos systèmes Cloud Volumes ONTAP et s'applique aux paires à nœud unique et à haute disponibilité.
@@ -46,6 +50,7 @@ https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/reference-networking-az
 
 
 
+[[worm-enablement-after-deploying-cloud-volumes-ontap]]
 === Activation de WORM après le déploiement de Cloud Volumes ONTAP
 
 Vous avez désormais la possibilité d'activer le stockage WORM (Write Once, Read Many) sur un système Cloud Volumes ONTAP existant à l'aide de BlueXP.  Cette fonctionnalité vous offre la flexibilité d'activer WORM sur un environnement de travail, même si WORM n'a pas été activé sur celui-ci lors de sa création.  Une fois activé, vous ne pouvez pas désactiver WORM.

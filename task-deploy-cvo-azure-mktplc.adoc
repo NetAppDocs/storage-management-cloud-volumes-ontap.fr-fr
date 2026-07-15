@@ -96,6 +96,7 @@ Une fois accessible, utilisez ONTAP System Manager ou ONTAP CLI pour vous connec
 
 
 
+[[troubleshoot-deployment-issues]]
 == Résoudre les problèmes de déploiement
 
 Les systèmes Cloud Volumes ONTAP déployés directement via la place de marché Azure n’incluent pas la prise en charge de NetApp.  Si des problèmes surviennent pendant le déploiement, vous pouvez les résoudre de manière autonome.
@@ -114,6 +115,7 @@ Les systèmes Cloud Volumes ONTAP déployés directement via la place de marché
 
 
 
+[[discover-the-deployed-systems-in-console]]
 == Découvrez les systèmes déployés dans la console
 
 Vous pouvez découvrir les systèmes Cloud Volumes ONTAP que vous avez déployés à l’aide du déploiement direct de la place de marché Azure et les gérer sur la page *Systèmes* de la console.  L'agent de la console découvre les systèmes, les ajoute et applique les licences nécessaires, et déverrouille toutes les fonctionnalités de la console pour ces systèmes.  La configuration HA d’origine dans une seule zone de disponibilité avec les disques gérés PSSD v2 est conservée et le système est enregistré sur le même abonnement Azure et le même groupe de ressources que le déploiement d’origine.

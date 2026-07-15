@@ -18,10 +18,12 @@ Une paire haute disponibilité (HA) Cloud Volumes ONTAP offre une fiabilité d'e
 
 
 
+[[ha-components]]
 == Composants HA
 
 
 
+[[ha-single-availability-zone-configuration-with-page-blobs]]
 === Configuration de zone de disponibilité unique HA avec des blobs de pages
 
 Une configuration d'objet blob de pages Cloud Volumes ONTAP HA dans Azure inclut les composants suivants :
@@ -54,6 +56,7 @@ NOTE: À partir de Cloud Volumes ONTAP 9.15.0P1, les blobs de pages Azure ne son
 
 
 
+[[ha-single-availability-zone-configuration-with-shared-managed-disks]]
 === Configuration de zone de disponibilité unique HA avec disques gérés partagés
 
 Une configuration de zone de disponibilité unique Cloud Volumes ONTAP HA exécutée sur un disque géré partagé comprend les composants suivants :
@@ -85,6 +88,7 @@ Comptes de stockage:: Les comptes de stockage sont utilisés pour les déploieme
 
 
 
+[[ha-multiple-availability-zone-configuration]]
 === Configuration de zones de disponibilité multiples HA
 
 Une configuration de zone de disponibilité multiple Cloud Volumes ONTAP HA dans Azure inclut les composants suivants :
@@ -101,6 +105,7 @@ Comptes de stockage:: Les comptes de stockage sont utilisés pour les déploieme
 
 
 
+[[rpo-and-rto]]
 == RPO et RTO
 
 Une configuration HA maintient une haute disponibilité de vos données comme suit :
@@ -111,6 +116,7 @@ Une configuration HA maintient une haute disponibilité de vos données comme su
 
 
 
+[[storage-takeover-and-giveback]]
 == Reprise et restitution du stockage
 
 Semblable à un cluster ONTAP physique, le stockage dans une paire Azure HA est partagé entre les nœuds.  Les connexions au stockage du partenaire permettent à chaque nœud d'accéder au stockage de l'autre en cas de _prise de contrôle_.  Les mécanismes de basculement du chemin réseau garantissent que les clients et les hôtes continuent de communiquer avec le nœud survivant.  Le partenaire _rend_ le stockage lorsque le nœud est remis en ligne.
@@ -126,6 +132,7 @@ La prise de contrôle du stockage, la resynchronisation et la restitution sont t
 
 
 
+[[storage-configurations]]
 == Configurations de stockage
 
 Vous pouvez utiliser une paire HA comme configuration active-active, dans laquelle les deux nœuds fournissent des données aux clients, ou comme configuration active-passive, dans laquelle le nœud passif répond aux demandes de données uniquement s'il a repris le stockage du nœud actif.

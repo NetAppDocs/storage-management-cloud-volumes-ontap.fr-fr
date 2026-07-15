@@ -4,6 +4,7 @@
 
 
 
+[[improved-cloud-volumes-ontap-support-with-google-cloud-c3-vms]]
 === Prise en charge améliorée de Cloud Volumes ONTAP avec les machines virtuelles Google Cloud C3
 
 Cloud Volumes ONTAP prend désormais en charge de manière améliorée les machines virtuelles de la série Google Cloud C3, ce qui permet d'activer les fonctionnalités supplémentaires suivantes :

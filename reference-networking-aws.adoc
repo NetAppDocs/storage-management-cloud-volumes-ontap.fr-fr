@@ -18,12 +18,14 @@ La NetApp Console gère la configuration des composants réseau pour Cloud Volum
 
 
 
+[[general-requirements]]
 == Exigences générales
 
 Assurez-vous d’avoir rempli les exigences suivantes dans AWS.
 
 
 
+[[outbound-internet-access-for-cloud-volumes-ontap-nodes]]
 === Accès Internet sortant pour les nœuds Cloud Volumes ONTAP
 
 Les systèmes Cloud Volumes ONTAP nécessitent un accès Internet sortant pour accéder aux points de terminaison externes pour diverses fonctions.  Cloud Volumes ONTAP ne peut pas fonctionner correctement si ces points de terminaison sont bloqués dans des environnements avec des exigences de sécurité strictes.
@@ -82,6 +84,7 @@ L'authentification de l'utilisateur échoue et les services suivants restent ind
 |===
 
 
+[[outbound-internet-access-for-the-ha-mediator]]
 === Accès Internet sortant pour le médiateur HA
 
 L'instance de médiateur HA doit disposer d'une connexion sortante au service AWS EC2 afin de pouvoir faciliter le basculement du stockage.  Pour établir la connexion, vous pouvez ajouter une adresse IP publique, spécifier un serveur proxy ou utiliser une option manuelle.
@@ -96,6 +99,7 @@ Lors du déploiement de Cloud Volumes ONTAP, le champ proxy du médiateur AWS ac
 
 
 
+[[network-proxy-configuration-of-netapp-console-agent]]
 === Configuration du proxy réseau de l'agent de la NetApp Console
 
 Vous pouvez utiliser la configuration des serveurs proxy de l'agent NetApp Console pour activer l'accès Internet sortant à partir de Cloud Volumes ONTAP.  La console prend en charge deux types de proxys :
@@ -108,6 +112,7 @@ Pour plus d'informations sur la configuration des serveurs proxy, reportez-vous 
 
 
 
+[[private-ip-addresses]]
 === Adresses IP privées
 
 La console alloue automatiquement le nombre requis d'adresses IP privées à Cloud Volumes ONTAP.  Vous devez vous assurer que votre réseau dispose de suffisamment d’adresses IP privées disponibles.
@@ -217,6 +222,7 @@ TIP: Lorsqu'ils sont déployés dans plusieurs zones de disponibilité, plusieur
 
 
 
+[[security-groups]]
 === Groupes de sécurité
 
 Vous n’avez pas besoin de créer de groupes de sécurité car la console le fait pour vous.  Si vous devez utiliser le vôtre, reportez-vous àlink:reference-security-groups.html["Règles du groupe de sécurité"] .
@@ -226,6 +232,7 @@ TIP: Vous recherchez des informations sur l’agent Console ? https://docs.neta
 
 
 
+[[connection-for-data-tiering]]
 === Connexion pour la hiérarchisation des données
 
 Si vous souhaitez utiliser EBS comme niveau de performance et Amazon S3 comme niveau de capacité, vous devez vous assurer que Cloud Volumes ONTAP dispose d'une connexion à S3. La meilleure façon de fournir cette connexion est de créer un point de terminaison VPC vers le service S3. Pour obtenir des instructions, consultez le https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpce-gateway.html#create-gateway-endpoint["Documentation AWS : Création d'un point de terminaison de passerelle"^].
@@ -236,12 +243,14 @@ Si vous rencontrez des problèmes, reportez-vous à la https://aws.amazon.com/pr
 
 
 
+[[connections-to-ontap-systems]]
 === Connexions aux systèmes ONTAP
 
 Pour répliquer des données entre un système Cloud Volumes ONTAP dans AWS et des systèmes ONTAP dans d'autres réseaux, vous devez disposer d'une connexion VPN entre AWS VPC et l'autre réseau, par exemple, votre réseau d'entreprise.  Pour les instructions, reportez-vous à la https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/SetUpVPNConnections.html["Documentation AWS : Configuration d'une connexion VPN AWS"^] .
 
 
 
+[[dns-and-active-directory-for-cifs]]
 === DNS et Active Directory pour CIFS
 
 Si vous souhaitez provisionner le stockage CIFS, vous devez configurer DNS et Active Directory dans AWS ou étendre votre configuration sur site à AWS.
@@ -252,6 +261,7 @@ Pour les instructions, reportez-vous à la https://aws-quickstart.github.io/quic
 
 
 
+[[vpc-sharing]]
 === Partage VPC
 
 À partir de la version 9.11.1, les paires Cloud Volumes ONTAP HA sont prises en charge dans AWS avec le partage VPC.  Le partage VPC permet à votre organisation de partager des sous-réseaux avec d’autres comptes AWS.  Pour utiliser cette configuration, vous devez configurer votre environnement AWS, puis déployer la paire HA à l'aide de l'API.
@@ -260,6 +270,7 @@ link:task-deploy-aws-shared-vpc.html["Découvrez comment déployer une paire HA 
 
 
 
+[[requirements-for-ha-pairs-in-multiple-azs]]
 == Exigences relatives aux paires HA dans plusieurs AZ
 
 Des exigences de mise en réseau AWS supplémentaires s'appliquent aux configurations Cloud Volumes ONTAP HA qui utilisent plusieurs zones de disponibilité (AZ).  Vous devez examiner ces exigences avant de lancer une paire HA, car vous devez saisir les détails de mise en réseau dans la console lorsque vous ajoutez un système Cloud Volumes ONTAP .
@@ -315,6 +326,7 @@ Connexion aux outils de gestion NetApp:: Pour utiliser les outils de gestion Net
 
 
 
+[[example-ha-configuration]]
 === Exemple de configuration HA
 
 L'image suivante illustre les composants réseau spécifiques à une paire HA dans plusieurs AZ : trois zones de disponibilité, trois sous-réseaux, des adresses IP flottantes et une table de routage.
@@ -323,6 +335,7 @@ image:diagram_ha_networking.png["Image conceptuelle montrant les composants d'un
 
 
 
+[[requirements-for-the-console-agent]]
 == Exigences pour l'agent de console
 
 Si vous n’avez pas encore créé d’agent de console, vous devez vérifier les exigences réseau.

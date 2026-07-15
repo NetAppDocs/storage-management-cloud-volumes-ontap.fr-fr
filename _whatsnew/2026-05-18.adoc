@@ -4,6 +4,7 @@
 
 
 
+[[simplified-cloud-volumes-ontap-deployment-in-azure]]
 === Déploiement simplifié de Cloud Volumes ONTAP dans Azure
 
 Vous pouvez désormais utiliser la création rapide pour déployer Cloud Volumes ONTAP dans Azure, aussi bien pour les configurations à nœud unique que pour les configurations à haute disponibilité (HA). Ce processus simplifié réduit le nombre d'étapes par rapport à la méthode avancée, définit automatiquement les valeurs par défaut sur une seule page et minimise la navigation, rendant le déploiement plus rapide et plus facile.

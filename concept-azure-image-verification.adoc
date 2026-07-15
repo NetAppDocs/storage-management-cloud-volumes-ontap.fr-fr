@@ -21,6 +21,7 @@ NOTE: La vérification d’image Azure est prise en charge sur Cloud Volumes ONT
 
 
 
+[[azures-alteration-of-published-vhd-files]]
 == Modification des fichiers VHD publiés par Azure
 
 Les 1 Mo (1048576 octets) au début et les 512 octets à la fin du fichier VHD sont modifiés par Azure.  NetApp signe le fichier VHD restant.

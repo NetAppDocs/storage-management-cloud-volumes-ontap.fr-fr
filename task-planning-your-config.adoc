@@ -18,6 +18,7 @@ Lorsque vous déployez Cloud Volumes ONTAP dans AWS, vous pouvez choisir un syst
 
 
 
+[[choose-a-cloud-volumes-ontap-license]]
 == Choisissez une licence Cloud Volumes ONTAP
 
 Plusieurs options de licence sont disponibles pour Cloud Volumes ONTAP. Chaque option vous permet de choisir un modèle de consommation qui répond à vos besoins.
@@ -28,6 +29,7 @@ Plusieurs options de licence sont disponibles pour Cloud Volumes ONTAP. Chaque o
 
 
 
+[[choose-a-supported-region]]
 == Choisissez une région prise en charge
 
 Cloud Volumes ONTAP est pris en charge dans la plupart des régions AWS. https://bluexp.netapp.com/cloud-volumes-global-regions["Afficher la liste complète des régions prises en charge"^] .
@@ -36,6 +38,7 @@ Les nouvelles régions AWS doivent être activées avant de pouvoir créer et g�
 
 
 
+[[choose-a-supported-local-zone]]
 === Choisissez une zone locale prise en charge
 
 La sélection d'une zone locale est facultative.  Cloud Volumes ONTAP est pris en charge dans certaines zones locales AWS, notamment Singapour.  Cloud Volumes ONTAP dans AWS prend en charge uniquement le mode haute disponibilité (HA) dans une seule zone de disponibilité.  Les déploiements à nœud unique ne sont pas pris en charge.
@@ -49,6 +52,7 @@ link:https://docs.aws.amazon.com/local-zones/latest/ug/getting-started.html["Doc
 
 
 
+[[choose-a-supported-instance]]
 == Choisissez une instance prise en charge
 
 Cloud Volumes ONTAP prend en charge plusieurs types d’instances, selon le type de licence que vous choisissez.
@@ -57,6 +61,7 @@ https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-aws
 
 
 
+[[understand-storage-limits]]
 == Comprendre les limites de stockage
 
 La limite de capacité brute d’un système Cloud Volumes ONTAP est liée à la licence.  Des limites supplémentaires ont un impact sur la taille des agrégats et des volumes.  Vous devez être conscient de ces limites lorsque vous planifiez votre configuration.
@@ -65,6 +70,7 @@ https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-limits-aws.
 
 
 
+[[size-your-system-in-aws]]
 == Dimensionnez votre système dans AWS
 
 Le dimensionnement de votre système Cloud Volumes ONTAP peut vous aider à répondre aux exigences de performances et de capacité.  Vous devez tenir compte de quelques points clés lors du choix d’un type d’instance, d’un type de disque et d’une taille de disque :
@@ -126,6 +132,7 @@ Comme indiqué ci-dessus, le choix d'une taille de disque n'est pas pris en char
 
 
 
+[[view-default-system-disks]]
 == Afficher les disques système par défaut
 
 En plus du stockage des données utilisateur, la console achète également du stockage cloud pour les données système Cloud Volumes ONTAP (données de démarrage, données racine, données principales et NVRAM).  À des fins de planification, il peut être utile de vérifier ces détails avant de déployer Cloud Volumes ONTAP.
@@ -137,6 +144,7 @@ TIP: L'agent de console nécessite également un disque système. https://docs.n
 
 
 
+[[prepare-to-deploy-cloud-volumes-ontap-in-an-aws-outpost]]
 == Préparez-vous à déployer Cloud Volumes ONTAP dans un AWS Outpost
 
 Si vous disposez d'un AWS Outpost, vous pouvez déployer Cloud Volumes ONTAP dans cet Outpost en sélectionnant le VPC Outpost pendant le processus de déploiement. L'expérience est la même que pour tout autre VPC résidant dans AWS.  Notez que vous devrez d’abord déployer un agent de console dans votre AWS Outpost.
@@ -150,12 +158,14 @@ Il y a quelques limitations à souligner :
 
 
 
+[[collect-networking-information]]
 == Recueillir des informations sur le réseau
 
 Lorsque vous lancez Cloud Volumes ONTAP dans AWS, vous devez spécifier les détails de votre réseau VPC.  Vous pouvez utiliser une feuille de travail pour recueillir les informations auprès de votre administrateur.
 
 
 
+[[single-node-or-ha-pair-in-a-single-az]]
 === Nœud unique ou paire HA dans une seule zone de disponibilité
 
 [cols="30,70"]
@@ -176,6 +186,7 @@ Lorsque vous lancez Cloud Volumes ONTAP dans AWS, vous devez spécifier les dét
 |===
 
 
+[[ha-pair-in-multiple-azs]]
 === Paire HA dans plusieurs AZ
 
 [cols="30,70"]
@@ -226,12 +237,14 @@ Lorsque vous lancez Cloud Volumes ONTAP dans AWS, vous devez spécifier les dét
 |===
 
 
+[[choose-a-write-speed]]
 == Choisissez une vitesse d'écriture
 
 La console vous permet de choisir un paramètre de vitesse d'écriture pour Cloud Volumes ONTAP.  Avant de choisir une vitesse d’écriture, vous devez comprendre les différences entre les paramètres normaux et élevés, ainsi que les risques et les recommandations lors de l’utilisation d’une vitesse d’écriture élevée. link:concept-write-speed.html["En savoir plus sur la vitesse d'écriture"] .
 
 
 
+[[choose-a-volume-usage-profile]]
 == Choisissez un profil d'utilisation du volume
 
 ONTAP inclut plusieurs fonctionnalités d'efficacité de stockage qui peuvent réduire la quantité totale de stockage dont vous avez besoin.  Lorsque vous créez un volume dans la console, vous pouvez choisir un profil qui active ces fonctionnalités ou un profil qui les désactive.  Vous devriez en savoir plus sur ces fonctionnalités pour vous aider à décider quel profil utiliser.

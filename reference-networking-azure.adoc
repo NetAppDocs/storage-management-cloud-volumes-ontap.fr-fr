@@ -18,12 +18,14 @@ La NetApp Console gère la configuration des composants réseau pour Cloud Volum
 
 
 
+[[requirements-for-cloud-volumes-ontap]]
 == Exigences pour Cloud Volumes ONTAP
 
 Les exigences réseau suivantes doivent être respectées dans Azure.
 
 
 
+[[outbound-internet-access]]
 === Accès Internet sortant
 
 Les systèmes Cloud Volumes ONTAP nécessitent un accès Internet sortant pour accéder aux points de terminaison externes pour diverses fonctions.  Cloud Volumes ONTAP ne peut pas fonctionner correctement si ces points de terminaison sont bloqués dans des environnements avec des exigences de sécurité strictes.
@@ -78,6 +80,7 @@ L'authentification de l'utilisateur échoue et les services suivants restent ind
 |===
 
 
+[[network-proxy-configuration-of-netapp-console-agent]]
 === Configuration du proxy réseau de l'agent de la NetApp Console
 
 Vous pouvez utiliser la configuration des serveurs proxy de l'agent NetApp Console pour activer l'accès Internet sortant à partir de Cloud Volumes ONTAP.  La console prend en charge deux types de proxys :
@@ -90,6 +93,7 @@ Pour plus d'informations sur la configuration des serveurs proxy, reportez-vous 
 
 
 
+[[ip-addresses]]
 === adresses IP
 
 La console alloue automatiquement le nombre requis d’adresses IP privées à Cloud Volumes ONTAP dans Azure.  Vous devez vous assurer que votre réseau dispose de suffisamment d’adresses IP privées disponibles.
@@ -166,6 +170,7 @@ De plus, 4 adresses IP frontales (FIP) sont configurées pour migrer lors d'év�
 
 
 
+[[secure-connections-to-azure-services]]
 === Connexions sécurisées aux services Azure
 
 Par défaut, la console active une liaison privée Azure pour les connexions entre Cloud Volumes ONTAP et les comptes de stockage d’objets blob de pages Azure.
@@ -178,6 +183,7 @@ link:task-enabling-private-link.html["En savoir plus sur l'utilisation des liens
 
 
 
+[[networking-for-azure-vnet-encryption]]
 === Mise en réseau pour le chiffrement Azure VNet
 
 Cloud Volumes ONTAP prend en charge  https://learn.microsoft.com/en-us/azure/virtual-network/virtual-network-encryption-overview["chiffrement Azure Virtual Network (VNet)"^] le chiffrement du trafic entre machines virtuelles au sein d'un VNet ou entre VNets appariés. Cette fonctionnalité est configurée au niveau du VNet Azure et est indépendante de la topologie Cloud Volumes ONTAP (nœud unique ou HA).
@@ -188,6 +194,7 @@ https://learn.microsoft.com/en-us/azure/virtual-network/accelerated-networking-o
 
 
 
+[[connections-to-other-ontap-systems]]
 === Connexions à d'autres systèmes ONTAP
 
 Pour répliquer des données entre un système Cloud Volumes ONTAP dans Azure et des systèmes ONTAP dans d’autres réseaux, vous devez disposer d’une connexion VPN entre le réseau virtuel Azure et l’autre réseau, par exemple, votre réseau d’entreprise.
@@ -196,6 +203,7 @@ Pour les instructions, reportez-vous à la https://docs.microsoft.com/en-us/azur
 
 
 
+[[port-for-the-ha-interconnect]]
 === Port pour l'interconnexion HA
 
 Une paire Cloud Volumes ONTAP HA inclut une interconnexion HA, qui permet à chaque nœud de vérifier en permanence si son partenaire fonctionne et de mettre en miroir les données du journal pour la mémoire non volatile de l'autre.  L'interconnexion HA utilise le port TCP 10006 pour la communication.
@@ -204,6 +212,7 @@ Par défaut, la communication entre les LIF d'interconnexion HA est ouverte et i
 
 
 
+[[only-one-ha-pair-in-an-azure-resource-group]]
 === Une seule paire HA dans un groupe de ressources Azure
 
 Vous devez utiliser un groupe de ressources _dédié_ pour chaque paire Cloud Volumes ONTAP HA que vous déployez dans Azure.  Une seule paire HA est prise en charge dans un groupe de ressources.
@@ -212,6 +221,7 @@ La console rencontre des problèmes de connexion si vous essayez de déployer un
 
 
 
+[[security-group-rules]]
 === Règles du groupe de sécurité
 
 La console crée des groupes de sécurité Azure qui incluent les règles entrantes et sortantes pour que Cloud Volumes ONTAP fonctionne correctement. https://docs.netapp.com/us-en/bluexp-setup-admin/reference-ports-azure.html["Afficher les règles du groupe de sécurité pour l'agent de la console"^] .
@@ -490,6 +500,7 @@ NOTE: La source est l'interface (adresse IP) sur le système Cloud Volumes ONTAP
 |===
 
 
+[[requirements-for-the-console-agent]]
 == Exigences pour l'agent de console
 
 Si vous n’avez pas encore créé d’agent de console, vous devez également vérifier les exigences réseau pour l’agent de console.

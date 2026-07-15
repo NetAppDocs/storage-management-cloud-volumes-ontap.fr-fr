@@ -20,6 +20,7 @@ Pour créer des machines virtuelles de stockage de données supplémentaires, vo
 
 
 
+[[supported-number-of-storage-vms]]
 == Nombre de machines virtuelles de stockage prises en charge
 
 Plusieurs machines virtuelles de stockage sont prises en charge avec des configurations Cloud Volumes ONTAP spécifiques à partir de la version 9.7.  Aller à la https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/index.html["Notes de version de Cloud Volumes ONTAP"^] pour vérifier le nombre de machines virtuelles de stockage prises en charge pour votre version de Cloud Volumes ONTAP.
@@ -28,6 +29,7 @@ Toutes les autres configurations Cloud Volumes ONTAP prennent en charge une mach
 
 
 
+[[verify-limits-for-your-configuration]]
 == Vérifiez les limites de votre configuration
 
 Chaque instance EC2 prend en charge un nombre maximal d'adresses IPv4 privées par interface réseau.  Vous devez vérifier la limite avant d’allouer des adresses IP dans AWS pour la nouvelle machine virtuelle de stockage.
@@ -40,6 +42,7 @@ Chaque instance EC2 prend en charge un nombre maximal d'adresses IPv4 privées p
 
 
 
+[[allocate-ip-addresses-in-aws]]
 == Attribuer des adresses IP dans AWS
 
 Les adresses IPv4 privées doivent être attribuées au port e0a dans AWS avant de créer des LIF pour la nouvelle machine virtuelle de stockage.
@@ -90,6 +93,7 @@ Une adresse IP privée secondaire facultative est requise si vous souhaitez cré
 
 
 
+[[create-a-storage-vm-on-a-single-node-system]]
 == Créer une machine virtuelle de stockage sur un système à nœud unique
 
 Ces étapes permettent de créer une nouvelle machine virtuelle de stockage sur un système à nœud unique. Une adresse IP privée est requise pour créer une LIF NAS et une autre adresse IP privée facultative est nécessaire si vous souhaitez créer une LIF de gestion.
@@ -137,6 +141,7 @@ Cette étape est nécessaire car la nouvelle machine virtuelle de stockage doit 
 
 
 
+[[create-a-storage-vm-on-an-ha-pair-in-a-single-az]]
 == Créer une machine virtuelle de stockage sur une paire HA dans une seule zone de disponibilité
 
 Ces étapes créent une nouvelle machine virtuelle de stockage sur une paire HA dans une seule zone de disponibilité.  Une adresse IP privée est requise pour créer un NAS LIF et une autre adresse IP privée facultative est nécessaire si vous souhaitez créer un LIF de gestion.
@@ -209,6 +214,7 @@ network interface service-policy add-service -vserver <svm-name> -policy default
 
 
 
+[[create-a-storage-vm-on-an-ha-pair-in-multiple-azs]]
 == Créer une machine virtuelle de stockage sur une paire HA dans plusieurs AZ
 
 Ces étapes créent une nouvelle machine virtuelle de stockage sur une paire HA dans plusieurs AZ.

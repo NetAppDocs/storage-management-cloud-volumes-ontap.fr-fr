@@ -18,6 +18,7 @@ Vous devez vous familiariser avec la facturation et l'utilisation de la capacit�
 
 
 
+[[consumption-models-or-license-purchase-options]]
 == Modèles de consommation ou options d'achat de licences
 
 Des formules de licences basées sur la capacité sont disponibles avec les modèles de consommation ou options d'achat suivants :
@@ -48,12 +49,13 @@ Votre licence est toujours facturée en premier, mais vous serez facturé au tar
 ** Si la durée de votre licence expire
 
 
-* Si vous possédez une licence BYOL et un contrat annuel auprès d'une marketplace, votre consommation et vos dépassements sont facturés selon la préférence de facturation que vous avez définie. Pour comprendre comment vous êtes facturé, consultez link:concept-licensing-charging.html#concept-licensing-charging.html#billing-preferences-and-overages["Préférences de facturation et dépassements"].
+* Si vous possédez une licence BYOL et un contrat annuel auprès d'une marketplace, votre consommation et vos dépassements sont facturés selon la préférence de facturation que vous avez définie. Pour comprendre comment vous êtes facturé, consultez link:concept-licensing-charging.html#billing-preferences-and-overages["Préférences de facturation et dépassements"].
 * Seuls les systèmes à nœud unique avec BYOL sont pris en charge dans les régions de Chine. Les déploiements dans les régions de Chine sont exemptés des restrictions de licence BYOL.
 
 
 
 
+[[changing-of-license-packages]]
 == Modification des packs de licences
 
 Après le déploiement, vous pouvez modifier le package pour un système Cloud Volumes ONTAP qui utilise des licences basées sur la capacité.  Par exemple, si vous avez déployé un système Cloud Volumes ONTAP avec le package Essentials, vous pouvez le remplacer par le package Professional si les besoins de votre entreprise ont changé.
@@ -64,6 +66,7 @@ Pour plus d'informations sur la conversion des licences basées sur les nœuds e
 
 
 
+[[how-you-are-charged-for-supported-storage-types-and-packages]]
 == Comment sont facturés les types et forfaits de stockage pris en charge
 
 La facturation dans Cloud Volumes ONTAP est basée sur un certain nombre de facteurs, tels que les forfaits et les types de volumes. Les packages de licences basés sur la capacité sont disponibles avec Cloud Volumes ONTAP 9.7 et versions ultérieures.
@@ -72,6 +75,7 @@ Pour plus de détails sur les prix, rendez-vous sur le https://bluexp.netapp.com
 
 
 
+[[storage-vms]]
 === Machines virtuelles de stockage
 
 * Il n'y a pas de frais de licence supplémentaires pour les machines virtuelles de stockage de données supplémentaires (SVM), mais il y a des frais de capacité minimum de 4 Tio par SVM de stockage de données.
@@ -80,12 +84,14 @@ Pour plus de détails sur les prix, rendez-vous sur le https://bluexp.netapp.com
 
 
 
+[[ha-pairs]]
 === paires HA
 
 Pour les paires HA, vous n'êtes facturé que pour la capacité provisionnée sur un nœud.  Vous n'êtes pas facturé pour les données mises en miroir de manière synchrone sur le nœud partenaire.
 
 
 
+[[flexclone-and-flexcache-volumes]]
 === Volumes FlexClone et FlexCache
 
 * Vous ne serez pas facturé pour la capacité utilisée par les volumes FlexClone .
@@ -94,12 +100,14 @@ Pour les paires HA, vous n'êtes facturé que pour la capacité provisionnée su
 
 
 
+[[readwrite-volumes]]
 === Volumes de lecture/écriture
 
 Si vous créez ou utilisez un volume inscriptible (lecture/écriture), il est considéré comme un volume principal et est facturé pour la capacité provisionnée sur la base du coût minimum par machine virtuelle de stockage (SVM).  On peut citer comme exemples les volumes de lecture/écriture FlexVol , les volumes d'audit SnapLock et les volumes d'audit CIFS/NFS.  Tous les volumes de données créés par l'utilisateur sont facturés conformément à votre abonnement et à votre type de forfait.  Les volumes internes ONTAP créés automatiquement et ne pouvant pas stocker de données, tels que les volumes racine SVM, ne sont pas facturés.
 
 
 
+[[essentials-packages]]
 === forfaits essentiels
 
 Avec le forfait Essentials, vous êtes facturé en fonction du type de déploiement (HA ou nœud unique) et du type de volume (principal ou secondaire).  La tarification du plus élevé au plus bas est présentée dans l'ordre suivant : _Essentials Primary HA_, _Essentials Primary Single Node_, _Essentials Secondary HA_ et _Essentials Secondary Single Node_.  Alternativement, lorsque vous achetez un contrat de marché ou acceptez une offre privée, les frais de capacité sont les mêmes pour tout type de déploiement ou de volume.
@@ -118,6 +126,7 @@ NOTE: Si un volume en lecture seule/DP devient un volume principal, la console l
 
 
 
+[[capacity-limit]]
 == Limite de capacité
 
 Dans le modèle de licence basé sur la capacité, chaque système Cloud Volumes ONTAP prend en charge la hiérarchisation du stockage d'objets, et la capacité hiérarchisée totale peut évoluer jusqu'à la limite de compartiment du fournisseur de cloud. Bien que la licence n'impose pas de restrictions de capacité, suivez les https://www.netapp.com/pdf.html?item=/media/17239-tr-4598.pdf["Bonnes pratiques de FabricPool"^] pour garantir des performances, une fiabilité et une rentabilité optimales lors de la configuration et de la gestion de la hiérarchisation.
@@ -131,6 +140,7 @@ Pour plus d'informations sur les limites de capacité de chaque fournisseur de c
 
 
 
+[[max-number-of-systems]]
 == Nombre maximal de systèmes
 
 Avec une licence basée sur la capacité, le nombre maximal de systèmes Cloud Volumes ONTAP est limité à 24 par organisation NetApp Console. Un  est une paire haute disponibilité Cloud Volumes ONTAP, un système Cloud Volumes ONTAP à nœud unique, ou toute machine virtuelle de stockage supplémentaire que vous créez. La machine virtuelle de stockage par défaut n'est pas prise en compte dans la limite. Cette limite s'applique à tous les modèles de licence.
@@ -159,6 +169,7 @@ https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/index.html["En savoir
 
 
 
+[[minimum-charge]]
 == Frais minimum
 
 Des frais minimum de 4 Tio sont appliqués pour chaque machine virtuelle de stockage de données possédant au moins un volume principal (lecture-écriture).  Si la somme des volumes principaux est inférieure à 4 Tio, la console applique les frais minimum de 4 Tio à cette machine virtuelle de stockage.
@@ -169,6 +180,7 @@ Pour le package Essentials, les frais de capacité minimale de 4 Tio ne s'appliq
 
 
 
+[[billing-preferences-and-overages]]
 == Préférences de facturation et dépassements
 
 Vous pouvez choisir votre mode de facturation dans la section * Licenses and subscriptions* de la Console. Des dépassements surviennent lorsque votre utilisation excède la capacité spécifiée dans votre licence ou votre abonnement annuel.
@@ -181,6 +193,7 @@ Pour plus d'informations sur les préférences de facturation, veuillez consulte
 
 
 
+[[how-overages-are-charged-for-essentials-licenses]]
 === Comment les dépassements sont facturés pour les licences Essentials
 
 Si vous achetez une licence Essentials auprès de NetApp (BYOL) et que vous dépassez la capacité sous licence pour un package Essentials spécifique, la console facture les dépassements sur une licence Essentials plus chère (si vous en avez une avec une capacité disponible).  La console utilise d'abord la capacité disponible pour laquelle vous avez payé avant de facturer le marché.  S'il n'y a pas de capacité disponible avec votre licence BYOL, la capacité excédentaire est facturée aux tarifs horaires à la demande du marché (PAYGO) et ajoutée à votre facture mensuelle.

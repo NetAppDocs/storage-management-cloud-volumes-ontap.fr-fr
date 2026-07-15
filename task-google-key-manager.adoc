@@ -29,6 +29,7 @@ Lorsque vous utilisez Cloud KMS, sachez que par défaut, le LIF d'un SVM de donn
 
 
 
+[[configuration]]
 == Configuration
 
 .Google Cloud
@@ -74,6 +75,7 @@ NOTE: Si vous utilisez Cloud Volumes ONTAP 9.13.0 ou une version ultérieure, vo
 
 
 
+[[troubleshoot]]
 == Dépannage
 
 Si vous avez besoin de résoudre un problème, vous pouvez suivre les journaux bruts de l'API REST dans les deux dernières étapes ci-dessus :

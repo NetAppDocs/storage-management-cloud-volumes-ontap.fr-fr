@@ -29,6 +29,7 @@ Vous pouvez également utiliser ONTAP CLI ou ONTAP System Manager pour créer et
 video::PBNPVRUeT1o[youtube,width=848,height=480]
 
 
+[[work-with-flexcache-when-the-origin-is-encrypted]]
 == Travailler avec FlexCache lorsque l'origine est cryptée
 
 Lors de la configuration de FlexCache sur un système Cloud Volumes ONTAP où le volume d'origine est chiffré, des étapes supplémentaires sont requises pour garantir que le volume FlexCache peut accéder correctement aux données chiffrées et les mettre en cache.

@@ -18,6 +18,7 @@ La prise en charge de la fonctionnalité Amazon EBS Elastic Volumes avec un agr�
 
 
 
+[[benefits]]
 == Avantages
 
 * Croissance dynamique du disque
@@ -41,12 +42,14 @@ https://aws.amazon.com/ebs/features/["Documentation AWS : En savoir plus sur El
 
 
 
+[[supported-configurations]]
 == Configurations prises en charge
 
 La fonctionnalité Amazon EBS Elastic Volumes est prise en charge avec des versions spécifiques de Cloud Volumes ONTAP et des types de disques EBS spécifiques.
 
 
 
+[[cloud-volumes-ontap-version]]
 === Version Cloud Volumes ONTAP
 
 La fonctionnalité Elastic Volumes est prise en charge avec les nouveaux systèmes Cloud Volumes ONTAP créés à partir de la version 9.11.0 ou ultérieure.  La fonctionnalité n'est pas prise en charge avec les systèmes Cloud Volumes ONTAP existants qui ont été déployés avant la version 9.11.0.
@@ -55,12 +58,14 @@ Par exemple, la fonctionnalité Elastic Volumes n'est pas prise en charge si vou
 
 
 
+[[ebs-disk-types]]
 === Types de disques EBS
 
 La fonctionnalité Volumes élastiques est automatiquement activée au niveau agrégé lors de l'utilisation de SSD à usage général (gp3) ou de SSD IOPS provisionnés (io1).  La fonctionnalité Volumes élastiques n’est pas prise en charge avec les agrégats qui utilisent un autre type de disque.
 
 
 
+[[required-aws-permissions]]
 == Autorisations AWS requises
 
 À partir de la version 3.9.19, l'agent de console nécessite les autorisations suivantes pour activer et gérer la fonctionnalité Elastic Volumes sur un agrégat Cloud Volumes ONTAP :
@@ -73,6 +78,7 @@ Ces autorisations sont incluses dans https://docs.netapp.com/us-en/bluexp-setup-
 
 
 
+[[how-support-for-elastic-volumes-works]]
 == Fonctionnement de la prise en charge des volumes élastiques
 
 Un agrégat sur lequel la fonctionnalité Volumes élastiques est activée est composé d'un ou deux groupes RAID.  Chaque groupe RAID dispose de quatre disques identiques ayant la même capacité.  Voici un exemple d'un agrégat de 10 Tio qui comporte quatre disques de 2,5 Tio chacun :
@@ -93,6 +99,7 @@ image:diagram-aws-elastic-volumes-two-raid-groups.png["Une image conceptuelle qu
 
 
 
+[[what-happens-when-you-create-a-volume]]
 === Que se passe-t-il lorsque vous créez un volume
 
 Si vous créez un volume qui utilise des disques gp3 ou io1, la console crée le volume sur un agrégat comme suit :
@@ -118,6 +125,7 @@ La taille de l'agrégat est basée sur le volume demandé plus une capacité sup
 
 
 
+[[capacity-management-mode]]
 === Mode de gestion de la capacité
 
 Le mode de gestion de la capacité pour un agent de console fonctionne avec les volumes élastiques de la même manière qu'il fonctionne avec d'autres types d'agrégats :
@@ -130,12 +138,14 @@ link:concept-storage-management.html#capacity-management["En savoir plus sur le 
 
 
 
+[[limitations]]
 == Limites
 
 L’augmentation de la taille d’un agrégat peut prendre jusqu’à 6 heures.  Pendant ce temps, la console ne peut demander aucune capacité supplémentaire pour cet agrégat.
 
 
 
+[[how-to-work-with-elastic-volumes]]
 == Comment travailler avec les volumes élastiques
 
 Vous pouvez effectuer ces tâches avec Elastic Volumes :

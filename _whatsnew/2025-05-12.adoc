@@ -4,6 +4,7 @@
 
 
 
+[[discovery-of-deployments-made-through-the-azure-marketplace-in-bluexp]]
 === Découverte des déploiements réalisés via la marketplace Azure dans BlueXP
 
 BlueXP a désormais la capacité de découvrir les systèmes Cloud Volumes ONTAP déployés directement via la place de marché Azure.  Cela signifie que vous pouvez désormais ajouter et gérer ces systèmes en tant qu'environnements de travail dans BlueXP, comme tout autre système Cloud Volumes ONTAP .

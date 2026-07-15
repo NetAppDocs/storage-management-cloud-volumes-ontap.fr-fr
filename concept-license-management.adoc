@@ -25,6 +25,7 @@ link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-manage-node-l
 
 
 
+[[byol-system-licenses]]
 == Licences système BYOL
 
 Les licences par nœud peuvent être obtenues auprès de NetApp. Le nombre de licences que vous pouvez acheter pour un système à nœud unique ou une paire haute disponibilité est illimité.
@@ -38,6 +39,7 @@ Sachez que les limites de disque peuvent vous empêcher d’atteindre la limite 
 
 
 
+[[license-management-for-a-new-system]]
 == Gestion des licences pour un nouveau système
 
 Lorsque vous créez un système BYOL basé sur des nœuds, la console vous demande le numéro de série de votre licence et votre compte de site de support NetApp .  La console utilise le compte pour télécharger le fichier de licence depuis NetApp et l'installer sur le système Cloud Volumes ONTAP .
@@ -48,6 +50,7 @@ Si la console ne peut pas accéder au fichier de licence via la connexion Intern
 
 
 
+[[license-expiration]]
 == Expiration de la licence
 
 La console affiche un avertissement 30 jours avant l'expiration d'une licence basée sur un nœud et à nouveau lorsque la licence expire.  L'image suivante montre un avertissement d'expiration de 30 jours qui apparaît dans l'interface utilisateur :
@@ -62,6 +65,7 @@ Si vous ne renouvelez pas la licence à temps, le système Cloud Volumes ONTAP s
 
 
 
+[[license-renewal]]
 == Renouvellement de licence
 
 Si vous renouvelez un abonnement BYOL basé sur un nœud en contactant un représentant NetApp , la console obtient automatiquement la nouvelle licence auprès de NetApp et l'installe sur le système Cloud Volumes ONTAP .
@@ -70,6 +74,7 @@ Si la console ne peut pas accéder au fichier de licence via la connexion Intern
 
 
 
+[[license-transfer-to-a-new-system]]
 == Transfert de licence vers un nouveau système
 
 Une licence BYOL basée sur un nœud est transférable entre les systèmes Cloud Volumes ONTAP lorsque vous supprimez un système existant, puis en créez un nouveau en utilisant la même licence.

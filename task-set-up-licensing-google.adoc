@@ -18,6 +18,7 @@ Une fois que vous avez décidé quelle option de licence vous souhaitez utiliser
 
 
 
+[[freemium]]
 == Freemium
 
 Sélectionnez l'offre Freemium pour utiliser Cloud Volumes ONTAP gratuitement avec jusqu'à 500 Gio de capacité provisionnée. link:concept-licensing.html#packages["En savoir plus sur l'offre Freemium"] .
@@ -42,6 +43,7 @@ link:task-deploying-gcp.html["Consultez les instructions étape par étape pour 
 
 
 
+[[capacity-based-license]]
 == Licence basée sur la capacité
 
 Les licences basées sur la capacité vous permettent de payer Cloud Volumes ONTAP par Tio de capacité. Les licences basées sur la capacité sont disponibles sous la forme d'un _package_ : le package Essentials ou Professional.
@@ -59,6 +61,7 @@ Les sections suivantes décrivent comment démarrer avec chacun de ces modèles 
 
 
 
+[[byol]]
 === Apportez votre propre vin
 
 Payez à l'avance en achetant une licence (BYOL) auprès de NetApp pour déployer les systèmes Cloud Volumes ONTAP chez n'importe quel fournisseur de cloud.
@@ -93,6 +96,7 @@ link:task-deploying-gcp.html["Consultez les instructions étape par étape pour 
 
 
 
+[[paygo-subscription]]
 === Abonnement PAYGO
 
 Payez à l'heure en souscrivant à l'offre depuis la marketplace de votre fournisseur cloud.
@@ -119,6 +123,7 @@ TIP: Vous pouvez gérer les abonnements Google Cloud Marketplace associés à vo
 
 
 
+[[annual-contract]]
 === Contrat annuel
 
 Payez Cloud Volumes ONTAP annuellement en achetant un contrat annuel.
@@ -147,6 +152,7 @@ link:task-deploying-gcp.html["Consultez les instructions étape par étape pour 
 
 
 
+[[keystone-subscription]]
 == Abonnement Keystone
 
 Un abonnement Keystone est un service d'abonnement à paiement progressif. link:concept-licensing.html#keystone-subscription["En savoir plus sur les abonnements NetApp Keystone"] .
@@ -170,6 +176,7 @@ link:task-deploying-gcp.html["Consultez les instructions étape par étape pour 
 
 
 
+[[node-based-license]]
 == Licence basée sur les nœuds
 
 Une licence basée sur les nœuds est la licence de génération précédente pour Cloud Volumes ONTAP. Une licence basée sur les nœuds peut être obtenue auprès de NetApp (BYOL) et est disponible pour le renouvellement de licence, uniquement dans des cas spécifiques. Pour plus d'informations, consultez :

@@ -18,12 +18,14 @@ Cloud Volumes ONTAP prend en charge les protocoles clients iSCSI, NFS, SMB, NVMe
 
 
 
+[[iscsi]]
 == iSCSI
 
 iSCSI est un protocole de bloc qui peut fonctionner sur des réseaux Ethernet standard.  La plupart des systèmes d’exploitation clients proposent un initiateur logiciel qui s’exécute sur un port Ethernet standard.
 
 
 
+[[nfs]]
 == NFS
 
 NFS est le protocole d'accès aux fichiers traditionnel pour les systèmes UNIX et LINUX.  Les clients peuvent accéder aux fichiers des volumes ONTAP à l’aide des protocoles NFSv3, NFSv4 et NFSv4.1.  Vous pouvez contrôler l’accès aux fichiers à l’aide d’autorisations de style UNIX, d’autorisations de style NTFS ou d’une combinaison des deux.
@@ -32,12 +34,14 @@ Les clients peuvent accéder aux mêmes fichiers en utilisant les protocoles NFS
 
 
 
+[[smb]]
 == PME
 
 SMB est le protocole d'accès aux fichiers traditionnel pour les systèmes Windows.  Les clients peuvent accéder aux fichiers des volumes ONTAP à l’aide des protocoles SMB 2.0, SMB 2.1, SMB 3.0 et SMB 3.1.1.  Tout comme avec NFS, un mélange de styles d’autorisation est pris en charge.
 
 
 
+[[s3]]
 == S3
 
 Cloud Volumes ONTAP prend en charge S3 comme option de stockage évolutif.  La prise en charge du protocole S3 vous permet de configurer l'accès client S3 aux objets contenus dans un bucket dans une machine virtuelle de stockage (SVM).
@@ -46,6 +50,7 @@ link:https://docs.netapp.com/us-en/ontap/s3-multiprotocol/index.html#how-s3-mult
 
 
 
+[[nvme-tcp]]
 == NVMe-TCP
 
 À partir de la version ONTAP 9.12.1, NVMe-TCP est pris en charge pour tous les fournisseurs de cloud.  Cloud Volumes ONTAP prend en charge NVMe-TCP comme protocole de bloc pour les machines virtuelles de stockage (SVM) lors du déploiement et installe automatiquement les licences NVMe requises.

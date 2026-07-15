@@ -24,6 +24,7 @@ ifdef::aws[]
 
 
 
+[[data-tiering-in-aws]]
 == Hiérarchisation des données dans AWS
 
 Lorsque vous activez la hiérarchisation des données dans AWS, Cloud Volumes ONTAP utilise EBS comme niveau de performance pour les données actives et Amazon Simple Storage Service (Amazon S3) comme niveau de capacité pour les données inactives.
@@ -70,6 +71,7 @@ ifdef::azure[]
 
 
 
+[[data-tiering-in-azure]]
 == Hiérarchisation des données dans Azure
 
 Lorsque vous activez la hiérarchisation des données dans Azure, Cloud Volumes ONTAP utilise les disques gérés Azure comme niveau de performances pour les données chaudes et le stockage Azure Blob comme niveau de capacité pour les données inactives.
@@ -116,6 +118,7 @@ ifdef::gcp[]
 
 
 
+[[data-tiering-in-google-cloud]]
 == Hiérarchisation des données dans Google Cloud
 
 Lorsque vous activez la hiérarchisation des données dans Google Cloud, Cloud Volumes ONTAP utilise des disques persistants comme niveau de performance pour les données fréquemment utilisées et un bucket Google Cloud Storage comme niveau de capacité pour les données inactives. Vous pouvez sélectionner un niveau de stockage lors de la création d’un système et le modifier à tout moment par la suite. Pour des informations sur la modification de la classe de stockage, consultez link:task-tiering.html["Hiérarchiser les données inactives vers un stockage d'objets à faible coût"].
@@ -149,12 +152,14 @@ endif::gcp[]
 
 
 
+[[data-tiering-and-capacity-limits]]
 == Hiérarchisation des données et limites de capacité
 
 Si vous activez la hiérarchisation des données, la limite de capacité d'un système reste la même.  La limite est répartie entre le niveau de performance et le niveau de capacité.
 
 
 
+[[volume-tiering-policies]]
 == Politiques de hiérarchisation des volumes
 
 Pour activer la hiérarchisation des données, vous devez sélectionner une stratégie de hiérarchisation des volumes lorsque vous créez, modifiez ou répliquez un volume.  Vous pouvez sélectionner une politique différente pour chaque volume.
@@ -194,6 +199,7 @@ Lorsque vous répliquez un volume, vous pouvez choisir de hiérarchiser les donn
 
 
 
+[[turning-off-cloud-volumes-ontap-impacts-the-cooling-period]]
 === La désactivation de Cloud Volumes ONTAP affecte la période de refroidissement
 
 Les blocs de données sont refroidis par des analyses de refroidissement.  Au cours de ce processus, la température des blocs qui n'ont pas été utilisés est déplacée (refroidie) vers la valeur inférieure suivante.  Le temps de refroidissement par défaut dépend de la politique de hiérarchisation des volumes :
@@ -209,6 +215,7 @@ TIP: Lorsque Cloud Volumes ONTAP est désactivé, la température de chaque bloc
 
 
 
+[[setting-up-data-tiering]]
 == Configuration de la hiérarchisation des données
 
 Pour obtenir des instructions et une liste des configurations prises en charge, reportez-vous àlink:task-tiering.html["Hiérarchiser les données inactives vers un stockage d'objets à faible coût"] .

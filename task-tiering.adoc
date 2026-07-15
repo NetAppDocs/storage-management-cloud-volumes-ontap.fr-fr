@@ -72,6 +72,7 @@ La console crée un magasin d'objets pour les données froides lors de la créat
 ====
 
 
+[[configurations-that-support-data-tiering]]
 == Configurations prenant en charge la hiérarchisation des données
 
 Vous pouvez activer la hiérarchisation des données lorsque vous utilisez des configurations et des fonctionnalités spécifiques.
@@ -80,6 +81,7 @@ ifdef::aws[]
 
 
 
+[[support-in-aws]]
 === Prise en charge dans AWS
 
 * La hiérarchisation des données est prise en charge dans AWS à partir de Cloud Volumes ONTAP 9.2.
@@ -97,6 +99,7 @@ ifdef::azure[]
 
 
 
+[[support-in-azure]]
 === Support dans Azure
 
 * La hiérarchisation des données est prise en charge dans Azure comme suit :
@@ -115,6 +118,7 @@ ifdef::gcp[]
 
 
 
+[[support-in-google-cloud]]
 === Assistance dans Google Cloud
 
 * La hiérarchisation des données est prise en charge dans Google Cloud à partir de Cloud Volumes ONTAP 9.6.
@@ -126,6 +130,7 @@ endif::gcp[]
 
 
 
+[[feature-interoperability]]
 === Interopérabilité des fonctionnalités
 
 * La hiérarchisation des données est prise en charge par des technologies de cryptage.
@@ -134,6 +139,7 @@ endif::gcp[]
 
 
 
+[[requirements]]
 == Exigences
 
 Selon votre fournisseur de cloud, certaines connexions et autorisations doivent être configurées pour que Cloud Volumes ONTAP puisse hiérarchiser les données froides vers le stockage d'objets.
@@ -142,6 +148,7 @@ ifdef::aws[]
 
 
 
+[[requirements-to-tier-cold-data-to-amazon-s3]]
 === Exigences pour le transfert des données froides vers Amazon S3
 
 Assurez-vous que Cloud Volumes ONTAP dispose d'une connexion à Amazon S3. La meilleure façon de fournir cette connexion est de créer un point de terminaison VPC vers le service S3. Pour obtenir des instructions, consultez le https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpce-gateway.html#create-gateway-endpoint["Documentation AWS : Création d'un point de terminaison de passerelle"^].
@@ -156,6 +163,7 @@ ifdef::azure[]
 
 
 
+[[requirements-to-tier-cold-data-to-azure-blob-storage]]
 === Conditions requises pour hiérarchiser les données froides vers le stockage Azure Blob
 
 Vous n’avez pas besoin de configurer une connexion entre le niveau de performance et le niveau de capacité tant que la console dispose des autorisations requises.  La console active un point de terminaison de service VNet pour vous si le rôle personnalisé de l'agent de console dispose des autorisations suivantes :
@@ -173,6 +181,7 @@ ifdef::gcp[]
 
 
 
+[[requirements-to-tier-cold-data-to-a-google-cloud-storage-bucket]]
 === Conditions requises pour hiérarchiser les données froides vers un bucket Google Cloud Storage
 
 * Le sous-réseau dans lequel réside Cloud Volumes ONTAP doit être configuré pour l'accès privé à Google.  Pour les instructions, reportez-vous à https://cloud.google.com/vpc/docs/configure-private-google-access["Documentation Google Cloud : Configuration de l'accès privé à Google"^] .
@@ -196,6 +205,7 @@ endif::gcp[]
 
 
 
+[[enable-data-tiering-after-implementing-the-requirements]]
 === Activer la hiérarchisation des données après la mise en œuvre des exigences
 
 La console crée un magasin d'objets pour les données froides lors de la création du système, à condition qu'il n'y ait pas de problèmes de connectivité ou d'autorisations.  Si vous n'avez pas implémenté les exigences répertoriées ci-dessus avant de créer le système, vous devrez activer manuellement la hiérarchisation via l'API ou ONTAP System Manager, qui crée le magasin d'objets.
@@ -205,6 +215,7 @@ NOTE: La possibilité d’activer la hiérarchisation via la console sera dispon
 
 
 
+[[ensure-that-tiering-is-enabled-on-aggregates]]
 == Assurez-vous que la hiérarchisation est activée sur les agrégats
 
 La hiérarchisation des données doit être activée sur un agrégat afin d'activer la hiérarchisation des données sur un volume.  Vous devez connaître les exigences relatives aux nouveaux volumes et aux volumes existants.
@@ -239,6 +250,7 @@ Vous pouvez désormais activer la hiérarchisation des données sur les volumes 
 
 
 
+[[tier-data-from-read-write-volumes]]
 == Données hiérarchisées à partir de volumes en lecture-écriture
 
 Cloud Volumes ONTAP peut hiérarchiser les données inactives sur des volumes en lecture-écriture vers un stockage d'objets rentable, libérant ainsi le niveau de performances pour les données chaudes.
@@ -273,6 +285,7 @@ La console crée un nouvel agrégat pour le volume si aucun agrégat compatible 
 
 
 
+[[tier-data-from-data-protection-volumes]]
 == Données hiérarchisées à partir des volumes de protection des données
 
 Cloud Volumes ONTAP peut hiérarchiser les données d'un volume de protection des données vers un niveau de capacité.  Si vous activez le volume de destination, les données sont progressivement déplacées vers le niveau de performance au fur et à mesure de leur lecture.
@@ -294,6 +307,7 @@ Pour obtenir de l'aide sur la réplication des données, reportez-vous à https:
 
 
 
+[[change-the-storage-class-for-tiered-data]]
 == Modifier la classe de stockage pour les données hiérarchisées
 
 Après avoir déployé Cloud Volumes ONTAP, vous pouvez réduire vos coûts de stockage en modifiant la classe de stockage des données inactives qui n'ont pas été consultées depuis 30 jours.  Les coûts d'accès sont plus élevés si vous accédez aux données, vous devez donc en tenir compte avant de modifier la classe de stockage.
@@ -309,6 +323,7 @@ Pour plus d'informations sur les classes de stockage prises en charge, reportez-
 
 
 
+[[change-the-free-space-ratio-for-data-tiering]]
 == Modifier le ratio d'espace libre pour la hiérarchisation des données
 
 Le ratio d'espace libre pour la hiérarchisation des données définit la quantité d'espace libre requise sur les SSD/HDD Cloud Volumes ONTAP lors de la hiérarchisation des données vers le stockage d'objets.  Le paramètre par défaut est de 10 % d'espace libre, mais vous pouvez modifier le paramètre en fonction de vos besoins.
@@ -336,6 +351,7 @@ image:screenshot-cvo-settings-page.png["Un aperçu des paramètres de capacité 
 
 
 
+[[change-the-cooling-period-for-the-auto-tiering-policy]]
 == Modifier la période de refroidissement pour la politique de hiérarchisation automatique
 
 Si vous avez activé la hiérarchisation des données sur un volume Cloud Volumes ONTAP à l'aide de la stratégie de hiérarchisation _auto_, vous pouvez ajuster la période de refroidissement par défaut en fonction des besoins de votre entreprise.  Cette action est prise en charge uniquement via ONTAP CLI et API.
@@ -354,6 +370,7 @@ La période de refroidissement par défaut pour la politique de hiérarchisation
 
 
 
+[[remove-an-s3-bucket-on-decommissioning-a-system]]
 == Supprimer un bucket S3 lors de la mise hors service d'un système
 
 Vous pouvez supprimer un compartiment S3 avec les données hiérarchisées à partir d'un système Cloud Volumes ONTAP lorsque vous mettez hors service l'environnement.

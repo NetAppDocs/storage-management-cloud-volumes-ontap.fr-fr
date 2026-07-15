@@ -24,6 +24,7 @@ https://www.netapp.com/services/keystone/["En savoir plus sur Keystone"^]
 
 
 
+[[authorize-your-account]]
 == Autorisez votre compte
 
 Avant de pouvoir utiliser et gérer les abonnements Keystone dans la console, vous devez contacter NetApp pour autoriser votre compte de console avec vos abonnements Keystone .
@@ -40,6 +41,7 @@ Un représentant NetApp traitera votre demande en autorisant votre compte à acc
 
 
 
+[[link-a-subscription]]
 == Lier un abonnement
 
 Une fois que NetApp a autorisé votre compte, vous pouvez lier les abonnements Keystone à utiliser avec Cloud Volumes ONTAP.  Cette action permet aux utilisateurs de sélectionner l'abonnement comme méthode de facturation pour les nouveaux systèmes Cloud Volumes ONTAP .
@@ -55,6 +57,7 @@ L'abonnement est désormais lié à votre organisation ou à votre compte Consol
 
 
 
+[[request-more-or-less-committed-capacity]]
 == Demander une capacité plus ou moins engagée
 
 Si vous souhaitez modifier la capacité engagée pour les niveaux de service de votre abonnement, vous pouvez envoyer une demande à NetApp directement depuis la console. La demande de capacité supplémentaire pour un niveau de service fournit davantage de stockage pour les systèmes Cloud Volumes ONTAP .
@@ -72,6 +75,7 @@ Votre demande crée un ticket dans le système NetApp pour traitement.
 
 
 
+[[monitor-usage]]
 == Surveiller l'utilisation
 
 Le tableau de bord Digital Advisor vous permet de surveiller l'utilisation de l'abonnement Keystone et de générer des rapports.
@@ -80,6 +84,7 @@ https://docs.netapp.com/us-en/keystone-staas/integrations/aiq-keystone-details.h
 
 
 
+[[unlink-a-subscription]]
 == Dissocier un abonnement
 
 Si vous ne souhaitez plus utiliser un abonnement Keystone avec la console, vous pouvez dissocier l'abonnement. Notez que vous ne pouvez dissocier qu'un abonnement qui n'est pas associé à un abonnement Cloud Volumes ONTAP existant.

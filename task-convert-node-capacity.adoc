@@ -82,6 +82,7 @@ Affichez le nouveau numéro de série de la licence et vérifiez les modificatio
 
 
 
+[[pricing-in-different-hyperscalars]]
 == Tarification dans différents hyperscalaires
 
 Pour plus de détails sur les prix, rendez-vous sur le https://bluexp.netapp.com/pricing/["Site Web de la NetApp Console"^] .

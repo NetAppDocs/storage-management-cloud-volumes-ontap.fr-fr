@@ -18,6 +18,7 @@ Plusieurs options de licence sont disponibles pour Cloud Volumes ONTAP. Chaque o
 
 
 
+[[licensing-overview]]
 == Aperçu des licences
 
 Les options de licence suivantes sont disponibles pour les nouveaux clients.
@@ -33,6 +34,7 @@ NOTE: L'assistance n'est pas disponible pour l'utilisation de fonctionnalités s
 
 
 
+[[capacity-based-licensing]]
 == Licences basées sur la capacité
 
 Les packages de licences basés sur la capacité vous permettent de payer Cloud Volumes ONTAP par Tio de capacité. La licence est associée à votre compte NetApp et vous permet de facturer plusieurs systèmes sur la licence, à condition qu'une capacité suffisante soit disponible via la licence.
@@ -46,6 +48,7 @@ NOTE: Bien que l'utilisation et la mesure réelles des produits et services gér
 
 
 
+[[packages]]
 === Forfaits
 
 Les packages basés sur la capacité suivants sont disponibles pour Cloud Volumes ONTAP.  Pour plus d'informations sur les packages de licences basés sur la capacité, reportez-vous àlink:concept-licensing-charging.html["En savoir plus sur les licences basées sur la capacité"] .
@@ -120,6 +123,7 @@ NOTE: Un abonnement à la carte (PAYGO) est requis pour la sauvegarde et la réc
 
 
 
+[[availability-of-capacity-based-licenses]]
 === Disponibilité des licences basées sur la capacité
 
 La disponibilité des licences PAYGO et BYOL pour les systèmes Cloud Volumes ONTAP nécessite que l'agent de la console soit opérationnel.
@@ -131,6 +135,7 @@ NOTE: NetApp a restreint l'achat, la prolongation et le renouvellement des licen
 
 
 
+[[how-to-get-started]]
 === Comment commencer
 
 Découvrez comment démarrer avec les licences basées sur la capacité :
@@ -158,6 +163,7 @@ endif::gcp[]
 
 
 
+[[keystone-subscription]]
 == Abonnement Keystone
 
 Un service par abonnement à paiement progressif qui offre une expérience de cloud hybride transparente pour ceux qui préfèrent les modèles de consommation OpEx aux CapEx initiaux ou à la location.
@@ -170,12 +176,14 @@ link:https://docs.netapp.com/us-en/keystone-staas/index.html["En savoir plus sur
 
 
 
+[[supported-configurations]]
 === Configurations prises en charge
 
 Les abonnements Keystone sont compatibles avec les paires haute disponibilité. Cette option de licence n'est pas prise en charge pour les systèmes à nœud unique actuellement.
 
 
 
+[[capacity-limit]]
 === Limite de capacité
 
 Dans le modèle de licence basé sur la capacité, chaque système Cloud Volumes ONTAP prend en charge la hiérarchisation du stockage d'objets, et la capacité hiérarchisée totale peut évoluer jusqu'à la limite de compartiment du fournisseur de cloud. Bien que la licence n'impose pas de restrictions de capacité, suivez les https://www.netapp.com/pdf.html?item=/media/17239-tr-4598.pdf["Bonnes pratiques de FabricPool"^] pour garantir des performances, une fiabilité et une rentabilité optimales lors de la configuration et de la gestion de la hiérarchisation.
@@ -189,6 +197,7 @@ Pour plus d'informations sur les limites de capacité de chaque fournisseur de c
 
 
 
+[[how-to-get-started]]
 === Comment commencer
 
 Découvrez comment démarrer avec un abonnement Keystone :
@@ -216,6 +225,7 @@ endif::gcp[]
 
 
 
+[[node-based-licensing]]
 == Licences basées sur les nœuds
 
 Les licences basées sur les nœuds constituent le modèle de licence de la génération précédente qui vous permettait d'octroyer une licence à Cloud Volumes ONTAP par nœud.  Ce modèle de licence n'est pas disponible pour les nouveaux clients.  La facturation par nœud a été remplacée par les méthodes de facturation par capacité décrites ci-dessus.
@@ -226,6 +236,7 @@ Pour plus d'informations, reportez-vous à https://mysupport.netapp.com/info/com
 
 
 
+[[end-of-availability-of-node-based-licenses]]
 === Fin de disponibilité des licences basées sur des nœuds
 
 À compter du 11 novembre 2024, la disponibilité limitée des licences basées sur des nœuds a pris fin. Le support des licences basées sur les nœuds prend fin le 31 décembre 2024.
@@ -274,6 +285,7 @@ NOTE: Même dans ces scénarios, les nouvelles licences basées sur des nœuds e
 
 
 
+[[license-conversion]]
 == Conversion de licence
 
 La console permet une conversion transparente des licences basées sur les nœuds en licences basées sur la capacité via l'outil de conversion de licence.  Pour plus d'informations sur l'EOA des licences basées sur les nœuds, reportez-vous àlink:concept-licensing.html#end-of-availability-of-node-based-licenses["Fin de disponibilité des licences basées sur des nœuds"] .

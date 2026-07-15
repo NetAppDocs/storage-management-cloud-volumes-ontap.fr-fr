@@ -21,12 +21,14 @@ CAUTION: Vous devez créer et supprimer tous les disques et agrégats directemen
 
 
 
+[[storage-provisioning]]
 == Provisionnement du stockage
 
 La console facilite le provisionnement du stockage pour Cloud Volumes ONTAP en achetant des disques et en gérant les agrégats pour vous.  Il vous suffit de créer des volumes.  Vous pouvez utiliser une option d'allocation avancée pour provisionner vous-même des agrégats, si vous le souhaitez.
 
 
 
+[[simplified-provisioning]]
 === Provisionnement simplifié
 
 Les agrégats fournissent un stockage cloud aux volumes.  La console crée des agrégats pour vous lorsque vous lancez une instance et lorsque vous provisionnez des volumes supplémentaires.
@@ -80,12 +82,14 @@ endif::aws[]
 
 
 
+[[advanced-allocation]]
 === Allocation avancée
 
 Vous pouvez également gérer les agrégats. link:task-create-aggregates.html["Depuis la page *Allocation avancée*"] , vous pouvez créer de nouveaux agrégats qui incluent un nombre spécifique de disques, ajouter des disques à un agrégat existant et créer des volumes dans des agrégats spécifiques.
 
 
 
+[[capacity-management]]
 == Gestion des capacités
 
 L'administrateur de l'organisation ou du compte peut configurer la console pour vous informer des décisions en matière de capacité de stockage ou pour gérer automatiquement les besoins en capacité pour vous.
@@ -94,6 +98,7 @@ Ce comportement est déterminé par le _Mode de gestion de la capacité_ sur un 
 
 
 
+[[automatic-capacity-management]]
 === Gestion automatique des capacités
 
 Le mode de gestion de la capacité est défini sur automatique par défaut.  Dans ce mode, la console vérifie le ratio d'espace libre toutes les 15 minutes pour déterminer si le ratio d'espace libre tombe en dessous du seuil spécifié.  Si davantage de capacité est nécessaire, il lance l'achat de nouveaux disques, supprime les collections de disques inutilisées (agrégats), déplace les volumes entre les agrégats selon les besoins et tente d'empêcher une panne de disque.
@@ -127,12 +132,14 @@ La gestion automatique de la capacité de la console ne s'applique pas aux LUN. 
 
 
 
+[[manual-capacity-management]]
 === Gestion manuelle des capacités
 
 Si l'administrateur de l'organisation ou du compte définit le *mode de gestion des capacités* sur manuel, la console vous informe de prendre les mesures appropriées pour les décisions relatives aux capacités. Les mêmes exemples décrits dans le mode automatique s'appliquent au mode manuel, mais c'est à vous d'accepter les actions.
 
 
 
+[[learn-more]]
 === Apprendre encore plus
 
 link:task-manage-capacity-settings.html["Apprenez à modifier le mode de gestion de la capacité"] .

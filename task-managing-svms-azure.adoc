@@ -22,6 +22,7 @@ Pour plus d'informations sur l'exécution des appels d'API Cloud Volumes ONTAP ,
 
 
 
+[[supported-number-of-storage-vms]]
 == Nombre de machines virtuelles de stockage prises en charge
 
 À partir de Cloud Volumes ONTAP 9.9.0, en fonction de votre licence, plusieurs machines virtuelles de stockage sont prises en charge avec des configurations spécifiques.  Reportez-vous à la https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-limits-azure.html["Notes de version de Cloud Volumes ONTAP"^] pour vérifier le nombre de machines virtuelles de stockage prises en charge pour votre version de Cloud Volumes ONTAP.
@@ -30,6 +31,7 @@ Toutes les versions de Cloud Volumes ONTAP antérieures à la version 9.9.0 pren
 
 
 
+[[create-a-storage-vm]]
 == Créer une machine virtuelle de stockage
 
 En fonction de votre configuration et de votre type de licence, vous pouvez créer plusieurs machines virtuelles de stockage sur un système à nœud unique ou dans une configuration à haute disponibilité (HA) en utilisant les API pour la NetApp Console.
@@ -49,6 +51,7 @@ L'agent de console nécessite des autorisations spécifiques pour créer des mac
 
 
 
+[[single-node-system]]
 === Système à nœud unique
 
 Utilisez l'appel API suivant pour créer une machine virtuelle de stockage sur un système à nœud unique.
@@ -65,6 +68,7 @@ Incluez les paramètres suivants dans le corps de la requête :
 ----
 
 
+[[ha-pair]]
 === paire HA
 
 Utilisez l’appel d’API suivant pour créer une machine virtuelle de stockage sur une paire HA :
@@ -81,6 +85,7 @@ Incluez les paramètres suivants dans le corps de la requête :
 ----
 
 
+[[manage-storage-vms-on-single-node-systems-and-ha-pairs]]
 == Gérer les machines virtuelles de stockage sur des systèmes à nœud unique et des paires haute disponibilité
 
 À l’aide des API, vous pouvez renommer et supprimer des machines virtuelles de stockage dans les configurations à nœud unique et HA.
@@ -90,6 +95,7 @@ L'agent de console nécessite des autorisations spécifiques pour gérer les mac
 
 
 
+[[rename-a-storage-vm]]
 === Renommer une machine virtuelle de stockage
 
 Pour renommer une machine virtuelle de stockage, vous devez fournir les noms de la machine virtuelle de stockage existante et de la nouvelle machine virtuelle de stockage comme paramètres.
@@ -129,6 +135,7 @@ Incluez les paramètres suivants dans le corps de la requête :
 
 
 
+[[delete-a-storage-vm]]
 === Supprimer une machine virtuelle de stockage
 
 Dans une configuration à nœud unique ou HA, vous pouvez supprimer une machine virtuelle de stockage si elle ne possède aucun volume actif.

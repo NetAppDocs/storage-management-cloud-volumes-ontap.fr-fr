@@ -4,6 +4,7 @@
 
 
 
+[[flexible-billing-for-cloud-volumes-ontap-and-data-services-in-aws]]
 === Facturation flexible pour Cloud Volumes ONTAP et les services de données dans AWS
 
 NetApp propose des options de facturation améliorées pour vos abonnements Cloud Volumes ONTAP dans AWS, vous offrant un meilleur contrôle sur la façon dont vous payez la capacité Cloud Volumes ONTAP et les services de données NetApp, tels que NetApp Backup and Recovery. Auparavant, toute l’utilisation de Cloud Volumes ONTAP et des services de données était facturée ensemble via l’offre NetApp Intelligent Services (NIS) sur la place de marché AWS.

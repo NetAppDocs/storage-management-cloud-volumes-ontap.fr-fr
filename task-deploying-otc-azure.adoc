@@ -49,6 +49,7 @@ Le déploiement de Cloud Volumes ONTAP dans un groupe de ressources partagé exi
 ====
 
 
+[[launch-a-single-node-cloud-volumes-ontap-system-in-azure]]
 == Lancer un système Cloud Volumes ONTAP à nœud unique dans Azure
 
 Si vous souhaitez lancer un système Cloud Volumes ONTAP à nœud unique dans Azure, vous devez créer un système à nœud unique dans la Console.
@@ -273,6 +274,7 @@ Les quotas vous permettent de restreindre ou de suivre l'espace disque et le nom
 
 
 
+[[launch-a-cloud-volumes-ontap-ha-pair-in-azure]]
 == Lancer une paire Cloud Volumes ONTAP HA dans Azure
 
 Si vous souhaitez lancer une paire Cloud Volumes ONTAP HA dans Azure, vous devez créer un système HA dans la console.

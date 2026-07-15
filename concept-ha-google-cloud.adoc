@@ -18,13 +18,14 @@ Une configuration haute disponibilité (HA) Cloud Volumes ONTAP offre des opéra
 
 
 
+[[ha-components]]
 == Composants HA
 
 Les configurations Cloud Volumes ONTAP HA dans Google Cloud incluent les composants suivants :
 
 * Deux nœuds Cloud Volumes ONTAP dont les données sont mises en miroir de manière synchrone entre eux.
 * Une instance de médiateur qui fournit un canal de communication entre les nœuds pour aider aux processus de prise de contrôle et de restitution du stockage.
-* Une zone ou trois zones (recommandé).
+* Zone de disponibilité unique (AZ) ou plusieurs zones de disponibilité/trois zones (recommandé).
 +
 Si vous choisissez trois zones, les deux nœuds et le médiateur se trouvent dans des zones Google Cloud distinctes.
 
@@ -43,7 +44,10 @@ image:diagram_gcp_ha.png["Une image conceptuelle d'une paire Cloud Volumes ONTAP
 
 
 
+[[mediator]]
 === Médiateur
+
+Traditionnellement, les configurations Cloud Volumes ONTAP HA dans Google Cloud utilisent un modèle non partagé, où une instance médiatrice est utilisée pour gérer les opérations de basculement ou surveiller l’état des nœuds. Cela nécessite la création d’une machine virtuelle supplémentaire dans Google Cloud et deux ensembles de disques pour chaque nœud.
 
 Voici quelques détails clés sur l’instance de médiateur dans Google Cloud :
 
@@ -63,6 +67,14 @@ Agents tiers:: Les agents tiers ou les extensions de machine virtuelle ne sont p
 
 
 
+[[shared-disks-for-single-az-ha-configurations]]
+=== Disques partagés pour les configurations HA à zone de disponibilité unique
+
+Cloud Volumes ONTAP 9.19.1 et versions ultérieures prennent en charge la configuration HA partagée pour une seule AZ. Dans l'architecture HA partagée, les deux nœuds peuvent partager un disque, ce qui modifie la méthode de création des agrégats. Au lieu de créer deux disques pour deux machines virtuelles, un seul disque est créé et attaché aux machines virtuelles. La configuration HA partagée ne nécessite pas de miroir de disque.
+
+
+
+[[storage-takeover-and-giveback]]
 == Reprise et restitution du stockage
 
 Si un nœud tombe en panne, l’autre nœud peut fournir des données à son partenaire afin de fournir un service de données continu.  Les clients peuvent accéder aux mêmes données à partir du nœud partenaire, car les données ont été mises en miroir de manière synchrone sur le partenaire.
@@ -73,6 +85,7 @@ La prise de contrôle du stockage, la resynchronisation et la restitution sont t
 
 
 
+[[rpo-and-rto]]
 == RPO et RTO
 
 Une configuration HA maintient une haute disponibilité de vos données comme suit :
@@ -89,39 +102,41 @@ En cas de panne, les données devraient être disponibles en 120 secondes ou moi
 
 
 
+[[ha-deployment-models]]
 == Modèles de déploiement HA
 
 Vous pouvez garantir la haute disponibilité de vos données en déployant une configuration HA dans plusieurs zones ou dans une seule zone.
 
-Zones multiples (recommandé):: Le déploiement d’une configuration HA sur trois zones garantit une disponibilité continue des données en cas de panne dans une zone.  Notez que les performances d'écriture sont légèrement inférieures à celles de l'utilisation d'une seule zone, mais elles sont minimes.
-Zone unique:: Lorsqu'elle est déployée dans une zone unique, une configuration Cloud Volumes ONTAP HA utilise une stratégie de placement répartie.  Cette politique garantit qu'une configuration HA est protégée contre un point de défaillance unique au sein de la zone, sans avoir à utiliser des zones distinctes pour obtenir l'isolement des pannes.
+Plusieurs zones de disponibilité (recommandées):: Le déploiement d’une configuration HA sur trois zones garantit une disponibilité continue des données en cas de panne dans une zone.  Notez que les performances d'écriture sont légèrement inférieures à celles de l'utilisation d'une seule zone, mais elles sont minimes.
+Zone de disponibilité unique:: Lorsqu'elle est déployée dans une seule zone de disponibilité (AZ), une configuration Cloud Volumes ONTAP HA utilise une stratégie de répartition. Cette stratégie garantit que la configuration HA est protégée contre un point de défaillance unique au sein de la zone, sans qu'il soit nécessaire d'utiliser des zones distinctes pour obtenir une isolation des pannes.
 +
 --
 Ce modèle de déploiement réduit vos coûts car il n’y a pas de frais de sortie de données entre les zones.
 
+== Fonctionnement du stockage dans une paire haute disponibilité
+
 --
 
-
-
-
-== Comment fonctionne le stockage dans une paire HA
 
 Contrairement à un cluster ONTAP , le stockage dans une paire Cloud Volumes ONTAP HA dans GCP n'est pas partagé entre les nœuds.  Au lieu de cela, les données sont mises en miroir de manière synchrone entre les nœuds afin que les données soient disponibles en cas de panne.
 
 
 
+[[storage-allocation]]
 === Allocation de stockage
 
 Lorsque vous créez un nouveau volume et que des disques supplémentaires sont requis, la console alloue le même nombre de disques aux deux nœuds, crée un agrégat en miroir, puis crée le nouveau volume.  Par exemple, si deux disques sont requis pour le volume, la console alloue deux disques par nœud pour un total de quatre disques.
 
 
 
+[[storage-configurations]]
 === Configurations de stockage
 
 Vous pouvez utiliser une paire HA comme configuration active-active, dans laquelle les deux nœuds fournissent des données aux clients, ou comme configuration active-passive, dans laquelle le nœud passif répond aux demandes de données uniquement s'il a pris en charge le stockage du nœud actif.
 
 
 
+[[performance-expectations-for-an-ha-configuration]]
 === Attentes de performances pour une configuration HA
 
 Une configuration Cloud Volumes ONTAP HA réplique de manière synchrone les données entre les nœuds, ce qui consomme de la bande passante réseau.  Par conséquent, vous pouvez vous attendre aux performances suivantes par rapport à une configuration Cloud Volumes ONTAP à nœud unique :
@@ -134,6 +149,7 @@ Pour plus de détails sur les performances de Cloud Volumes ONTAP , reportez-vou
 
 
 
+[[client-access-to-storage]]
 === Accès client au stockage
 
 Les clients doivent accéder aux volumes NFS et CIFS en utilisant l’adresse IP de données du nœud sur lequel réside le volume.  Si les clients NAS accèdent à un volume en utilisant l’adresse IP du nœud partenaire, le trafic circule entre les deux nœuds, ce qui réduit les performances.
@@ -147,6 +163,7 @@ image::screenshot_mount_option.png[400]
 
 
 
+[[related-links]]
 === Liens connexes
 
 * link:reference-networking-gcp.html["En savoir plus sur les exigences de mise en réseau"]

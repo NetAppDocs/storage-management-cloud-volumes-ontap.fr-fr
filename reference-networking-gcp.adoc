@@ -20,12 +20,14 @@ Si vous souhaitez déployer une paire HA, vous devezlink:concept-ha-google-cloud
 
 
 
+[[requirements-for-cloud-volumes-ontap]]
 == Exigences pour Cloud Volumes ONTAP
 
 Les exigences suivantes doivent être respectées dans Google Cloud.
 
 
 
+[[requirements-specific-to-single-node-systems]]
 === Exigences spécifiques aux systèmes à nœud unique
 
 Si vous souhaitez déployer un système à nœud unique, assurez-vous que votre réseau réponde aux exigences suivantes.
@@ -58,6 +60,7 @@ NOTE: Un LIF est une adresse IP associée à un port physique.  Un LIF de gestio
 
 
 
+[[requirements-specific-to-ha-pairs]]
 === Exigences spécifiques aux paires HA
 
 Si vous souhaitez déployer une paire HA, assurez-vous que votre réseau répond aux exigences suivantes.
@@ -181,6 +184,7 @@ Même si l'accès global est désactivé par défaut, son activation après le d
 
 
 
+[[shared-vpcs]]
 === VPC partagés
 
 Cloud Volumes ONTAP et l'agent de console sont pris en charge dans un VPC partagé Google Cloud ainsi que dans les VPC autonomes.
@@ -197,12 +201,14 @@ https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-goog
 
 
 
+[[packet-mirroring-in-vpcs]]
 === Mise en miroir des paquets dans les VPC
 
 https://cloud.google.com/vpc/docs/packet-mirroring["Mise en miroir des paquets"^]doit être désactivé dans le sous-réseau Google Cloud dans lequel vous déployez Cloud Volumes ONTAP.
 
 
 
+[[outbound-internet-access]]
 === Accès Internet sortant
 
 Les systèmes Cloud Volumes ONTAP nécessitent un accès Internet sortant pour accéder aux points de terminaison externes pour diverses fonctions.  Cloud Volumes ONTAP ne peut pas fonctionner correctement si ces points de terminaison sont bloqués dans des environnements avec des exigences de sécurité strictes.
@@ -240,6 +246,7 @@ L'authentification de l'utilisateur échoue et les services suivants restent ind
 |===
 
 
+[[connections-to-ontap-systems-in-other-networks]]
 === Connexions aux systèmes ONTAP dans d'autres réseaux
 
 Pour répliquer des données entre un système Cloud Volumes ONTAP dans Google Cloud et des systèmes ONTAP dans d'autres réseaux, vous devez disposer d'une connexion VPN entre le VPC et l'autre réseau, par exemple, votre réseau d'entreprise.
@@ -248,6 +255,7 @@ https://cloud.google.com/vpn/docs/concepts/overview["Documentation Google Cloud�
 
 
 
+[[firewall-rules]]
 === Règles du pare-feu
 
 La console crée des règles de pare-feu Google Cloud qui incluent les règles entrantes et sortantes dont Cloud Volumes ONTAP a besoin pour fonctionner correctement.  Vous souhaiterez peut-être vous référer aux ports à des fins de test ou si vous préférez utiliser vos propres règles de pare-feu.
@@ -490,6 +498,7 @@ NOTE: La source est l'interface (adresse IP) du système Cloud Volumes ONTAP .
 |===
 
 
+[[rules-for-vpc]]
 ==== Règles pour VPC-1, VPC-2 et VPC-3
 
 Dans Google Cloud, une configuration HA est déployée sur quatre VPC.  Les règles de pare-feu nécessaires à la configuration HA dans VPC-0 sont<<Règles du pare-feu,répertorié ci-dessus pour Cloud Volumes ONTAP>> .
@@ -503,6 +512,7 @@ NOTE: Pour permettre une vitesse d'écriture élevée pour les nouveaux déploie
 
 
 
+[[infrastructure-manager-configuration-for-private-mode-deployments]]
 === Configuration d'Infrastructure Manager pour les déploiements en mode privé
 
 Si vous souhaitez déployer Cloud Volumes ONTAP 9.16.1 ou une version ultérieure en mode privé, vous devez effectuer quelques modifications de configuration afin que Cloud Volumes ONTAP puisse utiliser Google Cloud Infrastructure Manager comme service de déploiement au lieu de Deployment Manager, que Google finira par abandonner.
@@ -542,6 +552,7 @@ Le pool de travailleurs doit avoir la configuration suivante :
 
 
 
+[[requirements-for-the-console-agent]]
 == Exigences pour l'agent de console
 
 Si vous n’avez pas encore créé d’agent de console, vous devez vérifier les exigences réseau.
@@ -552,6 +563,7 @@ Si vous n’avez pas encore créé d’agent de console, vous devez vérifier le
 
 
 
+[[network-configurations-to-support-console-agent-proxy]]
 === Configurations réseau pour prendre en charge le proxy de l'agent de console
 
 Vous pouvez utiliser les serveurs proxy configurés pour l'agent de console pour activer l'accès Internet sortant à partir de Cloud Volumes ONTAP.  La console prend en charge deux types de proxys :

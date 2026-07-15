@@ -18,12 +18,14 @@ Mettez à niveau Cloud Volumes ONTAP à partir de la NetApp Console pour accéde
 
 
 
+[[upgrade-overview]]
 == Présentation de la mise à niveau
 
 Vous devez tenir compte des éléments suivants avant de démarrer le processus de mise à niveau de Cloud Volumes ONTAP .
 
 
 
+[[upgrade-from-console-only]]
 === Mise à niveau à partir de la console uniquement
 
 Vous ne devez pas mettre à niveau Cloud Volumes ONTAP à l'aide ONTAP System Manager ou de l'interface de ligne de commande ONTAP , mais uniquement de la console.  Dans le cas contraire, cela pourrait avoir un impact sur la stabilité du système.
@@ -36,6 +38,7 @@ La console propose deux manières de mettre à niveau Cloud Volumes ONTAP:
 
 
 
+[[supported-upgrade-paths]]
 === Chemins de mise à niveau pris en charge
 
 La version de Cloud Volumes ONTAP vers laquelle vous pouvez effectuer une mise à niveau dépend de la version que vous utilisez actuellement. Chaque version générique ou corrective d'une publication dans les tableaux suivants représente la version de base disponible pour la mise à niveau. Pour plus de détails sur les correctifs disponibles, consultez la  https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-new.html["notes de version avec gestion des versions"^] pour chaque publication.
@@ -200,6 +203,9 @@ ifdef::gcp[]
 | Version actuelle | Versions vers lesquelles vous pouvez directement mettre à niveau 
 
 
+| 9.18.1 | 9.19.1 RC 
+
+
 | 9.17.1 P1 | 9.18.1 
 
 
@@ -310,6 +316,7 @@ Par exemple, si vous utilisez la version 9.8 et que vous souhaitez effectuer une
 
 
 
+[[patch-releases]]
 === Versions de correctifs
 
 À partir de janvier 2024, les mises à niveau de correctifs ne sont disponibles que s'il existe une version de correctif pour les trois dernières versions de Cloud Volumes ONTAP.  Des versions de correctifs sont parfois disponibles pour le déploiement, lorsque la version RC ou GA n'est pas disponible pour le déploiement.
@@ -328,12 +335,14 @@ Voici quelques exemples :
 
 
 
+[[reverting-or-downgrading]]
 === Retour ou rétrogradation
 
 La restauration ou la rétrogradation de Cloud Volumes ONTAP vers une version précédente n'est pas prise en charge.
 
 
 
+[[support-registration]]
 === Enregistrement du support
 
 Cloud Volumes ONTAP doit être enregistré auprès du support NetApp pour pouvoir mettre à niveau le logiciel à l'aide de l'une des méthodes décrites sur cette page.  Ceci s'applique à la fois au paiement à l'utilisation (PAYGO) et à l'apportez votre propre permis (BYOL).  Vous aurez besoin delink:task-registering.html["enregistrer manuellement les systèmes PAYGO"] , tandis que les systèmes BYOL sont enregistrés par défaut.
@@ -343,12 +352,14 @@ TIP: Un système qui n'est pas enregistré pour le support recevra toujours les 
 
 
 
+[[upgrades-of-the-ha-mediator]]
 === Mises à niveau du médiateur HA
 
 La console met également à jour l'instance du médiateur selon les besoins pendant le processus de mise à niveau de Cloud Volumes ONTAP .
 
 
 
+[[upgrades-in-aws-with-c4-m4-and-r4-ec2-instance-types]]
 === Mises à niveau dans AWS avec les types d'instances EC2 c4, m4 et r4
 
 Cloud Volumes ONTAP ne prend plus en charge les types d’instances EC2 c4, m4 et r4.  Vous pouvez mettre à niveau les déploiements existants vers les versions Cloud Volumes ONTAP 9.8 à 9.12.1 avec ces types d'instances.  Avant de procéder à la mise à niveau, nous vous recommandons de<<Changer le type d'instance,changer le type d'instance>> .  Si vous ne pouvez pas modifier le type d'instance, vous devez<<Activer la mise en réseau améliorée,activer la mise en réseau améliorée>> avant de procéder à la mise à niveau.  Lisez les sections suivantes pour en savoir plus sur la modification du type d’instance et l’activation de la mise en réseau améliorée.
@@ -373,6 +384,7 @@ Pour effectuer une mise à niveau vers les versions 9.8 et ultérieures de Cloud
 
 
 
+[[prepare-to-upgrade]]
 == Préparez-vous à la mise à niveau
 
 Avant d’effectuer une mise à niveau, vous devez vérifier que vos systèmes sont prêts et apporter les modifications de configuration requises.
@@ -386,6 +398,7 @@ Avant d’effectuer une mise à niveau, vous devez vérifier que vos systèmes s
 
 
 
+[[plan-for-downtime]]
 === Prévoyez des temps d'arrêt
 
 Lorsque vous mettez à niveau un système à nœud unique, le processus de mise à niveau met le système hors ligne pendant 25 minutes maximum, pendant lesquelles les E/S sont interrompues.
@@ -396,6 +409,7 @@ Les protocoles orientés session peuvent entraîner des effets indésirables sur
 
 
 
+[[verify-that-automatic-giveback-is-still-enabled]]
 === Vérifiez que le retour automatique est toujours activé
 
 La restitution automatique doit être activée sur une paire Cloud Volumes ONTAP HA (il s'agit du paramètre par défaut).  Si ce n’est pas le cas, l’opération échouera.
@@ -404,6 +418,7 @@ http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-hacg/GUID-3F50DE15-0D
 
 
 
+[[suspend-snapmirror-transfers]]
 === Suspendre les transferts SnapMirror
 
 Si un système Cloud Volumes ONTAP possède des relations SnapMirror actives, il est préférable de suspendre les transferts avant de mettre à jour le logiciel Cloud Volumes ONTAP .  La suspension des transferts empêche les échecs de SnapMirror .  Vous devez suspendre les transferts depuis le système de destination.
@@ -429,6 +444,7 @@ NOTE: L'ordinateur à partir duquel vous accédez à la console doit disposer d'
 
 
 
+[[verify-that-aggregates-are-online]]
 === Vérifiez que les agrégats sont en ligne
 
 Les agrégats pour Cloud Volumes ONTAP doivent être en ligne avant de mettre à jour le logiciel.  Les agrégats doivent être en ligne dans la plupart des configurations, mais s'ils ne le sont pas, vous devez les mettre en ligne.
@@ -452,6 +468,7 @@ image:screenshots_aggregate_details_state.png["Capture d'écran : affiche le ch
 
 
 
+[[verify-that-all-lifs-are-on-home-ports]]
 === Vérifiez que tous les LIF sont sur les ports d'origine
 
 Avant de procéder à la mise à niveau, tous les LIF doivent être sur les ports d'origine.  Reportez-vous à la documentation ONTAP pourlink:https://docs.netapp.com/us-en/ontap/upgrade/task_enabling_and_reverting_lifs_to_home_ports_preparing_the_ontap_software_for_the_update.html["vérifier que tous les LIF sont sur leurs ports d'attache"^] .
@@ -460,6 +477,7 @@ Si une erreur d'échec de mise à niveau se produit, consultez l'article de la b
 
 
 
+[[upgrade-cloud-volumes-ontap]]
 == Mettre à niveau Cloud Volumes ONTAP
 
 La console vous avertit lorsqu'une nouvelle version est disponible pour la mise à niveau.  Vous pouvez démarrer le processus de mise à niveau à partir de cette notification. Pour plus d'informations, consultez la section <<Mise à niveau à partir des notifications de la console>> .
@@ -468,6 +486,7 @@ Une autre façon d’effectuer des mises à niveau logicielles est d’utiliser 
 
 
 
+[[upgrade-from-console-notifications]]
 === Mise à niveau à partir des notifications de la console
 
 La console affiche une notification dans les environnements de travail Cloud Volumes ONTAP lorsqu'une nouvelle version de Cloud Volumes ONTAP est disponible :
@@ -516,6 +535,7 @@ Si vous avez suspendu les transferts SnapMirror , utilisez le Gestionnaire syst�
 
 
 
+[[upgrade-from-an-image-available-at-a-url]]
 === Mise à niveau à partir d'une image disponible à une URL
 
 Vous pouvez placer l'image du logiciel Cloud Volumes ONTAP sur l'agent de la console ou sur un serveur HTTP, puis lancer la mise à niveau du logiciel à partir de la console.  Vous pouvez utiliser cette option si la console ne peut pas accéder au bucket S3 pour mettre à niveau le logiciel.
@@ -576,6 +596,7 @@ ifdef::gcp[]
 
 
 
+[[fix-download-failures-when-using-a-google-cloud-nat-gateway]]
 == Corriger les échecs de téléchargement lors de l'utilisation d'une passerelle Google Cloud NAT
 
 L'agent de console télécharge automatiquement les mises à jour logicielles pour Cloud Volumes ONTAP. Le téléchargement peut échouer si votre configuration utilise une passerelle NAT Google Cloud. Vous pouvez corriger ce problème en limitant le nombre de parties dans lesquelles l’image du logiciel est divisée.  Vous devez utiliser les API pour terminer cette étape.

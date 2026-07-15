@@ -20,6 +20,7 @@ Les contrôles de service VPC vous permettent de contrôler l'accès aux service
 
 
 
+[[how-netapp-services-communicate-with-vpc-service-controls]]
 == Comment les services NetApp communiquent avec les contrôles de service VPC
 
 La console communique directement avec les API Google Cloud.  Cela est déclenché soit à partir d'une adresse IP externe en dehors de Google Cloud (par exemple, à partir de api.services.cloud.netapp.com), soit dans Google Cloud à partir d'une adresse interne attribuée à l'agent de la console.
@@ -28,6 +29,7 @@ Selon le style de déploiement de l’agent de console, certaines exceptions peu
 
 
 
+[[images]]
 == Images
 
 Cloud Volumes ONTAP et la Console utilisent tous deux des images provenant d'un projet au sein de Google Cloud qui est géré par NetApp. Cela peut affecter le déploiement de l'agent de la Console et de Cloud Volumes ONTAP, si votre organisation a une politique qui bloque l'utilisation d'images qui ne sont pas hébergées au sein de l'organisation.
@@ -36,12 +38,14 @@ Vous pouvez déployer un agent de console manuellement à l'aide de la méthode 
 
 
 
+[[deploying-a-console-agent]]
 === Déploiement d'un agent de console
 
 L'utilisateur qui déploie un agent de console doit pouvoir référencer une image hébergée dans le projectId _netapp-cloudmanager_ et le numéro de projet _14190056516_.
 
 
 
+[[deploying-cloud-volumes-ontap]]
 === Déploiement de Cloud Volumes ONTAP
 
 * Le compte de service de la console doit référencer une image hébergée dans le projectId _netapp-cloudmanager_ et le numéro de projet _14190056516_ du projet de service.
@@ -52,6 +56,7 @@ Des exemples de règles nécessaires pour extraire ces images avec VPC Service C
 
 
 
+[[vpc-service-controls-perimeter-policies]]
 == Politiques de périmètre des contrôles de service VPC
 
 Les politiques permettent de déroger aux règles de contrôle des services VPC. Pour plus d'informations sur les politiques, veuillez consulter la  https://cloud.google.com/vpc-service-controls/docs/ingress-egress-rules#policy-model["Documentation relative à la politique de contrôle des services VPC de Google Cloud"^].
@@ -60,6 +65,7 @@ Pour définir les stratégies requises par la console, accédez à votre périm�
 
 
 
+[[ingress-rules]]
 === Règles d'entrée
 
 ....
@@ -107,6 +113,7 @@ To:
 ....
 
 
+[[egress-rules]]
 === Règles de sortie
 
 ....

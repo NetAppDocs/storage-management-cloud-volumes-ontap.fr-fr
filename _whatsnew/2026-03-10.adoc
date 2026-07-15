@@ -4,6 +4,7 @@
 
 
 
+[[ability-to-manage-console-agent-proxy-settings-for-cloud-volumes-ontap]]
 === Possibilité de gérer les paramètres proxy de l'agent NetApp Console pour Cloud Volumes ONTAP
 
 Vous pouvez désormais gérer les paramètres de proxy sur l’agent NetApp Console pour Cloud Volumes ONTAP, même si vous perdez la connexion ou si le proxy est mal configuré. Auparavant, si l’agent Console ne pouvait pas se connecter à Cloud Volumes ONTAP pendant 20 minutes, il remplaçait vos paramètres de proxy manuels par les paramètres par défaut. Cela provoquait des échecs de communication, y compris des problèmes avec les messages AutoSupport. Pour conserver vos paramètres de proxy pour les systèmes existants, exécutez l’appel d’API suivant :

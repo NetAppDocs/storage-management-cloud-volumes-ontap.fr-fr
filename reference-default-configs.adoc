@@ -18,6 +18,7 @@ Comprendre comment Cloud Volumes ONTAP est configuré par défaut peut vous aide
 
 
 
+[[default-setup]]
 == Configuration par défaut
 
 * La NetApp Console crée une machine virtuelle de stockage de service de données lorsqu'elle déploie Cloud Volumes ONTAP.  Certaines configurations prennent en charge des machines virtuelles de stockage supplémentaires. link:task-managing-svms.html["En savoir plus sur la gestion des machines virtuelles de stockage"] .
@@ -128,6 +129,7 @@ Pour plus d'informations sur ces attributs, reportez-vous àlink:https://docs.ne
 
 
 
+[[internal-disks-for-system-data]]
 == Disques internes pour les données système
 
 En plus du stockage des données utilisateur, la console achète également du stockage cloud pour les données système.
@@ -136,6 +138,7 @@ ifdef::aws[]
 
 
 
+[[aws]]
 === AWS
 
 * Trois disques par nœud pour les données de démarrage, racine et principales :
@@ -172,6 +175,7 @@ ifdef::azure[]
 
 
 
+[[azure-single-node]]
 === Azure (nœud unique)
 
 * Trois disques SSD Premium :
@@ -194,6 +198,7 @@ Si la machine virtuelle que vous avez choisie pour Cloud Volumes ONTAP prend en 
 
 
 
+[[azure-ha-pair]]
 === Azure (paire HA)
 
 .HA s'associe à un blob de pages
@@ -244,6 +249,7 @@ ifdef::gcp[]
 
 
 
+[[google-cloud-single-node]]
 === Google Cloud (nœud unique)
 
 * Un disque persistant SSD de 10 Gio pour les données de démarrage
@@ -260,6 +266,7 @@ NOTE: Les instantanés sont créés automatiquement au redémarrage.
 
 
 
+[[google-cloud-ha-pair]]
 === Google Cloud (paire HA)
 
 * Deux disques persistants SSD de 10 Gio pour les données de démarrage
@@ -280,6 +287,7 @@ endif::gcp[]
 
 
 
+[[where-the-disks-reside]]
 === Où résident les disques
 
 Disposition du stockage :

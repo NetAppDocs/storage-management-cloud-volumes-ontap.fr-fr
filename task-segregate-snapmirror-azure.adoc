@@ -18,6 +18,7 @@ Avec Cloud Volumes ONTAP dans Azure, vous pouvez séparer le trafic de réplicat
 
 
 
+[[about-snapmirror-traffic-segregation-in-azure]]
 == À propos de la séparation du trafic SnapMirror dans Azure
 
 Par défaut, la NetApp Console configure toutes les cartes réseau et LIF dans un déploiement Cloud Volumes ONTAP sur le même sous-réseau.  Dans de telles configurations, le trafic de réplication SnapMirror et le trafic de données et de gestion utilisent le même sous-réseau.  La séparation du trafic SnapMirror exploite un sous-réseau supplémentaire qui n'est pas routable vers le sous-réseau existant utilisé pour le trafic de données et de gestion.
@@ -37,6 +38,7 @@ Passez en revue les considérations suivantes :
 
 
 
+[[step-1-create-an-additional-nic-and-attach-to-the-destination-vm]]
 == Étape 1 : Créez une carte réseau supplémentaire et connectez-la à la machine virtuelle de destination
 
 Cette section fournit des instructions sur la façon de créer une carte réseau supplémentaire et de la connecter à la machine virtuelle de destination.  La machine virtuelle de destination est le nœud unique ou le système à paire HA dans Cloud Volumes ONTAP dans Azure où vous souhaitez configurer votre carte réseau supplémentaire.
@@ -112,6 +114,7 @@ Pour les déploiements par paire HA, répétez les étapes pour le nœud partena
 
 
 
+[[step-secondstep-2-create-a-new-ipspace-broadcast-domain-and-intercluster-lif-for-the-new-nic]]
 == [[step-second]]Étape 2 : Créez un nouvel IPspace, un domaine de diffusion et une LIF intercluster pour la nouvelle NIC
 
 Un espace IP distinct pour les LIF interclusters fournit une séparation logique entre les fonctionnalités réseau pour la réplication entre les clusters.
@@ -155,6 +158,7 @@ Pour les déploiements par paire HA, répétez les étapes pour le nœud partena
 
 
 
+[[step-3-verify-cluster-peering-between-the-source-and-destination-systems]]
 == Étape 3 : Vérifier l'appairage de cluster entre les systèmes source et de destination
 
 Cette section fournit des instructions sur la manière de vérifier l'homologation entre les systèmes source et de destination.
@@ -180,6 +184,7 @@ Pour les déploiements par paire HA, répétez les étapes pour le nœud partena
 
 
 
+[[step-4-create-svm-peering-between-the-source-and-destination-system]]
 == Étape 4 : créer un peering SVM entre le système source et le système de destination
 
 Cette section fournit des instructions sur la façon de créer un peering SVM entre le système source et le système de destination.
@@ -235,6 +240,7 @@ Les émissions des États pairs*`peered` * et les applications de peering montre
 
 
 
+[[step-5-create-a-snapmirror-replication-relationship-between-the-source-and-destination-system]]
 == Étape 5 : Créer une relation de réplication SnapMirror entre le système source et le système de destination
 
 Cette section fournit des instructions sur la façon de créer une relation de réplication SnapMirror entre le système source et le système de destination.

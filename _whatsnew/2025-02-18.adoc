@@ -4,6 +4,7 @@
 
 
 
+[[introducing-azure-marketplace-direct-deployment]]
 === Présentation du déploiement direct sur la place de marché Azure
 
 Vous pouvez désormais profiter du déploiement direct de la place de marché Azure pour déployer facilement et rapidement Cloud Volumes ONTAP directement depuis la place de marché Azure.  Grâce à cette méthode simplifiée, vous pouvez explorer les principales fonctionnalités et capacités de Cloud Volumes ONTAP dans votre environnement sans avoir à configurer le connecteur BlueXP ou à répondre à d'autres critères d'intégration requis pour le déploiement de Cloud Volumes ONTAP via BlueXP.

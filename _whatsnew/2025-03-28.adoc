@@ -4,6 +4,7 @@
 
 
 
+[[private-mode-deployments-enabled-for-cloud-volumes-ontap-9-14-1]]
 === Déploiements en mode privé activés pour Cloud Volumes ONTAP 9.14.1
 
 Vous pouvez désormais déployer Cloud Volumes ONTAP 9.14.1 en mode privé dans AWS, Azure et Google Cloud.  Le mode privé est activé pour les déploiements à nœud unique et à haute disponibilité (HA) de Cloud Volumes ONTAP 9.14.1.

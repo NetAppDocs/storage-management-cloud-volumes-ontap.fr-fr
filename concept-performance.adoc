@@ -18,6 +18,7 @@ Vous pouvez consulter les résultats de performances pour vous aider à décider
 
 
 
+[[performance-technical-reports]]
 == Rapports techniques de performance
 
 ifdef::aws[]
@@ -52,6 +53,7 @@ endif::gcp[]
 
 
 
+[[cpu-performance]]
 == performances du processeur
 
 Les nœuds Cloud Volumes ONTAP s'affichent comme étant très utilisés (plus de 90 %) selon les outils de surveillance de votre fournisseur de cloud.  Cela est dû au fait ONTAP réserve tous les vCPU présentés à la machine virtuelle afin qu’ils soient disponibles en cas de besoin.

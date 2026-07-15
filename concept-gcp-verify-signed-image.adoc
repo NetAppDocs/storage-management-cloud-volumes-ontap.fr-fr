@@ -18,6 +18,7 @@ Pour vérifier l'image signée Google Cloud exportée, vous devez télécharger 
 
 
 
+[[signed-image-verification-workflow-summary]]
 == Résumé du flux de travail de vérification des images signées
 
 Voici un aperçu du processus de vérification des images signées de Google Cloud.
