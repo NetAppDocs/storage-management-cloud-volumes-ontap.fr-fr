@@ -63,7 +63,7 @@ Le tableau de bord bien architecturé affiche le nombre total de systèmes analy
 
 .Liens connexes
 * https://docs.netapp.com/us-en/console-well-architected/cvo/configuration-analysis-cvo.html["Analyse de configuration pour Cloud Volumes ONTAP"^]
-* https://docs.netapp.com/us-en/console-well-architected/improve-configurations-cvo.html["Mettre en œuvre des configurations système bien architecturées"^]
+* https://docs.netapp.com/us-en/console-well-architected/cvo/improve-configurations-cvo.html["Mettre en œuvre des configurations système Cloud Volumes ONTAP bien architecturées"^]
 
 
 
