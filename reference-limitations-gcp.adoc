@@ -1,0 +1,35 @@
+---
+sidebar: sidebar 
+permalink: reference-limitations-gcp.html 
+keywords: limitations, google cloud platform, gcp, psc, private service connect 
+summary: 'Les limitations connues identifient les plates-formes, les appareils ou les fonctions qui ne sont pas pris en charge par cette version du produit ou qui n"interagissent pas correctement avec elle. Examinez attentivement ces limitations.' 
+---
+= Limitations connues pour Cloud Volumes ONTAP dans Google Cloud
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Les limitations suivantes sont spécifiques à Cloud Volumes ONTAP sur Google Cloud Platform. Veuillez également consulter link:reference-limitations.html["Limitations de Cloud Volumes ONTAP chez tous les fournisseurs de cloud"].
+
+
+
+[[limitation-with-packet-mirroring]]
+== Limitation liée à la mise en miroir des paquets
+
+https://cloud.google.com/vpc/docs/packet-mirroring["Mise en miroir des paquets"^] doit être désactivé dans le VPC Google Cloud dans lequel vous déployez Cloud Volumes ONTAP.
+
+Cloud Volumes ONTAP ne peut pas fonctionner correctement si la mise en miroir des paquets est activée.
+
+
+
+[[google-private-service-connect-limitations]]
+== Limitations de Google Private Service Connect
+
+Si vous utilisez  https://cloud.google.com/vpc/docs/private-service-connect["Google Private Service Connect"^] au sein du VPC dans lequel vous déployez Cloud Volumes ONTAP, vous devrez implémenter des enregistrements DNS qui redirigent le trafic vers le  https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-google.html["Points de terminaison de l'API"^] requis.
+
+Le tiering des données de Cloud Volumes ONTAP vers un compartiment Google Cloud Storage n'est actuellement pas pris en charge avec Private Service Connect.

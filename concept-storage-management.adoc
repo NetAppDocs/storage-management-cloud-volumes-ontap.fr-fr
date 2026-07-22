@@ -37,48 +37,10 @@ Lorsque vous créez un volume, la console effectue l’une des trois opérations
 
 * Il place le volume sur un agrégat existant qui dispose de suffisamment d’espace libre.
 * Il place le volume sur un agrégat existant en achetant plus de disques pour cet agrégat.
-
-
-ifdef::aws[]
-
-+ Dans le cas d’un agrégat dans AWS qui prend en charge les volumes élastiques, cela augmente également la taille des disques dans un groupe RAID. link:concept-aws-elastic-volumes.html["En savoir plus sur la prise en charge des volumes élastiques"] .
-
-endif::aws[]
-
 * Il achète des disques pour un nouvel agrégat et place le volume sur cet agrégat.
 
 
 La console détermine où placer un nouveau volume en examinant plusieurs facteurs : la taille maximale d'un agrégat, si le provisionnement léger est activé et les seuils d'espace libre pour les agrégats.
-
-ifdef::aws[]
-
-
-
-==== Sélection de la taille du disque pour les agrégats dans AWS
-
-Lorsque la console crée de nouveaux agrégats pour Cloud Volumes ONTAP dans AWS, elle augmente progressivement la taille des disques à mesure que les nombres d'agrégats augmentent pour maximiser la capacité du système avant d'atteindre les limites des disques de données AWS.
-
-Par exemple, la console peut choisir les tailles de disque suivantes :
-
-[cols="3*"]
-|===
-| Nombre total | Taille du disque | Capacité maximale globale 
-
-
-| 1 | 500 Gio | 3 Tio 
-
-
-| 4 | 1 Tio | 6 Tio 
-
-
-| 6 | 2 Tio | 12 Tio 
-|===
-
-NOTE: Ce comportement ne s'applique pas aux agrégats qui prennent en charge la fonctionnalité Amazon EBS Elastic Volumes.  Les agrégats sur lesquels les volumes élastiques sont activés sont constitués d'un ou deux groupes RAID.  Chaque groupe RAID dispose de quatre disques identiques ayant la même capacité. link:concept-aws-elastic-volumes.html["En savoir plus sur la prise en charge des volumes élastiques"] .
-
-Vous pouvez choisir vous-même la taille du disque en utilisant l'option d'allocation avancée.
-
-endif::aws[]
 
 
 
@@ -106,20 +68,12 @@ Le mode de gestion de la capacité est défini sur automatique par défaut.  Dan
 Les exemples suivants illustrent le fonctionnement de ce mode :
 
 * Si un agrégat atteint le seuil de capacité et qu'il dispose de suffisamment d'espace pour davantage de disques, la console achète automatiquement de nouveaux disques pour cet agrégat afin que les volumes puissent continuer à croître.
+* Si un agrégat atteint le seuil de capacité et qu'il ne peut plus prendre en charge de disques supplémentaires, la NetApp Console déplace automatiquement un volume de cet agrégat vers un agrégat disposant de capacité disponible ou vers un nouvel agrégat.
 +
-ifdef::aws[]
+Si la NetApp Console crée un nouvel agrégat pour le volume, elle choisit une taille de disque adaptée à la taille de ce volume.
 
-
-
-Dans le cas d’un agrégat dans AWS qui prend en charge les volumes élastiques, il augmente également la taille des disques dans un groupe RAID. link:concept-aws-elastic-volumes.html["En savoir plus sur la prise en charge des volumes élastiques"] .
-
-endif::aws[]
-
-+ * Si un agrégat atteint le seuil de capacité et qu'il ne peut pas prendre en charge de disques supplémentaires, la console déplace automatiquement un volume de cet agrégat vers un agrégat avec une capacité disponible ou vers un nouvel agrégat.
-
-+ Si la console crée un nouvel agrégat pour le volume, elle choisit une taille de disque adaptée à la taille de ce volume.
-
-+ Notez que l'espace libre est désormais disponible sur l'agrégat d'origine.  Les volumes existants ou les nouveaux volumes peuvent utiliser cet espace.  L'espace ne peut pas être restitué au fournisseur de cloud dans ce scénario.
++
+Notez que de l'espace libre est désormais disponible sur l'agrégat d'origine. Des volumes existants ou de nouveaux volumes peuvent utiliser cet espace. Cet espace ne peut pas être restitué au fournisseur de cloud dans ce scénario.
 
 * Si un agrégat ne contient aucun volume pendant plus de 12 heures, la console le supprime.
 
@@ -137,9 +91,7 @@ La gestion automatique de la capacité de la console ne s'applique pas aux LUN. 
 
 Si l'administrateur de l'organisation ou du compte définit le *mode de gestion des capacités* sur manuel, la console vous informe de prendre les mesures appropriées pour les décisions relatives aux capacités. Les mêmes exemples décrits dans le mode automatique s'appliquent au mode manuel, mais c'est à vous d'accepter les actions.
 
+.Liens connexes
+* link:task-manage-capacity-settings.html["Apprenez à modifier le mode de gestion de la capacité"] .
+* Pour plus d'informations sur la mise à disposition des données dans AWS, veuillez consulter link:reference-configs-aws.html["Provisionnement de disques pour les agrégats dans AWS"].
 
-
-[[learn-more]]
-=== Apprendre encore plus
-
-link:task-manage-capacity-settings.html["Apprenez à modifier le mode de gestion de la capacité"] .

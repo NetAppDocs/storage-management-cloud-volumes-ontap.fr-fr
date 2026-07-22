@@ -23,7 +23,7 @@ Comprendre comment Cloud Volumes ONTAP est configuré par défaut peut vous aide
 
 * La NetApp Console crée une machine virtuelle de stockage de service de données lorsqu'elle déploie Cloud Volumes ONTAP.  Certaines configurations prennent en charge des machines virtuelles de stockage supplémentaires. link:task-managing-svms.html["En savoir plus sur la gestion des machines virtuelles de stockage"] .
 +
-À partir de la version 3.9.5, les rapports d’espace logique sont activés sur la machine virtuelle de stockage initiale.  Lorsque l'espace est signalé de manière logique, ONTAP signale l'espace du volume de telle sorte que tout l'espace physique économisé par les fonctionnalités d'efficacité du stockage soit également signalé comme utilisé.  Pour plus d'informations sur les fonctionnalités d'efficacité du stockage en ligne, reportez-vous à l'article de la base de connaissances https://kb.netapp.com/Cloud/Cloud_Volumes_ONTAP/What_Inline_Storage_Efficiency_features_are_supported_with_CVO#["KB : Quelles fonctionnalités d’efficacité du stockage en ligne sont prises en charge avec CVO ?"^]
+Le rapport d'espace logique est activé sur la machine virtuelle de stockage initiale. Lorsque l'espace est rapporté logiquement, ONTAP indique l'espace du volume de sorte que tout l'espace physique économisé grâce aux fonctionnalités d'efficacité du stockage soit également comptabilisé comme utilisé. Pour plus d'informations sur les fonctionnalités d'efficacité du stockage en ligne, consultez l'article de la base de connaissances https://kb.netapp.com/Cloud/Cloud_Volumes_ONTAP/What_Inline_Storage_Efficiency_features_are_supported_with_CVO#["KB : Quelles fonctionnalités d’efficacité du stockage en ligne sont prises en charge avec CVO ?"^]
 
 * La console installe automatiquement les licences de fonctionnalités ONTAP suivantes sur Cloud Volumes ONTAP:
 +
@@ -129,164 +129,6 @@ Pour plus d'informations sur ces attributs, reportez-vous àlink:https://docs.ne
 
 
 
-[[internal-disks-for-system-data]]
-== Disques internes pour les données système
-
-En plus du stockage des données utilisateur, la console achète également du stockage cloud pour les données système.
-
-ifdef::aws[]
-
-
-
-[[aws]]
-=== AWS
-
-* Trois disques par nœud pour les données de démarrage, racine et principales :
-+
-** Disque io1 de 47 Gio pour les données de démarrage
-** Disque gp3 de 140 Gio pour les données racine
-** Disque gp2 de 540 Gio pour les données de base
-
-
-* Pour les paires HA :
-+
-** Deux volumes EBS st1 pour l'instance du médiateur, l'un d'environ 8 Gio comme disque racine et l'autre de 4 Gio comme disque de données
-** Un disque gp3 de 140 Gio dans chaque nœud pour contenir une copie des données racine de l'autre nœud
-+
-
-NOTE: Dans certaines zones, le type de disque EBS disponible ne peut être que gp2.
-
-
-
-* Un instantané EBS pour chaque disque de démarrage et disque racine
-+
-
-NOTE: Les instantanés sont créés automatiquement au redémarrage.
-
-* Lorsque vous activez le chiffrement des données dans AWS à l'aide du service de gestion des clés (KMS), les disques de démarrage et racine de Cloud Volumes ONTAP sont également chiffrés.  Cela inclut le disque de démarrage de l’instance de médiateur dans une paire HA.  Les disques sont chiffrés à l’aide de la CMK que vous sélectionnez lorsque vous ajoutez un système Cloud Volumes ONTAP .
-
-
-
-TIP: Dans AWS, la NVRAM se trouve sur le disque de démarrage.
-
-endif::aws[]
-
-ifdef::azure[]
-
-
-
-[[azure-single-node]]
-=== Azure (nœud unique)
-
-* Trois disques SSD Premium :
-+
-** Un disque de 10 Gio pour les données de démarrage
-** Un disque de 140 Gio pour les données racine
-** Un disque de 512 Gio pour la NVRAM
-+
-Si la machine virtuelle que vous avez choisie pour Cloud Volumes ONTAP prend en charge les SSD Ultra, le système utilise un SSD Ultra de 32 Gio pour la NVRAM, plutôt qu'un SSD Premium.
-
-
-
-* Un disque dur standard de 1 024 Gio pour la sauvegarde des cœurs
-* Un instantané Azure pour chaque disque de démarrage et disque racine
-* Par défaut, chaque disque dans Azure est chiffré au repos.
-+
-Si la machine virtuelle que vous avez choisie pour Cloud Volumes ONTAP prend en charge les disques gérés Premium SSD v2 comme disques de données, le système utilise un disque géré Premium SSD v2 de 32 Gio pour la NVRAM et un autre comme disque racine.
-
-
-
-
-
-[[azure-ha-pair]]
-=== Azure (paire HA)
-
-.HA s'associe à un blob de pages
-* Deux disques SSD Premium de 10 Gio pour le volume de démarrage (un par nœud)
-* Deux blobs de pages de stockage Premium de 140 Gio pour le volume racine (un par nœud)
-* Deux disques durs standard de 1 024 Gio pour la sauvegarde des cœurs (un par nœud)
-* Deux disques SSD Premium de 512 Gio pour la NVRAM (un par nœud)
-* Un instantané Azure pour chaque disque de démarrage et disque racine
-+
-
-NOTE: Les instantanés sont créés automatiquement au redémarrage.
-
-* Par défaut, chaque disque dans Azure est chiffré au repos.
-
-
-.Paires HA avec disques gérés partagés dans plusieurs zones de disponibilité
-* Deux disques SSD Premium de 10 Gio pour le volume de démarrage (un par nœud)
-* Deux disques SSD Premium de 512 Gio pour le volume racine (un par nœud)
-* Deux disques durs standard de 1 024 Gio pour la sauvegarde des cœurs (un par nœud)
-* Deux disques SSD Premium de 512 Gio pour la NVRAM (un par nœud)
-* Un instantané Azure pour chaque disque de démarrage et disque racine
-+
-
-NOTE: Les instantanés sont créés automatiquement au redémarrage.
-
-* Par défaut, chaque disque dans Azure est chiffré au repos.
-
-
-.Paires HA avec disques gérés partagés dans des zones de disponibilité uniques
-* Deux disques SSD Premium de 10 Gio pour le volume de démarrage (un par nœud)
-* Deux disques SSD Premium partagés gérés de 512 Gio pour le volume racine (un par nœud)
-* Deux disques durs standard de 1 024 Gio pour la sauvegarde des cœurs (un par nœud)
-* Deux disques SSD Premium gérés de 512 Gio pour NVRAM (un par nœud)
-
-
-Si votre machine virtuelle prend en charge les disques gérés Premium SSD v2 comme disques de données, elle utilise 32 Gio de disques gérés Premium SSD v2 pour la NVRAM et 512 Gio de disques gérés partagés Premium SSD v2 pour le volume racine.
-
-Vous pouvez déployer des paires HA dans une seule zone de disponibilité et utiliser des disques gérés Premium SSD v2 lorsque les conditions suivantes sont remplies :
-
-* La version de Cloud Volumes ONTAP est 9.15.1 ou ultérieure.
-* La région et la zone sélectionnées prennent en charge les disques gérés Premium SSD v2.  Pour plus d'informations sur les régions prises en charge, reportez-vous à https://azure.microsoft.com/en-us/explore/global-infrastructure/products-by-region/["Site Web Microsoft Azure : produits disponibles par région"^] .
-* L'abonnement est enregistré auprès de Microsoftlink:task-saz-feature.html["Fonctionnalité Microsoft.Compute/VMOrchestratorZonalMultiFD"] .
-
-
-endif::azure[]
-
-ifdef::gcp[]
-
-
-
-[[google-cloud-single-node]]
-=== Google Cloud (nœud unique)
-
-* Un disque persistant SSD de 10 Gio pour les données de démarrage
-* Un disque persistant SSD de 64 Gio pour les données racine
-* Un disque persistant SSD de 500 Gio pour la NVRAM
-* Un disque persistant standard de 315 Gio pour la sauvegarde des cœurs
-* Instantanés des données de démarrage et de racine
-+
-
-NOTE: Les instantanés sont créés automatiquement au redémarrage.
-
-* Les disques de démarrage et racine sont chiffrés par défaut.
-
-
-
-
-[[google-cloud-ha-pair]]
-=== Google Cloud (paire HA)
-
-* Deux disques persistants SSD de 10 Gio pour les données de démarrage
-* Quatre disques persistants SSD de 64 Gio pour les données racine
-* Deux disques persistants SSD de 500 Gio pour NVRAM
-* Deux disques persistants standard de 315 Gio pour la sauvegarde des cœurs
-* Un disque persistant standard de 10 Gio pour les données du médiateur
-* Un disque persistant standard de 10 Gio pour les données de démarrage du médiateur
-* Instantanés des données de démarrage et de racine
-+
-
-NOTE: Les instantanés sont créés automatiquement au redémarrage.
-
-* Les disques de démarrage et racine sont chiffrés par défaut.
-
-
-endif::gcp[]
-
-
-
 [[where-the-disks-reside]]
 === Où résident les disques
 
@@ -299,4 +141,45 @@ Ce disque, qui contient l'image de démarrage, n'est pas disponible pour Cloud V
 * Les données racine, qui contiennent la configuration du système et les journaux, résident dans aggr0.
 * Le volume racine de la machine virtuelle de stockage (SVM) réside dans aggr1.
 * Les volumes de données résident également dans aggr1.
+
+
+
+
+[[disks-and-aggregates-used-for-cloud-volumes-ontap-clusters]]
+== Disques et agrégats utilisés pour les clusters Cloud Volumes ONTAP
+
+Comprendre comment Cloud Volumes ONTAP utilise le stockage cloud peut vous aider à comprendre vos coûts de stockage.
+
+
+CAUTION: Vous devez créer et supprimer tous les disques et agrégats de la NetApp Console. Vous ne devez pas effectuer ces actions à partir d’un autre outil de gestion. Cela peut avoir un impact sur la stabilité du système, entraver la possibilité d’ajouter des disques à l’avenir et potentiellement générer des frais de fournisseur de cloud redondants.
+
+Cloud Volumes ONTAP utilise le stockage du fournisseur cloud sous forme de disques et les regroupe en un ou plusieurs agrégats.  Les agrégats fournissent un stockage à un ou plusieurs volumes.
+
+image:diagram_storage.png["Cette illustration montre un agrégat composé de disques et des volumes de données que Cloud Volumes ONTAP met à la disposition des hôtes."]
+
+Plusieurs types de disques cloud sont pris en charge.  Vous choisissez le type de disque lorsque vous créez un volume et la taille de disque par défaut lorsque vous déployez Cloud Volumes ONTAP.
+
+
+TIP: La quantité totale de stockage achetée auprès d'un fournisseur de cloud est la _capacité brute_.  La _capacité utilisable_ est inférieure car environ 12 à 14 pour cent de la charge utile est réservée à l'utilisation de Cloud Volumes ONTAP .  Par exemple, si la console crée un agrégat de 500 Gio, la capacité utilisable est de 442,94 Gio.
+
+
+
+[[raid-type]]
+=== Type de RAID
+
+Le type RAID pour chaque agrégat Cloud Volumes ONTAP est RAID0 (striping).  Cloud Volumes ONTAP s'appuie sur le fournisseur de cloud pour la disponibilité et la durabilité du disque.  Aucun autre type de RAID n'est pris en charge.
+
+
+
+[[hot-spares]]
+=== Disques de secours à chaud
+
+RAID0 ne prend pas en charge l'utilisation de disques de secours à chaud pour la redondance.
+
+La création de disques inutilisés (disques de secours) attachés à une instance Cloud Volumes ONTAP constitue une dépense inutile et peut empêcher le provisionnement d'espace supplémentaire selon les besoins.  Par conséquent, ce n'est pas recommandé.
+
+.Liens connexes
+* link:reference-configs-aws.html["Configurations prises en charge pour Cloud Volumes ONTAP dans AWS"]
+* link:reference-configs-azure.html["Configurations prises en charge pour Cloud Volumes ONTAP dans Azure"]
+* link:reference-configs-gcp.html["Configurations prises en charge pour Cloud Volumes ONTAP dans Google Cloud"]
 

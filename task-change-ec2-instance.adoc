@@ -36,7 +36,7 @@ TIP: La NetApp Console modifie un nœud à la fois en lançant la prise de contr
 
 
 .Référence
-Pour obtenir la liste des types d'instances pris en charge dans AWS, reportez-vous àlink:https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-aws.html#supported-ec2-compute["Instances EC2 prises en charge"^] .
+Pour obtenir la liste des types d'instances pris en charge dans AWS, consultez link:reference-configs-aws.html#supported-ec2-compute["Instances EC2 prises en charge"].
 
 Si vous ne pouvez pas modifier le type d'instance à partir des instances c4, m4 ou r4, reportez-vous à l'article de la base de connaissanceslink:https://kb.netapp.com/Cloud/Cloud_Volumes_ONTAP/Converting_an_AWS_Xen_CVO_instance_to_Nitro_(KVM)["Conversion d'une instance AWS Xen CVO en Nitro (KVM)"^] .
 

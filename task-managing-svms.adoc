@@ -4,7 +4,7 @@ permalink: task-managing-svms.html
 keywords: storage virtual machine, vserver, svm, storage vm, supported number, number supported 
 summary: Une machine virtuelle de stockage est une machine virtuelle exécutée dans ONTAP qui fournit des services de stockage et de données à vos clients.  Vous connaissez peut-être cela sous le nom de SVM ou de vserver.  Cloud Volumes ONTAP est configuré avec une machine virtuelle de stockage par défaut, mais certaines configurations prennent en charge des machines virtuelles de stockage supplémentaires. 
 ---
-= Gérer les machines virtuelles de stockage pour Cloud Volumes ONTAP
+= Machines virtuelles de stockage Cloud Volumes ONTAP
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,7 +14,7 @@ summary: Une machine virtuelle de stockage est une machine virtuelle exécutée 
 
 
 [role="lead"]
-Une machine virtuelle de stockage est une machine virtuelle exécutée dans ONTAP qui fournit des services de stockage et de données à vos clients.  Vous connaissez peut-être cela sous le nom de _SVM_ ou _vserver_.  Cloud Volumes ONTAP est configuré avec une machine virtuelle de stockage par défaut, mais certaines configurations prennent en charge des machines virtuelles de stockage supplémentaires.
+Une machine virtuelle de stockage (SVM) est une machine virtuelle exécutée au sein d'ONTAP qui fournit des services de stockage et de données à vos clients. Vous pouvez également connaître cela sous le nom de _SVM_ ou de _vserver_. Cloud Volumes ONTAP est configuré par défaut avec une seule machine virtuelle de stockage, mais certaines configurations prennent en charge des machines virtuelles de stockage supplémentaires.
 
 
 

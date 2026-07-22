@@ -41,7 +41,7 @@ Cloud Volumes ONTAP est pris en charge dans la plupart des régions Microsoft Az
 
 Cloud Volumes ONTAP prend en charge plusieurs types de machines virtuelles, selon le type de licence que vous choisissez.
 
-https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-azure.html["Configurations prises en charge pour Cloud Volumes ONTAP dans Azure"^]
+link:reference-configs-azure.html["Configurations prises en charge pour Cloud Volumes ONTAP dans Azure"]
 
 
 

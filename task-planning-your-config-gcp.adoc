@@ -41,7 +41,7 @@ Cloud Volumes ONTAP est pris en charge dans la plupart des régions Google Cloud
 
 Cloud Volumes ONTAP prend en charge plusieurs types de machines, selon le type de licence que vous choisissez.
 
-https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-gcp.html["Configurations prises en charge pour Cloud Volumes ONTAP dans Google Cloud"^]
+link:reference-configs-gcp.html["Configurations prises en charge pour Cloud Volumes ONTAP dans Google Cloud"]
 
 
 
@@ -59,7 +59,7 @@ https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-limits-gcp.
 
 Le dimensionnement de votre système Cloud Volumes ONTAP peut vous aider à répondre aux exigences de performances et de capacité.  Vous devez tenir compte de quelques points clés lors du choix d’un type de machine, d’un type de disque et d’une taille de disque :
 
-Type de machine:: Consultez les types de machines pris en charge dans le https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-gcp.html["Notes de version de Cloud Volumes ONTAP"^] Consultez ensuite les informations détaillées de Google concernant chaque type de machine pris en charge. Adaptez vos exigences de charge de travail au nombre de vCPU et de mémoire pour le type de machine. Notez que chaque cœur de processeur augmente les performances du réseau.
+Type de machine:: Consultez les types de machines pris en charge dans le link:reference-configs-gcp.html["Notes de version de Cloud Volumes ONTAP"^] puis examinez les détails fournis par Google concernant chaque type de machine pris en charge. Faites correspondre les exigences de votre charge de travail au nombre de vCPU et à la mémoire du type de machine. Notez que chaque cœur de processeur augmente les performances réseau.
 +
 --
 Pour plus de détails, reportez-vous aux éléments suivants :

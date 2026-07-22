@@ -1,0 +1,1307 @@
+---
+sidebar: sidebar 
+permalink: reference-configs-azure.html 
+keywords: vm, explore, standard, premium, byol, capacity, maximum, virtual machine, Cloud Volumes ONTAP, supported, configurations, disks, sizes 
+summary: Plusieurs configurations Cloud Volumes ONTAP sont prises en charge dans Azure. 
+---
+= Configurations prises en charge pour Cloud Volumes ONTAP dans Azure
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Plusieurs configurations Cloud Volumes ONTAP sont prises en charge dans Azure.
+
+
+
+[[supported-disk-types]]
+== Types de disques pris en charge
+
+Outre le stockage des données utilisateur, NetApp achète également du stockage cloud pour les données système sur Azure.
+
+
+
+[[internal-disks-for-system-data-azure-single-node]]
+=== Disques internes pour les données système Azure (nœud unique)
+
+Les disques internes suivants sont utilisés pour les données système dans Azure :
+
+* Trois disques SSD Premium :
++
+** Un disque de 10 Gio pour les données de démarrage
+** Un disque de 140 Gio pour les données racine
+** Un disque de 512 Gio pour la NVRAM
++
+Si la machine virtuelle que vous avez choisie pour Cloud Volumes ONTAP prend en charge les SSD Ultra, le système utilise un SSD Ultra de 32 Gio pour la NVRAM, plutôt qu'un SSD Premium.
+
+
+
+* Un disque dur standard de 1 024 Gio pour la sauvegarde des cœurs
+* Un instantané Azure pour chaque disque de démarrage et disque racine
+* Par défaut, chaque disque dans Azure est chiffré au repos.
++
+Si la machine virtuelle que vous avez choisie pour Cloud Volumes ONTAP prend en charge les disques gérés Premium SSD v2 comme disques de données, le système utilise un disque géré Premium SSD v2 de 32 Gio pour la NVRAM et un autre comme disque racine.
+
+
+
+
+
+[[internal-disks-for-system-data-azure-ha-pair]]
+=== Disques internes pour les données système de la paire haute disponibilité Azure
+
+.HA s'associe à un blob de pages
+* Deux disques SSD Premium de 10 Gio pour le volume de démarrage (un par nœud)
+* Deux blobs de pages de stockage Premium de 140 Gio pour le volume racine (un par nœud)
+* Deux disques durs standard de 1 024 Gio pour la sauvegarde des cœurs (un par nœud)
+* Deux disques SSD Premium de 512 Gio pour la NVRAM (un par nœud)
+* Un instantané Azure pour chaque disque de démarrage et disque racine
++
+
+NOTE: Les instantanés sont créés automatiquement au redémarrage.
+
+* Par défaut, chaque disque dans Azure est chiffré au repos.
+
+
+.Paires HA avec disques gérés partagés dans plusieurs zones de disponibilité
+* Deux disques SSD Premium de 10 Gio pour le volume de démarrage (un par nœud)
+* Deux disques SSD Premium de 512 Gio pour le volume racine (un par nœud)
+* Deux disques durs standard de 1 024 Gio pour la sauvegarde des cœurs (un par nœud)
+* Deux disques SSD Premium de 512 Gio pour la NVRAM (un par nœud)
+* Un instantané Azure pour chaque disque de démarrage et disque racine
++
+
+NOTE: Les instantanés sont créés automatiquement au redémarrage.
+
+* Par défaut, chaque disque dans Azure est chiffré au repos.
+
+
+.Paires HA avec disques gérés partagés dans des zones de disponibilité uniques
+* Deux disques SSD Premium de 10 Gio pour le volume de démarrage (un par nœud)
+* Deux disques SSD Premium partagés gérés de 512 Gio pour le volume racine (un par nœud)
+* Deux disques durs standard de 1 024 Gio pour la sauvegarde des cœurs (un par nœud)
+* Deux disques SSD Premium gérés de 512 Gio pour NVRAM (un par nœud)
+
+
+Si votre machine virtuelle prend en charge les disques gérés Premium SSD v2 comme disques de données, elle utilise 32 Gio de disques gérés Premium SSD v2 pour la NVRAM et 512 Gio de disques gérés partagés Premium SSD v2 pour le volume racine.
+
+Vous pouvez déployer des paires HA dans une seule zone de disponibilité et utiliser des disques gérés Premium SSD v2 lorsque les conditions suivantes sont remplies :
+
+* La version de Cloud Volumes ONTAP est 9.15.1 ou ultérieure.
+* La région et la zone sélectionnées prennent en charge les disques gérés Premium SSD v2.  Pour plus d'informations sur les régions prises en charge, reportez-vous à https://azure.microsoft.com/en-us/explore/global-infrastructure/products-by-region/["Site Web Microsoft Azure : produits disponibles par région"^] .
+* L'abonnement est enregistré auprès de Microsoftlink:task-saz-feature.html["Fonctionnalité Microsoft.Compute/VMOrchestratorZonalMultiFD"] .
+
+
+
+
+[[azure-storage-for-user-data]]
+=== Stockage Azure pour les données utilisateur
+
+Dans Azure, un agrégat peut contenir jusqu'à 12 disques de même taille. Le type de disque et la taille maximale du disque dépendent du fait que vous utilisez un système à nœud unique ou une paire haute disponibilité :
+
+Systèmes à nœud unique:: Les systèmes à nœud unique peuvent utiliser ces types de disques Azure Managed Disks :
++
+--
+* Les _disques gérés SSD Premium_ offrent des performances élevées pour les charges de travail gourmandes en E/S à un coût plus élevé.
+* Les _disques gérés SSD Premium v2_ offrent des performances supérieures avec une latence plus faible à un coût inférieur pour les paires de nœuds uniques et HA, par rapport aux disques gérés SSD Premium.
+* Les _disques gérés SSD standard_ offrent des performances constantes pour les charges de travail nécessitant de faibles IOPS.
+* Les _disques gérés HDD standard_ sont un bon choix si vous n'avez pas besoin d'IOPS élevés et que vous souhaitez réduire vos coûts.
++
+Chaque type de disque géré a une taille de disque maximale de 32 Tio.
+
++
+Vous pouvez associer un disque géré au stockage Azure Blob pourlink:concept-data-tiering.html["stockage d'objets à faible coût"] .
+
+
+
+--
+paires HA:: Les paires HA utilisent deux types de disques qui offrent des performances élevées pour les charges de travail gourmandes en E/S à un coût plus élevé :
++
+--
+* _Blobs de pages Premium_ avec une taille de disque maximale de 8 Tio
+* _Disques gérés_ avec une taille de disque maximale de 32 Tio
+
+
+--
+
+
+
+
+[[supported-configurations-by-license]]
+== Configurations prises en charge par licence
+
+Cloud Volumes ONTAP est disponible dans Azure en tant que système à nœud unique et en tant que paire haute disponibilité (HA) pour tolérance aux pannes et opérations non perturbatrices.
+
+La mise à niveau d'un système à nœud unique vers une paire haute disponibilité n'est pas prise en charge. Si vous souhaitez passer d'un système à nœud unique à une paire haute disponibilité, vous devez déployer un nouveau système et répliquer les données du système existant vers le nouveau système.
+
+Cloud Volumes ONTAP peut s'exécuter sur une instance de machine virtuelle réservée ou à la demande de votre fournisseur de cloud. Les solutions qui utilisent d'autres types d'instances de machines virtuelles ne sont pas prises en charge.
+
+Pour connaître les spécifications des instances prises en charge, reportez-vous au https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/overview["Documentation Microsoft Azure"^].
+
+
+
+[[single-node-systems]]
+=== Systèmes à nœud unique
+
+Vous pouvez choisir parmi les configurations de licences suivantes, basées sur la capacité ou sur le nombre de nœuds, lors du déploiement de Cloud Volumes ONTAP en tant que système à nœud unique dans Azure.
+
+Cloud Volumes ONTAP peut s'exécuter sur une instance de machine virtuelle réservée ou à la demande de votre fournisseur de cloud. Les solutions qui utilisent d'autres types d'instances de machines virtuelles ne sont pas prises en charge.
+
+[role="tabbed-block"]
+====
+.Licences basées sur la capacité
+--
+[cols="h,d,d,d"]
+|===
+|  | Freemium | Optimisé ^5^ | Licence basée sur la capacité (Essentials et Professional) 
+
+
+| Capacité maximale du système (disques + stockage d'objets) | 500 Gio  a| 
+Avec une licence basée sur la capacité, chaque système Cloud Volumes ONTAP prend en charge la hiérarchisation vers le stockage objet. La capacité hiérarchisée totale peut évoluer jusqu'à la limite de compartiment du fournisseur de cloud. Bien que la licence n'impose aucune restriction de capacité, vous devez suivre les  https://www.netapp.com/pdf.html?item=/media/17239-tr-4598.pdf["Bonnes pratiques de FabricPool"^] pour garantir des performances, une fiabilité et une rentabilité optimales lors de la configuration et de la gestion de la hiérarchisation.
+
+
+
+| Types de machines virtuelles pris en charge  a| 
+.Série DSv2
+[%collapsible]
+=====
+* DS4_v2 ^1^
+* DS5_v2 ^1^
+* DS13_v2 ^1^
+* DS14_v2 ^1^
+* DS15_v2 ^1^
+
+
+=====
+.Série Ebdsv5
+[%collapsible]
+=====
+* E4bds_v5 ^7^
+* E8bds_v5 ^7^
+* E16bds_v5 ^7^
+* E32bds_v5 ^7^
+* E48bds_v5 ^7^
+* E64bds_v5 ^7^
+
+
+=====
+.Série Edsv4
+[%collapsible]
+=====
+* E4ds_v4
+* E8ds_v4
+* E32ds_v4 ^3^
+* E48ds_v4 ^3^
+* E80ids_v4 ^3^
+
+
+=====
+.Série Edsv5
+[%collapsible]
+=====
+* E4ds_v5
+* E8ds_v5
+* E20ds_v5 ^3^
+* E32ds_v5 ^3^
+* E48ds_v5 ^3^
+* E64ds_v5 ^3^
+* E104ids_v5 ^7^
+
+
+=====
+.Série Edsv6
+[%collapsible]
+=====
+* E4ds_v6 ^6^
+* E20ds_v6 ^6^
+* E32ds_v6 ^6^
+* E48ds_v6 ^6^
+* E64ds_v6 ^6^
+
+
+=====
+.Série Esv3
+[%collapsible]
+=====
+* E4s_v3 ^1^
+* E8s_v3 ^1^
+* E32s_v3 ^1,3^
+* E48s_v3 ^1,3^
+* E64is_v3 ^1,3^
+
+
+=====
+.Série Lsv3
+[%collapsible]
+=====
+* L8s_v3 ^2^
+* L16s_v3 ^2^
+* L32s_v3 ^2^
+* L48s_v3 ^2^
+* L64s_v3 ^2^
+
+
+===== a| 
+.Série DSv2
+[%collapsible]
+=====
+* DS4_v2 ^1^
+* DS13_v2 ^1^
+
+
+=====
+.Série Esv3
+[%collapsible]
+=====
+* E4s_v3 ^1^
+* E8s_v3 ^1^
+
+
+=====
+.Série Edsv4
+[%collapsible]
+=====
+* E4ds_v4 ^3^
+* E8ds_v4 ^3^
+* E4ds_v5
+* E8ds_v5
+
+
+===== a| 
+.Série DSv2
+[%collapsible]
+=====
+* DS4_v2 ^1^
+* DS5_v2 ^1^
+* DS13_v2 ^1^
+* DS14_v2 ^1^
+* DS15_v2 ^1^
+
+
+=====
+.Série Ebdsv5
+[%collapsible]
+=====
+* E4bds_v5 ^7^
+* E8bds_v5 ^7^
+* E16bds_v5 ^7^
+* E32bds_v5 ^7^
+* E48bds_v5 ^7^
+* E64bds_v5 ^7^
+
+
+=====
+.Série Edsv4
+[%collapsible]
+=====
+* E4ds_v4 ^3^
+* E8ds_v4 ^3^
+* E32ds_v4 ^3^
+* E48ds_v4 ^3^
+* E80ids_v4 ^3^
+
+
+=====
+.Série Edsv5
+[%collapsible]
+=====
+* E4ds_v5
+* E8ds_v5
+* E20ds_v5 ^3^
+* E32ds_v5 ^3^
+* E48ds_v5 ^3^
+* E64ds_v5 ^3^
+* E104ids_v5 ^7^
+
+
+=====
+.Série Edsv6
+[%collapsible]
+=====
+* E4ds_v6 ^6^
+* E20ds_v6 ^6^
+* E32ds_v6 ^6^
+* E48ds_v6 ^6^
+* E64ds_v6 ^6^
+
+
+=====
+.Série Esv3
+[%collapsible]
+=====
+* E4s_v3 ^1^
+* E8s_v3 ^1^
+* E32s_v3 ^1,3^
+* E48s_v3 ^1,3^
+* E64is_v3 ^1,3^
+
+
+=====
+.Série Lsv3
+[%collapsible]
+=====
+* L8s_v3 ^2^
+* L16s_v3 ^2^
+* L32s_v3 ^2^
+* L48s_v3 ^2^
+* L64s_v3 ^2^
+
+
+=====
+
+
+| Types de disques pris en charge ^4^ 3+| Disques gérés HDD Standard, disques gérés SSD Standard, disques gérés SSD Premium et disques gérés SSD Premium v2. 
+|===
+Remarques:
+
+. ^1^ Les familles de machines DSv2 et Esv3 ne sont plus disponibles pour sélection sur la NetApp Console lors du déploiement de nouvelles instances de Cloud Volumes ONTAP dans Azure. Ces familles seront conservées et prises en charge uniquement dans les anciens systèmes existants. Les nouveaux déploiements de Cloud Volumes ONTAP sont pris en charge dans Azure uniquement à partir de la version 9.12.1. Nous vous recommandons de passer à Es_v4 ou à toute autre série compatible avec Cloud Volumes ONTAP 9.12.1 et versions ultérieures. Les machines des séries DS_v2 et Es_v3 seront toutefois disponibles pour les nouveaux déploiements effectués via l’API.
+. ^2^ Ce type de machine virtuelle inclut un stockage NVMe local, que Cloud Volumes ONTAP utilise comme _Flash Cache_. Le cache Flash accélère l'accès aux données grâce à une mise en cache intelligente en temps réel des données utilisateur récemment lues et des métadonnées NetApp. Il est efficace pour les charges de travail à forte intensité de lecture aléatoire, notamment les bases de données, la messagerie électronique et les services de fichiers. https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-flash-cache.html["Apprendre encore plus"^]
++
+La version minimale d'ONTAP requise pour configurer Flash Cache sur Azure est 9.13.1 GA.
+
+. ^3^ Ces types de VM utilisent un  https://docs.microsoft.com/en-us/azure/virtual-machines/windows/disks-enable-ultra-ssd["Ultra SSD"^] pour VNVRAM, ce qui offre de meilleures performances d'écriture.
++
+Si vous choisissez l’un de ces types de machines virtuelles lors du déploiement d’un nouveau système Cloud Volumes ONTAP, vous ne pouvez pas passer à un autre type de machine virtuelle qui _n’utilise pas_ de SSD Ultra pour la VNVRAM. Par exemple, vous ne pouvez pas passer de E8ds_v4 à E8s_v3, mais vous pouvez passer de E8ds_v4 à E32ds_v4 car ces deux types de machines virtuelles utilisent des SSD Ultra. Inversement, si vous avez déployé Cloud Volumes ONTAP en utilisant un autre type de machine virtuelle, vous ne pourrez pas passer à un autre qui utilise un SSD Ultra pour la VNVRAM. Par exemple, vous ne pouvez pas passer de E8s_v3, qui n’utilise pas de SSD Ultra pour la VNVRAM, à E8ds_v4 qui en utilise un.
+
++
+De même, si vous choisissez des disques SSD gérés Premium pour un environnement qui remplit les https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-ha-azure.html#ha-single-availability-zone-configuration-with-shared-managed-disks["critères"^] conditions pour les disques SSD gérés Premium v2, la Console déploie automatiquement des disques SSD gérés Premium v2. Vous ne pouvez pas passer aux disques SSD gérés Premium v1.
+
+. ^4^ Pour plus d'informations sur les types de disques pris en charge dans les déploiements à nœud unique, consultez  https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/reference-default-configs.html#azure-single-node["Azure (nœud unique)"^]. La vitesse d'écriture élevée est prise en charge avec tous les types d'instances lors de l'utilisation d'un système à nœud unique. Vous pouvez activer la vitesse d'écriture élevée depuis la Console lors du déploiement ou à tout moment par la suite. https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-write-speed.html["En savoir plus sur le choix d'une vitesse d'écriture"^] Les performances d'écriture améliorées sont activées lors de l'utilisation de SSD.
+. ^5^ À compter du 11 août 2025, la licence Cloud Volumes ONTAP Optimized est obsolète et ne sera plus disponible à l’achat ni au renouvellement sur la marketplace Azure pour les abonnements pay-as-you-go (PAYGO). Pour plus d'informations, consultez https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/whats-new.html#11-august-2025["Fin de disponibilité des licences optimisées"^].
+. ^6^ Les types de VM Edsv6 sont pris en charge pour les nouveaux déploiements de Cloud Volumes ONTAP 9.17.1 et versions ultérieures. Vous ne pouvez pas remplacer un déploiement existant par un autre type de VM, par exemple, passer d’Edsv5 à Edsv6 ; seuls les changements de taille entre variantes Edsv6 (par exemple E20ds_v6 → E32ds_v6) sont pris en charge. Pour des informations sur ce type de VM, consultez le https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/memory-optimized/edsv6-series?tabs=sizebasic["Documentation Azure : série de tailles Edsv6"^].
+. ^7^ Les machines virtuelles Ebdsv5 et E104ids_v5 sont disponibles pour les nouveaux déploiements et la mise à niveau de Cloud Volumes ONTAP 9.18.1 et versions ultérieures. Vous pouvez changer ou mettre à niveau vos machines virtuelles Edsv4, Edsv5 ou autres types de Ebdsv5 existantes vers Ebdsv5. Vous pouvez mettre à niveau les machines virtuelles Ebdsv5 ou Eidsv5 vers E104ids_v5.
+
+
+--
+.Autres licences
+--
+[cols="h,d,d,d,d"]
+|===
+|  | PAYGO Explore | PAYGO Standard | PAYGO Premium | BYOL basé sur les nœuds 
+
+
+| Capacité maximale du système (disques + stockage d'objets) | 2 Tio ^5^ | 10 Tio | 368 Tio | 368 TiB par licence 
+
+
+| Types de machines virtuelles pris en charge  a| 
+.Série Ebdsv5
+[%collapsible]
+=====
+* E4bds_v5 ^7^
+
+
+=====
+.Série Esv3
+[%collapsible]
+=====
+* E4s_v3 ^1^
+
+
+=====
+.Série Edsv4
+[%collapsible]
+=====
+* E4ds_v4 ^3^
+
+
+=====
+.Série Edsv5
+[%collapsible]
+=====
+* E4ds_v5
+
+
+=====
+.Série Edsv6
+[%collapsible]
+=====
+* E4ds_v6 ^6^
+
+
+===== a| 
+.Série Dsv2
+[%collapsible]
+=====
+* DS4_v2 ^1^
+* DS13_v2 ^1^
+
+
+=====
+.Série Ebdsv5
+[%collapsible]
+=====
+* E8bds_v5 ^7^
+
+
+=====
+.Série Esv3
+[%collapsible]
+=====
+* E8s_v3 ^1^
+
+
+=====
+.Série Edsv4
+[%collapsible]
+=====
+* E8ds_v4 ^3^
+
+
+=====
+.Série Edsv5
+[%collapsible]
+=====
+* E8ds_v5
+
+
+=====
+.Série Lsv3
+[%collapsible]
+=====
+* L8s_v3 ^2^
+
+
+===== a| 
+.Série DSv2
+[%collapsible]
+=====
+* DS5_v2 ^1^
+* DS14_v2 ^1^
+* DS15_v2 ^1^
+
+
+=====
+.Série Ebdsv5
+[%collapsible]
+=====
+* E16bds_v5 ^7^
+* E32bds_v5 ^7^
+* E48bds_v5 ^7^
+* E64bds_v5 ^7^
+
+
+=====
+.Série Esv3
+[%collapsible]
+=====
+* E32s_v3 ^1,3^
+* E48s_v3 ^1,3^
+* E64is_v3 ^1,3^
+
+
+=====
+.Série Edsv4
+[%collapsible]
+=====
+* E32ds_v4 ^3^
+* E48ds_v4 ^3^
+* E80ids_v4 ^3^
+
+
+=====
+.Série Edsv5
+[%collapsible]
+=====
+* E20ds_v5 ^3^
+* E32ds_v5 ^3^
+* E48ds_v5 ^3^
+* E64ds_v5 ^3^
+* E104ids_v5 ^7^
+
+
+=====
+.Série Edsv6
+[%collapsible]
+=====
+* E20ds_v6 ^6^
+* E32ds_v6 ^6^
+* E48ds_v6 ^6^
+* E64ds_v6 ^6^
+
+
+===== a| 
+.Série DSv2
+[%collapsible]
+=====
+* DS4_v2 ^1^
+* DS5_v2 ^1^
+* DS13_v2 ^1^
+* DS14_v2 ^1^
+* DS15_v2 ^1^
+
+
+=====
+.Série Ebdsv5
+[%collapsible]
+=====
+* E4bds_v5 ^7^
+* E8bds_v5 ^7^
+* E16bds_v5 ^7^
+* E32bds_v5 ^7^
+* E48bds_v5 ^7^
+* E64bds_v5 ^7^
+
+
+=====
+.Série Esv3
+[%collapsible]
+=====
+* E4s_v3 ^1^
+* E8s_v3 ^1^
+* E32s_v3 ^1,3^
+* E48s_v3 ^1,3^
+* E64is_v3 ^1,3^
+
+
+=====
+.Série Edsv4
+[%collapsible]
+=====
+* E4ds_v4 ^3^
+* E8ds_v4 ^3^
+* E32ds_v4 ^3^
+* E48ds_v4 ^3^
+* E80ids_v4 ^3^
+
+
+=====
+.Série Edsv5
+[%collapsible]
+=====
+* E4ds_v5
+* E8ds_v5
+* E20ds_v5 ^3^
+* E32ds_v5 ^3^
+* E48ds_v5 ^3^
+* E64ds_v5 ^3^
+* E104ids_v5 ^7^
+
+
+=====
+.Série Edsv6
+[%collapsible]
+=====
+* E4ds_v6 ^6^
+* E20ds_v6 ^6^
+* E32ds_v6 ^6^
+* E48ds_v6 ^6^
+* E64ds_v6 ^6^
+
+
+=====
+.Série Lsv3
+[%collapsible]
+=====
+* L8s_v3 ^2^
+* L16s_v3 ^2^
+* L32s_v3 ^2^
+* L48s_v3 ^2^
+* L64s_v3 ^2^
+
+
+=====
+
+
+| Types de disques pris en charge ^4^ 4+| Standard HDD Managed Disks, Standard SSD Managed Disks et Premium SSD Managed Disks 
+|===
+Remarques:
+
+. ^1^ Les familles de machines DS_v2 et Es_v3 ne sont plus disponibles pour sélection dans la Console lors du déploiement de nouvelles instances de Cloud Volumes ONTAP dans Azure. Ces familles seront conservées et prises en charge uniquement dans les anciens systèmes existants. Les nouveaux déploiements de Cloud Volumes ONTAP sont pris en charge dans Azure uniquement à partir de la version 9.12.1. Nous vous recommandons de passer à Es_v4 ou à toute autre série compatible avec Cloud Volumes ONTAP 9.12.1 et versions ultérieures. Les machines des séries DS_v2 et Es_v3 seront toutefois disponibles pour les nouveaux déploiements effectués via l’API.
+. ^2^ Ce type de machine virtuelle inclut un stockage NVMe local, que Cloud Volumes ONTAP utilise comme _Flash Cache_. Le cache Flash accélère l'accès aux données grâce à une mise en cache intelligente en temps réel des données utilisateur récemment lues et des métadonnées NetApp. Il est efficace pour les charges de travail à forte intensité de lecture aléatoire, notamment les bases de données, la messagerie électronique et les services de fichiers. https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-flash-cache.html["Apprendre encore plus"^]
+. ^3^ Ces types de VM utilisent un  https://docs.microsoft.com/en-us/azure/virtual-machines/windows/disks-enable-ultra-ssd["Ultra SSD"^] pour VNVRAM, ce qui offre de meilleures performances d'écriture.
++
+Si vous choisissez l’un de ces types de machines virtuelles lors du déploiement d’un nouveau système Cloud Volumes ONTAP, vous ne pouvez pas passer à un autre type de machine virtuelle qui _n’utilise pas_ de SSD Ultra pour la VNVRAM. Par exemple, vous ne pouvez pas passer de E8ds_v4 à E8s_v3, mais vous pouvez passer de E8ds_v4 à E32ds_v4 car ces deux types de machines virtuelles utilisent des SSD Ultra. Inversement, si vous avez déployé Cloud Volumes ONTAP en utilisant un autre type de machine virtuelle, vous ne pourrez pas passer à un autre qui utilise un SSD Ultra pour la VNVRAM. Par exemple, vous ne pouvez pas passer de E8s_v3, qui n’utilise pas de SSD Ultra pour la VNVRAM, à E8ds_v4 qui en utilise un.
+
++
+De même, si vous choisissez des disques SSD gérés Premium pour un environnement qui remplit les https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-ha-azure.html#ha-single-availability-zone-configuration-with-shared-managed-disks["critères"^] conditions pour les disques SSD gérés Premium v2, la Console déploie automatiquement des disques SSD gérés Premium v2. Vous ne pouvez pas passer aux disques SSD gérés Premium v1.
+
+. ^4^ La vitesse d'écriture élevée est prise en charge pour tous les types d'instances sur un système à nœud unique. Vous pouvez activer la vitesse d'écriture élevée depuis la Console lors du déploiement ou à tout moment par la suite. https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-write-speed.html["En savoir plus sur le choix d'une vitesse d'écriture"^] Les performances d'écriture améliorées sont activées lors de l'utilisation de SSD.
+. ^5^La hiérarchisation des données vers le stockage Azure Blob n'est pas prise en charge avec PAYGO Explore.
+. ^6^ Les types de VM Edsv6 sont pris en charge pour les nouveaux déploiements de Cloud Volumes ONTAP 9.17.1 et versions ultérieures. Vous ne pouvez pas remplacer un déploiement existant par un autre type de VM, par exemple, passer d’Edsv5 à Edsv6 ; seuls les changements de taille entre variantes Edsv6 (par exemple E20ds_v6 → E32ds_v6) sont pris en charge. Pour des informations sur ce type de VM, consultez le https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/memory-optimized/edsv6-series?tabs=sizebasic["Documentation Azure : série de tailles Edsv6"^].
+. ^7^ Les machines virtuelles Ebdsv5 et E104ids_v5 sont disponibles pour les nouveaux déploiements et la mise à niveau de Cloud Volumes ONTAP 9.18.1 et versions ultérieures. Vous pouvez changer ou mettre à niveau vos machines virtuelles Edsv4, Edsv5 ou autres types de Ebdsv5 existantes vers Ebdsv5. Vous pouvez mettre à niveau les machines virtuelles Ebdsv5 ou Eidsv5 vers E104ids_v5.
+
+
+--
+====
+
+
+[[ha-pairs]]
+=== paires HA
+
+Vous pouvez choisir parmi les configurations suivantes lors du déploiement de Cloud Volumes ONTAP en tant que paire haute disponibilité dans Azure.
+
+
+
+==== Paires haute disponibilité avec disques gérés partagés
+
+Vous pouvez choisir parmi les configurations suivantes lors du déploiement de Cloud Volumes ONTAP en tant que paire haute disponibilité dans Azure.
+
+[role="tabbed-block"]
+====
+.Licences basées sur la capacité
+--
+[cols="h,d,d,d"]
+|===
+|  | Freemium | Optimisé ^7^ | Licence basée sur la capacité (Essentials et Professional) 
+
+
+| Capacité maximale du système (disques + stockage d'objets) | 500 Gio  a| 
+Avec une licence basée sur la capacité, chaque système Cloud Volumes ONTAP prend en charge la hiérarchisation vers le stockage objet. La capacité hiérarchisée totale peut évoluer jusqu'à la limite de compartiment du fournisseur de cloud. Bien que la licence n'impose aucune restriction de capacité, vous devez suivre les  https://www.netapp.com/pdf.html?item=/media/17239-tr-4598.pdf["Bonnes pratiques de FabricPool"^] pour garantir des performances, une fiabilité et une rentabilité optimales lors de la configuration et de la gestion de la hiérarchisation.
+
+
+
+| Types de machines virtuelles pris en charge  a| 
+.Série Ebdsv5
+[%collapsible]
+=====
+* E8bds_v5 ^9^
+* E16bds_v5 ^9^
+* E32bds_v5 ^9^
+* E48bds_v5 ^9^
+* E64bds_v5 ^9^
+
+
+=====
+.Série Edsv4
+[%collapsible]
+=====
+* E8ds_v4
+* E32ds_v4 ^1^
+* E48ds_v4 ^1^
+* E80ids_v4 ^1,2^
+
+
+=====
+.Série Edsv5
+[%collapsible]
+=====
+* E8ds_v5 ^4^
+* E20ds_v5 ^1,4^
+* E32ds_v5 ^1,4^
+* E48ds_v5 ^1,4^
+* E64ds_v5 ^1,4^
+* E104ids_v5 ^9^
+
+
+=====
+.Série Edsv6
+[%collapsible]
+=====
+* E20ds_v6 ^8^
+* E32ds_v6 ^8^
+* E48ds_v6 ^8^
+* E64ds_v6 ^8^
+
+
+=====
+.Série Lsv3
+[%collapsible]
+=====
+* L8s_v3 ^1,3,5^
+* L16s_v3 ^1,3,5^
+* L32s_v3 ^1,3,5^
+* L48s_v3 ^1,3,5^
+* L64s_v3 ^1,3,5^
+
+
+===== a| 
+.Série Edsv4
+[%collapsible]
+=====
+* E8ds_v4
+
+
+=====
+.Série Edsv5
+[%collapsible]
+=====
+* E8ds_v5 ^4^
+
+
+===== a| 
+.Série Ebdsv5
+[%collapsible]
+=====
+* E8bds_v5 ^9^
+* E16bds_v5 ^9^
+* E32bds_v5 ^9^
+* E48bds_v5 ^9^
+* E64bds_v5 ^9^
+
+
+=====
+.Série Edsv4
+[%collapsible]
+=====
+* E8ds_v4
+* E32ds_v4 ^1^
+* E48ds_v4 ^1^
+* E80ids_v4 ^1,2^
+
+
+=====
+.Série Edsv5
+[%collapsible]
+=====
+* E8ds_v5 ^4^
+* E20ds_v5 ^1,4^
+* E32ds_v5 ^1,4^
+* E48ds_v5 ^1,4^
+* E64ds_v5 ^1,4^
+* E104ids_v5 ^9^
+
+
+=====
+.Série Edsv6
+[%collapsible]
+=====
+* E20ds_v6 ^8^
+* E32ds_v6 ^8^
+* E48ds_v6 ^8^
+* E64ds_v6 ^8^
+
+
+=====
+.Série Lsv3
+[%collapsible]
+=====
+* L8s_v3 ^1,3,5^
+* L16s_v3 ^1,3,5^
+* L32s_v3 ^1,3,5^
+* L48s_v3 ^1,3,5^
+* L64s_v3 ^1,3,5^
+
+
+=====
+
+
+| Types de disques pris en charge ^6^ 3+| Premium SSD Managed Disks ou Premium SSD v2 Managed Disks. 
+|===
+Remarques:
+
+. ^1^ Cloud Volumes ONTAP prend en charge une vitesse d'écriture élevée avec ces types de machines virtuelles lors de l'utilisation d'une paire haute disponibilité. Vous pouvez activer la vitesse d'écriture élevée depuis la Console lors du déploiement ou à tout moment par la suite. https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-write-speed.html["En savoir plus sur le choix d'une vitesse d'écriture"^]
+. ^2^ Cette machine virtuelle est recommandée uniquement lorsque le contrôle de maintenance Azure est nécessaire. Elle n'est pas recommandée pour tout autre cas d'utilisation en raison de son prix plus élevé.
+. ^3^ La prise en charge de plusieurs zones de disponibilité commence à partir de la version ONTAP 9.13.1.
+. ^4^ La prise en charge de plusieurs zones de disponibilité commence à partir de la version ONTAP 9.14.1 RC1.
+. ^5^ Ce type de machine virtuelle inclut un stockage NVMe local, que Cloud Volumes ONTAP utilise comme _Flash Cache_. Le cache Flash accélère l'accès aux données grâce à une mise en cache intelligente en temps réel des données utilisateur récemment lues et des métadonnées NetApp. Il est efficace pour les charges de travail à forte intensité de lecture aléatoire, notamment les bases de données, la messagerie électronique et les services de fichiers. https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-flash-cache.html["Apprendre encore plus"^]
+. ^6^ Si vous choisissez des disques SSD gérés Premium pour un environnement qui remplit les https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-ha-azure.html#ha-single-availability-zone-configuration-with-shared-managed-disks["critères"^] conditions pour les disques SSD gérés Premium v2, la Console déploie automatiquement des disques SSD gérés Premium v2. Vous ne pouvez pas passer aux disques SSD gérés Premium v1. Pour obtenir des informations sur les disques internes pour les données système pour les déploiements de paire haute disponibilité à zone de disponibilité unique et multiple, consultez https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/reference-default-configs.html#azure-ha-pair["Azure (paire HA)"^].
+. ^7^ À compter du 11 août 2025, la licence Cloud Volumes ONTAP Optimized est obsolète et ne sera plus disponible à l’achat ni au renouvellement sur la marketplace Azure pour les abonnements à la carte (PAYGO) https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/whats-new.html#11-august-2025["Fin de disponibilité des licences optimisées"^].
+. ^8^ Les types de VM Edsv6 sont pris en charge pour les nouveaux déploiements de Cloud Volumes ONTAP 9.17.1 et versions ultérieures. Vous ne pouvez pas remplacer un déploiement existant par un autre type de VM, par exemple, passer d’Edsv5 à Edsv6 ; seuls les changements de taille entre variantes Edsv6 (par exemple E20ds_v6 → E32ds_v6) sont pris en charge. Pour des informations sur ce type de VM, consultez le https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/memory-optimized/edsv6-series?tabs=sizebasic["Documentation Azure : série de tailles Edsv6"^].
+. ^9^ Les machines virtuelles Ebdsv5 et E104ids_v5 sont disponibles pour les nouveaux déploiements et la mise à niveau de Cloud Volumes ONTAP 9.18.1 et versions ultérieures. Vous pouvez changer ou mettre à niveau vos machines virtuelles Edsv4, Edsv5 ou autres types de Ebdsv5 existantes vers Ebdsv5. Vous pouvez mettre à niveau les machines virtuelles Ebdsv5 ou Eidsv5 vers E104ids_v5.
+
+
+--
+.Autres licences
+--
+[cols="h,d,d,d"]
+|===
+|  | PAYGO Standard | PAYGO Premium | BYOL basé sur les nœuds 
+
+
+| Capacité maximale du système (disques + stockage d'objets) | 10 Tio | 368 Tio | 368 TiB par licence 
+
+
+| Types de machines virtuelles pris en charge  a| 
+.Série Ebdsv5
+[%collapsible]
+=====
+* E8bds_v5 ^7^
+
+
+=====
+.Série Edsv4
+[%collapsible]
+=====
+* E8ds_v4 ^4^
+
+
+=====
+.Série Lsv3
+[%collapsible]
+=====
+* L8s_v3 ^4,5^
+
+
+===== a| 
+.Série Ebdsv5
+[%collapsible]
+=====
+* E16bds_v5 ^7^
+* E32bds_v5 ^7^
+* E48bds_v5 ^7^
+* E64bds_v5 ^7^
+
+
+=====
+.Série Edsv4
+[%collapsible]
+=====
+* E32ds_v4 ^1,4^
+* E48ds_v4 ^1,4^
+* E80ids_v4 ^1,2,4^
+
+
+=====
+.Série Edsv5
+[%collapsible]
+=====
+* E20ds_v5 ^1^
+* E32ds_v5 ^1^
+* E48ds_v5 ^1^
+* E64ds_v5 ^1^
+* E104ids_v5 ^7^
+
+
+=====
+.Série Edsv6
+[%collapsible]
+=====
+* E20ds_v6 ^6^
+* E32ds_v6 ^6^
+* E48ds_v6 ^6^
+* E64ds_v6 ^6^
+
+
+=====
+.Série Lsv3
+[%collapsible]
+=====
+* L16s_v3 ^1,4,5^
+* L32s_v3 ^1,4,5^
+* L48s_v3 ^1,4,5^
+* L64s_v3 ^1,4,5^
+
+
+===== a| 
+.Série Ebdsv5
+[%collapsible]
+=====
+* E4bds_v5 ^7^
+* E8bds_v5 ^7^
+* E16bds_v5 ^7^
+* E32bds_v5 ^7^
+* E48bds_v5 ^7^
+* E64bds_v5 ^7^
+
+
+=====
+.Série Edsv4
+[%collapsible]
+=====
+* E8ds_v4 ^4^
+* E32ds_v4 ^1,4^
+* E48ds_v4 ^1,4^
+* E80ids_v4 ^1,2,4^
+
+
+=====
+.Série Edsv5
+[%collapsible]
+=====
+* E4ds_v5
+* E8ds_v5
+* E20ds_v5 ^1^
+* E32ds_v5 ^1^
+* E48ds_v5 ^1^
+* E64ds_v5 ^1^
+* E104ids_v5 ^7^
+
+
+=====
+.Série Edsv6
+[%collapsible]
+=====
+* E20ds_v6 ^6^
+* E32ds_v6 ^6^
+* E48ds_v6 ^6^
+* E64ds_v6 ^6^
+
+
+=====
+.Série Lsv3
+[%collapsible]
+=====
+* L16s_v3 ^1,4,5^
+* L32s_v3 ^1,4,5^
+* L48s_v3 ^1,4,5^
+* L64s_v3 ^1,4,5^
+
+
+=====
+
+
+| Types de disques pris en charge 3+| Premium SSD Managed Disks ou Premium SSD v2 Managed Disks. 
+|===
+Remarques:
+
+. ^1^ Cloud Volumes ONTAP prend en charge une vitesse d'écriture élevée avec ces types de machines virtuelles lors de l'utilisation d'une paire haute disponibilité. Vous pouvez activer la vitesse d'écriture élevée depuis la Console lors du déploiement ou à tout moment par la suite. https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-write-speed.html["En savoir plus sur le choix d'une vitesse d'écriture"^]
+. ^2^ Cette machine virtuelle est recommandée uniquement lorsque le contrôle de maintenance Azure est nécessaire. Elle n'est pas recommandée pour tout autre cas d'utilisation en raison de son prix plus élevé.
+. ^3^ Ces types de machines virtuelles ne sont pris en charge que pour les paires haute disponibilité dans une configuration de zone de disponibilité unique exécutée sur des disques gérés partagés.
+. ^4^ Ces types de machines virtuelles sont pris en charge pour les paires haute disponibilité dans les configurations à zone de disponibilité unique et à zones de disponibilité multiples exécutées sur des disques gérés partagés. Pour les types de machines virtuelles Ls_v3, la prise en charge des zones de disponibilité multiples commence à partir de la version 9.13.1 de ONTAP. Pour les types de machines virtuelles Eds_v5, la prise en charge des zones de disponibilité multiples commence à partir de la version 9.14.1 RC1 de ONTAP.
+. ^5^ Ce type de machine virtuelle inclut un stockage NVMe local, que Cloud Volumes ONTAP utilise comme _Flash Cache_. Le cache Flash accélère l'accès aux données grâce à une mise en cache intelligente en temps réel des données utilisateur récemment lues et des métadonnées NetApp. Il est efficace pour les charges de travail à forte intensité de lecture aléatoire, notamment les bases de données, la messagerie électronique et les services de fichiers. https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-flash-cache.html["Apprendre encore plus"^]
+. ^6^ Les types de VM Edsv6 sont pris en charge pour les nouveaux déploiements de Cloud Volumes ONTAP 9.17.1 et versions ultérieures. Vous ne pouvez pas remplacer un déploiement existant par un autre type de VM, par exemple, passer d’Edsv5 à Edsv6 ; seuls les changements de taille entre variantes Edsv6 (par exemple E20ds_v6 → E32ds_v6) sont pris en charge. Pour des informations sur ce type de VM, consultez le https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/memory-optimized/edsv6-series?tabs=sizebasic["Documentation Azure : série de tailles Edsv6"^].
+. ^7^ Les machines virtuelles Ebdsv5 et E104ids_v5 sont disponibles pour les nouveaux déploiements et la mise à niveau de Cloud Volumes ONTAP 9.18.1 et versions ultérieures. Vous pouvez changer ou mettre à niveau vos machines virtuelles Edsv4, Edsv5 ou autres types de Ebdsv5 existantes vers Ebdsv5. Vous pouvez mettre à niveau les machines virtuelles Ebdsv5 ou Eidsv5 vers E104ids_v5.
+
+
+--
+====
+
+
+==== HA s'associe à un blob de pages
+
+Vous pouvez utiliser les configurations suivantes avec les déploiements de blobs de pages HA Cloud Volumes ONTAP existants dans Azure.
+
+
+NOTE: Les blobs de pages Azure ne sont pas pris en charge pour tout nouveau déploiement.
+
+[role="tabbed-block"]
+====
+.Licences basées sur la capacité
+--
+[cols="h,d,d,d"]
+|===
+|  | Freemium | Optimisé ^4^ | Licence basée sur la capacité (Essentials et Professional) 
+
+
+| Capacité maximale du système (disques + stockage d'objets) | 500 Gio  a| 
+Avec une licence basée sur la capacité, chaque système Cloud Volumes ONTAP prend en charge la hiérarchisation vers le stockage objet. La capacité hiérarchisée totale peut évoluer jusqu'à la limite de compartiment du fournisseur de cloud. Bien que la licence n'impose aucune restriction de capacité, vous devez suivre les  https://www.netapp.com/pdf.html?item=/media/17239-tr-4598.pdf["Bonnes pratiques de FabricPool"^] pour garantir des performances, une fiabilité et une rentabilité optimales lors de la configuration et de la gestion de la hiérarchisation.
+
+
+
+| Types de machines virtuelles pris en charge  a| 
+.Série DSv2
+[%collapsible]
+=====
+* DS4_v2
+* DS5_v2 ^1^
+* DS13_v2
+* DS14_v2 ^1^
+* DS15_v2 ^1^
+
+
+=====
+.Série Esv3
+[%collapsible]
+=====
+* E8s_v3
+* E48s_v3 ^1^
+
+
+=====
+.Série Edsv4
+[%collapsible]
+=====
+* E8ds_v4 ^3^
+* E32ds_v4 ^1,3^
+* E48ds_v4 ^1,3^
+* E80ids_v4 ^1,2,3^
+
+
+=====
+.Série Edsv5
+[%collapsible]
+=====
+* E8ds_v5
+* E20ds_v5 ^1^
+* E32ds_v5 ^1^
+* E48ds_v5 ^1^
+* E64ds_v5 ^1^
+
+
+===== a| 
+.Série DSv2
+[%collapsible]
+=====
+* DS4_v2
+* DS13_v2
+
+
+=====
+.Série Esv3
+[%collapsible]
+=====
+* E8s_v3
+
+
+=====
+.Série Edsv4
+[%collapsible]
+=====
+* E8ds_v4 ^3^
+
+
+=====
+.Série Edsv5
+[%collapsible]
+=====
+* E8ds_v5
+
+
+===== a| 
+.Série DSv2
+[%collapsible]
+=====
+* DS4_v2
+* DS5_v2 ^1^
+* DS13_v2
+* DS14_v2 ^1^
+* DS15_v2 ^1^
+
+
+=====
+.Série Esv3
+[%collapsible]
+=====
+* E8s_v3
+* E48s_v3 ^1^
+
+
+=====
+.Série Edsv4
+[%collapsible]
+=====
+* E8ds_v4 ^3^
+* E32ds_v4 ^1,3^
+* E48ds_v4 ^1,3^
+* E80ids_v4 ^1,2,3^
+
+
+=====
+.Série Edsv5
+[%collapsible]
+=====
+* E8ds_v5
+* E20ds_v5 ^1^
+* E32ds_v5 ^1^
+* E48ds_v5 ^1^
+* E64ds_v5 ^1^
+
+
+=====
+
+
+| Types de disques pris en charge 3+| blobs de page 
+|===
+Remarques:
+
+. ^1^ Cloud Volumes ONTAP prend en charge une vitesse d'écriture élevée avec ces types de machines virtuelles lors de l'utilisation d'une paire haute disponibilité. Vous pouvez activer la vitesse d'écriture élevée depuis la Console lors du déploiement ou à tout moment par la suite. https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/concept-write-speed.html["En savoir plus sur le choix d'une vitesse d'écriture"^]
+. ^2^ Cette machine virtuelle est recommandée uniquement lorsque le contrôle de maintenance Azure est nécessaire. Elle n'est pas recommandée pour tout autre cas d'utilisation en raison de son prix plus élevé.
+. ^3^ Ces machines virtuelles sont uniquement compatibles avec les déploiements de Cloud Volumes ONTAP 9.11.1 ou antérieurs. Avec ces types de machines virtuelles, vous pouvez mettre à niveau un déploiement de blobs de pages existant de Cloud Volumes ONTAP 9.11.1 vers 9.12.1. Vous ne pouvez pas effectuer de nouveaux déploiements de blobs de pages avec Cloud Volumes ONTAP 9.12.1 ou supérieur.
+. ^4^ À compter du 11 août 2025, la licence Cloud Volumes ONTAP Optimized est obsolète et ne sera plus disponible à l’achat ni au renouvellement sur la marketplace Azure pour les abonnements pay-as-you-go (PAYGO). Pour plus d'informations, consultez https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/whats-new.html#11-august-2025["Fin de disponibilité des licences optimisées"^].
+
+
+--
+.Autres licences
+--
+[cols="h,d,d,d"]
+|===
+|  | PAYGO Standard | PAYGO Premium | BYOL basé sur les nœuds 
+
+
+| Capacité maximale du système (disques + stockage d'objets) | 10 Tio | 368 Tio | 368 TiB par licence 
+
+
+| Types de machines virtuelles pris en charge  a| 
+.Série DSv2
+[%collapsible]
+=====
+* DS4_v2
+* DS13_v2
+
+
+=====
+.Série Esv3
+[%collapsible]
+=====
+* E8s_v3
+
+
+=====
+.Série Edsv4
+[%collapsible]
+=====
+* E8ds_v4 ^3^
+
+
+=====
+.Série Edsv5
+[%collapsible]
+=====
+* E8ds_v5
+
+
+===== a| 
+.Série DSv2
+[%collapsible]
+=====
+* DS5_v2 ^1^
+* DS14_v2 ^1^
+* DS15_v2 ^1^
+
+
+=====
+.Série Esv3
+[%collapsible]
+=====
+* E48s_v3 ^1^
+
+
+=====
+.Série Edsv4
+[%collapsible]
+=====
+* E32ds_v4 ^1,3^
+* E48ds_v4 ^1,3^
+* E80ids_v4 ^1,2,3^
+
+
+=====
+.Série Edsv5
+[%collapsible]
+=====
+* E20ds_v5 ^1^
+* E32ds_v5 ^1^
+* E48ds_v5 ^1^
+* E64ds_v5 ^1^
+
+
+===== a| 
+.Série DSv2
+[%collapsible]
+=====
+* DS4_v2
+* DS5_v2 ^1^
+* DS13_v2
+* DS14_v2 ^1^
+* DS15_v2 ^1^
+
+
+=====
+.Série Esv3
+[%collapsible]
+=====
+* E8s_v3
+* E48s_v3 ^1^
+
+
+=====
+.Série Edsv4
+[%collapsible]
+=====
+* E8ds_v4 ^3^
+* E32ds_v4 ^1,3^
+* E48ds_v4 ^1,3^
+* E80ids_v4 ^1,2,3^
+
+
+=====
+.Série Edsv5
+[%collapsible]
+=====
+* E4ds_v5
+* E8ds_v5
+* E20ds_v5 ^1^
+* E32ds_v5 ^1^
+* E48ds_v5 ^1^
+* E64ds_v5 ^1^
+
+
+=====
+
+
+| Types de disques de données pris en charge 3+| blobs de page 
+|===
+Remarques:
+
+. ^1^ Cloud Volumes ONTAP prend en charge une vitesse d'écriture élevée avec ces types de machines virtuelles lors de l'utilisation d'une paire haute disponibilité. Vous pouvez activer la vitesse d'écriture élevée depuis la Console lors du déploiement ou à tout moment par la suite. https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/concept-write-speed.html["En savoir plus sur le choix d'une vitesse d'écriture"^]
+. ^2^ Cette machine virtuelle est recommandée uniquement lorsque le contrôle de maintenance Azure est nécessaire. Elle n'est pas recommandée pour tout autre cas d'utilisation en raison de son prix plus élevé.
+. ^3^ Ces machines virtuelles sont uniquement compatibles avec les déploiements de Cloud Volumes ONTAP 9.11.1 ou antérieurs. Avec ces types de machines virtuelles, vous pouvez mettre à niveau un déploiement de blobs de pages existant de Cloud Volumes ONTAP 9.11.1 vers 9.12.1. Vous ne pouvez pas effectuer de nouveaux déploiements de blobs de pages avec Cloud Volumes ONTAP 9.12.1 ou supérieur.
+
+
+--
+====
+
+
+[[supported-disk-sizes]]
+=== Tailles de disque prises en charge
+
+Dans Azure, un agrégat peut contenir jusqu'à 12 disques qui sont tous du même type et de la même taille.
+
+
+
+==== Systèmes à nœud unique
+
+Les systèmes à nœud unique utilisent Azure Managed Disks. Les tailles de disque suivantes sont prises en charge :
+
+[cols="3*"]
+|===
+| SSD haut de gamme | SSD standard | HDD standard 
+
+
+ a| 
+* 500 Gio
+* 1 Tio
+* 2 Tio
+* 4 Tio
+* 8 Tio
+* 16 Tio
+* 32 Tio
+
+ a| 
+* 100 Gio
+* 500 Gio
+* 1 Tio
+* 2 Tio
+* 4 Tio
+* 8 Tio
+* 16 Tio
+* 32 Tio
+
+ a| 
+* 100 Gio
+* 500 Gio
+* 1 Tio
+* 2 Tio
+* 4 Tio
+* 8 Tio
+* 16 Tio
+* 32 Tio
+
+
+|===
+
+
+==== paires HA
+
+Les paires haute disponibilité utilisent des disques managés Azure. Les types et tailles de disques suivants sont pris en charge.
+
+(Les blobs de page sont pris en charge avec les paires haute disponibilité déployées avant la version 9.12.1.)
+
+*SSD haut de gamme*
+
+* 500 Gio
+* 1 Tio
+* 2 Tio
+* 4 Tio
+* 8 Tio
+* 16 TiB (disques gérés uniquement)
+* 32 TiB (disques gérés uniquement)
+
+
+
+
+[[supported-regions]]
+=== Régions prises en charge
+
+Pour la prise en charge des régions Azure, voir https://bluexp.netapp.com/cloud-volumes-global-regions["Cloud Volumes Régions mondiales"^].
+
+.Liens connexes
+* link:task-planning-your-config-azure.html["Découvrez comment choisir les types et les tailles de disque pour vos systèmes dans Azure"]
+* link:task-deploying-otc-azure.html#launching-a-cloud-volumes-ontap-ha-pair-in-azure["Lancer une paire Cloud Volumes ONTAP HA dans Azure"]
+* https://docs.microsoft.com/en-us/azure/virtual-machines/disks-types["Documentation Microsoft Azure : types de disques gérés par Azure"^]
+* https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-pageblob-overview["Documentation Microsoft Azure : Présentation des blobs de pages Azure"^]
+* https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-limits-azure.html["Examiner les limites de stockage pour Cloud Volumes ONTAP dans Azure"^]
+

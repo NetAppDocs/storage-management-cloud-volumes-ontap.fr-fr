@@ -32,7 +32,7 @@ Voici la comparaison des fonctionnalités entre les deux options.  Notez que les
 
 | *Types de machines virtuelles (VM) pris en charge*  a| 
 Types d'instances Eds_v5 et Ls_v3
-| Gamme complète de types de machines virtuelles.https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-azure.html["Configurations prises en charge dans Azure"^] 
+| Gamme complète de types de machines virtuelles. link:reference-configs-azure.html["Configurations prises en charge dans Azure"] 
 
 
 | *Licence* | Licence gratuite | Toute licence basée sur la capacité.link:concept-licensing.html["Licences Cloud Volumes ONTAP"] 
@@ -47,7 +47,7 @@ Types d'instances Eds_v5 et Ls_v3
 | *Modèle de déploiement* | Déploiement en mode haute disponibilité (HA) dans une zone de disponibilité unique (AZ) | Toutes les configurations prises en charge, y compris les modes nœud unique et HA, les déploiements AZ simples et multiples 
 
 
-| *Type de disque pris en charge* | Disques gérés SSD Premium v2 | Un soutien plus large.link:concept-storage.html#azure-storage["Configuration par défaut pour Cloud Volumes ONTAP"] 
+| *Type de disque pris en charge* | Disques gérés SSD Premium v2 | Un soutien plus large. link:reference-configs-azure.html#azure-storage-for-user-data["Types de disques pris en charge dans Azure"] 
 
 
 | *Vitesse d'écriture (mode d'écriture rapide)* | Non pris en charge | Pris en charge, en fonction de votre configuration. link:concept-write-speed.html["En savoir plus sur les vitesses d'écriture dans Cloud Volumes ONTAP"] . 

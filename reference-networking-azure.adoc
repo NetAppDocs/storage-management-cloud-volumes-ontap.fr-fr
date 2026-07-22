@@ -509,7 +509,7 @@ Si vous n’avez pas encore créé d’agent de console, vous devez également v
 * https://docs.netapp.com/us-en/bluexp-setup-admin/reference-ports-azure.html["Règles de groupe de sécurité dans Azure"^]
 
 
-.Sujets connexes
+.Lien connexe
 * link:task-verify-autosupport.html["Vérifier la configuration AutoSupport pour Cloud Volumes ONTAP"]
 * https://docs.netapp.com/us-en/ontap/networking/ontap_internal_ports.html["En savoir plus sur les ports internes ONTAP"^] .
 

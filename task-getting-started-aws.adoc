@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: task-getting-started-aws.html 
 keywords: amazon web services, aws, netapp, data fabric, hybrid cloud, cloud, public cloud, networking, vpc, quick, getting started, install, installing, deploy, deploying, setup, setting up, launching, requirements, prerequisites, cloud central, get started, network, vpn, multi-cloud, tier, storage tier, data tier, vpc endpoint, endpoint, S3, subscribe, subscribing, marketplace, granting, permissions, policy, iam policy, ec2 console, ami, mediator, connectivity, internet, outbound, endpoint, connection, networks, replicating, ec2 service, policies, attach, iam user, access key, secret key, keys, sign up, cloud manager, cloud volumes ontap, cloud ontap, create, console 
-summary: Démarrez avec Cloud Volumes ONTAP pour AWS en quelques étapes. 
+summary: Vérifiez que vous avez bien rempli les conditions préalables au déploiement de Cloud Volumes ONTAP dans AWS. 
 ---
-= Démarrage rapide de Cloud Volumes ONTAP dans AWS
+= Présentation du déploiement de Cloud Volumes ONTAP dans AWS
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,43 +14,78 @@ summary: Démarrez avec Cloud Volumes ONTAP pour AWS en quelques étapes.
 
 
 [role="lead"]
-Démarrez avec Cloud Volumes ONTAP dans AWS en quelques étapes.
+Pour déployer Cloud Volumes ONTAP, vous devez d'abord connaître votre abonnement AWS et vos licences Cloud Volumes ONTAP. Vous devez également vérifier qu'un agent NetApp Console a été créé pour votre compte AWS. La plupart des informations de cette rubrique doivent être prises en compte lors de la configuration de votre Console, avant même de commencer à déployer Cloud Volumes ONTAP.
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["Un"]Créer un agent de console
-[role="quick-margin-para"]
-Si vous n'avez pas de https://docs.netapp.com/us-en/bluexp-setup-admin/concept-connectors.html["Agent de console"^] mais il faut en créer un. https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-aws.html["Découvrez comment créer un agent de console dans AWS"^] .
+[cols="20,35,25,25"]
+|===
+| Tâche | Description | Référence | Remarques concernant les déploiements en mode privé 
 
-[role="quick-margin-para"]
-Notez que si vous souhaitez déployer Cloud Volumes ONTAP dans un sous-réseau où aucun accès Internet n'est disponible, vous devez installer manuellement l'agent de console et accéder à l'interface utilisateur de la NetApp Console qui s'exécute sur cet agent de console. https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-private-mode.html["Découvrez comment installer manuellement l'agent de console dans un emplacement sans accès Internet"^] .
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Deux"]Planifiez votre configuration
-[role="quick-margin-para"]
-La console propose des packages préconfigurés qui correspondent à vos exigences de charge de travail, ou vous pouvez créer votre propre configuration.  Si vous choisissez votre propre configuration, vous devez comprendre les options qui s’offrent à vous. link:task-planning-your-config.html["Apprendre encore plus"] .
-
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Trois"]Configurez votre réseau
-[role="quick-margin-list"]
-. Assurez-vous que votre VPC et vos sous-réseaux prendront en charge la connectivité entre l’agent de console et Cloud Volumes ONTAP.
-. Activez l'accès Internet sortant à partir du VPC cible pour NetApp AutoSupport.
-+
-Cette étape n'est pas requise si vous déployez Cloud Volumes ONTAP dans un emplacement où aucun accès Internet n'est disponible.
-
-. Configurez un point de terminaison VPC vers le service Amazon Simple Storage Service (Amazon S3).
-+
-Un point de terminaison VPC est requis si vous souhaitez hiérarchiser les données froides de Cloud Volumes ONTAP vers un stockage d'objets à faible coût.
+ a| 
+Créer un agent de Console
+ a| 
+Si vous ne disposez pas encore d'un agent Console, créez-en un avant de déployer Cloud Volumes ONTAP. Si le déploiement s'effectue dans un sous-réseau sans accès Internet, installez manuellement l'agent Console et accédez à la NetApp Console exécutée sur cet agent.
+ a| 
+Consultez le guide d'installation de la console :https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-aws.html["Créer un agent NetApp Console dans AWS"^]
+ a| 
+En cas de déploiement sur un sous-réseau sans accès Internet, installez manuellement l’agent Console et accédez à l’interface utilisateur NetApp Console qui s’exécute sur cet agent Console. Consultez le guide d’installation de la Console : https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-private-mode.html["Installez manuellement l’agent Console sans accès à Internet"^]
 
 
 
-[role="quick-margin-para"]
-link:reference-networking-aws.html["En savoir plus sur les exigences de mise en réseau"] .
+ a| 
+Planifiez votre configuration
+ a| 
+La console propose des packages préconfigurés qui correspondent à vos exigences de charge de travail, ou vous pouvez créer votre propre configuration.  Si vous choisissez votre propre configuration, vous devez comprendre les options qui s’offrent à vous.
+ a| 
+link:task-planning-your-config.html["Planifiez votre configuration"]
+ a| 
+Vous devez avoir des considérations de planification similaires pour les déploiements en mode privé.
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["Quatre"]Configurer AWS KMS
-[role="quick-margin-para"]
-Si vous souhaitez utiliser le chiffrement Amazon avec Cloud Volumes ONTAP, vous devez vous assurer qu'une clé principale client (CMK) active existe.  Vous devez également modifier la politique de clé pour chaque CMK en ajoutant le rôle IAM qui fournit des autorisations à l’agent de la console en tant qu’utilisateur clé. link:task-setting-up-kms.html["Apprendre encore plus"] .
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["Cinq"]Lancer Cloud Volumes ONTAP à l'aide de la console
-[role="quick-margin-para"]
-Cliquez sur *Ajouter un système*, sélectionnez le type de système que vous souhaitez déployer et suivez les étapes de l'assistant. link:task-deploying-otc-aws.html["Lisez les instructions étape par étape"] .
 
+ a| 
+Configurez votre réseau
+ a| 
+. Assurez-vous que votre VPC et vos sous-réseaux prennent en charge la connectivité entre l'agent de la Console et Cloud Volumes ONTAP.
+. Activez l'accès Internet sortant pour AutoSupport.
+. Configurez un point de terminaison VPC vers Amazon S3 pour la hiérarchisation des données. Un point de terminaison VPC est nécessaire si vous souhaitez hiérarchiser les données froides de Cloud Volumes ONTAP vers un stockage objet à faible coût.
+
+ a| 
+link:reference-networking-aws.html["Exigences réseau pour AWS"]
+ a| 
+L'accès Internet sortant pour AutoSupport n'est pas requis. Toutes les autres exigences réseau restent les mêmes.
+
+
+
+ a| 
+Configurer AWS KMS
+ a| 
+Si vous souhaitez utiliser le chiffrement Amazon avec Cloud Volumes ONTAP, assurez-vous qu'une Customer Master Key (CMK) active existe et modifiez la stratégie de clé pour ajouter le rôle IAM de l'agent de la Console en tant qu'utilisateur de la clé.
+ a| 
+link:task-setting-up-kms.html["Configurer AWS KMS"]
+ a| 
+Des étapes similaires s'appliquent aux déploiements en mode privé.
+
+
+
+ a| 
+Déployez Cloud Volumes ONTAP depuis la NetApp Console
+ a| 
+Une fois toutes les conditions préalables remplies, vous pouvez suivre les étapes de l'assistant pour déployer Cloud Volumes ONTAP dans AWS.
+ a| 
+* link:task-quick-deploy-aws.html["Déployez Cloud Volumes ONTAP avec Quick create"]
+* link:task-deploying-otc-aws.html["Déployez Cloud Volumes ONTAP à l'aide des options avancées"]
+
+ a| 
+Avant de commencer le déploiement, assurez-vous d'avoir acheté une licence Cloud Volumes ONTAP auprès de NetApp. Les déploiements en mode privé nécessitent des licences BYOL par nœud. Les abonnements Marketplace ne sont pas pris en charge pour la facturation de votre utilisation de Cloud Volumes ONTAP. Obtenez le fichier de licence auprès de NetApp et téléchargez-le lors du déploiement. Voir :
+
+* link:concept-license-management.html["Gestion des licences pour BYOL basé sur les nœuds"]
+* link:task-manage-node-licenses.html["Gérer les licences BYOL basées sur les nœuds"]
+* link:task-quick-deploy-aws.html["Déployez Cloud Volumes ONTAP avec Quick create"]
+* link:task-deploying-otc-aws.html["Déployez Cloud Volumes ONTAP à l'aide des options avancées"]
+
+
+|===
 .Liens connexes
 * https://docs.netapp.com/us-en/bluexp-setup-admin/task-install-connector-aws-bluexp.html["Créer un agent de console pour AWS"^]
 * https://docs.netapp.com/us-en/bluexp-setup-admin/task-install-connector-aws-marketplace.html["Créer un agent de console à partir d'AWS Marketplace"^]

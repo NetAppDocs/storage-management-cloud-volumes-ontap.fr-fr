@@ -1,0 +1,262 @@
+---
+sidebar: sidebar 
+permalink: reference-limits-gcp.html 
+keywords: limits, maximum, storage, aggregates, disks, volumes, capacity, luns, size, storage virtual machine, SVM 
+summary: Cloud Volumes ONTAP a des limites de configuration de stockage dans Google Cloud pour garantir un fonctionnement fiable. Pour des performances optimales, ne configurez pas votre système aux valeurs maximales. 
+---
+= Limites de stockage pour Cloud Volumes ONTAP dans Google Cloud
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Volumes ONTAP impose des limites de configuration de stockage afin de garantir un fonctionnement fiable. Pour des performances optimales, ne configurez pas votre système aux valeurs maximales.
+
+
+
+[[maximum-system-capacity-by-license]]
+== Capacité maximale du système par licence
+
+La capacité maximale d'un système Cloud Volumes ONTAP est déterminée par sa licence. La capacité maximale du système inclut le stockage sur disque ainsi que le stockage objet utilisé pour la hiérarchisation des données.
+
+NetApp ne prend pas en charge le dépassement de la limite de capacité du système. Si vous atteignez la limite de capacité autorisée par la licence, la NetApp Console affiche un message d'action requise et ne vous permet plus d'ajouter des disques supplémentaires.
+
+Pour certaines configurations, les limites de disque vous empêchent d'atteindre la limite de capacité uniquement avec des disques. Vous pouvez atteindre la limite de capacité par https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-data-tiering.html["hiérarchisation des données inactives vers le stockage d'objets"^]. Consultez les limites de disque ci-dessous pour plus de détails.
+
+[[cap-license-gcp]]
+.Limite de capacité pour les licences basées sur la capacité
+Avec une licence basée sur la capacité, chaque système Cloud Volumes ONTAP prend en charge la hiérarchisation vers le stockage objet. La capacité hiérarchisée totale peut évoluer jusqu'à la limite de compartiment du fournisseur de cloud. Bien que la licence n'impose aucune restriction de capacité, vous devez suivre les  https://www.netapp.com/pdf.html?item=/media/17239-tr-4598.pdf["Bonnes pratiques de FabricPool"^] pour garantir des performances, une fiabilité et une rentabilité optimales lors de la configuration et de la gestion de la hiérarchisation. Reportez-vous à la  https://cloud.google.com/storage/docs/buckets["Documentation Google Cloud"^] pour plus d'informations.
+
+Limites de capacité pour les autres types de licences::
+
+
+[cols="25,75"]
+|===
+| Licence | Capacité maximale du système (disques + stockage d'objets) 
+
+
+| Freemium | 500 Go 
+
+
+| PAYGO Explore | 2 To (la hiérarchisation des données n'est pas prise en charge avec Explore) 
+
+
+| PAYGO Standard | 10 To 
+
+
+| PAYGO Premium | 368 To 
+
+
+| Licence basée sur les nœuds | 2 PiB (nécessite plusieurs licences) 
+|===
+.Pour une paire haute disponibilité, la limite de capacité sous licence s'applique-t-elle par nœud ou à l'ensemble de la paire haute disponibilité ?
+La limite de capacité s'applique à l'ensemble de la paire haute disponibilité. Elle ne s'applique pas à chaque nœud. Par exemple, si vous utilisez la licence Premium, vous pouvez avoir jusqu'à 368 To de capacité entre les deux nœuds.
+
+.Pour une paire haute disponibilité, les données mises en miroir sont-elles comptabilisées dans la limite de capacité sous licence ?
+Non, ce n'est pas le cas. Les données d'une paire haute disponibilité sont synchroniquement mises en miroir entre les nœuds afin que les données soient disponibles en cas de défaillance sur Google Cloud. Par exemple, si vous achetez un disque de 8 To sur le nœud A, la Console alloue également un disque de 8 To sur le nœud B qui est utilisé pour les données mises en miroir. Bien que 16 To de capacité soient configurés, seuls 8 To sont pris en compte dans la limite de la licence.
+
+
+
+[[aggregate-limits]]
+== Limites des agrégats
+
+Cloud Volumes ONTAP regroupe les disques de Google Cloud Platform en _agrégats_. Les agrégats fournissent du stockage aux volumes.
+
+[cols="2*"]
+|===
+| Paramètre | Limite 
+
+
+| Nombre maximal d'agrégats de données ^1^  a| 
+* 99 pour un seul nœud
+* 64 pour une paire haute disponibilité
+
+
+
+
+| taille maximale de l'agrégat | 256 To de capacité brute ^2^ 
+
+
+| Disques par agrégat | 1-6 ^3^ 
+
+
+| Nombre maximal de groupes RAID par agrégat | 1 
+|===
+Remarques:
+
+. Le nombre maximal d'agrégats de données n'inclut pas l'agrégat racine.
+. Les disques qui composent l'agrégat déterminent la limite de capacité de l'agrégat. Cette limite n'inclut pas le stockage objet utilisé pour la hiérarchisation des données.
+. Tous les disques d’un agrégat doivent avoir la même taille.
+
+
+
+
+[[disk-and-tiering-limits]]
+== Limites de disque et de hiérarchisation
+
+Le tableau ci-dessous présente la capacité maximale du système avec les disques seuls, et avec les disques et la hiérarchisation des données froides vers le stockage objet. Les limites de disque concernent spécifiquement les disques contenant des données utilisateur. Les limites n'incluent pas le disque de démarrage, le disque racine ou la NVRAM.
+
+[cols="60,40"]
+|===
+| Paramètre | Limite 
+
+
+| Nombre maximal de disques de données  a| 
+* 124 pour les systèmes à nœud unique
+* 123 par nœud pour les paires haute disponibilité
+
+
+
+
+| Taille maximale du disque | 64 To 
+
+
+| Capacité maximale du système avec les seuls disques | 256 To ^1^ 
+
+
+| Capacité système maximale avec disques et hiérarchisation des données froides vers un bucket Google Cloud Storage | Cela dépend de la licence. Reportez-vous aux limites de capacité système maximales ci-dessus. 
+|===
+^1^ Cette limite est définie par les limites des machines virtuelles dans Google Cloud Platform.
+
+
+
+[[storage-vm-limits]]
+== Limites de stockage des VM
+
+Certaines configurations vous permettent de créer des machines virtuelles de stockage supplémentaires (SVM) pour Cloud Volumes ONTAP.
+
+Ce sont les limites testées. La configuration de machines virtuelles de stockage supplémentaires n'est pas prise en charge.
+
+https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-managing-svms-gcp.html["Découvrez comment créer des machines virtuelles de stockage supplémentaires"^].
+
+[cols="2*"]
+|===
+| Type de licence | Limite de SVM 
+
+
+| *Freemium*  a| 
+24 machines virtuelles de stockage au total ^1^
+
+
+
+| *PAYGO basé sur la capacité ou BYOL* ^2^  a| 
+24 machines virtuelles de stockage au total ^1^
+
+
+
+| *BYOL basé sur les nœuds* ^3^  a| 
+24 machines virtuelles de stockage au total ^1^
+
+
+
+| *PAYGO basé sur les nœuds*  a| 
+* 1 machine virtuelle de stockage pour la diffusion des données
+* 1 machine virtuelle de stockage pour la reprise après sinistre
+
+
+|===
+. Ces 24 machines virtuelles de stockage peuvent servir des données ou être configurées pour la reprise après sinistre (DR).
+. Pour les licences basées sur la capacité, il n'y a pas de coûts de licence supplémentaires pour les machines virtuelles de stockage supplémentaires, mais il y a une facturation minimale de capacité de 4 Tio par machine virtuelle de stockage. Par exemple, si vous créez deux machines virtuelles de stockage et que chacune dispose de 2 Tio de capacité provisionnée, un total de 8 Tio vous sera facturé.
+. Pour les solutions BYOL basées sur des nœuds, une licence supplémentaire est requise pour chaque machine virtuelle de stockage _dédiée aux données_ supplémentaire, au-delà de la première machine virtuelle de stockage fournie par défaut avec Cloud Volumes ONTAP. Contactez votre équipe commerciale pour obtenir une licence d'extension de machine virtuelle de stockage.
++
+Les machines virtuelles de stockage que vous configurez pour la reprise après sinistre (PRA) ne nécessitent pas de licence supplémentaire (elles sont gratuites), mais elles sont comptabilisées dans la limite de machines virtuelles de stockage. Par exemple, si vous avez 12 machines virtuelles de stockage dédiées à l'hébergement de données et 12 machines virtuelles de stockage configurées pour la reprise après sinistre, alors vous avez atteint la limite et ne pouvez pas créer de machines virtuelles de stockage supplémentaires.
+
+
+
+
+
+[[logical-storage-limits]]
+== Limites de stockage logiques
+
+[cols="22,22,56"]
+|===
+| Stockage logique | Paramètre | Limite 
+
+
+.2+| *Fichiers* | Taille maximale ^2^ | 128 To 
+
+
+| Maximum par volume | En fonction de la taille du volume, jusqu'à 2 milliards 
+
+
+| *Volumes FlexClone* | Profondeur de clonage hiérarchique ^12^ | 499 
+
+
+.3+| *Volumes FlexVol* | Maximum par nœud | 500 
+
+
+| Taille minimale | 20 Mo 
+
+
+| Taille maximale ^3^ | 300 Tio 
+
+
+| *Qtrees* | Maximum par volume FlexVol | 4 995 
+
+
+| *Copies Snapshot* | Maximum par volume FlexVol | 1 023 
+|===
+. La profondeur de clonage hiérarchique est la profondeur maximale d'une hiérarchie imbriquée de volumes FlexClone qui peuvent être créés à partir d'un seul volume FlexVol.
+. À partir d'ONTAP 9.12.1P2, la limite est de 128 To. Dans ONTAP 9.11.1 et les versions antérieures, la limite est de 16 To.
+. La création de volumes FlexVol jusqu'à une taille maximale de 300 TiB est prise en charge à l'aide des outils et versions minimales suivants :
++
+** System Manager et l'interface de ligne de commande ONTAP à partir de Cloud Volumes ONTAP 9.12.1 P2 et 9.13.0 P2
+** À partir de Cloud Volumes ONTAP 9.13.1
+
+
+
+
+
+
+[[iscsi-storage-limits]]
+== limites de stockage iSCSI
+
+[cols="3*"]
+|===
+| stockage iSCSI | Paramètre | Limite 
+
+
+.4+| *LUN* | Maximum par nœud | 1 024 
+
+
+| Nombre maximal de mappages LUN | 1 024 
+
+
+| Taille maximale | 16 To 
+
+
+| Maximum par volume | 512 
+
+
+| *igroups* | Maximum par nœud | 256 
+
+
+.2+| *Initiateurs* | Maximum par nœud | 512 
+
+
+| Maximum par igroup | 128 
+
+
+| *sessions iSCSI* | Maximum par nœud | 1 024 
+
+
+.2+| *LIF* | Maximum par port | 1 
+
+
+| Maximum par portset | 32 
+
+
+| *Ensembles de ports* | Maximum par nœud | 256 
+|===
+
+
+[[cloud-volumes-ontap-ha-pairs-do-not-support-immediate-storage-giveback]]
+== Les paires haute disponibilité Cloud Volumes ONTAP ne prennent pas en charge la restitution immédiate du stockage
+
+Après le redémarrage d'un nœud, le partenaire doit synchroniser les données avant de pouvoir restituer le stockage. Le temps nécessaire pour resynchroniser les données dépend du volume de données écrites par les clients pendant l'indisponibilité du nœud et de la vitesse d'écriture des données lors de la restitution.
+
+https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-ha-google-cloud.html["Découvrez comment fonctionne le stockage dans une paire haute disponibilité Cloud Volumes ONTAP exécutée dans Google Cloud"^].

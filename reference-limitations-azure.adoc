@@ -1,0 +1,75 @@
+---
+sidebar: sidebar 
+permalink: reference-limitations-azure.html 
+keywords: limitations, ha, azure, pay-as-you-go, paygo, cloud solution provider, vm, flash cache; limitations in HA deployment in MAZ, SAZ, multiple availability xone, single availability zone Azure CVO, PSSDv2, premium SSD v2 limitation in CVO, flash cache limitation in CVO 
+summary: Ces limitations connues sont spécifiques à Cloud Volumes ONTAP dans Microsoft Azure. 
+---
+= Limitations connues pour Cloud Volumes ONTAP dans Azure
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Les limitations suivantes sont spécifiques à Cloud Volumes ONTAP dans Microsoft Azure. Veuillez également consulter link:reference-limitations.html["Limitations de Cloud Volumes ONTAP chez tous les fournisseurs de cloud"].
+
+
+
+[[limitations-with-using-azure-vm-extensions]]
+== Limitations liées à l'utilisation des extensions de machine virtuelle Azure
+
+Cloud Volumes ONTAP ne prend pas en charge les extensions de machine virtuelle Azure (VM) car elles affectent les opérations de gestion dans la NetApp Console. Lors du déploiement, la Console empêche l'installation de toute extension sur vos VM. Si des extensions sont déjà installées sur vos Cloud Volumes ONTAP VM existantes, contactez le support Microsoft Azure pour les supprimer. Pour obtenir des conseils, consultez l'article de la base de connaissances (KB) https://kb.netapp.com/Cloud/Cloud_Volumes_ONTAP/Can_Azure_VM_Management_Extensions_be_installed_into_Cloud_Volume_ONTAP["Est-il possible d'installer les extensions de gestion de machines virtuelles Azure dans Cloud Volumes ONTAP ?"^]
+
+À compter du 14 juillet 2025, NetApp vous enverra des e-mails et vous informera dans la Console si des extensions de VM sont détectées sur vos Cloud Volumes ONTAP VMs.
+
+
+
+[[premium-ssd-v2-disks-limitations-for-ha-configurations]]
+== Limitations des disques SSD Premium v2 pour les configurations de paire haute disponibilité
+
+Les disques gérés Premium SSD v2 présentent les limitations suivantes pour les déploiements à haute disponibilité (HA) dans Azure :
+
+* Non pris en charge dans les déploiements de paire haute disponibilité dans les régions non zonales.
+* Non pris en charge dans les déploiements de paire haute disponibilité sur plusieurs zones de disponibilité.
+* Prise en charge uniquement dans les configurations de paire haute disponibilité déployées au sein de zones de disponibilité uniques.
+
+
+Pour utiliser les disques gérés Premium SSD v2 avec les configurations Cloud Volumes ONTAP paire haute disponibilité, assurez-vous que les exigences suivantes sont respectées :
+
+* Cloud Volumes ONTAP version est 9.15.1 ou ultérieure.
+* Le déploiement HA se trouve dans une zone de disponibilité unique Azure.
+* Les régions et zones sélectionnées prennent en charge les disques SSD Premium v2 gérés. Pour plus d'informations sur les régions prises en charge, consultez le  https://azure.microsoft.com/en-us/explore/global-infrastructure/products-by-region/["Site Web Microsoft Azure : produits disponibles par région"^].
+
+
+Pour plus d'informations, consultez https://docs.netapp.com/us-en/cloud-volumes-ontap-9151-relnotes/reference-new.html#support-for-premium-ssd-v2-managed-disks-in-azure["Prise en charge des disques gérés Premium SSD v2 dans Azure"^].
+
+
+
+[[limitations-with-ha-deployments-in-single-availability-zones]]
+== Limitations liées aux déploiements HA dans des zones de disponibilité uniques
+
+À partir de Cloud Volumes ONTAP 9.15.1, vous pouvez déployer des instances de machines virtuelles (VM) en mode haute disponibilité (HA) dans des zones de disponibilité (AZ) uniques dans Azure. Pour plus d'informations sur les critères de prise en charge de cette fonctionnalité, consultez  https://docs.netapp.com/us-en/cloud-volumes-ontap-9151-relnotes/reference-new.html#deploy-ha-pairs-in-single-availability-zones-in-azure["Déployez des paires haute disponibilité dans des zones de disponibilité uniques dans Azure"^].
+
+Si la version de Cloud Volumes ONTAP est antérieure à 9.15.1 ou si l'une de ces conditions n'est pas remplie, le modèle de déploiement précédent utilisant des availability sets devient effectif. Cela s'applique uniquement aux configurations de paire haute disponibilité.
+
+
+
+[[flash-cache-limitations]]
+== Limitations du Flash Cache
+
+Cloud Volumes ONTAP utilise le stockage NVMe local de certains types de machines virtuelles comme _Flash Cache_. Notez cette limitation :
+
+* Le réchauffement du cache après un redémarrage n'est pas pris en charge.
+
+
+
+
+[[limitations-with-ha-deployments]]
+== Limitations liées aux déploiements HA
+
+Les paires haute disponibilité ne sont pas prises en charge dans certaines régions.
+
+https://bluexp.netapp.com/cloud-volumes-global-regions["Consultez la liste des régions Azure prises en charge"^].

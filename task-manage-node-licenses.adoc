@@ -237,4 +237,5 @@ https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-deleting-system.ht
 .Liens connexes
 * https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing.html#end-of-availability-of-node-based-licenses["Fin de disponibilité des licences basées sur des nœuds"^]
 * https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-convert-node-capacity.html["Convertir les licences basées sur les nœuds en licences basées sur la capacité"^]
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-manage-node-licenses.html["Gérer les licences basées sur les nœuds"^]
 

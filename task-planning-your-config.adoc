@@ -57,7 +57,7 @@ link:https://docs.aws.amazon.com/local-zones/latest/ug/getting-started.html["Doc
 
 Cloud Volumes ONTAP prend en charge plusieurs types d’instances, selon le type de licence que vous choisissez.
 
-https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-aws.html["Configurations prises en charge pour Cloud Volumes ONTAP dans AWS"^]
+link:reference-configs-aws.html["Configurations prises en charge pour Cloud Volumes ONTAP dans AWS"]
 
 
 

@@ -14,9 +14,57 @@ summary: 'Le composant AutoSupport d" ONTAP collecte la télémétrie et l"envoi
 
 
 [role="lead"]
-Le composant AutoSupport d' ONTAP collecte la télémétrie et l'envoie pour analyse.  Active IQ Digital Advisor (également connu sous le nom de Digital Advisor) analyse les données d' AutoSupport et fournit des soins et une optimisation proactifs.  Grâce à l’intelligence artificielle, Digital Advisor peut identifier les problèmes potentiels et vous aider à les résoudre avant qu’ils n’affectent votre entreprise.
+Le composant AutoSupport d'ONTAP collecte la télémétrie et l'envoie pour analyse. Active IQ Digital Advisor (également appelé Digital Advisor) analyse les données provenant de AutoSupport et fournit des solutions proactives de maintenance et d'optimisation.
+
+https://www.netapp.com/data-services/digital-advisor/["NetApp Active IQ Digital Advisor"^] (également appelé Digital Advisor) est intégré à la NetApp Console pour vous permettre d’optimiser les opérations, la sécurité et les performances de vos systèmes Cloud Volumes ONTAP depuis une interface unique. Grâce à l’intelligence artificielle, Digital Advisor peut identifier les problèmes potentiels et vous aider à les résoudre avant qu’ils n’impactent votre activité.
 
 Digital Advisor vous permet d'optimiser votre infrastructure de données sur votre cloud hybride mondial en fournissant des analyses prédictives exploitables et une assistance proactive via un portail basé sur le cloud et une application mobile.  Les informations et recommandations basées sur les données de Digital Advisor sont disponibles pour tous les clients NetApp disposant d'un contrat SupportEdge actif (les fonctionnalités varient selon le produit et le niveau de support).
+
+Vous pouvez afficher l'état général de votre système de stockage, des informations de haut niveau sur le bien-être du système, l'inventaire, la planification et des informations précieuses au niveau de la liste de surveillance à l'aide de Digital Advisor.
+
+* Analysez et optimisez la santé de vos systèmes de stockage
+* Obtenez des informations sur tous les risques pesant sur vos systèmes de stockage et les actions à entreprendre pour atténuer ces risques
+* Analysez les performances de vos périphériques de stockage en visualisant le format graphique des données de performances
+* Obtenez des détails sur les systèmes qui ont dépassé 90 % de leur capacité ou qui approchent de 90 % de leur capacité
+
+
+
+
+[[supported-ontap-systems]]
+== Systèmes ONTAP pris en charge
+
+Digital Advisor fournit des informations sur tous les systèmes ONTAP sur site et les systèmes Cloud Volumes ONTAP au sein de votre compte NSS.
+
+
+
+[[cost]]
+== Coût
+
+L'utilisation de ce service via la console est gratuite.
+
+
+
+[[how-digital-advisor-works-with-netapp-console]]
+== Comment Digital Advisor fonctionne avec NetApp Console
+
+L'interface utilisateur de Digital Advisor est entièrement intégrée à la console.
+
+Dans le panneau de gauche, cliquez sur *Santé > Digital Advisor*.
+
+* Si vous avez déjà enregistré un compte NSS existant dans la console, l'interface utilisateur de Digital Advisor apparaît exactement comme vous la verriez dans une implémentation autonome à https://activeiq.netapp.com/[] .
++
+image:screenshot_aiq_digital_advisor.png["Une capture d’écran de l’interface utilisateur de Digital Advisor dans la console."]
+
+* Si vous n'avez pas enregistré de compte NSS dans la console, enregistrez-en un maintenant et l'interface utilisateur de Digital Advisor apparaît.  Se référer à https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-nss-accounts.html["Gérer les informations d'identification NSS associées à une organisation ou à un compte"] pour les instructions.
+
+
+
+NOTE: Depuis le 3 décembre 2021, NetApp est passé à une nouvelle méthodologie d’enregistrement des informations d’identification pour les comptes NSS. Pour plus d'informations, consultez  https://kb.netapp.com/Advice_and_Troubleshooting/Miscellaneous/FAQs_for_NetApp_adoption_of_MS_Azure_AD_B2C_for_login["cette FAQ"] .  Si votre compte NSS utilise l'ancien ensemble d'informations d'identification, vous devrez mettre à jour le compte avec les nouvelles informations d'identification.
+
+
+
+[[how-you-can-use-digital-advisor]]
+== Comment vous pouvez utiliser Digital Advisor
 
 Voici quelques choses que vous pouvez faire avec Digital Advisor:
 

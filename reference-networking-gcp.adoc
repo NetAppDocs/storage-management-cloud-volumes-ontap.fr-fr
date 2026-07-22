@@ -582,7 +582,7 @@ Lors de la configuration du proxy transparent de l'agent de la console, l'admini
 . Ajoutez la balise utilisée pour l’agent de console et enregistrez la configuration.
 
 
-.Sujets connexes
+.Lien connexe
 * link:task-verify-autosupport.html["Vérifier la configuration AutoSupport pour Cloud Volumes ONTAP"]
 * https://docs.netapp.com/us-en/ontap/networking/ontap_internal_ports.html["En savoir plus sur les ports internes ONTAP"^] .
 

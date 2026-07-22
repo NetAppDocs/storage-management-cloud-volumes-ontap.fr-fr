@@ -166,7 +166,7 @@ link:concept-write-speed.html["En savoir plus sur la vitesse d'écriture"^] .
 
 .. Activez le stockage WORM (écriture unique, lecture multiple), si vous le souhaitez.
 +
-Cette option n'est disponible que pour certains types de machines virtuelles.  Pour savoir quels types de machines virtuelles sont pris en charge, reportez-vous àlink:https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-azure.html#ha-pairs["Configurations prises en charge par licence pour les paires HA"^] .
+Cette option est disponible uniquement pour certains types de machines virtuelles. Pour connaître les types de machines virtuelles compatibles, veuillez consulter link:link:reference-configs-azure.html#ha-pairs["Configurations prises en charge par licence pour les paires HA"].
 
 +
 WORM ne peut pas être activé si la hiérarchisation des données a été activée pour les versions 9.7 et inférieures de Cloud Volumes ONTAP .  Le retour ou la rétrogradation vers Cloud Volumes ONTAP 9.8 est bloqué après l'activation de WORM et de la hiérarchisation.
@@ -392,7 +392,7 @@ link:concept-data-tiering.html["En savoir plus sur la hiérarchisation des donn�
 
 ** À partir de Cloud Volumes ONTAP 9.15.0P1, les blobs de pages Azure ne sont plus pris en charge pour les nouveaux déploiements de paires haute disponibilité.  Si vous utilisez actuellement des blobs de pages Azure dans des déploiements de paires haute disponibilité existants, vous pouvez migrer vers des types d’instances de machine virtuelle plus récents dans les machines virtuelles des séries Edsv4 et Edsv5.
 +
-link:https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-azure.html#ha-pairs["En savoir plus sur les configurations prises en charge dans Azure"^] .
+link:link:reference-configs-azure.html#ha-pairs["En savoir plus sur les configurations prises en charge dans Azure"^].
 
 
 
@@ -404,7 +404,7 @@ link:concept-write-speed.html["En savoir plus sur la vitesse d'écriture"^] .
 
 .. Activez le stockage WORM (écriture unique, lecture multiple), si vous le souhaitez.
 +
-Cette option n'est disponible que pour certains types de machines virtuelles.  Pour savoir quels types de machines virtuelles sont pris en charge, reportez-vous àlink:https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-azure.html#ha-pairs["Configurations prises en charge par licence pour les paires HA"^] .
+Cette option est disponible uniquement pour certains types de machines virtuelles. Pour connaître les types de machines virtuelles compatibles, veuillez consulter link:link:reference-configs-azure.html#ha-pairs["Configurations prises en charge par licence pour les paires HA"^].
 
 +
 WORM ne peut pas être activé si la hiérarchisation des données a été activée pour les versions 9.7 et inférieures de Cloud Volumes ONTAP .  Le retour ou la rétrogradation vers Cloud Volumes ONTAP 9.8 est bloqué après l'activation de WORM et de la hiérarchisation.

@@ -221,3 +221,11 @@ Voici un autre exemple.  Disons que vous disposez des licences suivantes pour le
 100 Tio supplémentaires sont provisionnés sur une paire HA avec des volumes primaires.  La licence que vous avez achetée ne dispose pas de capacité engagée _Essentials Primary HA_.  La licence _Essentials Primary HA_ est proposée à un prix plus élevé que les licences _Essentials Primary Single Node_ et _Essentials Secondary HA_.
 
 Dans cet exemple, la console facture les dépassements au tarif du marché pour les 100 Tio supplémentaires.  Les frais de dépassement apparaîtront sur votre facture mensuelle.
+
+.Liens connexes
+* link:concept-licensing.html["Licences pour Cloud Volumes ONTAP"]
+* link:task-manage-capacity-licenses.html["Gérer les licences basées sur la capacité pour Cloud Volumes ONTAP"]
+* link:task-manage-node-licenses.html["Gérer les licences basées sur les nœuds"]
+* link:task-convert-node-capacity.html["Convertir une licence basée sur les nœuds en une licence basée sur la capacité"]
+* link:task-manage-keystone.html["Gérer les abonnements Keystone"]
+

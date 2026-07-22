@@ -57,14 +57,14 @@ Pour obtenir la liste des types de machines virtuelles pris en charge avec les p
 
 ifdef::azure[]
 
-* link:https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-azure.html["Configurations prises en charge dans Azure"^]
+* link:link:reference-configs-azure.html["Configurations prises en charge dans Azure"]
 
 
 endif::azure[]
 
 ifdef::gcp[]
 
-* link:https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-gcp.html["Configurations prises en charge dans Google Cloud"^]
+* link:link:reference-configs-gcp.html["Configurations prises en charge dans Google Cloud"^]
 
 
 endif::gcp[]
@@ -296,3 +296,11 @@ Pour savoir comment effectuer cette conversion, reportez-vous àlink:task-conver
 
 
 NOTE: La conversion d'un système de licences basé sur la capacité à un système de licences basé sur les nœuds n'est pas prise en charge.
+
+.Liens connexes
+* link:concept-licensing-charging.html["En savoir plus sur les licences basées sur la capacité"]
+* link:task-manage-capacity-licenses.html["Gérer les licences basées sur la capacité pour Cloud Volumes ONTAP"]
+* link:task-manage-node-licenses.html["Gérer les licences basées sur les nœuds"]
+* link:task-convert-node-capacity.html["Convertir une licence basée sur les nœuds en une licence basée sur la capacité"]
+* link:task-manage-keystone.html["Gérer les abonnements Keystone"]
+

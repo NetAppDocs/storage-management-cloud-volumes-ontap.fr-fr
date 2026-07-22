@@ -4,7 +4,7 @@ permalink: task-modify-write-speed.html
 keywords: write speed, high write speed, normal write speed, change write speed 
 summary: 'Vous devrez peut-être modifier la configuration des systèmes Cloud Volumes ONTAP à mesure que vos besoins de stockage évoluent.  Par exemple, vous pouvez changer de configuration à la carte, modifier le type d"instance ou de machine virtuelle, et bien plus encore.' 
 ---
-= Modifier la vitesse d'écriture du système
+= Modifier la vitesse d'écriture du système dans Cloud Volumes ONTAP
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 

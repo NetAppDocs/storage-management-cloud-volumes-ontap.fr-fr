@@ -1,0 +1,837 @@
+---
+sidebar: sidebar 
+permalink: reference-configs-aws.html 
+keywords: ec2, instance, type, explore, standard, premium, byol, capacity, maximum, virtual machine, Cloud Volumes ONTAP, supported, configurations, sizes, disks, networking, bandwidth, professional package 
+summary: Plusieurs configurations Cloud Volumes ONTAP sont prises en charge dans AWS. 
+---
+= Configurations prises en charge pour Cloud Volumes ONTAP dans AWS
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Plusieurs configurations Cloud Volumes ONTAP sont prises en charge dans AWS.
+
+
+
+[[supported-disks-in-aws]]
+== Disques pris en charge dans AWS
+
+Outre le stockage des données utilisateur, NetApp achète également du stockage cloud pour les données système sur AWS.
+
+
+
+[[internal-disks-for-system-data]]
+=== Disques internes pour les données système
+
+Les disques internes suivants sont utilisés pour les données système dans AWS :
+
+* Trois disques par nœud pour les données de démarrage, racine et principales :
++
+** Disque io1 de 47 Gio pour les données de démarrage
+** Disque gp3 de 140 Gio pour les données racine
+** Disque gp2 de 540 Gio pour les données de base
+
+
+* Pour les paires HA :
++
+** Deux volumes EBS st1 pour l'instance du médiateur, l'un d'environ 8 Gio comme disque racine et l'autre de 4 Gio comme disque de données
+** Un disque gp3 de 140 Gio dans chaque nœud pour contenir une copie des données racine de l'autre nœud
++
+
+NOTE: Dans certaines zones, le type de disque EBS disponible ne peut être que gp2.
+
+
+
+* Un instantané EBS pour chaque disque de démarrage et disque racine
++
+
+NOTE: Les instantanés sont créés automatiquement au redémarrage.
+
+* Lorsque vous activez le chiffrement des données dans AWS à l'aide du service de gestion des clés (KMS), les disques de démarrage et racine de Cloud Volumes ONTAP sont également chiffrés.  Cela inclut le disque de démarrage de l’instance de médiateur dans une paire HA.  Les disques sont chiffrés à l’aide de la CMK que vous sélectionnez lorsque vous ajoutez un système Cloud Volumes ONTAP .
+
+
+
+TIP: Dans AWS, la NVRAM se trouve sur le disque de démarrage.
+
+
+
+[[aws-storage-for-user-data]]
+=== Stockage AWS pour les données utilisateur
+
+Dans AWS, Cloud Volumes ONTAP utilise le stockage EBS pour les données utilisateur et le stockage NVMe local comme cache Flash sur certains types d'instances EC2.
+
+Stockage de l'EBS:: Dans AWS, un agrégat peut contenir jusqu'à 6 disques qui ont tous la même taille. Mais si vous disposez d’une configuration qui prend en charge la fonctionnalité Amazon EBS Elastic Volumes, un agrégat peut contenir jusqu’à 8 disques. link:concept-aws-elastic-volumes.html["En savoir plus sur la prise en charge des volumes élastiques"] .
++
+--
+La taille maximale du disque est de 16 Tio.
+
+Le type de disque EBS sous-jacent peut être un SSD à usage général (gp3 ou gp2), un SSD à IOPS provisionnées (io1) ou un disque dur optimisé pour le débit (st1). Vous pouvez associer un disque EBS à Amazon Simple Storage Service (Amazon S3) pour link:concept-data-tiering.html["stockage d'objets à faible coût"].
+
+
+NOTE: La hiérarchisation des données vers le stockage d'objets n'est pas recommandée lors de l'utilisation de disques durs à débit optimisé (st1).
+
+--
+Stockage NVMe local:: Certains types d'instances EC2 incluent un stockage NVMe local, que Cloud Volumes ONTAP utilise commelink:concept-flash-cache.html["Cache Flash"] .
+
+
+
+
+[[supported-disk-sizes]]
+=== Tailles de disque prises en charge
+
+Dans AWS, un agrégat peut contenir jusqu'à 6 disques de même taille. Mais si vous disposez d'une configuration qui prend en charge la fonctionnalité Amazon EBS Elastic Volumes, alors un agrégat peut contenir jusqu'à 8 disques. https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-aws-elastic-volumes.html["En savoir plus sur la prise en charge des volumes élastiques"^]
+
+[cols="3*"]
+|===
+| SSD à usage général (gp3 et gp2) | SSD IOPS provisionnés (io1) | Disques durs optimisés pour le débit (st1) 
+
+
+ a| 
+* 100 Gio
+* 500 Gio
+* 1 Tio
+* 2 Tio
+* 4 Tio
+* 6 Tio
+* 8 Tio
+* 16 Tio
+
+ a| 
+* 100 Gio
+* 500 Gio
+* 1 Tio
+* 2 Tio
+* 4 Tio
+* 6 Tio
+* 8 Tio
+* 16 Tio
+
+ a| 
+* 500 Gio
+* 1 Tio
+* 2 Tio
+* 4 Tio
+* 6 Tio
+* 8 Tio
+* 16 Tio
+
+
+|===
+
+
+[[disk-provisioning-for-aggregates-in-aws]]
+=== Provisionnement de disques pour les agrégats dans AWS
+
+Dans le cas d’un agrégat dans AWS qui prend en charge les volumes élastiques, il augmente également la taille des disques dans un groupe RAID. link:concept-aws-elastic-volumes.html["En savoir plus sur la prise en charge des volumes élastiques"] .
+
+
+
+==== Sélection de la taille du disque pour les agrégats dans AWS
+
+Lorsque la console crée de nouveaux agrégats pour Cloud Volumes ONTAP dans AWS, elle augmente progressivement la taille des disques à mesure que les nombres d'agrégats augmentent pour maximiser la capacité du système avant d'atteindre les limites des disques de données AWS.
+
+Par exemple, la console peut choisir les tailles de disque suivantes :
+
+[cols="3*"]
+|===
+| Nombre total | Taille du disque | Capacité maximale globale 
+
+
+| 1 | 500 Gio | 3 Tio 
+
+
+| 4 | 1 Tio | 6 Tio 
+
+
+| 6 | 2 Tio | 12 Tio 
+|===
+
+NOTE: Ce comportement ne s'applique pas aux agrégats qui prennent en charge la fonctionnalité Amazon EBS Elastic Volumes.  Les agrégats sur lesquels les volumes élastiques sont activés sont constitués d'un ou deux groupes RAID.  Chaque groupe RAID dispose de quatre disques identiques ayant la même capacité. link:concept-aws-elastic-volumes.html["En savoir plus sur la prise en charge des volumes élastiques"] .
+
+Vous pouvez choisir vous-même la taille du disque en utilisant l'option d'allocation avancée.
+
+
+
+[[supported-number-of-nodes]]
+== Nombre de nœuds pris en charge
+
+Cloud Volumes ONTAP est disponible sur AWS en tant que système à nœud unique et en tant que paire haute disponibilité (HA) pour tolérance aux pannes et opérations non perturbatrices.
+
+La mise à niveau d'un système à nœud unique vers une paire haute disponibilité n'est pas prise en charge. Si vous souhaitez passer d'un système à nœud unique à une paire haute disponibilité, vous devez déployer un nouveau système et répliquer les données du système existant vers le nouveau système.
+
+
+
+[[supported-storage]]
+== Stockage pris en charge
+
+Cloud Volumes ONTAP prend en charge plusieurs types de disques EBS et le stockage d'objets S3 pour la hiérarchisation des données. La capacité de stockage maximale est déterminée par la licence que vous choisissez.
+
+
+
+[[storage-support-by-license]]
+=== Prise en charge du stockage par licence
+
+Chaque licence prend en charge une capacité système maximale différente. La capacité maximale du système inclut le stockage sur disque ainsi que le stockage objet utilisé pour la hiérarchisation des données. NetApp ne prend pas en charge le dépassement de cette limite.
+
+Les tableaux suivants répertorient les combinaisons de stockage et de type de machine EC2 prises en charge pour chaque licence. Pour connaître les spécifications les plus récentes des instances EC2, notamment les vCPU, la mémoire, la bande passante réseau et la bande passante Amazon EBS, veuillez consulter  https://aws.amazon.com/ec2/instance-types/["types d'instances Amazon EC2"^].
+
+Cloud Volumes ONTAP peut s'exécuter sur une instance EC2 réservée ou à la demande. Les solutions utilisant d'autres types d'instances ne sont pas prises en charge.
+
+[role="tabbed-block"]
+====
+.Licences basées sur la capacité
+--
+[cols="h,d,d"]
+|===
+|  | Freemium | Licence basée sur la capacité (Essentials et Professional) 
+
+
+ a| 
+*Capacité maximale du système* ^1^ (disques + stockage d'objets)
+| 500 Gio  a| 
+Flexible ^2^
+
+
+
+ a| 
+*Types de machines prises en charge*
+ a| 
+.Série C5
+[%collapsible]
+=====
+* c5.9xlarge
+* c5.18xlarge ^7^
+
+
+=====
+.Série C5a
+[%collapsible]
+=====
+* c5a.12xlarge
+
+
+=====
+.Série C5d
+[%collapsible]
+=====
+* c5d.4xlarge ^8^
+* c5d.9xlarge
+* c5d.18xlarge ^7^
+
+
+=====
+.Série C5n
+[%collapsible]
+=====
+* c5n.9xlarge
+* c5n.18xlarge ^7^
+
+
+=====
+.Série M5
+[%collapsible]
+=====
+* m5.xlarge ^8^
+* m5.2xlarge ^8^
+* m5.4xlarge ^8^
+* m5.16xlarge
+
+
+=====
+.Série M5a
+[%collapsible]
+=====
+* m5a.2xlarge
+* m5a.16xlarge
+
+
+=====
+.Série M5d
+[%collapsible]
+=====
+* m5d.8xlarge
+* m5d.12xlarge
+
+
+=====
+.Série M5dn
+[%collapsible]
+=====
+* m5dn.4xlarge
+* m5dn.12xlarge
+* m5dn.24xlarge ^7^
+
+
+=====
+.Série M5n
+[%collapsible]
+=====
+* m5n.2xlarge
+
+
+=====
+.Série M6id
+[%collapsible]
+=====
+* m6id.xlarge ^9^
+* m6id.2xlarge ^9^
+* m6id.4xlarge ^9^
+* m6id.8xlarge ^9^
+* m6id.16xlarge ^7,9^
+* m6id.32xlarge ^7,9^
+
+
+=====
+.Série M6idn
+[%collapsible]
+=====
+* m6idn.xlarge ^9^
+* m6idn.2xlarge ^9^
+* m6idn.4xlarge ^9^
+* m6idn.8xlarge ^9^
+* m6idn.16xlarge ^7,9^
+* m6idn.32xlarge ^9^
+
+
+=====
+.Série R5
+[%collapsible]
+=====
+* r5.xlarge ^8^
+* r5.2xlarge ^8^
+* r5.8xlarge
+* r5.12xlarge ^6^
+
+
+=====
+.Série R5d
+[%collapsible]
+=====
+* r5d.2xlarge
+
+
+=====
+
+
+ a| 
+*Types de disques pris en charge*
+ a| 
+* SSD à usage général (gp3 et gp2) ^3^,^5^
+* SSD IOPS provisionnés (io1) ^3^
+* Disque dur optimisé pour le débit (st1) ^4^
+
+
+
+
+ a| 
+*Hiérarchisation des données froides vers S3*
+ a| 
+Soutenu
+
+|===
+. Pour une paire haute disponibilité, la limite de capacité s'applique à l'ensemble de la paire haute disponibilité. Ce n'est pas par nœud. Par exemple, si vous utilisez la licence PAYGO Premium, vous pouvez disposer d'une capacité allant jusqu'à 368 Tio entre les deux nœuds.
+. Pour certaines configurations, les limites de disque vous empêchent d'atteindre la limite de capacité uniquement avec des disques. Dans ces cas, vous pouvez atteindre la limite de capacité par https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-data-tiering.html["hiérarchisation des données inactives vers le stockage d'objets"^]. Pour des informations sur les limites de disque, reportez-vous à link:reference-limits-aws.html["limites de stockage"].
++
+Avec une licence basée sur la capacité, chaque système Cloud Volumes ONTAP prend en charge la hiérarchisation vers le stockage objet. La capacité hiérarchisée totale peut évoluer jusqu'à la limite de compartiment du fournisseur de cloud. Bien que la licence n'impose aucune restriction de capacité, vous devez suivre les  https://www.netapp.com/pdf.html?item=/media/17239-tr-4598.pdf["Bonnes pratiques de FabricPool"^] pour garantir des performances, une fiabilité et une rentabilité optimales lors de la configuration et de la gestion de la hiérarchisation.
+
+. Les performances d'écriture améliorées sont activées lors de l'utilisation de SSD avec toutes les configurations Cloud Volumes ONTAP, à l'exception de PAYGO Explore.
+. Le stockage hiérarchisé des données vers le stockage objet n'est pas recommandé lors de l'utilisation de disques durs optimisés pour le débit (st1).
+. Les configurations Cloud Volumes ONTAP dans les zones locales AWS prennent uniquement en charge le type de disque SSD à usage général (gp2). Aucun autre type de disque n'est pris en charge dans les zones locales AWS.
+. Le type d'instance r5.12xlarge présente une limitation connue en matière de supportabilité. Si un nœud redémarre de manière inattendue à cause d'un panic, le système pourrait ne pas collecter les fichiers core utilisés pour le dépannage et l'identification de la cause première du problème. Le client accepte les risques et les conditions de support limitées et assume l'entière responsabilité du support si cette condition se produit. Cette limitation affecte les paires haute disponibilité nouvellement déployées et les paires haute disponibilité mises à niveau depuis 9.8. Cette limitation n'affecte pas les systèmes à nœud unique nouvellement déployés.
+. Alors que ces types d'instances EC2 prennent en charge plus de 64 vCPU, Cloud Volumes ONTAP prend en charge jusqu'à 64 vCPU.
+. Les zones locales AWS sont prises en charge dans les familles de types d'instances EC2 suivantes, avec des tailles allant de xlarge à 4xlarge : M5, C5, C5d, R5 et R5d. link:https://aws.amazon.com/about-aws/global-infrastructure/localzones/features/?nc=sn&loc=2["Vous devez consulter AWS pour obtenir les informations les plus récentes et complètes sur les types d'instances EC2 pris en charge dans les Local Zones"^].
++
+La vitesse d'écriture élevée n'est pas prise en charge avec ces types d'instances dans AWS Local Zones.
+
+. Ces types d'instances nécessitent ONTAP 9.16.1 GA ou une version ultérieure.
+
+
+--
+.Autres licences
+--
+[cols="h,d,d,d,d"]
+|===
+|  | PAYGO Explore | PAYGO Standard | PAYGO Premium | BYOL basé sur les nœuds 
+
+
+| Capacité maximale du système (disques + stockage d'objets) | 2 Tio | 10 Tio | 368 Tiio ^2^ | 368 Tio par licence ^2^ 
+
+
+| Types de machines pris en charge  a| 
+.Série M5
+[%collapsible]
+=====
+* m5.xlarge ^8^
+
+
+=====
+.Série M6id
+[%collapsible]
+=====
+* m6id.xlarge ^9^
+
+
+=====
+.Série M6idn
+[%collapsible]
+=====
+* m6idn.xlarge ^9^
+
+
+===== a| 
+.Série M5
+[%collapsible]
+=====
+* m5.2xlarge ^8^
+
+
+=====
+.Série M5a
+[%collapsible]
+=====
+* m5a.2xlarge
+
+
+=====
+.Série M6id
+[%collapsible]
+=====
+* m6id.2xlarge ^9^
+
+
+=====
+.Série M6idn
+[%collapsible]
+=====
+* m6idn.2xlarge ^9^
+
+
+=====
+.Série R5
+[%collapsible]
+=====
+* r5.xlarge ^8^
+
+
+===== a| 
+.Série C5
+[%collapsible]
+=====
+* c5.9xlarge
+* c5.18xlarge ^7^
+
+
+=====
+.Série C5a
+[%collapsible]
+=====
+* c5a.12xlarge
+
+
+=====
+.Série C5d
+[%collapsible]
+=====
+* c5d.4xlarge ^8^
+* c5d.9xlarge
+* c5d.18xlarge ^7^
+
+
+=====
+.Série C5n
+[%collapsible]
+=====
+* c5n.9xlarge
+* c5n.18xlarge ^7^
+
+
+=====
+.Série M5
+[%collapsible]
+=====
+* m5.4xlarge ^8^
+* m5.16xlarge
+
+
+=====
+.Série M5a
+[%collapsible]
+=====
+* m5a.16xlarge
+
+
+=====
+.Série M5d
+[%collapsible]
+=====
+* m5d.8xlarge
+* m5d.12xlarge
+
+
+=====
+.Série M5dn
+[%collapsible]
+=====
+* m5dn.4xlarge
+* m5dn.12xlarge
+* m5dn.24xlarge ^7^
+
+
+=====
+.Série M5n
+[%collapsible]
+=====
+* m5n.2xlarge
+
+
+=====
+.Série M6id
+[%collapsible]
+=====
+* m6id.4xlarge ^9^
+* m6id.8xlarge ^9^
+* m6id.16xlarge ^7,9^
+* m6id.32xlarge ^7,9^
+
+
+=====
+.Série M6idn
+[%collapsible]
+=====
+* m6idn.4xlarge ^9^
+* m6idn.8xlarge ^9^
+* m6idn.16xlarge ^7,9^
+* m6idn.32xlarge ^9^
+
+
+=====
+.Série R5
+[%collapsible]
+=====
+* r5.2xlarge ^8^
+* r5.8xlarge
+* r5.12xlarge ^6^
+
+
+=====
+.Série R5d
+[%collapsible]
+=====
+* r5d.2xlarge
+
+
+===== a| 
+.Série C5
+[%collapsible]
+=====
+* c5.9xlarge
+* c5.18xlarge ^7^
+
+
+=====
+.Série C5a
+[%collapsible]
+=====
+* c5a.12xlarge
+
+
+=====
+.Série C5d
+[%collapsible]
+=====
+* c5d.4xlarge ^8^
+* c5d.9xlarge
+* c5d.18xlarge ^7^
+
+
+=====
+.Série C5n
+[%collapsible]
+=====
+* c5n.9xlarge
+* c5n.18xlarge ^7^
+
+
+=====
+.Série M5
+[%collapsible]
+=====
+* m5.xlarge ^8^
+* m5.2xlarge ^8^
+* m5.4xlarge ^8^
+* m5.16xlarge
+
+
+=====
+.Série M5a
+[%collapsible]
+=====
+* m5a.2xlarge
+* m5a.16xlarge
+
+
+=====
+.Série M5d
+[%collapsible]
+=====
+* m5d.8xlarge
+* m5d.12xlarge
+
+
+=====
+.Série M5dn
+[%collapsible]
+=====
+* m5dn.4xlarge
+* m5dn.12xlarge
+* m5dn.24xlarge ^7^
+
+
+=====
+.Série M5n
+[%collapsible]
+=====
+* m5n.2xlarge
+
+
+=====
+.Série M6id
+[%collapsible]
+=====
+* m6id.xlarge ^9^
+* m6id.2xlarge ^9^
+* m6id.4xlarge ^9^
+* m6id.8xlarge ^9^
+* m6id.16xlarge ^7,9^
+* m6id.32xlarge ^7,9^
+
+
+=====
+.Série M6idn
+[%collapsible]
+=====
+* m6idn.xlarge ^9^
+* m6idn.2xlarge ^9^
+* m6idn.4xlarge ^9^
+* m6idn.8xlarge ^9^
+* m6idn.16xlarge ^7,9^
+* m6idn.32xlarge ^9^
+
+
+=====
+.Série R5
+[%collapsible]
+=====
+* r5.xlarge ^8^
+* r5.2xlarge ^8^
+* r5.8xlarge
+* r5.12xlarge ^6^
+
+
+=====
+.Série R5d
+[%collapsible]
+=====
+* r5d.2xlarge
+
+
+=====
+
+
+| Types de disques pris en charge  a| 
+* SSD à usage général (gp3 et gp2) ^3^,^5^
+* SSD IOPS provisionnés (io1) ^3^
+* Disque dur optimisé pour le débit (st1) ^4^
+
+
+
+
+| Hiérarchisation des données froides vers S3 | Non pris en charge 3+| Soutenu 
+|===
+. Pour une paire haute disponibilité, la limite de capacité s'applique à l'ensemble de la paire haute disponibilité. Ce n'est pas par nœud. Par exemple, si vous utilisez la licence PAYGO Premium, vous pouvez disposer d'une capacité allant jusqu'à 368 Tio entre les deux nœuds.
+. Pour certaines configurations, les limites de disque vous empêchent d'atteindre la limite de capacité uniquement avec des disques. Dans ces cas, vous pouvez atteindre la limite de capacité par https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-data-tiering.html["hiérarchisation des données inactives vers le stockage d'objets"^]. Pour des informations sur les limites de disque, reportez-vous à link:reference-limits-aws.html["limites de stockage"].
++
+Avec une licence basée sur la capacité, chaque système Cloud Volumes ONTAP prend en charge la hiérarchisation vers le stockage objet. La capacité hiérarchisée totale peut évoluer jusqu'à la limite de compartiment du fournisseur de cloud. Bien que la licence n'impose aucune restriction de capacité, vous devez suivre les  https://www.netapp.com/pdf.html?item=/media/17239-tr-4598.pdf["Bonnes pratiques de FabricPool"^] pour garantir des performances, une fiabilité et une rentabilité optimales lors de la configuration et de la gestion de la hiérarchisation.
+
+. Les performances d'écriture améliorées sont activées lors de l'utilisation de SSD avec toutes les configurations Cloud Volumes ONTAP, à l'exception de PAYGO Explore.
+. Le stockage hiérarchisé des données vers le stockage objet n'est pas recommandé lors de l'utilisation de disques durs optimisés pour le débit (st1).
+. Les configurations Cloud Volumes ONTAP dans les zones locales AWS prennent uniquement en charge le type de disque SSD à usage général (gp2). Aucun autre type de disque n'est pris en charge dans les zones locales AWS.
+. Le type d'instance r5.12xlarge présente une limitation connue en matière de supportabilité. Si un nœud redémarre de manière inattendue à cause d'un panic, le système pourrait ne pas collecter les fichiers core utilisés pour le dépannage et l'identification de la cause première du problème. Le client accepte les risques et les conditions de support limitées et assume l'entière responsabilité du support si cette condition se produit. Cette limitation affecte les paires haute disponibilité nouvellement déployées et les paires haute disponibilité mises à niveau depuis 9.8. Cette limitation n'affecte pas les systèmes à nœud unique nouvellement déployés.
+. Alors que ces types d'instances EC2 prennent en charge plus de 64 vCPU, Cloud Volumes ONTAP prend en charge jusqu'à 64 vCPU.
+. Les zones locales AWS sont prises en charge dans les familles de types d'instances EC2 suivantes, avec des tailles allant de xlarge à 4xlarge : M5, C5, C5d, R5 et R5d. link:https://aws.amazon.com/about-aws/global-infrastructure/localzones/features/?nc=sn&loc=2["Vous devez consulter AWS pour obtenir les informations les plus récentes et complètes sur les types d'instances EC2 pris en charge dans les Local Zones"^].
++
+La vitesse d'écriture élevée n'est pas prise en charge avec ces types d'instances dans AWS Local Zones.
+
+. Ces types d'instances nécessitent ONTAP 9.16.1 GA ou une version ultérieure.
+
+
+--
+====
+
+
+[[c4-m4-and-r4-instances-no-longer-supported]]
+=== Les instances c4, m4 et r4 ne sont plus prises en charge
+
+Cloud Volumes ONTAP ne prend plus en charge les types d'instances EC2 c4, m4 et r4 dans AWS.
+
+Si votre système fonctionne sur une instance c4, m4 ou r4, changez-le en une instance c5, m5 ou r5 avant de procéder à la mise à niveau vers cette version.
+
+link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-change-ec2-instance.html["Découvrez comment modifier le type d'instance EC2 pour Cloud Volumes ONTAP"^].
+
+Pour plus d'informations, consultez les ressources suivantes :
+
+* https://kb.netapp.com/Cloud/Cloud_Volumes_ONTAP/Converting_an_AWS_Xen_CVO_instance_to_Nitro_KVM["Article de la base de connaissances (KB) : Conversion d’une instance AWS Xen CVO en Nitro KVM"^]
+* https://kb.netapp.com/Cloud/Cloud_Volumes_ONTAP/Unable_to_change_the_instance_type_from_r4_to_r5_with_disk_count_error["Article de la base de connaissances : Impossible de changer le type d'instance de r4 à r5 avec une erreur de nombre de disques"^]
+* link:https://mysupport.netapp.com/info/communications/ECMLP2880231.html["Apprenez-en davantage sur la fin de disponibilité et le support pour ces types d'instances"^]
+
+
+
+
+[[support-for-flash-cache-and-high-write-speed]]
+== Prise en charge du Flash Cache et d'une vitesse d'écriture élevée
+
+Le tableau suivant indique quels types d'instances EC2 pris en charge sont compatibles avec le cache Flash et une vitesse d'écriture élevée.
+
+[cols="d,d,d"]
+|===
+| Instance prise en charge | Cache Flash | Vitesse d'écriture élevée 
+
+
+| c5.9xlarge | Non pris en charge | Soutenu 
+
+
+| c5.18xlarge | Non pris en charge | Soutenu 
+
+
+| c5a.12xlarge | Non pris en charge | Soutenu 
+
+
+| c5d.4xlarge | Soutenu | Soutenu 
+
+
+| c5d.9xlarge | Soutenu | Soutenu 
+
+
+| c5d.18xlarge | Soutenu | Soutenu 
+
+
+| c5n.9xlarge | Non pris en charge | Soutenu 
+
+
+| c5n.18xlarge | Non pris en charge | Soutenu 
+
+
+| m5.xlarge | Non pris en charge | Pris en charge (nœud unique uniquement) 
+
+
+| m5.2xlarge | Non pris en charge | Soutenu 
+
+
+| m5.4xlarge | Non pris en charge | Soutenu 
+
+
+| m5.16xlarge | Non pris en charge | Soutenu 
+
+
+| m5a.2xlarge | Non pris en charge | Soutenu 
+
+
+| m5a.16xlarge | Non pris en charge | Soutenu 
+
+
+| m5d.8xlarge | Soutenu | Soutenu 
+
+
+| m5d.12xlarge | Soutenu | Soutenu 
+
+
+| m5dn.4xlarge | Soutenu | Soutenu 
+
+
+| m5dn.12xlarge | Soutenu | Soutenu 
+
+
+| m5dn.24xlarge | Soutenu | Soutenu 
+
+
+| m5n.2xlarge | Non pris en charge | Soutenu 
+
+
+| m6id.xlarge | Pris en charge ^*^ | Pris en charge (nœud unique uniquement) 
+
+
+| m6id.2xlarge | Pris en charge ^*^ | Soutenu 
+
+
+| m6id.4xlarge | Soutenu | Soutenu 
+
+
+| m6id.8xlarge | Soutenu | Soutenu 
+
+
+| m6id.16xlarge | Soutenu | Soutenu 
+
+
+| m6id.32xlarge | Soutenu | Soutenu 
+
+
+| m6idn.xlarge | Pris en charge ^*^ | Pris en charge (nœud unique uniquement) 
+
+
+| m6idn.2xlarge | Pris en charge ^*^ | Soutenu 
+
+
+| m6idn.4xlarge | Soutenu | Soutenu 
+
+
+| m6idn.8xlarge | Soutenu | Soutenu 
+
+
+| m6idn.16xlarge | Soutenu | Soutenu 
+
+
+| m6idn.32xlarge | Soutenu | Soutenu 
+
+
+| r5.xlarge | Non pris en charge | Pris en charge (nœud unique uniquement) 
+
+
+| r5.2xlarge | Non pris en charge | Soutenu 
+
+
+| r5.8xlarge | Non pris en charge | Soutenu 
+
+
+| r5.12xlarge | Non pris en charge | Soutenu 
+
+
+| r5d.2xlarge | Soutenu | Soutenu 
+|===
+Le cache Flash est pris en charge sur les instances m6id.xlarge, m6id.2xlarge, m6idn.xlarge et m6idn.2xlarge. Cependant, ces types d’instances possèdent moins de 16 cœurs et ne sont pas recommandés pour les charges de travail exigeantes en performances ou en mémoire. En cas de forte charge, elles peuvent redémarrer en raison de contraintes de mémoire. Pour éviter cela, utilisez un type d’instance avec un nombre de cœurs plus élevé et une mémoire plus importante.
+
+Les notes suivantes fournissent des indications générales sur le comportement des instances prises en charge et les options de déploiement.
+
+* Certains types d'instances incluent un stockage NVMe local, que Cloud Volumes ONTAP utilise comme cache Flash. Le cache Flash accélère l'accès aux données grâce à une mise en cache intelligente en temps réel des données utilisateur récemment lues et des métadonnées NetApp. Il est particulièrement efficace pour les charges de travail à forte intensité de lecture aléatoire, telles que les bases de données, la messagerie et les services de fichiers. La compression doit être désactivée sur tous les volumes pour bénéficier des gains de performance offerts par le cache Flash. https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-flash-cache.html["En savoir plus sur Flash Cache"^]
+* Cloud Volumes ONTAP prend en charge une vitesse d'écriture élevée avec tous les types d'instances compatibles lorsqu'un système à nœud unique est utilisé. Lorsqu'une paire haute disponibilité est utilisée, la vitesse d'écriture élevée n'est prise en charge qu'avec les types d'instances compatibles. https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-write-speed.html["En savoir plus sur le choix d'une vitesse d'écriture"^]
+* Lorsque vous choisissez un type d'instance EC2, vous pouvez spécifier s'il s'agit d'une instance partagée ou d'une instance dédiée.
+
+
+
+
+[[supported-regions]]
+=== Régions prises en charge
+
+Pour la prise en charge des régions AWS, voir https://bluexp.netapp.com/cloud-volumes-global-regions["Cloud Volumes Régions mondiales"^].
+
+.Informations connexes
+* https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html["types d'instances Amazon EC2"^]
+* https://aws.amazon.com/ec2/instance-types/m5/["Instances Amazon EC2 M5"^]
+* https://aws.amazon.com/ec2/instance-types/m6i/["Instances Amazon EC2 M6i"^]
+* https://aws.amazon.com/ec2/instance-types/c5/["Instances Amazon EC2 C5"^]
+* https://aws.amazon.com/ec2/instance-types/r5/["Instances Amazon EC2 R5"^]
+

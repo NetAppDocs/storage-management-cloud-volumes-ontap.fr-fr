@@ -155,7 +155,7 @@ Pour obtenir de l'aide sur le choix d'un type et d'une taille de disque, reporte
 +
 .. Activez *Flash Cache* ou choisissez *Normal* ou *High* comme vitesse d'écriture si vous en avez besoin.
 +
-Apprenez-en davantage sur  https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-gcp.html#flash-cache-support["Cache Flash"^] et link:concept-write-speed.html["vitesse d'écriture"].
+Apprenez-en davantage sur link:reference-configs-gcp.html#flash-cache-support["Cache Flash"] et link:concept-write-speed.html["vitesse d'écriture"].
 
 +
 
@@ -387,7 +387,7 @@ Pour obtenir de l'aide sur le choix d'un type et d'une taille de disque, reporte
 +
 .. Activez *Flash Cache* ou choisissez *Normal* ou *High* comme vitesse d'écriture si vous en avez besoin.
 +
-Apprenez-en davantage sur  https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-gcp.html#flash-cache-support["Cache Flash"^] et link:concept-write-speed.html["vitesse d'écriture"].
+Apprenez-en davantage sur link:reference-configs-gcp.html#flash-cache-support["Cache Flash"^] et link:concept-write-speed.html["vitesse d'écriture"].
 
 +
 
