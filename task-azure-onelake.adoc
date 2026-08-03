@@ -1,0 +1,210 @@
+---
+sidebar: sidebar 
+permalink: task-azure-onelake.html 
+keywords: Azure, AI, integration, OneLake, analytics, ONTAP S3, Microsoft Fabric, OneLake shortcut, Azure AI Search, On-Premises Data Gateway, OPDG 
+summary: 'Configurez Cloud Volumes ONTAP avec l"accès multiprotocole ONTAP S3 pour permettre aux services Azure AI de lire les données stockées dans vos systèmes Cloud Volumes ONTAP via Microsoft OneLake.' 
+---
+= Intégrez les systèmes Cloud Volumes ONTAP avec Microsoft OneLake pour l’IA et l’analytique
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Vous pouvez intégrer Cloud Volumes ONTAP avec https://community.fabric.microsoft.com/["Microsoft Fabric"^] en utilisant https://learn.microsoft.com/en-us/fabric/onelake/onelake-overview["Microsoft OneLake"^] pour rendre les données NAS Cloud Volumes ONTAP existantes accessibles aux services d’analyse et d’IA de Microsoft, tels que Power BI, Azure AI Search, OpenAI et Microsoft Copilot. L’intégration ne nécessite aucun déplacement des données ni duplication. L’intégration utilise https://docs.netapp.com/us-en/ontap/s3-multiprotocol/index.html["ONTAP S3 multiprotocole"^] un accès pour connecter Cloud Volumes ONTAP à un Microsoft Fabric lakehouse existant.
+
+
+
+[[create-a-root-ca-certificate-for-the-ontap-s3-server]]
+== Créez un certificat d'autorité de certification racine pour le serveur ONTAP S3.
+
+Un certificat est requis pour sécuriser les connexions HTTPS entre Microsoft OneLake et le serveur ONTAP S3. Dans cette procédure, vous créez un certificat d'autorité de certification racine sur Cloud Volumes ONTAP et générez un certificat signé pour le serveur ONTAP S3.
+
+Pour plus d'informations sur la création et l'installation d'un certificat d'autorité de certification, veuillez consulter https://docs.netapp.com/us-en/ontap/s3-config/create-install-ca-certificate-svm-task.html["Créez et installez un certificat d'autorité de certification (CA) sur une SVM ONTAP compatible S3"^].
+
+.Avant de commencer
+Vérifiez que vous disposez d'un système Cloud Volumes ONTAP en fonctionnement avant de commencer le processus d'intégration.
+
+.Étapes
+. Connectez-vous au système Cloud Volumes ONTAP en utilisant SSH depuis une VM de votre réseau virtuel (vNet) ou via Azure Bastion.
+. Créez un certificat d'autorité de certification racine.
++
+[source, CLI]
+----
+security certificate create -vserver <svm_cvo> -type root-ca -common-name <svm_cvo_ca>
+----
++
+Par exemple,
+
++
+[source, CLI]
+----
+security certificate create -vserver svm_cvopsa2 -type root-ca -common-name svm_cvo_ca
+
+The certificate's generated name for reference: svm_cvo_ca_159D1587CE21E9D4_svm_cvo_ca
+----
+. Générez une demande de signature de certificat (CSR) et une clé privée.
++
+
+NOTE: Choisissez un domaine complet (FQDN) pour le point de terminaison ONTAP S3 (nom du serveur S3), par exemple, `s3.cvo.com`, et spécifiez-le comme valeur pour les paramètres  `-common-name` et  `-dns-name`. Notez cette valeur, car vous en aurez besoin ultérieurement lors de la configuration du serveur ONTAP S3.
+
++
+[source, CLI]
+----
+security certificate generate-csr -common-name s3.cvo.com  -dns-name s3.cvo.com
+----
+. La commande génère une CSR et une clé privée. Copiez et enregistrez ces deux valeurs. Vous aurez besoin de la CSR à l'étape suivante et de la clé privée ultérieurement, lors de la configuration du service ONTAP S3. Copiez la CSR et la clé privée à partir du résultat.
+. Signez la demande de certificat à l'aide du certificat de l'autorité de certification racine. Lorsque vous y êtes invité, collez la CSR générée à l'étape précédente.
++
+** `ca_cert_name` - nom du certificat d'autorité de certification racine
+** `ca_cert_serial_number` - le numéro de série CA
++
+[source, CLI]
+----
+security certificate sign -vserver svm_name -ca <ca_cert_name> -ca-serial <ca_cert_serial_number>
+----
+
+
+. La commande renvoie un certificat signé. Copiez et enregistrez le contenu du certificat. Vous utilisez ce certificat et la clé privée générée à l'étape précédente lorsque vous configurez le serveur ONTAP S3.
+
+
+
+
+[[configure-cloud-volumes-ontap-s3]]
+== Configurer Cloud Volumes ONTAP S3
+
+Configurez l'accès multiprotocole ONTAP S3 pour permettre à OneLake de lire les données stockées dans vos volumes Cloud Volumes ONTAP.
+
+. Configurez ONTAP S3 pour le système Cloud Volumes ONTAP.
++
+.. Sur la NetApp Console, dans le menu de navigation de gauche, sélectionnez *Stockage > Gestion*.
+.. Sélectionnez un agent de Console, puis cliquez sur le système Cloud Volumes ONTAP, puis, dans les options du menu de droite, sélectionnez *System Manager*.
+.. Activez l'accès au protocole S3 sur la SVM. Consultez la link:https://docs.netapp.com/us-en/ontap/s3-multiprotocol/enable-access-nas-data-task.html["Documentation ONTAP : Activer l’accès client S3 aux données NAS"^] pour obtenir des informations.
++
+
+NOTE: Lors de la configuration, utilisez le certificat signé et la clé privée créés dans la section précédente.
+
++
+image::screenshot-ontap-s3-svm-config.png[Capture d'écran de la configuration SVM ONTAP S3]
+
+.. Sélectionnez *Réutiliser l'interface de données utilisée pour le protocole SMB/CIFS ou NFS.* pour réutiliser la LIF existante ou configurer une nouvelle LIF de données.
+
+
+. Copiez et enregistrez la clé d'accès et la clé d'accès secrète. Vous devez utiliser ces informations d'identification lors de la création du raccourci OneLake.
+. Créez un groupe en lecture seule pour accéder aux compartiments S3 depuis OneLake.
++
+.. Après avoir activé le serveur S3, configurez le serveur S3 et ajoutez un nouveau groupe. Sélectionnez *Groupes* et sélectionnez *Ajouter*.
+.. Ajoutez un nouveau groupe avec l'utilisateur S3 qui a été créé automatiquement à l'étape précédente, et attribuez-lui la stratégie  `ReadOnlyAccess`.
++
+image::screenshot-onelake-s3-grp.png[capture d'écran du groupe Onelake S3]
+
+
+
+
+
+
+
+[[create-an-s3-nas-bucket]]
+== Créez un compartiment NAS S3
+
+Créez un compartiment NAS S3. Consultez la link:https://docs.netapp.com/us-en/ontap/s3-multiprotocol/create-nas-bucket-task.html["Documentation ONTAP : Créer un compartiment NAS S3"^] pour obtenir des informations.
+
+
+NOTE: Lors de la création du compartiment, sélectionnez le volume NAS qui contient les données que vous souhaitez rendre disponibles via OneLake.
+
+
+
+[[install-and-configure-microsoft-on-premises-data-gateway]]
+== Installer et configurer la passerelle de données sur site Microsoft
+
+Installez et configurez une passerelle de données locale Microsoft sur une machine virtuelle du même réseau virtuel (vNet) que votre système Cloud Volumes ONTAP. Installez le certificat d'autorité de certification racine Cloud Volumes ONTAP sur la machine virtuelle afin d'établir une relation de confiance pour les connexions HTTPS au serveur ONTAP S3.
+
+.Avant de commencer
+* Assurez-vous qu'il existe une connectivité réseau entre la VM et le serveur ONTAP S3 que vous avez créé dans la section précédente.
+* Assurez-vous que le nom du serveur ONTAP S3 configuré précédemment se résout vers l'adresse IP de l'interface de données (LIF) attribuée au serveur ONTAP S3, et que la VM peut résoudre ce nom avec succès.
+
+
+.Étapes
+. Installez le certificat CA de Cloud Volumes ONTAP.
++
+.. Ouvrez un navigateur sur la machine virtuelle et accédez à votre serveur S3 : `\https://<CVO-S3-SERVER-URL>`
+.. Sélectionnez l'icône de cadenas dans la barre d'adresse, puis sélectionnez *Détails du certificat*.
+.. Dans la fenêtre *Visionneuse de certificats*, sélectionnez l'onglet *Détails*, puis sélectionnez la première ligne de la racine CA dans la liste des certificats.
++
+image::screenshot-onelake-dnld-cert.png[capture d'écran du certificat onelake dnld]
+
+.. Sélectionnez *Exporter...* et enregistrez le fichier localement au format  `DER`.
++
+image::screenshot-onelake-save-cert.png[capture d'écran de la sauvegarde du certificat OneLake]
+
+.. Ouvrez le fichier de certificat que vous avez enregistré, puis sélectionnez *Installer le certificat...*.
++
+image::screenshot-onelake-install-cert.png[capture d'écran de l'installation du certificat Onelake]
+
+.. Dans l'*Assistant d'importation de certificats*, sélectionnez *Machine locale* et placez le certificat dans le magasin *Autorités de certification racines de confiance*.
++
+image::screenshot-onelake-import-cert.png[capture d'écran du certificat d'import onelake]
+
+.. Suivez les instructions pour terminer l'installation du certificat.
+.. Vérifiez l'installation du certificat en ouvrant une nouvelle fenêtre de navigateur et en accédant à  `\https://<CVO-S3-SERVER-URL>`. Le serveur ONTAP S3 devrait renvoyer une réponse XML d'accès refusé, indiquant que la communication HTTPS fonctionne correctement.
+
+
+. Téléchargez et installez la passerelle de données locale Microsoft sur la machine virtuelle en mode standard. Consultez link:https://learn.microsoft.com/en-us/data-integration/gateway/service-gateway-install["Documentation Microsoft : Installer une passerelle de données locale"^] pour connaître la procédure d'installation.
+
+
+
+
+[[connect-to-onelake]]
+== Connectez-vous à OneLake
+
+Créez un raccourci compatible Amazon S3 dans votre lakehouse Microsoft Fabric pour accéder aux données stockées dans votre compartiment S3 Cloud Volumes ONTAP.
+
+.Avant de commencer
+* Un élément existant https://learn.microsoft.com/en-us/fabric/onelake/create-lakehouse-onelake["lakehouse Microsoft Fabric"^] dans votre espace de travail.
+* Dans votre environnement, accédez à *Paramètres > Gérer les connexions et les passerelles* et vérifiez que votre passerelle de données sur site est répertoriée et connectée.
+* Le certificat d'autorité de certification racine Cloud Volumes ONTAP est installé sur la machine virtuelle de passerelle.
+* Vous disposez des valeurs suivantes issues des étapes précédentes :
++
+** Nom du serveur ONTAP S3 (FQDN)
+** Clé d'accès
+** Clé d'accès secrète
+
+
+
+
+.Étapes
+. Dans votre lakehouse, créez un raccourci compatible Amazon S3 vers votre compartiment S3 Cloud Volumes ONTAP en utilisant les informations suivantes. Pour connaître la procédure de création du raccourci, consultez https://learn.microsoft.com/en-us/fabric/onelake/create-s3-compatible-shortcut["Documentation Microsoft : Créer un raccourci compatible Amazon S3"^].
++
+** URL : Le serveur ONTAP S3 au format `\https://<S3-SERVER-FQDN>`
+** Passerelle de données : la passerelle de données sur site que vous avez configurée précédemment
+** ID de la clé d'accès
+** Clé d'accès secrète
++
+image::screenshot-onelake-shortcut1.png[capture d'écran du raccourci onelake 1]
+
+
+
+. Une fois le raccourci créé, vérifiez qu'il apparaît sous *Explorer > Fichiers* dans le lakehouse et que vous pouvez parcourir les fichiers stockés dans le volume Cloud Volumes ONTAP via le raccourci.
++
+image::screenshot-cvo-s3-onelake-confirm.png[Capture d'écran montrant la connexion de raccourci Cloud Volumes ONTAP S3 confirmée, affichée sous Fichiers dans le volet Explorateur de lakehouse OneLake]
+
+
+
+
+
+[[next-steps-index-data-with-azure-ai-search]]
+== Étapes suivantes : Indexer les données avec Azure AI Search
+
+Après avoir créé le raccourci OneLake, vous pouvez configurer Azure AI Search pour indexer les données stockées dans vos volumes Cloud Volumes ONTAP via OneLake. L’indexation par Azure AI Search permet aux applications d’IA telles que Microsoft Copilot et Azure OpenAI d’utiliser ces données.
+
+Pour plus d'informations, consultez link:https://learn.microsoft.com/en-us/azure/search/search-how-to-index-onelake-files["la documentation Microsoft : comment indexer les fichiers OneLake"^].
+
+.Liens connexes
+* https://www.netapp.com/blog/optimize-ai-analytics-microsoft-onelake/["NetApp blog sur Cloud Volumes ONTAP et OneLake"^]
+* https://learn.microsoft.com/en-us/fabric/onelake/create-lakehouse-onelake["lakehouse Microsoft OneLake"^]
+* https://learn.microsoft.com/en-us/azure/search/search-what-is-azure-search?tabs=indexing%2Cquickstarts["Documentation Microsoft : Qu’est-ce qu’Azure AI Search ?"^]
+* https://docs.netapp.com/us-en/ontap/s3-multiprotocol/index.html["Documentation ONTAP : prise en charge multiprotocole ONTAP S3"^]
+

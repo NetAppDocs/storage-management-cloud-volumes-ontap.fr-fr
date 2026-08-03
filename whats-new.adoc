@@ -20,6 +20,38 @@ Les améliorations décrites sur cette page sont spécifiques à la gestion de C
 
 
 
+[[03-august-2026]]
+== 03 août 2026
+
+
+
+[[cloud-volumes-ontap-integration-with-microsoft-onelake]]
+=== Intégration de Cloud Volumes ONTAP avec Microsoft OneLake
+
+Cloud Volumes ONTAP prend désormais en charge l'intégration avec https://learn.microsoft.com/en-us/fabric/onelake/onelake-overview["Microsoft OneLake"^] en préversion publique. Vous pouvez intégrer Cloud Volumes ONTAP avec https://community.fabric.microsoft.com/["Microsoft Fabric"^] en utilisant https://learn.microsoft.com/en-us/fabric/onelake/onelake-overview["Microsoft OneLake"^] pour rendre les données NAS Cloud Volumes ONTAP existantes accessibles aux services d'analyse et d'IA de Microsoft, tels que Power BI, Azure AI Search, OpenAI et Microsoft Copilot. Cette intégration ne nécessite aucun déplacement des données ni duplication. L'intégration utilise https://docs.netapp.com/us-en/ontap/s3-multiprotocol/index.html["ONTAP S3 multiprotocole"^] l'accès pour connecter Cloud Volumes ONTAP à un lakehouse Microsoft Fabric existant.
+
+.Articles et ressources connexes :
+* https://www.netapp.com/blog/optimize-ai-analytics-microsoft-onelake/?utm_content=nativelink&utm_medium=internal&utm_source=linkedin&utm_campaign=b2d-port-all-na-ww-digi-blog-1747859361262&es_id=956c739202["NetApp blog : Optimisez l’IA et l’analytique avec Microsoft OneLake et NetApp Cloud Volumes ONTAP"^]
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-azure-onelake.html["Intégrez les systèmes Cloud Volumes ONTAP avec Microsoft OneLake pour l’IA et l’analytique"^]
+* https://www.netapp.com/media/160786-na-1263-netapp-cloud-volumes-ontap-azure-onelake.pdf["Intégration de Cloud Volumes ONTAP avec Microsoft OneLake - Note technique"^]
+
+
+
+
+[[fix-dismiss-and-reactivate-configurations-for-cloud-volumes-ontap-in-microsoft-azure]]
+=== Corrigez, ignorez et réactivez les configurations pour Cloud Volumes ONTAP dans Microsoft Azure
+
+Le tableau de bord bien conçu dans la NetApp Console vous permet désormais de corriger les recommandations de configuration pour vos systèmes Cloud Volumes ONTAP.
+
+Vous pouvez également exclure une ou plusieurs configurations de l'analyse d'architecture. Cela vous permet d'ignorer les configurations qui ne s'appliquent pas à votre environnement.
+
+Si vous souhaitez réintégrer ultérieurement une configuration rejetée, vous pouvez la réactiver dans le tableau de bord bien architecturé. Cela rétablit la configuration dans l'analyse et vous permet d'obtenir des recommandations et des correctifs pour celle-ci.
+
+* link:https://docs.netapp.com/us-en/console-well-architected/cvo/improve-configurations-cvo.html["Corrigez, ignorez et réactivez les configurations pour Cloud Volumes ONTAP dans Microsoft Azure"^]
+
+
+
+
 [[23-july-2026]]
 == 23 juillet 2026
 

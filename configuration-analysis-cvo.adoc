@@ -1,0 +1,122 @@
+---
+sidebar: sidebar 
+permalink: configuration-analysis-cvo.html 
+keywords: Cloud Volumes ONTAP, license, well-architected, WAD, CVO 
+summary: 'Le tableau de bord bien conçu dans la NetApp Console analyse régulièrement les configurations des systèmes de stockage afin de déterminer s"il existe des problèmes de configuration avec vos systèmes Cloud Volumes ONTAP. Lorsque des problèmes sont détectés, le tableau de bord vous indique quels sont ces problèmes et explique les modifications à apporter pour garantir que vos systèmes de stockage atteignent des performances optimales, une efficacité des coûts et la conformité aux bonnes pratiques.' 
+---
+= Analyse de la configuration de Cloud Volumes ONTAP sur le tableau de bord Well-architected
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: https://docs.netapp.com/us-en/console-well-architected/media/
+
+
+[role="lead"]
+Le tableau de bord bien conçu dans la NetApp Console analyse régulièrement les configurations des systèmes de stockage afin de déterminer s'il existe des problèmes de configuration avec vos systèmes Cloud Volumes ONTAP. Lorsque des problèmes sont détectés, le tableau de bord vous indique quels sont ces problèmes et explique les modifications à apporter pour garantir que vos systèmes de stockage atteignent des performances optimales, une efficacité des coûts et la conformité aux bonnes pratiques.
+
+Principales fonctionnalités :
+
+* Analyse quotidienne de la configuration
+* Validations automatiques des bonnes pratiques pour les systèmes de stockage NetApp ONTAP et les fournisseurs de stockage partenaires
+* Observabilité proactive
+* Des idées à l'action
+
+
+Directive non résolue dans  https://raw.githubusercontent.com/NetAppDocs/console-well-architected/main/cvo/configuration-analysis-cvo.adoc[] - include::well-architected-workloads.adoc[]
+
+
+
+[[analysis-requirements]]
+== Exigences d'analyse
+
+Pour une analyse complète du système Cloud Volumes ONTAP, vous devez link:https://docs.netapp.com/us-en/console-setup-admin/concept-agent-install-options.html#agent-console-deploy["déployer un agent NetApp Console"^] établir une connectivité entre vos systèmes et la NetApp Console.
+
+
+
+[[best-practices-and-recommendations-for-cloud-volumes-ontap-systems]]
+== Bonnes pratiques et recommandations pour les systèmes Cloud Volumes ONTAP
+
+Le tableau de bord bien architecturé évalue les configurations de stockage afin de fournir une vue détaillée des meilleures pratiques de configuration ONTAP et de la conformité au Azure Well-Architected Framework. L’évaluation recommande également des améliorations et des corrections.
+
+L'analyse bien conçue catégorise les configurations selon les piliers suivants du cadre : _fiabilité_, _sécurité_, _excellence opérationnelle_, _optimisation des coûts_ et _efficacité des performances_.
+
+
+
+[[reliability]]
+=== Fiabilité
+
+La fiabilité garantit que les charges de travail exécutent leurs fonctions prévues correctement et de manière constante, même en cas de perturbations.
+
+* *Politique d'instantané*
++
+Planifiez des instantanés locaux pour une sauvegarde efficace et une restauration rapide. Les instantanés sont des images instantanées de vos volumes à un instant précis.
+
+* *Marge de capacité SSD*
++
+La capacité du niveau de stockage SSD ne doit pas dépasser 80 % d'utilisation. Cela pourrait impacter les lectures et écritures de données sur votre niveau de stockage pool de capacité et affecter la capacité de débit de votre système. Lorsque la capacité est épuisée, les volumes de données deviennent en lecture seule. Les services tentant d'écrire de nouvelles données échouent également.
+
+
+
+
+
+[[security]]
+=== Sécurité
+
+La sécurité met l'accent sur la protection des données, des systèmes et des actifs grâce à des évaluations des risques et des stratégies d'atténuation.
+
+* *Protection autonome contre les ransomwares grâce à l’IA (ARP/AI)*
++
+NetApp Autonomous Ransomware Protection avec intelligence artificielle (ARP/AI) aide à renforcer la résilience cybernétique et à protéger vos volumes contre les menaces de ransomware. Nous vous recommandons d’activer ARP/AI pour tous les volumes.
+
+
+
+
+
+[[operational-excellence]]
+=== Excellence opérationnelle
+
+L'excellence opérationnelle vise à fournir la meilleure architecture et la meilleure valeur commerciale.
+
+* *Capacité maximale du volume*
++
+Nous recommandons de ne pas dépasser 80 % d'utilisation de la capacité du volume. Cela pourrait impacter les opérations de lecture et d'écriture de données de votre application. L'augmentation de la capacité du volume peut être manuelle ou automatique grâce à la fonction d'extension automatique du volume.
+
+* *FlexCache mode écriture*
++
+Pour des performances optimales, nous vous recommandons le mode d'écriture FlexCache le mieux adapté à votre charge de travail. Le mode « write-around » offre de meilleures performances pour les charges de travail à forte intensité de lecture avec des fichiers de petite taille, tandis que le mode « write-back » offre de meilleures performances pour les charges de travail à forte intensité d'écriture avec des fichiers volumineux.
+
+* *FlexCache taille de la réplique*
++
+Nous vous recommandons d’activer le dimensionnement automatique des volumes et le nettoyage des volumes de cache afin de maintenir une taille optimale et de concentrer le cache sur les données fréquemment consultées (données chaudes) pour une efficacité maximale.
+
+* *Conformité de la version ONTAP*
++
+Mettez à niveau vers la dernière version d'ONTAP pour bénéficier d'une compatibilité totale, d'un support complet et d'un accès aux nouvelles fonctionnalités.
+
+
+
+
+
+[[cost-optimization]]
+=== Optimisation des coûts
+
+L'optimisation des coûts vous aide à obtenir la plus grande valeur pour votre entreprise tout en maintenant les coûts bas.
+
+* *Capacité SSD surdimensionnée*
++
+Un surdimensionnement de la capacité SSD engendre des coûts inutiles. Nous recommandons de réduire la capacité de la couche SSD tout en conservant une marge d'espace libre de 20 %. Une opération de diminution peut prendre de plusieurs heures à plusieurs jours, et les autres opérations sur le système de fichiers ne sont pas prises en charge pendant cette période.
+
+* *Hiérarchisation des données froides*
++
+Activez la hiérarchisation des données froides pour déplacer ces données du niveau de stockage SSD vers un stockage moins coûteux. Nous vous recommandons d'appliquer une stratégie de hiérarchisation à chaque volume. Azure Blob Storage sert de niveau de capacité pour les données inactives.
+
+
+
+.Et ensuite
+link:https://docs.netapp.com/us-en/console-well-architected/cvo/improve-configurations-cvo.html["Mettre en œuvre des configurations système Cloud Volumes ONTAP bien architecturées"]
+
+.Lien connexe
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/whats-new.html#well-architected-configuration-analysis-for-cloud-volumes-ontap-in-azure["Analyse de configuration bien architecturée pour Cloud Volumes ONTAP dans Azure"^]
+
