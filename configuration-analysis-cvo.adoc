@@ -24,7 +24,7 @@ Principales fonctionnalités :
 * Des idées à l'action
 
 
-Directive non résolue dans  https://raw.githubusercontent.com/NetAppDocs/console-well-architected/main/cvo/configuration-analysis-cvo.adoc[] - include::well-architected-workloads.adoc[]
+Directive non résolue dans  https://raw.githubusercontent.com/NetAppDocs/console-well-architected/main/cvo/configuration-analysis-cvo.adoc[] - include::_include/well-architected-workloads.adoc[]
 
 
 
