@@ -4,7 +4,7 @@ permalink: configuration-analysis-cvo.html
 keywords: Cloud Volumes ONTAP, license, well-architected, WAD, CVO 
 summary: 'Le tableau de bord bien conçu dans la NetApp Console analyse régulièrement les configurations des systèmes de stockage afin de déterminer s"il existe des problèmes de configuration avec vos systèmes Cloud Volumes ONTAP. Lorsque des problèmes sont détectés, le tableau de bord vous indique quels sont ces problèmes et explique les modifications à apporter pour garantir que vos systèmes de stockage atteignent des performances optimales, une efficacité des coûts et la conformité aux bonnes pratiques.' 
 ---
-= Analyse de la configuration de Cloud Volumes ONTAP sur le tableau de bord Well-architected
+= Analyse de configuration pour Cloud Volumes ONTAP
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
