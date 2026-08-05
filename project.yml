@@ -90,7 +90,7 @@ sidebar:
         url: "/task-deploying-otc-aws.html"
       - title: Déployer Cloud Volumes ONTAP dans les régions secrètes AWS
         url: "/task-getting-started-aws-c2s.html"
-    - title: "${post_edited_translations.segment}"
+    - title: Déployez dans Microsoft Azure
       flavor: azure
       entries:
       - title: Découvrez les options de déploiement de Cloud Volumes ONTAP dans Azure

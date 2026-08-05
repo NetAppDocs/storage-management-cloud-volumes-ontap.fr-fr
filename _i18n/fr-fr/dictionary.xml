@@ -7311,7 +7311,6 @@
   <block id="e09176c7f91868e727cff588a88483f9" category="sidebar">Découvrez le stockage Cloud Volumes ONTAP</block>
   <block id="d0b7fc655f17f9fb79fb2370f468fe98" category="sidebar">Déployer sur Amazon Web Services</block>
   <block id="42f8643eb52a942747937327c72c8361" category="sidebar">Aperçu du déploiement</block>
-  <block id="879788f9d194942bb00ec527f73606a2" category="sidebar">${post_edited_translations.segment}</block>
   <block id="b2707911a86e6fe30f8bca797065b4ea" category="sidebar">Déployer dans la NetApp Console</block>
   <block id="96e3caea6225511622013109e63c0bfd" category="sidebar">Découvrez la vérification des images Azure</block>
   <block id="e804d345a3fee1d437005376b7252919" category="sidebar">Déployer dans Azure Marketplace</block>
@@ -7681,4 +7680,5 @@
   <block id="c2bf4ab5c816a6a7be03384125f4a5d6" category="paragraph">Workload Factory applique les meilleures pratiques aux environnements de stockage, de bases de données et VMware de grande envergure en combinant une évaluation continue avec des recommandations et des corrections. Les correctifs automatisés appliqués dans la NetApp Console réduisent les erreurs humaines, garantissent une gestion uniforme et préservent les performances et la fiabilité de vos infrastructures de charges de travail.</block>
   <block id="8f96dd86c3b476f91f5e8deb2f840342" category="sidebar">Cloud Volumes ONTAP et autres produits NetApp</block>
   <block id="632cbf73d084e28580f4f6dfbd84efcc" category="sidebar">Cloud Volumes ONTAP et Flash Cache</block>
+  <block id="879788f9d194942bb00ec527f73606a2" category="sidebar">Déployez dans Microsoft Azure</block>
 </blocks>
