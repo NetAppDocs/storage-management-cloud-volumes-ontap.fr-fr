@@ -4,7 +4,7 @@ permalink: task-manage-node-licenses.html
 keywords: license, licensing, install, updating license, system license, add system license, adding a system license,  update byol license, nlf, license generator, extra, by-node, NetApp Console, cloud backup, cloud data sense, cloud tiering 
 summary: 'Gérez vos licences basées sur des nœuds dans la NetApp Console pour vous assurer que chaque système Cloud Volumes ONTAP dispose d"une licence valide avec la capacité requise.' 
 ---
-= Gérer les licences basées sur les nœuds pour Cloud Volumes ONTAP
+= Gérer les licences par nœud pour Cloud Volumes ONTAP
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 

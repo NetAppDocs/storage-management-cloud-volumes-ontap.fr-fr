@@ -14,14 +14,18 @@ summary: Plusieurs options de licence sont disponibles pour Cloud Volumes ONTAP.
 
 
 [role="lead"]
-Plusieurs options de licence sont disponibles pour Cloud Volumes ONTAP. Chaque option vous permet de choisir un modèle de consommation qui répond à vos besoins.
+Plusieurs modèles de licence sont disponibles pour Cloud Volumes ONTAP. Chaque option vous permet de choisir un modèle de consommation adapté à vos besoins.
+
+Vous avez la possibilité d’acheter ou de renouveler vos Licenses and subscriptions sur les marketplaces cloud ou via NetApp (bring your own license (BYOL)). La marketplace vous propose des abonnements annuels et des options de paiement à l’utilisation (PAYGO). Pour plus d’informations, consultez link:concept-license-management.html["En savoir plus sur les licences basées sur la capacité pour Cloud Volumes ONTAP"].
+
+Les licences BYOL sont disponibles à l'achat auprès de NetApp et peuvent être utilisées avec n'importe quel fournisseur de cloud. Pour plus d'informations sur la disponibilité des licences BYOL, consultez  https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/whats-new.html#restricted-availability-of-byol-licensing-for-cloud-volumes-ontap["Disponibilité restreinte des licences BYOL pour Cloud Volumes ONTAP"^].
 
 
 
 [[licensing-overview]]
 == Aperçu des licences
 
-Les options de licence suivantes sont disponibles pour les nouveaux clients.
+Les nouveaux clients peuvent opter pour une facturation via des abonnements annuels au marketplace basés sur la capacité ou des abonnements Keystone. Quelques déploiements, comme ceux en mode privé, disposent également des licences BYOL de génération précédente, basées sur les nœuds.
 
 Licences basées sur la capacité:: Payez plusieurs systèmes Cloud Volumes ONTAP dans votre compte NetApp par capacité provisionnée. Inclut la possibilité d’acheter des services de données cloud complémentaires. Pour plus d'informations sur les modèles de consommation ou les options d'achat de licences basées sur la capacité, veuillez consulter :link:concept-licensing-charging.html["En savoir plus sur les licences basées sur la capacité"] .
 Abonnement Keystone:: Un service par abonnement à paiement progressif qui offre une expérience de cloud hybride transparente pour les paires haute disponibilité (HA).
@@ -243,6 +247,9 @@ Pour plus d'informations, reportez-vous à https://mysupport.netapp.com/info/com
 
 Si vous disposez d'un contrat valide basé sur des nœuds qui s'étend au-delà de la date EOA, vous pouvez continuer à utiliser la licence jusqu'à l'expiration du contrat.  Une fois le contrat expiré, il sera nécessaire de passer au modèle de licence basé sur la capacité.  Si vous ne disposez pas d'un contrat à long terme pour un nœud Cloud Volumes ONTAP , il est important de planifier votre conversion avant la date EOS.
 
+
+NOTE: Déploiements de Cloud Volumes ONTAP en mode privé dans un environnement privé.
+
 Apprenez-en davantage sur chaque type de licence et l'impact de l'EOA sur celui-ci à partir de ce tableau :
 
 [cols="2*"]
@@ -270,13 +277,8 @@ Licence valide basée sur les nœuds avec abonnement PAYGO
 Vous cesserez de bénéficier du support NetApp après la date de fin de service, jusqu'à ce que vous passiez à une licence basée sur la capacité.
 
 |===
-.Exclusions
-NetApp reconnaît que certaines situations nécessitent une attention particulière, et les EOA et EOS des licences basées sur les nœuds ne s'appliqueront pas aux cas suivants :
-
-* Clients du secteur public américain
-* Déploiements en mode privé
-* Déploiements de Cloud Volumes ONTAP dans AWS en Chine
-
+.Exceptions
+NetApp reconnaît que certaines situations nécessitent une attention particulière, telles que les déploiements de Cloud Volumes ONTAP dans la région Chine sur AWS, et que les clauses EOA et EOS des licences basées sur les nœuds peuvent ne pas s'appliquer aux cas suivants :
 
 Pour ces scénarios particuliers, NetApp offrira un support pour répondre aux exigences de licence uniques, conformément aux obligations contractuelles et aux besoins opérationnels.
 

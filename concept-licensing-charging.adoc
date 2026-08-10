@@ -26,7 +26,7 @@ Des formules de licences basées sur la capacité sont disponibles avec les mod�
 * *BYOL* : Apportez votre propre permis de conduire (BYOL).  Une licence achetée auprès de NetApp qui peut être utilisée pour déployer Cloud Volumes ONTAP chez n’importe quel fournisseur de cloud.
 +
 
-NOTE: NetApp a restreint l'achat, la prolongation et le renouvellement des licences BYOL. Pour plus d'informations, consultez  https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/whats-new.html#restricted-availability-of-byol-licensing-for-cloud-volumes-ontap["Disponibilité restreinte des licences BYOL pour Cloud Volumes ONTAP"^] .
+NOTE: NetApp a restreint l'achat, la prolongation et le renouvellement des licences BYOL, et a limité la disponibilité dans des scénarios spécifiques, tels que les déploiements en mode privé. Pour plus d'informations, consultez  https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/whats-new.html#restricted-availability-of-byol-licensing-for-cloud-volumes-ontap["Disponibilité restreinte des licences BYOL pour Cloud Volumes ONTAP"^].
 
 
 
@@ -35,7 +35,7 @@ ifdef::azure[]
 endif::azure[]
 
 * *PAYGO* : Un abonnement à la carte (PAYGO) est un abonnement horaire proposé par la place de marché de votre fournisseur de cloud.
-* *Annuel* : Un contrat annuel de la place de marché de votre fournisseur de cloud.
+* *Abonnements Marketplace/Contrat annuel* : Un contrat annuel depuis la marketplace de votre fournisseur de cloud. Les déploiements en mode privé ne prennent pas en charge les abonnements Marketplace.
 
 
 Notez ce qui suit :

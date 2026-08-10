@@ -20,6 +20,35 @@ Les améliorations décrites sur cette page sont spécifiques à la gestion de C
 
 
 
+[[10-august-2026]]
+== 10 août 2026
+
+
+
+[[cloud-volumes-ontap-9-19-1]]
+=== Cloud Volumes ONTAP 9.19.1
+
+Vous pouvez désormais utiliser la NetApp Console pour déployer et gérer la version General Availability (GA) de Cloud Volumes ONTAP 9.19.1 sur Amazon Web Service (AWS) et Google Cloud. Cette version n'est pas disponible pour le déploiement et la mise à niveau sur Microsoft Azure (Azure).
+
+https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/["En savoir plus sur cette version de Cloud Volumes ONTAP"^].
+
+
+
+[[ability-to-convert-node-based-licenses-to-capacity-based-licensing-in-private-mode]]
+=== Possibilité de convertir les licences basées sur les nœuds en licences basées sur la capacité en mode privé
+
+NetApp est heureux d’annoncer la licence basée sur la capacité pour les déploiements Cloud Volumes ONTAP en mode privé. Vous pouvez désormais optimiser les coûts de vos déploiements Cloud Volumes ONTAP en mode privé en convertissant votre licence par nœud en une licence basée sur la capacité. Pour vos déploiements en mode privé, vous pouvez acheter un pack Essentials (bring your own license (BYOL)) directement auprès de NetApp avec une capacité similaire à celle de votre licence par nœud actuelle.
+
+Cette option de conversion prend en charge le plan progressif de NetApp visant à abandonner les licences par nœud au profit des licences basées sur la capacité. Contrairement aux licences par nœud, qui allouent une capacité fixe à chaque système, les licences basées sur la capacité puisent dans un pool de capacité partagé entre vos systèmes Cloud Volumes ONTAP, vous offrant ainsi une plus grande flexibilité pour redistribuer les charges de travail à mesure que vos besoins de stockage évoluent.
+
+.Liens connexes
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing.html#end-of-availability-of-node-based-licenses["Fin de disponibilité des licences basées sur des nœuds"^]
+* https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-convert-node-capacity.html#conversion-in-a-private-mode-deployment["Conversion en mode de déploiement privé"^]
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-manage-node-licenses.html["Gérer les licences par nœud pour Cloud Volumes ONTAP"^]
+
+
+
+
 [[03-august-2026]]
 == 03 août 2026
 
@@ -124,12 +153,12 @@ Le tableau de bord bien architecturé affiche le nombre total de systèmes analy
 
 
 
-[[cloud-volumes-ontap-9-19-1-rc]]
-=== Cloud Volumes ONTAP 9.19.1 RC
+[[cloud-volumes-ontap-9-19-1]]
+=== Cloud Volumes ONTAP 9.19.1
 
-Vous pouvez désormais utiliser la NetApp Console pour déployer et gérer la version Release Candidate (RC) de Cloud Volumes ONTAP 9.19.1 dans Google Cloud. Cette version n'est pas disponible pour le déploiement et la mise à niveau dans Amazon Web Service (AWS) et Microsoft Azure (Azure).
+La version Release Candidate (RC) de Cloud Volumes ONTAP 9.19.1 est disponible uniquement sur Google Cloud pour la mise à niveau vers la version 9.19.1 General Availability (GA).
 
-link:https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/["En savoir plus sur cette version de Cloud Volumes ONTAP"^] .
+https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/["En savoir plus sur cette version de Cloud Volumes ONTAP"^].
 
 
 

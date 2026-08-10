@@ -1,0 +1,20 @@
+= Déployer Cloud Volumes ONTAP en mode privé
+:allow-uri-read: 
+
+
+
+
+[[deploy-cloud-volumes-ontap-in-private-mode]]
+== Déployer Cloud Volumes ONTAP en mode privé
+
+Vous pouvez déployer Cloud Volumes ONTAP en mode privé en suivant une procédure de conversion documentée, étape par étape, directement au sein de votre environnement existant. Dans le déploiement en mode privé, le système Cloud Volumes ONTAP est déployé dans votre propre cloud privé virtuel (VPC) ou réseau virtuel (VNet) et n'est pas connecté à Internet public. Vous pouvez utiliser le déploiement en mode privé pour répondre aux exigences de sécurité et de conformité de votre organisation.
+
+Les déploiements en mode privé utilisaient auparavant uniquement des licences par nœud que vous pouviez vous procurer auprès de NetApp. La licence par nœud est la licence de génération précédente pour Cloud Volumes ONTAP. NetApp avait restreint l'achat, l'extension et le renouvellement des licences par nœud, sauf exceptions, depuis https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/whats-new.html#restricted-availability-of-byol-licensing-for-cloud-volumes-ontap["2025-06-25"]. À compter du 31 juillet 2026, la licence par nœud atteindra la fin de disponibilité (EOA) pour ces cas exceptionnels, tels que United States Public Sector (USPS) et d'autres déploiements en mode privé.
+
+Si vous disposez d'un déploiement privé avec une licence basée sur les nœuds, voici la procédure à suivre :
+
+* Vous ne pouvez plus acheter ni renouveler votre licence basée sur les nœuds.
+* Impossible d'accéder aux nouvelles fonctionnalités et améliorations.
+* Continuez à subir une rigidité opérationnelle accrue en raison des contraintes liées aux nœuds.
+* Vous devrez passer à une licence privée basée sur la capacité une fois que la licence par nœud aura expiré. Pour obtenir des instructions, consultez  https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-convert-node-capacity.html["Convertir les licences par nœud en licences par capacité"^].
+

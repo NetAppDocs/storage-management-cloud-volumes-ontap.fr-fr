@@ -1,15 +1,15 @@
-= Cloud Volumes ONTAP 9.19.1 RC
+= Cloud Volumes ONTAP 9.19.1
 :allow-uri-read: 
 
 
 
 
-[[cloud-volumes-ontap-9-19-1-rc]]
-=== Cloud Volumes ONTAP 9.19.1 RC
+[[cloud-volumes-ontap-9-19-1]]
+=== Cloud Volumes ONTAP 9.19.1
 
-Vous pouvez désormais utiliser la NetApp Console pour déployer et gérer la version Release Candidate (RC) de Cloud Volumes ONTAP 9.19.1 dans Google Cloud. Cette version n'est pas disponible pour le déploiement et la mise à niveau dans Amazon Web Service (AWS) et Microsoft Azure (Azure).
+La version Release Candidate (RC) de Cloud Volumes ONTAP 9.19.1 est disponible uniquement sur Google Cloud pour la mise à niveau vers la version 9.19.1 General Availability (GA).
 
-link:https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/["En savoir plus sur cette version de Cloud Volumes ONTAP"^] .
+https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/["En savoir plus sur cette version de Cloud Volumes ONTAP"^].
 
 
 
