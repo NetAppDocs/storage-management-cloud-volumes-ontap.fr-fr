@@ -1,0 +1,17 @@
+= Prise en charge des régions Austria East et Belgium Central dans Azure
+:allow-uri-read: 
+
+
+
+
+[[support-for-austria-east-and-belgium-central-regions-in-azure]]
+=== Prise en charge des régions Austria East et Belgium Central dans Azure
+
+Vous pouvez désormais déployer Cloud Volumes ONTAP 9.12.1 GA et versions ultérieures dans les régions Austria East (austriaeast) et Belgium Central (belgiumcentral) dans Azure. Les types de déploiement suivants sont pris en charge :
+
+* Nœud unique
+* Haute disponibilité dans une seule zone de disponibilité utilisant un stockage localement redondant (LRS)
+* HA dans plusieurs zones de disponibilité utilisant un stockage redondant de zone (ZRS)
+
+
+Pour une liste de toutes les régions prises en charge, reportez-vous à la https://bluexp.netapp.com/cloud-volumes-global-regions["Carte des régions mondiales sous Azure"^] .

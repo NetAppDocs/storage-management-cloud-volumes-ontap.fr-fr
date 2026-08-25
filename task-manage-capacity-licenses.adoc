@@ -106,6 +106,7 @@ https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-licensing.html[
 La Console tente toujours d'abord de facturer une licence. Si une licence n'est pas disponible, elle facture un abonnement Marketplace. Vous n'avez pas à convertir un abonnement BYOL en abonnement Marketplace ou inversement.
 
 * Si vous avez une offre ou un contrat privé provenant de la place de marché de votre fournisseur de cloud, le passage à une méthode de facturation non incluse dans votre contrat entraînera une facturation selon le modèle BYOL (si vous avez acheté une licence auprès de NetApp) ou PAYGO.
+* Si vous prévoyez de facturer la capacité Cloud Volumes ONTAP via l’abonnement Cloud Volumes ONTAP autonome dans AWS Marketplace, le système Cloud Volumes ONTAP doit utiliser un forfait basé sur la capacité pris en charge (Essentials ou Freemium). Le forfait Professional n’est pas pris en charge pour l’offre autonome et continue d’être facturé via l’abonnement NIS. Après avoir sélectionné le forfait souhaité, utilisez *Préférences de facturation* dans la NetApp Console pour choisir l’abonnement Marketplace utilisé pour la facturation Cloud Volumes ONTAP.
 
 
 .Étapes
