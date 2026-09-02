@@ -7843,4 +7843,16 @@
   <block id="a610575fc8363bddd388bfee0dc0a7ee" category="list-text"><block ref="a610575fc8363bddd388bfee0dc0a7ee" category="inline-link-macro-rx"></block></block>
   <block id="43026f5cdef9b8d7671a52ecabf5bea0" category="list-text"><block ref="43026f5cdef9b8d7671a52ecabf5bea0" category="inline-link-rx"></block></block>
   <block id="f6bbe5efd3f2141104f822ac01ed3102" category="section-title">25 août 2026</block>
+  <block id="9775ec01b640ec37d790fc80fcd304fa" category="doc">Prise en charge de Cloud Volumes ONTAP dans les régions Azure Secret et Top Secret (aperçu privé)</block>
+  <block id="71220dfc0ef52806d7063323e20a8d01" category="paragraph">Cloud Volumes ONTAP prend désormais en charge le déploiement dans les régions Azure Government Secret et Top Secret en préversion privée. Cette fonctionnalité étend Cloud Volumes ONTAP aux environnements Azure classifiés de Microsoft, permettant ainsi aux clients gouvernementaux et de défense d'utiliser ONTAP pour la gestion des données, la protection et la reprise après sinistre, afin de prendre en charge les charges de travail liées à la sécurité nationale. Contactez votre équipe NetApp pour participer.</block>
+  <block id="9a4d5529d16b869118217275b6da762d" category="paragraph">Pour plus d'informations, consultez la documentation Azure :</block>
+  <block id="d6cb1d3533b658f7c8098c480b799207" category="inline-link">Cloud pour les missions du gouvernement américain^</block>
+  <block id="77063c44fc617a6f3c637b1e2c35bd37" category="list-text"><block ref="77063c44fc617a6f3c637b1e2c35bd37" category="inline-link-rx"></block></block>
+  <block id="985c02ef44894c5b9eb81c7ef41befb6" category="inline-link">Azure Government Secret</block>
+  <block id="97003784d2f5493688983ca3efa74e68" category="list-text"><block ref="97003784d2f5493688983ca3efa74e68" category="inline-link-rx"></block></block>
+  <block id="68e1f1aba2e1561ee3226c9bcfef5ee1" category="inline-link">Azure Government Top Secret</block>
+  <block id="3a487e075186bbd01e8a952b88b55326" category="list-text"><block ref="3a487e075186bbd01e8a952b88b55326" category="inline-link-rx"></block></block>
+  <block id="c465a7bd98f96ab6b7e15dbed5471998" category="list-text">*Réplication des données à distance*</block>
+  <block id="b03b92c4dfcafd9226ecc9026f960e01" category="paragraph">Protégez vos données Cloud Volumes ONTAP grâce à la réplication à distance. La réplication des données à distance offre des capacités de reprise après sinistre en maintenant des copies synchronisées de vos données à différents emplacements, garantissant la continuité de l'activité en cas de défaillance du système ou de sinistre.</block>
+  <block id="5e6b403f3ce4af919738fd94fe35d2d0" category="section-title">02 septembre 2026</block>
 </blocks>

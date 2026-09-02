@@ -81,6 +81,10 @@ Planifiez des instantanés locaux pour une sauvegarde efficace et une restaurati
 +
 La capacité du niveau de stockage SSD ne doit pas dépasser 80 % d'utilisation. Cela pourrait impacter les lectures et écritures de données sur votre niveau de stockage pool de capacité et affecter la capacité de débit de votre système. Lorsque la capacité est épuisée, les volumes de données deviennent en lecture seule. Les services tentant d'écrire de nouvelles données échouent également.
 
+* *Réplication des données à distance*
++
+Protégez vos données Cloud Volumes ONTAP grâce à la réplication à distance. La réplication des données à distance offre des capacités de reprise après sinistre en maintenant des copies synchronisées de vos données à différents emplacements, garantissant la continuité de l'activité en cas de défaillance du système ou de sinistre.
+
 
 
 
