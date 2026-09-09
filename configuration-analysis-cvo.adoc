@@ -14,7 +14,7 @@ summary: 'Le tableau de bord bien conçu dans la NetApp Console analyse réguli�
 
 
 [role="lead"]
-Le tableau de bord bien conçu dans la NetApp Console analyse régulièrement les configurations des systèmes de stockage afin de déterminer s'il existe des problèmes de configuration avec vos systèmes Cloud Volumes ONTAP. Lorsque des problèmes sont détectés, le tableau de bord vous indique quels sont ces problèmes et explique les modifications à apporter pour garantir que vos systèmes de stockage atteignent des performances optimales, une efficacité des coûts et la conformité aux bonnes pratiques.
+Workload Factory analyse régulièrement la configuration de vos systèmes de stockage afin de détecter d'éventuels problèmes de configuration sur vos systèmes Cloud Volumes ONTAP. Lorsque des problèmes sont détectés, le tableau de bord bien architecturé affiche la nature des problèmes ainsi que des recommandations sur les modifications à apporter pour garantir que vos systèmes de stockage atteignent des performances optimales, une efficacité des coûts et la conformité aux meilleures pratiques.
 
 Principales fonctionnalités :
 
