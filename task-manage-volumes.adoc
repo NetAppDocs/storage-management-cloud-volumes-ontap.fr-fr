@@ -264,7 +264,7 @@ Par exemple, les informations avancées devraient indiquer quelque chose de simi
 . Identifiez un ou plusieurs volumes à retirer de l'agrégat :
 +
 .. Dans le système Cloud Volumes ONTAP , cliquez sur l’onglet *Agrégats*.
-.. Sur la tuile agrégée, cliquez sur leimage:icon-action.png[""] icône puis cliquez sur *Afficher les détails agrégés*.
+.. Sur la vignette agrégat, cliquez sur l’icône image:icon-action.png["Une icône représentant trois points horizontaux pour des actions supplémentaires"] puis sur *Afficher les détails de l’agrégat*.
 .. Sous l’onglet *Aperçu* de l’écran *Détails agrégés*, vérifiez la taille de chaque volume et choisissez un ou plusieurs volumes à déplacer hors de l’agrégat.
 +
 Vous devez choisir des volumes suffisamment grands pour libérer de l’espace dans l’ensemble afin d’éviter des problèmes de capacité supplémentaires à l’avenir.
@@ -348,7 +348,7 @@ Le déplacement de deux volumes ou plus est nécessaire pour éviter les problè
 . Vérifiez si un agrégat existant dispose d’une capacité disponible pour les volumes que vous devez déplacer :
 +
 .. Sur le système Cloud Volumes ONTAP , cliquez sur l’onglet *Agrégats*.
-.. Sur la tuile d'agrégat requise, cliquez sur le boutonimage:icon-action.png[""] icône puis *Afficher les détails agrégés* pour afficher la capacité disponible (taille provisionnée moins capacité agrégée utilisée).
+.. Sur la tuile d’agrégat requise, cliquez sur l’icône image:icon-action.png["Une icône représentant trois points horizontaux pour des actions supplémentaires"] puis sur *Afficher les détails de l’agrégat* pour afficher la capacité disponible (taille provisionnée moins capacité agrégée utilisée).
 +
 image::screenshot_aggr_capacity.png[capacité agrégée de capture d'écran]
 
@@ -356,7 +356,7 @@ image::screenshot_aggr_capacity.png[capacité agrégée de capture d'écran]
 
 . Si nécessaire, ajoutez des disques à un agrégat existant :
 +
-.. Sélectionnez l'agrégat, puis cliquez sur le boutonimage:icon-action.png[""] icône > *Ajouter des disques*.
+.. Sélectionnez l’agrégat, puis cliquez sur l’icône image:icon-action.png["Une icône représentant trois points horizontaux pour des actions supplémentaires"] > *Ajouter des disques*.
 .. Sélectionnez le nombre de disques à ajouter, puis cliquez sur *Ajouter*.
 
 

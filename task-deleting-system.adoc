@@ -35,7 +35,7 @@ https://docs.netapp.com/us-en/bluexp-classification/concept-cloud-compliance.htm
 . Supprimez le système Cloud Volumes ONTAP .
 +
 .. Sur la page *Systèmes*, double-cliquez sur le nom du système Cloud Volumes ONTAP que vous souhaitez supprimer.
-.. En haut à droite de la console, cliquez sur leimage:icon-action.png[""] icône et sélectionnez *Supprimer*.
+.. En haut à droite de la console, cliquez sur l’icône image:icon-action.png["Une icône représentant trois points horizontaux pour des actions supplémentaires"] et sélectionnez *Supprimer*.
 .. Tapez le nom du système que vous souhaitez supprimer, puis cliquez sur *Supprimer*.  La suppression d’un système peut prendre jusqu’à cinq minutes.
 
 

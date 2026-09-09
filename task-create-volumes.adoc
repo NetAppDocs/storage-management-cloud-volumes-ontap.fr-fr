@@ -65,7 +65,7 @@ Sélectionnez l’onglet Volumes et cliquez sur *Ajouter un volume*.image:screen
 --
 .Agrégat spécifique
 --
-.. Dans l'onglet *Agrégats*, accédez à l'agrégat requis et cliquez sur le boutonimage:icon-action.png[""] icône.
+.. Dans l'onglet *Agrégats*, accédez à l'agrégat souhaité et cliquez sur l'icône image:icon-action.png["Une icône représentant trois points horizontaux pour des actions supplémentaires"].
 .. Sélectionnez *Ajouter du volume*.image:screenshot_add_volume_button_agg.png["Une capture d’écran du bouton Ajouter un volume sous l’onglet Agrégats."]
 
 

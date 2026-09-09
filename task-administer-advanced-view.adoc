@@ -71,7 +71,7 @@ Vous devez disposer des privilèges d’administrateur d’organisation ou de co
 
 .Étapes
 . Dans le volet de navigation de gauche, accédez à *Administration > Agents*.
-. Cliquez sur leimage:icon-action.png[""] icône pour l'agent de console requis et sélectionnez *Modifier l'agent de console*.
+. Cliquez sur l'image:icon-action.png["Une icône représentant trois points horizontaux pour des actions supplémentaires"]icône pour l'agent de console requis et sélectionnez *Modifier l'agent de console*.
 . Sous *Forcer les informations d’identification de l’utilisateur*, cochez la case *Activer/Désactiver*.  Par défaut, l'authentification est désactivée.
 +
 

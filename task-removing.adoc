@@ -21,7 +21,7 @@ La suppression d'un système Cloud Volumes ONTAP le supprime de la NetApp Consol
 
 .Étapes
 . Sur la page *Systèmes*, double-cliquez sur le système que vous souhaitez supprimer.
-. En haut à droite de la console, cliquez sur leimage:icon-action.png[""] icône et sélectionnez *Supprimer de l'espace de travail*.
+. En haut à droite de la console, cliquez sur l’image:icon-action.png["Une icône représentant trois points horizontaux pour des actions supplémentaires"]icône et sélectionnez *Supprimer de l’espace de travail*.
 . Dans la fenêtre *Supprimer de l'espace de travail*, cliquez sur *Supprimer*.
 
 

@@ -29,11 +29,11 @@ Si un agrégat manque d'espace, vous pouvez déplacer des volumes vers un autre 
 . Dans le menu de navigation de gauche, sélectionnez *Stockage > Gestion*.
 . Sur la page *Systèmes*, double-cliquez sur le système Cloud Volumes ONTAP sur lequel vous souhaitez gérer les agrégats.
 . Dans les détails du système, cliquez sur l’onglet *Agrégats*.
-. Pour l'agrégat requis, cliquez sur leimage:icon-action.png[""] icône pour les actions de gestion.
+. Pour l’agrégat requis, cliquez sur l’icône image:icon-action.png["Une icône représentant trois points horizontaux pour des actions supplémentaires"] pour les actions de gestion.
 +
 image:screenshot_aggr_menu_options.png["Une capture d’écran des options du menu Agrégats."]
 
-. Gérez vos agrégats à partir des options disponibles dans leimage:icon-action.png[""] menu.
+. Gérez vos agrégats à partir des options disponibles dans le menu image:icon-action.png["Une icône représentant trois points horizontaux pour des actions supplémentaires"].
 
 
 
@@ -43,7 +43,7 @@ ifdef::aws[]
 
 Pour AWS, vous pouvez augmenter la capacité d’un agrégat prenant en charge Amazon EBS Elastic Volumes.
 
-. Sous leimage:icon-action.png[""] menu, cliquez sur *Augmenter la capacité*.
+. Dans le menu image:icon-action.png["Une icône représentant trois points horizontaux pour des actions supplémentaires"], cliquez sur *Augmenter la capacité*.
 . Saisissez la capacité supplémentaire que vous souhaitez ajouter, puis cliquez sur *Augmenter*.
 
 

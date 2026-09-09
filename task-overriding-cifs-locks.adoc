@@ -29,7 +29,7 @@ Vous devez créer un agent de console avant de pouvoir modifier les paramètres 
 
 .Étapes
 . Dans le volet de navigation de gauche, accédez à *Administration > Agents*.
-. Cliquez sur leimage:icon-action.png[""] icône pour l'agent de console qui gère votre système Cloud Volumes ONTAP .
+. Cliquez sur l’icône image:icon-action.png["Une icône représentant trois points horizontaux pour des actions supplémentaires"] pour l’agent de Console qui gère votre système Cloud Volumes ONTAP.
 . Sélectionnez * Paramètres Cloud Volumes ONTAP *.
 +
 image::screenshot-settings-cloud-volumes-ontap.png[Une capture d’écran de l’option Paramètres Cloud Volumes ONTAP sous l’icône Paramètres.]
