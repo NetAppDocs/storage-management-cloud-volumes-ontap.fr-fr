@@ -108,7 +108,7 @@ Les limites n'incluent pas le disque racine, le disque principal et la VNVRAM.
 [[limits-for-different-deployment-modes-of-capacity-based-licensing]]
 === Limites pour les différents modes de déploiement des licences basées sur la capacité
 
-Les limites de disque suivantes s'appliquent aux systèmes Cloud Volumes ONTAP utilisant un forfait de licences basé sur la capacité. https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-licensing.html["Découvrez les options de licence de Cloud Volumes ONTAP"^].
+Les limites de disque suivantes s'appliquent aux systèmes Cloud Volumes ONTAP utilisant un forfait de licences basé sur la capacité. https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing.html["Découvrez les options de licence de Cloud Volumes ONTAP"^].
 
 
 NOTE: Pour connaître les limites maximales de capacité système et de capacité de hiérarchisation des données pour un seul nœud, les paires haute disponibilité dans une seule zone de disponibilité avec des blobs de pages, et les paires haute disponibilité dans une ou plusieurs zones de disponibilité avec des disques gérés partagés, reportez-vous à <<cap-license-azure>>.
@@ -341,7 +341,7 @@ NOTE: Pour connaître les limites maximales de capacité système et de capacit�
 
 Les limites de disque suivantes s'appliquent aux systèmes Cloud Volumes ONTAP qui utilisent une licence par nœud. La licence par nœud est l'ancien modèle qui vous permet de licencier Cloud Volumes ONTAP par nœud. La licence par nœud est toujours disponible pour les clients existants.
 
-Vous pouvez acheter plusieurs licences par nœud pour un Cloud Volumes ONTAP BYOL nœud unique ou système de paire haute disponibilité afin d'allouer plus de 368 Tio de capacité, jusqu'à la limite maximale de capacité système testée et prise en charge de 2 PiB. Notez que les limites de disque peuvent vous empêcher d'atteindre la limite de capacité en utilisant uniquement des disques. Vous pouvez dépasser la limite de disque par  https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-data-tiering.html["hiérarchisation des données inactives vers le stockage d'objets"^]. https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-manage-node-licenses.html["Découvrez comment ajouter des licences système supplémentaires à Cloud Volumes ONTAP"^]. Cloud Volumes ONTAP prend en charge jusqu'à la capacité système maximale testée et prise en charge de 2 PiB, et dépasser la limite de 2 PiB entraîne une configuration système non prise en charge.
+Vous pouvez acheter plusieurs licences par nœud pour un Cloud Volumes ONTAP BYOL nœud unique ou système de paire haute disponibilité afin d'allouer plus de 368 Tio de capacité, jusqu'à la limite maximale de capacité système testée et prise en charge de 2 PiB. Notez que les limites de disque peuvent vous empêcher d'atteindre la limite de capacité en utilisant uniquement des disques. Vous pouvez dépasser la limite de disque par  https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-data-tiering.html["hiérarchisation des données inactives vers le stockage d'objets"^]. https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-manage-node-licenses.html["Découvrez comment ajouter des licences système supplémentaires à Cloud Volumes ONTAP"^]. Cloud Volumes ONTAP prend en charge jusqu'à la capacité système maximale testée et prise en charge de 2 PiB, et dépasser la limite de 2 PiB entraîne une configuration système non prise en charge.
 
 
 
@@ -631,7 +631,7 @@ Certaines configurations vous permettent de créer des machines virtuelles de st
 
 Ce sont les limites testées. La configuration de machines virtuelles de stockage supplémentaires n'est pas prise en charge.
 
-https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-managing-svms-azure.html["Découvrez comment créer des machines virtuelles de stockage supplémentaires"^].
+https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-managing-svms-azure.html["Découvrez comment créer des machines virtuelles de stockage supplémentaires"^].
 
 [cols="2*"]
 |===

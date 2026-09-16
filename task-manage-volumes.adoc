@@ -131,7 +131,7 @@ Par défaut, un volume atteint automatiquement une taille maximale lorsqu'il n'y
 Si vous devez redimensionner votre volume, vous pouvez le faire à partir d' ONTAP System Manager dans la console.
 
 .Étapes
-. Cliquez sur la vue Gestionnaire système pour redimensionner un volume via ONTAP System Manager. link:task-administer-advanced-view.html#how-to-get-started["Comment commencer"] .
+. Sélectionnez la vue System Manager pour redimensionner un volume via ONTAP System Manager. Reportez-vous à link:task-administer-advanced-view.html#get-started-with-system-manager["Démarrer avec System Manager"].
 . Dans le menu de navigation de gauche, sélectionnez *Stockage > Volumes*.
 . Dans la liste des volumes, identifiez celui que vous devez redimensionner.
 . Cliquez sur l'icône des optionsimage:screenshot_gallery_options.gif["icône de brochette"] .
@@ -237,7 +237,7 @@ Pour les instructions, reportez-vous à lalink:http://docs.netapp.com/ontap-9/to
 La console peut afficher un message « Action requise » indiquant que le déplacement d’un volume est nécessaire pour éviter les problèmes de capacité, mais que vous devez corriger le problème vous-même.  Si cela se produit, vous devez identifier comment corriger le problème, puis déplacer un ou plusieurs volumes.
 
 
-TIP: La console affiche ces messages d'action requise lorsqu'un agrégat a atteint 90 % de sa capacité utilisée.  Si la hiérarchisation des données est activée, les messages s'affichent lorsqu'un agrégat a atteint 80 % de sa capacité utilisée.  Par défaut, 10 % d’espace libre sont réservés à la hiérarchisation des données. link:task-tiering.html#changing-the-free-space-ratio-for-data-tiering["En savoir plus sur le ratio d'espace libre pour la hiérarchisation des données"^] .
+TIP: La console affiche ces messages « Action requise » lorsqu'un agrégat atteint 90 % de sa capacité utilisée. Si la hiérarchisation des données est activée, les messages s'affichent lorsqu'un agrégat atteint 80 % de sa capacité utilisée. Par défaut, 10 % d'espace libre sont réservés à la hiérarchisation des données. link:task-tiering.html#change-the-free-space-ratio-for-data-tiering["En savoir plus sur le ratio d'espace libre pour la hiérarchisation des données"^].
 
 .Étapes
 . <<Identifier comment corriger les problèmes de capacité>> .
@@ -312,11 +312,11 @@ Le déplacement d’un volume est nécessaire pour éviter les problèmes de cap
 . Identifiez un système Cloud Volumes ONTAP disposant d’une capacité disponible ou déployez un nouveau système.
 . Faites glisser et déposez le système source sur le système cible pour effectuer une réplication ponctuelle des données du volume.
 +
-Pour plus d'informations, reportez-vous àlink:https://docs.netapp.com/us-en/bluexp-replication/task-replicating-data.html["Réplication des données entre les systèmes"^] .
+Pour plus d'informations, veuillez consulter link:https://docs.netapp.com/us-en/data-services-replication/task-replicating-data.html["Réplication des données entre les systèmes"^].
 
 . Accédez à la page État de réplication, puis rompez la relation SnapMirror pour convertir le volume répliqué d’un volume de protection des données en un volume de lecture/écriture.
 +
-Pour plus d'informations, reportez-vous àlink:https://docs.netapp.com/us-en/bluexp-replication/task-replicating-data.html#managing-data-replication-schedules-and-relationships["Gestion des planifications et des relations de réplication des données"^] .
+Pour plus d'informations, veuillez consulter link:https://docs.netapp.com/us-en/data-services-replication/task-replicating-data.html#managing-data-replication-schedules-and-relationships["Gestion des planifications et des relations de réplication des données"^].
 
 . Configurer le volume pour l'accès aux données.
 +

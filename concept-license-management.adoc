@@ -21,7 +21,7 @@ NOTE: Une licence basée sur les nœuds est la licence de génération précéde
 
 link:concept-licensing.html["En savoir plus sur les licences Cloud Volumes ONTAP"].
 
-link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-manage-node-licenses.html["En savoir plus sur la gestion des licences basées sur les nœuds"^] .
+link:https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-manage-node-licenses.html["En savoir plus sur la gestion des licences basées sur les nœuds"^].
 
 
 
@@ -31,7 +31,7 @@ link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-manage-node-l
 Les licences par nœud peuvent être obtenues auprès de NetApp. Le nombre de licences que vous pouvez acheter pour un système à nœud unique ou une paire haute disponibilité est illimité.
 
 
-NOTE: NetApp a restreint l'achat, la prolongation et le renouvellement des licences BYOL. Pour plus d'informations, consultez  https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/whats-new.html#restricted-availability-of-byol-licensing-for-cloud-volumes-ontap["Disponibilité restreinte des licences BYOL pour Cloud Volumes ONTAPP"^] .
+NOTE: NetApp a restreint l'achat, la prolongation et le renouvellement des licences BYOL. Pour plus d'informations, consultez  https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/whats-new.html#restricted-availability-of-byol-licensing-for-cloud-volumes-ontap["Disponibilité restreinte des licences BYOL pour Cloud Volumes ONTAPP"^].
 
 Une licence basée sur un nœud offre jusqu'à 368 Tio de capacité pour un nœud ou une paire HA. Vous avez peut-être acheté plusieurs licences pour un système Cloud Volumes ONTAP BYOL afin d'allouer plus de 368 Tio de capacité. Par exemple, vous pouvez disposer de deux licences pour allouer jusqu'à 736 Tio de capacité à Cloud Volumes ONTAP. Vous pouvez également disposer de quatre licences pour atteindre jusqu'à 1,4 Tio.
 
@@ -44,7 +44,7 @@ Sachez que les limites de disque peuvent vous empêcher d’atteindre la limite 
 
 Lorsque vous créez un système BYOL basé sur des nœuds, la console vous demande le numéro de série de votre licence et votre compte de site de support NetApp .  La console utilise le compte pour télécharger le fichier de licence depuis NetApp et l'installer sur le système Cloud Volumes ONTAP .
 
-https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-nss-accounts.html["Découvrez comment ajouter des comptes de site de support NetApp à la console"^] .
+https://docs.netapp.com/us-en/console-setup-admin/task-adding-nss-accounts.html["Découvrez comment ajouter des comptes de site de support NetApp à la console"^].
 
 Si la console ne peut pas accéder au fichier de licence via la connexion Internet sécurisée, vous pouvezlink:task-manage-node-licenses.html["obtenez le fichier vous-même, puis téléchargez-le manuellement sur la console"] .
 

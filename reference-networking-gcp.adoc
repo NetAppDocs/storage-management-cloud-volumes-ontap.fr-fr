@@ -197,7 +197,7 @@ Un VPC partagé vous permet de configurer et de gérer de manière centralisée 
 
 https://cloud.google.com/vpc/docs/shared-vpc["Documentation Google Cloud : Présentation du VPC partagé"^] .
 
-https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-google.html["Consultez les autorisations VPC partagées requises décrites dans le déploiement de l'agent de console."^]
+https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-connector-google.html["Consultez les autorisations VPC partagées requises décrites dans le déploiement de l'agent de console."^]
 
 
 
@@ -213,7 +213,7 @@ https://cloud.google.com/vpc/docs/packet-mirroring["Mise en miroir des paquets"^
 
 Les systèmes Cloud Volumes ONTAP nécessitent un accès Internet sortant pour accéder aux points de terminaison externes pour diverses fonctions.  Cloud Volumes ONTAP ne peut pas fonctionner correctement si ces points de terminaison sont bloqués dans des environnements avec des exigences de sécurité strictes.
 
-L'agent de console contacte également plusieurs points de terminaison pour les opérations quotidiennes.  Pour plus d'informations sur les points de terminaison, reportez-vous à https://docs.netapp.com/us-en/bluexp-setup-admin/task-install-connector-on-prem.html#step-3-set-up-networking["Afficher les points de terminaison contactés depuis l'agent de la console"^] et https://docs.netapp.com/us-en/bluexp-setup-admin/reference-networking-saas-console.html["Préparer le réseau pour l'utilisation de la console"^] .
+L'agent de la Console contacte également plusieurs points de terminaison pour les opérations quotidiennes. Pour obtenir des informations sur les points de terminaison, consultez  https://docs.netapp.com/us-en/console-setup-admin/task-install-connector-on-prem.html#step-3-set-up-networking["Afficher les points de terminaison contactés depuis l'agent de la console"^] et  https://docs.netapp.com/us-en/console-setup-admin/reference-networking-saas-console.html["Préparer le réseau pour l'utilisation de la console"^].
 
 
 
@@ -269,7 +269,7 @@ Notez que deux ensembles de règles de pare-feu sont requis pour une configurati
 
 
 
-TIP: Vous recherchez des informations sur l’agent Console ? https://docs.netapp.com/us-en/bluexp-setup-admin/reference-ports-gcp.html["Afficher les règles de pare-feu pour l'agent de console"^]
+TIP: Vous recherchez des informations sur l'agent Console ? https://docs.netapp.com/us-en/console-setup-admin/reference-ports-gcp.html["Afficher les règles de pare-feu pour l'agent de console"^]
 
 
 
@@ -557,8 +557,8 @@ Le pool de travailleurs doit avoir la configuration suivante :
 
 Si vous n’avez pas encore créé d’agent de console, vous devez vérifier les exigences réseau.
 
-* https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-google.html["Afficher les exigences réseau pour l'agent de console"^]
-* https://docs.netapp.com/us-en/bluexp-setup-admin/reference-ports-gcp.html["Règles de pare-feu dans Google Cloud"^]
+* https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-connector-google.html["Afficher les exigences réseau pour l'agent de console"^]
+* https://docs.netapp.com/us-en/console-setup-admin/reference-ports-gcp.html["Règles de pare-feu dans Google Cloud"^]
 
 
 
@@ -572,7 +572,7 @@ Vous pouvez utiliser les serveurs proxy configurés pour l'agent de console pour
 * *Proxy transparent* : le réseau est configuré pour acheminer automatiquement le trafic sortant de Cloud Volumes ONTAP via le proxy de l'agent de la console.  Lors de la configuration d'un proxy transparent, l'administrateur de l'agent de la console doit fournir uniquement un certificat d'autorité de certification racine pour la connectivité à partir de Cloud Volumes ONTAP, et non l'adresse HTTP du serveur proxy.  Assurez-vous d'obtenir et de télécharger le même certificat d'autorité de certification racine sur votre système Cloud Volumes ONTAP à l'aide de https://docs.netapp.com/us-en/ontap-cli/security-certificate-install.html["ONTAP CLI : installation du certificat de sécurité"^] commande.
 
 
-Pour plus d'informations sur la configuration des serveurs proxy pour l'agent de console, reportez-vous à la https://docs.netapp.com/us-en/bluexp-setup-admin/task-configuring-proxy.html["Configurer un agent de console pour utiliser un serveur proxy"^] .
+Pour plus d'informations sur la configuration des serveurs proxy pour l'agent Console, reportez-vous à la https://docs.netapp.com/us-en/console-setup-admin/task-configuring-proxy.html["Configurer un agent de console pour utiliser un serveur proxy"^].
 
 .Configurer les balises réseau pour Cloud Volumes ONTAP dans Google Cloud
 Lors de la configuration du proxy transparent de l'agent de la console, l'administrateur ajoute une balise réseau pour Google Cloud.  Vous devez obtenir et ajouter manuellement la même balise réseau pour votre configuration Cloud Volumes ONTAP .  Cette balise est nécessaire au bon fonctionnement du serveur proxy.

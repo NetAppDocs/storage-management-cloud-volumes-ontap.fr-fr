@@ -67,5 +67,5 @@ Types d'instances Eds_v5 et Ls_v3
 .Liens connexes
 * Déploiement direct sur la place de marché Azure :link:task-deploy-cvo-azure-mktplc.html["Déployer Cloud Volumes ONTAP depuis la place de marché Azure"]
 * Déploiement via la console :link:task-getting-started-azure.html["Démarrage rapide de Cloud Volumes ONTAP dans Azure"]
-* https://docs.netapp.com/us-en/bluexp-family/index.html["Documentation de la NetApp Console"^]
+* link:https://docs.netapp.com/us-en/console-family/index.html["Documentation de la NetApp Console"^]
 

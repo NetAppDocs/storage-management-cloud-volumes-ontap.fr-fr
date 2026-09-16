@@ -375,7 +375,7 @@ Dans Cloud Volumes ONTAP exécutant les versions 9.13.0 et supérieures, vous ne
 
 Les types d'instances EC2 c4, m4 et r4 autorisent plus de disques par nœud que les types d'instances EC2 c5, m5 et r5.  Si le nombre de disques par nœud pour l'instance EC2 c4, m4 ou r4 que vous exécutez est inférieur à l'allocation de disque maximale par nœud pour les instances c5, m5 et r5, vous pouvez modifier le type d'instance EC2 en c5, m5 ou r5.
 
-link:https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-limits-aws.html#disk-and-tiering-limits-by-ec2-instance["Vérifier les limites de disque et de hiérarchisation par instance EC2"^] link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-change-ec2-instance.html["Modifier le type d'instance EC2 pour Cloud Volumes ONTAP"^]
+link:https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-limits-aws.html#disk-and-tiering-limits-by-ec2-instance["Vérifier les limites de disque et de hiérarchisation par instance EC2"^] link:https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-change-ec2-instance.html["Modifier le type d'instance EC2 pour Cloud Volumes ONTAP"^]
 
 Si vous ne pouvez pas modifier le type d'instance, suivez les étapes décrites dans<<Activer la mise en réseau améliorée>> .
 
@@ -618,6 +618,6 @@ La valeur de _maxDownloadSessions_ peut être 1 ou tout entier supérieur à 1. 
 
 Notez que 32 est une valeur d’exemple. La valeur que vous devez utiliser dépend de votre configuration NAT et du nombre de sessions que vous pouvez avoir simultanément.
 
-https://docs.netapp.com/us-en/bluexp-automation/cm/api_ref_resources.html#occmconfig["En savoir plus sur l'appel API /occm/config"^] .
+https://docs.netapp.com/us-en/console-automation/cm/api_ref_resources.html#occmconfig["En savoir plus sur l'appel API /occm/config"^].
 
 endif::gcp[]

@@ -74,7 +74,7 @@ La fonctionnalité Volumes élastiques est automatiquement activée au niveau ag
 * ec2:ModifierVolume
 
 
-Ces autorisations sont incluses dans https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-aws.html["les politiques fournies par NetApp"^]
+Ces autorisations sont incluses dans https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-aws.html["les politiques fournies par NetApp"^]
 
 
 
@@ -196,6 +196,6 @@ link:task-manage-aggregates.html["Apprenez à augmenter la capacité globale"] .
 Si le système Cloud Volumes ONTAP de destination prend en charge les volumes élastiques, un volume de destination sera placé sur un agrégat sur lequel les volumes élastiques sont activés (à condition que vous choisissiez un disque gp3 ou io1).
 
 +
-https://docs.netapp.com/us-en/bluexp-replication/task-replicating-data.html["Apprenez à configurer la réplication des données"^]
+https://docs.netapp.com/us-en/data-services-replication/task-replicating-data.html["Apprenez à configurer la réplication des données"^]
 
 

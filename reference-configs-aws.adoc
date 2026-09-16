@@ -26,6 +26,7 @@ Outre le stockage des données utilisateur, NetApp achète également du stockag
 
 
 [[internal-disks-for-system-data]]
+[[aws]]
 === Disques internes pour les données système
 
 Les disques internes suivants sont utilisés pour les données système dans AWS :
@@ -84,7 +85,7 @@ Stockage NVMe local:: Certains types d'instances EC2 incluent un stockage NVMe l
 [[supported-disk-sizes]]
 === Tailles de disque prises en charge
 
-Dans AWS, un agrégat peut contenir jusqu'à 6 disques de même taille. Mais si vous disposez d'une configuration qui prend en charge la fonctionnalité Amazon EBS Elastic Volumes, alors un agrégat peut contenir jusqu'à 8 disques. https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-aws-elastic-volumes.html["En savoir plus sur la prise en charge des volumes élastiques"^]
+Dans AWS, un agrégat peut contenir jusqu'à 6 disques de même taille. Mais si vous disposez d'une configuration qui prend en charge la fonctionnalité Amazon EBS Elastic Volumes, alors un agrégat peut contenir jusqu'à 8 disques. https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-aws-elastic-volumes.html["En savoir plus sur la prise en charge des volumes élastiques"^]
 
 [cols="3*"]
 |===
@@ -335,7 +336,7 @@ Soutenu
 
 |===
 . Pour une paire haute disponibilité, la limite de capacité s'applique à l'ensemble de la paire haute disponibilité. Ce n'est pas par nœud. Par exemple, si vous utilisez la licence PAYGO Premium, vous pouvez disposer d'une capacité allant jusqu'à 368 Tio entre les deux nœuds.
-. Pour certaines configurations, les limites de disque vous empêchent d'atteindre la limite de capacité uniquement avec des disques. Dans ces cas, vous pouvez atteindre la limite de capacité par https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-data-tiering.html["hiérarchisation des données inactives vers le stockage d'objets"^]. Pour des informations sur les limites de disque, reportez-vous à link:reference-limits-aws.html["limites de stockage"].
+. Pour certaines configurations, les limites de disque vous empêchent d'atteindre la limite de capacité uniquement avec des disques. Dans ces cas, vous pouvez atteindre la limite de capacité par https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-data-tiering.html["hiérarchisation des données inactives vers le stockage d'objets"^]. Pour des informations sur les limites de disque, reportez-vous à link:reference-limits-aws.html["limites de stockage"].
 +
 Avec une licence basée sur la capacité, chaque système Cloud Volumes ONTAP prend en charge la hiérarchisation vers le stockage objet. La capacité hiérarchisée totale peut évoluer jusqu'à la limite de compartiment du fournisseur de cloud. Bien que la licence n'impose aucune restriction de capacité, vous devez suivre les  https://www.netapp.com/pdf.html?item=/media/17239-tr-4598.pdf["Bonnes pratiques de FabricPool"^] pour garantir des performances, une fiabilité et une rentabilité optimales lors de la configuration et de la gestion de la hiérarchisation.
 
@@ -654,7 +655,7 @@ La vitesse d'écriture élevée n'est pas prise en charge avec ces types d'insta
 | Hiérarchisation des données froides vers S3 | Non pris en charge 3+| Soutenu 
 |===
 . Pour une paire haute disponibilité, la limite de capacité s'applique à l'ensemble de la paire haute disponibilité. Ce n'est pas par nœud. Par exemple, si vous utilisez la licence PAYGO Premium, vous pouvez disposer d'une capacité allant jusqu'à 368 Tio entre les deux nœuds.
-. Pour certaines configurations, les limites de disque vous empêchent d'atteindre la limite de capacité uniquement avec des disques. Dans ces cas, vous pouvez atteindre la limite de capacité par https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-data-tiering.html["hiérarchisation des données inactives vers le stockage d'objets"^]. Pour des informations sur les limites de disque, reportez-vous à link:reference-limits-aws.html["limites de stockage"].
+. Pour certaines configurations, les limites de disque vous empêchent d'atteindre la limite de capacité uniquement avec des disques. Dans ces cas, vous pouvez atteindre la limite de capacité par https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-data-tiering.html["hiérarchisation des données inactives vers le stockage d'objets"^]. Pour des informations sur les limites de disque, reportez-vous à link:reference-limits-aws.html["limites de stockage"].
 +
 Avec une licence basée sur la capacité, chaque système Cloud Volumes ONTAP prend en charge la hiérarchisation vers le stockage objet. La capacité hiérarchisée totale peut évoluer jusqu'à la limite de compartiment du fournisseur de cloud. Bien que la licence n'impose aucune restriction de capacité, vous devez suivre les  https://www.netapp.com/pdf.html?item=/media/17239-tr-4598.pdf["Bonnes pratiques de FabricPool"^] pour garantir des performances, une fiabilité et une rentabilité optimales lors de la configuration et de la gestion de la hiérarchisation.
 
@@ -681,7 +682,7 @@ Cloud Volumes ONTAP ne prend plus en charge les types d'instances EC2 c4, m4 et 
 
 Si votre système fonctionne sur une instance c4, m4 ou r4, changez-le en une instance c5, m5 ou r5 avant de procéder à la mise à niveau vers cette version.
 
-link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-change-ec2-instance.html["Découvrez comment modifier le type d'instance EC2 pour Cloud Volumes ONTAP"^].
+link:https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-change-ec2-instance.html["Découvrez comment modifier le type d'instance EC2 pour Cloud Volumes ONTAP"^].
 
 Pour plus d'informations, consultez les ressources suivantes :
 
@@ -816,8 +817,8 @@ Le cache Flash est pris en charge sur les instances m6id.xlarge, m6id.2xlarge, m
 
 Les notes suivantes fournissent des indications générales sur le comportement des instances prises en charge et les options de déploiement.
 
-* Certains types d'instances incluent un stockage NVMe local, que Cloud Volumes ONTAP utilise comme cache Flash. Le cache Flash accélère l'accès aux données grâce à une mise en cache intelligente en temps réel des données utilisateur récemment lues et des métadonnées NetApp. Il est particulièrement efficace pour les charges de travail à forte intensité de lecture aléatoire, telles que les bases de données, la messagerie et les services de fichiers. La compression doit être désactivée sur tous les volumes pour bénéficier des gains de performance offerts par le cache Flash. https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-flash-cache.html["En savoir plus sur Flash Cache"^]
-* Cloud Volumes ONTAP prend en charge une vitesse d'écriture élevée avec tous les types d'instances compatibles lorsqu'un système à nœud unique est utilisé. Lorsqu'une paire haute disponibilité est utilisée, la vitesse d'écriture élevée n'est prise en charge qu'avec les types d'instances compatibles. https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-write-speed.html["En savoir plus sur le choix d'une vitesse d'écriture"^]
+* Certains types d'instances incluent un stockage NVMe local, que Cloud Volumes ONTAP utilise comme cache Flash. Le cache Flash accélère l'accès aux données grâce à une mise en cache intelligente en temps réel des données utilisateur récemment lues et des métadonnées NetApp. Il est particulièrement efficace pour les charges de travail à forte intensité de lecture aléatoire, telles que les bases de données, la messagerie et les services de fichiers. La compression doit être désactivée sur tous les volumes pour bénéficier des gains de performance offerts par le cache Flash. https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-flash-cache.html["En savoir plus sur Flash Cache"^]
+* Cloud Volumes ONTAP prend en charge une vitesse d'écriture élevée avec tous les types d'instances compatibles lorsqu'un système à nœud unique est utilisé. Lorsqu'une paire haute disponibilité est utilisée, la vitesse d'écriture élevée n'est prise en charge qu'avec les types d'instances compatibles. https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-write-speed.html["En savoir plus sur le choix d'une vitesse d'écriture"^]
 * Lorsque vous choisissez un type d'instance EC2, vous pouvez spécifier s'il s'agit d'une instance partagée ou d'une instance dédiée.
 
 

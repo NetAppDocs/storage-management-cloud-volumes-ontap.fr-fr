@@ -24,7 +24,7 @@ TIP: Un système qui n'est pas enregistré pour le support recevra toujours les 
 .Étapes
 . Si vous n'avez pas encore ajouté votre compte de site de support NetApp à la console, accédez à *Paramètres du compte* et ajoutez-le maintenant.
 +
-https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-nss-accounts.html["Découvrez comment ajouter des comptes de site de support NetApp"^] .
+https://docs.netapp.com/us-en/console-setup-admin/task-adding-nss-accounts.html["Découvrez comment ajouter des comptes de site de support NetApp"^].
 
 . Sur la page *Systèmes*, double-cliquez sur le nom du système que vous souhaitez enregistrer.
 . Dans l'onglet Présentation, cliquez sur le panneau Fonctionnalités, puis cliquez sur l'icône en forme de crayon à côté de *Enregistrement de l'assistance*.

@@ -21,7 +21,7 @@ Une fois que vous avez décidé quelle option de licence vous souhaitez utiliser
 [[freemium]]
 == Freemium
 
-Sélectionnez l'offre Freemium pour utiliser Cloud Volumes ONTAP gratuitement avec jusqu'à 500 Gio de capacité provisionnée. link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-licensing.html#packages["En savoir plus sur l'offre Freemium"^] .
+Choisissez l'offre Freemium pour utiliser Cloud Volumes ONTAP gratuitement avec jusqu'à 500 Gio de capacité provisionnée. link:https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing.html#packages["En savoir plus sur l'offre Freemium"^].
 
 .Étapes
 . Dans le menu de navigation de gauche de la NetApp Console, sélectionnez *Stockage > Gestion*.
@@ -29,7 +29,7 @@ Sélectionnez l'offre Freemium pour utiliser Cloud Volumes ONTAP gratuitement av
 +
 .. Sur la page *Détails et informations d’identification*, cliquez sur *Modifier les informations d’identification > Ajouter un abonnement*, puis suivez les invites pour vous abonner à l’offre de paiement à l’utilisation sur la Place de marché Azure.
 +
-Vous ne serez pas facturé via l'abonnement du marché à moins que vous ne dépassiez 500 Gio de capacité provisionnée, auquel cas le système est automatiquement converti enlink:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-licensing.html#capacity-based-licensing["Forfait Essentiel"^] .
+Vous ne serez pas facturé via l'abonnement au marketplace sauf si vous dépassez 500 Gio de capacité provisionnée, auquel cas le système est automatiquement converti en link:https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing.html#capacity-based-licensing["Forfait Essentiel"^].
 
 +
 image:screenshot-azure-paygo-subscription.png["Capture d'écran de l'option d'abonnement PAYGO lors de la création d'un système Cloud Volumes ONTAP ."]
@@ -70,11 +70,11 @@ Les sections suivantes décrivent comment démarrer avec chacun de ces modèles 
 Payez à l'avance en achetant une licence (BYOL) auprès de NetApp pour déployer les systèmes Cloud Volumes ONTAP chez n'importe quel fournisseur de cloud.
 
 
-NOTE: NetApp a restreint l'achat, la prolongation et le renouvellement des licences BYOL. Pour plus d'informations, consultez  https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/whats-new.html#restricted-availability-of-byol-licensing-for-cloud-volumes-ontap["Disponibilité restreinte des licences BYOL pour Cloud Volumes ONTAP"^] .
+NOTE: NetApp a restreint l'achat, la prolongation et le renouvellement des licences BYOL. Pour plus d'informations, consultez  https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/whats-new.html#restricted-availability-of-byol-licensing-for-cloud-volumes-ontap["Disponibilité restreinte des licences BYOL pour Cloud Volumes ONTAP"^].
 
 .Étapes
 . https://www.netapp.com/forms/sales-contact/["Contactez le service commercial NetApp pour obtenir une licence"^]
-. https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-nss-accounts.html#add-an-nss-account["Ajoutez votre compte de site de support NetApp à la console"^]
+. https://docs.netapp.com/us-en/console-setup-admin/task-adding-nss-accounts.html#add-an-nss-account["Ajoutez votre compte de site de support NetApp à la console"^]
 +
 La console interroge automatiquement le service de licences de NetApp pour obtenir des détails sur les licences associées à votre compte de site de support NetApp .  S'il n'y a pas d'erreur, la console ajoute automatiquement les licences à la console.
 
@@ -128,7 +128,7 @@ image:screenshot-professional.png["Une capture d’écran de l’option Professi
 link:task-deploying-otc-azure.html["Consultez les instructions étape par étape pour lancer Cloud Volumes ONTAP dans Azure"] .
 
 
-TIP: Vous pouvez gérer les abonnements Azure Marketplace associés à vos comptes Azure à partir de la page Paramètres > Informations d’identification. https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-azure-accounts.html["Apprenez à gérer vos comptes et abonnements Azure"^]
+TIP: Vous pouvez gérer les abonnements Azure Marketplace associés à vos comptes Azure depuis la page Paramètres > Informations d'identification. https://docs.netapp.com/us-en/console-setup-admin/task-adding-azure-accounts.html["Apprenez à gérer vos comptes et abonnements Azure"^]
 
 
 

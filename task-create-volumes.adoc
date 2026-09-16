@@ -30,7 +30,7 @@ Vous disposez de plusieurs manières pour créer un nouveau volume :
 
 Quelques remarques sur le provisionnement des volumes :
 
-* Lorsque vous créez un volume iSCSI, la console crée automatiquement un LUN pour vous.  Nous avons simplifié les choses en créant un seul LUN par volume, il n'y a donc aucune gestion impliquée.  Après avoir créé le volume,link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-connect-lun.html["utilisez l'IQN pour vous connecter au LUN depuis vos hôtes"^] .
+* Lorsque vous créez un volume iSCSI, la Console crée automatiquement un LUN pour vous. Nous avons simplifié le processus en ne créant qu'un seul LUN par volume, de sorte qu'aucune gestion n'est nécessaire. Après avoir créé le volume, link:https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-connect-lun.html["utilisez l'IQN pour vous connecter au LUN depuis vos hôtes"^].
 * Vous pouvez créer des LUN supplémentaires à partir d' ONTAP System Manager ou de l' ONTAP CLI.
 
 
@@ -157,7 +157,7 @@ ifdef::gcp[]
 endif::gcp[]
 
 Domaine DNS:: Le domaine DNS de la machine virtuelle de stockage Cloud Volumes ONTAP (SVM).  Dans la plupart des cas, le domaine est le même que le domaine AD.
-Serveur NTP:: Sélectionnez *Utiliser le domaine Active Directory* pour configurer un serveur NTP à l’aide du DNS Active Directory.  Si vous devez configurer un serveur NTP à l’aide d’une adresse différente, vous devez utiliser l’API.  Pour plus d'informations, reportez-vous à la https://docs.netapp.com/us-en/bluexp-automation/index.html["Documentation sur l'automatisation de la NetApp Console"^] .
+Serveur NTP:: Sélectionnez *Utiliser le domaine Active Directory* pour configurer un serveur NTP à l'aide du DNS Active Directory. Si vous devez configurer un serveur NTP à l'aide d'une adresse différente, vous devez utiliser l'API. Pour plus d'informations, consultez la https://docs.netapp.com/us-en/console-automation/index.html["NetApp Console documentation sur l'automatisation"^].
 +
 --
 Notez que vous ne pouvez configurer un serveur NTP que lors de la création d'un serveur CIFS.  Il n'est pas configurable après avoir créé le serveur CIFS.
@@ -180,7 +180,7 @@ Initiateur hôte (IQN):: Les cibles iSCSI se connectent au réseau via des adapt
 ifdef::aws[]
 
 +
-*** link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-planning-your-config.html#size-your-system-in-aws["Dimensionnement de votre système dans AWS"^]
+*** link:https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-planning-your-config.html#size-your-system-in-aws["Dimensionnement de votre système dans AWS"^]
 
 
 
@@ -191,14 +191,14 @@ endif::aws[]
 
 ifdef::azure[]
 
-* link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-planning-your-config-azure.html#size-your-system-in-azure["Dimensionnement de votre système dans Azure"^]
+* link:https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-planning-your-config-azure.html#size-your-system-in-azure["Dimensionnement de votre système dans Azure"^]
 
 
 endif::azure[]
 
 ifdef::gcp[]
 
-* link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-planning-your-config-gcp.html#size-your-system-in-gcp["Dimensionnement de votre système dans Google Cloud"^]
+* link:https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-planning-your-config-gcp.html#size-your-system-in-gcp["Dimensionnement de votre système dans Google Cloud"^]
 
 
 endif::gcp[]

@@ -71,7 +71,7 @@ Le nombre maximal de transferts simultanés SnapMirror ou SnapVault pour Cloud V
 
 Il est déconseillé d'utiliser les snapshots de votre fournisseur de cloud dans le cadre de votre plan de sauvegarde et de restauration pour les données Cloud Volumes ONTAP. Vous devez toujours utiliser les copies Snapshot ONTAP ou des solutions de sauvegarde tierces pour sauvegarder et restaurer les données hébergées sur Cloud Volumes ONTAP.
 
-https://docs.netapp.com/us-en/bluexp-backup-recovery/concept-backup-to-cloud.html["Apprenez à utiliser NetApp Backup and Recovery pour sauvegarder et restaurer les données ONTAP"^].
+https://docs.netapp.com/us-en/data-services-backup-recovery/concept-backup-to-cloud.html["Apprenez à utiliser NetApp Backup and Recovery pour sauvegarder et restaurer les données ONTAP"^].
 
 
 NOTE: Les points de cohérence ONTAP dans le système de fichiers WAFL déterminent la cohérence des données. Seul ONTAP peut mettre au repos le système de fichiers WAFL pour effectuer une sauvegarde cohérente après panne.

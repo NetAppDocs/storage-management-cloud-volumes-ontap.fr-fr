@@ -112,10 +112,10 @@ Consultez Azure pour connaître les IOPS et le débit par taille de disque :
 
 En plus du stockage des données utilisateur, la console achète également du stockage cloud pour les données système Cloud Volumes ONTAP (données de démarrage, données racine, données principales et NVRAM).  À des fins de planification, il peut être utile de vérifier ces détails avant de déployer Cloud Volumes ONTAP.
 
-link:reference-default-configs.html#azure-single-node["Afficher les disques par défaut pour les données système Cloud Volumes ONTAP dans Azure"] .
+link:reference-configs-azure.html#azure-single-node["Afficher les disques par défaut pour les données système Cloud Volumes ONTAP dans Azure"].
 
 
-TIP: L'agent de console nécessite également un disque système. https://docs.netapp.com/us-en/bluexp-setup-admin/reference-connector-default-config.html["Afficher les détails sur la configuration par défaut de l'agent de console"^] .
+TIP: L'agent Console nécessite également un disque système. https://docs.netapp.com/us-en/console-setup-admin/reference-connector-default-config.html["Afficher les détails sur la configuration par défaut de l'agent de console"^].
 
 
 

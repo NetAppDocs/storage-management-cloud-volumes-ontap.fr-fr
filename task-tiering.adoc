@@ -173,7 +173,7 @@ Vous n’avez pas besoin de configurer une connexion entre le niveau de performa
 "Microsoft.Network/virtualNetworks/subnets/write",
 "Microsoft.Network/routeTables/join/action",
 ----
-Le rôle personnalisé inclut les autorisations par défaut. https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-azure.html["Afficher l'autorisation Azure pour l'agent de la console"^]
+Le rôle personnalisé inclut les autorisations par défaut. https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-azure.html["Afficher l'autorisation Azure pour l'agent de la console"^]
 
 endif::azure[]
 
@@ -301,7 +301,7 @@ Cloud Volumes ONTAP peut hiérarchiser les données d'un volume de protection de
 image:screenshot_replication_tiering.gif["Capture d’écran qui montre l’option de hiérarchisation S3 lors de la réplication d’un volume."]
 
 +
-Pour obtenir de l'aide sur la réplication des données, reportez-vous à https://docs.netapp.com/us-en/bluexp-replication/task-replicating-data.html["Réplication des données vers et depuis le cloud"^] .
+Pour obtenir de l'aide concernant la réplication des données, veuillez vous référer à https://docs.netapp.com/us-en/data-services-replication/task-replicating-data.html["Réplication des données vers et depuis le cloud"^].
 
 
 

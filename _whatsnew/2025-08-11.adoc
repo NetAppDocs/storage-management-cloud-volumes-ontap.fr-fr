@@ -11,6 +11,6 @@
 
 Cependant, la possibilité d’ajouter ou de renouveler des licences optimisées sera disponible via les API.
 
-Pour plus d'informations sur les packages de licence, reportez-vous à https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-licensing.html["Licences pour Cloud Volumes ONTAP"^] .
+Pour plus d'informations sur les formules de licence, veuillez consulter https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing.html["Licences pour Cloud Volumes ONTAP"^].
 
-Pour plus d'informations sur le passage à une autre méthode de charge, reportez-vous à https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-manage-capacity-licenses.html["Gérer les licences basées sur la capacité"^] .
+Pour plus d'informations sur le passage à une autre méthode de facturation, veuillez consulter https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-manage-capacity-licenses.html["Gérer les licences basées sur la capacité"^].

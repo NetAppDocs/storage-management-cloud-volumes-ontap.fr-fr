@@ -25,7 +25,7 @@ La capacité maximale d'un système Cloud Volumes ONTAP est déterminée par sa 
 
 NetApp ne prend pas en charge le dépassement de la limite de capacité du système. Si vous atteignez la limite de capacité autorisée par la licence, la NetApp Console affiche un message d'action requise et ne vous permet plus d'ajouter des disques supplémentaires.
 
-Pour certaines configurations, les limites de disque vous empêchent d'atteindre la limite de capacité uniquement avec des disques. Vous pouvez atteindre la limite de capacité par https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-data-tiering.html["hiérarchisation des données inactives vers le stockage d'objets"^]. Consultez les limites de disque ci-dessous pour plus de détails.
+Pour certaines configurations, les limites de disque vous empêchent d'atteindre la limite de capacité uniquement avec des disques. Vous pouvez atteindre la limite de capacité par https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-data-tiering.html["hiérarchisation des données inactives vers le stockage d'objets"^]. Consultez les limites de disque ci-dessous pour plus de détails.
 
 [[cap-license-gcp]]
 .Limite de capacité pour les licences basées sur la capacité
@@ -131,7 +131,7 @@ Certaines configurations vous permettent de créer des machines virtuelles de st
 
 Ce sont les limites testées. La configuration de machines virtuelles de stockage supplémentaires n'est pas prise en charge.
 
-https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-managing-svms-gcp.html["Découvrez comment créer des machines virtuelles de stockage supplémentaires"^].
+https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-managing-svms-gcp.html["Découvrez comment créer des machines virtuelles de stockage supplémentaires"^].
 
 [cols="2*"]
 |===
@@ -259,4 +259,4 @@ Les machines virtuelles de stockage que vous configurez pour la reprise après s
 
 Après le redémarrage d'un nœud, le partenaire doit synchroniser les données avant de pouvoir restituer le stockage. Le temps nécessaire pour resynchroniser les données dépend du volume de données écrites par les clients pendant l'indisponibilité du nœud et de la vitesse d'écriture des données lors de la restitution.
 
-https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-ha-google-cloud.html["Découvrez comment fonctionne le stockage dans une paire haute disponibilité Cloud Volumes ONTAP exécutée dans Google Cloud"^].
+https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-ha-google-cloud.html["Découvrez comment fonctionne le stockage dans une paire haute disponibilité Cloud Volumes ONTAP exécutée dans Google Cloud"^].

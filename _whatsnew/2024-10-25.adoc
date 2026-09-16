@@ -21,4 +21,4 @@ BlueXP prend désormais en charge les zones locales AWS pour les déploiements h
 
 NOTE: Les zones locales AWS ne sont pas prises en charge lors de l'utilisation de BlueXP en mode restreint.
 
-Pour plus d'informations sur les zones locales AWS avec déploiements HA, reportez-vous àlink:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-ha.html#aws-local-zones["Zones locales AWS"^] .
+Pour plus d'informations sur les zones locales AWS avec des déploiements HA, consultez link:https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-ha.html#aws-local-zones["Zones locales AWS"^].

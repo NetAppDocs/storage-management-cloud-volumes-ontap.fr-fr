@@ -30,7 +30,7 @@ La sauvegarde et la récupération sont indépendantes de Cloud Volumes ONTAP pa
 
 . Si vous avez activé la classification des données sur ce système et qu'aucun autre système n'utilise ce service, vous devez supprimer l'instance du service.
 +
-https://docs.netapp.com/us-en/bluexp-classification/concept-cloud-compliance.html#the-cloud-data-sense-instance["En savoir plus sur l'instance de classification des données"^] .
+https://docs.netapp.com/us-en/data-services-data-classification/concept-cloud-compliance.html#the-cloud-data-sense-instance["En savoir plus sur l'instance de classification des données"^].
 
 . Supprimez le système Cloud Volumes ONTAP .
 +

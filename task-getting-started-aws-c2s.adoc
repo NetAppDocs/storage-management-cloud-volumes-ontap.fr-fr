@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: task-getting-started-aws-c2s.html 
 keywords: commercial cloud services, c2s, secret cloud, top secret cloud, aws secret region, the Console 
-summary: 'Semblable à une région AWS standard, vous pouvez déployer Cloud Volumes ONTAP dans les environnements AWS Secret Cloud et Top Secret Cloud, qui fournissent des fonctionnalités de classe entreprise pour votre stockage cloud.  Les régions AWS Secret Cloud et Top Secret Cloud sont des régions fermées spécifiques à la communauté du renseignement américaine ; les instructions sur cette page s"appliquent uniquement aux utilisateurs des régions AWS Secret Cloud et Top Secret Cloud.' 
+summary: 'Vous pouvez déployer Cloud Volumes ONTAP dans les environnements AWS Secret Cloud et Top Secret Cloud. Les régions AWS Secret Cloud et Top Secret Cloud sont des régions fermées spécifiques à la communauté du renseignement américaine. Les instructions de cette page s"appliquent uniquement aux utilisateurs des régions AWS Secret Cloud et Top Secret Cloud.' 
 ---
 = Déployer Cloud Volumes ONTAP dans AWS Secret Cloud ou AWS Top Secret Cloud
 :hardbreaks:
@@ -33,7 +33,7 @@ L'agent de console est requis pour déployer et gérer Cloud Volumes ONTAP dans 
 Dans AWS Secret Cloud et Top Secret Cloud, la console fonctionne en _mode privé_.  En mode privé, il n'y a pas de connectivité à la couche SaaS depuis la console.  Vous pouvez accéder à la console via une application Web locale qui peut accéder à l'agent de la console.
 
 +
-Pour en savoir plus sur le fonctionnement du mode privé, reportez-vous àlink:https://docs.netapp.com/us-en/bluexp-setup-admin/concept-modes.html#private-mode["le mode de déploiement privé dans la console"^] .
+Pour en savoir plus sur le fonctionnement du mode privé, consultez link:https://docs.netapp.com/us-en/console-setup-admin/concept-modes.html#private-mode["le mode de déploiement privé dans la console"^].
 
 
 

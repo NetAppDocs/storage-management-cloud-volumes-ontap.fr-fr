@@ -25,7 +25,7 @@ Si vous activez ce paramètre, Cloud Volumes ONTAP opposera son veto aux verrous
 CAUTION: Ce processus peut être perturbateur pour les clients CIFS.  Les données qui ne sont pas validées par les clients CIFS peuvent être perdues.
 
 .Avant de commencer
-Vous devez créer un agent de console avant de pouvoir modifier les paramètres de la console. https://docs.netapp.com/us-en/bluexp-setup-admin/concept-connectors.html#how-to-create-a-connector["Apprenez comment"^] .
+Vous devez créer un agent de console avant de pouvoir modifier les paramètres de la console. https://docs.netapp.com/us-en/console-setup-admin/concept-connectors.html#how-to-create-a-connector["Apprenez comment"^].
 
 .Étapes
 . Dans le volet de navigation de gauche, accédez à *Administration > Agents*.

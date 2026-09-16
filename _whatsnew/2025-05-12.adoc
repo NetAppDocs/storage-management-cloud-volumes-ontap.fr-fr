@@ -9,4 +9,4 @@
 
 BlueXP a désormais la capacité de découvrir les systèmes Cloud Volumes ONTAP déployés directement via la place de marché Azure.  Cela signifie que vous pouvez désormais ajouter et gérer ces systèmes en tant qu'environnements de travail dans BlueXP, comme tout autre système Cloud Volumes ONTAP .
 
-https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-deploy-cvo-azure-mktplc.html["Déployer Cloud Volumes ONTAP depuis la place de marché Azure"^]
+https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-deploy-cvo-azure-mktplc.html["Déployer Cloud Volumes ONTAP depuis la place de marché Azure"^]

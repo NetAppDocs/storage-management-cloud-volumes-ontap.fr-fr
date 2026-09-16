@@ -26,7 +26,7 @@ Des formules de licences basées sur la capacité sont disponibles avec les mod�
 * *BYOL* : Apportez votre propre permis de conduire (BYOL).  Une licence achetée auprès de NetApp qui peut être utilisée pour déployer Cloud Volumes ONTAP chez n’importe quel fournisseur de cloud.
 +
 
-NOTE: NetApp a restreint l'achat, la prolongation et le renouvellement des licences BYOL, et a limité la disponibilité dans des scénarios spécifiques, tels que les déploiements en mode privé. Pour plus d'informations, consultez  https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/whats-new.html#restricted-availability-of-byol-licensing-for-cloud-volumes-ontap["Disponibilité restreinte des licences BYOL pour Cloud Volumes ONTAP"^].
+NOTE: NetApp a restreint l'achat, la prolongation et le renouvellement des licences BYOL, et a limité la disponibilité dans des scénarios spécifiques, tels que les déploiements en mode privé. Pour plus d'informations, consultez  https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/whats-new.html#restricted-availability-of-byol-licensing-for-cloud-volumes-ontap["Disponibilité restreinte des licences BYOL pour Cloud Volumes ONTAP"^].
 
 
 
@@ -71,7 +71,7 @@ Pour plus d'informations sur la conversion des licences basées sur les nœuds e
 
 La facturation dans Cloud Volumes ONTAP est basée sur un certain nombre de facteurs, tels que les forfaits et les types de volumes. Les packages de licences basés sur la capacité sont disponibles avec Cloud Volumes ONTAP 9.7 et versions ultérieures.
 
-Pour plus de détails sur les prix, rendez-vous sur le https://bluexp.netapp.com/pricing/["Site Web de la NetApp Console"^] .
+Pour plus de détails sur les prix, rendez-vous sur link:https://www.netapp.com/pricing/["site web de tarification NetApp"^].
 
 
 
@@ -200,7 +200,7 @@ Si vous achetez une licence Essentials auprès de NetApp (BYOL) et que vous dép
 
 De même, si vous disposez d'un contrat annuel sur le marché ou d'une offre privée comprenant plusieurs forfaits Essentials, et que votre utilisation dépasse la capacité prévue pour un type de déploiement et de volume d'un forfait spécifique, la console facture les dépassements sur un forfait Essentials plus cher en fonction de sa capacité disponible.  Une fois cette capacité épuisée, le surplus restant est facturé aux tarifs horaires à la demande du marché (PAYGO) et ajouté à votre facture mensuelle.
 
-Pour plus d'informations sur la facturation des licences Essentials, veuillez consulterlink:concept-licensing-charging.html#essentialscharging["forfaits essentiels"] .
+Pour plus d'informations sur la facturation des licences Essentials, veuillez consulter <<forfaits essentiels>>.
 
 Voici un exemple. Disons que vous disposez des licences suivantes pour le package Essentials :
 

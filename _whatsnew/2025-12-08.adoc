@@ -9,7 +9,7 @@
 
 Vous pouvez désormais améliorer les performances des disques gérés Premium SSD v2 dans Azure en modifiant les paramètres IOPS et de débit.  Grâce à cette fonctionnalité, vous pouvez optimiser les performances de stockage de vos systèmes en fonction des exigences de votre charge de travail.
 
-https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-manage-perf-params-azure.html["Gérer les performances des disques SSD Premium v2 pour Cloud Volumes ONTAP dans Azure"^].
+https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-manage-perf-params-azure.html["Gérer les performances des disques SSD Premium v2 pour Cloud Volumes ONTAP dans Azure"^].
 
 
 
