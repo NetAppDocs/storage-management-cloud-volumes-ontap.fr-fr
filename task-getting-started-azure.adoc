@@ -63,7 +63,7 @@ Une fois toutes les conditions préalables remplies, vous pouvez suivre les éta
  a| 
 Reportez-vous à :
 
-* link:task-quick-deploy-azure.html["Déployez Cloud Volumes ONTAP avec Quick create"]
+* link:task-quick-deploy-azure.html["Déployez Cloud Volumes ONTAP avec Quick create dans Azure"]
 * link:task-deploying-otc-azure.html["Déployez Cloud Volumes ONTAP à l'aide des options avancées"]
 
  a| 
@@ -71,7 +71,6 @@ Avant de commencer le déploiement, assurez-vous d'avoir acheté une licence Clo
 
 * link:concept-license-management.html["Gestion des licences pour BYOL basé sur les nœuds"]
 * link:task-manage-node-licenses.html["Gérer les licences BYOL basées sur les nœuds"]
-* link:task-quick-deploy-azure.html["Déployez Cloud Volumes ONTAP avec Quick create"]
 * link:task-deploying-otc-azure.html["Déployez Cloud Volumes ONTAP à l'aide des options avancées"]
 
 

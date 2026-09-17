@@ -228,7 +228,7 @@ La NetApp Console crée des groupes de sécurité Azure qui incluent les règles
 
 Les groupes de sécurité Azure pour Cloud Volumes ONTAP nécessitent que les ports appropriés soient ouverts pour la communication interne entre les nœuds. https://docs.netapp.com/us-en/ontap/networking/ontap_internal_ports.html["En savoir plus sur les ports internes ONTAP"^] .
 
-Nous ne recommandons pas de modifier les groupes de sécurité prédéfinis ni d'utiliser des groupes de sécurité personnalisés.  Toutefois, si vous devez le faire, notez que le processus de déploiement nécessite que le système Cloud Volumes ONTAP dispose d'un accès complet au sein de son propre sous-réseau.  Une fois le déploiement terminé, si vous décidez de modifier le groupe de sécurité réseau, assurez-vous de garder les ports du cluster et les ports réseau HA ouverts.  Cela garantit une communication transparente au sein du cluster Cloud Volumes ONTAP (communication de bout en bout entre les nœuds).
+Nous déconseillons de modifier les groupes de sécurité prédéfinis ou d'utiliser des groupes de sécurité personnalisés. Toutefois, si vous devez le faire, veuillez noter que le processus de déploiement exige que le système Cloud Volumes ONTAP dispose d'un accès complet à son propre sous-réseau. Une fois le déploiement terminé, si vous décidez de modifier le groupe de sécurité réseau, veillez à laisser ouverts les ports du cluster et les ports réseau HA, car la mise en réseau HA repose sur une communication sans restriction entre les deux nœuds. De plus, les adresses IP des nœuds sont définies automatiquement lors du déploiement. Ceci garantit une communication transparente au sein du cluster Cloud Volumes ONTAP (communication de type « tout à tout » entre les nœuds).
 
 
 

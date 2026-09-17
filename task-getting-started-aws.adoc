@@ -75,7 +75,7 @@ Déployez Cloud Volumes ONTAP depuis la NetApp Console
  a| 
 Une fois toutes les conditions préalables remplies, vous pouvez suivre les étapes de l'assistant pour déployer Cloud Volumes ONTAP dans AWS.
  a| 
-* link:task-quick-deploy-aws.html["Déployez Cloud Volumes ONTAP avec Quick create"]
+* link:task-quick-deploy-aws.html["Déployez Cloud Volumes ONTAP avec Quick create dans AWS"]
 * link:task-deploying-otc-aws.html["Déployez Cloud Volumes ONTAP à l'aide des options avancées"]
 
  a| 
@@ -83,7 +83,6 @@ Avant de commencer le déploiement, assurez-vous d'avoir acheté une licence Clo
 
 * link:concept-license-management.html["Gestion des licences pour BYOL basé sur les nœuds"]
 * link:task-manage-node-licenses.html["Gérer les licences BYOL basées sur les nœuds"]
-* link:task-quick-deploy-aws.html["Déployez Cloud Volumes ONTAP avec Quick create"]
 * link:task-deploying-otc-aws.html["Déployez Cloud Volumes ONTAP à l'aide des options avancées"]
 
 

@@ -55,7 +55,7 @@ https://docs.cloud.google.com/compute/docs/general-purpose-machines#c3_series["G
 Vous pouvez désormais utiliser l'assistant *Quick create* pour déployer Cloud Volumes ONTAP sur Google Cloud, aussi bien pour les configurations à nœud unique que pour les configurations à haute disponibilité (paire haute disponibilité). Ce processus simplifié réduit le nombre d'étapes, définit automatiquement les valeurs par défaut sur une seule page et minimise la navigation pour un déploiement plus rapide et plus facile.
 
 .Liens connexes
-* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-quick-deploy-gcp.html["Déployez Cloud Volumes ONTAP dans Google Cloud avec Quick create"^]
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-quick-deploy-gcp.html["Déployez Cloud Volumes ONTAP avec Quick create dans Google Cloud"^]
 * https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-deploying-gcp.html["Déployez Cloud Volumes ONTAP à l'aide des options avancées dans Google Cloud"^]
 
 

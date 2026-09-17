@@ -4,7 +4,7 @@ permalink: task-quick-deploy-azure.html
 keywords: azure quick deploy, quick deploy, azure, single screen deployment Azure, SAZ, MAZ, single node, HA pair 
 summary: 'Vous pouvez déployer rapidement des instances Cloud Volumes ONTAP dans une configuration à système unique ou en paire haute disponibilité (HA) dans Azure.' 
 ---
-= Déployez Cloud Volumes ONTAP avec Quick create
+= Déployez Cloud Volumes ONTAP avec Quick create dans Azure
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 

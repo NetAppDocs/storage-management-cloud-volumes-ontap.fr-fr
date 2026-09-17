@@ -38,7 +38,7 @@ Si vous êtes déjà client et disposez d'abonnements NIS associés à votre com
 . Dans l'onglet AWS, sélectionnez l'abonnement autonome et cliquez sur l'icône des options image:screenshot_gallery_options.gif["icône de brochette"].
 . Dans la fenêtre Modifier la configuration, sélectionnez le numéro d'abonnement de l'annonce autonome dans le champ *Informations d'identification du compte AWS*.
 . Cliquez sur *Configurer*. Vous pouvez voir l'abonnement comme l'option privilégiée pour la facturation de votre Cloud Volumes ONTAP dans AWS.
-. Lors du déploiement d'un nouveau système Cloud Volumes ONTAP, sélectionnez le pack Essentials pour une facturation via l'abonnement autonome. Pour plus d'informations, consultez  https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-quick-deploy-aws.html["Déployez Cloud Volumes ONTAP avec Quick create"^].
+. Lors du déploiement d'un nouveau système Cloud Volumes ONTAP, sélectionnez le pack Essentials pour une facturation via l'abonnement autonome. Pour plus d'informations, consultez https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-quick-deploy-aws.html["Déployez Cloud Volumes ONTAP avec Quick create dans AWS"^].
 
 
 Répétez les mêmes étapes pour l'abonnement NIS dans l'onglet *Services de données* afin d'utiliser l'abonnement NIS pour vos services de données. Lors du déploiement d'un nouveau système Cloud Volumes ONTAP, sélectionnez le forfait Professional pour une facturation via l'abonnement NIS.
