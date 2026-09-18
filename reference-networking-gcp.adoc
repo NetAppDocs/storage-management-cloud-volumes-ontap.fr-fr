@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
 permalink: reference-networking-gcp.html 
-keywords: networking, network, requirements, connection, connections, subnet, vpn, internet, proxy, HTTP, private, proxy server, routing, firewall, autosupport, connection, jump host, outbound, ports, bucket, private google access, set up data requirement, gcp networking, google networking, shared vpc, host project, service project 
-summary: Configurez votre réseau Google Cloud afin que les systèmes Cloud Volumes ONTAP puissent fonctionner correctement. 
+keywords: networking, network, requirements, connection, connections, subnet, vpn, internet, proxy, HTTP, private, proxy server, routing, firewall, autosupport, connection, jump host, outbound, ports, bucket, private google access, set up data requirement, gcp networking, google networking, shared vpc, host project, service project; private mode or in a project protected by VPC Service Controls 
+summary: 'Configurez votre réseau Google Cloud afin que les systèmes Cloud Volumes ONTAP puissent fonctionner correctement. Vous découvrirez les exigences réseau, les adresses IP privées, les VPC, les sous-réseaux, la mise en miroir des paquets, les règles de pare-feu et les configurations de haute disponibilité pour CVO, ainsi que les exigences relatives à l"agent Console.' 
 ---
 = Configurer la mise en réseau Google Cloud pour Cloud Volumes ONTAP
 :hardbreaks:
@@ -512,10 +512,10 @@ NOTE: Pour permettre une vitesse d'écriture élevée pour les nouveaux déploie
 
 
 
-[[infrastructure-manager-configuration-for-private-mode-deployments]]
-=== Configuration d'Infrastructure Manager pour les déploiements en mode privé
+[[infrastructure-manager-configuration-in-private-mode-or-protected-environments]]
+=== Configuration d'Infrastructure Manager en mode privé ou dans des environnements protégés
 
-Si vous souhaitez déployer Cloud Volumes ONTAP 9.16.1 ou une version ultérieure en mode privé, vous devez effectuer quelques modifications de configuration afin que Cloud Volumes ONTAP puisse utiliser Google Cloud Infrastructure Manager comme service de déploiement au lieu de Deployment Manager, que Google finira par abandonner.
+Si vous souhaitez déployer Cloud Volumes ONTAP 9.16.1 ou une version ultérieure en mode privé ou dans un projet protégé par VPC Service Controls, vous devez effectuer quelques modifications de configuration afin que Cloud Volumes ONTAP puisse utiliser Google Cloud Infrastructure Manager comme service de déploiement au lieu de Deployment Manager, que Google finira par abandonner.
 
 .Avant de commencer
 * Assurez-vous que votre système Cloud Volumes ONTAP est en version 9.16.1 ou ultérieure. Si ce n'est pas le cas, mettez votre système à niveau. Consultez  https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-updating-ontap-cloud.html["Mettre à niveau Cloud Volumes ONTAP"] pour obtenir des instructions.
@@ -526,6 +526,9 @@ Si vous souhaitez déployer Cloud Volumes ONTAP 9.16.1 ou une version ultérieur
 
 .Étapes
 . Créez un pool de workers privé avec cette configuration dans la même région que les déploiements Cloud Volumes ONTAP. Pour obtenir des informations sur la création d’un pool de workers privé, consultez  https://docs.cloud.google.com/build/docs/private-pools/create-manage-private-pools#creating_a_new_private_pool["Google Cloud documentation : Créer et gérer des pools privés"^] et  https://cloud.google.com/build/pricing["Tarification Google Cloud Build"^].
++
+Si vous déployez Cloud Volumes ONTAP dans un projet protégé par VPC Service Controls, créez le pool de workers privé dans le même projet que l'agent Console. Le pool de workers doit être en cours d'exécution. Le pool de workers public par défaut de Google Cloud Cloud Build ne peut pas s'exécuter à l'intérieur d'un périmètre de service.
+
 +
 Le pool de travailleurs doit avoir la configuration suivante :
 
@@ -548,6 +551,13 @@ Le pool de travailleurs doit avoir la configuration suivante :
 
 . Déployez ce pool de nœuds de calcul et maintenez-le actif pour la gestion de Cloud Volumes ONTAP. Google Cloud utilise ce pool pour exécuter toutes les opérations Terraform dans un environnement isolé.
 . Lors du déploiement de Cloud Volumes ONTAP en mode privé, sélectionnez le nom de ce worker pool dans le champ *GCP Worker Pool*. Consultez link:task-deploying-gcp.html["Lancer Cloud Volumes ONTAP dans Google Cloud"] pour obtenir des instructions.
++
+Si vous déployez Cloud Volumes ONTAP dans un projet protégé par VPC Service Controls, créez le système Cloud Volumes ONTAP à l'aide de l'API et incluez le  `workerPool` paramètre dans le corps de la requête de création.
+
++
+
+NOTE: L'inclusion d'un pool de workers n'est actuellement pas prise en charge lors du déploiement Cloud Volumes ONTAP via l'interface utilisateur de la console. Pour les projets protégés par VPC Service Controls, l'API est la seule méthode prise en charge pour déployer Cloud Volumes ONTAP.
+
 
 
 

@@ -44,7 +44,7 @@ Les systèmes Cloud Volumes ONTAP utilisant Infrastructure Manager stockent les 
 ====
 ** Assurez-vous de disposer de la dernière version de l'agent Console. Téléchargez le programme d'installation du produit depuis le site de support NetApp puis installez manuellement l'agent sur votre hôte afin que l'agent puisse utiliser les API d'Infrastructure Manager.
 ** Si vous exécutez l'outil en mode privé, assurez-vous qu'en plus des autres API, vous avez activé l'API Cloud Build. https://docs.netapp.com/us-en/console-setup-admin/task-install-agent-google-gcloud.html#step-5-enable-google-cloud-apis["Activer les API Google Cloud"^].
-** Assurez-vous d'avoir effectué les configurations réseau et créé le pool de nœuds de calcul pour les déploiements en mode privé. Consultez link:reference-networking-gcp.html#infrastructure-manager-configuration-for-private-mode-deployments["Configuration d'Infrastructure Manager pour les déploiements en mode privé"].
+** Assurez-vous d'avoir effectué les configurations réseau et créé le pool de nœuds de calcul pour les déploiements en mode privé. Consultez link:reference-networking-gcp.html#infrastructure-manager-configuration-in-private-mode-or-protected-environments["Configuration d'Infrastructure Manager pour les déploiements en mode privé"].
 
 
 ====
@@ -293,7 +293,7 @@ dmconvert \
 .Exécutez l'outil en mode privé de déploiement
 [%collapsible]
 ====
-Spécifiez le  `--worker-pool` paramètre pour exécuter l’outil dans des déploiements en mode privé. Pour la configuration du pool de nœuds de calcul, reportez-vous à link:reference-networking-gcp.html#infrastructure-manager-configuration-for-private-mode-deployments["Configuration d'Infrastructure Manager pour les déploiements en mode privé"].
+Spécifiez le  `--worker-pool` paramètre pour exécuter l’outil dans des déploiements en mode privé. Pour la configuration du pool de nœuds de calcul, reportez-vous à link:reference-networking-gcp.html#infrastructure-manager-configuration-in-private-mode-or-protected-environments["Configuration d'Infrastructure Manager pour les déploiements en mode privé"].
 
 [source, cli]
 ----

@@ -79,7 +79,7 @@ NOTE: NetApp a restreint l'achat, la prolongation et le renouvellement des licen
 La console interroge automatiquement le service de licences de NetApp pour obtenir des détails sur les licences associées à votre compte de site de support NetApp .  S'il n'y a pas d'erreur, la console ajoute automatiquement les licences à la console.
 
 +
-Votre licence doit être disponible depuis la console avant de pouvoir l'utiliser avec Cloud Volumes ONTAP.  Si nécessaire, vous pouvezlink:task-manage-capacity-licenses.html#add-purchased-licenses-to-your-account["ajouter manuellement la licence à la console"] .
+Votre licence doit être disponible depuis la Console avant de pouvoir l'utiliser avec Cloud Volumes ONTAP. Si nécessaire, vous pouvez link:task-manage-capacity-licenses.html#how-licenses-are-added-to-netapp-console["ajouter manuellement la licence à la console"].
 
 . Sur la page *Systèmes*, cliquez sur *Ajouter un système* et suivez les étapes.
 +
