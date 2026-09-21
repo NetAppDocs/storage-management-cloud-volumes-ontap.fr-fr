@@ -32,7 +32,7 @@ Le rapport d'espace logique est activé sur la machine virtuelle de stockage ini
 ** FlexClone
 ** iSCSI
 ** Gestion des clés de chiffrement multi-locataires (MTEKM), à partir de Cloud Volumes ONTAP 9.12.1 GA
-** Chiffrement de volume NetApp (uniquement pour les systèmes BYOL (apportez votre propre licence) ou PAYGO (pay-as-you-go) enregistrés)
+** NetApp Volume Encryption (uniquement pour les systèmes Bring-Your-Own License (BYOL) ou pay-as-you-go (PAYGO) enregistrés)
 ** NFS ifdef::aws[] endif::aws[] ifdef::azure[] endif::azure[]
 ** SnapMirror
 ** SnapRestore

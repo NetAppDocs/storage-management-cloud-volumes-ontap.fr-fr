@@ -38,7 +38,7 @@ Si vous utilisez un déploiement en mode standard, vous pouvez convertir votre l
 ** Les ressources cloud sous-jacentes restent inchangées après la conversion.
 
 
-* L'outil de conversion de licence prend en charge tous les types de déploiement, tels que le nœud unique, la haute disponibilité (HA) dans une zone de disponibilité unique (AZ), la haute disponibilité dans plusieurs AZ, apportez votre propre licence (BYOL) et PAYGO.
+* L'outil de conversion de licence prend en charge tous les types de déploiement, tels que le nœud unique, la haute disponibilité (HA) dans une seule zone de disponibilité (AZ), la haute disponibilité (HA) dans plusieurs AZ, le Bring-Your-Own License (BYOL) et le PAYGO.
 * En mode standard, l'outil prend en charge toutes les licences par nœud comme source et toutes les licences par capacité comme destination. Par exemple, si vous possédez une licence BYOL par nœud, vous pouvez la convertir en n'importe quelle licence par capacité achetée auprès de NetApp.
 * Après la conversion, le numéro de série de la licence par nœud est remplacé par un format basé sur la capacité. Cette opération est effectuée lors de la conversion et est visible sur votre compte NetApp Support Site (NSS).
 * Lorsque vous passez au modèle basé sur la capacité, vos données continuent d'être conservées au même emplacement que la licence basée sur les nœuds.  Cette approche garantit l’absence de perturbation dans le placement des données et respecte les principes de souveraineté des données tout au long de la transition.
@@ -99,11 +99,11 @@ Consultez le nouveau numéro de série de la licence et vérifiez les modificati
 
 
 [[conversion-in-a-private-mode-deployment]]
-== Conversion en mode de déploiement privé
+== Conversion dans un déploiement en mode privé
 
-Si vous utilisez un déploiement en mode privé, vous pouvez convertir votre licence par nœud en une licence basée sur la capacité à l'aide de l'outil de conversion de licences dans la NetApp Console. La conversion est prise en charge pour tous les fournisseurs de cloud, AWS, Azure et Google Cloud.
+Si vous disposez d'un déploiement en mode privé, vous pouvez convertir votre licence par nœud en une licence basée sur la capacité à l'aide de l'outil de conversion de licences dans la NetApp Console. La conversion est prise en charge pour tous les fournisseurs de cloud, AWS, Azure et Google Cloud.
 
-Les abonnements au Marketplace n'étant pas pris en charge en mode privé, vous devez acheter un pack Essentials (bring your own license (BYOL)) auprès de NetApp. Cela vous permet de conserver les avantages de la licence basée sur la capacité dans le cadre du modèle BYOL sans avoir besoin d'abonnements au Marketplace.
+Les abonnements au marketplace n'étant pas pris en charge en mode privé, vous devez acheter un pack Essentials Bring-Your-Own License ou BYOL auprès de NetApp. Cela vous permet de conserver les avantages d'une licence basée sur la capacité dans le modèle BYOL, sans nécessiter d'abonnement au marketplace.
 
 
 NOTE: La conversion des licences basées sur les nœuds vers toute licence basée sur la capacité autre que Essentials n'est pas prise en charge en mode privé.

@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: concept-license-management.html 
 keywords: byol, bring your own license, expiration, warning, node-based byol, node license, capacity 
-summary: 'Chaque système Cloud Volumes ONTAP doté d"un BYOL basé sur des nœuds doit disposer d"une licence système installée avec un abonnement actif.  La console simplifie le processus en gérant les licences pour vous et en affichant un avertissement avant leur expiration.' 
+summary: 'Découvrez comment fonctionnent les licences BYOL basées sur la capacité et sur les nœuds dans les déploiements Cloud Volumes ONTAP en mode standard et en mode privé, y compris le comportement de renouvellement et d"expiration.' 
 ---
-= Découvrez Cloud Volumes ONTAP BYOL basé sur les nœuds
+= Découvrez les licences BYOL dans Cloud Volumes ONTAP
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,80 +14,113 @@ summary: 'Chaque système Cloud Volumes ONTAP doté d"un BYOL basé sur des nœu
 
 
 [role="lead"]
-Chaque système Cloud Volumes ONTAP doté d'une licence BYOL (Apportez votre propre licence) basée sur un nœud doit disposer d'une licence système installée avec un abonnement actif.  La NetApp Console simplifie le processus en gérant les licences pour vous et en affichant un avertissement avant leur expiration.
+Le modèle de licence Bring-Your-Own License (BYOL) est un modèle de facturation Cloud Volumes ONTAP dans lequel vous achetez une licence directement auprès de NetApp au lieu d'utiliser un abonnement à une place de marché cloud.
 
+BYOL est disponible pour les déploiements en mode standard et en mode privé, sous réserve de restrictions de disponibilité. Vous pouvez gérer les licences BYOL dans la section *Licences et abonnements* de la NetApp Console sous *Licences directes*. Chaque licence est associée à votre entreprise et à des identifiants spécifiques du site de support NetApp.
 
-NOTE: Une licence basée sur les nœuds est la licence de génération précédente pour Cloud Volumes ONTAP. Une licence basée sur les nœuds peut être obtenue auprès de NetApp (BYOL) et est disponible pour le renouvellement de licence, uniquement dans des cas spécifiques.
-
-link:concept-licensing.html["En savoir plus sur les licences Cloud Volumes ONTAP"].
-
-link:https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-manage-node-licenses.html["En savoir plus sur la gestion des licences basées sur les nœuds"^].
-
-
-
-[[byol-system-licenses]]
-== Licences système BYOL
-
-Les licences par nœud peuvent être obtenues auprès de NetApp. Le nombre de licences que vous pouvez acheter pour un système à nœud unique ou une paire haute disponibilité est illimité.
-
-
-NOTE: NetApp a restreint l'achat, la prolongation et le renouvellement des licences BYOL. Pour plus d'informations, consultez  https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/whats-new.html#restricted-availability-of-byol-licensing-for-cloud-volumes-ontap["Disponibilité restreinte des licences BYOL pour Cloud Volumes ONTAPP"^].
-
-Une licence basée sur un nœud offre jusqu'à 368 Tio de capacité pour un nœud ou une paire HA. Vous avez peut-être acheté plusieurs licences pour un système Cloud Volumes ONTAP BYOL afin d'allouer plus de 368 Tio de capacité. Par exemple, vous pouvez disposer de deux licences pour allouer jusqu'à 736 Tio de capacité à Cloud Volumes ONTAP. Vous pouvez également disposer de quatre licences pour atteindre jusqu'à 1,4 Tio.
-
-Sachez que les limites de disque peuvent vous empêcher d’atteindre la limite de capacité en utilisant uniquement les disques. Vous pouvez dépasser la limite du disque enlink:concept-data-tiering.html["hiérarchisation des données inactives vers le stockage d'objets"] .  Pour plus d'informations sur les limites du disque, reportez-vous à https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/["limites de stockage dans les notes de publication de Cloud Volumes ONTAP"^] .
+* NetApp a restreint l'achat, la prolongation et le renouvellement des licences BYOL pour les déploiements en mode standard disposant d'abonnements valides sur la place de marché. Pour plus d'informations, consultez  https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/whats-new.html#restricted-availability-of-byol-licensing-for-cloud-volumes-ontap["Disponibilité restreinte des licences BYOL pour Cloud Volumes ONTAP"^].
+* NetApp abandonne progressivement les licences par nœud au profit des licences par capacité. Les licences par nœud restent disponibles pour un nombre limité de déploiements existants, notamment certains déploiements clients de l'USPS et des déploiements en Chine. Pour plus d'informations, voir  https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing.html#end-of-availability-of-node-based-licenses["Fin de disponibilité des licences basées sur des nœuds"^].
 
 
 
-[[license-management-for-a-new-system]]
-== Gestion des licences pour un nouveau système
 
-Lorsque vous créez un système BYOL basé sur des nœuds, la console vous demande le numéro de série de votre licence et votre compte de site de support NetApp .  La console utilise le compte pour télécharger le fichier de licence depuis NetApp et l'installer sur le système Cloud Volumes ONTAP .
+[[byol-deployment-modes]]
+== Modes de déploiement BYOL
 
-https://docs.netapp.com/us-en/console-setup-admin/task-adding-nss-accounts.html["Découvrez comment ajouter des comptes de site de support NetApp à la console"^].
+[role="tabbed-block"]
+====
+.Déploiements en mode standard
+--
+* Au lieu de BYOL, NetApp préfère les abonnements annuels ou à la carte (PAYGO) via une place de marché pour facturer votre consommation.
+* Les déploiements en mode standard utilisent généralement des licences basées sur la capacité plutôt que sur des licences basées sur le nombre de nœuds. Seul un nombre limité de déploiements en mode standard existants utilisent des licences basées sur le nombre de nœuds.
 
-Si la console ne peut pas accéder au fichier de licence via la connexion Internet sécurisée, vous pouvezlink:task-manage-node-licenses.html["obtenez le fichier vous-même, puis téléchargez-le manuellement sur la console"] .
+
+--
+.Déploiements en mode privé
+--
+* Les déploiements en mode privé reposent entièrement sur des licences BYOL, car les abonnements à la marketplace ne sont pas disponibles en mode privé.
+* Pour les nouveaux déploiements, utilisez les packages Essentials basés sur la capacité plutôt que les licences par nœud. Les licences par nœud sont utilisées par certains déploiements en mode privé plus anciens.
+
+
+--
+====
+
+
+[[compare-byol-license-types-in-private-mode]]
+=== Comparer les types de licences BYOL en mode privé
+
+Le tableau suivant récapitule les différences entre les licences basées sur la capacité et les licences basées sur les nœuds en mode privé.
+
+[cols="25,37,38"]
+|===
+| Fonctionnalité | Licences basées sur la capacité | Licences basées sur les nœuds 
+
+
+| Assistance au déploiement  a| 
+Les nouveaux déploiements en mode privé ne prennent en charge que les licences basées sur la capacité, plus précisément le forfait Essentials.
+ a| 
+Les nouveaux déploiements en mode privé ne prennent pas en charge les licences par nœud. Seul un nombre limité de déploiements existants basés sur des nœuds peuvent continuer à les utiliser.
 
 
 
-[[license-expiration]]
-== Expiration de la licence
+| Achat  a| 
+Achetez un pack BYOL Essentials basé sur la capacité auprès de NetApp et attribuez-le à votre système lors du déploiement.
+ a| 
+Si vous disposez d'un déploiement en mode privé existant avec une licence basée sur les nœuds, vous pouvez le convertir en licence basée sur la capacité en achetant un package Essentials auprès de NetApp.
 
-La console affiche un avertissement 30 jours avant l'expiration d'une licence basée sur un nœud et à nouveau lorsque la licence expire.  L'image suivante montre un avertissement d'expiration de 30 jours qui apparaît dans l'interface utilisateur :
+
+
+| Capacité  a| 
+Les 500 premiers Gio de capacité consommée ne sont pas déduits du coût de votre licence. Vous pouvez acheter des modules supplémentaires à mesure que vos besoins en charge de travail augmentent.
+ a| 
+Une licence par nœud offre jusqu'à 368 Tio de capacité pour un nœud unique ou une paire haute disponibilité. Pour allouer plus de 368 Tio à un système Cloud Volumes ONTAP, achetez plusieurs licences. Par exemple, deux licences offrent jusqu'à 736 Tio et quatre licences offrent jusqu'à 1,4 PiB.
+
+
+
+| Portée  a| 
+La licence basée sur la capacité utilise un pool de capacité partagé entre vos systèmes Cloud Volumes ONTAP. Vous pouvez redistribuer la capacité disponible en fonction de l'évolution de vos besoins de stockage.
+ a| 
+Chaque licence par nœud s'applique à un système Cloud Volumes ONTAP et fournit une capacité fixe à ce système.
+
+
+
+| Transférabilité  a| 
+Chaque licence basée sur la capacité est associée à un compte Console. Les systèmes créés sous ce compte peuvent partager la capacité de la licence et le numéro de série. Par exemple, une licence de 5 Tio peut prendre en charge deux systèmes de 2,5 Tio chacun ou un système de 5 Tio. Vous pouvez consulter le numéro de série de la licence dans la Console et attribuer la même licence à plusieurs systèmes sous le même compte.
+ a| 
+Vous pouvez transférer une licence BYOL basée sur un nœud en supprimant le système existant et en utilisant la licence pour créer un nouveau système. Seuls les numéros de série _indépendants du cloud_ fonctionnent entre les fournisseurs de cloud. Ces numéros de série commencent par le préfixe _908xxxx_.
+
+|===
+
+
+[[manage-and-renew-byol-licenses]]
+== Gérer et renouveler les licences BYOL
+
+
+
+[[renew-a-byol-license]]
+=== Renouveler une licence BYOL
+
+Contactez un représentant NetApp pour renouveler votre licence BYOL. La NetApp Console obtient et installe automatiquement la licence renouvelée sur le système Cloud Volumes ONTAP.
+
+Si la NetApp Console ne peut pas accéder au fichier de licence via une connexion Internet sécurisée, téléchargez le fichier de licence et link:task-manage-node-licenses.html["Téléchargez-le manuellement sur la NetApp Console"].
+
+Pour gérer les informations d'identification du site de support NetApp associées à la Console, consultez https://docs.netapp.com/us-en/console-setup-admin/task-adding-nss-accounts.html["Gérer les informations d'identification NSS associées à la NetApp Console"^].
+
+
+
+[[respond-to-an-expiration-warning]]
+=== Répondre à un avertissement d'expiration
+
+La console affiche un avertissement 30 jours avant l'expiration d'une licence par nœud, puis à nouveau à l'expiration de la licence. Sélectionnez le système Cloud Volumes ONTAP pour consulter l'avertissement et renouveler la licence.
 
 image:screenshot_warning.gif["Capture d'écran : affiche un système Cloud Volumes ONTAP qui inclut une icône d'avertissement.  L'icône indique qu'une action est requise."]
 
-Vous pouvez sélectionner le système pour examiner le message.
+Si vous êtes administrateur d'organisation ou administrateur de compte et que vous avez activé l'option, la NetApp Console inclut un avertissement d'expiration de licence dans le rapport Cloud Volumes ONTAP et vous l'envoie par e-mail.
 
-La console inclut un avertissement d'expiration de licence dans le rapport Cloud Volumes ONTAP qui vous est envoyé par e-mail, si vous êtes un administrateur d'organisation ou de compte et que vous avez activé l'option.  Le rapport envoyé par courrier électronique inclut l'avertissement d'expiration de la licence toutes les 2 semaines.
-
-Si vous ne renouvelez pas la licence à temps, le système Cloud Volumes ONTAP s'arrête.  Si vous le redémarrez, il s'éteint à nouveau.
-
-
-
-[[license-renewal]]
-== Renouvellement de licence
-
-Si vous renouvelez un abonnement BYOL basé sur un nœud en contactant un représentant NetApp , la console obtient automatiquement la nouvelle licence auprès de NetApp et l'installe sur le système Cloud Volumes ONTAP .
-
-Si la console ne peut pas accéder au fichier de licence via la connexion Internet sécurisée, vous pouvezlink:task-manage-node-licenses.html["obtenez le fichier vous-même, puis téléchargez-le manuellement sur la console"] .
-
-
-
-[[license-transfer-to-a-new-system]]
-== Transfert de licence vers un nouveau système
-
-Une licence BYOL basée sur un nœud est transférable entre les systèmes Cloud Volumes ONTAP lorsque vous supprimez un système existant, puis en créez un nouveau en utilisant la même licence.
-
-Par exemple, vous souhaiterez peut-être supprimer un système sous licence existant, puis utiliser la licence avec un nouveau système BYOL dans un autre fournisseur VPC/VNet ou cloud.  Notez que seuls les numéros de série _indépendants du cloud_ fonctionnent chez n'importe quel fournisseur de cloud.  Les numéros de série indépendants du cloud commencent par le préfixe _908xxxx_.
-
-Il est important de noter que votre licence BYOL est liée à votre entreprise et à un ensemble spécifique d'informations d'identification du site de support NetApp .
+Si vous ne renouvelez pas la licence avant son expiration, le système Cloud Volumes ONTAP s'arrête. Redémarrer le système sans renouveler la licence entraîne un nouvel arrêt.
 
 .Liens connexes
-* link:concept-licensing.html["Licences pour Cloud Volumes ONTAP"^]
-* link:concept-licensing-charging.html["En savoir plus sur les licences basées sur la capacité"^]
-* link:task-manage-capacity-licenses.html["Gérer les licences basées sur la capacité pour Cloud Volumes ONTAP"^]
-* link:task-manage-node-licenses.html["Gérer les licences basées sur les nœuds"^]
-* link:task-convert-node-capacity.html["Convertir une licence basée sur les nœuds en une licence basée sur la capacité"^]
-* link:task-manage-keystone.html["Gérer les abonnements Keystone"^]
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing.html["Licences pour Cloud Volumes ONTAP"^]
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-manage-node-licenses.html["Gérez les licences basées sur les nœuds, y compris les chargements BYOL en mode privé"^]
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-convert-node-capacity.html["Convertir les licences basées sur les nœuds en licences basées sur la capacité"^]
 

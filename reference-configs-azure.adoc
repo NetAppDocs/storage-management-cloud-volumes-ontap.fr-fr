@@ -1298,7 +1298,7 @@ Les paires haute disponibilité utilisent des disques managés Azure. Les types 
 [[supported-regions]]
 === Régions prises en charge
 
-Pour la prise en charge des régions Azure, voir https://bluexp.netapp.com/cloud-volumes-global-regions["Cloud Volumes Régions mondiales"^].
+Pour la prise en charge des régions Azure, veuillez consulter https://bluexp.netapp.com/cloud-volumes-global-regions["Cloud Volumes Régions mondiales"^].
 
 .Liens connexes
 * link:task-planning-your-config-azure.html["Découvrez comment choisir les types et les tailles de disque pour vos systèmes dans Azure"]

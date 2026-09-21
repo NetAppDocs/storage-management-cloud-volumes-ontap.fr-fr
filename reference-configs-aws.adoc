@@ -827,7 +827,7 @@ Les notes suivantes fournissent des indications générales sur le comportement 
 [[supported-regions]]
 === Régions prises en charge
 
-Pour la prise en charge des régions AWS, voir https://bluexp.netapp.com/cloud-volumes-global-regions["Cloud Volumes Régions mondiales"^].
+Pour connaître la prise en charge des régions AWS, veuillez consulter https://bluexp.netapp.com/cloud-volumes-global-regions["Cloud Volumes Régions mondiales"^].
 
 .Informations connexes
 * https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html["types d'instances Amazon EC2"^]

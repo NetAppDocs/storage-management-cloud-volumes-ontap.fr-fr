@@ -509,6 +509,20 @@ Les quotas vous permettent de restreindre ou de suivre l'espace disque et le nom
 
 CAUTION: Après la fin du processus de déploiement, ne modifiez pas les configurations Cloud Volumes ONTAP générées par le système dans le portail Google Cloud, telles que les balises système et les étiquettes définies dans les ressources Google Cloud. Toute modification apportée à ces configurations peut entraîner un comportement inattendu ou une perte de données.
 
+
+
+[[deploy-cloud-volumes-ontap-in-private-mode]]
+== Déployer Cloud Volumes ONTAP en mode privé
+
+Les options de déploiement en mode privé vous aident à respecter les exigences de sécurité et de conformité de votre organisation. Un déploiement en mode privé suit la même procédure qu'un déploiement en mode standard. Il s'exécute dans votre propre virtual private cloud (VPC) ou virtual network (VNet), sans connexion Internet publique.
+
+En mode privé, vous devez acheter une licence Bring-Your-Own License (BYOL) basée sur la capacité ou un package link:concept-license-management.html["Apportez votre propre vin"] _Essentials_ auprès de NetApp, et l’assigner à votre système lors du déploiement. Les 500 premiers Gio de capacité consommée ne sont pas pris en compte dans les frais de licence. Achetez des packages Essentials supplémentaires à mesure que vos besoins en charge de travail augmentent. Après le déploiement, vous pouvez consulter le numéro de série de la licence dans la NetApp Console.
+
+Pour plus d'informations sur le chargement d'un fichier de licence dans votre déploiement en mode privé, consultez  https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-manage-node-licenses.html["Gérer les licences par nœud pour Cloud Volumes ONTAP"].
+
+.Restrictions relatives aux licences basées sur les nœuds
+Les déploiements en mode privé utilisaient auparavant uniquement des licences par nœud. NetApp a restreint l'achat, l'extension et le renouvellement de ces licences de génération précédente, sauf dans des cas limités, depuis  https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/whats-new.html#restricted-availability-of-byol-licensing-for-cloud-volumes-ontap["2025-06-25"]. Si vous disposez de déploiements en mode privé existants avec des licences par nœud, vous devez les convertir en licences basées sur la capacité. Pour obtenir des instructions, consultez  https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-convert-node-capacity.html["Convertir les licences par nœud en licences par capacité"^].
+
 .Liens connexes
 * link:task-planning-your-config-gcp.html["Planification de votre configuration Cloud Volumes ONTAP dans Google Cloud"]
 

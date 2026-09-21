@@ -1,0 +1,21 @@
+= Prise en charge des licences basées sur la capacité dans les déploiements en mode privé
+:allow-uri-read: 
+
+
+
+
+[[support-for-capacity-based-licenses-in-private-mode-deployments]]
+=== Prise en charge des licences basées sur la capacité dans les déploiements en mode privé
+
+Vous pouvez désormais déployer des systèmes Cloud Volumes ONTAP en mode privé avec des licences basées sur la capacité sur AWS, Azure et Google Cloud.
+
+NetApp prend en charge uniquement le pack Essentials pour les licences basées sur la capacité en mode privé. Achetez un pack Essentials Bring-Your-Own License (BYOL) basé sur la capacité auprès de NetApp et attribuez-le à votre système lors du déploiement. Les 500 premiers Gio de capacité consommée ne sont pas pris en compte dans les frais de licence. Vous pouvez acheter des packs supplémentaires à mesure que vos besoins en charge de travail augmentent.
+
+NetApp recommande une licence basée sur la capacité pour tous les déploiements Cloud Volumes ONTAP en mode privé. Si vous disposez déjà de déploiements en mode privé avec des licences par nœud, vous pouvez les convertir en licences basées sur la capacité en achetant un pack Essentials auprès de NetApp. Cette nouvelle capacité de déploiement, combinée à l’option de conversion, soutient le plan de NetApp visant à passer progressivement des licences par nœud aux licences basées sur la capacité.
+
+.Liens connexes
+* https://review.docs.netapp.com/us-en/storage-management-cloud-volumes-ontap_capacity-license-darkmode/concept-licensing.html["Licences Cloud Volumes ONTAP"^]
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-license-management.html["Découvrez Cloud Volumes ONTAP BYOL"^]
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing.html#end-of-availability-of-node-based-licenses["Fin de disponibilité des licences basées sur des nœuds"^]
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-manage-node-licenses.html["Gérer les licences par nœud pour Cloud Volumes ONTAP"^]
+

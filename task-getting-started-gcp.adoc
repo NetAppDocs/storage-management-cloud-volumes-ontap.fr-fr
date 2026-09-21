@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: task-getting-started-gcp.html 
 keywords: google cloud platform, gcp, cloud manager, deploy the Console, launch the Console, create the Console, getting started, networking, gcp networking, service account, tiering, data tiering, bucket, fabricpool, cloud backup, storage access key, gcp role, role, iam role, permissions, gcp permissions, cloud backup, the Console 
-summary: Démarrez avec Cloud Volumes ONTAP pour Google Cloud en quelques étapes. 
+summary: Démarrez avec Cloud Volumes ONTAP dans Google Cloud en quelques étapes. 
 ---
 = Présentation du déploiement de Cloud Volumes ONTAP dans Google Cloud
 :hardbreaks:
@@ -19,6 +19,17 @@ Pour déployer Cloud Volumes ONTAP, vous devez d'abord connaître votre abonneme
 [cols="20,35,25,25"]
 |===
 | Tâche | Description | Référence | Remarques concernant les déploiements en mode privé 
+
+
+ a| 
+Vérifiez les rôles de la console NetApp
+ a| 
+Avant de pouvoir créer un agent de console et effectuer d'autres tâches de déploiement pour Cloud Volumes ONTAP, vous devez vérifier que les rôles et autorisations IAM nécessaires sont en place.
+ a| 
+Consultez le guide d'installation de la console :https://docs.netapp.com/us-en/console-setup-admin/reference-iam-cvo-roles.html["Rôles d'accès Cloud Volumes ONTAP dans la NetApp Console"^] https://docs.netapp.com/us-en/console-setup-admin/task-cvo-rbac-setup.html["Configurer l'accès basé sur les rôles pour Cloud Volumes ONTAP"^]
+ a| 
+Vérifiez que les rôles sont correctement configurés.
+
 
 
  a| 
@@ -39,7 +50,7 @@ La console propose des packages préconfigurés qui correspondent à vos exigenc
  a| 
 link:task-planning-your-config-gcp.html["Planifiez votre configuration"]
  a| 
-Vous devez avoir des considérations de planification similaires pour les déploiements en mode privé.
+Vous devez prendre en compte des considérations de planification similaires pour les déploiements en mode privé.
 
 
 
@@ -99,10 +110,10 @@ Reportez-vous à :
 * link:task-deploying-gcp.html["Déployez Cloud Volumes ONTAP à l'aide des options avancées"]
 
  a| 
-Avant de commencer le déploiement, assurez-vous d'avoir acheté une licence Cloud Volumes ONTAP auprès de NetApp. Les déploiements en mode privé nécessitent des licences BYOL par nœud. Les abonnements Marketplace ne sont pas pris en charge pour la facturation de votre utilisation de Cloud Volumes ONTAP. Obtenez le fichier de licence auprès de NetApp et téléchargez-le lors du déploiement. Voir :
+Le mode privé prend uniquement en charge les déploiements avancés. Avant de commencer le déploiement, assurez-vous d'avoir acheté une licence Cloud Volumes ONTAP auprès de NetApp. Les déploiements en mode privé reposent sur des licences BYOL. Les abonnements Marketplace ne sont pas pris en charge pour la facturation de votre utilisation de Cloud Volumes ONTAP. Obtenez le fichier de licence auprès de NetApp et chargez-le lors du déploiement. Voir :
 
-* link:concept-license-management.html["Gestion des licences pour BYOL basé sur les nœuds"]
-* link:task-manage-node-licenses.html["Gérer les licences BYOL basées sur les nœuds"]
+* link:concept-license-management.html["Gestion des licences"]
+* link:task-manage-node-licenses.html["Gérer les licences BYOL"]
 * link:task-deploying-gcp.html["Déployez Cloud Volumes ONTAP à l'aide des options avancées"]
 
 

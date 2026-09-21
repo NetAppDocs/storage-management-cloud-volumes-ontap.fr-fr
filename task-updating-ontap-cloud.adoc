@@ -348,7 +348,7 @@ La restauration ou la rétrogradation de Cloud Volumes ONTAP vers une version pr
 [[support-registration]]
 === Enregistrement du support
 
-Cloud Volumes ONTAP doit être enregistré auprès du support NetApp pour pouvoir mettre à niveau le logiciel à l'aide de l'une des méthodes décrites sur cette page.  Ceci s'applique à la fois au paiement à l'utilisation (PAYGO) et à l'apportez votre propre permis (BYOL).  Vous aurez besoin delink:task-registering.html["enregistrer manuellement les systèmes PAYGO"] , tandis que les systèmes BYOL sont enregistrés par défaut.
+Cloud Volumes ONTAP doit être enregistré auprès du support NetApp afin de pouvoir mettre à niveau le logiciel en utilisant l'une des méthodes décrites sur cette page. Cela s'applique aussi bien au modèle pay-as-you-go (PAYGO) qu'à Bring-Your-Own License (BYOL). Vous devrez link:task-registering.html["enregistrer manuellement les systèmes PAYGO"], tandis que les systèmes BYOL sont enregistrés par défaut.
 
 
 TIP: Un système qui n'est pas enregistré pour le support recevra toujours les notifications de mise à jour logicielle qui apparaissent dans la console lorsqu'une nouvelle version est disponible.  Mais vous devrez enregistrer le système avant de pouvoir mettre à niveau le logiciel.

@@ -291,7 +291,7 @@ sidebar:
         url: "/concept-licensing-charging.html"
       - title: Gérer les licences basées sur la capacité
         url: "/task-manage-capacity-licenses.html"
-      - title: Découvrez le BYOL basé sur les nœuds
+      - title: Découvrez les licences BYOL
         url: "/concept-license-management.html"
       - title: Gérer les licences basées sur les nœuds
         url: "/task-manage-node-licenses.html"

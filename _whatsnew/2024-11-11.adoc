@@ -25,7 +25,7 @@ NetApp reconnaît les exigences de licence uniques suivantes conformément aux o
 * Clients du secteur public américain
 * Déploiements en mode privé
 * Déploiements de Cloud Volumes ONTAP dans AWS en Chine
-* Si vous disposez d'une licence BYOL valide et non expirée
+* Si vous possédez un package Bring-Your-Own License (BYOL) valide et non expiré par nœud
 
 
 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing.html#end-of-availability-of-node-based-licenses["Fin de disponibilité des licences basées sur des nœuds"^]

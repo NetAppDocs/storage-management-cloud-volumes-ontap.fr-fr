@@ -53,7 +53,7 @@ Les licences basées sur la capacité vous permettent de payer Cloud Volumes ONT
 
 Les formules Essentiel et Professionnel sont disponibles avec les modèles de consommation ou options d'achat suivants :
 
-* Une licence (apportez votre propre licence (BYOL)) achetée auprès de NetApp
+* Une licence achetée auprès de NetApp (Bring-Your-Own License ou BYOL)
 * Un abonnement horaire à la carte (PAYGO) de la Place de marché Azure
 * Un contrat annuel
 

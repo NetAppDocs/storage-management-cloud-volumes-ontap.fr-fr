@@ -105,7 +105,7 @@ Remarques:
 
 Les limites de capacité varient selon la famille de types d'instances EC2 que vous utilisez et selon que vous utilisez un système à nœud unique ou une paire haute disponibilité.
 
-Les notes suivantes fournissent des détails sur les chiffres que vous verrez dans les tableaux ci-dessous :
+Les notes suivantes fournissent des détails sur les chiffres que vous verrez dans les tableaux ci-dessous :
 
 * Les limites de disque concernent spécifiquement les disques contenant des données utilisateur.
 +
