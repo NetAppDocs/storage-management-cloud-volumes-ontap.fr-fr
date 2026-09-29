@@ -37,7 +37,7 @@ TIP: La NetApp Console modifie un nœud à la fois en lançant la prise de contr
 
 .Étapes
 . Sur la page *Systèmes*, sélectionnez le système.
-. Dans l’onglet Présentation, cliquez sur le panneau Fonctionnalités, puis cliquez sur l’icône en forme de crayon à côté de *Type de machine*.
+. Dans l'onglet Vue d'ensemble, sélectionnez le panneau Fonctionnalités, puis sélectionnez l'icône en forme de crayon à côté de *Type de machine*.
 +
 image:screenshot_features_machine_type.png["Une capture d'écran qui montre le paramètre Type de machine sous le panneau Fonctionnalités disponible en haut à droite de la page Présentation lors de l'affichage d'un système."]
 
@@ -45,7 +45,7 @@ image:screenshot_features_machine_type.png["Une capture d'écran qui montre le p
 
 Si vous utilisez une licence PAYGO (pay-as-you-go) basée sur des nœuds, vous pouvez éventuellement choisir une licence et un type de machine différents en cliquant sur l'icône en forme de crayon à côté de *Type de licence*.
 
-. Choisissez un type de machine, cochez la case pour confirmer que vous comprenez les implications du changement, puis cliquez sur *Modifier*.
+. Choisissez un type de machine, cochez la case à cocher pour confirmer que vous comprenez les implications de la modification, puis sélectionnez *Modifier*.
 
 
 .Résultat

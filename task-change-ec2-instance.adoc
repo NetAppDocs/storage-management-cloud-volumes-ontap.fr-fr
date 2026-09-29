@@ -42,14 +42,14 @@ Si vous ne pouvez pas modifier le type d'instance à partir des instances c4, m4
 
 .Étapes
 . Sur la page *Systèmes*, sélectionnez le système.
-. Dans l’onglet Présentation, cliquez sur le panneau Fonctionnalités, puis cliquez sur l’icône en forme de crayon à côté de *Type d’instance*.
+. Dans l'onglet Vue d'ensemble, sélectionnez le panneau Fonctionnalités, puis sélectionnez l'icône en forme de crayon en regard de *Type d'instance*.
 +
 image::screenshot_features_instance_type.png[400]
 
 +
 Si vous utilisez une licence PAYGO (paiement à l'utilisation) basée sur des nœuds, vous pouvez éventuellement choisir une licence et un type d'instance différents en cliquant sur l'icône en forme de crayon à côté de *Type de licence*.
 
-. Choisissez un type d’instance, cochez la case pour confirmer que vous comprenez les implications du changement, puis cliquez sur *Modifier*.
+. Choisissez un type d'instance, cochez la case pour confirmer que vous comprenez les implications de la modification, puis sélectionnez *Modifier*.
 
 
 .Résultat

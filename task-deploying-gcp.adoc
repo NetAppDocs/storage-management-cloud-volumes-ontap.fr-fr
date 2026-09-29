@@ -59,7 +59,7 @@ Créez un système dans la NetApp Console pour lancer Cloud Volumes ONTAP dans G
 
 .Étapes
 . Dans le menu de navigation de gauche, sélectionnez *Stockage > Gestion*.
-. [[subscribe]]Sur la page *Systèmes*, cliquez sur *Ajouter un système* et suivez les instructions.
+. [[subscribe]]Sur la page *Systèmes*, sélectionnez *Ajouter un système* et suivez les invites.
 . *Choisissez un emplacement* : sélectionnez *Google Cloud* et * Cloud Volumes ONTAP*.
 . Si vous y êtes invité https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-connector-google.html["créer un agent de console"^].
 . *Détails et informations d'identification* : sélectionnez un projet, spécifiez un nom de cluster, sélectionnez éventuellement un compte de service, ajoutez éventuellement des étiquettes, puis spécifiez les informations d'identification.
@@ -92,7 +92,7 @@ Si aucun projet supplémentaire n'apparaît dans la liste déroulante, cela sign
 
 NOTE: Il s'agit du compte de service que vous avez configuré pour la Console, link:https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-connector-google.html["comme décrit sur cette page"^].
 
-Cliquez sur *Ajouter un abonnement* pour associer les informations d’identification sélectionnées à un abonnement.
+Sélectionnez *Ajouter un abonnement* pour associer les identifiants sélectionnés à un abonnement.
 
 Pour créer un système Cloud Volumes ONTAP à paiement à l'usage, vous devez sélectionner un projet Google Cloud associé à un abonnement à Cloud Volumes ONTAP depuis la place de marché Google Cloud. Consultez  https://docs.netapp.com/us-en/console-setup-admin/task-adding-gcp-accounts.html["Associer un abonnement Marketplace aux identifiants Google Cloud"^].
 
@@ -132,7 +132,7 @@ Si vous laissez la console générer la politique de pare-feu pour vous, vous de
 ** link:task-set-up-licensing-google.html["Apprenez à configurer les licences"^]
 
 
-. *Packages préconfigurés* : Sélectionnez l’un des packages pour déployer rapidement un système Cloud Volumes ONTAP, ou cliquez sur *Créer ma propre configuration*. Les packages préconfigurés varient selon la version Cloud Volumes ONTAP sélectionnée. Par exemple, pour Cloud Volumes ONTAP 9.18.1 et versions ultérieures, la Console affiche des packages avec des machines virtuelles C3, y compris des disques Hyperdisk Balanced. Vous pouvez modifier les configurations, telles que les paramètres d’IOPS et de débit, en fonction des besoins de votre charge de travail.
+. *Packages préconfigurés* : Sélectionnez l'un des packages pour déployer rapidement un système Cloud Volumes ONTAP, ou sélectionnez *Créer ma propre configuration*. Les packages préconfigurés varient selon la version de Cloud Volumes ONTAP sélectionnée. Par exemple, pour Cloud Volumes ONTAP 9.18.1 et les versions ultérieures, la console affiche des packages avec des VM C3, y compris des disques Hyperdisk Balanced. Vous pouvez modifier les configurations, telles que les paramètres d'IOPS et de débit, en fonction des besoins de votre charge de travail.
 +
 Si vous choisissez l’un des packages, il vous suffit de spécifier un volume, puis de vérifier et d’approuver la configuration.
 
@@ -185,7 +185,7 @@ link:concept-data-tiering.html["En savoir plus sur la hiérarchisation des donn�
 
 
 
-. *Créer un volume* : saisissez les détails du nouveau volume ou cliquez sur *Ignorer*.
+. *Créer un volume* : saisissez les détails du nouveau volume ou sélectionnez *Ignorer*.
 +
 link:concept-client-protocols.html["En savoir plus sur les protocoles et versions clients pris en charge"^] .
 
@@ -255,9 +255,9 @@ Pour plus d'informations, reportez-vous àlink:task-planning-your-config-gcp.htm
 . *Réviser et approuver* : Révisez et confirmez vos sélections.
 +
 .. Consultez les détails de la configuration.
-.. Cliquez sur *Plus d'informations* pour consulter les détails sur l'assistance et les ressources Google Cloud que la console achètera.
+.. Sélectionnez *Plus d'informations* pour consulter les détails concernant l'assistance et les ressources Google Cloud que la Console achètera.
 .. Cochez les cases *Je comprends...*.
-.. Cliquez sur *Aller*.
+.. Sélectionnez *Go*.
 
 
 
@@ -265,7 +265,7 @@ Pour plus d'informations, reportez-vous àlink:task-planning-your-config-gcp.htm
 .Résultat
 La console déploie le système Cloud Volumes ONTAP .  Vous pouvez suivre la progression sur la page *Audit*.
 
-Si vous rencontrez des problèmes lors du déploiement du système Cloud Volumes ONTAP , consultez le message d’échec.  Vous pouvez également sélectionner le système et cliquer sur *Recréer l'environnement*.
+Si vous rencontrez des problèmes lors du déploiement du système Cloud Volumes ONTAP, consultez le message d'erreur. Vous pouvez également sélectionner le système et choisir *Recréer l'environnement*.
 
 Pour obtenir de l'aide supplémentaire, rendez-vous sur https://mysupport.netapp.com/site/products/all/details/cloud-volumes-ontap/guideme-tab["Prise en charge de NetApp Cloud Volumes ONTAP"^] .
 
@@ -289,7 +289,7 @@ Créez un système dans la console pour lancer Cloud Volumes ONTAP dans Google C
 
 .Étapes
 . Dans le menu de navigation de gauche, sélectionnez *Stockage > Gestion*.
-. Sur la page *Systèmes*, cliquez sur *Stockage > Système* et suivez les instructions.
+. Sur la page *Systèmes*, sélectionnez *Stockage > Système* et suivez les instructions.
 . *Choisissez un emplacement* : sélectionnez *Google Cloud* et * Cloud Volumes ONTAP HA*.
 . *Détails du système* : Sélectionnez un projet, spécifiez un nom de cluster, sélectionnez éventuellement un compte de service, ajoutez éventuellement des étiquettes, puis spécifiez les informations d’identification.
 +
@@ -304,7 +304,7 @@ Le tableau suivant décrit les domaines pour lesquels vous pourriez avoir besoin
 | Projet Google Cloud et abonnement Marketplace  a| 
 Sélectionnez le projet Google et l’abonnement que vous souhaitez utiliser pour ce système. Il s’agit du compte de service que vous avez configuré pour la Console. Pour plus d’informations, consultez la link:https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-connector-google.html["Documents d'installation de la console"^]. La Console utilise le projet pour créer le système Cloud Volumes ONTAP et l’abonnement pour déterminer la facturation et l’utilisation. Si aucun autre projet n’apparaît dans la liste déroulante, cela signifie que vous n’avez pas encore associé le compte de service à d’autres projets. Accédez à la Google Cloud Console, ouvrez le service IAM et sélectionnez le projet. Ajoutez le compte de service avec le rôle que vous utilisez pour la Console à ce projet. Vous devrez répéter cette étape pour chaque projet.
 
-Cliquez sur *Ajouter un abonnement* pour associer les informations d’identification sélectionnées à un abonnement.
+Sélectionnez *Ajouter un abonnement* pour associer les identifiants sélectionnés à un abonnement.
 
 Pour créer un système Cloud Volumes ONTAP à paiement à l'usage, vous devez sélectionner un projet Google Cloud associé à un abonnement à Cloud Volumes ONTAP depuis le Google Cloud Marketplace. Consultez le document de configuration de la Console https://docs.netapp.com/us-en/console-setup-admin/task-adding-gcp-accounts.html["Associer un abonnement Marketplace aux identifiants Google Cloud"^].
 
@@ -364,7 +364,7 @@ Si vous laissez la console générer la politique de pare-feu pour vous, vous de
 ** link:task-set-up-licensing-google.html["Apprenez à configurer les licences"^] .
 
 
-. *Packages préconfigurés* : sélectionnez l’un des packages pour déployer rapidement un système Cloud Volumes ONTAP ou cliquez sur *Créer ma propre configuration*.
+. *Packages préconfigurés* : Sélectionnez l’un des packages pour déployer rapidement un système Cloud Volumes ONTAP, ou sélectionnez *Créer ma propre configuration*.
 +
 Si vous choisissez l'un des packages, il vous suffit de spécifier un volume, puis de vérifier et d'approuver la configuration. Les packages préconfigurés varient selon la version de Cloud Volumes ONTAP sélectionnée et les types de configuration. Par exemple, si vous sélectionnez un déploiement sur une seule zone de disponibilité pour Cloud Volumes ONTAP 9.19.1 ou une version ultérieure, vous pouvez voir des packages préconfigurés avec des machines de la série C3 et des disques Hyperdisk Balanced. Pour les versions antérieures et les zones de disponibilité multiples, vous pouvez toujours sélectionner des machines n2-standard et des disques persistants. Vous pouvez modifier les configurations, telles que les paramètres d'IOPS et de débit, en fonction des besoins de votre charge de travail.
 
@@ -416,7 +416,7 @@ link:concept-data-tiering.html["En savoir plus sur la hiérarchisation des donn�
 
 
 
-. *Créer un volume* : saisissez les détails du nouveau volume ou cliquez sur *Ignorer*.
+. *Créer un volume* : saisissez les détails du nouveau volume ou sélectionnez *Ignorer*.
 +
 link:concept-client-protocols.html["En savoir plus sur les protocoles et versions clients pris en charge"^] .
 
@@ -486,9 +486,9 @@ Pour plus d'informations, reportez-vous àlink:task-planning-your-config-gcp.htm
 . *Réviser et approuver* : Révisez et confirmez vos sélections.
 +
 .. Consultez les détails de la configuration.
-.. Cliquez sur *Plus d'informations* pour consulter les détails sur l'assistance et les ressources Google Cloud que la console achètera.
+.. Sélectionnez *Plus d'informations* pour consulter les détails concernant l'assistance et les ressources Google Cloud que la Console achètera.
 .. Cochez les cases *Je comprends...*.
-.. Cliquez sur *Aller*.
+.. Sélectionnez *Go*.
 
 
 
@@ -496,7 +496,7 @@ Pour plus d'informations, reportez-vous àlink:task-planning-your-config-gcp.htm
 .Résultat
 La console déploie le système Cloud Volumes ONTAP .  Vous pouvez suivre la progression sur la page *Audit*.
 
-Si vous rencontrez des problèmes lors du déploiement du système Cloud Volumes ONTAP , consultez le message d’échec.  Vous pouvez également sélectionner le système et cliquer sur *Recréer l'environnement*.
+Si vous rencontrez des problèmes lors du déploiement du système Cloud Volumes ONTAP, consultez le message d'erreur. Vous pouvez également sélectionner le système et choisir *Recréer l'environnement*.
 
 .Après avoir terminé
 * Si vous avez provisionné un partage CIFS, accordez aux utilisateurs ou aux groupes des autorisations sur les fichiers et les dossiers et vérifiez que ces utilisateurs peuvent accéder au partage et créer un fichier.

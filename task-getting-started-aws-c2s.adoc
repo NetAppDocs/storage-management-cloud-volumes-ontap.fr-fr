@@ -68,7 +68,7 @@ Vous avez besoin d’une politique IAM et d’un rôle IAM pour chacun des élé
 
 
 .Étapes
-. Accédez à la console AWS IAM et cliquez sur *Politiques*.
+. Accédez à la console AWS IAM et sélectionnez *Policies*.
 . Créez une politique pour l’instance de l’agent de console.
 +
 
@@ -592,17 +592,17 @@ Si vous avez acheté une licence auprès de NetApp, vous devez l'ajouter à la c
 . Dans le menu de navigation de gauche, sélectionnez * Licenses and subscriptions*.
 . Dans le panneau * Cloud Volumes ONTAP*, sélectionnez *Afficher*.
 . Dans l'onglet * Cloud Volumes ONTAP*, sélectionnez *Licences > Licences basées sur les nœuds*.
-. Cliquez sur *Non attribué*.
-. Cliquez sur *Ajouter des licences non attribuées*.
+. Sélectionnez *Non attribué*.
+. Sélectionnez *Ajouter des licences non attribuées*.
 . Saisissez le numéro de série de la licence ou téléchargez le fichier de licence.
 . Si vous ne disposez pas encore du fichier de licence, vous devrez télécharger manuellement le fichier de licence depuis netapp.com.
 +
 .. Aller à lalink:https://register.netapp.com/site/vsnr/register/getlicensefile["Générateur de fichiers de licence NetApp"^] et connectez-vous à l'aide de vos informations d'identification du site de support NetApp .
-.. Saisissez votre mot de passe, choisissez votre produit, saisissez le numéro de série, confirmez que vous avez lu et accepté la politique de confidentialité, puis cliquez sur *Soumettre*.
+.. Saisissez votre mot de passe, choisissez votre produit, saisissez le numéro de série, confirmez que vous avez lu et accepté la politique de confidentialité, puis sélectionnez *Submit*.
 .. Choisissez si vous souhaitez recevoir le fichier JSON serialnumber.NLF par e-mail ou par téléchargement direct.
 
 
-. Cliquez sur *Ajouter une licence*.
+. Sélectionnez *Ajouter une licence*.
 
 
 .Résultat
@@ -619,7 +619,7 @@ Vous pouvez lancer des instances Cloud Volumes ONTAP dans AWS Secret Cloud et To
 Pour les paires HA, une paire de clés est requise pour activer l’authentification SSH basée sur une clé auprès du médiateur HA.
 
 .Étapes
-. Sur la page *Systèmes*, cliquez sur *Ajouter un système*.
+. Sur la page *Systèmes*, sélectionnez *Ajouter un système*.
 . Sous *Créer*, sélectionnez Cloud Volumes ONTAP.
 +
 Pour HA : sous *Créer*, sélectionnez Cloud Volumes ONTAP ou Cloud Volumes ONTAP HA.

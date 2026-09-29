@@ -71,12 +71,12 @@ Si vous utilisez un déploiement en mode standard, vous pouvez convertir votre l
 
 
 
-NOTE: Si l’une de ces exigences n’est pas remplie, la conversion de licence n’a pas lieu.  Dans des cas spécifiques, la licence peut être convertie, mais ne peut pas être utilisée.  Cliquez sur l’icône d’information pour identifier les problèmes et prendre des mesures correctives.
+NOTE: Si l'une de ces conditions n'est pas remplie, la conversion de la licence n'aura pas lieu. Dans certains cas, la licence pourra être convertie, mais restera inutilisable. Sélectionnez l'icône d'information pour identifier les problèmes et prendre les mesures correctives nécessaires.
 
 .Étapes
 . Dans le menu de navigation de gauche, sélectionnez *Stockage > Gestion*.
 . Sur la page *Systèmes*, double-cliquez sur le nom du système pour lequel vous souhaitez modifier le type de licence.
-. Dans l'onglet *Aperçu*, cliquez sur le panneau *Fonctionnalités*.
+. Dans l'onglet *Aperçu*, sélectionnez le panneau *Fonctionnalités*.
 . Vérifiez l’icône en forme de crayon à côté de *Méthode de chargement*.  Si la méthode de charge de votre système est `Node Based` , vous pouvez le convertir en charge par capacité.
 +
 
@@ -90,7 +90,7 @@ TIP: L'icône est désactivée si votre système Cloud Volumes ONTAP est déjà 
 
 
 . Si vous disposez d'une licence BYOL, vous pouvez cocher la case pour supprimer la licence basée sur les nœuds de la console une fois la conversion terminée.  Si la conversion est toujours en cours, la sélection de cette case à cocher ne supprimera pas la licence de la console.  Cette option n'est pas disponible pour les abonnements à la place de marché.
-. Cochez la case pour confirmer que vous comprenez les implications du changement, puis cliquez sur *Continuer*.
+. Cochez la case à cocher pour confirmer que vous comprenez les implications de la modification, puis sélectionnez *Proceed*.
 
 
 .Après avoir terminé
@@ -132,7 +132,7 @@ NOTE: La conversion des licences basées sur les nœuds vers toute licence basé
 .Étapes
 . Dans le menu de navigation de gauche, sélectionnez *Stockage > Gestion*.
 . Sur la page *Systèmes*, double-cliquez sur le nom du système pour lequel vous souhaitez modifier le type de licence.
-. Dans l'onglet *Aperçu*, cliquez sur le panneau *Fonctionnalités*.
+. Dans l'onglet *Aperçu*, sélectionnez le panneau *Fonctionnalités*.
 . Cochez l'icône en forme de crayon à côté de *Méthode de facturation*. Si la méthode de facturation de votre système est  `Node Based`, vous pouvez la convertir en une licence basée sur la capacité.
 +
 
@@ -141,7 +141,7 @@ TIP: L'icône est désactivée si votre système Cloud Volumes ONTAP est déjà 
 . Sur l'écran *Convertir les licences basées sur les nœuds en licences basées sur la capacité*, vérifiez le nom du système et les détails de la licence source.
 . Sélectionnez Essentials comme package de destination pour la conversion de la licence existante :
 . Vous pouvez cocher la case pour supprimer la licence par nœud de la Console une fois la conversion terminée. Si la conversion est toujours en cours, cocher cette case ne supprimera pas la licence de la Console.
-. Cochez la case pour confirmer que vous comprenez les implications du changement, puis cliquez sur *Continuer*.
+. Cochez la case à cocher pour confirmer que vous comprenez les implications de la modification, puis sélectionnez *Proceed*.
 
 
 .Après avoir terminé

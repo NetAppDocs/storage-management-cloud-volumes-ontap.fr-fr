@@ -18,8 +18,8 @@ Vous pouvez modifier les tables de routage AWS qui incluent des routes vers les 
 
 .Étapes
 . Sur la page *Systèmes*, sélectionnez le système.
-. Dans l'onglet Présentation, cliquez sur le panneau Fonctionnalités, puis cliquez sur l'icône en forme de crayon à côté de *Tables de routage*.
-. Modifiez la liste des tables de routage sélectionnées, puis cliquez sur *Enregistrer*.
+. Dans l'onglet Vue d'ensemble, sélectionnez le panneau Fonctionnalités, puis sélectionnez l'icône en forme de crayon à côté de *Tables de routage*.
+. Modifiez la liste des tables de routage sélectionnées, puis sélectionnez *Enregistrer*.
 
 
 .Résultat

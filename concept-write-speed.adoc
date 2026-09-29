@@ -46,67 +46,46 @@ Une vitesse d'écriture élevée est un bon choix si des performances d'écritur
 [[recommendations-when-using-high-write-speed]]
 === Recommandations lors de l'utilisation d'une vitesse d'écriture élevée
 
-Si vous activez une vitesse d'écriture élevée, vous devez garantir la protection en écriture au niveau de la couche application ou que les applications peuvent tolérer la perte de données, si elle se produit.
-
-ifdef::aws[]
+Si vous activez une vitesse d'écriture élevée, vous devez garantir la protection en écriture au niveau de la couche applicative ou vous assurer que les applications peuvent tolérer une perte de données, le cas échéant. Toutes les configurations de Cloud Volumes ONTAP ne prennent pas en charge la vitesse d'écriture élevée. Ces configurations utilisent par défaut la vitesse d'écriture normale.
 
 
 
-[[high-write-speed-with-an-ha-pair-in-aws]]
-=== Vitesse d'écriture élevée avec une paire HA dans AWS
+[[high-write-speed-in-aws]]
+=== Vitesse d'écriture élevée dans AWS
 
-Si vous prévoyez d'activer une vitesse d'écriture élevée sur une paire HA dans AWS, vous devez comprendre la différence de niveaux de protection entre un déploiement à zones de disponibilité multiples (AZ) et un déploiement à AZ unique.  Le déploiement d’une paire HA sur plusieurs AZ offre davantage de résilience et peut contribuer à atténuer le risque de perte de données.
+Systèmes à nœud unique:: Si vous utilisez un système à nœud unique, Cloud Volumes ONTAP prend en charge une vitesse d'écriture élevée avec tous les types d'instances.
+paires HA:: À partir de la version 9.8, Cloud Volumes ONTAP prend en charge une vitesse d'écriture élevée avec des paires HA lors de l'utilisation de presque tous les types d'instances EC2 pris en charge, à l'exception de m5.xlarge et r5.xlarge.
++
+--
+link:reference-configs-aws.html["En savoir plus sur les instances Amazon EC2 prises en charge par Cloud Volumes ONTAP"]. Si vous prévoyez d'activer une vitesse d'écriture élevée sur une paire haute disponibilité dans AWS, vous devez comprendre la différence de niveaux de protection entre un déploiement sur plusieurs zones de disponibilité (AZ) et un déploiement sur une seule AZ. Le déploiement d'une paire haute disponibilité sur plusieurs AZ offre une meilleure résilience et contribue à réduire le risque de perte de données.
 
 link:concept-ha.html["En savoir plus sur les paires HA dans AWS"] .
 
-endif::aws[]
+--
 
 
 
-[[configurations-that-support-high-write-speed]]
-=== Configurations prenant en charge une vitesse d'écriture élevée
 
-Toutes les configurations Cloud Volumes ONTAP ne prennent pas en charge une vitesse d'écriture élevée.  Ces configurations utilisent une vitesse d'écriture normale par défaut.
+[[high-write-speed-in-azure]]
+=== Vitesse d'écriture élevée dans Azure
 
-ifdef::aws[]
-
-
-
-==== AWS
-
-Si vous utilisez un système à nœud unique, Cloud Volumes ONTAP prend en charge une vitesse d'écriture élevée avec tous les types d'instances.
-
-À partir de la version 9.8, Cloud Volumes ONTAP prend en charge une vitesse d'écriture élevée avec des paires HA lors de l'utilisation de presque tous les types d'instances EC2 pris en charge, à l'exception de m5.xlarge et r5.xlarge.
-
-link:reference-configs-aws.html["En savoir plus sur les instances Amazon EC2 prises en charge par Cloud Volumes ONTAP"].
-
-endif::aws[]
-
-ifdef::azure[]
+Systèmes à nœud unique:: Si vous utilisez un système à nœud unique, Cloud Volumes ONTAP prend en charge une vitesse d'écriture élevée avec tous les types de VM.
+paires HA:: Si vous utilisez une paire haute disponibilité, Cloud Volumes ONTAP prend en charge une vitesse d'écriture élevée avec plusieurs types de machines virtuelles, à partir de la version 9.8. Accédez à la link:reference-configs-azure.html["Notes de version de Cloud Volumes ONTAP"] pour consulter les types de machines virtuelles qui prennent en charge une vitesse d'écriture élevée.
 
 
 
-==== Azuré
 
-Si vous utilisez un système à nœud unique, Cloud Volumes ONTAP prend en charge une vitesse d'écriture élevée avec tous les types de VM.
+[[high-write-speed-in-google-cloud]]
+=== Vitesse d'écriture élevée dans Google Cloud
 
-Si vous utilisez une paire haute disponibilité, Cloud Volumes ONTAP prend en charge une vitesse d'écriture élevée avec plusieurs types de machines virtuelles, à partir de la version 9.8. Accédez à la link:reference-configs-azure.html["Notes de version de Cloud Volumes ONTAP"] pour consulter les types de machines virtuelles qui prennent en charge une vitesse d'écriture élevée.
-
-endif::azure[]
-
-ifdef::gcp[]
-
-
-
-==== Google Cloud
-
-Si vous utilisez un système à nœud unique, Cloud Volumes ONTAP prend en charge une vitesse d'écriture élevée avec tous les types de machines.
-
-Si vous utilisez une paire haute disponibilité, Cloud Volumes ONTAP prend en charge une vitesse d'écriture élevée avec plusieurs types de machines virtuelles, à partir de la version 9.13.0. Accédez à la link:reference-configs-gcp.html#supported-configurations-by-license["Notes de version de Cloud Volumes ONTAP"^] pour consulter les types de machines virtuelles qui prennent en charge une vitesse d'écriture élevée.
-
+Systèmes à nœud unique:: Si vous utilisez un système à nœud unique, Cloud Volumes ONTAP prend en charge une vitesse d'écriture élevée avec tous les types de machines.
+paires HA:: Si vous utilisez une paire haute disponibilité, Cloud Volumes ONTAP prend en charge une vitesse d'écriture élevée avec plusieurs types de machines virtuelles, à partir de la version 9.13.0. Accédez à la link:reference-configs-gcp.html#supported-configurations-by-license["Notes de version de Cloud Volumes ONTAP"^] pour consulter les types de machines virtuelles qui prennent en charge une vitesse d'écriture élevée.
++
+--
 link:reference-configs-gcp.html["En savoir plus sur les types de machines Google Cloud pris en charge par Cloud Volumes ONTAP"^].
 
-endif::gcp[]
+--
+
 
 
 
@@ -142,7 +121,7 @@ Lorsque cela se produit, Cloud Volumes ONTAP doit pouvoir démarrer et continuer
 
 
 [[how-to-stop-data-access-if-data-loss-occurs]]
-== Comment arrêter l'accès aux données en cas de perte de données
+=== Comment arrêter l'accès aux données en cas de perte de données
 
 Si vous êtes préoccupé par la perte de données, que vous souhaitez que les applications cessent de s'exécuter en cas de perte de données et que l'accès aux données reprenne une fois le problème de perte de données correctement résolu, vous pouvez utiliser l'option NVFAIL de la CLI pour atteindre cet objectif.
 

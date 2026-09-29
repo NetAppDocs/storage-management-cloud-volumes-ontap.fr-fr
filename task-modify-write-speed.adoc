@@ -27,7 +27,7 @@ Avant de modifier la vitesse d’écriture, vous devezlink:concept-write-speed.h
 
 .Étapes
 . Sur la page *Systèmes*, double-cliquez sur le nom du système que vous configurez pour la vitesse d'écriture.
-. Dans l’onglet Présentation, cliquez sur le panneau Fonctionnalités, puis cliquez sur l’icône en forme de crayon à côté de *Vitesse d’écriture*.
+. Dans l'onglet Vue d'ensemble, sélectionnez le panneau Fonctionnalités, puis l'icône en forme de crayon à côté de *Write Speed*.
 . Sélectionnez *Normal* ou *Élevé*.
 +
 Si vous choisissez Élevé, vous devrez lire la déclaration « Je comprends... » et confirmer en cochant la case.
@@ -36,5 +36,5 @@ Si vous choisissez Élevé, vous devrez lire la déclaration « Je comprends... 
 
 NOTE: L'option de vitesse d'écriture *Élevée* est prise en charge avec les paires Cloud Volumes ONTAP HA dans Google Cloud à partir de la version 9.13.0.
 
-. Cliquez sur *Enregistrer*, vérifiez le message de confirmation, puis cliquez sur *Approuver*.
+. Sélectionnez *Enregistrer*, vérifiez le message de confirmation, puis sélectionnez *Approuver*.
 

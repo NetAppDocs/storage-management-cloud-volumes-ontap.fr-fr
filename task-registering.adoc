@@ -27,11 +27,11 @@ TIP: Un système qui n'est pas enregistré pour le support recevra toujours les 
 https://docs.netapp.com/us-en/console-setup-admin/task-adding-nss-accounts.html["Découvrez comment ajouter des comptes de site de support NetApp"^].
 
 . Sur la page *Systèmes*, double-cliquez sur le nom du système que vous souhaitez enregistrer.
-. Dans l'onglet Présentation, cliquez sur le panneau Fonctionnalités, puis cliquez sur l'icône en forme de crayon à côté de *Enregistrement de l'assistance*.
+. Dans l'onglet Vue d'ensemble, sélectionnez le panneau Fonctionnalités, puis l'icône en forme de crayon en regard de *Support Registration*.
 +
 image::screenshot_features_support_registration_2.png[400]
 
-. Sélectionnez un compte de site de support NetApp et cliquez sur *S'inscrire*.
+. Sélectionnez un compte du site de support NetApp et sélectionnez *Register*.
 
 
 .Résultat

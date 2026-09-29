@@ -77,7 +77,7 @@ Vous pouvez activer le stockage WORM lors de la création d'un système Cloud Vo
 
 .Étapes
 . Sur la page *Systèmes*, double-cliquez sur le nom du système sur lequel vous souhaitez activer WORM.
-. Dans l'onglet Présentation, cliquez sur le panneau Fonctionnalités, puis cliquez sur l'icône en forme de crayon à côté de *WORM*.
+. Dans l'onglet Vue d'ensemble, sélectionnez le panneau Fonctionnalités, puis sélectionnez l'icône en forme de crayon à côté de *WORM*.
 +
 Si WORM est déjà activé sur le système, l'icône en forme de crayon est désactivée.
 
@@ -85,7 +85,7 @@ Si WORM est déjà activé sur le système, l'icône en forme de crayon est dés
 +
 Pour plus d'informations, reportez-vous à la https://docs.netapp.com/us-en/ontap/snaplock/initialize-complianceclock-task.html["Documentation ONTAP : Initialiser l'horloge de conformité"^] .
 
-. Cliquez sur *Définir*.
+. Sélectionnez *Set*.
 
 
 .Après avoir terminé

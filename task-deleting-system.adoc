@@ -35,8 +35,8 @@ https://docs.netapp.com/us-en/data-services-data-classification/concept-cloud-co
 . Supprimez le système Cloud Volumes ONTAP .
 +
 .. Sur la page *Systèmes*, double-cliquez sur le nom du système Cloud Volumes ONTAP que vous souhaitez supprimer.
-.. En haut à droite de la console, cliquez sur l’icône image:icon-action.png["Une icône représentant trois points horizontaux pour des actions supplémentaires"] et sélectionnez *Supprimer*.
-.. Tapez le nom du système que vous souhaitez supprimer, puis cliquez sur *Supprimer*.  La suppression d’un système peut prendre jusqu’à cinq minutes.
+.. En haut à droite de la console, sélectionnez l’icône image:icon-action.png["Une icône représentant trois points horizontaux pour des actions supplémentaires"], puis sélectionnez *Supprimer*.
+.. Saisissez le nom du système que vous souhaitez supprimer, puis sélectionnez *Supprimer*. La suppression d'un système peut prendre jusqu'à cinq minutes.
 
 
 

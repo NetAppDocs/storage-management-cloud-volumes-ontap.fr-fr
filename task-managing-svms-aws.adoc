@@ -51,15 +51,15 @@ Notez qu'une interface logique de gestion (LIF) optionnelle pour une machine vir
 
 .Étapes
 . Connectez-vous à AWS et ouvrez le service EC2.
-. Sélectionnez l’instance Cloud Volumes ONTAP et cliquez sur *Réseau*.
+. Sélectionnez l'instance Cloud Volumes ONTAP et sélectionnez *Networking*.
 +
 Si vous créez une machine virtuelle de stockage sur une paire HA, sélectionnez le nœud 1.
 
-. Faites défiler jusqu'à *Interfaces réseau* et cliquez sur l'*ID d'interface* pour le port e0a.
+. Faites défiler vers le bas jusqu'à *Interfaces réseau* et sélectionnez l'*ID d'interface* pour le port e0a.
 +
 image:screenshot_aws_e0a.gif["Une capture d’écran de la console AWS qui montre le port e0a sur une interface réseau."]
 
-. Sélectionnez l'interface réseau et cliquez sur *Actions > Gérer les adresses IP*.
+. Sélectionnez l'interface réseau et sélectionnez *Actions > Gérer les adresses IP*.
 . Développez la liste des adresses IP pour e0a.
 . Vérifiez les adresses IP :
 +
@@ -73,7 +73,7 @@ Si une adresse IP n'est pas utilisée, vous pouvez l'utiliser avec la nouvelle m
 
 
 
-. De retour dans la console AWS, cliquez sur *Attribuer une nouvelle adresse IP* pour attribuer des adresses IP supplémentaires en fonction de la quantité dont vous avez besoin pour la nouvelle machine virtuelle de stockage.
+. De retour dans la console AWS, sélectionnez *Attribuer une nouvelle adresse IP* pour attribuer des adresses IP supplémentaires en fonction du nombre dont vous avez besoin pour la nouvelle machine virtuelle de stockage.
 +
 ** Système à nœud unique : une adresse IP privée secondaire inutilisée est requise.
 +
@@ -87,7 +87,7 @@ Une adresse IP privée secondaire facultative est requise si vous souhaitez cré
 
 
 . Si vous allouez l'adresse IP sur une paire HA dans une seule zone de disponibilité, activez *Autoriser la réattribution des adresses IPv4 privées secondaires*.
-. Cliquez sur *Enregistrer*.
+. Sélectionnez *Enregistrer*.
 . Si vous avez une paire HA dans plusieurs AZ, vous devrez répéter ces étapes pour le nœud 2.
 
 

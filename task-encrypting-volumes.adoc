@@ -18,4 +18,39 @@ Cloud Volumes ONTAP prend en charge NetApp Volume Encryption (NVE) et NetApp Agg
 
 NVE et NAE sont tous deux pris en charge avec un gestionnaire de clés externe.
 
-ifdef::aws[] fin si::aws[] ifdef::azure[] fin si::azure[] ifdef::gcp[] fin si::gcp[] ifdef::aws[] fin si::aws[] ifdef::azure[] fin si::azure[] ifdef::gcp[] fin si::gcp[]
+Si vous utilisez NVE, vous avez la possibilité d'utiliser le coffre-fort de clés de votre fournisseur de cloud pour protéger les clés de chiffrement ONTAP :
+
+* AWS Key Management Service (à partir de la version 9.12.0)
+* Coffre de clés Azure (AKV)
+* Service de gestion des clés Google Cloud
+
+
+Les nouveaux agrégats auront NAE activé par défaut après la configuration d'un gestionnaire de clés externe. Les nouveaux volumes ne faisant pas partie d'un agrégat NAE auront NVE activé par défaut (par exemple, si vous avez des agrégats existants créés avant la configuration d'un gestionnaire de clés externe).
+
+Cloud Volumes ONTAP ne prend pas en charge la gestion intégrée des clés.
+
+.Avant de commencer
+Votre système Cloud Volumes ONTAP doit être enregistré auprès du support NetApp. Une licence NetApp Volume Encryption est automatiquement installée sur chaque système Cloud Volumes ONTAP enregistré auprès du support NetApp.
+
+* https://docs.netapp.com/us-en/console-setup-admin/task-adding-nss-accounts.html["Ajout de comptes de site de support NetApp à la console"^]
+* link:task-registering.html["Enregistrer les systèmes de paiement à l'utilisation"]
+
+
+
+NOTE: La NetApp Console n'installe pas la licence NVE sur les systèmes situés dans la région Chine.
+
+.Étapes
+. Consultez la liste des gestionnaires de clés pris en charge dans le  http://mysupport.netapp.com/matrix["Outil de matrice d'interopérabilité NetApp"^].
++
+
+TIP: Recherchez la solution *Key Managers*.
+
+. link:task-connecting-to-otc.html["Connectez-vous à l’interface de ligne de commande de Cloud Volumes ONTAP"^].
+. Configurer la gestion des clés externes.
++
+** AWS : link:task-aws-key-management.html["Service de gestion des clés AWS"]
+** Azure : link:task-azure-key-vault.html["Coffre de clés Azure (AKV)"]
+** Google Cloud : link:task-google-key-manager.html["Service de gestion des clés Google Cloud"]
+
+
+

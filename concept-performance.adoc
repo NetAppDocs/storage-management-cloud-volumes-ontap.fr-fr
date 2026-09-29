@@ -21,35 +21,19 @@ Vous pouvez consulter les résultats de performances pour vous aider à décider
 [[performance-technical-reports]]
 == Rapports techniques de performance
 
-ifdef::aws[]
-
 * Cloud Volumes ONTAP pour AWS
 +
 link:https://www.netapp.com/pdf.html?item=/media/9088-tr4383.pdf["Rapport technique NetApp 4383 : Caractérisation des performances des Cloud Volumes ONTAP dans Amazon Web Services avec charges de travail applicatives"^]
 
-
-
-endif::aws[]
-
-ifdef::azure[]
-
 * Cloud Volumes ONTAP pour Microsoft Azure
 +
 link:https://www.netapp.com/pdf.html?item=/media/9089-tr-4671.pdf["Rapport technique NetApp 4671 : Caractérisation des performances des Cloud Volumes ONTAP dans Azure avec charges de travail applicatives"^]
-
-
-
-endif::azure[]
-
-ifdef::gcp[]
 
 * Cloud Volumes ONTAP pour Google Cloud
 +
 link:https://www.netapp.com/pdf.html?item=/media/9090-tr4816pdf.pdf["Rapport technique NetApp 4816 : Caractérisation des performances de Cloud Volumes ONTAP pour Google Cloud"^]
 
 
-
-endif::gcp[]
 
 
 

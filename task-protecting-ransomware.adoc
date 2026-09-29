@@ -25,17 +25,17 @@ Disponible sur la console, le paramètre Protection contre les ransomwares vous 
 
 .Étapes
 . Sur la page *Systèmes*, double-cliquez sur le nom du système Cloud Volumes ONTAP que vous configurez pour utiliser la protection contre les ransomwares.
-. Dans l’onglet Présentation, cliquez sur le panneau Fonctionnalités, puis cliquez sur l’icône en forme de crayon à côté de *Protection contre les ransomwares*.
+. Dans l’onglet Vue d’ensemble, sélectionnez le panneau Fonctionnalités, puis l’icône en forme de crayon à côté de *Ransomware Protection*.
 +
 image::screenshot_features_support_registration_2.png[Une capture d'écran qui montre le paramètre de protection contre les ransomwares sous le panneau Fonctionnalités disponible en haut à droite de la page Présentation lors de l'affichage d'un système.]
 
 . Mettre en œuvre la solution NetApp contre les ransomwares :
 +
-.. Cliquez sur *Activer la stratégie de snapshot*, si vous avez des volumes pour lesquels aucune stratégie de snapshot n'est activée.
+.. Sélectionnez *Activer la stratégie Snapshot* si vous avez des volumes pour lesquels aucune stratégie Snapshot n'est activée.
 +
 La technologie NetApp Snapshot fournit la meilleure solution du secteur pour la correction des ransomwares.  La clé d’une récupération réussie est la restauration à partir de sauvegardes non infectées.  Les copies instantanées sont en lecture seule, ce qui empêche la corruption par ransomware.  Ils peuvent également fournir la granularité nécessaire pour créer des images d'une copie de fichier unique ou une solution complète de reprise après sinistre.
 
-.. Cliquez sur *Activer FPolicy* pour activer la solution FPolicy d'ONTAP, qui peut bloquer les opérations sur les fichiers en fonction de l'extension d'un fichier.
+.. Sélectionnez *Activer FPolicy* pour activer la solution FPolicy d'ONTAP, qui peut bloquer les opérations sur les fichiers en fonction de l'extension du fichier.
 +
 Cette solution préventive améliore la protection contre les attaques de ransomware en bloquant les types de fichiers de ransomware courants.
 

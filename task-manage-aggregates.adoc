@@ -28,8 +28,8 @@ Si un agrégat manque d'espace, vous pouvez déplacer des volumes vers un autre 
 .Étapes
 . Dans le menu de navigation de gauche, sélectionnez *Stockage > Gestion*.
 . Sur la page *Systèmes*, double-cliquez sur le système Cloud Volumes ONTAP sur lequel vous souhaitez gérer les agrégats.
-. Dans les détails du système, cliquez sur l’onglet *Agrégats*.
-. Pour l’agrégat requis, cliquez sur l’icône image:icon-action.png["Une icône représentant trois points horizontaux pour des actions supplémentaires"] pour les actions de gestion.
+. Dans les détails du système, sélectionnez l'onglet *Agrégats*.
+. Pour l’agrégat requis, sélectionnez l’icône image:icon-action.png["Une icône représentant trois points horizontaux pour des actions supplémentaires"] pour les actions de gestion.
 +
 image:screenshot_aggr_menu_options.png["Une capture d’écran des options du menu Agrégats."]
 
@@ -39,14 +39,10 @@ image:screenshot_aggr_menu_options.png["Une capture d’écran des options du me
 
 NOTE: Pour ajouter des disques à un agrégat, tous les disques de l'agrégat doivent être de la même taille.
 
-ifdef::aws[]
-
 Pour AWS, vous pouvez augmenter la capacité d’un agrégat prenant en charge Amazon EBS Elastic Volumes.
 
-. Dans le menu image:icon-action.png["Une icône représentant trois points horizontaux pour des actions supplémentaires"], cliquez sur *Augmenter la capacité*.
-. Saisissez la capacité supplémentaire que vous souhaitez ajouter, puis cliquez sur *Augmenter*.
+. Dans le menu image:icon-action.png["Une icône représentant trois points horizontaux pour des actions supplémentaires"], sélectionnez *Augmenter la capacité*.
+. Saisissez la capacité supplémentaire que vous souhaitez ajouter, puis sélectionnez *Augmenter*.
 
 
 Notez que vous devez augmenter la capacité de l'agrégat d'au moins 256 Gio ou 10 % de la taille de l'agrégat.  Par exemple, si vous avez un agrégat de 1,77 Tio, 10 % correspondent à 181 Gio.  C'est inférieur à 256 Gio, donc la taille de l'agrégat doit être augmentée du minimum de 256 Gio.
-
-endif::aws[]

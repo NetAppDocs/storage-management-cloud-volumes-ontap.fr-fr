@@ -41,7 +41,7 @@ Ce scénario suppose l'existence de deux nœuds. `node01` et `node02` dans le d�
 `storage failover takeover -ofnode <Node02>`
 
 . Sign in au portail Azure.
-. Une fois la prise de contrôle terminée, accédez à l'instance de machine virtuelle pour `node02`, puis cliquez sur le bouton *Arrêter* pour l'éteindre.
+. Une fois la prise de contrôle terminée, accédez à l’instance de machine virtuelle pour `node02`, puis sélectionnez le bouton *Arrêter* pour l’éteindre.
 . Accédez au groupe de ressources pour `node02` et dans la liste des disques, sélectionnez le disque NVRAM pour modifier le niveau.
 . Sélectionnez *Taille + Performance*.
 . Dans le menu déroulant *Niveau de performance*, sélectionnez `P30 - 5000 IOPS, 200MB/s`.

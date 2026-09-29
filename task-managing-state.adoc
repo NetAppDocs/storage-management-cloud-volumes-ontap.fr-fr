@@ -37,7 +37,7 @@ Les instantanés sont créés automatiquement uniquement lors d'un arrêt manuel
 
 .Étapes
 . Sur la page *Systèmes*, double-cliquez sur le système Cloud Volumes ONTAP .
-. Dans l’onglet Présentation, cliquez sur le panneau Fonctionnalités, puis cliquez sur l’icône en forme de crayon à côté de *Temps d’arrêt planifié*.
+. Dans l'onglet Vue d'ensemble, sélectionnez le panneau Fonctionnalités, puis sélectionnez l'icône en forme de crayon en regard de *Scheduled Downtime*.
 +
 image::screenshot_schedule_downtime.png[400]
 
@@ -56,7 +56,7 @@ image:screenshot_schedule_downtime_window.png["Capture d'écran : affiche l'éc
 
 
 
-. Cliquez sur *Enregistrer*.
+. Sélectionnez *Enregistrer*.
 
 
 .Résultat
@@ -76,12 +76,12 @@ NOTE: Pour réduire les coûts, la console supprime périodiquement les anciens 
 Lorsque vous arrêtez une paire HA, la console arrête les deux nœuds.
 
 .Étapes
-. Depuis le système, cliquez sur l’icône *Désactiver*.
+. Dans le système, sélectionnez l'icône *Éteindre*.
 +
 image:screenshot_turn_off_redesign.png["Capture d'écran : affiche l'icône permettant de désactiver un système Cloud Volumes ONTAP ."]
 
 . Gardez l’option de création d’instantanés activée, car les instantanés peuvent permettre la récupération du système.
-. Cliquez sur *Désactiver*.
+. Sélectionnez *Éteindre*.
 +
 L’arrêt du système peut prendre jusqu’à quelques minutes.  Vous pouvez redémarrer les systèmes ultérieurement à partir de la page *Systèmes*.
 

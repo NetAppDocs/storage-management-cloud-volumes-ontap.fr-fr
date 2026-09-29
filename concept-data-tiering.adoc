@@ -20,8 +20,6 @@ image:diagram_data_tiering.png["Il s'agit d'une image conceptuelle qui montre le
 
 La hiérarchisation des données est alimentée par la technologie FabricPool .  Cloud Volumes ONTAP fournit une hiérarchisation des données pour tous les clusters Cloud Volumes ONTAP sans licence supplémentaire.  Lorsque vous activez la hiérarchisation des données, les données hiérarchisées vers le stockage d'objets entraînent des frais.  Consultez la documentation de votre fournisseur de cloud pour plus de détails sur les coûts de stockage d'objets.
 
-ifdef::aws[]
-
 
 
 [[data-tiering-in-aws]]
@@ -64,10 +62,6 @@ La classe de stockage pour la hiérarchisation des données s'applique à l'ense
 
 --
 
-
-endif::aws[]
-
-ifdef::azure[]
 
 
 
@@ -112,10 +106,6 @@ Le niveau d'accès au stockage pour la hiérarchisation des données s'applique 
 --
 
 
-endif::azure[]
-
-ifdef::gcp[]
-
 
 
 [[data-tiering-in-google-cloud]]
@@ -147,8 +137,6 @@ La classe de stockage pour la hiérarchisation des données s'applique à l'ense
 
 --
 
-
-endif::gcp[]
 
 
 

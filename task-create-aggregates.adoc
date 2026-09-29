@@ -22,12 +22,10 @@ CAUTION: Tous les disques et agrégats doivent être créés et supprimés direc
 .Étapes
 . Dans le menu de navigation de gauche, sélectionnez *Stockage > Gestion*.
 . Sur la page *Systèmes*, double-cliquez sur le nom du système Cloud Volumes ONTAP sur lequel vous souhaitez gérer les agrégats.
-. Dans l’onglet Agrégats, cliquez sur *Ajouter un agrégat*, puis spécifiez les détails de l’agrégat.
+. Dans l'onglet Agrégats, sélectionnez *Ajouter un agrégat* puis spécifiez les détails de l'agrégat.
 +
 [role="tabbed-block"]
 ====
-ifdef::aws[]
-
 .AWS
 --
 ** Si vous êtes invité à choisir un type et une taille de disque, reportez-vous àlink:task-planning-your-config.html["Planifiez votre configuration Cloud Volumes ONTAP dans AWS"] .
@@ -41,26 +39,16 @@ link:concept-aws-elastic-volumes.html["En savoir plus sur la prise en charge des
 
 
 --
-endif::aws[]
-
-ifdef::azure[]
-
 .Azuré
 --
 Pour obtenir de l'aide sur le type et la taille du disque, reportez-vous àlink:task-planning-your-config-azure.html["Planifiez votre configuration Cloud Volumes ONTAP dans Azure"] .
 
 --
-endif::azure[]
-
-ifdef::gcp[]
-
 .Google Cloud
 --
 Pour obtenir de l'aide sur le type et la taille du disque, reportez-vous àlink:task-planning-your-config-gcp.html["Planifiez votre configuration Cloud Volumes ONTAP dans Google Cloud"] .
 
 --
-endif::gcp[]
-
 ====
-. Cliquez sur *Ajouter*, puis sur *Approuver et acheter*.
+. Sélectionnez *Ajouter*, puis *Approuver et acheter*.
 

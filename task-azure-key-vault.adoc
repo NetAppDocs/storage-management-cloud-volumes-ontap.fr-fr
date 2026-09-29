@@ -61,14 +61,14 @@ Les étapes décrites expliquent comment enregistrer votre configuration Cloud V
 .Créer un secret client Azure
 . Dans le portail Azure pour l’inscription de votre application Azure Key Vault, sélectionnez le volet **Certificats et secrets**.
 . Sélectionnez **Nouveau secret client**.  Saisissez un nom significatif pour votre secret client.  NetApp recommande une période d'expiration de 24 mois ; cependant, vos politiques de gouvernance cloud spécifiques peuvent nécessiter un paramètre différent.
-. Cliquez sur **Ajouter** pour créer le secret client.  Copiez la chaîne secrète répertoriée dans la colonne **Valeur** et stockez-la dans un endroit sûr pour une utilisation ultérieure.<<ontap>> .  La valeur secrète ne sera plus affichée après avoir quitté la page.
+. Sélectionnez **Ajouter** pour créer le secret client. Copiez la chaîne secrète affichée dans la colonne **Valeur** et conservez-la en lieu sûr pour l'utiliser plus tard dans <<ontap>>. La valeur secrète ne sera plus affichée une fois que vous aurez quitté la page.
 
 
 [[create-akv]]
 .Créer un coffre de clés Azure
 . Si vous disposez d’un Azure Key Vault existant, vous pouvez le connecter à votre configuration Cloud Volumes ONTAP ; toutefois, vous devez adapter les stratégies d’accès aux paramètres de ce processus.
 . Dans le portail Azure, accédez à la section **Key Vaults**.
-. Cliquez sur **+Créer** et saisissez les informations requises, notamment le groupe de ressources, la région et le niveau de tarification.  De plus, saisissez le nombre de jours pendant lesquels conserver les coffres supprimés et sélectionnez **Activer la protection contre la purge** sur le coffre de clés.
+. Sélectionnez **Créer** et saisissez les informations requises, notamment le groupe de ressources, la région et le niveau tarifaire. Indiquez également le nombre de jours de conservation des coffres supprimés et sélectionnez **Activer la protection contre la purge** sur le coffre de clés.
 . Sélectionnez **Suivant** pour choisir une politique d’accès.
 . Sélectionnez les options suivantes :
 +
@@ -76,8 +76,8 @@ Les étapes décrites expliquent comment enregistrer votre configuration Cloud V
 .. Sous **Accès aux ressources**, sélectionnez **Azure Disk Encryption pour le chiffrement du volume**.
 
 
-. Sélectionnez **+Créer** pour ajouter une politique d’accès.
-. Sous **Configurer à partir d’un modèle**, cliquez sur le menu déroulant, puis sélectionnez le modèle **Gestion des clés, des secrets et des certificats**.
+. Sélectionnez **Créer** pour ajouter une règles d'accès.
+. Sous **Configurer à partir d'un modèle**, sélectionnez le menu déroulant, puis sélectionnez le modèle **Gestion des clés, des secrets et des certificats**.
 . Choisissez chacun des menus déroulants d’autorisations (clé, secret, certificat), puis **Sélectionner tout** en haut de la liste des menus pour sélectionner toutes les autorisations disponibles.  Vous devriez avoir :
 +
 ** **Autorisations clés** : 20 sélectionnées
@@ -88,7 +88,7 @@ image:screenshot-azure-key-secret-cert-all-list.png["capture d'écran de Créer 
 
 
 
-. Cliquez sur **Suivant** pour sélectionner l'application enregistrée Azure **Principale** que vous avez créée dans<<azure-app>> . Sélectionnez **Suivant**.
+. Sélectionnez **Suivant** pour sélectionner l’application Azure enregistrée **Principal** que vous avez créée dans <<azure-app>>. Sélectionnez **Suivant**.
 +
 
 NOTE: Un seul principal peut être attribué par politique.
@@ -96,7 +96,7 @@ NOTE: Un seul principal peut être attribué par politique.
 +
 image:screenshot-azure-key-secret-cert-principal.png["capture d'écran de l'onglet Créer un principal de politique d'accès"]
 
-. Cliquez sur **Suivant** deux fois jusqu’à arriver à **Vérifier et créer**.  Ensuite, cliquez sur **Créer**.
+. Sélectionnez **Suivant** deux fois jusqu'à arriver à **Vérifier et créer**. Ensuite, sélectionnez **Créer**.
 . Sélectionnez **Suivant** pour passer aux options **Réseau**.
 . Choisissez la méthode d’accès au réseau appropriée ou sélectionnez **Tous les réseaux** et **Réviser + Créer** pour créer le coffre-fort de clés.  (La méthode d’accès au réseau peut être prescrite par une politique de gouvernance ou par votre équipe de sécurité cloud d’entreprise.)
 . Enregistrez l'URI du coffre de clés : dans le coffre de clés que vous avez créé, accédez au menu Présentation et copiez l'**URI du coffre** dans la colonne de droite.  Vous en aurez besoin pour une étape ultérieure.

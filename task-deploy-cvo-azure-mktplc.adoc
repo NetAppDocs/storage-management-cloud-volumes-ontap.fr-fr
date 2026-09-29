@@ -62,7 +62,7 @@ NOTE: Si vous avez enregistré le fournisseur de ressources « Microsoft.storag
 .Étapes
 . Sur le site Azure Marketplace, recherchez des produits NetApp.
 . Sélectionnez * NetApp Cloud Volumes ONTAP direct*.
-. Cliquez sur *Créer* pour lancer l’assistant de déploiement.
+. Sélectionnez *Créer* pour lancer l'assistant de déploiement.
 . Sélectionnez un plan.  La liste *Plan* affiche généralement les dernières versions de Cloud Volumes ONTAP.
 . Dans l'onglet *Bases*, fournissez les détails suivants :
 +

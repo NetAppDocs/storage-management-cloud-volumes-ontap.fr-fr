@@ -125,7 +125,7 @@ La ressource a l'ID suivant : `userassignedidentity` .
 
 .Étapes
 . Dans Azure, accédez aux services Azure et sélectionnez *Identités gérées*.
-. Cliquez sur *Créer*.
+. Sélectionnez *Créer*.
 . Fournissez les détails suivants :
 +
 ** *Abonnement* : Choisissez un abonnement.  Nous vous recommandons de choisir le même abonnement que l'abonnement de l'agent Console.
@@ -135,7 +135,7 @@ La ressource a l'ID suivant : `userassignedidentity` .
 
 
 . Ajoutez éventuellement des balises.
-. Cliquez sur *Créer*.
+. Sélectionnez *Créer*.
 
 
 
@@ -172,7 +172,7 @@ NOTE: L’utilisation des clés de chiffrement gérées par le client Azure dép
 
 
 
-. Si vous avez sélectionné la stratégie d’accès au coffre-fort, cliquez sur Créer pour créer une stratégie d’accès pour le coffre-fort de clés.  Sinon, passez à l’étape 3.
+. Si vous avez sélectionné des règles d'accès au coffre, sélectionnez « Créer » pour créer des règles d'accès pour le coffre de clés. Sinon, passez à l’étape 3.
 +
 .. Sélectionnez les autorisations suivantes :
 +

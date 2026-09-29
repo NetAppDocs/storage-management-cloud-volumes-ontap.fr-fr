@@ -19,12 +19,8 @@ L'interface de ligne de commande Cloud Volumes ONTAP vous permet d'exécuter tou
 .Avant de commencer
 L'hôte à partir duquel vous utilisez SSH pour vous connecter à Cloud Volumes ONTAP doit disposer d'une connexion réseau à Cloud Volumes ONTAP.  Par exemple, vous devrez peut-être vous connecter en SSH à partir d'un hôte de saut qui se trouve dans le réseau de votre fournisseur de cloud.
 
-ifdef::aws[]
 
-
-NOTE: Lorsqu'elles sont déployées dans plusieurs zones de disponibilité, les configurations Cloud Volumes ONTAP HA utilisent une adresse IP flottante pour l'interface de gestion du cluster, ce qui signifie que le routage externe n'est pas disponible.  Vous devez vous connecter à partir d’un hôte faisant partie du même domaine de routage.
-
-endif::aws[]
+NOTE: Dans AWS, lorsqu'il est déployé dans plusieurs AZ, Cloud Volumes ONTAP avec des configurations en paire haute disponibilité utilise une adresse IP flottante pour l'interface de gestion du cluster, ce qui signifie que le routage externe n'est pas disponible. Vous devez vous connecter depuis un hôte faisant partie du même domaine de routage.
 
 .Étapes
 . Dans la NetApp Console, identifiez l’adresse IP de l’interface de gestion du cluster :

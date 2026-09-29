@@ -32,10 +32,10 @@ Les étapes suivantes illustrent comment configurer une configuration similaire.
 . https://docs.aws.amazon.com/vpc/latest/tgw/tgw-getting-started.html["Créez une passerelle de transit et attachez les VPC à la passerelle"^] .
 . Associez les VPC à la table de routage de la passerelle de transit.
 +
-.. Dans le service *VPC*, cliquez sur *Tables de routage de passerelle de transit*.
+.. Dans le service *VPC*, sélectionnez *Tables de routage de la passerelle de transit*.
 .. Sélectionnez la table de routage.
-.. Cliquez sur *Associations* puis sélectionnez *Créer une association*.
-.. Choisissez les pièces jointes (les VPC) à associer puis cliquez sur *Créer une association*.
+.. Sélectionnez *Associations* puis *Créer une association*.
+.. Choisissez les pièces jointes (les VPC) à associer, puis sélectionnez *Créer une association*.
 
 
 . Créez des itinéraires dans la table de routage de la passerelle de transit en spécifiant les adresses IP flottantes de la paire HA.
@@ -75,13 +75,13 @@ image:screenshot_transit_gateway3.png["Une capture d’écran de la console AWS 
 
 . Mettez à jour les paramètres des groupes de sécurité sur Tout le trafic pour le VPC.
 +
-.. Sous Cloud privé virtuel, cliquez sur *Sous-réseaux*.
-.. Cliquez sur l’onglet *Table de routage*, sélectionnez l’environnement souhaité pour l’une des adresses IP flottantes pour une paire HA.
-.. Cliquez sur *Groupes de sécurité*.
+.. Sous Virtual Private Cloud, sélectionnez *Subnets*.
+.. Sélectionnez l'onglet *Table de routage*, puis sélectionnez l'environnement souhaité pour l'une des adresses IP flottantes d'une paire haute disponibilité.
+.. Sélectionnez *Groupes de sécurité*.
 .. Sélectionnez *Modifier les règles entrantes*.
-.. Cliquez sur *Ajouter une règle*.
+.. Sélectionnez *Ajouter une règle*.
 .. Sous Type, sélectionnez *Tout le trafic*, puis sélectionnez l’adresse IP du VPC.
-.. Cliquez sur *Enregistrer les règles* pour appliquer les modifications.
+.. Sélectionnez *Save Rules* pour appliquer les modifications.
 
 
 . Montez les volumes sur les clients à l’aide de l’adresse IP flottante.

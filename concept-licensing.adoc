@@ -57,21 +57,12 @@ NOTE: Bien que l'utilisation et la mesure réelles des produits et services gér
 
 Les packages basés sur la capacité suivants sont disponibles pour Cloud Volumes ONTAP.  Pour plus d'informations sur les packages de licences basés sur la capacité, reportez-vous àlink:concept-licensing-charging.html["En savoir plus sur les licences basées sur la capacité"] .
 
-Pour obtenir la liste des types de machines virtuelles pris en charge avec les packages basés sur la capacité suivants, reportez-vous à :
+Pour connaître les limites de stockage par fournisseur de cloud, veuillez consulter :
 
-ifdef::azure[]
+* link:reference-limits-aws.html["Limites de stockage pour Cloud Volumes ONTAP dans AWS"]
+* link:reference-limits-azure.html["Limites de stockage pour Cloud Volumes ONTAP dans Azure"]
+* link:reference-limits-gcp.html["Limites de stockage pour Cloud Volumes ONTAP dans Google Cloud"]
 
-* link:reference-configs-azure.html["Configurations prises en charge dans Azure"]
-
-
-endif::azure[]
-
-ifdef::gcp[]
-
-* link:reference-configs-gcp.html["Configurations prises en charge dans Google Cloud"^]
-
-
-endif::gcp[]
 
 
 
@@ -144,26 +135,10 @@ NOTE: NetApp a restreint l'achat, la prolongation et le renouvellement des licen
 
 Découvrez comment démarrer avec les licences basées sur la capacité :
 
-ifdef::aws[]
-
 * link:task-set-up-licensing-aws.html["Configurer les licences pour Cloud Volumes ONTAP dans AWS"]
-
-
-endif::aws[]
-
-ifdef::azure[]
-
 * link:task-set-up-licensing-azure.html["Configurer les licences pour Cloud Volumes ONTAP dans Azure"]
-
-
-endif::azure[]
-
-ifdef::gcp[]
-
 * link:task-set-up-licensing-google.html["Configurer les licences pour Cloud Volumes ONTAP dans Google Cloud"]
 
-
-endif::gcp[]
 
 
 
@@ -206,26 +181,10 @@ Pour plus d'informations sur les limites de capacité de chaque fournisseur de c
 
 Découvrez comment démarrer avec un abonnement Keystone :
 
-ifdef::aws[]
-
 * link:task-set-up-licensing-aws.html["Configurer les licences pour Cloud Volumes ONTAP dans AWS"]
-
-
-endif::aws[]
-
-ifdef::azure[]
-
 * link:task-set-up-licensing-azure.html["Configurer les licences pour Cloud Volumes ONTAP dans Azure"]
-
-
-endif::azure[]
-
-ifdef::gcp[]
-
 * link:task-set-up-licensing-google.html["Configurer les licences pour Cloud Volumes ONTAP dans Google Cloud"]
 
-
-endif::gcp[]
 
 
 
