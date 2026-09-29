@@ -13,4 +13,4 @@ Les régions suivantes prennent désormais en charge les déploiements de zones 
 * Gouverneur des États-Unis de Virginie (Région gouvernementale des États-Unis - Virginie)
 
 
-Pour une liste de toutes les régions, reportez-vous à la https://bluexp.netapp.com/cloud-volumes-global-regions["Carte des régions mondiales sous Azure"^] .
+Pour obtenir la liste de toutes les régions, veuillez vous référer à  https://www.netapp.com/cloud-volumes-ontap/supported-regions/["Carte des régions mondiales sous Azure"^].

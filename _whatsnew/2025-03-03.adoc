@@ -9,4 +9,4 @@
 
 La région Nouvelle-Zélande Nord est désormais prise en charge dans Azure pour les configurations à nœud unique et à haute disponibilité (HA) de Cloud Volumes ONTAP 9.12.1 GA et versions ultérieures.  Notez que le type d’instance Lsv3 n’est pas pris en charge dans cette région.
 
-Pour une liste de toutes les régions prises en charge, reportez-vous à la https://bluexp.netapp.com/cloud-volumes-global-regions["Carte des régions mondiales sous Azure"^] .
+Pour obtenir la liste de toutes les régions prises en charge, veuillez vous référer au https://www.netapp.com/cloud-volumes-ontap/supported-regions/["Carte des régions mondiales sous Azure"^].

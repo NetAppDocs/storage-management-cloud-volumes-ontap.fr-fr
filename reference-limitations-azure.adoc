@@ -72,4 +72,4 @@ Cloud Volumes ONTAP utilise le stockage NVMe local de certains types de machines
 
 Les paires haute disponibilité ne sont pas prises en charge dans certaines régions.
 
-https://bluexp.netapp.com/cloud-volumes-global-regions["Consultez la liste des régions Azure prises en charge"^].
+https://www.netapp.com/cloud-volumes-ontap/supported-regions/["Consultez la liste des régions Azure prises en charge"^].

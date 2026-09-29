@@ -88,14 +88,19 @@ indexpage:
       url: task-managing-svms.html
     - title: Chiffrer les volumes sur Cloud Volumes ONTAP
       url: task-encrypting-volumes.html
-  - title: Référence API (NetApp Console Automation)
+  - title: Automatisation de Cloud Volumes ONTAP
     links:
+    - title: Découvrez les options d'automatisation de Cloud Volumes ONTAP
+      url: concept-cvo-automation.html
     - title: Référence API
-      url: https://docs.netapp.com/us-en/console-automation/cm/overview.html
-    - title: Présentation de l'API Cloud Volumes ONTAP
-      url: https://docs.netapp.com/us-en/console-automation/cm/prepare.html
-    - title: Préparez-vous à utiliser l'API
-      url: https://docs.netapp.com/us-en/console-automation/cm/prepare.html
+      url: https://docs.netapp.com/us-en/console-automation/index.html
+    - title: Concepts d’API REST de NetApp Console
+      url: https://docs.netapp.com/us-en/console-automation/platform/concepts.html
+    - title: Découvrez les processus de workflow de l'API
+      url: https://docs.netapp.com/us-en/console-automation/cm/workflow_processes.html
+    - title: Liste des appels d'API Cloud Volumes ONTAP pour AWS, Azure et Google
+        Cloud
+      url: https://docs.netapp.com/us-en/console-automation/cm/cvo_deployment.html
   - title: Cloud Volumes ONTAP et autres produits NetApp
     links:
     - title: Rôles Cloud Volumes ONTAP dans la NetApp Console
@@ -119,7 +124,7 @@ indexpage:
     - title: Utilisez l'interface de ligne de commande ONTAP pour Cloud Volumes ONTAP
       url: https://docs.netapp.com/us-en/ontap-cli/index.html
     - title: Régions cloud prises en charge
-      url: https://bluexp.netapp.com/cloud-volumes-global-regions
+      url: https://www.netapp.com/cloud-volumes-ontap/supported-regions/
     - title: Calculatrices
       url: https://www.netapp.com/ontap-cloud/pricing/
     - title: Communauté NetApp

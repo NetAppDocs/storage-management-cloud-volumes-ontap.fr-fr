@@ -477,7 +477,7 @@ Consultez ce tableau pour comprendre la variante de machine virtuelle et le nomb
 [[supported-regions]]
 == Régions prises en charge
 
-Pour la prise en charge des régions Google Cloud, voir https://bluexp.netapp.com/cloud-volumes-global-regions["Cloud Volumes Régions mondiales"^].
+Pour la prise en charge des régions Google Cloud, voir https://www.netapp.com/cloud-volumes-ontap/supported-regions/["Cloud Volumes Régions mondiales"^].
 
 .Liens connexes
 * https://cloud.google.com/compute/docs/disks/["Documentation Google Cloud : Options de stockage"^]

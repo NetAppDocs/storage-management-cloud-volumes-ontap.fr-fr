@@ -32,7 +32,7 @@ Plusieurs options de licence sont disponibles pour Cloud Volumes ONTAP. Chaque o
 [[choose-a-supported-region]]
 == Choisissez une région prise en charge
 
-Cloud Volumes ONTAP est pris en charge dans la plupart des régions AWS. https://bluexp.netapp.com/cloud-volumes-global-regions["Afficher la liste complète des régions prises en charge"^] .
+Cloud Volumes ONTAP est pris en charge dans la plupart des régions AWS https://www.netapp.com/cloud-volumes-ontap/supported-regions/["Afficher la liste complète des régions prises en charge"^].
 
 Les nouvelles régions AWS doivent être activées avant de pouvoir créer et gérer des ressources dans ces régions. https://docs.aws.amazon.com/general/latest/gr/rande-manage.html["Documentation AWS : Découvrez comment activer une région"^] .
 
