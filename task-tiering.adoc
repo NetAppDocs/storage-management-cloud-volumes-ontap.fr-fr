@@ -24,7 +24,6 @@ La plupart des configurations sont prises en charge.  Si vous disposez d’un sy
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Deux"]Assurer la connectivité entre Cloud Volumes ONTAP et le stockage d'objets
 [role="quick-margin-list"]
-* Pour AWS, vous avez besoin d'un point de terminaison VPC vers Amazon Simple Storage Service (Amazon S3). <<Requirements to tier cold data to AWS S3,Apprendre encore plus>>.
 * Pour Azure, vous n’aurez rien à faire tant que la NetApp Console dispose des autorisations requises. <<Conditions requises pour hiérarchiser les données froides vers le stockage Azure Blob,Apprendre encore plus>> .
 * Pour Google Cloud, vous devez configurer le sous-réseau pour l'accès privé à Google et configurer un compte de service. <<Conditions requises pour hiérarchiser les données froides vers un bucket Google Cloud Storage,Apprendre encore plus>> .
 
