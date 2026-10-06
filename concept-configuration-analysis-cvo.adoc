@@ -1,0 +1,143 @@
+---
+sidebar: sidebar 
+permalink: concept-configuration-analysis-cvo.html 
+keywords: Cloud Volumes ONTAP, configuration issues, issues, improve, analyze, storage configuration, recommendation, recommendations 
+summary: Depuis NetApp Console, Workload Factory analyse régulièrement les configurations des systèmes de stockage afin de déterminer s’il existe des problèmes de configuration avec vos systèmes Cloud Volumes ONTAP. 
+---
+= Analyse de la configuration des systèmes Cloud Volumes ONTAP dans Azure
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+Workload Factory analyse régulièrement les configurations des systèmes de stockage depuis NetApp Console afin de déterminer s'il existe des problèmes de configuration avec vos systèmes Cloud Volumes ONTAP dans Azure. Lorsque des problèmes sont détectés, le tableau de bord well-architected affiche la nature de ces problèmes et recommande les modifications à apporter pour garantir que vos systèmes de stockage atteignent des performances optimales, une efficacité des coûts et la conformité aux meilleures pratiques.
+
+Principales fonctionnalités :
+
+* Analyse quotidienne de la configuration
+* Validations automatiques des bonnes pratiques pour les systèmes de stockage NetApp ONTAP et les fournisseurs de stockage partenaires
+* Observabilité proactive
+* Des idées à l'action
+
+
+link:https://docs.netapp.com/us-en/workload-family/index.html["En savoir plus sur Workload Factory."^]
+
+
+
+[[how-it-works]]
+== Comment ça marche
+
+Workload Factory analyse quotidiennement vos charges de travail exécutées sur les systèmes de stockage cloud compatibles. L’analyse fournit un état bien architecturé, des informations et des recommandations.
+
+Une fois l'analyse quotidienne terminée, les configurations apparaissent comme « optimisées » ou « non optimisées » dans le tableau de bord Well-architected du déploiement. Vous y trouverez les problèmes de configuration classés par catégorie et une liste de problèmes de configuration et de recommandations. Vous pouvez consulter les recommandations pour les problèmes de configuration. Workload Factory peut corriger automatiquement certains problèmes ; d'autres nécessitent une intervention manuelle. Dans ce cas, Workload Factory fournit des instructions détaillées pour vous aider à mettre en œuvre les modifications recommandées.
+
+Vous pouvez ignorer l'analyse des configurations qui ne s'appliquent pas à vos environnements. Cela évite les alertes inutiles et des résultats d'optimisation inexacts.
+
+Vous pouvez également créer des règles personnalisées en langage clair pour valider vos environnements par rapport aux normes de votre organisation et aux bonnes pratiques NetApp. Testez les règles à blanc, puis planifiez leur exécution dans vos environnements.
+
+
+
+[[why-it-matters]]
+== Pourquoi c'est important
+
+NetApp Workload Factory applique les meilleures pratiques aux environnements de stockage, de base de données et VMware de grande envergure en combinant une évaluation continue avec des recommandations et des corrections. Les correctifs automatisés réduisent les erreurs humaines, garantissent une gestion uniforme et préservent les performances et la fiabilité de vos infrastructures de charges de travail.
+
+
+
+[[analysis-requirements]]
+== Exigences d'analyse
+
+Assurez-vous que l'agent de console associé à Cloud Volumes ONTAP a accès aux points de terminaison suivants :
+
+* \https://api.workloads.netapp.com
+* \https://ws.workloads.bluexp.netapp.com
+
+
+
+
+[[best-practices-and-recommendations-for-cloud-volumes-ontap-systems]]
+== Bonnes pratiques et recommandations pour les systèmes Cloud Volumes ONTAP
+
+Workload Factory évalue les configurations de stockage afin de fournir une vue détaillée des meilleures pratiques de configuration d'ONTAP et de la conformité à Azure Well-Architected Framework. L'évaluation recommande également des améliorations et des correctifs.
+
+L'analyse bien conçue catégorise les configurations selon les piliers suivants du cadre : _fiabilité_, _sécurité_, _excellence opérationnelle_, _optimisation des coûts_ et _efficacité des performances_.
+
+
+
+[[reliability]]
+=== Fiabilité
+
+La fiabilité garantit que les charges de travail exécutent leurs fonctions prévues correctement et de manière constante, même en cas de perturbations.
+
+* *Politique d'instantané*
++
+Planifiez des instantanés locaux pour une sauvegarde efficace et une restauration rapide. Les instantanés sont des images instantanées de vos volumes à un instant précis.
+
+* *Marge de capacité SSD*
++
+Maintenez le taux d'utilisation du stockage SSD en dessous de 80 % afin d'éviter tout impact potentiel sur les performances de lecture/écriture et le débit des applications. Vous pouvez augmenter la capacité manuellement ou automatiquement.
+
+* *Réplication des données à distance*
++
+Protégez vos données Cloud Volumes ONTAP grâce à la réplication à distance. La réplication des données à distance offre des capacités de reprise après sinistre en maintenant des copies synchronisées de vos données à différents emplacements, garantissant la continuité de l'activité en cas de défaillance du système ou de sinistre.
+
+
+
+
+
+[[security]]
+=== Sécurité
+
+La sécurité met l'accent sur la protection des données, des systèmes et des actifs grâce à des évaluations des risques et des stratégies d'atténuation.
+
+* *Protection autonome contre les ransomwares grâce à l’IA (ARP/AI)*
++
+NetApp Autonomous Ransomware Protection avec intelligence artificielle (ARP/AI) aide à renforcer la résilience cybernétique et à protéger vos volumes contre les menaces de ransomware. Nous vous recommandons d’activer ARP/AI pour tous les volumes.
+
+
+
+
+
+[[operational-excellence]]
+=== Excellence opérationnelle
+
+L'excellence opérationnelle vise à fournir la meilleure architecture et la meilleure valeur commerciale.
+
+* *Capacité maximale du volume*
++
+Maintenez le taux d'utilisation du volume en dessous de 80 % afin d'éviter tout impact potentiel sur les opérations de lecture/écriture et le débit des applications. Vous pouvez augmenter la capacité manuellement ou avec l'extension automatique du volume.
+
+* *FlexCache mode écriture*
++
+Pour des performances optimales, sélectionnez le mode d'écriture FlexCache® le mieux adapté à votre charge de travail. Le mode d'écriture directe (write-around) offre de meilleures performances pour les charges de travail axées sur la lecture avec de petits fichiers, tandis que le mode d'écriture différée (write-back) offre de meilleures performances pour les charges de travail axées sur l'écriture avec des fichiers volumineux.
+
+* *FlexCache taille de la réplique*
++
+Activez le dimensionnement automatique des volumes et le nettoyage des volumes de cache pour maintenir une taille optimale et concentrer le cache sur les données fréquemment consultées (données chaudes) pour une efficacité maximale.
+
+* *Conformité de la version ONTAP*
++
+Mettez à niveau vers la dernière version d'ONTAP pour bénéficier d'une compatibilité totale, d'un support complet et d'un accès aux nouvelles fonctionnalités.
+
+
+
+
+
+[[cost-optimization]]
+=== Optimisation des coûts
+
+L'optimisation des coûts vous aide à obtenir la plus grande valeur pour votre entreprise tout en maintenant les coûts bas.
+
+* *Capacité SSD surdimensionnée*
++
+Une capacité SSD excédentaire engendre des coûts inutiles. Réduisez le niveau SSD tout en conservant une réserve d'espace libre de 20 %. L'opération peut prendre de quelques heures à plusieurs jours, et aucune autre opération sur le système de fichiers n'est prise en charge pendant ce temps.
+
+* *Hiérarchisation des données froides*
++
+Activez la hiérarchisation des données froides pour déplacer ces données du stockage SSD vers un stockage moins coûteux. Appliquez une stratégie de hiérarchisation à chaque volume.
+
+
+
+.Et ensuite
+link:task-improve-configurations-cvo.html["Améliorez les configurations Cloud Volumes ONTAP dans Azure à l'aide de Workload Factory"]

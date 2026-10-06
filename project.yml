@@ -243,6 +243,16 @@ sidebar:
         url: "/task-manage-perf-params-azure.html"
       - title: Mise à niveau du niveau de performance des disques dans Azure
         url: "/task-upgrade-disk-perf-azure.html"
+      - title: Analyse et amélioration de la configuration à l'aide de Workload Factory
+        entries:
+        - title: Analyse de la configuration de Cloud Volumes ONTAP dans Azure
+          url: "/concept-configuration-analysis-cvo.html"
+        - title: Améliorez les configurations Cloud Volumes ONTAP dans Azure
+          url: "/task-improve-configurations-cvo.html"
+      - title: Analyse de la configuration de Cloud Volumes ONTAP dans Azure
+        url: "/concept-configuration-analysis-cvo.html"
+      - title: Améliorez les configurations Cloud Volumes ONTAP dans Azure
+        url: "/task-improve-configurations-cvo.html"
     - title: Administration de Google Cloud
       entries:
       - title: Configurations prises en charge dans Google Cloud
@@ -313,8 +323,6 @@ sidebar:
       url: "/task-manage-keystone.html"
     - title: Cloud Volumes ONTAP et Microsoft OneLake
       url: "/task-azure-onelake.html"
-    - title: Cloud Volumes ONTAP et tableau de bord bien conçu
-      url: "/configuration-analysis-cvo.html"
     - title: Découvrez les options d'automatisation de Cloud Volumes ONTAP
       url: "/concept-cvo-automation.html"
   - title: Connaissances et soutien

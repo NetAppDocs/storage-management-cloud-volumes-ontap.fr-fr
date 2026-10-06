@@ -24,24 +24,24 @@ Vous pouvez intégrer Cloud Volumes ONTAP à AWS via AWS Marketplace ou la NetAp
 
 
  a| 
-Vérifiez les rôles de la console NetApp
- a| 
-Avant de pouvoir créer un agent de console et effectuer d'autres tâches de déploiement pour Cloud Volumes ONTAP, vous devez vérifier que les rôles et autorisations IAM nécessaires sont en place.
- a| 
-Consultez le guide d'installation de la console :https://docs.netapp.com/us-en/console-setup-admin/reference-iam-cvo-roles.html["Rôles d'accès Cloud Volumes ONTAP dans la NetApp Console"^] https://docs.netapp.com/us-en/console-setup-admin/task-cvo-rbac-setup.html["Configurer l'accès basé sur les rôles pour Cloud Volumes ONTAP"^]
- a| 
-Vérifiez que les rôles sont correctement configurés.
-
-
-
- a| 
 Créer un agent de Console
  a| 
 Si vous ne disposez pas encore d'un agent Console, créez-en un avant de déployer Cloud Volumes ONTAP. Si le déploiement s'effectue dans un sous-réseau sans accès Internet, installez manuellement l'agent Console et accédez à la NetApp Console exécutée sur cet agent.
  a| 
 Consultez le guide d'installation de la console :https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-connector-aws.html["Créer un agent NetApp Console dans AWS"^]
  a| 
-En cas de déploiement sur un sous-réseau sans accès Internet, installez manuellement l’agent Console et accédez à l’interface utilisateur NetApp Console qui s’exécute sur cet agent Console. Consultez le guide d'installation de la console :https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-private-mode.html["Installez manuellement l’agent Console sans accès à Internet"^]
+En cas de déploiement sur un sous-réseau sans accès Internet, installez manuellement l’agent Console et accédez à l’interface utilisateur NetApp Console qui s’exécute sur cet agent Console. Consultez le guide d'installation de la console :https://docs.netapp.com/us-en/console-setup-admin/task-install-private-mode.html["Déployez l’agent NetApp Console en mode privé"^]
+
+
+
+ a| 
+Vérifiez les rôles de la console NetApp
+ a| 
+Après avoir créé un agent Console, vous devez vérifier que les rôles IAM ainsi que les rôles et autorisations Cloud Volumes ONTAP nécessaires sont en place.
+ a| 
+Consultez le guide d'installation de la console :https://docs.netapp.com/us-en/console-setup-admin/reference-iam-cvo-roles.html["Rôles d'accès Cloud Volumes ONTAP dans la NetApp Console"^] https://docs.netapp.com/us-en/console-setup-admin/task-cvo-rbac-setup.html["Configurer l'accès basé sur les rôles pour Cloud Volumes ONTAP"^]
+ a| 
+En mode privé, l'agent Console doit disposer des rôles et autorisations nécessaires, correctement configurés. Cependant, les rôles Cloud Volumes ONTAP ne s'appliquent pas aux déploiements en mode privé. Consultez le guide d'installation de la Console : https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html["NetApp Console rôles d'accès"^]
 
 
 

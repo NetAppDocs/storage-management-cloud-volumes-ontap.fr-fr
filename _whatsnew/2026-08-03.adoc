@@ -26,5 +26,5 @@ Vous pouvez également exclure une ou plusieurs configurations de l'analyse d'ar
 
 Si vous souhaitez réintégrer ultérieurement une configuration rejetée, vous pouvez la réactiver dans le tableau de bord bien architecturé. Cela rétablit la configuration dans l'analyse et vous permet d'obtenir des recommandations et des correctifs pour celle-ci.
 
-* link:https://docs.netapp.com/us-en/console-well-architected/cvo/improve-configurations-cvo.html["Corrigez, ignorez et réactivez les configurations pour Cloud Volumes ONTAP dans Microsoft Azure"^]
+* link:https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-improve-configurations-cvo.html["Corrigez, ignorez et réactivez les configurations pour Cloud Volumes ONTAP dans Microsoft Azure"^]
 

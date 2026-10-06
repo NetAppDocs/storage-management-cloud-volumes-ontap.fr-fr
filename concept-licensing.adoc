@@ -253,7 +253,7 @@ La console permet une conversion transparente des licences par nœud en licences
 
 Avant de procéder à la transition, il est bon de vous familiariser avec la différence entre les deux modèles de licence.  Les licences basées sur les nœuds incluent une capacité fixe pour chaque instance ONTAP , ce qui peut restreindre la flexibilité.  Les licences basées sur la capacité, en revanche, permettent de partager un pool de stockage sur plusieurs instances, offrant ainsi une flexibilité accrue, optimisant l'utilisation des ressources et réduisant le risque de pénalités financières lors de la redistribution des charges de travail.  La charge basée sur la capacité s'adapte de manière transparente aux besoins de stockage changeants.
 
-##Si vous avez des abonnements à la marketplace ou des déploiements privés avec des licences par nœud, vous pouvez link:task-convert-node-capacity.html["Convertissez vos licences par nœud en licences par capacité"] utiliser l’outil de conversion de licences dans la NetApp Console.##
+Si vous disposez d'abonnements à la place de marché ou de déploiements privés avec des licences basées sur les nœuds, vous pouvez link:task-convert-node-capacity.html["Convertissez vos licences par nœud en licences par capacité"] utiliser l'outil de conversion de licences dans la Console.
 
 Pour savoir comment effectuer cette conversion, reportez-vous àlink:task-convert-node-capacity.html["Convertir une licence Cloud Volumes ONTAP basée sur un nœud en une licence basée sur la capacité"] .
 

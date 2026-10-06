@@ -21,7 +21,7 @@ NetApp recommande l'utilisation d'une licence basée sur la capacité pour tous 
 
 NOTE: Les abonnements PAYGO (paiement à l'utilisation) depuis la marketplace de votre fournisseur de cloud ne sont pas disponibles pour les déploiements en mode privé. En mode privé, NetApp fournit directement des licences BYOL. Les licences par nœud sont disponibles uniquement pour les déploiements en mode privé existants et ne peuvent pas être nouvellement déployées. Depuis le 25 juin 2025, NetApp a restreint l'achat, l'extension et le renouvellement des licences par nœud en mode privé. Si vous possédez déjà une licence par nœud, vous devez la convertir en licence basée sur la capacité.
 
-Pour les nouveaux déploiements en mode privé, utilisez plutôt une licence basée sur la capacité. Voir https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap_capacity-license-darkmode/task-deploying-otc-aws.html#deploy-cloud-volumes-ontap-in-private-mode["Déployer Cloud Volumes ONTAP en mode privé"^].
+Pour les nouveaux déploiements en mode privé, utilisez plutôt une licence basée sur la capacité. Voir https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-deploying-otc-aws.html#deploy-cloud-volumes-ontap-in-private-mode["Déployer Cloud Volumes ONTAP en mode privé"^].
 
 
 
