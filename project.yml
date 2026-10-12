@@ -47,7 +47,7 @@ sidebar:
         url: "/concept-degraded-ha-pair.html"
     - title: Déployer sur Amazon Web Services
       entries:
-      - title: Intégrez Cloud Volumes ONTAP depuis AWS Marketplace
+      - title: Déployez l’instance autonome Cloud Volumes ONTAP depuis AWS Marketplace
         url: "/task-onboard-cvo-aws-marketplace.html"
       - title: Aperçu du déploiement
         url: "/task-getting-started-aws.html"

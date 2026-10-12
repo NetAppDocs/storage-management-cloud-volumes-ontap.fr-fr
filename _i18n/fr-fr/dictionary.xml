@@ -7051,46 +7051,15 @@
   <block id="44e833213a99257d69192896111996f4" category="paragraph">Vous pouvez désormais déployer Cloud Volumes ONTAP 9.12.1 GA et versions ultérieures dans les régions Austria East (austriaeast) et Belgium Central (belgiumcentral) dans Azure. Les types de déploiement suivants sont pris en charge :</block>
   <block id="0eda8bbe61d2248f5418aba76b8dc5b1" category="list-text">\https://api.workloads.netapp.com</block>
   <block id="9f45fe3cd2af64a1afc3f4b7f81bdae6" category="list-text">\https://ws.workloads.bluexp.netapp.com</block>
-  <block id="69fad001104806c7d3df4d9a347564cb" category="inline-link-macro">Intégrez Cloud Volumes ONTAP dans AWS Marketplace</block>
-  <block id="96b530e768c1d37cb28e1a93deb3f72b" category="paragraph">Vous pouvez intégrer Cloud Volumes ONTAP à AWS via AWS Marketplace ou la NetApp Console. Le tableau suivant présente une vue d'ensemble des tâches à effectuer pour déployer Cloud Volumes ONTAP sur AWS. L'intégration depuis AWS Marketplace est une expérience simplifiée qui automatise le déploiement de l'agent Console ainsi que l'association de l'abonnement. Pour plus d'informations sur l'intégration depuis AWS Marketplace, consultez <block ref="837547e59085e904a77e7f4e64639022" category="inline-link-macro-rx"></block>.</block>
   <block id="dbf314f960a580dec77c3328f5a7dcfe" category="list-text">Si vous prévoyez de facturer la capacité Cloud Volumes ONTAP via l’abonnement Cloud Volumes ONTAP autonome dans AWS Marketplace, le système Cloud Volumes ONTAP doit utiliser un forfait basé sur la capacité pris en charge (Essentials ou Freemium). Le forfait Professional n’est pas pris en charge pour l’offre autonome et continue d’être facturé via l’abonnement NIS. Après avoir sélectionné le forfait souhaité, utilisez *Préférences de facturation* dans la NetApp Console pour choisir l’abonnement Marketplace utilisé pour la facturation Cloud Volumes ONTAP.</block>
   <block id="a21deb009c8ff7309664108fdf426e10" category="summary">Abonnez-vous à Cloud Volumes ONTAP sur AWS Marketplace et terminez la configuration dans la NetApp Console, y compris la création de l'organisation, l'association de l'abonnement, le déploiement de l'agent et la création du premier système.</block>
   <block id="ce95e653013e10f07ac1b69529baf3bb" category="doc">Abonnez-vous et déployez Cloud Volumes ONTAP depuis AWS Marketplace</block>
-  <block id="a56d9a462f5d920c9293b0c67186d9e1" category="paragraph">Abonnez-vous à Cloud Volumes ONTAP depuis AWS Marketplace et laissez la NetApp Console vous guider tout au long de la prise en main. Avec un parcours simple de l’abonnement au déploiement, vous pouvez rapidement commencer à utiliser Cloud Volumes ONTAP. L’expérience guidée simplifie le processus, de l’abonnement AWS Marketplace au déploiement, vous aidant à déployer Cloud Volumes ONTAP sans nécessiter une expertise approfondie en cloud ou en ONTAP.</block>
-  <block id="6a38f577211073eeb02102781c7a7724" category="paragraph">L’abonnement et le déploiement de Cloud Volumes ONTAP depuis AWS Marketplace comprennent les étapes suivantes :</block>
-  <block id="9d45170ac0ac56a9ff0cb7cc857e63f0" category="list-text">Abonnement à Cloud Volumes ONTAP dans AWS Marketplace.</block>
-  <block id="02ab25857b97c370d093230f750bedf8" category="list-text">Inscrivez-vous à la NetApp Console.</block>
-  <block id="07fed0f9fcd003852926ec161d68a5ed" category="list-text">Création de votre organisation (si nécessaire) et association de l’abonnement à la marketplace.</block>
-  <block id="a5dea32886a7e080be6f9329f1fb446a" category="list-text">Déploiement d'un agent de Console dans AWS.</block>
-  <block id="aff1b02ecbb84d53a7ea17d4cd323753" category="list-text">Ajout de votre premier système Cloud Volumes ONTAP.</block>
-  <block id="1216ca4f430de5c3a0d9702bcbabaa02" category="paragraph">L'intégration simplifiée offre un déploiement automatisé des agents, nécessitant une intervention minimale de votre part pour l'association à l'abonnement, la configuration des rôles IAM, le provisionnement des agents et l'initialisation du système. L'orchestration du backend gère automatiquement la création de la pile CloudFormation, la validation de la connectivité VPC et les dépendances des ressources. Cela réduit les étapes de configuration manuelle et les transitions d'écran, ce qui vous permet de déployer Cloud Volumes ONTAP plus rapidement, avec moins d'erreurs de configuration et d'interruptions. Au fur et à mesure de l'avancement du déploiement, vous pouvez suivre votre progression dans le panneau de droite.</block>
-  <block id="d102ad960823e2e5bdf818a47be9d5b3" category="paragraph">Examinez ces prérequis avant de commencer le workflow d'intégration.</block>
-  <block id="172b7630d3591caad16d4e53bb8caa5b" category="list-text">Vous devez posséder un compte AWS disposant des autorisations nécessaires pour vous abonner à AWS Marketplace. Pour utiliser la configuration IAM automatisée, vous devez être administrateur AWS ou disposer des autorisations indiquées ci-dessous.</block>
-  <block id="6a5a62604841f01985bd66ce12b68800" category="list-text">Vous pouvez créer ou utiliser des rôles IAM dans AWS pour le déploiement d’agents.</block>
-  <block id="48a51e79fb6a62108e71ba7e037a9b37" category="list-text">Vous pouvez vous connecter ou créer un compte dans la NetApp Console.</block>
-  <block id="09f8a40b3c8ade5b73c631a145579e8d" category="inline-link-macro">Déployez un agent NetApp Console depuis AWS Marketplace</block>
-  <block id="2884c4b8debb63cfcef54c15dde97b1f" category="paragraph">Pour connaître les prérequis complets de déploiement de l'agent AWS, consultez <block ref="d87c3906dbbd3aa004bc4ac3ab4610c2" category="inline-link-macro-rx"></block>.</block>
-  <block id="f444f7c358bbe34ac520595600b8b22c" category="section-title">Abonnez-vous dans AWS Marketplace</block>
-  <block id="c8a45b103b3411fa57280389e905876d" category="paragraph">Démarrez le processus d'intégration en localisant l'offre Cloud Volumes ONTAP dans AWS Marketplace.</block>
-  <block id="d30611ae1c4aa386020b8e622fda43df" category="list-text">Accédez à AWS Marketplace en utilisant votre compte AWS.</block>
-  <block id="65a60fa3ef358594aeb5c3013a500873" category="list-text">Localisez l’offre NetApp Cloud Volumes ONTAP. Il existe deux offres Cloud Volumes ONTAP dans AWS Marketplace :</block>
-  <block id="6bf9cb27d1125662310a04223e3dedcf" category="list-text">L'offre autonome pour les abonnements annuels à Cloud Volumes ONTAP</block>
-  <block id="fdfb3edef005048dd4efa8424b37cd80" category="list-text">L’offre combinée NetApp Intelligent Service (NIS) pour les services de données NetApp et les abonnements Cloud Volumes ONTAP. Choisissez l’offre _autonome_ pour ce processus d’intégration.</block>
   <block id="a4cede66de2477ac18bbdee0f03c3b4b" category="list-text">Consultez les détails de l'annonce et les conditions tarifaires.</block>
   <block id="885d2379a584c302d318353e375f294c" category="list-text">Abonnez-vous et finalisez votre commande.</block>
-  <block id="f1b64129ed9863a99f0398b63b8a21eb" category="list-text">Après votre inscription, AWS vous redirige vers la page d'inscription ou de connexion à la Console.</block>
   <block id="af9938b36ef2a60606b45bb8ffe35344" category="section-title">Inscrivez-vous ou connectez-vous à la NetApp Console</block>
-  <block id="96b3a57bf37c129501b50b711ec35358" category="paragraph">Accédez à la NetApp Console pour poursuivre la configuration une fois votre abonnement à la marketplace terminé.</block>
   <block id="e7d1b65dd28597571fba7d964af5a41c" category="list-text">Sur la page Console, sélectionnez-en une :</block>
   <block id="df754221abc49063bd0903d180e996c6" category="list-text">*Inscrivez-vous* si vous êtes un nouvel utilisateur.</block>
   <block id="7056635c8b9f8d28fc7e21996cb93294" category="list-text">*Connectez-vous à la NetApp Console* si vous possédez déjà un compte.</block>
-  <block id="115e2aa74ec72f678a8f9c0ff8a23d84" category="list-text">Si vous avez sélectionné *S'inscrire*, complétez les informations suivantes :</block>
-  <block id="0ed642aae1713d162a22c10261227792" category="list-text">Saisissez les champs obligatoires :</block>
-  <block id="ce8ae9da5b7cd6c3df2929543a9af92d" category="list-text">Messagerie électronique</block>
-  <block id="dc647eb65e6711e155375218212b3964" category="list-text">Mot de passe</block>
-  <block id="f11b368cddfe37c47af9b9d91c6ba4f0" category="list-text">Nom complet</block>
-  <block id="1c76cbfe21c6f44c1d1e59d54f3e4420" category="list-text">Entreprise</block>
-  <block id="59716c97497eb9694541f7c3d37b1a4d" category="list-text">Pays</block>
   <block id="e6cd86d61f4639c8a27006c6c29b3e9f" category="list-text">Sélectionnez *Suivant*.</block>
   <block id="39f666f68e0b42f2f9f878864293d3b0" category="list-text">Facultatif : Saisissez des coordonnées telles que l’adresse, la ville, l’état, le code postal et le numéro de téléphone.</block>
   <block id="7408a50737fd936622eeec54bbeb439c" category="list-text">Sélectionnez *Sign up*.</block>
@@ -7098,66 +7067,32 @@
   <block id="606b520330e1b3dd8468aa4c696f320b" category="list-text">Vérifiez votre adresse e-mail à l’aide du message provenant de service@console.netapp.com.</block>
   <block id="e01bdff1ce4770f66f1a74a9b5892c8b" category="list-text">Connectez-vous à la Console et terminez l'authentification.</block>
   <block id="ac9188736d7d24740d106bad6d2f1a24" category="section-title">Créez votre organisation</block>
-  <block id="db32d51e7a32c3835f9ca7138ba5e779" category="paragraph">Effectuez cette étape uniquement si vous êtes un nouvel utilisateur ou si vous n'appartenez pas déjà à une organisation NetApp Console.</block>
-  <block id="dfa6580bc43676ec0428470c4226197e" category="paragraph">Si vous appartenez déjà à une organisation, passez cette section et continuez à <block ref="5a5b9f60942f56579652f4a550dadca9" category="inline-xref-macro-rx"></block>.</block>
-  <block id="b60fce2f30234b8c655d26812f8d684c" category="paragraph">Créez une organisation pour gérer les utilisateurs, les rôles, les autorisations, les licences et les systèmes.</block>
   <block id="4c27c7ddbdd91ad9f40d0e69913d02f8" category="list-text">Saisissez un nom d'organisation.</block>
   <block id="340e0bcb7d46eb5bd14fee5c751d3175" category="list-text">Facultatif : associer un compte NetApp Support Site (NSS).</block>
   <block id="bf18811faac9b8e4fcaebab51afd1113" category="list-text">Sélectionnez *Créer*.</block>
-  <block id="34c93ad83166c6e80fe3fea1d5eaa0df" category="section-title">Associez votre abonnement</block>
-  <block id="e7044d37a1ed84ca9f7caa2b9d24ef7f" category="paragraph">Après avoir créé votre organisation, la Console tente automatiquement de lier votre abonnement à la place de marché à l'organisation.</block>
   <block id="3bdc84428bee979e77f1781f40304f42" category="inline-link-macro">Découvrez comment gérer vos abonnements</block>
-  <block id="6038ef325e8557cc84b0ef6c053a062d" category="paragraph">Si l'association automatique échoue, associez manuellement votre abonnement. <block ref="31ece82e919075b6d4fa8e64ff8627ac" category="inline-link-macro-rx"></block>.</block>
   <block id="999c350fcbd9f270e794eb9f39020947" category="section-title">Déployez un agent Console dans AWS</block>
-  <block id="5cb502f88565459be3dfd091651deb1b" category="paragraph">Une fois l’abonnement associé, la NetApp Console ouvre automatiquement le flux de déploiement de l’agent pour gérer vos ressources AWS et vos systèmes Cloud Volumes ONTAP.</block>
   <block id="0e5a6ed81e42dfb7b8082abc4bd85af9" category="inline-link-macro">Référence des autorisations AWS</block>
-  <block id="57a69cea62fbfee2c988421746b5ec77" category="paragraph">Pour en savoir plus sur les autorisations utilisées lors du déploiement de l’agent, consultez <block ref="8640373d61143a22452f799c5e012ff9" category="inline-link-macro-rx"></block>.</block>
-  <block id="b11b04338f764b72f59f7c3db188b3ad" category="list-text">Vous pouvez suivre les étapes mentionnées sur la page d'introduction pour obtenir les autorisations minimales nécessaires au déploiement d'un agent, ou continuer à créer automatiquement un rôle pour le déploiement d'un agent.</block>
-  <block id="701ad266790171c293af9ebdab49b1dd" category="list-text">Sur la page *Identifiants AWS*, sélectionnez l'une des options suivantes pour fournir les identifiants nécessaires au déploiement de l'agent :</block>
   <block id="f6775e307e0e96c3d2d2aa4261c2dc06" category="open-title">Créez un rôle pour moi (recommandé)</block>
-  <block id="7d1dd887a48c9c23271325fc57dc9b7d" category="paragraph">Sélectionner cette option ouvre un flux AWS CloudFormation Quick Create pour créer le rôle de déploiement de l’agent. Si vous disposez de privilèges d’administrateur, vous pouvez utiliser cette option pour utiliser automatiquement une pile CloudFormation afin de créer la stratégie, le rôle et authentifier l’utilisateur pour créer l’agent.</block>
   <block id="947040282161ce63e6c467b9272f0987" category="list-text">Ajoutez l'ID du compte AWS et, éventuellement, l'ID externe. La Console attribue un nom de rôle par défaut.</block>
-  <block id="058984dad8b35b2edf4e90cc0d99e422" category="list-text">Acceptez les conditions et sélectionnez *Créer une stack*.</block>
-  <block id="dd9b75b6f9c28d257df9b082c4cd3f22" category="inline-image-macro">largeur=50% Capture d'écran de la page de création de pile AWS CloudFormation où vous saisissez l'ID du compte AWS et, éventuellement, l'ID externe du rôle de déploiement de l'agent.</block>
-  <block id="cb8aa7095d78f4373b1a7bc44eb8ccc3" category="paragraph"><block ref="cb8aa7095d78f4373b1a7bc44eb8ccc3" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="1a8675104d64ecc19112dddcea8c45b8" category="list-text">Une fois le rôle IAM configuré dans AWS et l'ARN généré, confirmez et enregistrez le rôle.</block>
   <block id="c922cc18eca71598d4a86b7707d7eba0" category="open-title">Assumer le rôle</block>
-  <block id="6a2a0f10cb2f085ebdbde5eebef49a3e" category="paragraph">Cela fait partie du processus d'attribution manuelle des rôles. Saisissez l'ARN d'un rôle IAM existant. Pour obtenir des informations sur la modification de ce rôle, consultez <block ref="4d74176964b79f9dc8cf6e9b4edd3262" category="inline-link-rx"></block>.</block>
   <block id="e656cb1ebc2e559e3bcc2002585434ed" category="open-title">Clés AWS</block>
-  <block id="dfb7a0fc5277c45a86764545309957ce" category="paragraph">Cela fait partie du processus d'attribution manuelle des rôles. Saisissez une clé d'accès AWS et une clé secrète AWS. Pour plus d'informations, consultez<block ref="075c8733f05483e5267d384d7c0db32a" category="inline-link-rx"></block>.</block>
-  <block id="68ff9a106c651bd2460baf0343787e09" category="list-text">Déployez l'agent AWS :</block>
-  <block id="bb65b2f90c49dcd84ae767d9f986f148" category="list-text">Sur la page *AWS agent details*, définissez ou confirmez le nom de l'instance de l'agent et le rôle de l'agent.</block>
-  <block id="4d3d862d7ac1ef0cd306cce2d43b61c6" category="list-text">Sur la page *Réseau*, sélectionnez VPC, sous-réseau, paire de clés, comportement de l'adresse IP publique et paramètres de proxy.</block>
-  <block id="0cb0d7dbb504e41f0b9980e3f106ae8e" category="list-text">Configurez le *groupe de sécurité*. Autorisez l'accès entrant HTTP (80), HTTPS (443) et SSH (22) pour le dépannage de l'accès à la VM de l'agent.</block>
-  <block id="e60a9f11dba1e6072ec9503cca905c92" category="list-text">Consultez les résumés des sections et sélectionnez *Ajouter* pour déployer.</block>
-  <block id="3ed9f44843bea0baa9e9721e607d24c2" category="paragraph">Pour connaître l'ensemble des exigences en matière de réseau et d'autorisations, consultez :</block>
   <block id="ef9fe436c6881c3aeb226ecf309827f0" category="inline-link">Configurer le réseau pour le déploiement sur AWS Marketplace</block>
   <block id="13ccd8cfe31fc2437285f8fa41bb39d0" category="list-text"><block ref="13ccd8cfe31fc2437285f8fa41bb39d0" category="inline-link-rx"></block></block>
   <block id="2d3fc94cd0898448a15e6e05f4098b6f" category="inline-link">Configurer les autorisations AWS</block>
   <block id="57d5f449d9cc74edd78470cc9873c16e" category="list-text"><block ref="57d5f449d9cc74edd78470cc9873c16e" category="inline-link-rx"></block></block>
   <block id="43663d02f9f2280fb62656e0e2171f96" category="list-text"><block ref="43663d02f9f2280fb62656e0e2171f96" category="inline-link-rx"></block></block>
-  <block id="7ac3658f7b2ea40441a46f7d503df9d6" category="list-text">Suivez la progression du déploiement jusqu'à son terme. Vous pouvez développer les journaux d'événements pour consulter l'activité détaillée.</block>
-  <block id="40b1bbcf1d63550b5ee1a9ca612f354d" category="paragraph">Une fois le déploiement terminé, vous pouvez créer votre premier système Cloud Volumes ONTAP ou rester sur la page Systèmes pour ajouter un système ultérieurement.</block>
   <block id="63919d343a2d06159ee93f9535a4ca2e" category="section-title">Ajoutez votre premier système Cloud Volumes ONTAP</block>
-  <block id="e1373b355aa6da2aad7bba187ff4e9f2" category="paragraph">Une fois l'agent prêt, créez votre premier système Cloud Volumes ONTAP dans AWS.</block>
-  <block id="b0845b98104086e018330dff1f994b3a" category="list-text">À partir de l'invite post-déploiement, sélectionnez *Ajouter un système*.</block>
-  <block id="beec7c8b8f52f7e44dec39ce075d3abb" category="list-text">Démarrez le workflow de création du système Cloud Volumes ONTAP.</block>
-  <block id="e4998cdb09fc1ae76d7c7b0f97a04fd9" category="list-text">Finalisez la configuration du système.</block>
   <block id="72d7b93cee23363a2907b2be8b237290" category="section-title">Dépannage et récupération</block>
-  <block id="cb1bc5edf506394ee9927cb447901c17" category="paragraph">Utilisez cette section si vous quittez le processus d'intégration avant la fin ou si le déploiement de l'agent échoue. Ces étapes vous aident à reprendre là où vous vous êtes arrêté ou à récupérer et réessayer le déploiement.</block>
   <block id="90a521d73cad15b4a353df47ccdc06d8" category="section-title">Reprendre la configuration</block>
-  <block id="e933831d8f6e421c7eea9aa2e2c76bb9" category="paragraph">Si vous quittez avant la fin, vous pouvez reprendre la configuration à partir de la dernière étape terminée.</block>
   <block id="e440edd270e603c687695db87b77144a" category="list-text">Accédez à la page d'accueil de la NetApp Console.</block>
   <block id="733fbe662fa606d61fff360b4b1246b5" category="list-text">Sélectionnez *Reprendre la configuration* pour poursuivre l'intégration.</block>
   <block id="2a208a77ab0c5ca79397c57987de1a1a" category="section-title">Récupérez après un échec de déploiement</block>
-  <block id="628f962201a560f694204274ce3d88ec" category="paragraph">En cas d'échec du déploiement :</block>
   <block id="1b523bb53ad2000e3344ff316e869855" category="list-text">Téléchargez le rapport de déploiement.</block>
   <block id="07be83ce12a3bf78ef715d65c6c54020" category="list-text">Vérifiez votre configuration et vos journaux.</block>
   <block id="160e5aa077c7539416162287f02990f8" category="list-text">Sélectionnez *Recommencer* pour réessayer le déploiement.</block>
   <block id="d2cfcb99c2e8baa996b4db2415ca247d" category="inline-link-macro">Apprenez à résoudre les problèmes liés aux agents</block>
   <block id="69adeb1c49bb37715a017c9a902b7d1d" category="paragraph"><block ref="61813908742cfb0bf968ca5176776caa" category="inline-link-macro-rx"></block>.</block>
-  <block id="8c157a27a72f45bb42efe091d45115ef" category="paragraph">Utilisez ces ressources pour les tâches de configuration et de dépannage connexes.</block>
-  <block id="d87c3906dbbd3aa004bc4ac3ab4610c2" category="list-text"><block ref="d87c3906dbbd3aa004bc4ac3ab4610c2" category="inline-link-macro-rx"></block></block>
   <block id="ff462988ef2bf728297fe5ed85ddc08d" category="inline-link-macro">Configurer un abonnement AWS</block>
   <block id="187e653c7125a081fc8f4c8454b7978a" category="list-text"><block ref="187e653c7125a081fc8f4c8454b7978a" category="inline-link-macro-rx"></block></block>
   <block id="2639be1d095a58dd96a72a823ff1b61b" category="inline-link-macro">Dépannez l’agent NetApp Console</block>
@@ -7446,7 +7381,6 @@
   <block id="0f37e7019150020ad56dacb33e050ce0" category="list-text"><block ref="0f37e7019150020ad56dacb33e050ce0" category="inline-link-macro-rx"></block></block>
   <block id="c5ff6e289ca10cde1a5f81d196d305dc" category="list-text"><block ref="c5ff6e289ca10cde1a5f81d196d305dc" category="inline-link-macro-rx"></block></block>
   <block id="0a96b1cb21a865ff7a38d495809cc48e" category="list-text"><block ref="0a96b1cb21a865ff7a38d495809cc48e" category="inline-link-macro-rx"></block></block>
-  <block id="75b888c439b50482e442b156f85f8b7b" category="paragraph">Pour des instructions détaillées sur le déploiement du système, veuillez vous référer à<block ref="51799ed8a3c9382ecde3d4e502dc227c" category="inline-link-rx"></block>.</block>
   <block id="54675850f07c5f375dabbd24ce963055" category="paragraph">Assurez-vous que l'agent de console associé à Cloud Volumes ONTAP a accès aux points de terminaison suivants :</block>
   <block id="8e7b9a9e43a2aeb3a7aabc300317310a" category="summary">Configurez votre réseau Google Cloud afin que les systèmes Cloud Volumes ONTAP puissent fonctionner correctement. Vous découvrirez les exigences réseau, les adresses IP privées, les VPC, les sous-réseaux, la mise en miroir des paquets, les règles de pare-feu et les configurations de haute disponibilité pour CVO, ainsi que les exigences relatives à l'agent Console.</block>
   <block id="ecdc6a1891228ecd86842e25403089c2" category="section-title">Configuration d'Infrastructure Manager en mode privé ou dans des environnements protégés</block>
@@ -8063,4 +7997,80 @@
   <block id="65f9ec8af69f87b7b7419485ecdc45e9" category="list-text"><block ref="65f9ec8af69f87b7b7419485ecdc45e9" category="inline-link-rx"></block></block>
   <block id="3a7bbb1b9e5b37872fef8f715efc7171" category="list-text">Assurez-vous d'avoir effectué les configurations réseau et créé le pool de nœuds de calcul pour les déploiements en mode privé. Reportez-vous à <block ref="36efb7ae258f0de12028dabdb108a37a" category="inline-link-macro-rx"></block>.</block>
   <block id="6ed0cfe5d8872e13ec685679d0c5586b" category="paragraph">Spécifiez le <block ref="8fc12ad6381abbb87712055c7f5e50f1" prefix=" " category="inline-code"></block> paramètre pour exécuter l’outil dans les déploiements en mode privé. Pour la configuration du pool de nœuds de calcul, reportez-vous à <block ref="36efb7ae258f0de12028dabdb108a37a" category="inline-link-macro-rx"></block>.</block>
+  <block id="2ebfd6a7d346b4f849cfb04c2d3a5434" category="paragraph">Vous pouvez intégrer Cloud Volumes ONTAP à AWS via AWS Marketplace ou la NetApp Console. Le tableau suivant présente une vue d'ensemble des tâches à effectuer pour déployer Cloud Volumes ONTAP sur AWS.</block>
+  <block id="5e51aa22235e0104a5fffb9b0e0b97ac" category="inline-link-macro">Intégrer l’offre autonome Cloud Volumes ONTAP dans AWS Marketplace</block>
+  <block id="c15e37bc266e7b7e0212916e681f40ad" category="admonition">Si vous souscrivez à l’offre autonome Cloud Volumes ONTAP sur AWS Marketplace, la procédure diffère. Pour plus d’informations sur l’intégration depuis AWS Marketplace, consultez <block ref="e7b82cae26dca0ede070f2a3673c283d" category="inline-link-macro-rx"></block>.</block>
+  <block id="956257b7d0ca445001951932f7e84848" category="doc">Abonnez-vous et déployez l’offre autonome Cloud Volumes ONTAP depuis AWS Marketplace</block>
+  <block id="723d1c9b2cb416390ec6382bd2a185db" category="paragraph">Abonnez-vous à l’offre autonome Cloud Volumes ONTAP dans AWS Marketplace, déployez un agent Console et créez votre premier système.</block>
+  <block id="a579432a8e3b22d3a85649d7f57e5065" category="paragraph">Avant de commencer, assurez-vous d'avoir:</block>
+  <block id="7f9aae631f852dc3f30a5113d517404f" category="list-text">Un compte NetApp Console, ou les informations nécessaires pour en créer un.</block>
+  <block id="2cdcb75cdf45ad60c49310aa4953ecf2" category="inline-link-macro">Découvrez les exigences réseau de l'agent Console</block>
+  <block id="9c29150d1a4df0c7450a869ce2723638" category="list-text">Assurez-vous que le réseau de l'agent Console répond aux exigences. <block ref="a3f5b6fd7f8b50cbffb3cbeb6fa40451" category="inline-link-macro-rx"></block></block>
+  <block id="9706dc62b1cd200c516832184fe17aea" category="list-text">Un compte AWS et une identité avec l'autorisation de s'abonner à AWS Marketplace et d'accepter les conditions de l'offre.</block>
+  <block id="40452a9c0c304507d341249cbb861fed" category="paragraph">Si vous choisissez *Créer un rôle pour moi*, l'identité AWS qui soumet la pile Quick Create CloudFormation doit disposer des autorisations ci-dessous. Pour utiliser la même identité pour l'abonnement et la soumission de la pile, associez ces autorisations avant de commencer. Si vous utilisez une autre identité pour soumettre la pile, associez-les plutôt à cette identité. Ces autorisations permettent à CloudFormation de créer le rôle de déploiement ; ce ne sont pas les autorisations utilisées par l'agent en cours d'exécution.</block>
+  <block id="30e4c20d5d10c9da535f38ab1c548e1b" category="listing-title">Autorisations minimales pour la création rapide de CloudFormation</block>
+  <block id="fc232400356fdfe067adadb406acd776" category="section-title">Abonnez-vous à l'offre autonome Cloud Volumes ONTAP sur AWS Marketplace</block>
+  <block id="288d38f29d8eeeb99070bff4f65525c0" category="paragraph">Recherchez l’offre autonome Cloud Volumes ONTAP dans AWS Marketplace.</block>
+  <block id="a11a0a42613839623b80519a128fe81d" category="list-text">Accédez à AWS Marketplace avec votre compte AWS disposant des autorisations requises.</block>
+  <block id="ef6da38a0094b683cff50de6f2edfb73" category="list-text">Recherchez l’offre autonome NetApp Cloud Volumes ONTAP. AWS Marketplace propose deux offres pour Cloud Volumes ONTAP :</block>
+  <block id="65e2afdf3ea7ead73c73f2ccc67a88bb" category="list-text">L'offre autonome pour l'abonnement annuel à Cloud Volumes ONTAP</block>
+  <block id="828bc789f8fea62d7d9dcfb1c8df6b67" category="list-text">L’offre groupée Intelligent Service de NetApp pour les services de données NetApp et les abonnements Cloud Volumes ONTAP.</block>
+  <block id="f734624cb745f5a29fe5ff81d7f7049f" category="list-text">Choisissez l'offre _autonome_. Ces étapes vous guideront tout au long de votre abonnement à l'offre autonome.</block>
+  <block id="0bede5b2fb82cb93a6b7341f902bd965" category="list-text">Après votre inscription, sélectionnez *Set up product* pour être redirigé vers NetApp Console afin de finaliser votre déploiement.</block>
+  <block id="8e54d24c608de9f6d76f0ddf776cd3cc" category="paragraph">Poursuivez la configuration dans NetApp Console après avoir terminé l’abonnement Marketplace.</block>
+  <block id="e17e44482e762e707860b1c0d43859ab" category="list-text">Si vous sélectionnez *S'inscrire*, remplissez les champs suivants :</block>
+  <block id="001e71c8221c566f7d55a6c444a3bb93" category="list-text">Veuillez remplir les champs obligatoires.</block>
+  <block id="7f80592ced9735452b147a4ca330f6d9" category="paragraph">Créez une organisation uniquement si vous êtes un nouvel utilisateur ou si vous n’appartenez pas déjà à une organisation. Si vous appartenez déjà à une organisation, ignorez cette section et continuez vers <block ref="7acf9f6f7caab8589fdd395956f11b46" category="inline-xref-macro-rx"></block>.</block>
+  <block id="4e153039c8e6ff6a95edc5ef7d826812" category="paragraph">Une organisation vous aide à gérer les utilisateurs, les rôles, les autorisations, les licences et les systèmes.</block>
+  <block id="af155629373d274993ac8a266ab76b89" category="paragraph">Une fois votre abonnement associé à NetApp Console, déployez un agent Console pour gérer les ressources AWS et les systèmes Cloud Volumes ONTAP.</block>
+  <block id="d53a7c0871705c4ac01b2df9d5b241e5" category="paragraph">Veuillez consulter les exigences d'autorisation et de mise en réseau d'AWS avant de déployer l'agent.</block>
+  <block id="03f6071650b6469d9c9a93a196a61040" category="list-text">Déterminez comment autoriser la Console à déployer l'agent.</block>
+  <block id="05a3fe2e02c1f1540ccef223505a2330" category="inline-xref">Exemple JSON ci-dessus</block>
+  <block id="d5bfbb2ca7dde59b481ff309b6bec285" category="list-text">Pour *Créer un rôle pour moi*, l’identité AWS qui soumet la pile Quick Create CloudFormation doit disposer des autorisations d’administrateur AWS ou des autorisations minimales indiquées dans le <block ref="7156c9b2f9143a675b60fc91ab28fcb2" category="inline-xref-macro-rx"></block>.</block>
+  <block id="ee1fa866b1036ae536c488636502e9c2" category="inline-link-macro">Autorisations AWS pour le déploiement d'un agent</block>
+  <block id="0607e2a460bfd565aa14109e030961be" category="list-text">Pour *Assume role* ou *AWS keys*, consultez <block ref="4f7e9163cfde6ff2377419c6fdae5558" category="inline-link-macro-rx"></block>.</block>
+  <block id="68ea4d5293026e87aacb258b4be2e6f7" category="inline-link-macro">Exigences réseau de l'agent Console</block>
+  <block id="68c2d10650903953a14604c3c3109692" category="list-text">Configurez le réseau conformément aux <block ref="57e30a23131f96ed68767f7cb3969724" category="inline-link-macro-rx"></block>.</block>
+  <block id="9ae31cce7f4f997ca6a4ce974729dc69" category="list-text">Sur la page Welcome, sélectionnez *Resume setup*.</block>
+  <block id="c65772ff5c5b2b004272e64e76129adb" category="paragraph">The Console tente d'associer votre abonnement Marketplace à votre organisation. Si l'association automatique échoue, associez votre abonnement manuellement. <block ref="31ece82e919075b6d4fa8e64ff8627ac" category="inline-link-macro-rx"></block>.</block>
+  <block id="760b2cce1bdd91643828cb336e30011d" category="paragraph">Une fois votre abonnement associé, Console vous invite à déployer un agent Console.</block>
+  <block id="a6b0b13c48c4edabf130e29f6c2aede6" category="list-text">Choisissez comment autoriser la Console à déployer l'agent :</block>
+  <block id="d03dc9a97d84741e0fd10a2dd0247fe2" category="paragraph">Les informations d'identification de déploiement autorisent la Console à déployer l'agent. L'agent en cours d'exécution utilise un rôle IAM distinct associé à son instance EC2. La Console peut créer ce rôle ou utiliser un rôle existant disposant des autorisations requises. Voir <block ref="e480ed58fa8c12ab0039f7c0d6e93451" category="inline-link-macro-rx"></block>.</block>
+  <block id="81f02468fbacade145190951812b5c52" category="list-text">Sélectionnez *Créer un rôle pour moi* pour que CloudFormation crée un rôle que la Console peut endosser.</block>
+  <block id="55e0ed57514dd8e3614d3cc5e64dab17" category="list-text">Sélectionnez *Assume role* et indiquez l'ARN d'un rôle IAM existant dont la stratégie d'approbation autorise Console à l'assumer et qui dispose des autorisations de déploiement requises.</block>
+  <block id="61f0b94adca0bfbe32231ebb50e6f6f3" category="list-text">Sélectionnez *Clés AWS* et fournissez les clés d'accès pour un utilisateur IAM disposant des autorisations de déploiement requises.</block>
+  <block id="c22156a97b61c41d0b27a531f1be22fd" category="paragraph">Pour que la Console crée le rôle avec CloudFormation Quick Create, l’identité AWS qui soumet la pile doit disposer des autorisations d’administrateur ou des autorisations minimales dans le <block ref="7156c9b2f9143a675b60fc91ab28fcb2" category="inline-xref-macro-rx"></block>.</block>
+  <block id="8b09bca331c2d114372940628cdbfd53" category="list-text">Sélectionnez *Créer un rôle pour moi*.</block>
+  <block id="15640fe1eda1ab1476d294aff63b245a" category="list-text">Sélectionnez *Open CloudFormation Quick Create*.</block>
+  <block id="3ea12154582fce476dd101329847499e" category="list-text">Dans la page Quick Create de CloudFormation dans AWS, acceptez les conditions et sélectionnez *Créer une pile*.</block>
+  <block id="547352482e47f8c24f1b5834a6bcd147" category="inline-image-macro">largeur=35% Capture d'écran de la page de création de pile AWS CloudFormation où vous saisissez l'ID du compte AWS et, éventuellement, l'ID externe du rôle de déploiement de l'agent.</block>
+  <block id="185318e8d0d0e687a38b5cced6d01d4c" category="paragraph"><block ref="185318e8d0d0e687a38b5cced6d01d4c" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="f904293ff082e78cf2be783cd8904daa" category="list-text">Lorsque AWS configure le rôle IAM et génère l'ARN, confirmez et enregistrez le rôle.</block>
+  <block id="5b7f5df4a7a01162f4bed8b97f90562e" category="inline-link-macro">Découvrez comment créer un rôle</block>
+  <block id="e2821614155d778a682e7da539728675" category="paragraph">Si vous possédez déjà un rôle disposant des autorisations AWS requises, fournissez son ARN afin que Console puisse l'utiliser pour déployer l'agent. <block ref="317303ab0e471a0d3619a16accefb685" category="inline-link-macro-rx"></block>.</block>
+  <block id="61a42cfed56b2ddd6374f98e34e921bc" category="list-text">Sélectionnez *Assume role*.</block>
+  <block id="c62afca1b3bd89404213a6f0e7d2efe4" category="paragraph">Console crée un nom pour le rôle assumé que vous pouvez modifier si vous le souhaitez.</block>
+  <block id="773589cad93758ea895e6e7d3f6d269d" category="list-text">Saisissez l'ARN du rôle existant.</block>
+  <block id="98af778bae37b93b59c535e2a555cb8e" category="list-text">Sélectionnez *Valider les informations d'identification*.</block>
+  <block id="f31ef44b0f2acc926f4cbe2b14abc63a" category="inline-link-macro">Découvrez comment créer un rôle pour un utilisateur</block>
+  <block id="2d70ada56c746e0b77ba13c0324201e9" category="paragraph">Si vous souhaitez utiliser des clés d'accès pour autoriser le déploiement de l'agent, veuillez fournir votre clé d'accès AWS et votre clé secrète. <block ref="a374fc742560a6fa685b34b6e92d873c" category="inline-link-macro-rx"></block>.</block>
+  <block id="ed7aab9934f873f9bcc01963b18ef05e" category="list-text">Sélectionnez *clés AWS*.</block>
+  <block id="4e231d57b5ff3fb02e79c5e9519d1239" category="list-text">Saisissez la clé d'accès et le secret associé au rôle que vous souhaitez utiliser.</block>
+  <block id="070673c42aa09e5b740913726c0c83c0" category="list-text">Configurez les détails de déploiement de l'agent, notamment le nom de l'instance de l'agent et si la Console doit créer le rôle IAM pour l'agent en cours d'exécution ou utiliser un rôle existant.</block>
+  <block id="5b648a602c64391c13459b2242feaccf" category="inline-link-macro">En savoir plus sur la stratégie IAM pour l’agent Console</block>
+  <block id="5da5e1a2666b568b0f2281c713180ef8" category="paragraph">Lorsque la Console crée l’agent de la Console, elle crée un rôle IAM et un profil pour l’agent, ou utilise un rôle que vous fournissez. Ce rôle inclut les autorisations permettant à l’agent de gérer les ressources AWS. Veillez à mettre à jour le rôle à mesure que de nouvelles autorisations sont ajoutées dans les versions ultérieures. <block ref="7f447941d99d36030500c16d428fc2ff" category="inline-link-macro-rx"></block>.</block>
+  <block id="9ca3e0361a9e911cee0cf7cfaf465ecc" category="list-text">Configurez le réseau en sélectionnant un VPC, un sous-réseau, une paire de clés, le comportement de l'adresse IP publique et les paramètres de proxy, si nécessaire.</block>
+  <block id="1e01fdf07bb63446d747d736af983957" category="list-text">Configurez les règles de votre groupe de sécurité pour autoriser l’accès entrant en HTTP (80), HTTPS (443) et SSH (22) afin de dépanner l’accès à la machine virtuelle de l’agent.</block>
+  <block id="461008ea76e4abfc7758a2885f6cdf98" category="inline-link-macro">Afficher les règles des groupes de sécurité pour AWS</block>
+  <block id="4d37b17ba71df69ed4e85e9136279e66" category="paragraph"><block ref="5a44bc318dad7e87d5b99ce757b946bd" category="inline-link-macro-rx"></block>.</block>
+  <block id="2e28a83454833bd4dc7264c2ee2760a6" category="list-text">Consultez les résumés des sections et sélectionnez *Ajouter* pour déployer l'agent Console.</block>
+  <block id="d34ca49cea2b1e9ae7d439596fd49f50" category="paragraph">Suivez la progression du déploiement jusqu'à son achèvement. Vous pouvez développer les journaux d'événements pour consulter l'activité détaillée.</block>
+  <block id="bdd1d9820619a1ccc976a093ca5d4720" category="paragraph">Pour connaître l’ensemble des exigences en matière de réseau et d’autorisations pour l’agent Console, consultez :</block>
+  <block id="787c504b628f17f67b110fffe7ae00a8" category="paragraph">Une fois l’agent déployé par Console, suivez les étapes dans<block ref="51799ed8a3c9382ecde3d4e502dc227c" category="inline-link-rx"></block> pour créer votre premier système.</block>
+  <block id="a1e7b53d70ba6579ff07cffd44cfdf8d" category="paragraph">Si vous n'êtes pas prêt à créer votre système Cloud Volumes ONTAP, vous pouvez revenir à la page Systèmes à tout moment pour créer votre système ultérieurement.</block>
+  <block id="7aa08f57a5f5ecd2cec4636034d53f91" category="paragraph">Reprenez l'intégration là où vous l'aviez laissée ou réessayez le déploiement de l'agent après un échec.</block>
+  <block id="5302bc1044bf2997c712f10444d007ae" category="paragraph">Si vous partez avant la fin de l’intégration, reprenez à partir de la dernière étape terminée.</block>
+  <block id="9aca15ba5b18529516b4cd632ddf7639" category="paragraph">Si la Console ne parvient pas à déployer l'agent, suivez ces étapes pour réessayer :</block>
+  <block id="492b64735bc91205336e73d3b231f7ea" category="paragraph">Pour obtenir de l'aide concernant le déploiement d'agents, les abonnements AWS ou les tâches Cloud Volumes ONTAP, consultez :</block>
+  <block id="76d37acbce48c445bc735fe56c61f7ac" category="sidebar">Déployez l’instance autonome Cloud Volumes ONTAP depuis AWS Marketplace</block>
 </blocks>

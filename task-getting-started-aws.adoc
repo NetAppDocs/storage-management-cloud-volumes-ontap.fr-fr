@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: task-getting-started-aws.html 
-keywords: amazon web services, aws, netapp, data fabric, hybrid cloud, cloud, public cloud, networking, vpc, quick, getting started, install, installing, deploy, deploying, setup, setting up, launching, requirements, prerequisites, cloud central, get started, network, vpn, multi-cloud, tier, storage tier, data tier, vpc endpoint, endpoint, S3, subscribe, subscribing, marketplace, granting, permissions, policy, iam policy, ec2 console, ami, mediator, connectivity, internet, outbound, endpoint, connection, networks, replicating, ec2 service, policies, attach, iam user, access key, secret key, keys, sign up, cloud manager, cloud volumes ontap, cloud ontap, create, console 
+keywords: amazon web services, aws, netapp, data fabric, hybrid cloud, cloud, public cloud, networking, vpc, quick, getting started, install, installing, deploy, deploying, setup, setting up, launching, requirements, prerequisites, cloud central, get started, network, vpn, multi-cloud, tier, storage tier, data tier, vpc endpoint, endpoint, S3, subscribe, subscribing, marketplace, granting, permissions, policy, iam policy, ec2 console, ami, mediator, connectivity, internet, outbound, endpoint, connection, networks, replicating, ec2 service, policies, attach, iam user, access key, secret key, keys, sign up, cloud manager, cloud volumes ontap, cloud ontap, create, console, console agent 
 summary: Vérifiez que vous avez bien rempli les conditions préalables au déploiement de Cloud Volumes ONTAP dans AWS. 
 ---
 = Présentation du déploiement de Cloud Volumes ONTAP dans AWS
@@ -16,7 +16,10 @@ summary: Vérifiez que vous avez bien rempli les conditions préalables au dépl
 [role="lead"]
 Pour déployer Cloud Volumes ONTAP, vous devez d'abord connaître votre abonnement AWS et vos licences Cloud Volumes ONTAP. Vous devez également vérifier qu'un agent NetApp Console a été créé pour votre compte AWS. La plupart des informations de cette rubrique doivent être prises en compte lors de la configuration de votre Console, avant même de commencer à déployer Cloud Volumes ONTAP.
 
-Vous pouvez intégrer Cloud Volumes ONTAP à AWS via AWS Marketplace ou la NetApp Console. Le tableau suivant présente une vue d'ensemble des tâches à effectuer pour déployer Cloud Volumes ONTAP sur AWS. L'intégration depuis AWS Marketplace est une expérience simplifiée qui automatise le déploiement de l'agent Console ainsi que l'association de l'abonnement. Pour plus d'informations sur l'intégration depuis AWS Marketplace, consultez link:task-onboard-cvo-aws-marketplace.html["Intégrez Cloud Volumes ONTAP dans AWS Marketplace"].
+Vous pouvez intégrer Cloud Volumes ONTAP à AWS via AWS Marketplace ou la NetApp Console. Le tableau suivant présente une vue d'ensemble des tâches à effectuer pour déployer Cloud Volumes ONTAP sur AWS.
+
+
+NOTE: Si vous souscrivez à l’offre autonome Cloud Volumes ONTAP sur AWS Marketplace, la procédure diffère. Pour plus d’informations sur l’intégration depuis AWS Marketplace, consultez link:task-onboard-cvo-aws-marketplace.html["Intégrer l’offre autonome Cloud Volumes ONTAP dans AWS Marketplace"].
 
 [cols="20,35,25,25"]
 |===
