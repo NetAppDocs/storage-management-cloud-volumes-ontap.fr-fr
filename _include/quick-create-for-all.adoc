@@ -2,7 +2,6 @@
 :allow-uri-read: 
 
 
-[role="lead"]
 Vous pouvez déployer Cloud Volumes ONTAP sur Amazon Web Services (AWS), Microsoft Azure et Google Cloud en utilisant  `Quick create` pour un déploiement plus rapide, aussi bien en configuration mono-nœud qu'en haute disponibilité (HA). Ce processus simplifié réduit le nombre d'étapes de déploiement par rapport à la méthode avancée en définissant automatiquement les valeurs par défaut sur une seule page et en minimisant la navigation.
 
 .Avant de commencer
