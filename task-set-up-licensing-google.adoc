@@ -160,7 +160,7 @@ Un abonnement Keystone est un service d'abonnement à paiement progressif. link:
 .Étapes
 . Si vous n'avez pas encore d'abonnement, https://www.netapp.com/forms/keystone-sales-contact/["contacter NetApp"^]
 . mailto:ng-keystone-success@netapp.com[Contacter NetApp] pour autoriser votre compte utilisateur de la console avec un ou plusieurs abonnements Keystone .
-. Une fois que NetApp a autorisé votre compte,link:task-manage-keystone.html#link-a-subscription["liez vos abonnements pour les utiliser avec Cloud Volumes ONTAP"] .
+. Après que NetApp a autorisé votre compte, link:task-manage-keystone.html["liez vos abonnements pour les utiliser avec Cloud Volumes ONTAP"].
 . Sur la page *Systèmes*, sélectionnez *Ajouter un système* et suivez les étapes.
 +
 .. Sélectionnez la méthode de facturation de l’abonnement Keystone lorsque vous êtes invité à choisir une méthode de facturation.

@@ -1,0 +1,61 @@
+= Cloud Volumes ONTAP 9.19.1 dans Azure
+:allow-uri-read: 
+
+
+
+
+[[cloud-volumes-ontap-9-19-1-in-azure]]
+=== Cloud Volumes ONTAP 9.19.1 dans Azure
+
+Vous pouvez désormais utiliser la NetApp Console pour déployer et gérer la version en disponibilité générale (GA) de Cloud Volumes ONTAP 9.19.1 dans Azure.
+
+La Console prend en charge Cloud Volumes ONTAP 9.19.1 sur AWS et Google Cloud depuis août 2026.
+
+https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-new.html["Notes de version de Cloud Volumes ONTAP 9.19.1"^]
+
+
+
+[[azure-encryption-at-host-for-cloud-volumes-ontap]]
+=== Chiffrement Azure sur l'hôte pour Cloud Volumes ONTAP
+
+À partir de Cloud Volumes ONTAP 9.19.1 GA, le chiffrement Azure sur l’hôte est activé par défaut pour les nouveaux déploiements Azure à nœud unique et en haute disponibilité (HA) qui répondent aux prérequis. Cette fonctionnalité chiffre les données sur le serveur physique qui héberge la machine virtuelle, y compris le disque éphémère et les caches associés au niveau de l’hôte, lors de leur écriture sur l’hôte et de leur lecture depuis celui-ci.
+
+Avant de déployer Cloud Volumes ONTAP dans Azure, assurez-vous que les conditions préalables suivantes sont remplies :
+
+* Cette `EncryptionAtHost` fonctionnalité est enregistrée pour votre abonnement Azure. Consultez https://learn.microsoft.com/en-us/azure/virtual-machines/linux/disks-enable-host-based-encryption-cli["Documentation Microsoft : Activer le chiffrement sur l’hôte"^].
+* Le type d'instance de machine virtuelle que vous avez sélectionné prend en charge le chiffrement sur l'hôte dans votre région Azure. Reportez-vous à https://learn.microsoft.com/en-us/azure/virtual-machines/linux/disks-enable-host-based-encryption-cli#finding-supported-vm-sizes["Documentation Microsoft : recherche des tailles de VM prises en charge"^].
+
+
+Notez ces points :
+
+* Aucune configuration supplémentaire n'est requise.
+* Si ces conditions préalables ne sont pas remplies, le chiffrement sur l'hôte Azure n'est pas activé pour votre déploiement Cloud Volumes ONTAP.
+* Le chiffrement côté hôte s'applique uniquement à Azure, et non à AWS ou Google Cloud.
+
+
+Documentation Microsoft: https://learn.microsoft.com/en-us/azure/virtual-machines/disks-enable-host-based-encryption-portal["Utilisez le portail Azure pour activer le chiffrement de bout en bout à l'aide du chiffrement sur l'hôte"^]
+
+
+
+[[backend-network-encryption-on-cloud-volumes-ontap-clusters-in-azure-and-google-cloud]]
+=== Chiffrement du réseau back-end sur les clusters Cloud Volumes ONTAP dans Azure et Google Cloud
+
+Cloud Volumes ONTAP 9.19.1 et les versions ultérieures prennent en charge le chiffrement du réseau de cluster back-end pour les configurations haute disponibilité dans Azure et Google Cloud.
+
+L'activation du chiffrement du réseau du cluster peut affecter les performances du cluster. Faites preuve de prudence et assurez-vous que votre environnement peut supporter la surcharge supplémentaire avant d'activer cette fonctionnalité.
+
+https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-enable-cluster-encryption.html["Activez le chiffrement du réseau back-end sur les clusters Cloud Volumes ONTAP"^]
+
+
+
+[[ability-to-reduce-disruptions-during-azure-scheduled-maintenance]]
+=== Capacité à réduire les interruptions lors de la maintenance planifiée d'Azure
+
+Lors d'une maintenance planifiée, Azure peut suspendre brièvement une machine virtuelle dans une paire haute disponibilité Cloud Volumes ONTAP. ONTAP peut interpréter cette suspension comme une panne de nœud et transférer les opérations de stockage vers le nœud partenaire, puis les rétablir lorsque la machine virtuelle reprend (basculement et rétablissement). Ce processus peut interrompre les connexions client actives, même en l'absence de panne de nœud.
+
+Avec Cloud Volumes ONTAP 9.19.1 et versions ultérieures, vous pouvez activer un paramètre facultatif qui permet à la paire haute disponibilité de continuer à fonctionner pendant un gel de maintenance planifiée d’Azure sans lancer automatiquement le basculement et le rétablissement.
+
+
+NOTE: Cette fonctionnalité est disponible en avant-première publique avec Cloud Volumes ONTAP 9.19.1.
+
+https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-azure-prevent-freeze.html["Évitez les interruptions lors de la maintenance d’Azure pour les paires haute disponibilité Cloud Volumes ONTAP"^]

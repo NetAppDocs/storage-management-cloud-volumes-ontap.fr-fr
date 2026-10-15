@@ -79,7 +79,7 @@ NOTE: NetApp a restreint l'achat, la prolongation et le renouvellement des licen
 La console interroge automatiquement le service de licences de NetApp pour obtenir des détails sur les licences associées à votre compte de site de support NetApp .  S'il n'y a pas d'erreur, la console ajoute automatiquement les licences à la console.
 
 +
-Votre licence doit être disponible depuis la Console avant de pouvoir l'utiliser avec Cloud Volumes ONTAP. Si nécessaire, vous pouvez link:task-manage-capacity-licenses.html#how-licenses-are-added-to-netapp-console["ajouter manuellement la licence à la console"].
+Votre licence doit être disponible depuis la Console avant de pouvoir l'utiliser avec Cloud Volumes ONTAP. Si nécessaire, vous pouvez link:task-manage-capacity-licenses.html["ajouter manuellement la licence à la console"].
 
 . Sur la page *Systèmes*, sélectionnez *Ajouter un système* et suivez les étapes.
 +
@@ -169,7 +169,7 @@ Un abonnement Keystone est un service d'abonnement à paiement progressif. link:
 .Étapes
 . Si vous n'avez pas encore d'abonnement, https://www.netapp.com/forms/keystone-sales-contact/["contacter NetApp"^]
 . mailto:ng-keystone-success@netapp.com[Contacter NetApp] pour autoriser votre compte utilisateur dans la console avec un ou plusieurs abonnements Keystone .
-. Une fois que NetApp a autorisé votre compte,link:task-manage-keystone.html#link-a-subscription["liez vos abonnements pour les utiliser avec Cloud Volumes ONTAP"] .
+. Après que NetApp a autorisé votre compte, link:task-manage-keystone.html["liez vos abonnements pour les utiliser avec Cloud Volumes ONTAP"].
 . Sur la page *Systèmes*, sélectionnez *Ajouter un système* et suivez les étapes.
 +
 .. Sélectionnez la méthode de facturation de l’abonnement Keystone lorsque vous êtes invité à choisir une méthode de facturation.

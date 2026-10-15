@@ -14,22 +14,22 @@ summary: Le mode haute disponibilité de Microsoft Azure doit être activé pour
 
 
 [role="lead"]
-Il est recommandé d'activer le mode haute disponibilité (HA) de Microsoft Azure afin de réduire les temps de basculement imprévus et d'activer la prise en charge de NFSv4 pour Cloud Volumes ONTAP. Si vous activez ce mode, vos nœuds Cloud Volumes ONTAP HA peuvent atteindre un objectif de temps de récupération (RTO) faible (60 secondes) lors de basculements imprévus sur les clients CIFS et NFSv4.
+Activez le mode haute disponibilité (HA) de Microsoft Azure pour votre paire haute disponibilité Cloud Volumes ONTAP afin de réduire les temps de basculement imprévus et de prendre en charge NFSv4. Ce mode peut offrir un objectif de temps de reprise (RTO) de 60 secondes pour les clients CIFS et NFSv4 lors de basculements imprévus.
 
-À partir de Cloud Volumes ONTAP 9.10.1, nous avons réduit le temps de basculement non planifié pour les paires Cloud Volumes ONTAP HA exécutées dans Microsoft Azure et ajouté la prise en charge de NFSv4.  Pour rendre ces améliorations disponibles pour Cloud Volumes ONTAP, vous devez activer la fonctionnalité de haute disponibilité sur votre abonnement Azure.
+À partir de Cloud Volumes ONTAP 9.10.1, nous avons réduit le temps de basculement non planifié pour les paires haute disponibilité Cloud Volumes ONTAP exécutées dans Microsoft Azure et ajouté la prise en charge de NFSv4. Pour rendre ces améliorations disponibles pour Cloud Volumes ONTAP, vous devez activer la fonctionnalité HA sur votre abonnement Azure.
 
 .À propos de cette tâche
-NetApp Console vous invite à fournir ces informations lorsque la fonctionnalité doit être activée sur un abonnement Azure. Notez les points suivants :
+La NetApp Console affiche une invite lorsque vous devez activer cette fonctionnalité sur un abonnement Azure. Veuillez noter les points suivants :
 
-* Il n’y a aucun problème avec la haute disponibilité de votre paire Cloud Volumes ONTAP HA.  Cette fonctionnalité Azure fonctionne de concert avec ONTAP pour réduire le temps d’interruption d’application observé par le client pour les protocoles NFS résultant d’événements de basculement non planifiés.
-* L'activation de cette fonctionnalité n'interrompt pas les paires Cloud Volumes ONTAP HA.
-* L’activation de cette fonctionnalité sur votre abonnement Azure ne pose aucun problème aux autres machines virtuelles.
-* Cloud Volumes ONTAP utilise un équilibreur de charge Azure interne lors des basculements des LIF de gestion de cluster et de SVM sur les clients CIFS et NFS.
-* Lorsque le mode HA est activé, la console analyse le système toutes les 12 heures pour mettre à jour les règles internes d’Azure Load Balancer.
+* Cette fonctionnalité fonctionne avec ONTAP pour réduire la durée d'indisponibilité des applications observée par les clients NFS lors de basculements imprévus. Son activation n'indique pas de problème de disponibilité de votre paire haute disponibilité Cloud Volumes ONTAP.
+* L’activation de cette fonctionnalité Azure ne perturbe pas les paires haute disponibilité Cloud Volumes ONTAP.
+* L'activation de cette fonctionnalité sur votre abonnement Azure n'affecte pas les autres machines virtuelles de votre environnement ni aucun système à nœud unique au sein du même abonnement.
+* Lors des basculements, Cloud Volumes ONTAP utilise un équilibreur de charge Azure interne pour les LIF de gestion du cluster et des SVM qui desservent les clients CIFS et NFS.
+* Lorsque vous activez le mode HA, la Console analyse le système toutes les 12 heures afin de mettre à jour les règles internes de l’Azure Load Balancer.
 
 
 .Étapes
-Un utilisateur Azure disposant des privilèges _Owner_ peut activer la fonctionnalité à partir de l’Azure CLI.
+Utilisez Azure CLI pour activer la fonctionnalité en tant qu’utilisateur Azure disposant des privilèges _Owner_.
 
 . https://docs.microsoft.com/en-us/azure/cloud-shell/quickstart["Accéder à Azure Cloud Shell depuis le portail Azure"^]
 . Enregistrer la fonctionnalité du mode haute disponibilité :

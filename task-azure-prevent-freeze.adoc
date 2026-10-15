@@ -1,0 +1,89 @@
+---
+sidebar: sidebar 
+permalink: task-azure-prevent-freeze.html 
+keywords: Azure, maintenance event, HA, takeover, giveback, freeze, disruption 
+summary: 'Évitez les interruptions lors de la maintenance d"Azure en supprimant le basculement automatique et la restitution automatique pour une paire haute disponibilité Cloud Volumes ONTAP.' 
+---
+= Évitez les interruptions lors de la maintenance d’Azure pour les paires haute disponibilité Cloud Volumes ONTAP
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Vous pouvez configurer les paires haute disponibilité de Cloud Volumes ONTAP pour supprimer le basculement automatique et la restitution lors de la maintenance planifiée d’Azure. Cette fonctionnalité optionnelle est disponible avec Cloud Volumes ONTAP 9.19.1 et les versions ultérieures, et elle est désactivée par défaut.
+
+
+NOTE: Cette fonctionnalité est disponible en avant-première publique avec Cloud Volumes ONTAP 9.19.1.
+
+Microsoft Azure peut brièvement suspendre une machine virtuelle lors d'une maintenance planifiée. Dans une configuration haute disponibilité de Cloud Volumes ONTAP, ONTAP peut traiter cette suspension comme une panne de nœud et transférer les opérations de stockage vers le nœud partenaire, avant de les lui rendre automatiquement lorsque la machine virtuelle suspendue reprend (basculement et rétablissement). Cela peut perturber les connexions client actives. Si vous activez cette fonctionnalité, la paire haute disponibilité continue de fonctionner pendant un gel lié à une maintenance planifiée Azure sans lancer automatiquement le basculement et le rétablissement.
+
+.À propos de cette tâche
+* Les E/S client peuvent être interrompues lors du gel d'une machine virtuelle Azure. ONTAP n'initie pas automatiquement le basculement ; les E/S client restent donc sur le nœud affecté au lieu d'être transférées vers le partenaire haute disponibilité. Les E/S peuvent être interrompues jusqu'à la reprise de l'activité du nœud.
+* La durée d'une interruption dépend du gel de la machine virtuelle Azure. Un gel plus long peut entraîner une interruption d'E/S plus longue.
+* La protection HA standard reste active pour les autres types de défaillance. Cette fonctionnalité supprime le basculement et le rétablissement uniquement en cas de gel de la maintenance planifiée d’Azure. Les autres conditions qui déclenchent normalement un basculement, comme une défaillance de nœud ou un incident critique, continuent de le faire.
+* Cette fonctionnalité s'applique aux deux nœuds d'une paire haute disponibilité. Le comportement lors des événements de maintenance est configuré sur les deux nœuds et ne peut pas être activé sur un seul nœud.
+* Cette fonctionnalité est conservée après un redémarrage et reste active jusqu'à ce que vous la désactiviez. Sa désactivation rétablit le comportement par défaut de basculement et de restitution lors de la maintenance planifiée.
+
+
+.Avant de commencer
+* Votre système Cloud Volumes ONTAP doit exécuter la version 9.19.1 ou ultérieure.
+* Vous devez disposer d'un accès administrateur à Cloud Volumes ONTAP pour effectuer cette procédure.
+* Vérifiez que vos charges de travail peuvent tolérer des blocages temporaires des E/S pendant un gel de maintenance planifiée d'Azure et qu'il est préférable de continuer pendant le gel plutôt que d'utiliser la réponse par défaut de basculement et de giveback.
+
+
+
+
+[[prevent-automatic-takeover-and-giveback-during-azure-scheduled-maintenance]]
+== Empêcher le basculement automatique et la restitution automatique lors de la maintenance planifiée d'Azure
+
+.Étapes
+. Identifiez l’ID système de la paire haute disponibilité Azure. Pour plus d’informations sur l’identification des ressources et les appels d’API, consultez https://docs.netapp.com/us-en/console-automation/cm/your_api_call.html#step-1-select-the-identifie["Votre premier appel d'API"^].
+. Envoyez une `PUT` requête au point de terminaison suivant, en remplaçant `{id}` par l'ID système :
++
+`PUT /occm/api/azure/ha/working-environments/{id}/opt-off-maintenance-event`
+
++
+Définissez `enabled` sur `true` dans le corps de la requête:
+
++
+[source, json]
+----
+{
+  "enabled": true
+}
+----
+
+
+.Résultat
+Une requête réussie renvoie HTTP 202 avec un corps vide.
+
+
+IMPORTANT: L'API met à jour les nœuds de la paire haute disponibilité de manière séquentielle. Si une requête échoue avant la fin de l'opération, vérifiez le paramètre sur les deux nœuds avant de relancer la requête, car les nœuds peuvent avoir des paramètres différents.
+
+
+
+[[disable-the-feature-to-restore-default-behavior]]
+== Désactivez cette fonctionnalité pour rétablir le comportement par défaut
+
+Pour rétablir le comportement par défaut du basculement et du rétablissement lors de la maintenance planifiée d'Azure, désactivez cette fonctionnalité.
+
+.Étapes
+. Envoyez une `PUT` requête au même point de terminaison, en remplaçant `{id}` par l'ID système :
++
+`PUT /occm/api/azure/ha/working-environments/{id}/opt-off-maintenance-event`
+
++
+Définissez `enabled` sur `false` dans le corps de la requête:
+
++
+[source, json]
+----
+{
+  "enabled": false
+}
+----
+
