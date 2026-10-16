@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: task-set-up-licensing-aws.html 
 keywords: freemium, professional, essentials, licensing, licenses, cloud volumes ontap charging, cloud volumes ontap licenses, cloud volumes ontap licensing, cvo licenses, cvo licensing, byol, bring your own license, paygo, pay as you go, keystone flex, keystone, digital wallet 
-summary: 'Une fois que vous avez décidé quelle option de licence vous souhaitez utiliser pour Cloud Volumes ONTAP, quelques étapes sont nécessaires avant de pouvoir choisir cette option de licence lors du déploiement d"un nouveau système.' 
+summary: Configurez des licences basées sur la capacité, des abonnements AWS Marketplace, Freemium ou un abonnement Keystone pour Cloud Volumes ONTAP avant de déployer un système dans AWS. 
 ---
 = Configurer les licences pour Cloud Volumes ONTAP dans AWS
 :hardbreaks:
@@ -14,12 +14,12 @@ summary: 'Une fois que vous avez décidé quelle option de licence vous souhaite
 
 
 [role="lead"]
-Une fois que vous avez décidé quelle option de licence vous souhaitez utiliser avec Cloud Volumes ONTAP, quelques étapes sont nécessaires avant de pouvoir choisir cette option de licence lors de la création d'un nouveau système.
+Finalisez la configuration de l’option de licence Cloud Volumes ONTAP que vous avez choisie dans AWS, par exemple un forfait basé sur la capacité, Freemium ou Keystone Subscription, afin de pouvoir la sélectionner lors de la création d’un nouveau système.
 
 
 
-[[setting-preferred-billing-for-standalone-aws-listing]]
-== Définition de la facturation préférée pour une liste AWS autonome
+[[set-preferred-billing-for-standalone-aws-listing]]
+== Définir la facturation préférée pour l’offre AWS autonome
 
 Si vous disposez d'un abonnement AWS autonome lié à votre compte AWS, vous pouvez payer Cloud Volumes ONTAP via cet abonnement. Si vous disposez également d'abonnements NetApp Intelligent Services (NIS), vous pouvez payer vos services de données via le forfait associé à l'abonnement NIS. Pour les abonnements existants, NetApp recommande de passer à un abonnement autonome afin d'optimiser la gestion des coûts de votre utilisation de Cloud Volumes ONTAP.
 
@@ -59,7 +59,7 @@ Les formules Essentiel et Professionnel sont disponibles avec les modèles de co
 
 link:concept-licensing.html["En savoir plus sur les licences basées sur la capacité"] .
 
-Les sections suivantes décrivent comment démarrer avec chacun de ces modèles de consommation.
+Pour commencer, suivez les étapes correspondant au modèle de consommation que vous avez choisi.
 
 
 
@@ -74,7 +74,7 @@ NetApp a restreint l'achat, la prolongation et le renouvellement des licences BY
 . https://www.netapp.com/forms/sales-contact["Contactez le service commercial NetApp pour obtenir une licence"^]
 . https://docs.netapp.com/us-en/console-setup-admin/task-adding-nss-accounts.html#add-an-nss-account["Ajoutez votre compte de site de support NetApp à la console"^]
 +
-La console interroge automatiquement le service de licences de NetApp pour obtenir des détails sur les licences associées à votre compte de site de support NetApp .  S'il n'y a pas d'erreur, la console ajoute automatiquement les licences à la console.
+La console interroge automatiquement le service de licences de NetApp pour obtenir des détails sur les licences associées à votre compte de site de support NetApp. S’il n’y a pas d’erreurs, la console ajoute automatiquement les licences.
 
 +
 Votre licence doit être disponible depuis la Console avant de pouvoir l'utiliser avec Cloud Volumes ONTAP. Si nécessaire, vous pouvez link:https://docs.netapp.com/us-en/console-licenses-subscriptions/task-manage-data-services-licenses.html#add-a-license["ajouter manuellement la licence à la console"^].
@@ -83,7 +83,7 @@ Votre licence doit être disponible depuis la Console avant de pouvoir l'utilise
 +
 .. Sur la page *Détails et informations d'identification*, sélectionnez *Modifier les informations d'identification > Ajouter un abonnement*, puis suivez les invites pour vous abonner à l'offre de paiement à l'utilisation dans AWS Marketplace.
 +
-La licence que vous avez achetée auprès de NetApp est toujours facturée en premier, mais vous serez facturé au tarif horaire du marché si vous dépassez votre capacité sous licence ou si la durée de votre licence expire.
+La licence que vous avez achetée auprès de NetApp est toujours facturée en premier, mais vous serez facturé au tarif horaire du marketplace si vous dépassez votre capacité sous licence ou si la durée de votre licence expire.
 
 +
 image:screenshot-aws-paygo-subscription.png["Capture d'écran de l'option d'abonnement PAYGO lors de la création d'un système Cloud Volumes ONTAP ."]
@@ -111,7 +111,7 @@ Lorsque vous créez un système Cloud Volumes ONTAP , la console vous invite à 
 . Dans le menu de navigation de gauche, sélectionnez *Stockage > Gestion*.
 . Sur la page *Systèmes*, sélectionnez *Ajouter un système* et suivez les étapes.
 +
-.. Sur la page *Details and Credentials*, sélectionnez *Edit Credentials > Add Subscription*, puis suivez les instructions pour vous abonner à l'offre à l'utilisation dans AWS Marketplace
+.. Sur la page *Détails et informations d'identification*, sélectionnez *Modifier les informations d'identification > Ajouter un abonnement*, puis suivez les invites pour vous abonner à l'offre de paiement à l'utilisation dans AWS Marketplace.
 +
 image:screenshot-aws-paygo-subscription.png["Capture d'écran de l'option d'abonnement PAYGO lors de la création d'un système Cloud Volumes ONTAP ."]
 
@@ -135,7 +135,7 @@ TIP: Vous pouvez gérer les abonnements AWS Marketplace associés à vos comptes
 
 Payez annuellement en achetant un contrat annuel sur la place de marché de votre fournisseur cloud.
 
-Semblable à un abonnement horaire, la console vous invite à souscrire au contrat annuel disponible sur AWS Marketplace.
+À l'instar d'un abonnement horaire, la Console vous invite à souscrire au contrat annuel disponible sur AWS Marketplace.
 
 .Étapes
 . Sur la page *Systèmes*, sélectionnez *Ajouter un système* et suivez les étapes.
@@ -211,7 +211,7 @@ link:task-deploying-otc-aws.html["Consultez les instructions étape par étape p
 [[node-based-license]]
 == Licence basée sur les nœuds
 
-Une licence basée sur les nœuds est la licence de génération précédente pour Cloud Volumes ONTAP. Une licence basée sur les nœuds peut être obtenue auprès de NetApp (BYOL) et est disponible pour le renouvellement de licence, uniquement dans des cas spécifiques. Pour plus d'informations, consultez :
+Une licence par nœud correspond à l'ancienne génération de licences pour Cloud Volumes ONTAP. Vous pouvez acheter une licence par nœud auprès de NetApp (BYOL), et vous pouvez la renouveler uniquement dans certains cas. Pour plus d'informations, consultez :
 
 * https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/whats-new.html#end-of-availability-for-node-based-licenses["Fin de disponibilité des licences basées sur des nœuds"^]
 * https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing.html#end-of-availability-of-node-based-licenses["Fin de disponibilité des licences basées sur des nœuds"^]

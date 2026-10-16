@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: task-set-up-licensing-azure.html 
 keywords: freemium, professional, essentials, licensing, licenses, cloud volumes ontap charging, cloud volumes ontap licenses, cloud volumes ontap licensing, cvo licenses, cvo licensing, byol, bring your own license, paygo, pay as you go, keystone flex, keystone, digital wallet 
-summary: 'Une fois que vous avez décidé quelle option de licence vous souhaitez utiliser pour Cloud Volumes ONTAP, quelques étapes sont nécessaires avant de pouvoir choisir cette option de licence lors du déploiement d"un nouveau système.' 
+summary: 'Configurez une licence Freemium, basée sur la capacité (BYOL, PAYGO, contrat annuel) ou un abonnement Keystone pour Cloud Volumes ONTAP dans Azure avant de déployer un nouveau système.' 
 ---
 = Configurer les licences pour Cloud Volumes ONTAP dans Azure
 :hardbreaks:
@@ -14,7 +14,7 @@ summary: 'Une fois que vous avez décidé quelle option de licence vous souhaite
 
 
 [role="lead"]
-Une fois que vous avez décidé quelle option de licence vous souhaitez utiliser avec Cloud Volumes ONTAP, quelques étapes sont nécessaires avant de pouvoir choisir cette option de licence lors de la création d'un nouveau système.
+Après avoir choisi l'option de licence à utiliser avec Cloud Volumes ONTAP dans Azure, vous devez suivre quelques étapes avant de pouvoir sélectionner cette option lors de la création d'un nouveau système.
 
 
 
@@ -29,7 +29,7 @@ Choisissez l'offre Freemium pour utiliser Cloud Volumes ONTAP gratuitement avec 
 +
 .. Sur la page *Détails et identifiants*, sélectionnez *Modifier les identifiants > Ajouter un abonnement*, puis suivez les invites pour vous abonner à l'offre avec paiement à l'usage dans Azure Marketplace.
 +
-Vous ne serez pas facturé via l'abonnement au marketplace sauf si vous dépassez 500 Gio de capacité provisionnée, auquel cas le système est automatiquement converti en link:https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing.html#capacity-based-licensing["Forfait Essentiel"^].
+Vous ne serez facturé via l'abonnement marketplace que si vous dépassez 500 Gio de capacité provisionnée. À ce stade, le système se convertit automatiquement en link:https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing.html#capacity-based-licensing["Forfait Essentiel"^].
 
 +
 image:screenshot-azure-paygo-subscription.png["Capture d'écran de l'option d'abonnement PAYGO lors de la création d'un système Cloud Volumes ONTAP ."]
@@ -49,7 +49,7 @@ link:task-deploying-otc-azure.html["Consultez les instructions étape par étape
 [[capacity-based-license]]
 == Licence basée sur la capacité
 
-Les licences basées sur la capacité vous permettent de payer Cloud Volumes ONTAP par Tio de capacité. Les licences basées sur la capacité sont disponibles sous la forme d'un _package_ : le package Essentials ou le package Professional.
+La licence basée sur la capacité vous permet de payer pour Cloud Volumes ONTAP par Tio de capacité. La licence basée sur la capacité est disponible sous forme de _package_ : le package Essentials ou le package Professional.
 
 Les formules Essentiel et Professionnel sont disponibles avec les modèles de consommation ou options d'achat suivants :
 
@@ -60,7 +60,7 @@ Les formules Essentiel et Professionnel sont disponibles avec les modèles de co
 
 link:concept-licensing.html["En savoir plus sur les licences basées sur la capacité"] .
 
-Les sections suivantes décrivent comment démarrer avec chacun de ces modèles de consommation.
+Pour commencer, suivez les étapes correspondant au modèle de consommation que vous souhaitez utiliser.
 
 
 
@@ -76,7 +76,7 @@ NOTE: NetApp a restreint l'achat, la prolongation et le renouvellement des licen
 . https://www.netapp.com/forms/sales-contact/["Contactez le service commercial NetApp pour obtenir une licence"^]
 . https://docs.netapp.com/us-en/console-setup-admin/task-adding-nss-accounts.html#add-an-nss-account["Ajoutez votre compte de site de support NetApp à la console"^]
 +
-La console interroge automatiquement le service de licences de NetApp pour obtenir des détails sur les licences associées à votre compte de site de support NetApp .  S'il n'y a pas d'erreur, la console ajoute automatiquement les licences à la console.
+La console interroge automatiquement le service de licences de NetApp pour obtenir des détails sur les licences associées à votre compte de site de support NetApp. S’il n’y a pas d’erreurs, la console ajoute automatiquement les licences.
 
 +
 Votre licence doit être disponible depuis la Console avant de pouvoir l'utiliser avec Cloud Volumes ONTAP. Si nécessaire, vous pouvez link:task-manage-capacity-licenses.html["ajouter manuellement la licence à la console"].
@@ -85,7 +85,7 @@ Votre licence doit être disponible depuis la Console avant de pouvoir l'utilise
 +
 .. Sur la page *Détails et identifiants*, sélectionnez *Modifier les identifiants > Ajouter un abonnement*, puis suivez les invites pour vous abonner à l'offre avec paiement à l'usage dans Azure Marketplace.
 +
-La licence que vous avez achetée auprès de NetApp est toujours facturée en premier, mais vous serez facturé au tarif horaire du marché si vous dépassez votre capacité sous licence ou si la durée de votre licence expire.
+La licence que vous avez achetée auprès de NetApp est toujours facturée en premier, mais le tarif horaire de la marketplace vous sera facturé si vous dépassez votre capacité sous licence ou si la durée de votre licence expire.
 
 +
 image:screenshot-azure-paygo-subscription.png["Capture d'écran de l'option d'abonnement PAYGO lors de la création d'un système Cloud Volumes ONTAP ."]
@@ -187,7 +187,7 @@ link:task-deploying-otc-azure.html["Consultez les instructions étape par étape
 [[node-based-license]]
 == Licence basée sur les nœuds
 
-Une licence basée sur les nœuds est la licence de génération précédente pour Cloud Volumes ONTAP. Une licence basée sur les nœuds peut être obtenue auprès de NetApp (BYOL) et est disponible pour le renouvellement de licence, uniquement dans des cas spécifiques. Pour plus d'informations, consultez :
+Une licence par nœud correspond à l’ancienne génération de licences pour Cloud Volumes ONTAP. Vous pouvez acheter une licence par nœud auprès de NetApp (BYOL). Le renouvellement des licences par nœud est possible uniquement dans certains cas. Pour plus d’informations, consultez :
 
 * https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/whats-new.html#end-of-availability-for-node-based-licenses["Fin de disponibilité des licences basées sur des nœuds"^]
 * https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing.html#end-of-availability-of-node-based-licenses["Fin de disponibilité des licences basées sur des nœuds"^]

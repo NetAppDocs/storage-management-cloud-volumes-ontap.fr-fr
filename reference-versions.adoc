@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: reference-versions.html 
 keywords: versions, supported versions, new versions, cloud volumes ontap version 
-summary: La NetApp Console vous permet de choisir parmi plusieurs versions ONTAP différentes lorsque vous créez un nouveau système Cloud Volumes ONTAP . 
+summary: Découvrez les versions ONTAP disponibles pour les nouveaux systèmes Cloud Volumes ONTAP sur AWS, Azure et Google Cloud, pour les configurations à nœud unique et en paire haute disponibilité. 
 ---
 = Versions ONTAP prises en charge pour les déploiements Cloud Volumes ONTAP
 :hardbreaks:
@@ -18,7 +18,7 @@ La NetApp Console vous permet de choisir parmi plusieurs versions ONTAP différe
 
 Les versions de Cloud Volumes ONTAP autres que celles listées ici ne sont pas disponibles pour les nouveaux déploiements. Le correctif ou la version générique (General Availability) d'une version ici représente la version de base disponible pour le déploiement. Pour plus d'informations sur les correctifs disponibles, consultez la  https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-new.html["notes de version avec gestion des versions"^] pour chaque version.
 
-Pour plus d'informations sur la mise à niveau, consultez link:task-updating-ontap-cloud.html#supported-upgrade-paths["Chemins de mise à niveau pris en charge"].
+Pour plus d'informations sur les mises à niveau, reportez-vous à link:task-updating-ontap-cloud.html#supported-upgrade-paths["Chemins de mise à niveau pris en charge"].
 
 
 

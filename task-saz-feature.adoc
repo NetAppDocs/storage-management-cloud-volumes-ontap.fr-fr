@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: task-saz-feature.html 
 keywords: Microsoft Azure feature, HA in SAZ, single availability zone, Azure feature, Virtual Machine Scale Sets in Flexible mode, VMOrchestratorZonalMultiFD, VM Orchestrator, Zonal, MultiFD, VMOrchestratorZonalMultiFD feature 
-summary: Activez cette fonctionnalité Microsoft Azure pour déployer HA dans SAZ. 
+summary: 'Activez la fonctionnalité VMOrchestratorZonalMultiFD dans Azure pour déployer des nœuds Cloud Volumes ONTAP HA dans des domaines de panne distincts d"une seule zone de disponibilité.' 
 ---
 = Activer VMOrchestratorZonalMultiFD pour Cloud Volumes ONTAP dans Azure
 :hardbreaks:
@@ -14,11 +14,11 @@ summary: Activez cette fonctionnalité Microsoft Azure pour déployer HA dans SA
 
 
 [role="lead"]
-Pour déployer des instances de machine virtuelle dans des zones de disponibilité unique (AZ) de stockage localement redondant (LRS), vous devez activer Microsoft `Microsoft.Compute/VMOrchestratorZonalMultiFD` fonctionnalité pour vos abonnements.  En mode haute disponibilité (HA), cette fonctionnalité facilite le déploiement de nœuds dans des domaines de pannes distincts dans la même zone de disponibilité.
+Pour déployer des instances de machine virtuelle Cloud Volumes ONTAP dans des zones de disponibilité uniques avec stockage localement redondant (LRS) sur Azure, activez la fonctionnalité Microsoft `Microsoft.Compute/VMOrchestratorZonalMultiFD` pour vos abonnements. En mode haute disponibilité (HA), cette fonctionnalité vous permet de déployer des nœuds dans des domaines d’erreur distincts au sein de la même zone de disponibilité.
 
 À moins que vous n'activiez cette fonctionnalité, le déploiement zonal ne se produit pas et le déploiement non zonal LRS précédent devient effectif.
 
-Pour plus d'informations sur le déploiement de machines virtuelles dans une zone de disponibilité unique, reportez-vous àlink:concept-ha-azure.html["Paires à haute disponibilité dans Azure"] .
+Pour plus d'informations sur le déploiement de machines virtuelles dans une seule zone de disponibilité, veuillez consulter link:concept-ha-azure.html["Paires à haute disponibilité dans Azure"].
 
 Effectuez ces étapes en tant qu'utilisateur avec des privilèges « Propriétaire » :
 
@@ -31,7 +31,7 @@ Effectuez ces étapes en tant qu'utilisateur avec des privilèges « Propriéta
 az account set -s _<nom_ou_ID_d'abonnement_Azure>_ az feature register --name VMOrchestratorZonalMultiFD --namespace Microsoft.Compute
 
 ====
-. Vérifiez l'état d'enregistrement et l'échantillon de sortie :
+. Vérifiez l'état de l'enregistrement en exécutant cette commande, qui renvoie un résultat similaire à cet exemple :
 +
 []
 ====

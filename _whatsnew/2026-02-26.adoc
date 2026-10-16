@@ -7,16 +7,16 @@
 [[support-for-google-infrastructure-manager-for-private-mode-deployments]]
 === Prise en charge de Google Infrastructure Manager pour les déploiements en mode privé
 
-Cloud Volumes ONTAP 9.16.1 et versions ultérieures prennent désormais en charge  https://docs.cloud.google.com/infrastructure-manager/docs/overview["Google Cloud Infrastructure Manager"^] (IM) au lieu de  https://docs.cloud.google.com/deployment-manager/docs/deprecations["Cloud Deployment Manager"^] (DM) pour les nouveaux déploiements en mode privé sur Google Cloud. Google va déprécier Deployment Manager en tant que service d'infrastructure dans un avenir proche au profit d'Infrastructure Manager, plus avancé.
+Cloud Volumes ONTAP 9.16.1 et les versions ultérieures prennent désormais en charge  https://docs.cloud.google.com/infrastructure-manager/docs/overview["Google Cloud Infrastructure Manager"^]Infrastructure Manager (IM) au lieu de  https://docs.cloud.google.com/deployment-manager/docs/deprecations["Cloud Deployment Manager"^]Deployment Manager (DM) pour les nouveaux déploiements en mode privé dans Google Cloud. Google abandonne progressivement Deployment Manager en tant que service d'infrastructure au profit d'Infrastructure Manager, plus avancé.
 
-À compter du 25 février 2026, Cloud Volumes ONTAP utilise Infrastructure Manager pour les déploiements en mode privé, nouveaux et existants. Ce tableau explique les flux de travail de base pour vous :
+À compter du 25 février 2026, Cloud Volumes ONTAP utilisera Infrastructure Manager pour les déploiements en mode privé, nouveaux et existants. Le flux de travail de base dépend de votre scénario :
 
 [cols="1,4,1,1,1,1"]
 |===
 | Scénario | Action | Nouvelles API pour l'agent | Nouvelles autorisations pour l'agent | Nouvelles API Google Cloud pour Cloud Volumes ONTAP | Ressources documentaires 
 
 
-| Agent existant et déploiement existant en mode privé | Mettez à niveau l'agent NetApp Console vers la dernière version en téléchargeant le programme d'installation depuis le site de support NetApp, puis installez manuellement l'agent sur votre hôte afin qu'il puisse utiliser les API d'Infrastructure Manager. Ensuite, convertissez les systèmes Cloud Volumes ONTAP existants pour utiliser Infrastructure Manager.  a| 
+| Agent existant et déploiement existant en mode privé | Mettez à niveau l'agent Console vers sa dernière version en téléchargeant le programme d'installation depuis le site de support NetApp, puis en installant manuellement l'agent sur votre hôte afin qu'il puisse utiliser les API d'Infrastructure Manager. Ensuite, convertissez les systèmes Cloud Volumes ONTAP existants pour utiliser Infrastructure Manager.  a| 
 * API Cloud Infrastructure Manager
 * API Cloud Quotas
 * API Cloud Build
@@ -43,7 +43,7 @@ Toutes les autorisations listées pour la version Console sur :
 
 
 |===
-Dans les déploiements en mode privé, vous devez effectuer quelques modifications de configuration pour que Cloud Volumes ONTAP commence à utiliser Infrastructure Manager. Consultez  https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/reference-networking-gcp.html#infrastructure-manager-configuration-in-private-mode-or-protected-environments["Configuration d'Infrastructure Manager en mode privé ou dans des environnements protégés"^].
+Dans les déploiements en mode privé, vous devez apporter quelques modifications de configuration pour que Cloud Volumes ONTAP commence à utiliser Infrastructure Manager. Reportez-vous à https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/reference-networking-gcp.html#infrastructure-manager-configuration-in-private-mode-or-protected-environments["Configuration d'Infrastructure Manager en mode privé ou dans des environnements protégés"^].
 
 .Liens connexes
 * https://docs.netapp.com/us-en/console-setup-admin/whats-new.html#console-agent-4-2-0["NetApp Console Agent 4.2.0 Notes de version"^]

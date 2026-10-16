@@ -20,7 +20,7 @@ https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-new.html["N
 
 À partir de Cloud Volumes ONTAP 9.19.1 GA, le chiffrement Azure sur l’hôte est activé par défaut pour les nouveaux déploiements Azure à nœud unique et en haute disponibilité (HA) qui répondent aux prérequis. Cette fonctionnalité chiffre les données sur le serveur physique qui héberge la machine virtuelle, y compris le disque éphémère et les caches associés au niveau de l’hôte, lors de leur écriture sur l’hôte et de leur lecture depuis celui-ci.
 
-Avant de déployer Cloud Volumes ONTAP dans Azure, assurez-vous que les conditions préalables suivantes sont remplies :
+Avant de déployer Cloud Volumes ONTAP dans Azure, assurez-vous que votre environnement répond aux prérequis suivants :
 
 * Cette `EncryptionAtHost` fonctionnalité est enregistrée pour votre abonnement Azure. Consultez https://learn.microsoft.com/en-us/azure/virtual-machines/linux/disks-enable-host-based-encryption-cli["Documentation Microsoft : Activer le chiffrement sur l’hôte"^].
 * Le type d'instance de machine virtuelle que vous avez sélectionné prend en charge le chiffrement sur l'hôte dans votre région Azure. Reportez-vous à https://learn.microsoft.com/en-us/azure/virtual-machines/linux/disks-enable-host-based-encryption-cli#finding-supported-vm-sizes["Documentation Microsoft : recherche des tailles de VM prises en charge"^].
