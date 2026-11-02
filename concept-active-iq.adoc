@@ -53,7 +53,7 @@ Dans le panneau de gauche, sélectionnez *Health > Digital Advisor*.
 
 * Si vous avez déjà enregistré un compte NSS existant dans la console, l'interface utilisateur de Digital Advisor apparaît exactement comme vous la verriez dans une implémentation autonome à https://activeiq.netapp.com/[] .
 +
-image:screenshot_aiq_digital_advisor.png["Une capture d’écran de l’interface utilisateur de Digital Advisor dans la console."]
+image:screenshot_aiq_digital_advisor.png["Tableau de bord Digital Advisor dans la NetApp Console affichant des résumés sur le bien-être, l’inventaire, la planification et les mises à niveau"]
 
 * Si vous n'avez pas encore enregistré de compte NSS dans la Console, enregistrez un compte NSS maintenant, puis l'interface utilisateur de Digital Advisor s'affichera. Consultez  https://docs.netapp.com/us-en/console-setup-admin/task-adding-nss-accounts.html["Gérer les informations d'identification NSS associées à une organisation ou à un compte"] pour obtenir les instructions.
 

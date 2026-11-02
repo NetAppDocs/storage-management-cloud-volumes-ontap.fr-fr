@@ -83,7 +83,7 @@ La console crée le compte de stockage avec les paramètres suivants :
 * Redondance : conformément au déploiement de Cloud Volume ONTAP
 +
 ** Zone de disponibilité unique : stockage localement redondant (LRS)
-** Zone de disponibilité multiple : stockage redondant dans une zone (ZRS)
+** Zones de disponibilité multiples : stockage redondant par zone (ZRS)
 
 
 * Compte : StorageV2 (usage général v2)

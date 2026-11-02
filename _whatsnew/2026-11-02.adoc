@@ -1,0 +1,22 @@
+= Instructions pour la mise à niveau des correctifs ONTAP pour des versions spécifiques de Cloud Volumes ONTAP
+:allow-uri-read: 
+
+
+
+
+[[guidance-for-upgrading-ontap-hotfixes-for-specific-cloud-volumes-ontap-versions]]
+=== Instructions pour la mise à niveau des correctifs ONTAP pour des versions spécifiques de Cloud Volumes ONTAP
+
+ONTAP a publié les correctifs suivants compatibles avec les versions 9.14.1, 9.15.1, 9.16.1, 9.17.1, 9.18.1 et 9.19.1 de Cloud Volumes ONTAP :
+
+* 9.14.1P18HF1
+* 9.15.1P20HF1
+* 9.16.1P16HF1
+* 9.17.1P11HF1
+* 9.18.1P8HF1
+* 9.19.1P3HF1
+
+
+Pour plus de détails, consultez https://security.netapp.com/advisory/ntap-20261021-0021["Avis de sécurité NTAP 20261021-0021"^].
+
+Pour vos systèmes Cloud Volumes ONTAP, il se peut qu’une invite vous demande d’effectuer la mise à niveau vers ces correctifs dans la NetApp Console. Toutefois, ces correctifs sont pris en charge uniquement lorsque la version de l’agent Console est 4.12.0 ou ultérieure. Si la version de l’agent Console est antérieure à 4.12.0, ignorez l’invite.

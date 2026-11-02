@@ -14,7 +14,7 @@ summary: Configurez les licences Freemium, basées sur la capacité ou Keystone 
 
 
 [role="lead"]
-Après avoir choisi l'option de licence à utiliser avec Cloud Volumes ONTAP dans Google Cloud, effectuez quelques étapes de configuration avant de sélectionner cette option lors de la création d'un système.
+Après avoir choisi l'option de licence à utiliser avec Cloud Volumes ONTAP dans Google Cloud, effectuez quelques étapes de configuration afin de pouvoir sélectionner cette option lors de la création d'un nouveau système.
 
 
 
@@ -57,7 +57,7 @@ Les formules Essentiel et Professionnel sont disponibles avec les modèles de co
 
 link:concept-licensing.html#capacity-based-licensing["En savoir plus sur les licences basées sur la capacité"] .
 
-Pour commencer avec chacun de ces modèles de consommation, suivez les étapes décrites dans les sections suivantes.
+Pour commencer, suivez les étapes correspondant au modèle de consommation que vous souhaitez utiliser.
 
 
 
@@ -82,7 +82,7 @@ Votre licence doit être disponible depuis la Console avant de pouvoir l'utilise
 +
 .. Sur la page *Détails et informations d'identification*, sélectionnez *Modifier les informations d'identification > Ajouter un abonnement*, puis suivez les invites pour vous abonner à l'offre de paiement à l'utilisation sur Google Cloud Marketplace.
 +
-La licence que vous avez achetée auprès de NetApp est toujours facturée en premier, mais le tarif horaire de la marketplace vous sera facturé si vous dépassez votre capacité sous licence ou si la durée de votre licence expire.
+La licence que vous avez achetée auprès de NetApp est toujours facturée en premier, mais vous serez facturé au tarif horaire de la marketplace si vous dépassez votre capacité sous licence ou si la durée de votre licence expire.
 
 .. Après être revenu à la console, sélectionnez un forfait basé sur la capacité lorsque vous atteignez la page des méthodes de charge.
 +
@@ -179,7 +179,7 @@ link:task-deploying-gcp.html["Consultez les instructions étape par étape pour 
 [[node-based-license]]
 == Licence basée sur les nœuds
 
-Une licence par nœud correspond à l'ancienne génération de licences pour Cloud Volumes ONTAP. Vous pouviez en acheter une auprès de NetApp (BYOL). Le renouvellement des licences par nœud n'est désormais possible que dans certains cas spécifiques. Pour plus d'informations, consultez :
+Une licence par nœud correspond à l'ancienne génération de licences pour Cloud Volumes ONTAP. Vous pouviez en acheter une auprès de NetApp (BYOL). Le renouvellement des licences par nœud est possible uniquement dans certains cas. Pour plus d'informations, consultez :
 
 * https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/whats-new.html#end-of-availability-for-node-based-licenses["Fin de disponibilité des licences basées sur des nœuds"^]
 * https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing.html#end-of-availability-of-node-based-licenses["Fin de disponibilité des licences basées sur des nœuds"^]

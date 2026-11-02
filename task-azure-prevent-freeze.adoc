@@ -41,7 +41,7 @@ Microsoft Azure peut brièvement suspendre une VM lors d'une maintenance planifi
 == Empêcher le basculement automatique et la restitution automatique lors de la maintenance planifiée d'Azure
 
 .Étapes
-. Identifiez l’ID système de la paire haute disponibilité Azure. Pour plus d’informations sur l’identification des ressources et les appels d’API, consultez https://docs.netapp.com/us-en/console-automation/cm/your_api_call.html#step-1-select-the-identifie["Votre premier appel d'API"^].
+. Identifiez l’ID système de la paire haute disponibilité. Pour plus d’informations sur l’identification des ressources et les appels d’API, consultez https://docs.netapp.com/us-en/console-automation/cm/your_api_call.html#step-1-select-the-identifier["Émettez un appel à l'API REST de gestion ONTAP"^].
 . Envoyez une `PUT` requête au point de terminaison suivant, en remplaçant `{id}` par l'ID système :
 +
 `PUT /occm/api/azure/ha/working-environments/{id}/opt-off-maintenance-event`

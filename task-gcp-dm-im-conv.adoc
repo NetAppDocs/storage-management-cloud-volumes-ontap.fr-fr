@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: task-gcp-dm-im-conv.html 
 keywords: manual conversion tool, gcp dm im conversion, gcp deployment manager to infrastructure manager, gcp dm to im conversion 
-summary: 'Mettez à niveau les systèmes Cloud Volumes ONTAP existants dans Google Cloud vers la version 9.16.1 ou ultérieure, puis exécutez l"outil de transition pour passer de Deployment Manager à Infrastructure Manager.' 
+summary: 'Mettez à niveau les systèmes Cloud Volumes ONTAP existants dans Google Cloud vers la version 9.16.1 ou ultérieure, puis exécutez l"outil de conversion pour passer de Deployment Manager à Infrastructure Manager.' 
 ---
 = Convertissez les déploiements Cloud Volumes ONTAP existants vers Infrastructure Manager
 :hardbreaks:
@@ -180,7 +180,7 @@ Si vous exécutez l'outil en mode privé, ajoutez également l' `cloudbuild.work
 ** Type de machine : Google Compute Engine machine type e2-medium
 ** Système d'exploitation : en fonction de vos besoins, sélectionnez l'une de ces images :
 +
-*** Ubuntu 25.10 AMD64 Minimal (image : ubuntu-minimal-2510-amd64)
+*** Ubuntu 26.04 LTS Minimal (ubuntu-2604-resolute-amd64)
 *** SUSE Linux Enterprise Server 15 SP7 x86_64
 
 
@@ -203,7 +203,7 @@ Si vous exécutez l'outil en mode privé, ajoutez également l' `cloudbuild.work
 
 . Connectez-vous à la machine virtuelle nouvellement créée à l'aide de SSH: `gcloud compute ssh dmtoim-convert-executor-vm --zone _<region where VM is deployed>_`
 . Téléchargez l’outil de conversion depuis le https://mysupport.netapp.com/site/tools/tool-eula/gcp-cvo-dm-to-im-convert-tool/download["Site de support NetApp"^] en utilisant vos identifiants NSS : `wget <download link from NetApp Support site>`
-. Extrayez le fichier TAR téléchargé : `unzip <downloaded file name>`
+. Extraire le fichier téléchargé : `unzip <downloaded file name>`
 
 
 [role="tabbed-block"]
