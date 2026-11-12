@@ -7,8 +7,10 @@
 [[guidance-for-upgrading-ontap-hotfixes-for-specific-cloud-volumes-ontap-versions]]
 === Instructions pour la mise à niveau des correctifs ONTAP pour des versions spécifiques de Cloud Volumes ONTAP
 
-ONTAP a publié les correctifs suivants compatibles avec les versions 9.14.1, 9.15.1, 9.16.1, 9.17.1, 9.18.1 et 9.19.1 de Cloud Volumes ONTAP :
+ONTAP a publié les correctifs suivants compatibles avec les versions 9.12.1, 9.13.1, 9.14.1, 9.15.1, 9.16.1, 9.17.1, 9.18.1 et 9.19.1 de Cloud Volumes ONTAP :
 
+* 9.12.1P20HF1
+* 9.13.1P21HF1
 * 9.14.1P18HF1
 * 9.15.1P20HF1
 * 9.16.1P16HF1

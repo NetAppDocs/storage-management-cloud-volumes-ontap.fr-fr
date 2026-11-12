@@ -14,7 +14,7 @@ summary: 'Activez le chiffrement du réseau de cluster principal pour protéger 
 
 
 [role="lead"]
-Pour Cloud Volumes ONTAP 9.19.1 et versions ultérieures, activez le chiffrement du réseau du cluster backend afin de protéger le trafic interne est-ouest dans les configurations haute disponibilité (HA) sur Azure et Google Cloud. Ce paramètre protège le trafic en transit; il ne chiffre pas les données au repos.
+À partir de Cloud Volumes ONTAP 9.19.1 et des versions ultérieures, vous pouvez activer le chiffrement du réseau de cluster backend afin de protéger le trafic interne des nœuds Cloud Volumes ONTAP dans les configurations haute disponibilité (HA) d'Azure et de Google Cloud. Ce paramètre protège le trafic en transit, mais ne chiffre pas les données au repos.
 
 ONTAP utilise la gestion de session de cluster (CSM) sur Kernel TLS (kTLS) et IPsec logiciel pour sécuriser le trafic sur les réseaux backend dans les configurations haute disponibilité. Cloud Volumes ONTAP 9.19.1 et versions ultérieures étendent cette protection au trafic du cluster backend.
 
