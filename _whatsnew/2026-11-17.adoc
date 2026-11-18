@@ -1,0 +1,49 @@
+= Nouveau rôle de contributeur Cloud Volumes ONTAP
+:allow-uri-read: 
+
+
+
+
+[[new-cloud-volumes-ontap-contributor-role]]
+=== Nouveau rôle de contributeur Cloud Volumes ONTAP
+
+NetApp ajoute le rôle *contributeur Cloud Volumes ONTAP*, qui dispose de plus d'autorisations que le rôle d'opérateur, mais de moins que le rôle d'administrateur. Un utilisateur ayant le rôle d'opérateur peut effectuer plusieurs flux de travail quotidiens, y compris des tâches de réplication SnapMirror. Le rôle d'administrateur couvre ces flux de travail, mais il permet également aux administrateurs de supprimer des systèmes Cloud Volumes ONTAP, ce que de nombreuses organisations ne souhaitent pas pour les utilisateurs opérationnels. Ce rôle est important, car la Console ne prend actuellement pas en charge la vérification multi-administrateur (MAV), sans laquelle un administrateur peut effectuer des opérations sensibles, comme la suppression de systèmes, sans seconde approbation. Le rôle de contributeur permet aux utilisateurs d'effectuer la plupart des opérations critiques, comme la création de systèmes, la gestion de la réplication et la gestion du stockage, tout en empêchant la suppression de systèmes.
+
+Le rôle de contributeur inclut toutes les autorisations d'opérateur, y compris des fonctionnalités supplémentaires permettant de :
+
+* Créer des systèmes Cloud Volumes ONTAP
+* Mettez à jour les paramètres système, par exemple en modifiant le type d'instance ou en mettant à niveau la version d'ONTAP
+* Gérer la réplication, notamment la rupture, la resynchronisation, la resynchronisation inverse et la modification des planifications de réplication et des débits de transfert
+* Gérer le stockage, notamment en ajoutant des agrégats et en augmentant la capacité
+
+
+Un utilisateur ayant le rôle de contributeur ne peut pas effectuer ces tâches :
+
+* Supprimer les systèmes, les volumes, les agrégats ou les relations de réplication
+* Allumer ou éteindre les systèmes
+* Définir un mot de passe
+* Accédez à ONTAP System Manager
+
+
+Vous attribuez le rôle de contributeur depuis *Administration > Identité*, de la même manière que vous attribuez aux utilisateurs les autres rôles Cloud Volumes ONTAP.
+
+.Liens connexes
+* https://docs.netapp.com/us-en/console-setup-admin/reference-iam-cvo-roles.html["Rôles d'accès Cloud Volumes ONTAP dans la NetApp Console"^]
+* https://docs.netapp.com/us-en/console-setup-admin/task-cvo-rbac-setup.html["Configurez l'accès basé sur les rôles pour Cloud Volumes ONTAP dans la NetApp Console"^]
+* https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html#data-service-roles["NetApp Console rôles d'accès"^]
+
+
+
+
+[[microsoft-entra-id-hybrid-user-authentication-for-smb-public-preview]]
+=== Authentification hybride des utilisateurs Microsoft Entra ID pour SMB (aperçu public)
+
+Cloud Volumes ONTAP 9.19.1 et versions ultérieures prennent en charge l'authentification hybride des utilisateurs avec https://www.microsoft.com/en-in/security/business/identity-access/microsoft-entra-id["Microsoft Entra ID"^] pour accéder aux partages SMB.
+
+Auparavant, Cloud Volumes ONTAP ne prenait en charge l'authentification SMB que pour les utilisateurs de domaine, ce qui nécessitait une configuration Active Directory (AD) locale. Grâce à l'authentification hybride des utilisateurs, vous pouvez étendre l'authentification SMB au cloud via Microsoft Entra ID, tout en continuant à utiliser votre infrastructure AD locale existante.
+
+Avec l'authentification hybride des utilisateurs, les utilisateurs sont créés dans l'Active Directory local et synchronisés avec Microsoft Entra ID à l'aide de  https://learn.microsoft.com/en-us/entra/identity/hybrid/connect/whatis-azure-ad-connect["Microsoft Entra Connect"^]. ONTAP authentifie les utilisateurs qui accèdent aux partages SMB en communiquant à la fois avec l'Active Directory local et Microsoft Entra ID.
+
+Cette fonctionnalité est disponible en avant-première publique. La configuration est prise en charge uniquement via ONTAP CLI. L’intégration à NetApp Console n’est pas encore disponible.
+
+https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-azure-entra-id-smb-auth.html["Configurer l'authentification Microsoft Entra ID pour SMB"^]

@@ -47,7 +47,8 @@ sidebar:
         url: "/concept-degraded-ha-pair.html"
     - title: Déployer sur Amazon Web Services
       entries:
-      - title: Déployez l’instance autonome Cloud Volumes ONTAP depuis AWS Marketplace
+      - title: Déployez Cloud Volumes ONTAP à l’aide d’une offre autonome sur AWS
+          Marketplace
         url: "/task-onboard-cvo-aws-marketplace.html"
       - title: Aperçu du déploiement
         url: "/task-getting-started-aws.html"
@@ -229,8 +230,8 @@ sidebar:
         url: "/reference-limits-azure.html"
       - title: Découvrez les paires HA dans Azure
         url: "/concept-ha-azure.html"
-      - title: Évitez les interruptions lors de la maintenance d’Azure pour les paires
-          haute disponibilité Cloud Volumes ONTAP
+      - title: Prévenez les interruptions lors de la maintenance Azure pour les paires
+          HA
         url: "/task-azure-prevent-freeze.html"
       - title: Gérer les clés avec Azure Key Vault
         url: "/task-azure-key-vault.html"
@@ -240,6 +241,8 @@ sidebar:
         url: "/task-overriding-cifs-locks.html"
       - title: Utiliser un lien privé Azure ou des points de terminaison de service
         url: "/task-enabling-private-link.html"
+      - title: Configurer l'authentification Microsoft Entra ID pour SMB
+        url: "/task-azure-entra-id-smb-auth.html"
       - title: Déplacer les groupes de ressources
         url: "/task-moving-resource-groups-azure.html"
       - title: Séparer le trafic SnapMirror dans Azure
