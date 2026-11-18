@@ -6903,7 +6903,6 @@
   <block id="44e833213a99257d69192896111996f4" category="paragraph">Vous pouvez désormais déployer Cloud Volumes ONTAP 9.12.1 GA et versions ultérieures dans les régions Austria East (austriaeast) et Belgium Central (belgiumcentral) dans Azure. Les types de déploiement suivants sont pris en charge :</block>
   <block id="0eda8bbe61d2248f5418aba76b8dc5b1" category="list-text">\https://api.workloads.netapp.com</block>
   <block id="9f45fe3cd2af64a1afc3f4b7f81bdae6" category="list-text">\https://ws.workloads.bluexp.netapp.com</block>
-  <block id="dbf314f960a580dec77c3328f5a7dcfe" category="list-text">Si vous prévoyez de facturer la capacité Cloud Volumes ONTAP via l’abonnement Cloud Volumes ONTAP autonome dans AWS Marketplace, le système Cloud Volumes ONTAP doit utiliser un forfait basé sur la capacité pris en charge (Essentials ou Freemium). Le forfait Professional n’est pas pris en charge pour l’offre autonome et continue d’être facturé via l’abonnement NIS. Après avoir sélectionné le forfait souhaité, utilisez *Préférences de facturation* dans la NetApp Console pour choisir l’abonnement Marketplace utilisé pour la facturation Cloud Volumes ONTAP.</block>
   <block id="a21deb009c8ff7309664108fdf426e10" category="summary">Abonnez-vous à Cloud Volumes ONTAP sur AWS Marketplace et terminez la configuration dans la NetApp Console, y compris la création de l'organisation, l'association de l'abonnement, le déploiement de l'agent et la création du premier système.</block>
   <block id="ce95e653013e10f07ac1b69529baf3bb" category="doc">Abonnez-vous et déployez Cloud Volumes ONTAP depuis AWS Marketplace</block>
   <block id="a4cede66de2477ac18bbdee0f03c3b4b" category="list-text">Consultez les détails de l'annonce et les conditions tarifaires.</block>
@@ -7835,7 +7834,6 @@
   <block id="288d38f29d8eeeb99070bff4f65525c0" category="paragraph">Recherchez l’offre autonome Cloud Volumes ONTAP dans AWS Marketplace.</block>
   <block id="a11a0a42613839623b80519a128fe81d" category="list-text">Accédez à AWS Marketplace avec votre compte AWS disposant des autorisations requises.</block>
   <block id="ef6da38a0094b683cff50de6f2edfb73" category="list-text">Recherchez l’offre autonome NetApp Cloud Volumes ONTAP. AWS Marketplace propose deux offres pour Cloud Volumes ONTAP :</block>
-  <block id="65e2afdf3ea7ead73c73f2ccc67a88bb" category="list-text">L'offre autonome pour l'abonnement annuel à Cloud Volumes ONTAP</block>
   <block id="0bede5b2fb82cb93a6b7341f902bd965" category="list-text">Après votre inscription, sélectionnez *Set up product* pour être redirigé vers NetApp Console afin de finaliser votre déploiement.</block>
   <block id="8e54d24c608de9f6d76f0ddf776cd3cc" category="paragraph">Poursuivez la configuration dans NetApp Console après avoir terminé l’abonnement Marketplace.</block>
   <block id="e17e44482e762e707860b1c0d43859ab" category="list-text">Si vous sélectionnez *S'inscrire*, remplissez les champs suivants :</block>
@@ -8195,7 +8193,6 @@
   <block id="840c0d6ab3aac46cebc73c413bcb3de2" category="inline-link">Configurer l'authentification Microsoft Entra ID pour SMB</block>
   <block id="4751d6cb0ce22c95620735a0f455e8e4" category="paragraph"><block ref="4751d6cb0ce22c95620735a0f455e8e4" category="inline-link-rx"></block></block>
   <block id="79ef9f61ccfcabc1d70e24a061eef1a5" category="inline-link">En savoir plus sur les préférences de facturation</block>
-  <block id="70563190697b86d4b7fef9663334a2c7" category="paragraph"><block ref="70563190697b86d4b7fef9663334a2c7" category="inline-link-rx"></block></block>
   <block id="f0f0c1d3ad1556de34b949ba497629d8" category="summary">Configurez l'authentification Microsoft Entra ID pour SMB sur Cloud Volumes ONTAP afin de prendre en charge les identités d'utilisateurs hybrides et de réduire la dépendance à l'égard d'Active Directory sur site.</block>
   <block id="576dddd89d6fcee802f4b33d25d7129c" category="doc">Configurer l'authentification Microsoft Entra ID pour SMB sur Cloud Volumes ONTAP</block>
   <block id="f0d496d92b622242ae63265df0a68c13" category="paragraph">Vous pouvez configurer Cloud Volumes ONTAP pour authentifier les utilisateurs qui accèdent aux partages SMB par l’intermédiaire de<block ref="c92d60eae0a0d9ece702070bd9116954" category="inline-link-rx"></block>, ce qui permet la prise en charge des identités pour les utilisateurs de Cloud Volumes ONTAP dans le cloud hybride. Auparavant, l’authentification nécessitait un Active Directory (AD) sur site pour la gestion des identités des utilisateurs du domaine. Avec Microsoft Entra ID, vous pouvez utiliser une authentification basée sur le cloud tout en maintenant un accès transparent pour les utilisateurs hybrides.</block>
@@ -8313,11 +8310,6 @@
   <block id="5798e009f5498705c64f92ce140cd070" category="paragraph">Pour refuser l'accès:</block>
   <block id="90354e46cc101991e55370e682628f58" category="doc">Déployez Cloud Volumes ONTAP à l'aide de l'offre autonome disponible sur AWS Marketplace</block>
   <block id="12f4bfc0538b903177d595621c7ef42d" category="list-text">Un réseau d’agents Console répondant aux exigences. <block ref="a3f5b6fd7f8b50cbffb3cbeb6fa40451" category="inline-link-macro-rx"></block></block>
-  <block id="b03eb9f92b70a1fafaeb31b1e5f8ccdc" category="list-text">L’offre combinée NetApp Intelligent Service pour les services de données NetApp et les abonnements Cloud Volumes ONTAP</block>
-  <block id="e3827b821f7d34121f8a07a802dad6dd" category="list-text">Choisissez l'offre _autonome_. Consultez les détails de l'annonce et les conditions tarifaires.</block>
-  <block id="da387e40e73b9eeced07accc9de6e3e4" category="section-title">Abonnez-vous à l’offre Intelligent Service de NetApp pour les services de données</block>
-  <block id="f0150d523b994c5ba03cc2d6e2bd875b" category="paragraph">Si vous souhaitez utiliser d'autres services de données, tels que NetApp Backup and Recovery, vous devez vous abonner à l'offre NetApp Intelligent Service en plus de l'offre autonome.</block>
-  <block id="a7ad6897f7b9076545ea2b2470df2cfb" category="list-text">Localisez et sélectionnez l’offre NetApp Intelligent Service.</block>
   <block id="7db8d7489646d12d69a7696c02c128ef" category="list-text">Facultatif : associez un compte NetApp Support Site (NSS).</block>
   <block id="00042f51aa46d7bf5e0fd46db2c83ebd" category="paragraph">Une fois votre abonnement associé à NetApp Console, déployez un agent Console pour gérer les ressources AWS et les systèmes Cloud Volumes ONTAP.</block>
   <block id="4176621cbdd2e1f6616332f1f3cae6d1" category="list-text">Ajoutez l'ID du compte AWS et, éventuellement, l'ID externe. La Console attribue un nom de rôle par défaut.</block>
@@ -8329,4 +8321,13 @@
   <block id="f2a895f791fcea8f719f85e864d53ea6" category="paragraph">Directive non résolue dans &lt;stdin&gt; - include::_whatsnew/2026-11-16.adoc[]</block>
   <block id="4e1d849ec7cd4b242a9a758a2e86fe1c" category="sidebar">Déployez Cloud Volumes ONTAP à l’aide d’une offre autonome sur AWS Marketplace</block>
   <block id="d2091e7366ce9b63a9a82bdd7bb6c641" category="sidebar">Prévenez les interruptions lors de la maintenance Azure pour les paires HA</block>
+  <block id="464804aa8527c7a5675dd4c8d2b5f2b5" category="paragraph"><block ref="70563190697b86d4b7fef9663334a2c7" category="inline-link-rx"></block> <block ref="2d3a44ea7e8ca99b971ec5f419723d79" category="inline-link-rx"></block></block>
+  <block id="f17334f879855cf7befcf9561bf97a15" category="list-text">Si vous prévoyez de facturer la capacité de Cloud Volumes ONTAP via un abonnement Cloud Volumes ONTAP uniquement (contrat annuel ou PAYGO) dans AWS Marketplace, le système Cloud Volumes ONTAP doit utiliser un package pris en charge basé sur la capacité (Essentials ou Freemium). Le package Professional n'est pas pris en charge pour l'offre autonome et continue d'être facturé via un abonnement NetApp Intelligent Services (NIS). Après avoir sélectionné le package souhaité, utilisez *Billing preferences* dans NetApp Console pour choisir l'abonnement Marketplace utilisé pour la facturation de Cloud Volumes ONTAP.</block>
+  <block id="c57a3384803ce10606c2888bd8bebf10" category="list-text">L'offre autonome pour Cloud Volumes ONTAP, disponible sous forme d'abonnement annuel ou à la carte (PAYGO).</block>
+  <block id="0f84dfccc86093595e11d0f4f2979e06" category="list-text">L’offre NetApp Intelligent Service (NIS) pour les services de données NetApp et Cloud Volumes ONTAP, également disponible sous forme d’abonnement annuel ou PAYGO.</block>
+  <block id="6b67e3947a2b280b3f1a844cf4397014" category="list-text">Choisissez soit l’abonnement annuel, soit l’option PAYGO pour l’offre autonome. Consultez les détails de l’offre et les conditions tarifaires.</block>
+  <block id="efd4fa7529d7c8cd4bd411aad0166ed6" category="section-title">Abonnez-vous à NetApp Intelligent Service pour les services de données</block>
+  <block id="db78a7e96024e9eef010b9cf7fb53251" category="paragraph">Si vous souhaitez utiliser d'autres services de données, tels que NetApp Backup and Recovery, vous devez souscrire à l'offre NIS en plus de l'offre autonome.</block>
+  <block id="19345556c6e896fcd174b552b92e5c53" category="list-text">Localisez et sélectionnez l’option annuelle ou PAYGO pour l’offre NetApp Intelligent Service (NIS).</block>
+  <block id="bc2dc85706f0ec1cefd21d3f849eb1e9" category="section-title">18 novembre 2026</block>
 </blocks>

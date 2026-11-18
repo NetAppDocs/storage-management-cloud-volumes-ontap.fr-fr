@@ -11,4 +11,4 @@ NetApp propose désormais une offre distincte de paiement à l’usage (PAYGO) p
 
 Le contrat annuel Cloud Volumes ONTAP et l’offre PAYGO restent tous deux distincts du contrat annuel et des offres PAYGO de NetApp Intelligence Services (NIS), ce qui permet une facturation séparée pour la capacité Cloud Volumes ONTAP et les services de données.
 
-https://docs.netapp.com/us-en/console-licenses-subscriptions/concept-billing-preferences.html["En savoir plus sur les préférences de facturation"^]
+https://docs.netapp.com/us-en/console-licenses-subscriptions/concept-billing-preferences.html["En savoir plus sur les préférences de facturation"^] https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-onboard-cvo-aws-marketplace.html["Déployez Cloud Volumes ONTAP à l'aide de l'offre autonome disponible sur AWS Marketplace"^]
